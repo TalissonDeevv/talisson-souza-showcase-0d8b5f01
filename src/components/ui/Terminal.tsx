@@ -313,107 +313,52 @@ const Terminal = () => {
   }, [language]);
 
   return (
-    <div className="bg-gray-900 dark:bg-black font-mono text-sm h-full relative">
-      {/* Scroll Controls */}
-      {showScrollButtons && (
-        <div className="absolute right-2 top-1/2 -translate-y-1/2 z-10 flex flex-col gap-1">
-          <motion.button
-            onClick={scrollToTop}
-            className="p-1.5 bg-gray-800/80 hover:bg-gray-600 text-gray-400 hover:text-white rounded transition-all duration-200 backdrop-blur-sm border border-gray-700/50 hover:border-gray-500"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            title={getText(language, "Ir para o topo", "Go to top")}
-          >
-            <ChevronsUp className="w-4 h-4" />
-          </motion.button>
-          <motion.button
-            onClick={scrollUp}
-            className="p-1.5 bg-gray-800/80 hover:bg-gray-600 text-gray-400 hover:text-white rounded transition-all duration-200 backdrop-blur-sm border border-gray-700/50 hover:border-gray-500"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            title={getText(language, "Subir", "Scroll up")}
-          >
-            <ChevronUp className="w-4 h-4" />
-          </motion.button>
-          <motion.button
-            onClick={scrollDown}
-            className="p-1.5 bg-gray-800/80 hover:bg-gray-600 text-gray-400 hover:text-white rounded transition-all duration-200 backdrop-blur-sm border border-gray-700/50 hover:border-gray-500"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            title={getText(language, "Descer", "Scroll down")}
-          >
-            <ChevronDown className="w-4 h-4" />
-          </motion.button>
-          <motion.button
-            onClick={scrollToBottom}
-            className="p-1.5 bg-gray-800/80 hover:bg-gray-600 text-gray-400 hover:text-white rounded transition-all duration-200 backdrop-blur-sm border border-gray-700/50 hover:border-gray-500"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            title={getText(language, "Ir para o final", "Go to bottom")}
-          >
-            <ChevronsDown className="w-4 h-4" />
-          </motion.button>
-        </div>
-      )}
-
+    <div className="font-mono text-sm h-full relative bg-foreground text-background">
       <div 
         ref={terminalRef}
-        className="p-4 pr-12 h-full overflow-y-auto bg-gray-900 dark:bg-black text-green-400 dark:text-green-300 scrollbar-thin scrollbar-track-gray-800 scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500"
+        className="p-4 h-full overflow-y-auto"
         onClick={() => inputRef.current?.focus()}
       >
         {history.map((entry, index) => (
           <div key={index} className="mb-2">
             {entry.type === 'command' && (
-              <div className="flex items-center gap-2">
-                <span className="text-gray-400">talinho@dev</span>
-                <span className="text-gray-500">:</span>
-                <span className="text-gray-300">~</span>
-                <span className="text-gray-500">$</span>
-                <span className="text-white ml-1">{entry.command}</span>
+              <div className="flex items-center gap-1 text-background/60">
+                <span>$</span>
+                <span className="text-background ml-1">{entry.command}</span>
               </div>
             )}
             {entry.type === 'output' && entry.output && (
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="whitespace-pre-line text-green-400 dark:text-green-300 ml-0 mt-1"
-              >
+              <div className="whitespace-pre-line text-background/80 mt-1 text-xs leading-relaxed">
                 {entry.output}
-              </motion.div>
+              </div>
             )}
           </div>
         ))}
         
         {isTyping && (
-          <div className="flex items-center gap-2">
-            <span className="text-gray-400">talinho@dev</span>
-            <span className="text-gray-500">:</span>
-            <span className="text-gray-300">~</span>
-            <span className="text-gray-500">$</span>
-            <span className="text-yellow-400 ml-1 animate-pulse">Processando...</span>
+          <div className="flex items-center gap-1 text-background/60">
+            <span>$</span>
+            <span className="text-background/40 ml-1">...</span>
           </div>
         )}
         
         <form onSubmit={handleSubmit} className="mt-2">
-          <div className="flex items-center gap-2">
-            <span className="text-gray-400">talinho@dev</span>
-            <span className="text-gray-500">:</span>
-            <span className="text-gray-300">~</span>
-            <span className="text-gray-500">$</span>
+          <div className="flex items-center gap-1 text-background/60">
+            <span>$</span>
             <input
               ref={inputRef}
               type="text"
               value={input}
               onChange={(e) => handleInputChange(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="flex-1 bg-transparent text-white outline-none caret-green-400 ml-1"
-              placeholder={getText(language, "Digite um comando...", "Type a command...")}
+              className="flex-1 bg-transparent text-background outline-none caret-background ml-1 placeholder:text-background/30"
+              placeholder={getText(language, "digite um comando...", "type a command...")}
               autoFocus
             />
           </div>
           {suggestions.length > 0 && (
-            <div className="ml-24 mt-1 text-gray-500 text-xs">
-              💡 {suggestions.join(' | ')}
+            <div className="ml-4 mt-1 text-background/40 text-xs">
+              {suggestions.join(' · ')}
             </div>
           )}
         </form>
