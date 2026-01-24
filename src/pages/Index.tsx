@@ -50,8 +50,10 @@ const Index = () => {
         <div 
           className="absolute right-8 lg:right-16 top-1/2 -translate-y-1/2 w-[260px] sm:w-[300px] lg:w-[340px] h-auto pointer-events-none select-none z-0"
           style={{
-            maskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 100%)',
-            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 100%)',
+            maskImage: 'linear-gradient(to right, transparent 0%, black 25%), linear-gradient(to top, transparent 0%, black 20%)',
+            maskComposite: 'intersect',
+            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 25%), linear-gradient(to top, transparent 0%, black 20%)',
+            WebkitMaskComposite: 'source-in',
           }}
         >
           <img 
