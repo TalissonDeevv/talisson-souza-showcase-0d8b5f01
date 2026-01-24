@@ -8,6 +8,8 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
 import logoSignature from "@/assets/logo-signature.png";
+import talissonPhoto from "@/assets/talisson-photo.png";
+
 const Index = () => {
   const {
     language
@@ -43,8 +45,26 @@ const Index = () => {
   const techStack = ['JavaScript', 'TypeScript', 'Python', 'React', 'Node.js', 'Next.js', 'Tailwind', 'MongoDB', 'PostgreSQL', 'Git', 'Docker', 'Firebase'];
   return <Layout withPadding={false}>
       {/* Hero Section */}
-      <section className="min-h-[90vh] flex items-end pb-20 pt-32">
-        <div className="container mx-auto px-6 lg:px-8">
+      <section className="min-h-[90vh] flex items-end pb-20 pt-32 relative overflow-hidden">
+        {/* Photo with editorial fade effect */}
+        <div 
+          className="absolute right-0 top-1/2 -translate-y-1/2 w-[280px] sm:w-[320px] lg:w-[380px] h-auto pointer-events-none select-none z-0"
+          style={{
+            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.6) 15%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.4) 75%, transparent 100%), linear-gradient(to left, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 60%, transparent 100%)',
+            maskComposite: 'intersect',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.6) 15%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.4) 75%, transparent 100%), linear-gradient(to left, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 60%, transparent 100%)',
+            WebkitMaskComposite: 'source-in',
+          }}
+        >
+          <img 
+            src={talissonPhoto} 
+            alt="" 
+            className="w-full h-auto opacity-50 dark:opacity-40"
+            aria-hidden="true"
+          />
+        </div>
+
+        <div className="container mx-auto px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
             <p className="text-sm tracking-widest uppercase text-muted-foreground mb-8">
               {t.hero.badge}
