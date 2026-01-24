@@ -45,19 +45,21 @@ const Index = () => {
   const techStack = ['JavaScript', 'TypeScript', 'Python', 'React', 'Node.js', 'Next.js', 'Tailwind', 'MongoDB', 'PostgreSQL', 'Git', 'Docker', 'Firebase'];
   return <Layout withPadding={false}>
       {/* Hero Section */}
-      <section className="min-h-[90vh] flex items-center relative overflow-hidden">
-        {/* Photo with editorial fade effect - large, occupying right half */}
+      <section className="min-h-[90vh] flex items-end pb-20 pt-32 relative overflow-hidden">
+        {/* Photo with editorial fade effect - positioned on right side */}
         <div 
-          className="absolute right-0 top-0 bottom-0 w-1/2 pointer-events-none select-none z-0 flex items-center justify-end"
+          className="absolute right-8 lg:right-16 top-1/2 -translate-y-1/2 w-[280px] sm:w-[340px] lg:w-[420px] xl:w-[480px] pointer-events-none select-none z-0"
           style={{
-            maskImage: 'linear-gradient(to right, transparent 0%, black 40%)',
-            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 40%)',
+            maskImage: 'linear-gradient(to right, transparent 0%, black 30%), linear-gradient(to top, transparent 0%, black 15%)',
+            maskComposite: 'intersect',
+            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 30%), linear-gradient(to top, transparent 0%, black 15%)',
+            WebkitMaskComposite: 'source-in',
           }}
         >
           <img 
             src={talissonPhoto} 
             alt="" 
-            className="h-full w-auto max-w-none object-cover object-top opacity-80"
+            className="w-full h-auto opacity-75"
             aria-hidden="true"
           />
         </div>
