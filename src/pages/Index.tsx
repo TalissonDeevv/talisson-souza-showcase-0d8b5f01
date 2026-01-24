@@ -50,7 +50,10 @@ const Index = () => {
               {t.hero.badge}
             </p>
             
-            <img src={logoSignature} alt="Talisson Souza" className="h-20 sm:h-24 lg:h-28 w-auto mb-10 invert dark:invert-0 border-0 border-none" />
+            <div className="relative mb-10">
+              <div className="absolute inset-0 blur-2xl opacity-20 dark:opacity-30 bg-foreground rounded-full scale-110" />
+              <img src={logoSignature} alt="Talisson Souza" className="relative h-20 sm:h-24 lg:h-28 w-auto invert dark:invert-0 border-0 border-none" />
+            </div>
 
             <p className="text-lg text-muted-foreground max-w-xl mb-12 leading-relaxed">
               {t.hero.subtitle}
