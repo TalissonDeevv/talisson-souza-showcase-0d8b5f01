@@ -50,16 +50,16 @@ const Index = () => {
         <div 
           className="absolute right-8 lg:right-16 top-1/2 -translate-y-1/2 w-[280px] sm:w-[340px] lg:w-[420px] xl:w-[480px] pointer-events-none select-none z-0"
           style={{
-            maskImage: 'linear-gradient(to right, transparent 0%, black 30%), linear-gradient(to top, transparent 0%, black 15%)',
+            maskImage: 'linear-gradient(to right, transparent 0%, black 35%), linear-gradient(to top, transparent 0%, black 20%)',
             maskComposite: 'intersect',
-            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 30%), linear-gradient(to top, transparent 0%, black 15%)',
+            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 35%), linear-gradient(to top, transparent 0%, black 20%)',
             WebkitMaskComposite: 'source-in',
           }}
         >
           <img 
             src={talissonPhoto} 
             alt="" 
-            className="w-full h-auto opacity-75"
+            className="w-full h-auto opacity-60"
             aria-hidden="true"
           />
         </div>
