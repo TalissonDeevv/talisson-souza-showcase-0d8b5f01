@@ -57,7 +57,7 @@ const Index = () => {
           <img 
             src={talissonPhoto} 
             alt="" 
-            className="w-full h-auto opacity-60"
+            className="w-full h-auto opacity-60 dark:opacity-40"
             aria-hidden="true"
           />
         </div>
