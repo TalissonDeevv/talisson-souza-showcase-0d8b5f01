@@ -48,18 +48,16 @@ const Index = () => {
       <section className="min-h-[90vh] flex items-end pb-20 pt-32 relative overflow-hidden">
         {/* Photo with editorial fade effect */}
         <div 
-          className="absolute right-0 top-1/2 -translate-y-1/2 w-[280px] sm:w-[320px] lg:w-[380px] h-auto pointer-events-none select-none z-0"
+          className="absolute right-8 lg:right-16 top-1/2 -translate-y-1/2 w-[260px] sm:w-[300px] lg:w-[340px] h-auto pointer-events-none select-none z-0"
           style={{
-            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.6) 15%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.4) 75%, transparent 100%), linear-gradient(to left, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 60%, transparent 100%)',
-            maskComposite: 'intersect',
-            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.6) 15%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.4) 75%, transparent 100%), linear-gradient(to left, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 60%, transparent 100%)',
-            WebkitMaskComposite: 'source-in',
+            maskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 100%)',
+            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 100%)',
           }}
         >
           <img 
             src={talissonPhoto} 
             alt="" 
-            className="w-full h-auto opacity-50 dark:opacity-40"
+            className="w-full h-auto opacity-80"
             aria-hidden="true"
           />
         </div>
