@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation } from "@/utils/translations";
 import { ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
+import GlassCard from "./GlassCard";
+import PremiumBadge from "./PremiumBadge";
 
 interface ProjectCardProps {
   title: string;
@@ -24,50 +27,64 @@ const ProjectCard = ({
   const t = useTranslation(language);
   
   return (
-    <article className="group py-8 border-t border-border/40 first:border-t-0">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Image */}
-        <div className="lg:col-span-5 overflow-hidden">
-          <img
+    <motion.article
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
+      className="group"
+    >
+      <GlassCard className="overflow-hidden h-full" hover glow>
+        {/* Image with hover zoom */}
+        <div className="relative overflow-hidden aspect-video">
+          <motion.img
             src={image || "/placeholder.svg"}
             alt={title}
-            className="w-full h-48 lg:h-56 object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+            className="w-full h-full object-cover"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.5 }}
           />
+          {/* Overlay gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          
+          {/* Project index badge */}
+          <div className="absolute top-4 left-4">
+            <PremiumBadge variant="glow">0{index + 1}</PremiumBadge>
+          </div>
         </div>
         
         {/* Content */}
-        <div className="lg:col-span-7 flex flex-col justify-between">
-          <div>
-            <span className="text-xs text-muted-foreground mb-3 block">0{index + 1}</span>
-            <h3 className="font-serif text-xl lg:text-2xl text-foreground mb-3">
-              {title}
-            </h3>
-            <p className="text-sm text-muted-foreground leading-relaxed mb-4 max-w-lg">
-              {description}
-            </p>
-            <div className="flex flex-wrap gap-x-4 gap-y-1 mb-4">
-              {technologies.map((tech, i) => (
-                <span key={i} className="text-xs text-muted-foreground">
-                  {tech}
-                </span>
-              ))}
-            </div>
+        <div className="p-6 space-y-4">
+          <h3 className="font-serif text-xl lg:text-2xl text-foreground group-hover:text-gradient transition-all duration-300">
+            {title}
+          </h3>
+          
+          <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
+            {description}
+          </p>
+          
+          <div className="flex flex-wrap gap-2">
+            {technologies.map((tech, i) => (
+              <PremiumBadge key={i} variant="outline">{tech}</PremiumBadge>
+            ))}
           </div>
           
           {link && (
-            <a 
+            <motion.a 
               href={link} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="group/link inline-flex items-center gap-1 text-sm text-foreground hover:opacity-70 transition-opacity duration-200"
+              className="inline-flex items-center gap-2 text-sm text-foreground pt-2 group/link"
+              whileHover={{ x: 4 }}
+              transition={{ duration: 0.2 }}
             >
               {t.projects.seeProject}
-              <ArrowUpRight className="w-3 h-3 opacity-0 group-hover/link:opacity-100 transition-opacity duration-200" />
-            </a>
+              <ArrowUpRight className="w-4 h-4 group-hover/link:opacity-100 transition-all duration-200" />
+            </motion.a>
           )}
         </div>
-      </div>
-    </article>
+      </GlassCard>
+    </motion.article>
   );
 };
 

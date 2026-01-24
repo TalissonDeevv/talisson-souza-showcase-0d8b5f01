@@ -145,6 +145,99 @@
   .link-underline:hover::after {
     @apply scale-x-100;
   }
+
+  /* Premium Glass Card */
+  .glass-card {
+    @apply relative overflow-hidden rounded-2xl border border-border/50 bg-card/80 backdrop-blur-xl;
+    box-shadow: 
+      0 0 0 1px hsl(var(--border) / 0.1),
+      0 4px 6px -1px hsl(0 0% 0% / 0.1),
+      0 2px 4px -2px hsl(0 0% 0% / 0.1),
+      inset 0 1px 0 0 hsl(var(--foreground) / 0.05);
+  }
+
+  .glass-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500 pointer-events-none;
+    background: radial-gradient(
+      600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      hsl(var(--foreground) / 0.04),
+      transparent 40%
+    );
+  }
+
+  .glass-card:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Premium Hover Lift */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-1;
+    box-shadow: 
+      0 20px 25px -5px hsl(0 0% 0% / 0.1),
+      0 8px 10px -6px hsl(0 0% 0% / 0.1);
+  }
+
+  /* Glow Effect */
+  .glow-hover {
+    @apply relative;
+  }
+
+  .glow-hover::after {
+    content: '';
+    @apply absolute -inset-1 rounded-2xl opacity-0 transition-opacity duration-500 pointer-events-none -z-10;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--foreground) / 0.1) 0%,
+      transparent 50%,
+      hsl(var(--foreground) / 0.05) 100%
+    );
+    filter: blur(20px);
+  }
+
+  .glow-hover:hover::after {
+    @apply opacity-100;
+  }
+
+  /* Premium Badge */
+  .premium-badge {
+    @apply inline-flex items-center px-3 py-1 text-xs font-medium rounded-full;
+    @apply bg-foreground/5 text-foreground/80 border border-foreground/10;
+    @apply backdrop-blur-sm;
+  }
+
+  /* Gradient Text */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--foreground)) 0%,
+      hsl(var(--muted-foreground)) 100%
+    );
+  }
+
+  /* Scroll Reveal Animation Classes */
+  .reveal {
+    @apply opacity-0 translate-y-8;
+  }
+
+  .reveal.active {
+    @apply opacity-100 translate-y-0 transition-all duration-700 ease-out;
+  }
+
+  /* Timeline connector */
+  .timeline-connector {
+    @apply absolute left-4 top-12 bottom-0 w-px bg-gradient-to-b from-border via-border/50 to-transparent;
+  }
+
+  /* Premium Input */
+  .premium-input {
+    @apply bg-background/50 backdrop-blur-sm border-border/50 focus:border-foreground/30 focus:ring-1 focus:ring-foreground/10;
+  }
 }
 
 /* Minimal scrollbar */

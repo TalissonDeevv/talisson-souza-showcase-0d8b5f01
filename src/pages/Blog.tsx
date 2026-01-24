@@ -1,9 +1,10 @@
-
 import { motion } from "framer-motion";
 import { MessageSquare } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import SectionTitle from "@/components/ui/SectionTitle";
 import BlogCard from "@/components/ui/BlogCard";
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import GlassCard from "@/components/ui/GlassCard";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation } from "@/utils/translations";
 
@@ -11,7 +12,6 @@ const Blog = () => {
   const { language } = useTheme();
   const t = useTranslation(language);
 
-  // Blog posts data
   const blogPosts = [
     {
       id: "bot-discord",
@@ -77,19 +77,26 @@ const Blog = () => {
 
   return (
     <Layout>
-      <div className="container mx-auto px-4 pt-32 pb-16">
-        <SectionTitle subtitle={t.blog.subtitle} align="center">
-          {t.blog.title}
-        </SectionTitle>
+      <div className="container mx-auto px-4 pt-32 pb-16 relative">
+        {/* Background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-foreground/[0.02] to-transparent pointer-events-none" />
         
-        <div className="flex justify-center mb-12">
-          <div className="flex items-center gap-2 px-5 py-3 bg-secondary rounded-full text-foreground">
-            <MessageSquare className="w-5 h-5" />
-            <span className="font-medium">{t.blog.articlesBasedOnExperience}</span>
+        <ScrollReveal>
+          <SectionTitle subtitle={t.blog.subtitle} align="center">
+            {t.blog.title}
+          </SectionTitle>
+        </ScrollReveal>
+        
+        <ScrollReveal delay={0.1}>
+          <div className="flex justify-center mb-12">
+            <GlassCard className="inline-flex items-center gap-2 px-5 py-3">
+              <MessageSquare className="w-5 h-5 text-foreground/70" />
+              <span className="font-medium text-foreground/80">{t.blog.articlesBasedOnExperience}</span>
+            </GlassCard>
           </div>
-        </div>
+        </ScrollReveal>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
           {blogPosts.map((post, index) => (
             <BlogCard
               key={post.id}
