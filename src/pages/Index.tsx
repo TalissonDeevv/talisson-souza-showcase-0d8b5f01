@@ -46,14 +46,12 @@ const Index = () => {
   return <Layout withPadding={false}>
       {/* Hero Section */}
       <section className="min-h-[90vh] flex items-end pb-20 pt-32 relative overflow-hidden">
-        {/* Photo with editorial fade effect - positioned on right side */}
+        {/* Photo with fade effect only at bottom */}
         <div 
           className="absolute right-8 lg:right-16 top-1/2 -translate-y-1/2 w-[280px] sm:w-[340px] lg:w-[420px] xl:w-[480px] pointer-events-none select-none z-0"
           style={{
-            maskImage: 'linear-gradient(to right, transparent 0%, black 35%), linear-gradient(to top, transparent 0%, black 20%)',
-            maskComposite: 'intersect',
-            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 35%), linear-gradient(to top, transparent 0%, black 20%)',
-            WebkitMaskComposite: 'source-in',
+            maskImage: 'linear-gradient(to top, transparent 0%, black 40%)',
+            WebkitMaskImage: 'linear-gradient(to top, transparent 0%, black 40%)',
           }}
         >
           <img 
