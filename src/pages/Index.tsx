@@ -60,7 +60,7 @@ const Index = () => {
             <img 
               src={logoSignature} 
               alt="Talisson Souza" 
-              className="h-20 sm:h-24 lg:h-28 w-auto mb-10 dark:invert"
+              className="h-20 sm:h-24 lg:h-28 w-auto mb-10 invert dark:invert-0"
             />
 
             <p className="text-lg text-muted-foreground max-w-xl mb-12 leading-relaxed">
