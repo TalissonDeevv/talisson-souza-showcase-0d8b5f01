@@ -2,12 +2,12 @@ import Layout from "@/components/layout/Layout";
 import ContactDialog from "@/components/ui/ContactDialog";
 import SocialIcons from "@/components/ui/SocialIcons";
 import FAQ from "@/components/ui/FAQ";
-import AnimatedName from "@/components/ui/AnimatedName";
 import FloatingTerminal from "@/components/ui/FloatingTerminal";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
+import logoSignature from "@/assets/logo-signature.png";
 
 const Index = () => {
   const { language } = useTheme();
@@ -53,14 +53,15 @@ const Index = () => {
       <section className="min-h-[90vh] flex items-end pb-20 pt-32">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="max-w-4xl">
-            <p className="text-sm tracking-widest uppercase text-muted-foreground mb-6">
+            <p className="text-sm tracking-widest uppercase text-muted-foreground mb-8">
               {t.hero.badge}
             </p>
             
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif font-medium text-foreground mb-8 leading-[1.05]">
-              {t.hero.greeting}<br />
-              <AnimatedName className="text-foreground" />
-            </h1>
+            <img 
+              src={logoSignature} 
+              alt="Talisson Souza" 
+              className="h-20 sm:h-24 lg:h-28 w-auto mb-10 dark:invert"
+            />
 
             <p className="text-lg text-muted-foreground max-w-xl mb-12 leading-relaxed">
               {t.hero.subtitle}
