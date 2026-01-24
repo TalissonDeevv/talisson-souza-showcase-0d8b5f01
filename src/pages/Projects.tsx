@@ -1,8 +1,8 @@
-
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import SectionTitle from "@/components/ui/SectionTitle";
 import ProjectCard from "@/components/ui/ProjectCard";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation } from "@/utils/translations";
 
@@ -10,7 +10,6 @@ const Projects = () => {
   const { language } = useTheme();
   const t = useTranslation(language);
 
-  // Dados para projetos
   const projects = [
     {
       title: "Site da Werneck Group",
@@ -37,12 +36,17 @@ const Projects = () => {
 
   return (
     <Layout>
-      <div className="container mx-auto px-4 pt-32 pb-16">
-        <SectionTitle subtitle={t.projects.subtitle} align="center">
-          {t.projects.title}
-        </SectionTitle>
+      <div className="container mx-auto px-4 pt-32 pb-16 relative">
+        {/* Background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-foreground/[0.02] to-transparent pointer-events-none" />
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <ScrollReveal>
+          <SectionTitle subtitle={t.projects.subtitle} align="center">
+            {t.projects.title}
+          </SectionTitle>
+        </ScrollReveal>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
           {projects.map((project, index) => (
             <ProjectCard
               key={index}
