@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import ParallaxSection from "@/components/ui/ParallaxSection";
 import { 
   ArrowLeft, Code, Smartphone, Bot, Palette, Cloud, Users,
   CheckCircle, Star, MessageSquare, ArrowRight
@@ -169,11 +170,13 @@ const ServiceDetail = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="pt-32 pb-16 lg:pt-40 lg:pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
+      <ParallaxSection 
+        className="pt-24 pb-10 lg:pt-28 lg:pb-12"
+        speed={0.1}
+        backgroundElement={
           <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
-        </div>
-        
+        }
+      >
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
             <Link 
@@ -199,10 +202,10 @@ const ServiceDetail = () => {
             </div>
           </ScrollReveal>
         </div>
-      </section>
+      </ParallaxSection>
 
       {/* Content */}
-      <section className="py-16 lg:py-20 relative">
+      <section className="py-12 lg:py-16 relative">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Main */}

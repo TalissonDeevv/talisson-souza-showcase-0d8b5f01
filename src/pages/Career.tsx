@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import ParallaxSection from "@/components/ui/ParallaxSection";
 import CompanyCard from "@/components/ui/CompanyCard";
 import { 
   Rocket, Target, Heart, Users, Lightbulb, Shield, 
@@ -150,12 +151,16 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="pt-32 pb-16 lg:pt-40 lg:pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
-          <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
-        </div>
-        
+      <ParallaxSection 
+        className="pt-24 pb-10 lg:pt-28 lg:pb-12"
+        speed={0.1}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+            <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+          </>
+        }
+      >
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
             <div className="max-w-3xl">
@@ -173,7 +178,7 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
             </div>
           </ScrollReveal>
         </div>
-      </section>
+      </ParallaxSection>
 
       {/* Stats */}
       <section className="py-8 relative">
