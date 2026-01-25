@@ -114,14 +114,13 @@ const Index = () => {
               {t.hero.badge}
             </motion.p>
             
-            {/* Signature with entrance animation */}
-            <motion.img 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
+            {/* Signature - no animation delay to prevent flash */}
+            <img 
               src={logoSignature} 
               alt="Talisson Souza" 
               className="h-24 sm:h-28 lg:h-36 w-auto mb-10 invert dark:invert-0 border-0 border-none" 
+              loading="eager"
+              fetchPriority="high"
             />
 
             {/* Subtitle with entrance animation */}

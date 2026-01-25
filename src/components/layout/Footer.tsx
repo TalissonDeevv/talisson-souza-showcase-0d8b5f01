@@ -47,6 +47,7 @@ const Footer = () => {
                   src={logo} 
                   alt="Talisson Souza - Desenvolvedor Full Stack" 
                   className="h-14 w-auto" 
+                  loading="eager"
                 />
               </Link>
               

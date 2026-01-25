@@ -52,6 +52,8 @@ const Navbar = () => {
               src={logo} 
               alt="Talisson Souza - Desenvolvedor Full Stack" 
               className="h-14 w-auto transition-opacity duration-200 group-hover:opacity-80" 
+              loading="eager"
+              fetchPriority="high"
             />
           </Link>
 
