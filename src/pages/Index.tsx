@@ -150,28 +150,41 @@ const Index = () => {
       </section>
 
       {/* Tech Stack - Premium Interactive Cards */}
-      <section className="py-32 relative overflow-hidden">
-        {/* Sophisticated gradient background */}
+      <section className="py-36 relative overflow-hidden">
+        {/* Sophisticated gradient background with texture */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background" />
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+          {/* Subtle noise texture */}
+          <div className="absolute inset-0 opacity-[0.015]" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`
+          }} />
+          {/* Top decorative line */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />
         </div>
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-16">
               {/* Header */}
               <div className="lg:col-span-5">
                 <motion.span 
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+                  className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/80 mb-8 font-medium"
                 >
                   {getText(language, 'Tecnologias', 'Technologies')}
                 </motion.span>
-                <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6 leading-tight">
+                {/* Decorative line under label */}
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: '3rem' }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="h-px bg-foreground/20 mb-8"
+                />
+                <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-8 leading-[1.1]">
                   {getText(language, 'Stack Técnica', 'Tech Stack')}
                 </h2>
                 <p className="text-base text-muted-foreground leading-relaxed max-w-md">
@@ -181,7 +194,7 @@ const Index = () => {
               
               {/* Tech Grid */}
               <div className="lg:col-span-7">
-                <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
+                <div className="grid grid-cols-3 sm:grid-cols-4 gap-4">
                   {techStack.map((tech, index) => (
                     <motion.div 
                       key={tech}
@@ -190,26 +203,26 @@ const Index = () => {
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: index * 0.04 }}
                       whileHover={{ 
-                        y: -4,
+                        y: -6,
                         scale: 1.02,
                         transition: { duration: 0.25 } 
                       }}
-                      className="group relative p-4 rounded-xl border border-border/40 bg-card/60 backdrop-blur-md cursor-default overflow-hidden"
+                      className="group relative p-5 rounded-xl border border-border/30 bg-card/40 backdrop-blur-md cursor-default overflow-hidden"
                     >
                       {/* Hover glow effect */}
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                        <div className="absolute inset-0 bg-gradient-to-br from-foreground/5 via-transparent to-transparent" />
-                        <div className="absolute -inset-1 bg-foreground/5 blur-xl" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.03] via-transparent to-transparent" />
+                        <div className="absolute -inset-1 bg-foreground/[0.02] blur-xl" />
                       </div>
                       
-                      {/* Subtle border glow on hover */}
-                      <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                      {/* Subtle inner border glow on hover */}
+                      <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"
                         style={{
-                          boxShadow: 'inset 0 0 0 1px hsl(var(--foreground) / 0.15), 0 0 20px hsl(var(--foreground) / 0.05)'
+                          boxShadow: 'inset 0 0 0 1px hsl(var(--foreground) / 0.1), 0 0 30px hsl(var(--foreground) / 0.03)'
                         }}
                       />
                       
-                      <span className="relative text-sm font-medium text-foreground/90 group-hover:text-foreground transition-colors duration-300">
+                      <span className="relative text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors duration-300 tracking-wide">
                         {tech}
                       </span>
                     </motion.div>
@@ -222,29 +235,37 @@ const Index = () => {
       </section>
 
       {/* Career Timeline - Premium Animated */}
-      <section className="py-32 relative overflow-hidden">
+      <section className="py-36 relative overflow-hidden">
         {/* Background accents */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 -left-32 w-64 h-64 bg-gradient-radial from-foreground/5 to-transparent blur-3xl opacity-50" />
-          <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-gradient-radial from-foreground/5 to-transparent blur-3xl opacity-50" />
+          <div className="absolute top-1/4 -left-40 w-80 h-80 bg-gradient-radial from-foreground/[0.03] to-transparent blur-3xl opacity-60" />
+          <div className="absolute bottom-1/4 -right-40 w-80 h-80 bg-gradient-radial from-foreground/[0.03] to-transparent blur-3xl opacity-60" />
         </div>
         
         <div className="container mx-auto px-6 lg:px-8 relative">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-16">
             {/* Header */}
             <ScrollReveal className="lg:col-span-5">
               <motion.span 
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/80 mb-8 font-medium"
               >
                 {getText(language, 'Experiência', 'Experience')}
               </motion.span>
-              <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6 leading-tight">
+              {/* Decorative line */}
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: '3rem' }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="h-px bg-foreground/20 mb-8"
+              />
+              <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-8 leading-[1.1]">
                 {getText(language, 'Trajetória Profissional', 'Professional Journey')}
               </h2>
-              <p className="text-base text-muted-foreground leading-relaxed mb-8 max-w-md">
+              <p className="text-base text-muted-foreground leading-relaxed mb-10 max-w-md">
                 {getText(language, 'Posições de liderança e contribuições que moldaram minha carreira em tecnologia.', 'Leadership positions and contributions that shaped my career in technology.')}
               </p>
               <Link 
@@ -253,7 +274,7 @@ const Index = () => {
               >
                 <span className="relative">
                   {getText(language, 'Ver trajetória completa', 'View full career')}
-                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/30 group-hover:bg-foreground transition-colors duration-300" />
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20 group-hover:bg-foreground/40 transition-colors duration-300" />
                   <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
                 </span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -261,16 +282,16 @@ const Index = () => {
             </ScrollReveal>
             
             {/* Timeline Cards */}
-            <div className="lg:col-span-7 space-y-6 relative">
+            <div className="lg:col-span-7 space-y-8 relative">
               {/* Animated Timeline Line */}
               <motion.div 
                 initial={{ scaleY: 0 }}
                 whileInView={{ scaleY: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1, ease: "easeOut" }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
                 className="absolute left-6 lg:left-0 top-0 bottom-0 w-px origin-top hidden sm:block"
                 style={{
-                  background: 'linear-gradient(to bottom, hsl(var(--foreground) / 0.3), hsl(var(--foreground) / 0.1) 50%, transparent)'
+                  background: 'linear-gradient(to bottom, hsl(var(--foreground) / 0.25), hsl(var(--foreground) / 0.08) 50%, transparent)'
                 }}
               />
               
@@ -281,25 +302,28 @@ const Index = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.15 }}
-                    className="relative pl-0 sm:pl-12 lg:pl-8"
+                    className="relative pl-0 sm:pl-14 lg:pl-10"
                   >
-                    {/* Timeline dot */}
+                    {/* Timeline dot with pulse */}
                     <motion.div 
                       initial={{ scale: 0 }}
                       whileInView={{ scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: index * 0.2 + 0.3 }}
-                      className="absolute left-4 lg:left-[-4px] top-8 w-2 h-2 rounded-full bg-foreground/50 hidden sm:block"
-                      style={{
-                        boxShadow: '0 0 10px hsl(var(--foreground) / 0.3)'
-                      }}
-                    />
+                      className="absolute left-4 lg:left-[-5px] top-10 hidden sm:block"
+                    >
+                      <div className="w-2.5 h-2.5 rounded-full bg-foreground/40" style={{
+                        boxShadow: '0 0 15px hsl(var(--foreground) / 0.2)'
+                      }} />
+                      {/* Subtle pulse ring */}
+                      <div className="absolute inset-0 w-2.5 h-2.5 rounded-full bg-foreground/20 animate-ping" style={{ animationDuration: '2s' }} />
+                    </motion.div>
                     
-                    <GlassCard className="p-8 group hover:border-foreground/20 transition-all duration-500">
-                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                    <GlassCard className="p-10 group hover:border-foreground/15 transition-all duration-500">
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
                         <div>
-                          <h3 className="text-xl font-serif text-foreground mb-1 group-hover:text-gradient transition-all duration-300">{company.role}</h3>
-                          <p className="text-sm text-muted-foreground font-medium">{company.name}</p>
+                          <h3 className="text-2xl font-serif text-foreground mb-2 group-hover:text-gradient transition-all duration-300">{company.role}</h3>
+                          <p className="text-sm text-muted-foreground font-medium tracking-wide">{company.name}</p>
                         </div>
                         <motion.div
                           whileHover={{ scale: 1.05 }}
@@ -321,16 +345,30 @@ const Index = () => {
       </section>
 
       {/* Achievements - Premium Animated Counters */}
-      <section className="py-28 relative overflow-hidden">
+      <section className="py-32 relative overflow-hidden">
         {/* Background with gradient borders */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-card/20 to-background" />
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-card/15 to-background" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[90%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
         </div>
         
         <div className="container mx-auto px-6 lg:px-8 relative">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+          {/* Section header */}
+          <ScrollReveal>
+            <div className="text-center mb-20">
+              <motion.span 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/80 mb-4 font-medium"
+              >
+                {getText(language, 'Resultados', 'Results')}
+              </motion.span>
+            </div>
+          </ScrollReveal>
+          
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-20">
             {[{
               value: '50+',
               label: getText(language, 'Projetos Entregues', 'Projects Delivered')
@@ -346,23 +384,32 @@ const Index = () => {
             }].map((stat, index) => (
               <ScrollReveal key={stat.label} delay={index * 0.1}>
                 <motion.div 
-                  className="text-center group cursor-default"
-                  whileHover={{ y: -5 }}
+                  className="text-center group cursor-default relative"
+                  whileHover={{ y: -6 }}
                   transition={{ duration: 0.3 }}
                 >
+                  {/* Decorative line above */}
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: '2rem' }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="h-px bg-foreground/15 mx-auto mb-8"
+                  />
                   <motion.p 
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="font-serif text-5xl lg:text-6xl text-foreground mb-4 transition-all duration-300"
+                    className="font-serif text-5xl lg:text-6xl xl:text-7xl text-foreground mb-5 transition-all duration-300"
                     style={{
-                      textShadow: '0 0 40px hsl(var(--foreground) / 0.1)'
+                      textShadow: '0 0 60px hsl(var(--foreground) / 0.08)',
+                      letterSpacing: '-0.04em'
                     }}
                   >
                     <span className="group-hover:text-gradient transition-all duration-500">{stat.value}</span>
                   </motion.p>
-                  <p className="text-xs sm:text-sm tracking-wide uppercase text-muted-foreground/80 group-hover:text-muted-foreground transition-colors duration-300">{stat.label}</p>
+                  <p className="text-[11px] sm:text-xs tracking-[0.15em] uppercase text-muted-foreground/70 group-hover:text-muted-foreground transition-colors duration-300 font-medium">{stat.label}</p>
                 </motion.div>
               </ScrollReveal>
             ))}
@@ -371,20 +418,28 @@ const Index = () => {
       </section>
 
       {/* Featured Projects - Premium Cards */}
-      <section className="py-32 relative overflow-hidden">
+      <section className="py-36 relative overflow-hidden">
         <div className="container mx-auto px-6 lg:px-8">
           <ScrollReveal>
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-20">
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10 mb-24">
               <div className="max-w-xl">
                 <motion.span 
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+                  className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/80 mb-8 font-medium"
                 >
                   {getText(language, 'Portfolio', 'Portfolio')}
                 </motion.span>
-                <h2 className="font-serif text-3xl lg:text-5xl text-foreground mb-6 leading-tight">
+                {/* Decorative line */}
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: '3rem' }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="h-px bg-foreground/20 mb-8"
+                />
+                <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-8 leading-[1.1]">
                   {t.projects.title}
                 </h2>
                 <p className="text-base text-muted-foreground leading-relaxed">
@@ -397,7 +452,7 @@ const Index = () => {
               >
                 <span className="relative">
                   {t.projects.viewAll}
-                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/30 group-hover:bg-foreground transition-colors duration-300" />
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20 group-hover:bg-foreground/40 transition-colors duration-300" />
                   <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
                 </span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -405,35 +460,35 @@ const Index = () => {
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {featuredProjects.map((project, index) => (
               <ScrollReveal key={project.title} delay={index * 0.15}>
                 <motion.div
-                  whileHover={{ y: -8 }}
+                  whileHover={{ y: -10 }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
                 >
-                  <GlassCard className="p-8 h-full group hover:border-foreground/20 transition-all duration-500">
-                    {/* Project number with glow */}
-                    <div className="mb-6 relative">
-                      <span className="text-4xl font-serif text-foreground/10 group-hover:text-foreground/20 transition-colors duration-300">0{index + 1}</span>
+                  <GlassCard className="p-10 h-full group hover:border-foreground/15 transition-all duration-500">
+                    {/* Project number with decorative line */}
+                    <div className="mb-8 relative">
+                      <span className="text-5xl font-serif text-foreground/[0.07] group-hover:text-foreground/15 transition-colors duration-300" style={{ letterSpacing: '-0.05em' }}>0{index + 1}</span>
                       <motion.div
                         initial={{ width: 0 }}
-                        whileInView={{ width: '2rem' }}
+                        whileInView={{ width: '2.5rem' }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-                        className="absolute bottom-0 left-0 h-px bg-foreground/30"
+                        className="absolute bottom-1 left-0 h-px bg-foreground/20"
                       />
                     </div>
                     
-                    <h3 className="font-serif text-2xl text-foreground mb-4 group-hover:text-gradient transition-all duration-500 leading-tight">
+                    <h3 className="font-serif text-2xl lg:text-3xl text-foreground mb-5 group-hover:text-gradient transition-all duration-500 leading-[1.15]">
                       {project.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed mb-6">
+                    <p className="text-muted-foreground leading-relaxed mb-8">
                       {project.description}
                     </p>
                     
                     {/* Technologies */}
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap gap-2 mb-8">
                       {project.technologies.slice(0, 3).map((tech, techIndex) => (
                         <motion.span
                           key={tech}
@@ -441,7 +496,7 @@ const Index = () => {
                           whileInView={{ opacity: 1, scale: 1 }}
                           viewport={{ once: true }}
                           transition={{ duration: 0.3, delay: techIndex * 0.05 }}
-                          className="text-xs px-3 py-1.5 rounded-full border border-border/50 bg-card/50 text-muted-foreground"
+                          className="text-xs px-3 py-1.5 rounded-full border border-border/40 bg-card/30 text-muted-foreground/80 tracking-wide"
                         >
                           {tech}
                         </motion.span>
@@ -471,38 +526,41 @@ const Index = () => {
       </section>
 
       {/* Story Highlight - Premium */}
-      <section className="py-32 relative overflow-hidden">
+      <section className="py-40 relative overflow-hidden">
         {/* Ambient background */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-b from-card/30 via-background to-card/30" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-foreground/5 to-transparent blur-3xl opacity-50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-card/20 via-background to-card/20" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-radial from-foreground/[0.03] to-transparent blur-3xl opacity-60" />
+          {/* Decorative line */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
         </div>
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
             <motion.div
-              whileHover={{ y: -4 }}
+              whileHover={{ y: -5 }}
               transition={{ duration: 0.4 }}
             >
-              <GlassCard className="max-w-3xl mx-auto p-12 lg:p-16 text-center hover:border-foreground/20 transition-all duration-500">
+              <GlassCard className="max-w-4xl mx-auto p-14 lg:p-20 text-center hover:border-foreground/15 transition-all duration-500">
                 {/* Decorative quote mark */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  className="text-8xl font-serif text-foreground/5 mb-4 select-none"
+                  className="text-9xl font-serif text-foreground/[0.04] mb-6 select-none leading-none"
+                  style={{ letterSpacing: '-0.1em' }}
                 >
                   "
                 </motion.div>
                 
-                <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-10 leading-tight">
+                <h2 className="font-serif text-3xl lg:text-4xl xl:text-5xl text-foreground mb-12 leading-[1.15]">
                   {language === 'pt' ? 'Por que fundei minha empresa aos 17?' : 'Why I started my company at 17?'}
                 </h2>
                 
-                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                <p className="text-lg text-muted-foreground leading-[1.8] mb-6 max-w-2xl mx-auto">
                   {language === 'pt' ? 'Em 2021, fui recusado em um processo seletivo não por falta de qualificação, mas por causa da minha cadeira de rodas. Esse momento transformou frustração em propósito: decidi criar meu próprio espaço onde competência e inclusão caminham juntas.' : 'In 2021, I was rejected in a selection process not for lack of qualification, but because of my wheelchair. That moment transformed frustration into purpose: I decided to create my own space where competence and inclusion walk together.'}
                 </p>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-12">
+                <p className="text-lg text-muted-foreground leading-[1.8] mb-14 max-w-2xl mx-auto">
                   {language === 'pt' ? 'Assim nasceu a Cheetah Network — mais que uma empresa, uma prova de que todos merecem oportunidades reais.' : 'Thus Cheetah Network was born — more than a company, proof that everyone deserves real opportunities.'}
                 </p>
                 
@@ -512,7 +570,7 @@ const Index = () => {
                 >
                   <span className="relative">
                     {language === 'pt' ? 'Ler história completa' : 'Read full story'}
-                    <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/30 group-hover:bg-foreground transition-colors duration-300" />
+                    <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20 group-hover:bg-foreground/40 transition-colors duration-300" />
                     <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
                   </span>
                   <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -524,28 +582,36 @@ const Index = () => {
       </section>
 
       {/* Testimonials - Premium Cards */}
-      <section className="py-32 relative overflow-hidden">
+      <section className="py-36 relative overflow-hidden">
         <div className="container mx-auto px-6 lg:px-8">
           <ScrollReveal>
-            <div className="mb-20">
+            <div className="mb-24">
               <motion.span 
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/80 mb-8 font-medium"
               >
                 {getText(language, 'Depoimentos', 'Testimonials')}
               </motion.span>
-              <h2 className="font-serif text-3xl lg:text-5xl text-foreground mb-6 leading-tight">
+              {/* Decorative line */}
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: '3rem' }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="h-px bg-foreground/20 mb-8"
+              />
+              <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-8 leading-[1.1]">
                 {language === 'pt' ? 'O que dizem sobre mim' : 'What they say about me'}
               </h2>
-              <p className="text-base text-muted-foreground max-w-lg">
+              <p className="text-base text-muted-foreground max-w-lg leading-relaxed">
                 {language === 'pt' ? 'Feedback de colegas e clientes com quem tive o prazer de trabalhar.' : 'Feedback from colleagues and clients I had the pleasure of working with.'}
               </p>
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {[{
               initials: "PS",
               name: "Priscila Suanne",
@@ -559,32 +625,32 @@ const Index = () => {
             }].map((testimonial, index) => (
               <ScrollReveal key={testimonial.name} delay={index * 0.2}>
                 <motion.div
-                  whileHover={{ y: -6 }}
+                  whileHover={{ y: -8 }}
                   transition={{ duration: 0.4 }}
                 >
-                  <GlassCard className="p-10 h-full group hover:border-foreground/20 transition-all duration-500">
+                  <GlassCard className="p-12 h-full group hover:border-foreground/15 transition-all duration-500">
                     <blockquote className="relative">
                       {/* Large decorative quote */}
-                      <div className="absolute -top-4 -left-2 text-7xl text-foreground/5 font-serif leading-none select-none">"</div>
+                      <div className="absolute -top-6 -left-3 text-8xl text-foreground/[0.04] font-serif leading-none select-none">"</div>
                       
-                      <p className="text-lg text-foreground/90 leading-relaxed mb-8 relative z-10">
+                      <p className="text-lg text-foreground/85 leading-[1.8] mb-10 relative z-10">
                         {testimonial.quote}
                       </p>
                       
-                      <footer className="flex items-center gap-4">
-                        {/* Avatar with glow effect */}
+                      <footer className="flex items-center gap-5">
+                        {/* Avatar with subtle glow */}
                         <motion.div 
                           whileHover={{ scale: 1.05 }}
-                          className="w-14 h-14 rounded-full bg-gradient-to-br from-foreground/15 to-foreground/5 flex items-center justify-center text-sm font-medium text-foreground border border-foreground/10"
+                          className="w-14 h-14 rounded-full bg-gradient-to-br from-foreground/10 to-foreground/[0.03] flex items-center justify-center text-sm font-medium text-foreground/80 border border-foreground/[0.08]"
                           style={{
-                            boxShadow: '0 0 20px hsl(var(--foreground) / 0.1)'
+                            boxShadow: '0 0 25px hsl(var(--foreground) / 0.06)'
                           }}
                         >
                           {testimonial.initials}
                         </motion.div>
                         <div>
-                          <p className="text-base font-medium text-foreground">{testimonial.name}</p>
-                          <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                          <p className="text-base font-medium text-foreground tracking-wide">{testimonial.name}</p>
+                          <p className="text-sm text-muted-foreground/80">{testimonial.role}</p>
                         </div>
                       </footer>
                     </blockquote>

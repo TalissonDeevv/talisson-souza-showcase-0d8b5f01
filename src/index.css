@@ -1,10 +1,12 @@
-@import '@fontsource/playfair-display/400.css';
-@import '@fontsource/playfair-display/500.css';
-@import '@fontsource/playfair-display/600.css';
-@import '@fontsource/playfair-display/700.css';
-@import '@fontsource/source-sans-3/400.css';
-@import '@fontsource/source-sans-3/500.css';
-@import '@fontsource/source-sans-3/600.css';
+/* Premium Typography System */
+@import '@fontsource/cormorant-garamond/400.css';
+@import '@fontsource/cormorant-garamond/500.css';
+@import '@fontsource/cormorant-garamond/600.css';
+@import '@fontsource/cormorant-garamond/700.css';
+@import '@fontsource/dm-sans/400.css';
+@import '@fontsource/dm-sans/500.css';
+@import '@fontsource/dm-sans/600.css';
+@import '@fontsource/dm-sans/700.css';
 
 @tailwind base;
 @tailwind components;
@@ -71,9 +73,7 @@
     --sidebar-border: 0 0% 12%;
     --sidebar-ring: 40 10% 80%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
@@ -94,27 +94,42 @@
     @apply bg-foreground/10 text-foreground;
   }
 
-  /* Typography scale */
+  /* Typography scale - Refined */
   h1, h2, h3 {
     @apply font-serif tracking-tight;
     text-wrap: balance;
+    font-weight: 500;
   }
 
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1];
+    @apply text-4xl md:text-5xl lg:text-6xl leading-[1.08];
+    letter-spacing: -0.03em;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl font-medium leading-[1.15];
+    @apply text-3xl md:text-4xl lg:text-5xl leading-[1.1];
+    letter-spacing: -0.025em;
   }
 
   h3 {
-    @apply text-xl md:text-2xl font-medium leading-[1.2];
+    @apply text-xl md:text-2xl leading-[1.15];
+    letter-spacing: -0.02em;
+  }
+
+  h4 {
+    @apply text-lg md:text-xl font-medium leading-[1.2];
+    letter-spacing: -0.015em;
   }
 
   p {
-    @apply leading-relaxed;
+    @apply leading-[1.7] text-[15px] md:text-base;
     text-wrap: pretty;
+    letter-spacing: 0.01em;
+  }
+
+  /* Refined link styles */
+  a {
+    @apply transition-colors duration-300;
   }
 
   /* Focus styles */
@@ -128,8 +143,12 @@
   background: radial-gradient(circle, var(--tw-gradient-stops));
 }
 
-/* Utility classes */
 @layer utilities {
+  /* Premium small text */
+  .text-caption {
+    @apply text-xs tracking-[0.08em] uppercase font-medium text-muted-foreground;
+  }
+
   .text-editorial {
     @apply font-serif tracking-tight;
   }
@@ -242,6 +261,32 @@
   /* Premium Input */
   .premium-input {
     @apply bg-background/50 backdrop-blur-sm border-border/50 focus:border-foreground/30 focus:ring-1 focus:ring-foreground/10;
+  }
+
+  /* Section dividers */
+  .section-divider {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-border to-transparent;
+  }
+
+  .section-divider-vertical {
+    @apply w-px h-full bg-gradient-to-b from-transparent via-border to-transparent;
+  }
+
+  /* Decorative line */
+  .decorative-line {
+    @apply h-px bg-gradient-to-r from-foreground/20 via-foreground/10 to-transparent;
+  }
+
+  /* Premium number styling */
+  .number-display {
+    @apply font-serif text-6xl lg:text-7xl font-medium;
+    letter-spacing: -0.04em;
+  }
+
+  /* Subtle texture overlay */
+  .texture-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.02;
   }
 }
 
