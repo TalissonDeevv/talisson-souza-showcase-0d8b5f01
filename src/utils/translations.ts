@@ -170,7 +170,7 @@ const translations: Translations = {
     },
     projects: {
       title: "Portfólio",
-      subtitle: "Projetos que desenvolvi ou liderei — do conceito à entrega",
+      subtitle: "Projetos que desenvolvi ou liderei do conceito à entrega",
       viewAll: "Ver portfólio completo",
       technologies: "Stack",
       seeProject: "Ver projeto",
@@ -399,7 +399,7 @@ const translations: Translations = {
     },
     projects: {
       title: "Portfolio",
-      subtitle: "Projects I developed or led — from concept to delivery",
+      subtitle: "Projects I developed or led from concept to delivery",
       viewAll: "View full portfolio",
       technologies: "Stack",
       seeProject: "View project",
