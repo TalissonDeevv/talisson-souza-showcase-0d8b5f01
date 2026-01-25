@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 
 interface Particle {
@@ -12,10 +12,12 @@ interface Particle {
 }
 
 const ParticlesBackground = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  // Reduce particles on mobile for better performance
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const particleCount = isMobile ? 15 : 35;
   
   const particles = useMemo<Particle[]>(() => {
-    return Array.from({ length: 50 }, (_, i) => ({
+    return Array.from({ length: particleCount }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -24,19 +26,35 @@ const ParticlesBackground = () => {
       delay: Math.random() * 10,
       opacity: Math.random() * 0.3 + 0.1,
     }));
-  }, []);
+  }, [particleCount]);
+
+  // Fewer orbs on mobile
+  const orbs = isMobile ? [
+    { x: '15%', y: '20%', size: 4, duration: 8, delay: 0 },
+    { x: '85%', y: '30%', size: 3, duration: 10, delay: 2 },
+    { x: '50%', y: '50%', size: 5, duration: 12, delay: 0.5 },
+  ] : [
+    { x: '15%', y: '20%', size: 4, duration: 8, delay: 0 },
+    { x: '85%', y: '30%', size: 3, duration: 10, delay: 2 },
+    { x: '25%', y: '70%', size: 3.5, duration: 9, delay: 1 },
+    { x: '75%', y: '80%', size: 2.5, duration: 11, delay: 3 },
+    { x: '50%', y: '50%', size: 5, duration: 12, delay: 0.5 },
+    { x: '10%', y: '45%', size: 2, duration: 7, delay: 4 },
+    { x: '90%', y: '60%', size: 3, duration: 9, delay: 2.5 },
+  ];
 
   return (
-    <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none will-change-transform" style={{ transform: 'translateZ(0)' }}>
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute rounded-full bg-foreground"
+          className="absolute rounded-full bg-foreground will-change-transform"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
             width: particle.size,
             height: particle.size,
+            transform: 'translateZ(0)',
           }}
           animate={{
             y: [0, -100, 0],
@@ -54,25 +72,18 @@ const ParticlesBackground = () => {
       ))}
       
       {/* Larger floating orbs with glow */}
-      {[
-        { x: '15%', y: '20%', size: 4, duration: 8, delay: 0 },
-        { x: '85%', y: '30%', size: 3, duration: 10, delay: 2 },
-        { x: '25%', y: '70%', size: 3.5, duration: 9, delay: 1 },
-        { x: '75%', y: '80%', size: 2.5, duration: 11, delay: 3 },
-        { x: '50%', y: '50%', size: 5, duration: 12, delay: 0.5 },
-        { x: '10%', y: '45%', size: 2, duration: 7, delay: 4 },
-        { x: '90%', y: '60%', size: 3, duration: 9, delay: 2.5 },
-      ].map((orb, index) => (
+      {orbs.map((orb, index) => (
         <motion.div
           key={`orb-${index}`}
-          className="absolute rounded-full"
+          className="absolute rounded-full will-change-transform"
           style={{
             left: orb.x,
             top: orb.y,
             width: orb.size,
             height: orb.size,
             background: 'hsl(var(--foreground))',
-            boxShadow: `0 0 ${orb.size * 4}px ${orb.size}px hsl(var(--foreground) / 0.15)`,
+            boxShadow: isMobile ? 'none' : `0 0 ${orb.size * 4}px ${orb.size}px hsl(var(--foreground) / 0.15)`,
+            transform: 'translateZ(0)',
           }}
           animate={{
             y: [0, -40, 0],
@@ -88,45 +99,47 @@ const ParticlesBackground = () => {
         />
       ))}
 
-      {/* Connecting lines effect - subtle */}
-      <svg className="absolute inset-0 w-full h-full opacity-[0.03]">
-        <motion.line
-          x1="10%"
-          y1="20%"
-          x2="30%"
-          y2="40%"
-          stroke="hsl(var(--foreground))"
-          strokeWidth="0.5"
-          animate={{
-            opacity: [0.3, 0.8, 0.3],
-          }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.line
-          x1="70%"
-          y1="30%"
-          x2="85%"
-          y2="50%"
-          stroke="hsl(var(--foreground))"
-          strokeWidth="0.5"
-          animate={{
-            opacity: [0.5, 0.2, 0.5],
-          }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        />
-        <motion.line
-          x1="40%"
-          y1="60%"
-          x2="60%"
-          y2="80%"
-          stroke="hsl(var(--foreground))"
-          strokeWidth="0.5"
-          animate={{
-            opacity: [0.2, 0.6, 0.2],
-          }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        />
-      </svg>
+      {/* Connecting lines effect - subtle (hidden on mobile) */}
+      {!isMobile && (
+        <svg className="absolute inset-0 w-full h-full opacity-[0.03]">
+          <motion.line
+            x1="10%"
+            y1="20%"
+            x2="30%"
+            y2="40%"
+            stroke="hsl(var(--foreground))"
+            strokeWidth="0.5"
+            animate={{
+              opacity: [0.3, 0.8, 0.3],
+            }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.line
+            x1="70%"
+            y1="30%"
+            x2="85%"
+            y2="50%"
+            stroke="hsl(var(--foreground))"
+            strokeWidth="0.5"
+            animate={{
+              opacity: [0.5, 0.2, 0.5],
+            }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          />
+          <motion.line
+            x1="40%"
+            y1="60%"
+            x2="60%"
+            y2="80%"
+            stroke="hsl(var(--foreground))"
+            strokeWidth="0.5"
+            animate={{
+              opacity: [0.2, 0.6, 0.2],
+            }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          />
+        </svg>
+      )}
     </div>
   );
 };

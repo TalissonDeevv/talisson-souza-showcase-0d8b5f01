@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, ReactNode } from "react";
+import { useRef, ReactNode, useEffect, useState } from "react";
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -20,14 +20,25 @@ const ScrollReveal = ({
 }: ScrollRevealProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once, margin: "-50px" });
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
 
+  // Reduce animation distance on mobile
+  const distance = isMobile ? 20 : 40;
+  
   const directionVariants = {
-    up: { y: 40, x: 0 },
-    down: { y: -40, x: 0 },
-    left: { x: 40, y: 0 },
-    right: { x: -40, y: 0 },
+    up: { y: distance, x: 0 },
+    down: { y: -distance, x: 0 },
+    left: { x: distance, y: 0 },
+    right: { x: -distance, y: 0 },
     none: { x: 0, y: 0 },
   };
+
+  // Faster animations on mobile
+  const effectiveDuration = isMobile ? duration * 0.7 : duration;
 
   return (
     <motion.div
@@ -42,11 +53,12 @@ const ScrollReveal = ({
         y: isInView ? 0 : directionVariants[direction].y,
       }}
       transition={{
-        duration,
+        duration: effectiveDuration,
         delay,
         ease: [0.25, 0.4, 0.25, 1],
       }}
       className={className}
+      style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
     >
       {children}
     </motion.div>
