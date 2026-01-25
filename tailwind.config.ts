@@ -18,8 +18,8 @@ export default {
 			}
 		},
 		fontFamily: {
-			sans: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
-			serif: ['"Playfair Display"', 'Georgia', 'serif'],
+			sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+			serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
 		},
 		extend: {
 			colors: {
