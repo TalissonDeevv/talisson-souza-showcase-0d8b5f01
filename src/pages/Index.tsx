@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import ContactDialog from "@/components/ui/ContactDialog";
 import SocialIcons from "@/components/ui/SocialIcons";
 import FAQ from "@/components/ui/FAQ";
@@ -60,8 +61,14 @@ const Index = () => {
     { name: 'Docker', icon: SiDocker },
     { name: 'Firebase', icon: SiFirebase },
   ];
-  return <Layout withPadding={false}>
-      {/* Hero Section - Centered Premium Layout */}
+  return (
+    <Layout withPadding={false}>
+      <SEO 
+        title="Talisson Souza | Desenvolvedor Full Stack & CEO"
+        description="Desenvolvedor Full Stack com mais de 8 anos de experiência. CEO da Cheetah Network, especialista em sistemas web sob medida, APIs, React, Node.js e soluções digitais para empresas."
+        canonical="/"
+        keywords={['desenvolvedor full stack', 'CEO', 'sistemas sob medida', 'desenvolvimento web', 'React', 'Node.js', 'TypeScript', 'Cheetah Network']}
+      />
       <section className="min-h-[100vh] flex items-center justify-center relative overflow-hidden">
         {/* Sophisticated Background Effect */}
         <div className="absolute inset-0 z-0">
@@ -142,7 +149,7 @@ const Index = () => {
               </ContactDialog>
               
               <Link 
-                to="/about" 
+                to="/sobre" 
                 className="group text-sm text-muted-foreground hover:text-foreground transition-all duration-300 flex items-center gap-2"
               >
                 {t.hero.about}
@@ -280,7 +287,7 @@ const Index = () => {
                 {getText(language, 'Posições de liderança e contribuições que moldaram minha carreira em tecnologia.', 'Leadership positions and contributions that shaped my career in technology.')}
               </p>
               <Link 
-                to="/career" 
+                to="/carreira" 
                 className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"
               >
                 <span className="relative">
@@ -443,7 +450,7 @@ const Index = () => {
                 </p>
               </div>
               <Link 
-                to="/projects" 
+                to="/projetos" 
                 className="group inline-flex items-center gap-3 text-sm font-medium text-foreground self-start lg:self-auto"
               >
                 <span className="relative">
@@ -569,7 +576,7 @@ const Index = () => {
                 </p>
                 
                 <Link 
-                  to="/career" 
+                  to="/carreira" 
                   className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"
                 >
                   <span className="relative">
@@ -702,7 +709,7 @@ const Index = () => {
                 </p>
               </div>
               <Link 
-                to="/services" 
+                to="/servicos" 
                 className="group inline-flex items-center gap-3 text-sm font-medium text-foreground self-start lg:self-auto"
               >
                 <span className="relative">
@@ -1024,7 +1031,7 @@ const Index = () => {
                   </ContactDialog>
                   
                   <Link 
-                    to="/projects" 
+                    to="/projetos" 
                     className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-all duration-300"
                   >
                     <span>{t.projects.viewAll}</span>
@@ -1036,6 +1043,8 @@ const Index = () => {
           </ScrollReveal>
         </div>
       </section>
-    </Layout>;
+    </Layout>
+  );
 };
+
 export default Index;

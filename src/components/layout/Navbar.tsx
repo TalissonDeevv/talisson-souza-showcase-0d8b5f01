@@ -24,14 +24,17 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => {
+    if (path === '/') return location.pathname === '/';
+    return location.pathname.startsWith(path);
+  };
 
   const navItems = [
     { name: t.nav.home, path: "/" },
-    { name: t.nav.about, path: "/about" },
-    { name: language === 'pt' ? 'Carreira' : 'Career', path: "/career" },
-    { name: t.nav.projects, path: "/projects" },
-    { name: t.nav.services, path: "/services" },
+    { name: t.nav.about, path: "/sobre" },
+    { name: language === 'pt' ? 'Carreira' : 'Career', path: "/carreira" },
+    { name: t.nav.projects, path: "/projetos" },
+    { name: t.nav.services, path: "/servicos" },
     { name: t.nav.blog, path: "/blog" },
   ];
 
@@ -47,8 +50,8 @@ const Navbar = () => {
           <Link to="/" className="group">
             <img 
               src={logo} 
-              alt="TS" 
-              className="h-14 w-auto invert dark:invert-0 transition-opacity duration-200 group-hover:opacity-80" 
+              alt="Talisson Souza - Desenvolvedor Full Stack" 
+              className="h-14 w-auto transition-opacity duration-200 group-hover:opacity-80" 
             />
           </Link>
 

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
 import GlassCard from "@/components/ui/GlassCard";
@@ -60,6 +61,13 @@ Ultimately, my mission is to create solutions that truly make a difference, with
 
   return (
     <Layout withPadding={false}>
+      <SEO 
+        title="Sobre Talisson Souza | Desenvolvedor Full Stack"
+        description="Conheça Talisson Souza, desenvolvedor full stack com mais de 8 anos de experiência, CEO da Cheetah Network e Diretor Estratégico do Werneck Group. Especialista em React, Node.js e soluções digitais."
+        canonical="/sobre"
+        keywords={['sobre', 'desenvolvedor', 'full stack', 'experiência', 'Cheetah Network', 'Werneck Group']}
+      />
+      
       {/* Hero Section */}
       <section className="min-h-[70vh] flex items-center relative overflow-hidden pt-24 pb-16">
         {/* Background */}
@@ -210,7 +218,7 @@ Ultimately, my mission is to create solutions that truly make a difference, with
                 {getText(language, 'Posições de liderança e contribuições que moldaram minha carreira.', 'Leadership positions and contributions that shaped my career.')}
               </p>
               <Link 
-                to="/career" 
+                to="/carreira"
                 className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"
               >
                 <span className="relative">

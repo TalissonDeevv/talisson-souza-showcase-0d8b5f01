@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
 import ContactForm from "@/components/ui/ContactForm";
@@ -42,6 +43,13 @@ const Contact = () => {
 
   return (
     <Layout>
+      <SEO 
+        title="Contato | Fale com Talisson Souza"
+        description="Entre em contato para discutir seu projeto. Desenvolvimento web, sistemas sob medida, consultoria tecnológica. Resposta rápida via WhatsApp ou email."
+        canonical="/contato"
+        keywords={['contato', 'orçamento', 'projeto', 'WhatsApp', 'email']}
+      />
+      
       {/* Hero Section */}
       <ParallaxSection 
         className="pt-24 pb-16 lg:pt-28 lg:pb-20"
