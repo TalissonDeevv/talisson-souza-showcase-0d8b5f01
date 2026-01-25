@@ -1,25 +1,13 @@
 import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import TechList from "@/components/ui/TechList";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 import { 
-  ArrowLeft, 
-  Code, 
-  Smartphone, 
-  Bot, 
-  Palette, 
-  Cloud, 
-  Users,
-  CheckCircle,
-  Star,
-  Zap,
-  MessageSquare
+  ArrowLeft, Code, Smartphone, Bot, Palette, Cloud, Users,
+  CheckCircle, Star, MessageSquare, ArrowRight
 } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
-import { useTranslation } from "@/utils/translations";
+import { useTranslation, getText } from "@/utils/translations";
 
 const ServiceDetail = () => {
   const { serviceId } = useParams();
@@ -154,194 +142,180 @@ const ServiceDetail = () => {
   if (!service) {
     return (
       <Layout>
-        <div className="container mx-auto px-4 pt-32 pb-16 text-center">
-          <h1 className="text-4xl font-bold mb-4">
+        <div className="container mx-auto px-6 lg:px-8 pt-32 pb-16 text-center">
+          <h1 className="font-serif text-3xl text-foreground mb-6">
             {language === 'pt' ? 'Serviço não encontrado' : 'Service not found'}
           </h1>
-          <Button asChild>
-            <Link to="/services">
-              {language === 'pt' ? 'Voltar aos Serviços' : 'Back to Services'}
-            </Link>
-          </Button>
+          <Link 
+            to="/services"
+            className="inline-flex items-center gap-2 text-sm font-medium text-foreground"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            {language === 'pt' ? 'Voltar aos Serviços' : 'Back to Services'}
+          </Link>
         </div>
       </Layout>
     );
   }
 
   const IconComponent = service.icon;
+  const benefits = [
+    language === 'pt' ? 'Código limpo e documentado' : 'Clean and documented code',
+    language === 'pt' ? 'Suporte pós-entrega' : 'Post-delivery support',
+    language === 'pt' ? 'Metodologia ágil' : 'Agile methodology',
+    language === 'pt' ? 'Comunicação transparente' : 'Transparent communication'
+  ];
 
   return (
     <Layout>
-      <div className="container mx-auto px-4 pt-32 pb-16">
-        {/* Back Button */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
-          <Button variant="outline" asChild>
-            <Link to="/services">
-              <ArrowLeft className="w-4 h-4 mr-2" />
+      {/* Hero */}
+      <section className="pt-32 pb-16 lg:pt-40 lg:pb-20 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+        </div>
+        
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <Link 
+              to="/services"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
               {language === 'pt' ? 'Voltar aos Serviços' : 'Back to Services'}
             </Link>
-          </Button>
-        </motion.div>
-
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <div className="w-24 h-24 rounded-3xl bg-primary p-6 mx-auto mb-6">
-              <IconComponent className="w-full h-full text-primary-foreground" />
+            
+            <div className="flex items-start gap-6 mb-8">
+              <div className="w-16 h-16 rounded-2xl border border-border/30 bg-card/50 flex items-center justify-center flex-shrink-0">
+                <IconComponent className="w-8 h-8 text-foreground/70" />
+              </div>
+              <div>
+                <h1 className="font-serif text-3xl lg:text-4xl text-foreground mb-3">
+                  {service.title}
+                </h1>
+                <p className="text-lg text-muted-foreground max-w-2xl">
+                  {service.description}
+                </p>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gradient mb-4">
-              {service.title}
-            </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              {service.description}
-            </p>
-          </motion.div>
+          </ScrollReveal>
+        </div>
+      </section>
 
+      {/* Content */}
+      <section className="py-16 lg:py-20 relative">
+        <div className="container mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Main Content */}
+            {/* Main */}
             <div className="lg:col-span-2 space-y-8">
               {/* Features */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-              >
-                <TechList 
-                  title={language === 'pt' ? 'Recursos Inclusos' : 'Included Features'}
-                  items={service.features}
-                  variant="features"
-                />
-              </motion.div>
+              <ScrollReveal>
+                <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-8">
+                  <h2 className="font-serif text-xl text-foreground mb-6">
+                    {language === 'pt' ? 'Recursos Inclusos' : 'Included Features'}
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {service.features.map((feature: string, index: number) => (
+                      <div key={index} className="flex items-center gap-3">
+                        <CheckCircle className="w-4 h-4 text-foreground/50 flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </ScrollReveal>
 
               {/* Requirements */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <TechList 
-                  title={language === 'pt' ? 'Requisitos do Projeto' : 'Project Requirements'}
-                  items={service.requirements}
-                  variant="requirements"
-                />
-              </motion.div>
+              <ScrollReveal>
+                <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-8">
+                  <h2 className="font-serif text-xl text-foreground mb-6">
+                    {language === 'pt' ? 'Requisitos do Projeto' : 'Project Requirements'}
+                  </h2>
+                  <div className="space-y-3">
+                    {service.requirements.map((req: string, index: number) => (
+                      <div key={index} className="flex items-center gap-3">
+                        <span className="w-6 h-6 rounded-full border border-border/30 bg-card/50 flex items-center justify-center text-xs text-foreground/50">
+                          {index + 1}
+                        </span>
+                        <span className="text-sm text-muted-foreground">{req}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </ScrollReveal>
 
               {/* Technologies */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Code className="w-5 h-5" />
-                      {language === 'pt' ? 'Tecnologias Utilizadas' : 'Technologies Used'}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2">
-                      {service.technologies.map((tech, index) => (
-                        <Badge key={index} variant="outline">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
+              <ScrollReveal>
+                <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-8">
+                  <h2 className="font-serif text-xl text-foreground mb-6">
+                    {language === 'pt' ? 'Tecnologias Utilizadas' : 'Technologies Used'}
+                  </h2>
+                  <div className="flex flex-wrap gap-2">
+                    {service.technologies.map((tech: string, index: number) => (
+                      <span key={index} className="text-xs px-3 py-1.5 rounded-lg border border-border/30 bg-background/50 text-muted-foreground">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </ScrollReveal>
             </div>
 
             {/* Sidebar */}
             <div className="space-y-6">
-              {/* Service Info */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                <Card className="sticky top-8">
-                  <CardHeader>
-                    <CardTitle>{language === 'pt' ? 'Informações do Serviço' : 'Service Information'}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
+              <ScrollReveal>
+                <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-6 lg:sticky lg:top-32">
+                  <h3 className="text-base font-medium text-foreground mb-4">
+                    {language === 'pt' ? 'Informações' : 'Information'}
+                  </h3>
+                  
+                  <div className="space-y-4 mb-6">
                     <div className="flex items-center justify-between">
-                      <span className="text-gray-600 dark:text-gray-300">
-                        {language === 'pt' ? 'Prazo:' : 'Timeline:'}
-                      </span>
-                      <Badge variant="outline">{service.deliveryTime}</Badge>
+                      <span className="text-sm text-muted-foreground">{language === 'pt' ? 'Prazo' : 'Timeline'}</span>
+                      <span className="text-sm text-foreground">{service.deliveryTime}</span>
                     </div>
-                    
                     <div className="flex items-center justify-between">
-                      <span className="text-gray-600 dark:text-gray-300">
-                        {language === 'pt' ? 'Preço:' : 'Price:'}
-                      </span>
-                      <Badge className="bg-primary text-primary-foreground">
-                        {service.pricing}
-                      </Badge>
+                      <span className="text-sm text-muted-foreground">{language === 'pt' ? 'Preço' : 'Price'}</span>
+                      <span className="text-sm font-medium text-foreground">{service.pricing}</span>
                     </div>
+                  </div>
 
-                    <div className="pt-4 border-t space-y-3">
-                      <Button 
-                        className="w-full"
-                        onClick={() => window.open('https://wa.me/5581993964261', '_blank')}
-                      >
-                        <MessageSquare className="w-4 h-4 mr-2" />
-                        {language === 'pt' ? 'Solicitar Orçamento' : 'Request Quote'}
-                      </Button>
-                      
-                      <Button variant="outline" className="w-full" asChild>
-                        <Link to="/contact">
-                          {language === 'pt' ? 'Mais Informações' : 'More Information'}
-                        </Link>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
+                  <button 
+                    onClick={() => window.open('https://wa.me/5581993964261', '_blank')}
+                    className="w-full group inline-flex items-center justify-center gap-2 text-sm font-medium text-primary-foreground bg-foreground rounded-xl py-3 transition-all duration-300 hover:opacity-90 mb-3"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    {language === 'pt' ? 'Solicitar Orçamento' : 'Request Quote'}
+                  </button>
 
-              {/* Benefits */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-              >
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Star className="w-5 h-5" />
-                      {language === 'pt' ? 'Por que escolher?' : 'Why choose?'}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    {[
-                      language === 'pt' ? 'Código limpo e documentado' : 'Clean and documented code',
-                      language === 'pt' ? 'Suporte pós-entrega' : 'Post-delivery support',
-                      language === 'pt' ? 'Metodologia ágil' : 'Agile methodology',
-                      language === 'pt' ? 'Comunicação transparente' : 'Transparent communication'
-                    ].map((benefit, index) => (
+                  <Link 
+                    to="/contact"
+                    className="w-full inline-flex items-center justify-center gap-2 text-sm font-medium text-foreground border border-border/30 rounded-xl py-3 hover:bg-card/50 transition-all duration-300"
+                  >
+                    {language === 'pt' ? 'Mais Informações' : 'More Information'}
+                  </Link>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal>
+                <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-6">
+                  <h3 className="text-base font-medium text-foreground mb-4 flex items-center gap-2">
+                    <Star className="w-4 h-4" />
+                    {language === 'pt' ? 'Por que escolher?' : 'Why choose?'}
+                  </h3>
+                  <div className="space-y-3">
+                    {benefits.map((benefit, index) => (
                       <div key={index} className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-gray-700 dark:text-gray-300 flex-shrink-0" />
-                        <span className="text-sm">{benefit}</span>
+                        <CheckCircle className="w-4 h-4 text-foreground/50 flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">{benefit}</span>
                       </div>
                     ))}
-                  </CardContent>
-                </Card>
-              </motion.div>
+                  </div>
+                </div>
+              </ScrollReveal>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </Layout>
   );
 };
