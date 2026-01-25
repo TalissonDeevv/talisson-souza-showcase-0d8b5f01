@@ -152,7 +152,7 @@ const translations: Translations = {
       subtitle:
         "Conheça minha trajetória, as tecnologias que domino e o que me move no universo do desenvolvimento.",
       description:
-        "Desenvolvedor full-stack com mais de 8 anos de experiência, especializado em arquitetura de sistemas e liderança técnica. Construo aplicações web escaláveis do zero, com foco em qualidade, performance e experiência do usuário. Também sou empreendedor — fundei e lidero empresas que entregam soluções digitais sob medida para clientes de diversos setores.",
+        "Desenvolvedor full-stack com mais de 8 anos de experiência, especializado em arquitetura de sistemas e liderança técnica. Construo aplicações web escaláveis do zero, com foco em qualidade, performance e experiência do usuário. Também sou empreendedor, fundei e lidero empresas que entregam soluções digitais sob medida para clientes de diversos setores.",
       skillsTitle: "Stack Principal",
       experienceTitle: "Trajetória",
       socials: "Redes Sociais",
@@ -381,7 +381,7 @@ const translations: Translations = {
       subtitle:
         "My journey, the technologies I master, and what drives me in software development.",
       description:
-        "Full-stack developer with 8+ years of experience, specialized in systems architecture and technical leadership. I build scalable web applications from scratch, focused on quality, performance, and user experience. I'm also an entrepreneur — I founded and lead companies delivering custom digital solutions across industries.",
+        "Full-stack developer with 8+ years of experience, specialized in systems architecture and technical leadership. I build scalable web applications from scratch, focused on quality, performance, and user experience. I'm also an entrepreneur, I founded and lead companies delivering custom digital solutions across industries.",
       skillsTitle: "Main Stack",
       experienceTitle: "Journey",
       socials: "Social Media",

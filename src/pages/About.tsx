@@ -133,9 +133,8 @@ Ultimately, my mission is to create solutions that truly make a difference, with
                 <motion.span 
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+                  className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
                 >
-                  <span className="w-8 h-px bg-foreground/30" />
                   {t.about.title}
                 </motion.span>
                 <AnimatedTitle variant="hero" as="h1" className="mb-6">
@@ -206,9 +205,8 @@ Ultimately, my mission is to create solutions that truly make a difference, with
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
               >
-                <span className="w-8 h-px bg-foreground/30" />
                 {getText(language, 'Experiência', 'Experience')}
               </motion.span>
               <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
@@ -439,9 +437,8 @@ Ultimately, my mission is to create solutions that truly make a difference, with
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
               >
-                <span className="w-8 h-px bg-foreground/30" />
                 {t.certificates.title}
               </motion.span>
               <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">

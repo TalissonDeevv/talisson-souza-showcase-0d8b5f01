@@ -134,9 +134,8 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
               <motion.span 
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
               >
-                <span className="w-8 h-px bg-foreground/30" />
                 {tt.title}
               </motion.span>
               <AnimatedTitle variant="hero" as="h1" className="mb-6">
@@ -190,9 +189,8 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+              className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
             >
-              <span className="w-8 h-px bg-foreground/30" />
               {getText(language, 'História', 'Story')}
             </motion.span>
             <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-10 leading-[1.05]">
@@ -278,9 +276,8 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
               >
-                <span className="w-8 h-px bg-foreground/30" />
                 Timeline
               </motion.span>
               <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
@@ -364,9 +361,8 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+              className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
             >
-              <span className="w-8 h-px bg-foreground/30" />
               {getText(language, 'Empresas', 'Companies')}
             </motion.span>
             <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-10 leading-[1.05]">
@@ -429,9 +425,8 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+              className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
             >
-              <span className="w-8 h-px bg-foreground/30" />
               {getText(language, 'Parcerias', 'Partnerships')}
             </motion.span>
             <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-10 leading-[1.05]">
@@ -561,9 +556,8 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
               >
-                <span className="w-8 h-px bg-foreground/30" />
                 {getText(language, 'Depoimentos', 'Testimonials')}
               </motion.span>
               <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">

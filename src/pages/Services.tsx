@@ -47,8 +47,7 @@ const Services = () => {
         <div className="absolute bottom-0 left-0 right-0 h-32 z-10 pointer-events-none" style={{ background: 'linear-gradient(to top, hsl(var(--background)) 0%, transparent 100%)' }} />
         <div className="container mx-auto px-6 lg:px-8 relative z-20">
           <ScrollReveal>
-            <motion.span initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium">
-              <span className="w-8 h-px bg-foreground/30" />
+            <motion.span initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium">
               {getText(language, 'Serviços', 'Services')}
             </motion.span>
             <AnimatedTitle variant="hero" as="h1" className="mb-6">{t.servicesPage.title}</AnimatedTitle>
@@ -98,7 +97,7 @@ const Services = () => {
       <ParallaxSection className="py-20 lg:py-24" speed={0.12} backgroundElement={<><div className="absolute inset-0 bg-gradient-to-b from-card/30 via-background to-card/30" /><div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" /></>}>
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <motion.span initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"><span className="w-8 h-px bg-foreground/30" />Portfolio</motion.span>
+            <motion.span initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium">Portfolio</motion.span>
             <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-10 leading-[1.05]">{language === 'pt' ? 'Projetos Realizados' : 'Completed Projects'}</h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
