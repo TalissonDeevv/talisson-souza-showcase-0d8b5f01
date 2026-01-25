@@ -488,9 +488,13 @@ Ultimately, my mission is to create solutions that truly make a difference, with
                         key={certificate.id}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
+                        whileHover={{ y: -4 }}
                         viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 }}
-                        className="group rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm overflow-hidden"
+                        transition={{ delay: index * 0.1, duration: 0.3 }}
+                        className="group rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm overflow-hidden cursor-pointer"
+                        style={{
+                          boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                        }}
                       >
                         <div className="relative h-32 overflow-hidden">
                           <img
@@ -548,13 +552,21 @@ Ultimately, my mission is to create solutions that truly make a difference, with
                   
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {currentValues.map((value, index) => (
-                      <div key={index} className="p-6 rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm text-center">
-                        <div className="w-12 h-12 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center mx-auto mb-4">
-                          <value.icon className="w-5 h-5 text-foreground/60" />
+                      <motion.div 
+                        key={index}
+                        whileHover={{ y: -4, scale: 1.02 }}
+                        transition={{ duration: 0.3 }}
+                        className="p-6 rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm text-center cursor-default group"
+                        style={{
+                          boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                        }}
+                      >
+                        <div className="w-12 h-12 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center mx-auto mb-4 group-hover:border-foreground/20 transition-colors duration-300">
+                          <value.icon className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
                         </div>
                         <h4 className="text-base font-medium text-foreground mb-2">{value.title}</h4>
                         <p className="text-sm text-muted-foreground">{value.description}</p>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
@@ -569,10 +581,18 @@ Ultimately, my mission is to create solutions that truly make a difference, with
                   
                   <div className="flex flex-wrap gap-3">
                     {currentHobbies.map((hobby, index) => (
-                      <div key={index} className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm">
-                        <hobby.icon className="w-4 h-4 text-foreground/60" />
+                      <motion.div 
+                        key={index} 
+                        whileHover={{ y: -2, scale: 1.05 }}
+                        transition={{ duration: 0.3 }}
+                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm cursor-default group"
+                        style={{
+                          boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                        }}
+                      >
+                        <hobby.icon className="w-4 h-4 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
                         <span className="text-sm text-foreground">{hobby.name}</span>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </div>

@@ -183,19 +183,26 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
       {/* Stats */}
       <section className="py-8 relative">
         <div className="container mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {stats.map((stat, index) => (
-                <div key={index} className="rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm p-5 text-center">
-                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border/30 text-foreground/70 mb-3">
-                    <stat.icon className="w-5 h-5" />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {stats.map((stat, index) => (
+              <ScrollReveal key={index} delay={index * 0.1}>
+                <motion.div
+                  whileHover={{ y: -4, scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  className="rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm p-5 text-center cursor-default group"
+                  style={{
+                    boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                  }}
+                >
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border/30 text-foreground/70 mb-3 group-hover:border-foreground/20 transition-colors duration-300">
+                    <stat.icon className="w-5 h-5 group-hover:text-foreground transition-colors duration-300" />
                   </div>
                   <h3 className="text-2xl font-serif text-foreground mb-1">{stat.value}</h3>
                   <p className="text-xs text-muted-foreground/70">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
+                </motion.div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -208,27 +215,41 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
           
           <div className="space-y-6">
             <ScrollReveal>
-              <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-8">
+              <motion.div
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3 }}
+                className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-8 group"
+                style={{
+                  boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                }}
+              >
                 <h3 className="text-base font-medium text-foreground mb-4 flex items-center gap-3">
-                  <Sparkles className="w-5 h-5 text-foreground/60" />
+                  <Sparkles className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
                   {tt.myJourney}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
                   {language === 'pt' ? storyPt : storyEn}
                 </p>
-              </div>
+              </motion.div>
             </ScrollReveal>
 
-            <ScrollReveal>
-              <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-8">
+            <ScrollReveal delay={0.1}>
+              <motion.div
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3 }}
+                className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-8 group"
+                style={{
+                  boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                }}
+              >
                 <h3 className="text-base font-medium text-foreground mb-4 flex items-center gap-3">
-                  <Target className="w-5 h-5 text-foreground/60" />
+                  <Target className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
                   {tt.whyCompany}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
                   {language === 'pt' ? whyCompanyPt : whyCompanyEn}
                 </p>
-              </div>
+              </motion.div>
             </ScrollReveal>
           </div>
         </div>
@@ -248,10 +269,17 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
           <div className="space-y-4">
             {timelineEvents.map((event, index) => (
               <ScrollReveal key={index} delay={index * 0.1}>
-                <div className="rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm p-6">
+                <motion.div
+                  whileHover={{ y: -4, x: 4 }}
+                  transition={{ duration: 0.3 }}
+                  className="rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm p-6 group cursor-default"
+                  style={{
+                    boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                  }}
+                >
                   <div className="flex items-start gap-4">
-                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border/30 text-foreground/60 flex-shrink-0">
-                      <event.icon className="w-5 h-5" />
+                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border/30 text-foreground/60 flex-shrink-0 group-hover:border-foreground/20 transition-colors duration-300">
+                      <event.icon className="w-5 h-5 group-hover:text-foreground transition-colors duration-300" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
@@ -261,7 +289,7 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
                       <p className="text-sm text-muted-foreground leading-relaxed">{event.description}</p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               </ScrollReveal>
             ))}
           </div>
@@ -372,13 +400,20 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {values.map((value, index) => (
               <ScrollReveal key={index} delay={index * 0.1}>
-                <div className="rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm p-6 text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl border border-border/30 text-foreground/60 mb-4">
-                    <value.icon className="w-6 h-6" />
+                <motion.div
+                  whileHover={{ y: -4, scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  className="rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm p-6 text-center cursor-default group"
+                  style={{
+                    boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                  }}
+                >
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl border border-border/30 text-foreground/60 mb-4 group-hover:border-foreground/20 transition-colors duration-300">
+                    <value.icon className="w-6 h-6 group-hover:text-foreground transition-colors duration-300" />
                   </div>
                   <h3 className="text-base font-medium text-foreground mb-2">{value.title}</h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">{value.description}</p>
-                </div>
+                </motion.div>
               </ScrollReveal>
             ))}
           </div>
@@ -399,12 +434,19 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
           <div className="space-y-4 max-w-3xl mx-auto">
             {quotes.map((quote, index) => (
               <ScrollReveal key={index} delay={index * 0.1}>
-                <div className="rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm p-6">
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className="rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm p-6 group cursor-default"
+                  style={{
+                    boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                  }}
+                >
                   <div className="flex items-start gap-4">
-                    <Quote className="w-6 h-6 text-foreground/40 flex-shrink-0" />
+                    <Quote className="w-6 h-6 text-foreground/40 flex-shrink-0 group-hover:text-foreground/60 transition-colors duration-300" />
                     <p className="text-base font-serif text-foreground/90 italic">{quote}</p>
                   </div>
-                </div>
+                </motion.div>
               </ScrollReveal>
             ))}
           </div>
@@ -425,12 +467,19 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
               <ScrollReveal key={index} delay={index * 0.1}>
-                <div className="rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm p-6">
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className="rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm p-6 group cursor-default h-full"
+                  style={{
+                    boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                  }}
+                >
                   <div className="flex items-center gap-4 mb-4">
                     <img 
                       src={testimonial.image} 
                       alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover border border-border/30"
+                      className="w-12 h-12 rounded-full object-cover border border-border/30 group-hover:border-foreground/20 transition-colors duration-300"
                     />
                     <div>
                       <h4 className="text-sm font-medium text-foreground">{testimonial.name}</h4>
@@ -438,7 +487,7 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
                     </div>
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed line-clamp-4">{testimonial.text}</p>
-                </div>
+                </motion.div>
               </ScrollReveal>
             ))}
           </div>
@@ -457,10 +506,17 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
           </ScrollReveal>
           
           <ScrollReveal>
-            <div className="max-w-3xl mx-auto rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-8 lg:p-10">
+            <motion.div
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.4 }}
+              className="max-w-3xl mx-auto rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-8 lg:p-10 group"
+              style={{
+                boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+              }}
+            >
               <div className="flex flex-col md:flex-row items-center gap-6">
-                <div className="w-16 h-16 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center flex-shrink-0">
-                  <HandHeart className="w-8 h-8 text-foreground/60" />
+                <div className="w-16 h-16 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center flex-shrink-0 group-hover:border-foreground/20 transition-colors duration-300">
+                  <HandHeart className="w-8 h-8 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
                 </div>
                 <div className="text-center md:text-left">
                   <h3 className="text-lg font-serif text-foreground mb-3">
@@ -473,7 +529,7 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </ScrollReveal>
         </div>
       </section>
@@ -487,23 +543,40 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <div className="max-w-2xl mx-auto text-center">
-              <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-6 leading-tight">
-                {tt.cta}
-              </h2>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                {getText(language, 'Tem um projeto em mente? Vamos conversar sobre como posso ajudar.', "Have a project in mind? Let's talk about how I can help.")}
-              </p>
-              <a 
-                href="https://wa.me/5581993964261" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground px-8 py-3.5 rounded-full border border-foreground/20 bg-foreground/5 backdrop-blur-sm hover:bg-foreground/10 hover:border-foreground/40 transition-all duration-300"
+            <motion.div
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.4 }}
+              className="max-w-2xl mx-auto"
+            >
+              <div 
+                className="relative p-10 lg:p-12 rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm text-center"
+                style={{
+                  boxShadow: '0 8px 40px hsl(var(--foreground) / 0.03)'
+                }}
               >
-                {getText(language, 'Iniciar conversa', 'Start conversation')}
-                <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-            </div>
+                <div className="absolute top-0 left-0 w-20 h-20 border-l border-t border-foreground/[0.06] rounded-tl-3xl" />
+                <div className="absolute bottom-0 right-0 w-20 h-20 border-r border-b border-foreground/[0.06] rounded-br-3xl" />
+                
+                <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-4 leading-tight">
+                  {tt.cta}
+                </h2>
+                <p className="text-muted-foreground mb-8 leading-relaxed max-w-xl mx-auto">
+                  {getText(language, 'Tem um projeto em mente? Vamos conversar sobre como posso ajudar.', "Have a project in mind? Let's talk about how I can help.")}
+                </p>
+                <a 
+                  href="https://wa.me/5581993964261" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-3 px-8 py-4 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300 hover:opacity-90"
+                  style={{
+                    boxShadow: '0 0 30px hsl(var(--foreground) / 0.2)'
+                  }}
+                >
+                  {getText(language, 'Iniciar conversa', 'Start conversation')}
+                  <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              </div>
+            </motion.div>
           </ScrollReveal>
         </div>
       </section>
