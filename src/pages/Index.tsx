@@ -150,7 +150,7 @@ const Index = () => {
       </section>
 
       {/* Tech Stack - Premium Interactive Cards */}
-      <section className="py-32 lg:py-40 relative overflow-hidden">
+      <section className="py-20 lg:py-24 relative overflow-hidden">
         {/* Layered background with depth */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background" />
@@ -164,7 +164,7 @@ const Index = () => {
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
               {/* Header */}
               <div className="lg:col-span-5 lg:sticky lg:top-32">
                 <motion.span 
@@ -183,7 +183,7 @@ const Index = () => {
                   {getText(language, 'Ferramentas e tecnologias que domino para construir sistemas robustos e escaláveis.', 'Tools and technologies I master to build robust and scalable systems.')}
                 </p>
                 {/* Decorative element */}
-                <div className="hidden lg:flex items-center gap-4 mt-12">
+                <div className="hidden lg:flex items-center gap-4 mt-6">
                   <div className="w-12 h-12 rounded-2xl border border-border/40 bg-card/50 flex items-center justify-center">
                     <span className="text-lg font-serif text-foreground/60">{techStack.length}</span>
                   </div>
@@ -229,7 +229,7 @@ const Index = () => {
       </section>
 
       {/* Career Timeline - Premium Animated */}
-      <section className="py-32 lg:py-40 relative overflow-hidden">
+      <section className="py-20 lg:py-24 relative overflow-hidden">
         {/* Layered background */}
         <div className="absolute inset-0 pointer-events-none">
           {/* Side gradient accents */}
@@ -240,7 +240,7 @@ const Index = () => {
         </div>
         
         <div className="container mx-auto px-6 lg:px-8 relative">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
             {/* Header */}
             <ScrollReveal className="lg:col-span-5">
               <motion.span 
@@ -386,7 +386,7 @@ const Index = () => {
       </section>
 
       {/* Featured Projects - Premium Cards */}
-      <section className="py-32 lg:py-40 relative overflow-hidden">
+      <section className="py-20 lg:py-24 relative overflow-hidden">
         {/* Asymmetric background for visual interest */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-2/3 h-1/2 bg-gradient-to-bl from-card/30 to-transparent" />
@@ -395,7 +395,7 @@ const Index = () => {
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
               <div className="max-w-xl">
                 <motion.span 
                   initial={{ opacity: 0, x: -20 }}
@@ -495,7 +495,7 @@ const Index = () => {
       </section>
 
       {/* Story Highlight - Premium */}
-      <section className="py-32 lg:py-40 relative overflow-hidden">
+      <section className="py-20 lg:py-24 relative overflow-hidden">
         {/* Layered background */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-gradient-to-b from-card/30 via-background to-card/30" />
@@ -512,7 +512,7 @@ const Index = () => {
               className="max-w-3xl mx-auto"
             >
               <div 
-                className="relative p-12 lg:p-16 rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm text-center"
+                className="relative p-10 lg:p-12 rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm text-center"
                 style={{
                   boxShadow: '0 8px 40px hsl(var(--foreground) / 0.03)'
                 }}
@@ -522,16 +522,16 @@ const Index = () => {
                 <div className="absolute bottom-0 right-0 w-24 h-24 border-r border-b border-foreground/[0.06] rounded-br-3xl" />
                 
                 {/* Decorative quote */}
-                <div className="text-8xl font-serif text-foreground/[0.04] mb-4 select-none leading-none" style={{ letterSpacing: '-0.1em' }}>"</div>
+                <div className="text-6xl font-serif text-foreground/[0.04] mb-2 select-none leading-none" style={{ letterSpacing: '-0.1em' }}>"</div>
                 
-                <h2 className="font-serif text-2xl lg:text-3xl xl:text-4xl text-foreground mb-10 leading-[1.2]">
+                <h2 className="font-serif text-xl lg:text-2xl xl:text-3xl text-foreground mb-6 leading-[1.2]">
                   {language === 'pt' ? 'Por que fundei minha empresa aos 17?' : 'Why I started my company at 17?'}
                 </h2>
                 
-                <p className="text-base text-muted-foreground leading-[1.85] mb-5 max-w-2xl mx-auto">
+                <p className="text-sm text-muted-foreground leading-[1.8] mb-4 max-w-2xl mx-auto">
                   {language === 'pt' ? 'Em 2021, fui recusado em um processo seletivo não por falta de qualificação, mas por causa da minha cadeira de rodas. Esse momento transformou frustração em propósito.' : 'In 2021, I was rejected in a selection process not for lack of qualification, but because of my wheelchair. That moment transformed frustration into purpose.'}
                 </p>
-                <p className="text-base text-muted-foreground leading-[1.85] mb-12 max-w-2xl mx-auto">
+                <p className="text-sm text-muted-foreground leading-[1.8] mb-8 max-w-2xl mx-auto">
                   {language === 'pt' ? 'Assim nasceu a Cheetah Network — mais que uma empresa, uma prova de que todos merecem oportunidades reais.' : 'Thus Cheetah Network was born — more than a company, proof that everyone deserves real opportunities.'}
                 </p>
                 
@@ -553,7 +553,7 @@ const Index = () => {
       </section>
 
       {/* Testimonials - Premium Cards */}
-      <section className="py-32 lg:py-40 relative overflow-hidden">
+      <section className="py-20 lg:py-24 relative overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-card/20 to-transparent" />
@@ -561,7 +561,7 @@ const Index = () => {
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <div className="mb-16">
+            <div className="mb-10">
               <motion.span 
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -634,7 +634,7 @@ const Index = () => {
       </section>
 
       {/* Services Preview - Premium */}
-      <section className="py-28 lg:py-36 relative overflow-hidden">
+      <section className="py-20 lg:py-24 relative overflow-hidden">
         {/* Layered background */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-gradient-to-br from-card/30 via-background to-card/20" />
@@ -645,7 +645,7 @@ const Index = () => {
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
               <div className="max-w-xl">
                 <motion.span 
                   initial={{ opacity: 0, x: -20 }}
@@ -727,7 +727,7 @@ const Index = () => {
       </section>
 
       {/* Blog Preview - Premium Editorial Cards */}
-      <section className="py-32 relative overflow-hidden">
+      <section className="py-20 lg:py-24 relative overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
@@ -736,7 +736,7 @@ const Index = () => {
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-20">
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
               <div className="max-w-xl">
                 <motion.span 
                   initial={{ opacity: 0, x: -20 }}
@@ -828,7 +828,7 @@ const Index = () => {
       </section>
 
       {/* Philosophy Section */}
-      <section className="py-24 lg:py-32 relative overflow-hidden">
+      <section className="py-16 lg:py-20 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-b from-background via-card/10 to-background" />
@@ -901,7 +901,7 @@ const Index = () => {
       </section>
 
       {/* FAQ - Premium */}
-      <section className="py-32 relative overflow-hidden">
+      <section className="py-20 lg:py-24 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />
         </div>
@@ -909,7 +909,7 @@ const Index = () => {
         <div className="container mx-auto px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <ScrollReveal>
-              <div className="text-center mb-20">
+              <div className="text-center mb-12">
                 <motion.span 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -935,7 +935,7 @@ const Index = () => {
       </section>
 
       {/* CTA - Premium */}
-      <section className="py-40 relative overflow-hidden">
+      <section className="py-24 lg:py-28 relative overflow-hidden">
         {/* Background with ambient glow */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />
@@ -949,20 +949,20 @@ const Index = () => {
               whileHover={{ y: -4 }}
               transition={{ duration: 0.4 }}
             >
-              <GlassCard className="max-w-3xl mx-auto p-12 lg:p-16 text-center hover:border-foreground/20 transition-all duration-500">
+              <GlassCard className="max-w-3xl mx-auto p-10 lg:p-12 text-center hover:border-foreground/20 transition-all duration-500">
                 <motion.span 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-8"
+                  className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
                 >
                   {getText(language, 'Vamos conversar', 'Let\'s talk')}
                 </motion.span>
                 
-                <h2 className="font-serif text-3xl lg:text-5xl text-foreground mb-8 leading-tight">
+                <h2 className="font-serif text-2xl lg:text-4xl text-foreground mb-6 leading-tight">
                   {t.cta.title}
                 </h2>
-                <p className="text-lg text-muted-foreground mb-12 leading-relaxed max-w-xl mx-auto">
+                <p className="text-base text-muted-foreground mb-8 leading-relaxed max-w-xl mx-auto">
                   {t.cta.subtitle}
                 </p>
                 
