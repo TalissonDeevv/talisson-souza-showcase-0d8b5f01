@@ -36,6 +36,7 @@ const Navbar = () => {
     { name: t.nav.projects, path: "/projetos" },
     { name: t.nav.services, path: "/servicos" },
     { name: t.nav.blog, path: "/blog" },
+    { name: language === 'pt' ? 'Contato' : 'Contact', path: "/contato" },
   ];
 
   const navBackground = isHome && !isScrolled 

@@ -8,7 +8,7 @@ import SocialIcons from "@/components/ui/SocialIcons";
 import GlassCard from "@/components/ui/GlassCard";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
-import { Mail, Phone, MapPin, Calendar, ArrowUpRight, Send, MessageSquare } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowUpRight, Send, MessageSquare } from "lucide-react";
 
 const Contact = () => {
   const { language } = useTheme();
@@ -82,47 +82,6 @@ const Contact = () => {
         </div>
       </ParallaxSection>
 
-      {/* Recess Notice */}
-      <section className="pb-12 relative">
-        <div className="container mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <motion.div
-              whileHover={{ y: -2 }}
-              transition={{ duration: 0.3 }}
-              className="max-w-3xl"
-            >
-              <div 
-                className="relative rounded-2xl border border-border/20 bg-gradient-to-br from-foreground/[0.03] to-transparent backdrop-blur-sm overflow-hidden"
-                style={{
-                  boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
-                }}
-              >
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-foreground/20" />
-                
-                <div className="p-6 pl-7 flex items-center gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center">
-                      <Calendar className="w-5 h-5 text-foreground/70" />
-                    </div>
-                  </div>
-                  
-                  <div className="flex-1 min-w-0">
-                    <p className="text-foreground text-sm font-medium leading-relaxed">
-                      {getText(language,
-                        "Em recesso até 15/01/2026. Respostas podem ter atraso.",
-                        "On recess until Jan 15, 2026. Responses may be delayed."
-                      )}
-                    </p>
-                    <p className="text-muted-foreground/70 text-xs mt-1">
-                      {getText(language, "Agradeço pela compreensão.", "Thank you for your understanding.")}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </ScrollReveal>
-        </div>
-      </section>
 
       {/* Main Content */}
       <section className="py-16 lg:py-20 relative">
