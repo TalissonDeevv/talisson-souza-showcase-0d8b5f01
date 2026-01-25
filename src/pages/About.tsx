@@ -7,7 +7,7 @@ import GlassCard from "@/components/ui/GlassCard";
 import SocialIcons from "@/components/ui/SocialIcons";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Download, ArrowRight, ArrowUpRight, Briefcase, GraduationCap, Heart, Star, BookOpen, Zap, Users, Calendar, Award, ExternalLink } from "lucide-react";
+import { Download, ArrowRight, ArrowUpRight, Briefcase, GraduationCap, Heart, Star, BookOpen, Zap, Users, Calendar, Award, ExternalLink, Code2, Lightbulb, Target, Coffee, Rocket, TrendingUp, Clock, Layers } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
@@ -57,6 +57,42 @@ Ultimately, my mission is to create solutions that truly make a difference, with
     { id: 1, title: "Administration in the 21st Century", issuer: "Bradesco Foundation", date: "2025", link: "https://drive.google.com/file/d/1uNq5H26X0WbQf2Ohxr3hWJ_bzHMnMT9Y" },
     { id: 2, title: "Business Strategy", issuer: "Bradesco Foundation", date: "2025", link: "https://drive.google.com/file/d/1Mel2pK_6ajyFOHQIuvFF5XbljNjY40TA/view?usp=drive_link" },
     { id: 3, title: "Project Management", issuer: "Bradesco Foundation", date: "2023", link: "https://drive.google.com/file/d/1Y454v0F4R4G91iR2ZBC8ps1vfUNh-gHI/view?usp=drive_link" }
+  ];
+
+  // Tech Stack
+  const techStack = [
+    { name: "React", category: "Frontend" },
+    { name: "TypeScript", category: "Language" },
+    { name: "Node.js", category: "Backend" },
+    { name: "Python", category: "Language" },
+    { name: "PostgreSQL", category: "Database" },
+    { name: "Docker", category: "DevOps" },
+  ];
+
+  // Work Philosophy
+  const workPhilosophy = language === 'pt' ? [
+    { icon: Lightbulb, title: "Simplicidade", description: "Código complexo é fácil. Código simples que resolve problemas complexos é arte." },
+    { icon: Target, title: "Foco no Resultado", description: "Tecnologia é meio, não fim. O que importa é o impacto real no negócio." },
+    { icon: Coffee, title: "Iteração Constante", description: "Prefiro lançar rápido e melhorar continuamente do que buscar perfeição impossível." },
+    { icon: Rocket, title: "Automação", description: "Se algo precisa ser feito mais de duas vezes, automatizo." }
+  ] : [
+    { icon: Lightbulb, title: "Simplicity", description: "Complex code is easy. Simple code that solves complex problems is art." },
+    { icon: Target, title: "Result Focused", description: "Technology is a means, not an end. What matters is the real business impact." },
+    { icon: Coffee, title: "Constant Iteration", description: "I prefer to launch fast and improve continuously rather than seek impossible perfection." },
+    { icon: Rocket, title: "Automation", description: "If something needs to be done more than twice, I automate it." }
+  ];
+
+  // Stats/Achievements
+  const stats = language === 'pt' ? [
+    { value: "8+", label: "Anos de experiência", icon: Clock },
+    { value: "50+", label: "Projetos entregues", icon: Layers },
+    { value: "3", label: "Empresas fundadas", icon: TrendingUp },
+    { value: "1", label: "Livro publicado", icon: BookOpen }
+  ] : [
+    { value: "8+", label: "Years of experience", icon: Clock },
+    { value: "50+", label: "Projects delivered", icon: Layers },
+    { value: "3", label: "Companies founded", icon: TrendingUp },
+    { value: "1", label: "Book published", icon: BookOpen }
   ];
 
   return (
@@ -341,8 +377,203 @@ Ultimately, my mission is to create solutions that truly make a difference, with
         </div>
       </ParallaxSection>
 
-      {/* Book Section */}
+      {/* Stats Section */}
       <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.08}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/10 to-background" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <motion.span 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+              >
+                {getText(language, 'Números', 'Numbers')}
+              </motion.span>
+              <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6 leading-tight">
+                {getText(language, 'Em números', 'By the numbers')}
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            {stats.map((stat, index) => (
+              <ScrollReveal key={stat.label} delay={index * 0.1}>
+                <motion.div
+                  whileHover={{ y: -4, scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-center group"
+                >
+                  <div 
+                    className="relative p-6 lg:p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+                    
+                    <div className="w-10 h-10 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center mx-auto mb-4 group-hover:border-foreground/20 transition-colors duration-300">
+                      <stat.icon className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
+                    </div>
+                    
+                    <div className="text-3xl lg:text-4xl font-serif text-foreground mb-2">{stat.value}</div>
+                    <p className="text-xs text-muted-foreground">{stat.label}</p>
+                  </div>
+                </motion.div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </ParallaxSection>
+
+      {/* Tech Stack Section */}
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.1}
+        backgroundElement={
+          <>
+            <div className="absolute top-0 left-0 w-1/4 h-full bg-gradient-to-r from-card/15 to-transparent" />
+            <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl hidden md:block" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+            <ScrollReveal className="lg:col-span-5">
+              <motion.span 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+              >
+                {getText(language, 'Stack', 'Stack')}
+              </motion.span>
+              <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
+                {getText(language, 'Tecnologias Favoritas', 'Favorite Technologies')}
+              </h2>
+              <p className="text-base text-muted-foreground leading-relaxed max-w-md">
+                {getText(language, 
+                  'Ferramentas que uso no dia a dia para construir soluções robustas e escaláveis.', 
+                  'Tools I use daily to build robust and scalable solutions.'
+                )}
+              </p>
+            </ScrollReveal>
+            
+            <div className="lg:col-span-7">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                {techStack.map((tech, index) => (
+                  <ScrollReveal key={tech.name} delay={index * 0.08}>
+                    <motion.div
+                      whileHover={{ y: -3, scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                      className="group"
+                    >
+                      <div 
+                        className="relative p-5 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm"
+                        style={{
+                          boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                        }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+                        
+                        <div className="flex items-center gap-3">
+                          <div className="w-9 h-9 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center group-hover:border-foreground/20 transition-colors duration-300">
+                            <Code2 className="w-4 h-4 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
+                          </div>
+                          <div>
+                            <h4 className="text-sm font-medium text-foreground">{tech.name}</h4>
+                            <p className="text-xs text-muted-foreground/70">{tech.category}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </ScrollReveal>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </ParallaxSection>
+
+      {/* Work Philosophy Section */}
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.12}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-card/20 via-background to-card/20" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[75%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <motion.span 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+              >
+                {getText(language, 'Filosofia', 'Philosophy')}
+              </motion.span>
+              <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6 leading-tight">
+                {getText(language, 'Como eu trabalho', 'How I work')}
+              </h2>
+              <p className="text-base text-muted-foreground max-w-xl mx-auto">
+                {getText(language, 
+                  'Princípios que guiam cada linha de código e decisão de negócio.', 
+                  'Principles that guide every line of code and business decision.'
+                )}
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {workPhilosophy.map((item, index) => (
+              <ScrollReveal key={item.title} delay={index * 0.1}>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className="h-full"
+                >
+                  <div 
+                    className="relative h-full p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm group"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+                    <div className="absolute top-0 right-0 w-20 h-20 border-t border-r border-foreground/[0.04] rounded-tr-2xl" />
+                    
+                    <div className="flex items-start gap-5">
+                      <div className="w-12 h-12 rounded-2xl border border-border/30 bg-card/50 flex items-center justify-center shrink-0 group-hover:border-foreground/20 transition-colors duration-300">
+                        <item.icon className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-serif text-foreground mb-2">{item.title}</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </ParallaxSection>
+
+      {/* Book Section */}
+      <ParallaxSection
         className="py-20 lg:py-24"
         speed={0.12}
         backgroundElement={
