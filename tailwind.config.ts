@@ -18,8 +18,8 @@ export default {
 			}
 		},
 		fontFamily: {
-			sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
-			serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+			sans: ['"Outfit"', 'system-ui', 'sans-serif'],
+			serif: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
 		},
 		extend: {
 			colors: {
