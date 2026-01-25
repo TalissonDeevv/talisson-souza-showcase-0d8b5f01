@@ -518,7 +518,7 @@ const translations: Translations = {
       email: "Email",
       channels: "Channels",
       allRightsReserved: "All rights reserved.",
-      madeWith: "Made with dedication in",
+      madeWith: "Made with dedication and lots of coffee ☕",
       location: "Brazil"
     },
     cta: {

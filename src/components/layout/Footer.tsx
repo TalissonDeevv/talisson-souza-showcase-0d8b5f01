@@ -151,7 +151,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="py-5 border-t border-border/30 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-muted-foreground">
-            © {currentYear} TS
+            © {currentYear} Talisson Souza. {getText(language, 'Todos os direitos reservados.', 'All rights reserved.')}
           </p>
           <p className="text-xs text-muted-foreground/60">
             {t.footer.madeWith}
