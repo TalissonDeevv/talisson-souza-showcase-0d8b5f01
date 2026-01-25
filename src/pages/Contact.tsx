@@ -5,11 +5,16 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
 import ContactForm from "@/components/ui/ContactForm";
 import SocialIcons from "@/components/ui/SocialIcons";
-import GlassCard from "@/components/ui/GlassCard";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
-import { Mail, Phone, MapPin, ArrowUpRight, Send, MessageSquare, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowUpRight, Send, MessageSquare, Clock, HelpCircle } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const Contact = () => {
   const { language } = useTheme();
@@ -40,6 +45,58 @@ const Contact = () => {
     { label: getText(language, 'Segunda - Sexta', 'Monday - Friday'), value: '09:00 - 18:00' },
     { label: getText(language, 'Sábado', 'Saturday'), value: '10:00 - 14:00' },
     { label: getText(language, 'Domingo', 'Sunday'), value: getText(language, 'Fechado', 'Closed') }
+  ];
+
+  const faqItems = language === 'pt' ? [
+    {
+      question: "Quanto tempo leva para desenvolver um projeto?",
+      answer: "O prazo varia conforme a complexidade. Um site institucional pode levar de 2 a 4 semanas. Sistemas mais complexos, como plataformas ou aplicativos, podem levar de 2 a 6 meses. Sempre defino prazos realistas após entender bem o escopo."
+    },
+    {
+      question: "Qual o valor de um projeto?",
+      answer: "Cada projeto é único. O investimento depende da complexidade, funcionalidades e prazo. Após nossa conversa inicial, envio uma proposta detalhada com escopo, cronograma e valores. Trabalho com projetos a partir de R$ 3.000."
+    },
+    {
+      question: "Como funciona o processo de trabalho?",
+      answer: "Começo com uma reunião de briefing para entender suas necessidades. Depois, apresento uma proposta com escopo e cronograma. Após aprovação, inicio o desenvolvimento com entregas parciais para validação. Ao final, faço a entrega com treinamento e suporte."
+    },
+    {
+      question: "Você oferece suporte após a entrega?",
+      answer: "Sim! Ofereço 30 dias de suporte gratuito para ajustes após a entrega. Também disponibilizo planos de manutenção mensal para atualizações, correções e melhorias contínuas."
+    },
+    {
+      question: "Trabalha com projetos fora do Brasil?",
+      answer: "Sim, atendo clientes de qualquer lugar do mundo. A comunicação pode ser em português ou inglês, e os pagamentos podem ser feitos via transferência internacional ou PayPal."
+    },
+    {
+      question: "Quais tecnologias você utiliza?",
+      answer: "Trabalho principalmente com React, TypeScript, Node.js, Python, PostgreSQL e serviços cloud como AWS e Vercel. Escolho a stack mais adequada para cada projeto, priorizando performance e escalabilidade."
+    }
+  ] : [
+    {
+      question: "How long does it take to develop a project?",
+      answer: "The timeline varies by complexity. An institutional website can take 2-4 weeks. More complex systems like platforms or apps can take 2-6 months. I always set realistic deadlines after fully understanding the scope."
+    },
+    {
+      question: "What is the cost of a project?",
+      answer: "Each project is unique. The investment depends on complexity, features, and timeline. After our initial conversation, I send a detailed proposal with scope, schedule, and pricing. I work on projects starting from $600."
+    },
+    {
+      question: "How does your work process function?",
+      answer: "I start with a briefing meeting to understand your needs. Then, I present a proposal with scope and timeline. After approval, I begin development with partial deliveries for validation. Finally, I deliver with training and support."
+    },
+    {
+      question: "Do you offer support after delivery?",
+      answer: "Yes! I offer 30 days of free support for adjustments after delivery. I also provide monthly maintenance plans for updates, fixes, and continuous improvements."
+    },
+    {
+      question: "Do you work with clients outside Brazil?",
+      answer: "Yes, I serve clients from anywhere in the world. Communication can be in Portuguese or English, and payments can be made via international transfer or PayPal."
+    },
+    {
+      question: "What technologies do you use?",
+      answer: "I mainly work with React, TypeScript, Node.js, Python, PostgreSQL, and cloud services like AWS and Vercel. I choose the most suitable stack for each project, prioritizing performance and scalability."
+    }
   ];
 
   return (
@@ -269,6 +326,107 @@ const Contact = () => {
                       </div>
                     </div>
                     <ContactForm />
+                  </div>
+                </motion.div>
+              </ScrollReveal>
+            </div>
+          </div>
+        </div>
+      </ParallaxSection>
+
+      {/* FAQ Section */}
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.08}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/10 to-background" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
+            <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl hidden md:block" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+            {/* FAQ Header */}
+            <div className="lg:col-span-4">
+              <ScrollReveal>
+                <motion.span 
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+                >
+                  FAQ
+                </motion.span>
+                <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6 leading-[1.05]">
+                  {getText(language, 'Perguntas Frequentes', 'Frequently Asked Questions')}
+                </h2>
+                <p className="text-base text-muted-foreground leading-relaxed max-w-sm">
+                  {getText(language, 
+                    'Respostas rápidas para dúvidas comuns sobre meus serviços e processo de trabalho.',
+                    'Quick answers to common questions about my services and work process.'
+                  )}
+                </p>
+                
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className="mt-8"
+                >
+                  <div 
+                    className="relative p-5 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm inline-flex items-center gap-3"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    <div className="w-10 h-10 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center">
+                      <HelpCircle className="w-4 h-4 text-foreground/70" />
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      {getText(language, 'Não encontrou sua dúvida?', "Didn't find your question?")}
+                      <br />
+                      <a href="#form" className="text-foreground hover:opacity-70 transition-opacity">
+                        {getText(language, 'Entre em contato', 'Get in touch')}
+                      </a>
+                    </p>
+                  </div>
+                </motion.div>
+              </ScrollReveal>
+            </div>
+            
+            {/* FAQ Accordion */}
+            <div className="lg:col-span-8">
+              <ScrollReveal delay={0.2} direction="right">
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <div 
+                    className="relative p-8 lg:p-10 rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm"
+                    style={{
+                      boxShadow: '0 8px 40px hsl(var(--foreground) / 0.03)'
+                    }}
+                  >
+                    <div className="absolute top-0 left-0 w-16 h-16 border-l border-t border-foreground/[0.06] rounded-tl-3xl" />
+                    <div className="absolute bottom-0 right-0 w-16 h-16 border-r border-b border-foreground/[0.06] rounded-br-3xl" />
+                    
+                    <Accordion type="single" collapsible className="w-full">
+                      {faqItems.map((item, index) => (
+                        <AccordionItem 
+                          key={index} 
+                          value={`item-${index}`}
+                          className="border-b border-border/30 last:border-b-0"
+                        >
+                          <AccordionTrigger className="text-left py-5 text-foreground hover:no-underline hover:opacity-70 transition-opacity duration-200 text-sm font-medium gap-4">
+                            {item.question}
+                          </AccordionTrigger>
+                          <AccordionContent className="pb-5 text-sm text-muted-foreground leading-relaxed">
+                            {item.answer}
+                          </AccordionContent>
+                        </AccordionItem>
+                      ))}
+                    </Accordion>
                   </div>
                 </motion.div>
               </ScrollReveal>
