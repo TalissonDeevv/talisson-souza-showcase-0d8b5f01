@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
+import ImageWithSkeleton from "@/components/ui/ImageWithSkeleton";
 import { 
   Code, 
   Smartphone, 
@@ -227,11 +228,12 @@ const Services = () => {
                       boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
                     }}
                   >
-                    <div className="aspect-video overflow-hidden">
-                      <img 
+                    <div className="overflow-hidden">
+                      <ImageWithSkeleton 
                         src={project.image} 
                         alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        aspectRatio="video"
+                        className="transition-transform duration-700 group-hover:scale-105"
                       />
                     </div>
                     

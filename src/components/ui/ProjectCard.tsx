@@ -2,6 +2,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation } from "@/utils/translations";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
+import ImageWithSkeleton from "./ImageWithSkeleton";
 
 interface ProjectCardProps {
   title: string;
@@ -34,13 +35,18 @@ const ProjectCard = ({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Image */}
         <div className="lg:col-span-5 overflow-hidden rounded-lg">
-          <motion.img
-            src={image || "/placeholder.svg"}
-            alt={title}
-            className="w-full h-48 lg:h-56 object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+          <motion.div
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.5 }}
-          />
+            className="h-48 lg:h-56"
+          >
+            <ImageWithSkeleton
+              src={image || "/placeholder.svg"}
+              alt={title}
+              className="grayscale group-hover:grayscale-0 transition-all duration-500"
+              containerClassName="h-full rounded-lg"
+            />
+          </motion.div>
         </div>
         
         {/* Content */}
