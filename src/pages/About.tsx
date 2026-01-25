@@ -4,6 +4,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
 import GlassCard from "@/components/ui/GlassCard";
 import SocialIcons from "@/components/ui/SocialIcons";
+import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Download, ArrowRight, ArrowUpRight, Briefcase, GraduationCap, Heart, Star, BookOpen, Zap, Users, Calendar, Award, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -129,9 +130,9 @@ Ultimately, my mission is to create solutions that truly make a difference, with
                   <span className="w-8 h-px bg-foreground/30" />
                   {t.about.title}
                 </motion.span>
-                <h1 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-foreground mb-6 leading-[1.05]">
+                <AnimatedTitle variant="hero" as="h1" className="mb-6">
                   Talisson Souza
-                </h1>
+                </AnimatedTitle>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-2xl">
                   {t.about.subtitle}
                 </p>

@@ -4,6 +4,7 @@ import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
 import GlassCard from "@/components/ui/GlassCard";
+import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { Code, Smartphone, Bot, Palette, Cloud, Users, ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
@@ -42,7 +43,7 @@ const Services = () => {
               <span className="w-8 h-px bg-foreground/30" />
               {getText(language, 'Serviços', 'Services')}
             </motion.span>
-            <h1 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-foreground mb-6 leading-[1.05]">{t.servicesPage.title}</h1>
+            <AnimatedTitle variant="hero" as="h1" className="mb-6">{t.servicesPage.title}</AnimatedTitle>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">{t.servicesPage.subtitle}</p>
           </ScrollReveal>
         </div>

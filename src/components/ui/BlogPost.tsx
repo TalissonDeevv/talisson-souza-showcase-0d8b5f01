@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
+import AnimatedTitle from "@/components/ui/AnimatedTitle";
+import ShareButtons from "@/components/ui/ShareButtons";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -53,11 +55,11 @@ const BlogPost = ({ title, date, content, image, tags }: BlogPostProps) => {
                 {getText(language, 'Artigo', 'Article')}
               </motion.span>
               
-              <h1 className="font-serif text-3xl lg:text-4xl xl:text-5xl text-foreground mb-6 leading-[1.1]">
+              <AnimatedTitle variant="hero" as="h1" className="mb-6">
                 {title}
-              </h1>
+              </AnimatedTitle>
               
-              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-6">
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4" />
                   <span>{date}</span>
@@ -67,6 +69,9 @@ const BlogPost = ({ title, date, content, image, tags }: BlogPostProps) => {
                   <span>{getText(language, '5 min de leitura', '5 min read')}</span>
                 </div>
               </div>
+              
+              {/* Share Buttons */}
+              <ShareButtons title={title} className="mb-6" />
               
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mt-6">
@@ -124,6 +129,16 @@ const BlogPost = ({ title, date, content, image, tags }: BlogPostProps) => {
             <ScrollReveal>
               <div className="prose prose-lg lg:prose-xl max-w-none dark:prose-invert prose-headings:font-serif prose-headings:text-foreground prose-p:text-muted-foreground prose-p:leading-relaxed prose-strong:text-foreground prose-code:text-foreground prose-code:bg-card/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-a:text-foreground prose-a:underline hover:prose-a:no-underline prose-li:text-muted-foreground prose-blockquote:border-foreground/20 prose-blockquote:text-muted-foreground">
                 {content}
+              </div>
+              
+              {/* Share at end of article */}
+              <div className="mt-12 pt-8 border-t border-border/20">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <p className="text-sm text-muted-foreground">
+                    {getText(language, 'Gostou do artigo? Compartilhe!', 'Enjoyed the article? Share it!')}
+                  </p>
+                  <ShareButtons title={title} />
+                </div>
               </div>
             </ScrollReveal>
           </div>

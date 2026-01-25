@@ -3,6 +3,7 @@ import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
 import GlassCard from "@/components/ui/GlassCard";
+import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
 import { ArrowUpRight, ArrowRight, ExternalLink, Github, Layers } from "lucide-react";
@@ -83,9 +84,9 @@ const Projects = () => {
                 <span className="w-8 h-px bg-foreground/30" />
                 Portfolio
               </motion.span>
-              <h1 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-foreground mb-6 leading-[1.05]">
+              <AnimatedTitle variant="hero" as="h1" className="mb-6">
                 {t.projects.title}
-              </h1>
+              </AnimatedTitle>
               <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
                 {t.projects.subtitle}
               </p>

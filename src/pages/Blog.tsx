@@ -3,6 +3,7 @@ import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
 import GlassCard from "@/components/ui/GlassCard";
+import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
 import { ArrowRight } from "lucide-react";
@@ -33,7 +34,7 @@ const Blog = () => {
         <div className="container mx-auto px-6 lg:px-8 relative z-20">
           <ScrollReveal>
             <motion.span initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"><span className="w-8 h-px bg-foreground/30" />Blog</motion.span>
-            <h1 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-foreground mb-6 leading-[1.05]">{t.blog.title}</h1>
+            <AnimatedTitle variant="hero" as="h1" className="mb-6">{t.blog.title}</AnimatedTitle>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">{t.blog.subtitle}</p>
           </ScrollReveal>
         </div>
