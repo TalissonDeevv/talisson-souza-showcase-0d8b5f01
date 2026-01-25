@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
 import GlassCard from "@/components/ui/GlassCard";
@@ -23,6 +24,13 @@ const Blog = () => {
 
   return (
     <Layout withPadding={false}>
+      <SEO 
+        title="Blog | Artigos sobre Tecnologia e Desenvolvimento"
+        description="Artigos sobre desenvolvimento web, bots, cloud, automação e gestão de projetos. Conteúdo técnico e prático para desenvolvedores e empreendedores."
+        canonical="/blog"
+        keywords={['blog', 'artigos', 'desenvolvimento', 'tecnologia', 'programação', 'tutoriais']}
+      />
+      
       {/* Hero */}
       <section className="min-h-[50vh] flex items-center relative overflow-hidden pt-24 pb-16">
         <div className="absolute inset-0 z-0">

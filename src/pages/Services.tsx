@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
 import GlassCard from "@/components/ui/GlassCard";
@@ -29,6 +30,13 @@ const Services = () => {
 
   return (
     <Layout withPadding={false}>
+      <SEO 
+        title="Serviços de Desenvolvimento | Talisson Souza"
+        description="Serviços de desenvolvimento web, mobile, bots, UI/UX design, soluções cloud e consultoria tecnológica. Soluções digitais sob medida para sua empresa crescer."
+        canonical="/servicos"
+        keywords={['serviços', 'desenvolvimento web', 'desenvolvimento mobile', 'bots', 'UI/UX', 'cloud', 'consultoria']}
+      />
+      
       {/* Hero */}
       <section className="min-h-[60vh] flex items-center relative overflow-hidden pt-24 pb-16">
         <div className="absolute inset-0 z-0">

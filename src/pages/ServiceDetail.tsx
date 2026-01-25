@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
 import GlassCard from "@/components/ui/GlassCard";
@@ -149,7 +150,7 @@ const ServiceDetail = () => {
             {language === 'pt' ? 'Serviço não encontrado' : 'Service not found'}
           </h1>
           <Link 
-            to="/services"
+            to="/servicos"
             className="inline-flex items-center gap-2 text-sm font-medium text-foreground"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -170,6 +171,13 @@ const ServiceDetail = () => {
 
   return (
     <Layout>
+      <SEO 
+        title={`${service.title} | Serviços - Talisson Souza`}
+        description={service.description}
+        canonical={`/servicos/${serviceId}`}
+        keywords={[service.title, 'serviço', 'desenvolvimento', ...service.technologies]}
+      />
+      
       {/* Hero Section */}
       <ParallaxSection 
         className="pt-24 pb-16 lg:pt-28 lg:pb-20"
@@ -184,7 +192,7 @@ const ServiceDetail = () => {
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
             <Link 
-              to="/services"
+              to="/servicos"
               className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-10 transition-colors duration-300"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -375,7 +383,7 @@ const ServiceDetail = () => {
                     </motion.button>
 
                     <Link 
-                      to="/contact"
+                      to="/contato"
                       className="w-full inline-flex items-center justify-center gap-2 text-sm font-medium text-foreground border border-border/30 rounded-xl py-3.5 hover:bg-card/50 hover:border-foreground/20 transition-all duration-300"
                     >
                       {language === 'pt' ? 'Mais Informações' : 'More Information'}

@@ -28,9 +28,9 @@ const Footer = () => {
 
   const navigationLinks = [
     { name: t.nav.home, path: "/" },
-    { name: t.nav.about, path: "/about" },
-    { name: t.nav.projects, path: "/projects" },
-    { name: t.nav.services, path: "/services" },
+    { name: t.nav.about, path: "/sobre" },
+    { name: t.nav.projects, path: "/projetos" },
+    { name: t.nav.services, path: "/servicos" },
     { name: t.nav.blog, path: "/blog" },
   ];
 
@@ -45,7 +45,7 @@ const Footer = () => {
               <Link to="/" className="inline-block mb-8">
                 <img 
                   src={logo} 
-                  alt="TS" 
+                  alt="Talisson Souza - Desenvolvedor Full Stack" 
                   className="h-14 w-auto" 
                 />
               </Link>

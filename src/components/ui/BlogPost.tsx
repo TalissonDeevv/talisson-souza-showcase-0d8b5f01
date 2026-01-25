@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import ShareButtons from "@/components/ui/ShareButtons";
@@ -15,14 +16,25 @@ interface BlogPostProps {
   content: React.ReactNode;
   image?: string;
   tags: string[];
+  description?: string;
 }
 
-const BlogPost = ({ title, date, content, tags }: BlogPostProps) => {
+const BlogPost = ({ id, title, date, content, tags, description }: BlogPostProps) => {
   const { language } = useTheme();
   const t = useTranslation(language);
 
+  const metaDescription = description || `${title}. Artigo sobre ${tags.join(', ')} por Talisson Souza.`;
+
   return (
     <Layout>
+      <SEO 
+        title={`${title} | Blog`}
+        description={metaDescription}
+        canonical={`/blog/${id}`}
+        type="article"
+        keywords={tags}
+      />
+      
       {/* Hero Section - Compact */}
       <section className="pt-20 pb-8 lg:pt-24 lg:pb-10 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background pointer-events-none" />

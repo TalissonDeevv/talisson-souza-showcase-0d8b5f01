@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
 import GlassCard from "@/components/ui/GlassCard";
@@ -51,6 +52,13 @@ const Projects = () => {
 
   return (
     <Layout withPadding={false}>
+      <SEO 
+        title="Projetos | Portfólio de Talisson Souza"
+        description="Conheça os projetos desenvolvidos por Talisson Souza. Sites, aplicações web, sistemas empresariais e soluções digitais para empresas de diversos segmentos."
+        canonical="/projetos"
+        keywords={['projetos', 'portfólio', 'sites', 'aplicações web', 'sistemas', 'desenvolvimento']}
+      />
+      
       {/* Hero Section */}
       <section className="min-h-[60vh] flex items-center relative overflow-hidden pt-24 pb-16">
         <div className="absolute inset-0 z-0">
@@ -340,7 +348,7 @@ const Projects = () => {
                   </a>
                   
                   <Link 
-                    to="/services" 
+                    to="/servicos"
                     className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-all duration-300"
                   >
                     <span>{getText(language, 'Ver serviços', 'View services')}</span>

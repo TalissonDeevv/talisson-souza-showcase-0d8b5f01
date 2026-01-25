@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
 import GlassCard from "@/components/ui/GlassCard";
@@ -98,6 +99,13 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
 
   return (
     <Layout withPadding={false}>
+      <SEO 
+        title="Carreira | Trajetória de Talisson Souza"
+        description="Conheça a trajetória profissional de Talisson Souza, desde os primeiros projetos até se tornar CEO da Cheetah Network e Diretor Estratégico do Werneck Group."
+        canonical="/carreira"
+        keywords={['carreira', 'trajetória', 'experiência profissional', 'CEO', 'empreendedor', 'desenvolvedor']}
+      />
+      
       {/* Hero Section */}
       <section className="min-h-[60vh] flex items-center relative overflow-hidden pt-24 pb-16">
         <div className="absolute inset-0 z-0">
@@ -645,7 +653,7 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
                 </p>
                 
                 <Link 
-                  to="/contact"
+                  to="/contato"
                   className="group inline-flex items-center gap-3 px-8 py-4 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300"
                   style={{
                     boxShadow: '0 0 30px hsl(var(--foreground) / 0.2)'
