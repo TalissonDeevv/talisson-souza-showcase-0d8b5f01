@@ -7,7 +7,7 @@ import GlassCard from "@/components/ui/GlassCard";
 import SocialIcons from "@/components/ui/SocialIcons";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Download, ArrowRight, ArrowUpRight, Briefcase, GraduationCap, Heart, Star, BookOpen, Zap, Users, Calendar, Award, ExternalLink, Code2, Lightbulb, Target, Coffee, Rocket, TrendingUp, Clock, Layers } from "lucide-react";
+import { Download, ArrowRight, ArrowUpRight, Briefcase, GraduationCap, Heart, Star, BookOpen, Zap, Users, Calendar, Award, ExternalLink, Code2, Lightbulb, Target, Coffee, Rocket, TrendingUp, Clock, Layers, Gamepad2, Music, Camera, Plane, Dumbbell, Film } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
@@ -93,6 +93,40 @@ Ultimately, my mission is to create solutions that truly make a difference, with
     { value: "50+", label: "Projects delivered", icon: Layers },
     { value: "3", label: "Companies founded", icon: TrendingUp },
     { value: "1", label: "Book published", icon: BookOpen }
+  ];
+
+  // Career Timeline Milestones
+  const careerMilestones = language === 'pt' ? [
+    { year: "2016", title: "Primeiros Passos", description: "Comecei a explorar programação e tecnologia por curiosidade", icon: Code2 },
+    { year: "2018", title: "Primeiro Projeto", description: "Desenvolvi meu primeiro projeto web completo para um cliente real", icon: Rocket },
+    { year: "2020", title: "Especialização", description: "Foquei em desenvolvimento Full Stack com React e Node.js", icon: Target },
+    { year: "2023", title: "Cheetah Network", description: "Fundei a Cheetah Network, minha primeira empresa de tecnologia", icon: TrendingUp },
+    { year: "2024", title: "Expansão", description: "Assumi posições de liderança no Werneck Group e FastyGroup", icon: Briefcase },
+    { year: "2025", title: "Livro Publicado", description: "Publiquei meu primeiro livro sobre empreendedorismo e tecnologia", icon: BookOpen }
+  ] : [
+    { year: "2016", title: "First Steps", description: "Started exploring programming and technology out of curiosity", icon: Code2 },
+    { year: "2018", title: "First Project", description: "Developed my first complete web project for a real client", icon: Rocket },
+    { year: "2020", title: "Specialization", description: "Focused on Full Stack development with React and Node.js", icon: Target },
+    { year: "2023", title: "Cheetah Network", description: "Founded Cheetah Network, my first technology company", icon: TrendingUp },
+    { year: "2024", title: "Expansion", description: "Took leadership positions at Werneck Group and FastyGroup", icon: Briefcase },
+    { year: "2025", title: "Book Published", description: "Published my first book about entrepreneurship and technology", icon: BookOpen }
+  ];
+
+  // Hobbies and Interests
+  const hobbies = language === 'pt' ? [
+    { icon: Gamepad2, title: "Games", description: "Jogos de estratégia e RPGs nas horas vagas" },
+    { icon: Music, title: "Música", description: "Apreciador de diversos gêneros, especialmente eletrônica" },
+    { icon: Camera, title: "Fotografia", description: "Capturando momentos e paisagens urbanas" },
+    { icon: Plane, title: "Viagens", description: "Conhecer novas culturas e lugares" },
+    { icon: Dumbbell, title: "Exercícios", description: "Manter corpo e mente saudáveis" },
+    { icon: Film, title: "Cinema", description: "Filmes de ficção científica e documentários" }
+  ] : [
+    { icon: Gamepad2, title: "Games", description: "Strategy games and RPGs in spare time" },
+    { icon: Music, title: "Music", description: "Appreciate various genres, especially electronic" },
+    { icon: Camera, title: "Photography", description: "Capturing moments and urban landscapes" },
+    { icon: Plane, title: "Travel", description: "Discovering new cultures and places" },
+    { icon: Dumbbell, title: "Exercise", description: "Keeping body and mind healthy" },
+    { icon: Film, title: "Cinema", description: "Sci-fi movies and documentaries" }
   ];
 
   return (
@@ -427,6 +461,190 @@ Ultimately, my mission is to create solutions that truly make a difference, with
                     
                     <div className="text-3xl lg:text-4xl font-serif text-foreground mb-2">{stat.value}</div>
                     <p className="text-xs text-muted-foreground">{stat.label}</p>
+                  </div>
+                </motion.div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </ParallaxSection>
+
+      {/* Career Timeline Section */}
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.1}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/15 to-background" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+            <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl hidden md:block" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <motion.span 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+              >
+                {getText(language, 'Jornada', 'Journey')}
+              </motion.span>
+              <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6 leading-tight">
+                {getText(language, 'Marcos da Carreira', 'Career Milestones')}
+              </h2>
+              <p className="text-base text-muted-foreground max-w-xl mx-auto">
+                {getText(language, 
+                  'Os momentos decisivos que moldaram minha trajetória profissional.', 
+                  'The decisive moments that shaped my professional journey.'
+                )}
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="relative max-w-4xl mx-auto">
+            {/* Timeline Line */}
+            <motion.div 
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px origin-top hidden md:block"
+              style={{
+                background: 'linear-gradient(to bottom, transparent, hsl(var(--foreground) / 0.2) 10%, hsl(var(--foreground) / 0.2) 90%, transparent)'
+              }}
+            />
+
+            <div className="space-y-12 md:space-y-0">
+              {careerMilestones.map((milestone, index) => (
+                <ScrollReveal key={milestone.year} delay={index * 0.15}>
+                  <motion.div
+                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className={`relative flex items-center md:gap-8 ${
+                      index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                    }`}
+                  >
+                    {/* Content Card */}
+                    <motion.div
+                      whileHover={{ y: -4, scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                      className={`w-full md:w-[calc(50%-2rem)] ${
+                        index % 2 === 0 ? 'md:text-right' : 'md:text-left'
+                      }`}
+                    >
+                      <div 
+                        className="relative p-6 lg:p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm group"
+                        style={{
+                          boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                        }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+                        
+                        <div className={`flex items-center gap-4 mb-4 ${
+                          index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                        }`}>
+                          <div className="w-12 h-12 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center group-hover:border-foreground/20 transition-colors duration-300">
+                            <milestone.icon className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
+                          </div>
+                          <div className={index % 2 === 0 ? 'md:text-right' : ''}>
+                            <span className="text-2xl font-serif text-foreground">{milestone.year}</span>
+                          </div>
+                        </div>
+                        
+                        <h3 className="text-lg font-medium text-foreground mb-2">{milestone.title}</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{milestone.description}</p>
+                      </div>
+                    </motion.div>
+
+                    {/* Center Dot */}
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.15 + 0.2 }}
+                      className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center justify-center"
+                    >
+                      <div className="relative">
+                        <div className="w-4 h-4 rounded-full bg-foreground/30 ring-4 ring-background" />
+                        <motion.div
+                          initial={{ scale: 1, opacity: 0.5 }}
+                          animate={{ scale: 2, opacity: 0 }}
+                          transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
+                          className="absolute inset-0 rounded-full bg-foreground/20"
+                        />
+                      </div>
+                    </motion.div>
+
+                    {/* Spacer for alternating layout */}
+                    <div className="hidden md:block w-[calc(50%-2rem)]" />
+                  </motion.div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </ParallaxSection>
+
+      {/* Hobbies Section */}
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.08}
+        backgroundElement={
+          <>
+            <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-card/15 to-transparent" />
+            <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl hidden md:block" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <motion.span 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+              >
+                {getText(language, 'Pessoal', 'Personal')}
+              </motion.span>
+              <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6 leading-tight">
+                {getText(language, 'Além do Código', 'Beyond the Code')}
+              </h2>
+              <p className="text-base text-muted-foreground max-w-xl mx-auto">
+                {getText(language, 
+                  'Interesses e hobbies que me mantêm criativo e equilibrado.', 
+                  'Interests and hobbies that keep me creative and balanced.'
+                )}
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6 max-w-4xl mx-auto">
+            {hobbies.map((hobby, index) => (
+              <ScrollReveal key={hobby.title} delay={index * 0.08}>
+                <motion.div
+                  whileHover={{ y: -4, scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  className="group h-full"
+                >
+                  <div 
+                    className="relative h-full p-6 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm text-center"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+                    
+                    <div className="w-12 h-12 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center mx-auto mb-4 group-hover:border-foreground/20 transition-colors duration-300">
+                      <hobby.icon className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
+                    </div>
+                    <h3 className="text-base font-medium text-foreground mb-2">{hobby.title}</h3>
+                    <p className="text-xs text-muted-foreground leading-relaxed">{hobby.description}</p>
                   </div>
                 </motion.div>
               </ScrollReveal>
