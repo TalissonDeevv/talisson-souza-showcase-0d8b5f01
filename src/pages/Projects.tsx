@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
+import ImageWithSkeleton from "@/components/ui/ImageWithSkeleton";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
 import { ArrowUpRight } from "lucide-react";
@@ -90,13 +91,14 @@ const Projects = () => {
                     }}
                   >
                     {/* Image */}
-                    <div className="aspect-video overflow-hidden">
-                      <img 
+                    <div className="aspect-video overflow-hidden relative">
+                      <ImageWithSkeleton 
                         src={project.image} 
                         alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        aspectRatio="video"
+                        className="transition-transform duration-700 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent pointer-events-none" />
                     </div>
                     
                     {/* Content */}

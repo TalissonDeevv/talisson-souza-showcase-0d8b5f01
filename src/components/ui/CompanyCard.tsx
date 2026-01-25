@@ -2,6 +2,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import ImageWithSkeleton from "./ImageWithSkeleton";
 
 interface CompanyCardProps {
   name: string;
@@ -30,13 +31,18 @@ const CompanyCard = ({ name, description, logo, index, skills }: CompanyCardProp
         {/* Image */}
         <div className="lg:col-span-5 overflow-hidden rounded-lg">
           {logo ? (
-            <motion.img 
-              src={logo} 
-              alt={`${name} banner`} 
-              className="w-full h-48 lg:h-56 object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+            <motion.div
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.5 }}
-            />
+              className="h-48 lg:h-56"
+            >
+              <ImageWithSkeleton 
+                src={logo} 
+                alt={`${name} banner`} 
+                className="grayscale group-hover:grayscale-0 transition-all duration-500"
+                containerClassName="h-full"
+              />
+            </motion.div>
           ) : (
             <div className="w-full h-48 lg:h-56 bg-card/50 border border-border/30 rounded-lg flex items-center justify-center">
               <span className="text-3xl font-serif text-muted-foreground/50">{name.charAt(0)}</span>
