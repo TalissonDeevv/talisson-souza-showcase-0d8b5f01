@@ -1,7 +1,7 @@
 
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
-import SectionTitle from "@/components/ui/SectionTitle";
+
 import SocialIcons from "@/components/ui/SocialIcons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -266,13 +266,27 @@ Ultimately, my mission is to create solutions that truly make a difference, with
 
   return (
     <Layout>
-      <div className="container mx-auto px-4 pt-32 pb-16">
-        <SectionTitle subtitle={t.about.subtitle} align="center">
-          {t.about.title}
-        </SectionTitle>
+      <div className="container mx-auto px-6 lg:px-8 pt-32 pb-16">
+        {/* Hero Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-3xl mb-16"
+        >
+          <span className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium">
+            <span className="w-8 h-px bg-foreground/30" />
+            {t.about.title}
+          </span>
+          <h1 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.1]">
+            Talisson Souza
+          </h1>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            {t.about.subtitle}
+          </p>
+        </motion.div>
         
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col lg:flex-row gap-16 mb-20">
+          <div className="flex flex-col lg:flex-row gap-12 mb-16">
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -280,28 +294,28 @@ Ultimately, my mission is to create solutions that truly make a difference, with
               className="w-full lg:w-1/3 flex flex-col items-center gap-8"
             >
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-gray-400 to-gray-600 dark:from-gray-600 dark:to-gray-800 rounded-full blur-lg opacity-30 scale-110"></div>
-                <Avatar className="h-72 w-72 border-4 border-white dark:border-gray-700 shadow-2xl relative z-10">
+                <div className="absolute inset-0 bg-gradient-radial from-foreground/10 to-transparent rounded-full blur-2xl opacity-30 scale-110"></div>
+                <Avatar className="h-64 w-64 border-2 border-border/30 shadow-xl relative z-10">
                   <AvatarImage src="https://i.ibb.co/MySV14GV/Polish-20231015-221849134-112435.jpg" alt="Talisson Souza" className="object-cover" />
                   <AvatarFallback>TS</AvatarFallback>
                 </Avatar>
               </div>
               
-              <div className="bg-card p-8 rounded-2xl shadow-lg border border-border w-full backdrop-blur-sm">
-                <h3 className="text-xl font-semibold text-foreground mb-6 text-center">{t.about.socials}</h3>
+              <div className="p-6 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm w-full">
+                <h3 className="text-sm font-medium text-foreground mb-4 text-center">{t.about.socials}</h3>
                 <SocialIcons className="flex-wrap justify-center gap-4" />
               </div>
 
-              <div className="bg-card p-8 rounded-2xl shadow-lg border border-border w-full backdrop-blur-sm">
-                <h3 className="text-xl font-semibold text-foreground mb-6 text-center">{t.about.curriculum}</h3>
+              <div className="p-6 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm w-full">
+                <h3 className="text-sm font-medium text-foreground mb-4 text-center">{t.about.curriculum}</h3>
                 <Button 
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground mb-4 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  className="w-full bg-foreground hover:bg-foreground/90 text-primary-foreground mb-3 py-2.5 rounded-xl font-medium transition-all duration-300"
                   onClick={() => window.open('https://drive.google.com/file/d/1JBmXK4aCAPfeY4kuEc5QpO-ehlA2rfWO/view?usp=sharing', '_blank')}
                 >
-                  <Download className="w-5 h-5 mr-2" />
+                  <Download className="w-4 h-4 mr-2" />
                   {t.about.downloadCV}
                 </Button>
-                <p className="text-sm text-muted-foreground text-center leading-relaxed">
+                <p className="text-xs text-muted-foreground/70 text-center leading-relaxed">
                   {t.about.cvDescription}
                 </p>
               </div>
@@ -313,7 +327,7 @@ Ultimately, my mission is to create solutions that truly make a difference, with
               transition={{ duration: 0.5 }}
               className="w-full lg:w-2/3 space-y-8"
             >
-              <div className="bg-card p-8 rounded-2xl shadow-lg border border-border">
+              <div className="p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm">
                 <Tabs defaultValue="profile" className="w-full">
                   <TabsList className="grid w-full grid-cols-4 mb-8">
                     <TabsTrigger value="profile" className="flex items-center gap-2">

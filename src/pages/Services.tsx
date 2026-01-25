@@ -1,14 +1,8 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
-import SectionTitle from "@/components/ui/SectionTitle";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 import { 
-  ExternalLink, 
-  Calendar, 
-  User, 
   Code, 
   Smartphone, 
   Bot, 
@@ -16,10 +10,11 @@ import {
   Cloud, 
   Users,
   ArrowRight,
+  ArrowUpRight,
   Check
 } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
-import { useTranslation } from "@/utils/translations";
+import { useTranslation, getText } from "@/utils/translations";
 
 const Services = () => {
   const { language } = useTheme();
@@ -68,8 +63,6 @@ const Services = () => {
       image: "https://i.ibb.co/jkPPHWdc/image.png",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
       link: "https://zafire.cloud",
-      deliveryDate: language === 'pt' ? "Novembro 20, 2025" : "November 20, 2025",
-      status: t.servicesPage.completed
     },
     {
       title: "Werneck Group",
@@ -80,206 +73,245 @@ const Services = () => {
       image: "https://i.ibb.co/ymjQhFmG/image.png",
       technologies: ["React", "Node.js", "PostgreSQL", "TypeScript"],
       link: "https://werneckgroup.com",
-      deliveryDate: language === 'pt' ? "Novembro 28, 2023" : "November 28, 2023",
-      status: t.servicesPage.completed
     }
   ];
 
-  const getStatusColor = (status: string) => {
-    if (status === t.servicesPage.completed) {
-      return "bg-primary text-primary-foreground";
-    } else if (status === t.servicesPage.inProgress) {
-      return "bg-gray-600 text-white";
-    } else {
-      return "bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400";
-    }
-  };
-
   return (
     <Layout>
-      <div className="container mx-auto px-4 pt-32 pb-16">
-        <SectionTitle subtitle={t.servicesPage.subtitle} align="center">
-          {t.servicesPage.title}
-        </SectionTitle>
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 lg:pt-40 lg:pb-20 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+          <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+        </div>
         
-        <div className="max-w-7xl mx-auto space-y-20">
-          {/* Service Categories Grid */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {serviceCategories.map((service, index) => {
-                const IconComponent = service.icon;
-                return (
-                  <motion.div
-                    key={service.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                     <Card className="h-full group hover:shadow-2xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 overflow-hidden relative">
-                      <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-5 transition-opacity duration-300" />
-                      
-                      <CardHeader className="pb-4">
-                        <div className="w-16 h-16 rounded-2xl bg-primary p-4 mb-4 group-hover:scale-110 transition-transform duration-300">
-                          <IconComponent className="w-full h-full text-primary-foreground" />
-                        </div>
-                        <CardTitle className="text-xl font-bold">{service.title}</CardTitle>
-                        <CardDescription className="text-gray-600 dark:text-gray-300">
-                          {service.description}
-                        </CardDescription>
-                      </CardHeader>
-                      
-                      <CardContent className="space-y-4">
-                        <div className="space-y-2">
-                          {service.features.map((feature, featureIndex) => (
-                            <div key={featureIndex} className="flex items-center gap-3">
-                              <Check className="w-4 h-4 text-gray-700 dark:text-gray-300 flex-shrink-0" />
-                              <span className="text-sm text-gray-700 dark:text-gray-300">{feature}</span>
-                            </div>
-                          ))}
-                        </div>
-                        
-                        <Button 
-                          asChild
-                          className="w-full"
-                        >
-                          <Link to={`/services/${service.id}`}>
-                            {t.servicesPage.learnMore}
-                            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                          </Link>
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                );
-              })}
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <div className="max-w-3xl">
+              <motion.span 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+              >
+                <span className="w-8 h-px bg-foreground/30" />
+                {getText(language, 'Serviços', 'Services')}
+              </motion.span>
+              <h1 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-foreground mb-6 leading-[1.1]">
+                {t.servicesPage.title}
+              </h1>
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+                {t.servicesPage.subtitle}
+              </p>
             </div>
-          </motion.div>
+          </ScrollReveal>
+        </div>
+      </section>
 
-          {/* Client Projects Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-12"
-          >
-            <div className="text-center">
-              <h3 className="text-3xl font-bold text-gradient mb-4">
+      {/* Services Grid */}
+      <section className="py-16 lg:py-20 relative">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+        </div>
+        
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {serviceCategories.map((service, index) => {
+              const IconComponent = service.icon;
+              return (
+                <ScrollReveal key={service.id} delay={index * 0.08}>
+                  <motion.div
+                    whileHover={{ y: -4 }}
+                    transition={{ duration: 0.3 }}
+                    className="h-full"
+                  >
+                    <div 
+                      className="relative h-full p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm group overflow-hidden"
+                      style={{
+                        boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                      }}
+                    >
+                      {/* Hover gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      
+                      {/* Icon */}
+                      <div className="w-12 h-12 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center mb-6 group-hover:border-foreground/20 transition-colors duration-300">
+                        <IconComponent className="w-5 h-5 text-foreground/70 group-hover:text-foreground transition-colors duration-300" />
+                      </div>
+                      
+                      <h3 className="font-serif text-xl text-foreground mb-3 leading-tight">
+                        {service.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                        {service.description}
+                      </p>
+                      
+                      {/* Features */}
+                      <div className="space-y-2 mb-6">
+                        {service.features.slice(0, 3).map((feature, featureIndex) => (
+                          <div key={featureIndex} className="flex items-center gap-2">
+                            <Check className="w-3 h-3 text-muted-foreground/50 flex-shrink-0" />
+                            <span className="text-xs text-muted-foreground/70">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                      
+                      <Link 
+                        to={`/services/${service.id}`}
+                        className="group/link inline-flex items-center gap-2 text-sm font-medium text-foreground"
+                      >
+                        <span className="relative">
+                          {t.servicesPage.learnMore}
+                          <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover/link:w-full transition-all duration-300" />
+                        </span>
+                        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
+                      </Link>
+                    </div>
+                  </motion.div>
+                </ScrollReveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Client Projects */}
+      <section className="py-16 lg:py-20 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-card/20 via-background to-card/20" />
+        </div>
+        
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <div className="mb-12">
+              <motion.span 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+              >
+                <span className="w-8 h-px bg-foreground/30" />
+                Portfolio
+              </motion.span>
+              <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-4 leading-tight">
                 {language === 'pt' ? 'Projetos Realizados' : 'Completed Projects'}
-              </h3>
-              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              </h2>
+              <p className="text-muted-foreground max-w-xl leading-relaxed">
                 {language === 'pt' 
                   ? 'Conheça alguns dos projetos personalizados que desenvolvi para meus clientes'
                   : 'Learn about some of the custom projects I developed for my clients'
                 }
               </p>
             </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {clientProjects.map((project, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+          </ScrollReveal>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {clientProjects.map((project, index) => (
+              <ScrollReveal key={index} delay={index * 0.1}>
+                <motion.a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className="block h-full group"
                 >
-                  <Card className="h-full hover:shadow-2xl transition-all duration-300 overflow-hidden border-0 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
-                    <div className="aspect-video w-full overflow-hidden">
+                  <div 
+                    className="relative h-full rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm overflow-hidden"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    <div className="aspect-video overflow-hidden">
                       <img 
                         src={project.image} 
                         alt={project.title}
-                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     </div>
                     
-                    <CardHeader>
-                      <div className="flex items-start justify-between gap-2 mb-4">
-                        <CardTitle className="text-xl">{project.title}</CardTitle>
-                        <Badge className={getStatusColor(project.status)}>
-                          {project.status}
-                        </Badge>
-                      </div>
-                      
-                      <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                        <div className="flex items-center gap-2">
-                          <User className="w-4 h-4" />
-                          <span>{t.servicesPage.client}: {project.client}</span>
-                        </div>
-                        
-                        <div className="flex items-center gap-2">
-                          <Calendar className="w-4 h-4" />
-                          <span>{t.servicesPage.deliveryDate}: {project.deliveryDate}</span>
-                        </div>
-                      </div>
-                    </CardHeader>
-                    
-                    <CardContent className="space-y-4">
-                      <CardDescription className="text-gray-700 dark:text-gray-300">
+                    <div className="p-6">
+                      <h3 className="font-serif text-lg text-foreground mb-2 leading-tight">
+                        {project.title}
+                      </h3>
+                      <p className="text-xs text-muted-foreground/60 mb-3">
+                        {getText(language, 'Cliente:', 'Client:')} {project.client}
+                      </p>
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                         {project.description}
-                      </CardDescription>
+                      </p>
                       
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech, techIndex) => (
-                          <Badge key={techIndex} variant="secondary" className="text-xs">
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="text-xs px-2 py-0.5 rounded border border-border/30 bg-background/50 text-muted-foreground/70"
+                          >
                             {tech}
-                          </Badge>
+                          </span>
                         ))}
                       </div>
                       
-                      {project.status === t.servicesPage.completed && (
-                        <Button 
-                          className="w-full"
-                          onClick={() => window.open(project.link, '_blank')}
-                        >
-                          <ExternalLink className="w-4 h-4 mr-2" />
-                          {t.servicesPage.viewProject}
-                        </Button>
-                      )}
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-          
-          {/* CTA Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="mt-20"
-          >
-            <div className="relative bg-primary text-primary-foreground p-12 rounded-3xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent" />
-              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-white/10 to-transparent rounded-full -translate-y-32 translate-x-32" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-white/10 to-transparent rounded-full translate-y-24 -translate-x-24" />
-              
-              <div className="relative z-10 text-center max-w-3xl mx-auto">
-                <h3 className="text-3xl md:text-4xl font-bold mb-6">{t.servicesPage.projectIdea}</h3>
-                <p className="text-xl mb-8 opacity-90">
+                      <div className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
+                        <span>{t.servicesPage.viewProject}</span>
+                        <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </div>
+                    </div>
+                  </div>
+                </motion.a>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 lg:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground/[0.02] via-background to-background" />
+        </div>
+        
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <motion.div
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.4 }}
+              className="max-w-3xl mx-auto"
+            >
+              <div 
+                className="relative p-10 lg:p-12 rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm text-center"
+                style={{
+                  boxShadow: '0 8px 40px hsl(var(--foreground) / 0.03)'
+                }}
+              >
+                <div className="absolute top-0 left-0 w-20 h-20 border-l border-t border-foreground/[0.06] rounded-tl-3xl" />
+                <div className="absolute bottom-0 right-0 w-20 h-20 border-r border-b border-foreground/[0.06] rounded-br-3xl" />
+                
+                <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-4 leading-tight">
+                  {t.servicesPage.projectIdea}
+                </h2>
+                <p className="text-muted-foreground mb-8 leading-relaxed max-w-xl mx-auto">
                   {t.servicesPage.projectIdeaDescription}
                 </p>
-                <Button 
-                  size="lg"
-                  className="bg-white text-primary hover:bg-gray-100 font-semibold px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
-                  onClick={() => window.open('https://wa.me/5581993964261', '_blank')}
+                
+                <a 
+                  href="https://wa.me/5581993964261" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-3 px-8 py-4 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300 hover:opacity-90"
+                  style={{
+                    boxShadow: '0 0 30px hsl(var(--foreground) / 0.2)'
+                  }}
                 >
                   {t.servicesPage.requestQuote}
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </a>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </ScrollReveal>
         </div>
-      </div>
+      </section>
     </Layout>
   );
 };
