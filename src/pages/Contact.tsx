@@ -7,7 +7,7 @@ import SocialIcons from "@/components/ui/SocialIcons";
 import GlassCard from "@/components/ui/GlassCard";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
-import { Mail, Phone, MapPin, Calendar, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, MapPin, Calendar, ArrowUpRight, Send, MessageSquare } from "lucide-react";
 
 const Contact = () => {
   const { language } = useTheme();
@@ -29,16 +29,22 @@ const Contact = () => {
     {
       icon: MapPin,
       label: t.contact.location,
-      value: "Recife, Pernambuco - Brasil",
+      value: "Recife, Pernambuco, Brasil",
       link: null
     }
+  ];
+
+  const availabilityItems = [
+    { label: getText(language, 'Segunda - Sexta', 'Monday - Friday'), value: '09:00 - 18:00' },
+    { label: getText(language, 'Sábado', 'Saturday'), value: '10:00 - 14:00' },
+    { label: getText(language, 'Domingo', 'Sunday'), value: getText(language, 'Fechado', 'Closed') }
   ];
 
   return (
     <Layout>
       {/* Hero Section */}
       <ParallaxSection 
-        className="pt-24 pb-10 lg:pt-28 lg:pb-12"
+        className="pt-24 pb-16 lg:pt-28 lg:pb-20"
         speed={0.1}
         backgroundElement={
           <>
@@ -69,22 +75,21 @@ const Contact = () => {
         </div>
       </ParallaxSection>
 
-      {/* Recess Notice Banner */}
-      <section className="pb-8 relative">
+      {/* Recess Notice */}
+      <section className="pb-12 relative">
         <div className="container mx-auto px-6 lg:px-8">
           <ScrollReveal>
             <motion.div
               whileHover={{ y: -2 }}
               transition={{ duration: 0.3 }}
-              className="max-w-2xl mx-auto"
+              className="max-w-3xl"
             >
               <div 
-                className="relative rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm overflow-hidden"
+                className="relative rounded-2xl border border-border/20 bg-gradient-to-br from-foreground/[0.03] to-transparent backdrop-blur-sm overflow-hidden"
                 style={{
                   boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
                 }}
               >
-                {/* Accent line */}
                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-foreground/20" />
                 
                 <div className="p-6 pl-7 flex items-center gap-4">
@@ -97,8 +102,8 @@ const Contact = () => {
                   <div className="flex-1 min-w-0">
                     <p className="text-foreground text-sm font-medium leading-relaxed">
                       {getText(language,
-                        "Em recesso até 15/01/2026 — respostas podem ter atraso.",
-                        "On recess until Jan 15, 2026 — responses may be delayed."
+                        "Em recesso até 15/01/2026. Respostas podem ter atraso.",
+                        "On recess until Jan 15, 2026. Responses may be delayed."
                       )}
                     </p>
                     <p className="text-muted-foreground/70 text-xs mt-1">
@@ -119,9 +124,9 @@ const Contact = () => {
         </div>
         
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
             {/* Contact Information */}
-            <div className="space-y-8">
+            <div className="lg:col-span-2 space-y-8">
               <ScrollReveal>
                 <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-8">
                   {t.contact.info}
@@ -142,28 +147,28 @@ const Contact = () => {
                           rel="noopener noreferrer"
                           className="block group"
                         >
-                          <GlassCard className="p-5" hover={false} glow={true}>
+                          <GlassCard className="p-5" hover={false} glow>
                             <div className="flex items-center gap-4">
                               <div className="w-12 h-12 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center group-hover:border-foreground/20 transition-colors duration-300">
                                 <item.icon className="w-5 h-5 text-foreground/70 group-hover:text-foreground transition-colors duration-300" />
                               </div>
                               <div className="flex-1">
-                                <p className="text-sm text-muted-foreground/70">{item.label}</p>
-                                <p className="text-foreground font-medium">{item.value}</p>
+                                <p className="text-xs text-muted-foreground/70 mb-0.5">{item.label}</p>
+                                <p className="text-foreground font-medium text-sm">{item.value}</p>
                               </div>
                               <ArrowUpRight className="w-4 h-4 text-foreground/30 group-hover:text-foreground/70 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                             </div>
                           </GlassCard>
                         </a>
                       ) : (
-                        <GlassCard className="p-5" hover={false} glow={false}>
+                        <GlassCard className="p-5" hover={false}>
                           <div className="flex items-center gap-4">
                             <div className="w-12 h-12 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center">
                               <item.icon className="w-5 h-5 text-foreground/70" />
                             </div>
                             <div className="flex-1">
-                              <p className="text-sm text-muted-foreground/70">{item.label}</p>
-                              <p className="text-foreground font-medium">{item.value}</p>
+                              <p className="text-xs text-muted-foreground/70 mb-0.5">{item.label}</p>
+                              <p className="text-foreground font-medium text-sm">{item.value}</p>
                             </div>
                           </div>
                         </GlassCard>
@@ -173,33 +178,55 @@ const Contact = () => {
                 ))}
               </div>
               
-              {/* Social Icons */}
+              {/* Availability */}
               <ScrollReveal delay={0.3}>
-                <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-6">
-                  <h3 className="text-sm font-medium text-foreground mb-4">
+                <GlassCard className="p-6" hover={false}>
+                  <h3 className="font-serif text-base text-foreground mb-4">
+                    {getText(language, 'Disponibilidade', 'Availability')}
+                  </h3>
+                  <div className="space-y-3">
+                    {availabilityItems.map((item, index) => (
+                      <div key={index} className="flex items-center justify-between text-sm">
+                        <span className="text-muted-foreground">{item.label}</span>
+                        <span className="text-foreground font-medium">{item.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </GlassCard>
+              </ScrollReveal>
+
+              {/* Social Icons */}
+              <ScrollReveal delay={0.4}>
+                <GlassCard className="p-6" hover={false}>
+                  <h3 className="font-serif text-base text-foreground mb-4">
                     {t.contact.social}
                   </h3>
                   <SocialIcons className="flex flex-wrap gap-3" />
-                </div>
+                </GlassCard>
               </ScrollReveal>
             </div>
             
             {/* Contact Form */}
-            <ScrollReveal delay={0.2} direction="right">
-              <motion.div
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.4 }}
-              >
-                <div 
-                  className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-8"
-                  style={{
-                    boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
-                  }}
+            <div className="lg:col-span-3">
+              <ScrollReveal delay={0.2} direction="right">
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.4 }}
                 >
-                  <ContactForm />
-                </div>
-              </motion.div>
-            </ScrollReveal>
+                  <GlassCard className="p-8 lg:p-10" hover={false} glow>
+                    <div className="flex items-center gap-3 mb-8">
+                      <div className="w-10 h-10 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center">
+                        <Send className="w-5 h-5 text-foreground/70" />
+                      </div>
+                      <h2 className="font-serif text-xl text-foreground">
+                        {getText(language, 'Enviar mensagem', 'Send message')}
+                      </h2>
+                    </div>
+                    <ContactForm />
+                  </GlassCard>
+                </motion.div>
+              </ScrollReveal>
+            </div>
           </div>
         </div>
       </section>
@@ -226,6 +253,10 @@ const Contact = () => {
               >
                 <div className="absolute top-0 left-0 w-20 h-20 border-l border-t border-foreground/[0.06] rounded-tl-3xl" />
                 <div className="absolute bottom-0 right-0 w-20 h-20 border-r border-b border-foreground/[0.06] rounded-br-3xl" />
+                
+                <div className="w-14 h-14 rounded-2xl border border-border/30 bg-card/50 flex items-center justify-center mx-auto mb-6">
+                  <MessageSquare className="w-7 h-7 text-foreground/70" />
+                </div>
                 
                 <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-4 leading-tight">
                   {getText(language, 'Prefere uma conversa rápida?', 'Prefer a quick chat?')}

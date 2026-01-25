@@ -1,3 +1,6 @@
+import { motion } from "framer-motion";
+import { CheckCircle, Star, Circle } from "lucide-react";
+
 interface TechListProps {
   title: string;
   items: string[];
@@ -5,46 +8,44 @@ interface TechListProps {
 }
 
 const TechList = ({ title, items, variant = "requirements" }: TechListProps) => {
-  const getVariantStyles = () => {
+  const getIcon = () => {
     switch (variant) {
       case "features":
-        return {
-          containerBg: "bg-gray-50 dark:bg-gray-800/50",
-          border: "border-gray-200 dark:border-gray-700",
-          iconColor: "text-gray-700 dark:text-gray-300",
-          symbol: "✓"
-        };
+        return CheckCircle;
       case "benefits":
-        return {
-          containerBg: "bg-gray-100 dark:bg-gray-800/70",
-          border: "border-gray-300 dark:border-gray-600", 
-          iconColor: "text-gray-800 dark:text-gray-200",
-          symbol: "★"
-        };
+        return Star;
       default:
-        return {
-          containerBg: "bg-gray-50 dark:bg-gray-800/30",
-          border: "border-gray-200 dark:border-gray-700",
-          iconColor: "text-gray-600 dark:text-gray-400",
-          symbol: "•"
-        };
+        return Circle;
     }
   };
 
-  const styles = getVariantStyles();
+  const Icon = getIcon();
 
   return (
-    <div className={`${styles.containerBg} ${styles.border} border rounded-lg p-4 my-4`}>
-      <h4 className="font-semibold text-gray-900 dark:text-white mb-3">{title}</h4>
-      <ul className="space-y-2">
+    <motion.div 
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4 }}
+      className="rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm p-5 my-5"
+    >
+      <h4 className="font-serif text-base text-foreground mb-4">{title}</h4>
+      <ul className="space-y-3">
         {items.map((item, index) => (
-          <li key={index} className="flex items-start gap-3">
-            <span className={`${styles.iconColor} font-bold mt-0.5`}>{styles.symbol}</span>
-            <span className="text-gray-700 dark:text-gray-300">{item}</span>
-          </li>
+          <motion.li 
+            key={index} 
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3, delay: index * 0.05 }}
+            className="flex items-start gap-3"
+          >
+            <Icon className="w-4 h-4 text-foreground/50 mt-0.5 flex-shrink-0" />
+            <span className="text-sm text-muted-foreground leading-relaxed">{item}</span>
+          </motion.li>
         ))}
       </ul>
-    </div>
+    </motion.div>
   );
 };
 
