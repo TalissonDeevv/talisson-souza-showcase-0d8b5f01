@@ -41,7 +41,7 @@ const Footer = () => {
                 <img 
                   src={logo} 
                   alt="TS" 
-                  className="h-10 w-auto invert dark:invert-0" 
+                  className="h-14 w-auto invert dark:invert-0" 
                 />
               </Link>
               

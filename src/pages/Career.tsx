@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
-import SectionTitle from "@/components/ui/SectionTitle";
+
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
@@ -334,35 +334,46 @@ I'm not here just to occupy a space in the market. I'm here to help build a fair
 
   return (
     <Layout>
-      <div className="container mx-auto px-4 pt-32 pb-16">
-        <SectionTitle subtitle={tt.subtitle} align="center">
-          {tt.title}
-        </SectionTitle>
+      <div className="container mx-auto px-6 lg:px-8 pt-32 pb-16">
+        {/* Hero Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-3xl mb-16"
+        >
+          <span className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium">
+            <span className="w-8 h-px bg-foreground/30" />
+            {tt.title}
+          </span>
+          <h1 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.1]">
+            {tt.subtitle}
+          </h1>
+        </motion.div>
 
         {/* Stats Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16"
         >
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 text-center shadow-lg border border-gray-200 dark:border-gray-700"
+              className="rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm p-5 text-center"
             >
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-secondary text-foreground mb-4">
-                <stat.icon className="w-6 h-6" />
+              <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border/30 text-foreground/70 mb-3">
+                <stat.icon className="w-5 h-5" />
               </div>
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-1">{stat.value}</h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">{stat.label}</p>
+              <h3 className="text-2xl font-serif text-foreground mb-1">{stat.value}</h3>
+              <p className="text-xs text-muted-foreground/70">{stat.label}</p>
             </div>
           ))}
         </motion.div>
 
         {/* My Story Section */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">{tt.myStory}</h2>
+          <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-8">{tt.myStory}</h2>
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -371,22 +382,22 @@ I'm not here just to occupy a space in the market. I'm here to help build a fair
             transition={{ duration: 0.6 }}
             className="space-y-8"
           >
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-8">
-              <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <Sparkles className="w-6 h-6 text-foreground" />
+            <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-8">
+              <h3 className="text-lg font-medium text-foreground mb-4 flex items-center gap-3">
+                <Sparkles className="w-5 h-5 text-foreground/60" />
                 {tt.myJourney}
               </h3>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg whitespace-pre-line">
+              <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
                 {language === 'pt' ? storyPt : storyEn}
               </p>
             </div>
 
-            <div className="bg-secondary rounded-2xl shadow-lg border border-border p-8">
-              <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <Target className="w-6 h-6 text-foreground" />
+            <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-8">
+              <h3 className="text-lg font-medium text-foreground mb-4 flex items-center gap-3">
+                <Target className="w-5 h-5 text-foreground/60" />
                 {tt.whyCompany}
               </h3>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg whitespace-pre-line">
+              <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
                 {language === 'pt' ? whyCompanyPt : whyCompanyEn}
               </p>
             </div>
@@ -395,7 +406,7 @@ I'm not here just to occupy a space in the market. I'm here to help build a fair
 
         {/* Timeline Section */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">{tt.timeline}</h2>
+          <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-8">{tt.timeline}</h2>
           
           <div className="space-y-8">
             {timelineEvents.map((event, index) => (
@@ -405,18 +416,18 @@ I'm not here just to occupy a space in the market. I'm here to help build a fair
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-200 dark:border-gray-700"
+                className="rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm p-6"
               >
                 <div className="flex items-start gap-4">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-secondary text-foreground flex-shrink-0">
-                    <event.icon className="w-6 h-6" />
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border/30 text-foreground/60 flex-shrink-0">
+                    <event.icon className="w-5 h-5" />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="text-2xl font-bold text-foreground">{event.year}</span>
-                      <h3 className="text-lg font-bold text-gray-900 dark:text-white">{event.title}</h3>
+                      <span className="text-xl font-serif text-foreground">{event.year}</span>
+                      <h3 className="text-sm font-medium text-foreground">{event.title}</h3>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{event.description}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{event.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -426,7 +437,7 @@ I'm not here just to occupy a space in the market. I'm here to help build a fair
 
         {/* Companies Section */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">{tt.companies}</h2>
+          <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-8">{tt.companies}</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {companies.map((company, index) => (
@@ -444,7 +455,7 @@ I'm not here just to occupy a space in the market. I'm here to help build a fair
 
         {/* Partnerships Section */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">{tt.partnerships}</h2>
+          <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-8">{tt.partnerships}</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {partnerships.map((partnership, index) => (
