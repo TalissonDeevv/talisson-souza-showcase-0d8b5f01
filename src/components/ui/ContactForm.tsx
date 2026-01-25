@@ -2,11 +2,14 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation } from "@/utils/translations";
-import { Check, Send } from "lucide-react";
+import { Check, Send, AlertCircle } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const ContactForm = () => {
   const { language } = useTheme();
   const t = useTranslation(language);
+  const { toast } = useToast();
   
   const [formData, setFormData] = useState({
     name: "",
@@ -15,6 +18,35 @@ const ContactForm = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState<{name?: string; email?: string; message?: string}>({});
+
+  const validateForm = () => {
+    const newErrors: {name?: string; email?: string; message?: string} = {};
+    
+    if (!formData.name.trim()) {
+      newErrors.name = language === 'pt' ? 'Nome é obrigatório' : 'Name is required';
+    } else if (formData.name.length > 100) {
+      newErrors.name = language === 'pt' ? 'Nome muito longo (máx. 100)' : 'Name too long (max. 100)';
+    }
+    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim()) {
+      newErrors.email = language === 'pt' ? 'Email é obrigatório' : 'Email is required';
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = language === 'pt' ? 'Email inválido' : 'Invalid email';
+    } else if (formData.email.length > 255) {
+      newErrors.email = language === 'pt' ? 'Email muito longo' : 'Email too long';
+    }
+    
+    if (!formData.message.trim()) {
+      newErrors.message = language === 'pt' ? 'Mensagem é obrigatória' : 'Message is required';
+    } else if (formData.message.length > 5000) {
+      newErrors.message = language === 'pt' ? 'Mensagem muito longa (máx. 5000)' : 'Message too long (max. 5000)';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -22,14 +54,34 @@ const ContactForm = () => {
       ...prev,
       [name]: value,
     }));
+    // Clear error when user starts typing
+    if (errors[name as keyof typeof errors]) {
+      setErrors(prev => ({ ...prev, [name]: undefined }));
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+    
     setIsSubmitting(true);
     
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          message: formData.message.trim(),
+        },
+      });
+      
+      if (error) {
+        throw new Error(error.message || 'Erro ao enviar mensagem');
+      }
+      
       setIsSubmitted(true);
       setFormData({
         name: "",
@@ -37,10 +89,26 @@ const ContactForm = () => {
         message: "",
       });
       
+      toast({
+        title: language === 'pt' ? "Mensagem enviada!" : "Message sent!",
+        description: language === 'pt' ? "Entrarei em contato em breve." : "I'll get back to you soon.",
+      });
+      
       setTimeout(() => {
         setIsSubmitted(false);
       }, 5000);
-    }, 1000);
+    } catch (error: any) {
+      console.error('Error sending contact form:', error);
+      toast({
+        title: language === 'pt' ? "Erro ao enviar" : "Error sending",
+        description: language === 'pt' 
+          ? "Tente novamente ou entre em contato pelo WhatsApp." 
+          : "Try again or contact via WhatsApp.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -74,10 +142,15 @@ const ContactForm = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              required
-              className="w-full px-4 py-3 border border-border/30 bg-background/50 text-foreground rounded-xl focus:outline-none focus:ring-2 focus:ring-foreground/10 focus:border-foreground/30 transition-all duration-300 placeholder:text-muted-foreground/50"
+              className={`w-full px-4 py-3 border bg-background/50 text-foreground rounded-xl focus:outline-none focus:ring-2 focus:ring-foreground/10 focus:border-foreground/30 transition-all duration-300 placeholder:text-muted-foreground/50 ${errors.name ? 'border-red-500/50' : 'border-border/30'}`}
               placeholder={language === 'pt' ? 'Seu nome' : 'Your name'}
             />
+            {errors.name && (
+              <p className="text-red-400 text-xs mt-1 flex items-center gap-1">
+                <AlertCircle className="w-3 h-3" />
+                {errors.name}
+              </p>
+            )}
           </div>
           
           <div>
@@ -90,10 +163,15 @@ const ContactForm = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              required
-              className="w-full px-4 py-3 border border-border/30 bg-background/50 text-foreground rounded-xl focus:outline-none focus:ring-2 focus:ring-foreground/10 focus:border-foreground/30 transition-all duration-300 placeholder:text-muted-foreground/50"
+              className={`w-full px-4 py-3 border bg-background/50 text-foreground rounded-xl focus:outline-none focus:ring-2 focus:ring-foreground/10 focus:border-foreground/30 transition-all duration-300 placeholder:text-muted-foreground/50 ${errors.email ? 'border-red-500/50' : 'border-border/30'}`}
               placeholder={language === 'pt' ? 'seu@email.com' : 'your@email.com'}
             />
+            {errors.email && (
+              <p className="text-red-400 text-xs mt-1 flex items-center gap-1">
+                <AlertCircle className="w-3 h-3" />
+                {errors.email}
+              </p>
+            )}
           </div>
           
           <div>
@@ -105,11 +183,16 @@ const ContactForm = () => {
               name="message"
               value={formData.message}
               onChange={handleChange}
-              required
               rows={5}
-              className="w-full px-4 py-3 border border-border/30 bg-background/50 text-foreground rounded-xl focus:outline-none focus:ring-2 focus:ring-foreground/10 focus:border-foreground/30 transition-all duration-300 resize-none placeholder:text-muted-foreground/50"
+              className={`w-full px-4 py-3 border bg-background/50 text-foreground rounded-xl focus:outline-none focus:ring-2 focus:ring-foreground/10 focus:border-foreground/30 transition-all duration-300 resize-none placeholder:text-muted-foreground/50 ${errors.message ? 'border-red-500/50' : 'border-border/30'}`}
               placeholder={language === 'pt' ? 'Conte sobre seu projeto...' : 'Tell us about your project...'}
             />
+            {errors.message && (
+              <p className="text-red-400 text-xs mt-1 flex items-center gap-1">
+                <AlertCircle className="w-3 h-3" />
+                {errors.message}
+              </p>
+            )}
           </div>
           
           <motion.button
