@@ -335,20 +335,17 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Achievements - Premium Stats with visual interest */}
-      <section className="py-28 lg:py-36 relative overflow-hidden">
+      {/* Achievements - Compact Stats */}
+      <section className="py-16 lg:py-20 relative overflow-hidden">
         {/* Background layers */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-b from-card/40 via-background to-card/40" />
-          {/* Horizontal accent lines */}
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
-          {/* Center glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-b from-card/20 via-background to-card/20" />
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
         </div>
         
         <div className="container mx-auto px-6 lg:px-8 relative">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
             {[{
               value: '50+',
               label: getText(language, 'Projetos', 'Projects')
@@ -362,26 +359,25 @@ const Index = () => {
               value: '100%',
               label: getText(language, 'Satisfação', 'Satisfaction')
             }].map((stat, index) => (
-              <ScrollReveal key={stat.label} delay={index * 0.08}>
+              <ScrollReveal key={stat.label} delay={index * 0.06}>
                 <motion.div 
-                  className="relative text-center p-8 rounded-2xl group cursor-default"
-                  whileHover={{ y: -4 }}
-                  transition={{ duration: 0.3 }}
+                  className="relative text-center p-4 lg:p-5 rounded-xl group cursor-default"
+                  whileHover={{ y: -2 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  {/* Hover background */}
-                  <div className="absolute inset-0 rounded-2xl bg-card/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 border border-border/20" />
+                  <div className="absolute inset-0 rounded-xl bg-card/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-border/10" />
                   
                   <motion.p 
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.08 }}
-                    className="relative font-serif text-5xl lg:text-6xl text-foreground mb-3"
-                    style={{ letterSpacing: '-0.04em' }}
+                    transition={{ duration: 0.4, delay: index * 0.06 }}
+                    className="relative font-serif text-2xl lg:text-3xl text-foreground mb-1"
+                    style={{ letterSpacing: '-0.02em' }}
                   >
                     {stat.value}
                   </motion.p>
-                  <p className="relative text-xs tracking-[0.2em] uppercase text-muted-foreground/60 font-medium">{stat.label}</p>
+                  <p className="relative text-[10px] tracking-[0.15em] uppercase text-muted-foreground/60 font-medium">{stat.label}</p>
                 </motion.div>
               </ScrollReveal>
             ))}
@@ -831,36 +827,74 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Terminal Section - Premium */}
-      <section className="py-32 relative overflow-hidden">
+      {/* Philosophy Section */}
+      <section className="py-24 lg:py-32 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-b from-background via-card/10 to-background" />
+          <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl" />
         </div>
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <div className="max-w-4xl mx-auto">
             <ScrollReveal>
-              <div className="text-center mb-16">
-                <motion.span 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
-                >
-                  {getText(language, 'Experimente', 'Try it out')}
-                </motion.span>
-                <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6 leading-tight">
-                  {language === 'pt' ? 'Terminal Interativo' : 'Interactive Terminal'}
-                </h2>
-                <p className="text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
-                  {language === 'pt' ? 'Experimente navegar pelo meu perfil usando comandos de terminal. Digite "help" para ver os comandos disponíveis.' : 'Try navigating my profile using terminal commands. Type "help" to see available commands.'}
-                </p>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div>
+                  <motion.span 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+                  >
+                    <span className="w-8 h-px bg-foreground/30" />
+                    {getText(language, 'Filosofia', 'Philosophy')}
+                  </motion.span>
+                  <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6 leading-tight">
+                    {language === 'pt' ? 'Como eu trabalho' : 'How I work'}
+                  </h2>
+                  <p className="text-base text-muted-foreground leading-relaxed mb-4">
+                    {language === 'pt' 
+                      ? 'Acredito que a tecnologia deve simplificar, não complicar. Cada projeto é uma oportunidade de criar algo que realmente faça diferença.' 
+                      : 'I believe technology should simplify, not complicate. Every project is an opportunity to create something that truly makes a difference.'}
+                  </p>
+                  <p className="text-base text-muted-foreground leading-relaxed">
+                    {language === 'pt' 
+                      ? 'Meu foco está em soluções elegantes, código limpo e resultados mensuráveis.' 
+                      : 'My focus is on elegant solutions, clean code, and measurable results.'}
+                  </p>
+                </div>
+                
+                <div className="space-y-4">
+                  {[{
+                    number: '01',
+                    title: getText(language, 'Simplicidade', 'Simplicity'),
+                    text: getText(language, 'Menos é mais. Código limpo e interfaces intuitivas.', 'Less is more. Clean code and intuitive interfaces.')
+                  }, {
+                    number: '02',
+                    title: getText(language, 'Qualidade', 'Quality'),
+                    text: getText(language, 'Atenção aos detalhes em cada entrega.', 'Attention to detail in every delivery.')
+                  }, {
+                    number: '03',
+                    title: getText(language, 'Resultado', 'Results'),
+                    text: getText(language, 'Foco em impacto real e mensurável.', 'Focus on real and measurable impact.')
+                  }].map((item, index) => (
+                    <motion.div
+                      key={item.number}
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                      className="flex gap-4 p-4 rounded-xl border border-border/20 bg-card/20 group hover:bg-card/40 transition-colors duration-300"
+                    >
+                      <span className="text-lg font-serif text-foreground/20 group-hover:text-foreground/40 transition-colors duration-300">{item.number}</span>
+                      <div>
+                        <h3 className="text-sm font-medium text-foreground mb-1">{item.title}</h3>
+                        <p className="text-xs text-muted-foreground">{item.text}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-            </ScrollReveal>
-            
-            <ScrollReveal delay={0.2}>
-              <FloatingTerminal />
             </ScrollReveal>
           </div>
         </div>

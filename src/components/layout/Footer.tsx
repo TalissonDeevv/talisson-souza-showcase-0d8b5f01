@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation } from "@/utils/translations";
 import { ArrowUpRight } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const { language } = useTheme();
@@ -37,9 +38,11 @@ const Footer = () => {
             {/* Brand & Description */}
             <div className="lg:col-span-5">
               <Link to="/" className="inline-block mb-8">
-                <span className="font-serif text-2xl tracking-tight text-foreground">
-                  Talisson Souza
-                </span>
+                <img 
+                  src={logo} 
+                  alt="TS" 
+                  className="h-10 w-auto invert dark:invert-0" 
+                />
               </Link>
               
               <p className="text-xs tracking-widest uppercase text-muted-foreground mb-4">
@@ -130,7 +133,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="py-6 border-t border-border/30 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            © {currentYear} Talisson Souza
+            © {currentYear} TS
           </p>
           <p className="text-xs text-muted-foreground/60">
             {t.footer.madeWith}

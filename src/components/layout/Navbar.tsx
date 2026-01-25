@@ -1,15 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation } from "@/utils/translations";
 import ThemeLanguageToggle from "@/components/ui/ThemeLanguageToggle";
+import logo from "@/assets/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const { language } = useTheme();
   const t = useTranslation(language);
+
+  const isHome = location.pathname === "/";
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -22,15 +35,21 @@ const Navbar = () => {
     { name: t.nav.blog, path: "/blog" },
   ];
 
+  const navBackground = isHome && !isScrolled 
+    ? "bg-transparent border-transparent" 
+    : "bg-background/90 backdrop-blur-sm border-border/40";
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border/40">
+    <nav className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${navBackground}`}>
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Brand */}
           <Link to="/" className="group">
-            <span className="font-serif text-xl tracking-tight text-foreground">
-              Talisson Souza
-            </span>
+            <img 
+              src={logo} 
+              alt="TS" 
+              className="h-8 w-auto invert dark:invert-0 transition-opacity duration-200 group-hover:opacity-80" 
+            />
           </Link>
 
           {/* Desktop Navigation */}
