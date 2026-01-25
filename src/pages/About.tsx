@@ -1,11 +1,9 @@
-
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
-
+import ScrollReveal from "@/components/ui/ScrollReveal";
 import SocialIcons from "@/components/ui/SocialIcons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { Download, User, Briefcase, Code, GraduationCap, Heart, Music, Coffee, Gamepad2, BookOpen, Zap, Rocket, Book, ShoppingCart, Star, Award, Calendar, ExternalLink, Users } from "lucide-react";
+import { Download, User, Briefcase, GraduationCap, Heart, Music, Coffee, Gamepad2, BookOpen, Zap, Rocket, Star, Award, Calendar, ExternalLink, Users, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
@@ -62,7 +60,7 @@ Ultimately, my mission is to create solutions that truly make a difference, with
     {
       company: "Global Mode",
       position: "CTO",
-      period: "2023 - 2024 Encerrado",
+      period: "2023 - 2024 (Encerrado)",
       description: "Desenvolvimento de soluções personalizadas para clientes diversos, incluindo sistemas web e automações."
     }
   ];
@@ -89,31 +87,9 @@ Ultimately, my mission is to create solutions that truly make a difference, with
     {
       company: "Global Mode",
       position: "CTO",
-      period: "2023 - 2024 closed",
+      period: "2023 - 2024 (Closed)",
       description: "Development of custom solutions for diverse clients, including web systems and automation."
     }
-  ];
-
-  const skillsPt = [
-    { name: "JavaScript/TypeScript", level: 95, icon: Code },
-    { name: "React/Next.js", level: 90, icon: Code },
-    { name: "Node.js", level: 85, icon: Code },
-    { name: "Python", level: 80, icon: Code },
-    { name: "AWS/Cloud", level: 75, icon: Zap },
-    { name: "Docker", level: 70, icon: Zap },
-    { name: "MongoDB/PostgreSQL", level: 85, icon: Code },
-    { name: "GraphQL/REST APIs", level: 90, icon: Code }
-  ];
-
-  const skillsEn = [
-    { name: "JavaScript/TypeScript", level: 95, icon: Code },
-    { name: "React/Next.js", level: 90, icon: Code },
-    { name: "Node.js", level: 85, icon: Code },
-    { name: "Python", level: 80, icon: Code },
-    { name: "AWS/Cloud", level: 75, icon: Zap },
-    { name: "Docker", level: 70, icon: Zap },
-    { name: "MongoDB/PostgreSQL", level: 85, icon: Code },
-    { name: "GraphQL/REST APIs", level: 90, icon: Code }
   ];
 
   const educationPt = [
@@ -147,39 +123,15 @@ Ultimately, my mission is to create solutions that truly make a difference, with
   ];
 
   const valuesPt = [
-    {
-      title: "Qualidade",
-      description: "Sempre busco entregar código limpo, eficiente e bem documentado",
-      icon: Zap
-    },
-    {
-      title: "Aprendizado",
-      description: "Estou sempre estudando novas tecnologias e aprimorando minhas habilidades",
-      icon: BookOpen
-    },
-    {
-      title: "Colaboração",
-      description: "Acredito que os melhores projetos surgem do trabalho em equipe",
-      icon: Heart
-    }
+    { title: "Qualidade", description: "Sempre busco entregar código limpo, eficiente e bem documentado", icon: Zap },
+    { title: "Aprendizado", description: "Estou sempre estudando novas tecnologias e aprimorando minhas habilidades", icon: BookOpen },
+    { title: "Colaboração", description: "Acredito que os melhores projetos surgem do trabalho em equipe", icon: Heart }
   ];
 
   const valuesEn = [
-    {
-      title: "Quality",
-      description: "I always strive to deliver clean, efficient and well-documented code",
-      icon: Zap
-    },
-    {
-      title: "Learning",
-      description: "I'm always studying new technologies and improving my skills",
-      icon: BookOpen
-    },
-    {
-      title: "Collaboration",
-      description: "I believe the best projects come from teamwork",
-      icon: Heart
-    }
+    { title: "Quality", description: "I always strive to deliver clean, efficient and well-documented code", icon: Zap },
+    { title: "Learning", description: "I'm always studying new technologies and improving my skills", icon: BookOpen },
+    { title: "Collaboration", description: "I believe the best projects come from teamwork", icon: Heart }
   ];
 
   const hobbiesPt = [
@@ -196,7 +148,6 @@ Ultimately, my mission is to create solutions that truly make a difference, with
     { name: "Gaming", icon: Gamepad2 }
   ];
 
-  // Certificates data
   const certificatesPt = [
     {
       id: 1,
@@ -258,7 +209,6 @@ Ultimately, my mission is to create solutions that truly make a difference, with
   ];
 
   const currentExperiences = language === 'pt' ? experiencesPt : experiencesEn;
-  const currentSkills = language === 'pt' ? skillsPt : skillsEn;
   const currentEducation = language === 'pt' ? educationPt : educationEn;
   const currentValues = language === 'pt' ? valuesPt : valuesEn;
   const currentHobbies = language === 'pt' ? hobbiesPt : hobbiesEn;
@@ -266,372 +216,366 @@ Ultimately, my mission is to create solutions that truly make a difference, with
 
   return (
     <Layout>
-      <div className="container mx-auto px-6 lg:px-8 pt-32 pb-16">
-        {/* Hero Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="max-w-3xl mb-16"
-        >
-          <span className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium">
-            <span className="w-8 h-px bg-foreground/30" />
-            {t.about.title}
-          </span>
-          <h1 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.1]">
-            Talisson Souza
-          </h1>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            {t.about.subtitle}
-          </p>
-        </motion.div>
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 lg:pt-40 lg:pb-20 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+          <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+        </div>
         
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col lg:flex-row gap-12 mb-16">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="w-full lg:w-1/3 flex flex-col items-center gap-8"
-            >
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-radial from-foreground/10 to-transparent rounded-full blur-2xl opacity-30 scale-110"></div>
-                <Avatar className="h-64 w-64 border-2 border-border/30 shadow-xl relative z-10">
-                  <AvatarImage src="https://i.ibb.co/MySV14GV/Polish-20231015-221849134-112435.jpg" alt="Talisson Souza" className="object-cover" />
-                  <AvatarFallback>TS</AvatarFallback>
-                </Avatar>
-              </div>
-              
-              <div className="p-6 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm w-full">
-                <h3 className="text-sm font-medium text-foreground mb-4 text-center">{t.about.socials}</h3>
-                <SocialIcons className="flex-wrap justify-center gap-4" />
-              </div>
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <div className="max-w-3xl">
+              <motion.span 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+              >
+                <span className="w-8 h-px bg-foreground/30" />
+                {t.about.title}
+              </motion.span>
+              <h1 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-foreground mb-6 leading-[1.1]">
+                Talisson Souza
+              </h1>
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+                {t.about.subtitle}
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
 
-              <div className="p-6 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm w-full">
-                <h3 className="text-sm font-medium text-foreground mb-4 text-center">{t.about.curriculum}</h3>
-                <Button 
-                  className="w-full bg-foreground hover:bg-foreground/90 text-primary-foreground mb-3 py-2.5 rounded-xl font-medium transition-all duration-300"
-                  onClick={() => window.open('https://drive.google.com/file/d/1JBmXK4aCAPfeY4kuEc5QpO-ehlA2rfWO/view?usp=sharing', '_blank')}
-                >
-                  <Download className="w-4 h-4 mr-2" />
-                  {t.about.downloadCV}
-                </Button>
-                <p className="text-xs text-muted-foreground/70 text-center leading-relaxed">
-                  {t.about.cvDescription}
-                </p>
+      {/* Main Content */}
+      <section className="py-16 lg:py-20 relative">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            {/* Sidebar */}
+            <ScrollReveal className="lg:col-span-4">
+              <div className="lg:sticky lg:top-32 space-y-6">
+                {/* Avatar */}
+                <div className="relative flex justify-center lg:justify-start">
+                  <div className="absolute inset-0 bg-gradient-radial from-foreground/10 to-transparent rounded-full blur-2xl opacity-30 scale-110" />
+                  <Avatar className="h-48 w-48 border-2 border-border/30 relative z-10">
+                    <AvatarImage src="https://i.ibb.co/MySV14GV/Polish-20231015-221849134-112435.jpg" alt="Talisson Souza" className="object-cover" />
+                    <AvatarFallback>TS</AvatarFallback>
+                  </Avatar>
+                </div>
+                
+                {/* Social */}
+                <div className="p-6 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm">
+                  <h3 className="text-sm font-medium text-foreground mb-4">{t.about.socials}</h3>
+                  <SocialIcons className="flex-wrap gap-3" />
+                </div>
+
+                {/* CV Download */}
+                <div className="p-6 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm">
+                  <h3 className="text-sm font-medium text-foreground mb-4">{t.about.curriculum}</h3>
+                  <button 
+                    onClick={() => window.open('https://drive.google.com/file/d/1JBmXK4aCAPfeY4kuEc5QpO-ehlA2rfWO/view?usp=sharing', '_blank')}
+                    className="w-full group inline-flex items-center justify-center gap-2 text-sm font-medium text-primary-foreground bg-foreground rounded-xl py-3 transition-all duration-300 hover:opacity-90"
+                  >
+                    <Download className="w-4 h-4" />
+                    {t.about.downloadCV}
+                  </button>
+                  <p className="text-xs text-muted-foreground/70 mt-3 leading-relaxed">
+                    {t.about.cvDescription}
+                  </p>
+                </div>
               </div>
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="w-full lg:w-2/3 space-y-8"
-            >
-              <div className="p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm">
-                <Tabs defaultValue="profile" className="w-full">
-                  <TabsList className="grid w-full grid-cols-4 mb-8">
-                    <TabsTrigger value="profile" className="flex items-center gap-2">
-                      <User className="w-4 h-4" />
-                      {t.about.profile}
-                    </TabsTrigger>
-                    <TabsTrigger value="experience" className="flex items-center gap-2">
-                      <Briefcase className="w-4 h-4" />
-                      {t.about.experience}
-                    </TabsTrigger>
-                    <TabsTrigger value="education" className="flex items-center gap-2">
-                      <GraduationCap className="w-4 h-4" />
-                      {language === 'pt' ? 'Formação' : 'Education'}
-                    </TabsTrigger>
-                    <TabsTrigger value="career" className="flex items-center gap-2">
-                      <Rocket className="w-4 h-4" />
-                      {language === 'pt' ? 'Carreira' : 'Career'}
-                    </TabsTrigger>
-                  </TabsList>
-                  
-                  <TabsContent value="profile" className="space-y-6">
-                    <div className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 whitespace-pre-line">
-                      {language === 'pt' ? aboutTextPt : aboutTextEn}
-                    </div>
-                  </TabsContent>
-                  
-                  <TabsContent value="experience" className="space-y-6">
-                    <div className="space-y-6">
+            </ScrollReveal>
+
+            {/* Content */}
+            <div className="lg:col-span-8 space-y-12">
+              {/* Tabs */}
+              <ScrollReveal>
+                <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-6 lg:p-8">
+                  <Tabs defaultValue="profile" className="w-full">
+                    <TabsList className="grid w-full grid-cols-4 mb-8 bg-background/50">
+                      <TabsTrigger value="profile" className="flex items-center gap-2 text-xs sm:text-sm">
+                        <User className="w-4 h-4" />
+                        <span className="hidden sm:inline">{t.about.profile}</span>
+                      </TabsTrigger>
+                      <TabsTrigger value="experience" className="flex items-center gap-2 text-xs sm:text-sm">
+                        <Briefcase className="w-4 h-4" />
+                        <span className="hidden sm:inline">{t.about.experience}</span>
+                      </TabsTrigger>
+                      <TabsTrigger value="education" className="flex items-center gap-2 text-xs sm:text-sm">
+                        <GraduationCap className="w-4 h-4" />
+                        <span className="hidden sm:inline">{language === 'pt' ? 'Formação' : 'Education'}</span>
+                      </TabsTrigger>
+                      <TabsTrigger value="career" className="flex items-center gap-2 text-xs sm:text-sm">
+                        <Rocket className="w-4 h-4" />
+                        <span className="hidden sm:inline">{language === 'pt' ? 'Carreira' : 'Career'}</span>
+                      </TabsTrigger>
+                    </TabsList>
+                    
+                    <TabsContent value="profile" className="space-y-6">
+                      <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                        {language === 'pt' ? aboutTextPt : aboutTextEn}
+                      </p>
+                    </TabsContent>
+                    
+                    <TabsContent value="experience" className="space-y-4">
                       {currentExperiences.map((exp, index) => (
-                        <div key={index} className="bg-white/50 dark:bg-gray-700/50 p-6 rounded-xl border border-gray-200 dark:border-gray-600">
-                          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div key={index} className="p-5 rounded-xl border border-border/20 bg-background/50">
+                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
                             <div>
-                              <h4 className="text-xl font-semibold text-gray-900 dark:text-white">{exp.position}</h4>
-                              <p className="text-lg text-foreground font-medium">{exp.company}</p>
+                              <h4 className="text-base font-medium text-foreground">{exp.position}</h4>
+                              <p className="text-sm text-foreground/70">{exp.company}</p>
                             </div>
-                            <span className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-600 px-3 py-1 rounded-full mt-2 md:mt-0">
+                            <span className="text-xs text-muted-foreground px-3 py-1 rounded-full border border-border/30 bg-card/50 w-fit">
                               {exp.period}
                             </span>
                           </div>
-                          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{exp.description}</p>
+                          <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
                         </div>
                       ))}
-                    </div>
-                  </TabsContent>
+                    </TabsContent>
 
-
-                  <TabsContent value="education" className="space-y-6">
-                    <div className="space-y-6">
+                    <TabsContent value="education" className="space-y-4">
                       {currentEducation.map((edu, index) => (
-                        <div key={index} className="bg-white/50 dark:bg-gray-700/50 p-6 rounded-xl border border-gray-200 dark:border-gray-600">
-                          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div key={index} className="p-5 rounded-xl border border-border/20 bg-background/50">
+                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
                             <div>
-                              <h4 className="text-xl font-semibold text-gray-900 dark:text-white">{edu.title}</h4>
-                              <p className="text-lg text-foreground font-medium">{edu.institution}</p>
+                              <h4 className="text-base font-medium text-foreground">{edu.title}</h4>
+                              <p className="text-sm text-foreground/70">{edu.institution}</p>
                             </div>
-                            <span className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-600 px-3 py-1 rounded-full mt-2 md:mt-0">
+                            <span className="text-xs text-muted-foreground px-3 py-1 rounded-full border border-border/30 bg-card/50 w-fit">
                               {edu.period}
                             </span>
                           </div>
-                          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{edu.description}</p>
+                          <p className="text-sm text-muted-foreground leading-relaxed">{edu.description}</p>
                         </div>
                       ))}
-                    </div>
-                  </TabsContent>
+                    </TabsContent>
 
-                  <TabsContent value="career" className="space-y-6">
-                    <div className="bg-secondary p-8 rounded-xl border border-border">
-                      <div className="text-center mb-6">
-                        <Rocket className="w-16 h-16 text-foreground mx-auto mb-4" />
-                        <h3 className="text-2xl font-bold text-foreground mb-3">
+                    <TabsContent value="career" className="space-y-6">
+                      <div className="p-6 rounded-xl border border-border/20 bg-background/50 text-center">
+                        <Rocket className="w-12 h-12 text-foreground/60 mx-auto mb-4" />
+                        <h3 className="text-lg font-serif text-foreground mb-3">
                           {language === 'pt' ? 'Minha Jornada Profissional' : 'My Professional Journey'}
                         </h3>
-                        <p className="text-muted-foreground leading-relaxed mb-6">
+                        <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-md mx-auto">
                           {language === 'pt' 
                             ? 'Descubra a história completa de como transformei desafios em oportunidades e construí minha carreira no mundo da tecnologia.'
                             : 'Discover the complete story of how I transformed challenges into opportunities and built my career in the tech world.'}
                         </p>
+                        <Link 
+                          to="/career"
+                          className="group inline-flex items-center gap-2 text-sm font-medium text-primary-foreground bg-foreground rounded-full px-6 py-3 transition-all duration-300 hover:opacity-90"
+                        >
+                          {language === 'pt' ? 'Ver Página de Carreira' : 'View Career Page'}
+                          <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                        </Link>
+                      </div>
+                    </TabsContent>
+                  </Tabs>
+                </div>
+              </ScrollReveal>
+
+              {/* Book Section */}
+              <ScrollReveal>
+                <div className="space-y-6">
+                  <h2 className="font-serif text-2xl lg:text-3xl text-foreground">
+                    {language === 'pt' ? 'Meu Livro' : 'My Book'}
+                  </h2>
+                  
+                  <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm overflow-hidden">
+                    <div className="flex flex-col md:flex-row">
+                      <div className="md:w-1/3 p-8 flex items-center justify-center bg-gradient-to-br from-card/50 to-background">
+                        <div className="relative">
+                          <div className="absolute inset-0 bg-foreground/10 rounded-lg blur-xl scale-110" />
+                          <img
+                            src={bookCover}
+                            alt={t.book.title}
+                            className="relative w-40 h-auto rounded-lg shadow-xl"
+                          />
+                        </div>
                       </div>
                       
-                      <Link to="/career">
-                        <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                          {language === 'pt' ? 'Ver Página de Carreira Completa' : 'View Full Career Page'}
-                          <Rocket className="w-5 h-5 ml-2" />
-                        </Button>
-                      </Link>
+                      <div className="md:w-2/3 p-8 space-y-4">
+                        <span className="inline-block px-3 py-1 rounded-full text-xs font-medium border border-border/30 bg-card/50 text-foreground">
+                          {t.book.newRelease}
+                        </span>
+                        
+                        <h3 className="text-xl font-serif text-foreground">{t.book.title}</h3>
+                        
+                        <p className="text-xs text-muted-foreground">
+                          121 {language === 'pt' ? 'capítulos' : 'chapters'}
+                        </p>
+                        
+                        <div className="flex gap-1">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Star key={star} className="w-4 h-4 fill-foreground/70 text-foreground/70" />
+                          ))}
+                        </div>
+                        
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {t.book.aboutText1}
+                        </p>
+                        
+                        <a 
+                          href="https://www.amazon.com.br/dp/B0FXV8WP3Y" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="group inline-flex items-center gap-2 text-sm font-medium text-foreground"
+                        >
+                          <span className="relative">
+                            {t.book.buyOnAmazon}
+                            <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-300" />
+                          </span>
+                          <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        </a>
+                      </div>
                     </div>
-                  </TabsContent>
-                </Tabs>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Book Section - Highlighted */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-20"
-          >
-            <h3 className="text-2xl font-bold text-center mb-10 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              {language === 'pt' ? 'Meu Livro' : 'My Book'}
-            </h3>
-            
-            <div className="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700">
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/3 p-8 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-primary/20 rounded-lg blur-xl scale-110" />
-                    <img
-                      src={bookCover}
-                      alt={t.book.title}
-                      className="relative w-48 h-auto rounded-lg shadow-2xl"
-                    />
                   </div>
                 </div>
-                
-                <div className="md:w-2/3 p-8 space-y-4">
-                  <span className="inline-block bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
-                    {t.book.newRelease}
-                  </span>
+              </ScrollReveal>
+
+              {/* Community Section */}
+              <ScrollReveal>
+                <div className="space-y-6">
+                  <h2 className="font-serif text-2xl lg:text-3xl text-foreground">
+                    {language === 'pt' ? 'Comunidade' : 'Community'}
+                  </h2>
                   
-                  <h4 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">{t.book.title}</h4>
+                  <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-8">
+                    <div className="flex flex-col md:flex-row items-center gap-6">
+                      <div className="w-16 h-16 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center flex-shrink-0">
+                        <Users className="w-8 h-8 text-foreground/60" />
+                      </div>
+                      
+                      <div className="flex-1 text-center md:text-left">
+                        <h3 className="text-lg font-serif text-foreground mb-2">Tech Leaders Network</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                          {language === 'pt' 
+                            ? 'Sou o fundador e administrador da Tech Leaders Network, uma comunidade no Discord que conecta desenvolvedores, designers, empreendedores e criadores de diversas áreas.'
+                            : "I'm the founder and administrator of Tech Leaders Network, a Discord community that connects developers, designers, entrepreneurs and creators from various fields."}
+                        </p>
+                        <a 
+                          href="https://discord.gg/esmCBMP8Md"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group inline-flex items-center gap-2 text-sm font-medium text-foreground"
+                        >
+                          <span className="relative">
+                            {language === 'pt' ? 'Entrar no Discord' : 'Join Discord'}
+                            <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-300" />
+                          </span>
+                          <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              {/* Certificates */}
+              <ScrollReveal>
+                <div className="space-y-6">
+                  <h2 className="font-serif text-2xl lg:text-3xl text-foreground">
+                    {t.certificates.title}
+                  </h2>
                   
-                  <p className="text-gray-500 dark:text-gray-400 text-sm">
-                    121 {language === 'pt' ? 'capítulos' : 'chapters'}
-                  </p>
-                  
-                  <div className="flex gap-1">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star key={star} className="w-5 h-5 fill-primary text-primary" />
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {certificates.map((certificate, index) => (
+                      <motion.div
+                        key={certificate.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 }}
+                        className="group rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm overflow-hidden"
+                      >
+                        <div className="relative h-32 overflow-hidden">
+                          <img
+                            src={certificate.image}
+                            alt={certificate.title}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                          <div className="absolute top-3 right-3 px-2 py-1 rounded-full text-[10px] font-medium border border-border/30 bg-background/80 backdrop-blur-sm flex items-center gap-1">
+                            <Award className="w-3 h-3" />
+                            {t.certificates.certificate}
+                          </div>
+                        </div>
+
+                        <div className="p-4">
+                          <h4 className="text-sm font-medium text-foreground mb-2 line-clamp-1">
+                            {certificate.title}
+                          </h4>
+                          
+                          <div className="flex items-center text-muted-foreground mb-2">
+                            <Calendar className="w-3 h-3 mr-1" />
+                            <span className="text-xs">{certificate.date}</span>
+                          </div>
+
+                          <p className="text-xs text-muted-foreground mb-3 line-clamp-2">
+                            {certificate.description}
+                          </p>
+
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs text-foreground/70">
+                              {certificate.issuer}
+                            </span>
+                            <a
+                              href={certificate.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-xs text-foreground hover:opacity-70 transition-opacity"
+                            >
+                              <ExternalLink className="w-3 h-3" />
+                              {t.certificates.view}
+                            </a>
+                          </div>
+                        </div>
+                      </motion.div>
                     ))}
                   </div>
+                </div>
+              </ScrollReveal>
+
+              {/* Values */}
+              <ScrollReveal>
+                <div className="space-y-6">
+                  <h2 className="font-serif text-2xl lg:text-3xl text-foreground">
+                    {language === 'pt' ? 'Meus Valores' : 'My Values'}
+                  </h2>
                   
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    {t.book.aboutText1}
-                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {currentValues.map((value, index) => (
+                      <div key={index} className="p-6 rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm text-center">
+                        <div className="w-12 h-12 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center mx-auto mb-4">
+                          <value.icon className="w-5 h-5 text-foreground/60" />
+                        </div>
+                        <h4 className="text-base font-medium text-foreground mb-2">{value.title}</h4>
+                        <p className="text-sm text-muted-foreground">{value.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              {/* Hobbies */}
+              <ScrollReveal>
+                <div className="space-y-6">
+                  <h2 className="font-serif text-2xl lg:text-3xl text-foreground">
+                    {language === 'pt' ? 'Meus Hobbies' : 'My Hobbies'}
+                  </h2>
                   
-                  <a 
-                    href="https://www.amazon.com.br/dp/B0FXV8WP3Y" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                  >
-                    <ShoppingCart className="w-5 h-5" />
-                    {t.book.buyOnAmazon}
-                  </a>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Tech Leaders Network Card */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-20"
-          >
-            <h3 className="text-2xl font-bold text-center mb-10 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              {language === 'pt' ? 'Comunidade' : 'Community'}
-            </h3>
-            
-            <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700">
-              <div className="flex flex-col md:flex-row items-center gap-8 p-8">
-                <div className="w-20 h-20 rounded-full bg-primary/10 p-4 border-2 border-primary/20 flex-shrink-0 flex items-center justify-center">
-                  <Users className="w-10 h-10 text-foreground" />
-                </div>
-                
-                <div className="flex-1 text-center md:text-left">
-                  <h4 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">Tech Leaders Network</h4>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-                    {language === 'pt' 
-                      ? 'Sou o fundador e administrador da Tech Leaders Network, uma comunidade no Discord que conecta desenvolvedores, designers, empreendedores e criadores de diversas áreas. Um espaço para networking, troca de experiências e oportunidades.'
-                      : "I'm the founder and administrator of Tech Leaders Network, a Discord community that connects developers, designers, entrepreneurs and creators from various fields. A space for networking, sharing experiences and opportunities."}
-                  </p>
-                  <a 
-                    href="https://discord.gg/esmCBMP8Md"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                  >
-                    <Users className="w-4 h-4" />
-                    {language === 'pt' ? 'Entrar no Discord' : 'Join Discord'}
-                  </a>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Certificates Section */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-20"
-          >
-            <h3 className="text-2xl font-bold text-center mb-10 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              {t.certificates.title}
-            </h3>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {certificates.map((certificate, index) => (
-                <motion.div
-                  key={certificate.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
-                >
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={certificate.image}
-                      alt={certificate.title}
-                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute top-3 right-3 bg-primary text-primary-foreground px-2 py-1 rounded-full text-xs font-medium">
-                      <Award className="inline-block w-3 h-3 mr-1" />
-                      {t.certificates.certificate}
-                    </div>
+                  <div className="flex flex-wrap gap-3">
+                    {currentHobbies.map((hobby, index) => (
+                      <div key={index} className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm">
+                        <hobby.icon className="w-4 h-4 text-foreground/60" />
+                        <span className="text-sm text-foreground">{hobby.name}</span>
+                      </div>
+                    ))}
                   </div>
-
-                  <div className="p-5">
-                    <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-foreground/80 transition-colors">
-                      {certificate.title}
-                    </h4>
-                    
-                    <div className="flex items-center text-gray-600 dark:text-gray-400 mb-2">
-                      <Calendar className="w-3 h-3 mr-1" />
-                      <span className="text-xs">{certificate.date}</span>
-                    </div>
-
-                    <p className="text-gray-700 dark:text-gray-300 text-sm mb-3 line-clamp-2">
-                      {certificate.description}
-                    </p>
-
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-foreground font-medium">
-                        {certificate.issuer}
-                      </span>
-                      <a
-                        href={certificate.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-foreground hover:text-foreground/70 transition-colors"
-                      >
-                        <ExternalLink className="w-3 h-3 mr-1" />
-                        <span className="text-xs">{t.certificates.view}</span>
-                      </a>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Seção de Valores */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-20"
-          >
-            <h3 className="text-2xl font-bold text-center mb-10 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              {language === 'pt' ? 'Meus Valores' : 'My Values'}
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {currentValues.map((value, index) => (
-                <div key={index} className="bg-card p-8 rounded-2xl shadow-lg border border-border text-center">
-                  <value.icon className="w-12 h-12 text-foreground mx-auto mb-4" />
-                  <h4 className="text-xl font-semibold text-foreground mb-3">{value.title}</h4>
-                  <p className="text-muted-foreground">{value.description}</p>
                 </div>
-              ))}
+              </ScrollReveal>
             </div>
-          </motion.div>
-
-          {/* Seção de Hobbies */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-20"
-          >
-            <h3 className="text-2xl font-bold text-center mb-10 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              {language === 'pt' ? 'Meus Hobbies' : 'My Hobbies'}
-            </h3>
-            <div className="flex flex-wrap justify-center gap-6">
-              {currentHobbies.map((hobby, index) => (
-                <div key={index} className="flex items-center gap-3 bg-card px-6 py-4 rounded-xl shadow-lg border border-border hover:scale-105 transition-transform duration-300">
-                  <hobby.icon className="w-6 h-6 text-foreground" />
-                  <span className="text-foreground font-medium">{hobby.name}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
+          </div>
         </div>
-      </div>
+      </section>
     </Layout>
   );
 };
