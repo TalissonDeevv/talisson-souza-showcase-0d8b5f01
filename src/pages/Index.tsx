@@ -150,79 +150,73 @@ const Index = () => {
       </section>
 
       {/* Tech Stack - Premium Interactive Cards */}
-      <section className="py-36 relative overflow-hidden">
-        {/* Sophisticated gradient background with texture */}
+      <section className="py-32 lg:py-40 relative overflow-hidden">
+        {/* Layered background with depth */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
-          {/* Subtle noise texture */}
-          <div className="absolute inset-0 opacity-[0.015]" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`
-          }} />
-          {/* Top decorative line */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background" />
+          {/* Ambient orbs for depth */}
+          <div className="absolute top-20 right-[15%] w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+          <div className="absolute bottom-20 left-[10%] w-[300px] h-[300px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl" />
+          {/* Top and bottom borders */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
         </div>
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-16">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-start">
               {/* Header */}
-              <div className="lg:col-span-5">
+              <div className="lg:col-span-5 lg:sticky lg:top-32">
                 <motion.span 
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/80 mb-8 font-medium"
+                  className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
                 >
+                  <span className="w-8 h-px bg-foreground/30" />
                   {getText(language, 'Tecnologias', 'Technologies')}
                 </motion.span>
-                {/* Decorative line under label */}
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: '3rem' }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="h-px bg-foreground/20 mb-8"
-                />
-                <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-8 leading-[1.1]">
+                <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
                   {getText(language, 'Stack Técnica', 'Tech Stack')}
                 </h2>
-                <p className="text-base text-muted-foreground leading-relaxed max-w-md">
+                <p className="text-base text-muted-foreground leading-relaxed max-w-md mb-8">
                   {getText(language, 'Ferramentas e tecnologias que domino para construir sistemas robustos e escaláveis.', 'Tools and technologies I master to build robust and scalable systems.')}
                 </p>
+                {/* Decorative element */}
+                <div className="hidden lg:flex items-center gap-4 mt-12">
+                  <div className="w-12 h-12 rounded-2xl border border-border/40 bg-card/50 flex items-center justify-center">
+                    <span className="text-lg font-serif text-foreground/60">{techStack.length}</span>
+                  </div>
+                  <span className="text-sm text-muted-foreground/60">{getText(language, 'tecnologias', 'technologies')}</span>
+                </div>
               </div>
               
-              {/* Tech Grid */}
+              {/* Tech Grid - More visual interest */}
               <div className="lg:col-span-7">
-                <div className="grid grid-cols-3 sm:grid-cols-4 gap-4">
+                <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
                   {techStack.map((tech, index) => (
                     <motion.div 
                       key={tech}
-                      initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: index * 0.04 }}
+                      transition={{ duration: 0.5, delay: index * 0.03 }}
                       whileHover={{ 
-                        y: -6,
-                        scale: 1.02,
-                        transition: { duration: 0.25 } 
+                        y: -4,
+                        transition: { duration: 0.2 } 
                       }}
-                      className="group relative p-5 rounded-xl border border-border/30 bg-card/40 backdrop-blur-md cursor-default overflow-hidden"
+                      className="group relative p-4 rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm cursor-default overflow-hidden"
+                      style={{
+                        boxShadow: '0 2px 8px hsl(var(--foreground) / 0.02)'
+                      }}
                     >
-                      {/* Hover glow effect */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                        <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.03] via-transparent to-transparent" />
-                        <div className="absolute -inset-1 bg-foreground/[0.02] blur-xl" />
-                      </div>
+                      {/* Gradient overlay on hover */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-foreground/[0.04] to-transparent" />
                       
-                      {/* Subtle inner border glow on hover */}
-                      <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"
-                        style={{
-                          boxShadow: 'inset 0 0 0 1px hsl(var(--foreground) / 0.1), 0 0 30px hsl(var(--foreground) / 0.03)'
-                        }}
-                      />
+                      {/* Top highlight line */}
+                      <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       
-                      <span className="relative text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors duration-300 tracking-wide">
+                      <span className="relative text-sm font-medium text-foreground/70 group-hover:text-foreground transition-colors duration-300">
                         {tech}
                       </span>
                     </motion.div>
@@ -235,46 +229,42 @@ const Index = () => {
       </section>
 
       {/* Career Timeline - Premium Animated */}
-      <section className="py-36 relative overflow-hidden">
-        {/* Background accents */}
+      <section className="py-32 lg:py-40 relative overflow-hidden">
+        {/* Layered background */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 -left-40 w-80 h-80 bg-gradient-radial from-foreground/[0.03] to-transparent blur-3xl opacity-60" />
-          <div className="absolute bottom-1/4 -right-40 w-80 h-80 bg-gradient-radial from-foreground/[0.03] to-transparent blur-3xl opacity-60" />
+          {/* Side gradient accents */}
+          <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-card/20 to-transparent" />
+          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-card/20 to-transparent" />
+          {/* Ambient glow */}
+          <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
         </div>
         
         <div className="container mx-auto px-6 lg:px-8 relative">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20">
             {/* Header */}
             <ScrollReveal className="lg:col-span-5">
               <motion.span 
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/80 mb-8 font-medium"
+                className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
               >
+                <span className="w-8 h-px bg-foreground/30" />
                 {getText(language, 'Experiência', 'Experience')}
               </motion.span>
-              {/* Decorative line */}
-              <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: '3rem' }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="h-px bg-foreground/20 mb-8"
-              />
-              <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-8 leading-[1.1]">
-                {getText(language, 'Trajetória Profissional', 'Professional Journey')}
+              <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
+                {getText(language, 'Trajetória', 'Journey')}
               </h2>
               <p className="text-base text-muted-foreground leading-relaxed mb-10 max-w-md">
                 {getText(language, 'Posições de liderança e contribuições que moldaram minha carreira em tecnologia.', 'Leadership positions and contributions that shaped my career in technology.')}
               </p>
               <Link 
                 to="/career" 
-                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground relative overflow-hidden"
+                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"
               >
                 <span className="relative">
                   {getText(language, 'Ver trajetória completa', 'View full career')}
-                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20 group-hover:bg-foreground/40 transition-colors duration-300" />
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
                   <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
                 </span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -282,8 +272,8 @@ const Index = () => {
             </ScrollReveal>
             
             {/* Timeline Cards */}
-            <div className="lg:col-span-7 space-y-8 relative">
-              {/* Animated Timeline Line */}
+            <div className="lg:col-span-7 space-y-6 relative">
+              {/* Animated Timeline Line with gradient */}
               <motion.div 
                 initial={{ scaleY: 0 }}
                 whileInView={{ scaleY: 1 }}
@@ -291,51 +281,52 @@ const Index = () => {
                 transition={{ duration: 1.2, ease: "easeOut" }}
                 className="absolute left-6 lg:left-0 top-0 bottom-0 w-px origin-top hidden sm:block"
                 style={{
-                  background: 'linear-gradient(to bottom, hsl(var(--foreground) / 0.25), hsl(var(--foreground) / 0.08) 50%, transparent)'
+                  background: 'linear-gradient(to bottom, hsl(var(--foreground) / 0.2), hsl(var(--foreground) / 0.05) 70%, transparent)'
                 }}
               />
               
               {featuredCompanies.map((company, index) => (
-                <ScrollReveal key={company.name} delay={index * 0.2}>
+                <ScrollReveal key={company.name} delay={index * 0.15}>
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.15 }}
-                    className="relative pl-0 sm:pl-14 lg:pl-10"
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="relative pl-0 sm:pl-12 lg:pl-10"
                   >
-                    {/* Timeline dot with pulse */}
+                    {/* Timeline dot */}
                     <motion.div 
                       initial={{ scale: 0 }}
                       whileInView={{ scale: 1 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.3, delay: index * 0.2 + 0.3 }}
-                      className="absolute left-4 lg:left-[-5px] top-10 hidden sm:block"
+                      transition={{ duration: 0.3, delay: index * 0.15 + 0.3 }}
+                      className="absolute left-4 lg:left-[-5px] top-8 hidden sm:flex items-center justify-center"
                     >
-                      <div className="w-2.5 h-2.5 rounded-full bg-foreground/40" style={{
-                        boxShadow: '0 0 15px hsl(var(--foreground) / 0.2)'
-                      }} />
-                      {/* Subtle pulse ring */}
-                      <div className="absolute inset-0 w-2.5 h-2.5 rounded-full bg-foreground/20 animate-ping" style={{ animationDuration: '2s' }} />
+                      <div className="w-2.5 h-2.5 rounded-full bg-foreground/30 ring-4 ring-background" />
                     </motion.div>
                     
-                    <GlassCard className="p-10 group hover:border-foreground/15 transition-all duration-500">
-                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
+                    <motion.div
+                      whileHover={{ y: -3, x: 3 }}
+                      transition={{ duration: 0.3 }}
+                      className="relative p-8 rounded-2xl border border-border/30 bg-card/40 backdrop-blur-sm group"
+                      style={{
+                        boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                      }}
+                    >
+                      {/* Corner accent */}
+                      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-foreground/[0.02] to-transparent rounded-tr-2xl" />
+                      
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-5">
                         <div>
-                          <h3 className="text-2xl font-serif text-foreground mb-2 group-hover:text-gradient transition-all duration-300">{company.role}</h3>
-                          <p className="text-sm text-muted-foreground font-medium tracking-wide">{company.name}</p>
+                          <h3 className="text-xl font-serif text-foreground mb-1 group-hover:text-gradient transition-all duration-300">{company.role}</h3>
+                          <p className="text-sm text-muted-foreground/80 font-medium">{company.name}</p>
                         </div>
-                        <motion.div
-                          whileHover={{ scale: 1.05 }}
-                          className="shrink-0"
-                        >
-                          <PremiumBadge variant="outline" className="text-xs">{company.period}</PremiumBadge>
-                        </motion.div>
+                        <PremiumBadge variant="outline" className="text-xs shrink-0">{company.period}</PremiumBadge>
                       </div>
-                      <p className="text-muted-foreground leading-relaxed">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
                         {company.description}
                       </p>
-                    </GlassCard>
+                    </motion.div>
                   </motion.div>
                 </ScrollReveal>
               ))}
@@ -344,72 +335,53 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Achievements - Premium Animated Counters */}
-      <section className="py-32 relative overflow-hidden">
-        {/* Background with gradient borders */}
+      {/* Achievements - Premium Stats with visual interest */}
+      <section className="py-28 lg:py-36 relative overflow-hidden">
+        {/* Background layers */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-card/15 to-background" />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[90%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-card/40 via-background to-card/40" />
+          {/* Horizontal accent lines */}
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+          {/* Center glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl" />
         </div>
         
         <div className="container mx-auto px-6 lg:px-8 relative">
-          {/* Section header */}
-          <ScrollReveal>
-            <div className="text-center mb-20">
-              <motion.span 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/80 mb-4 font-medium"
-              >
-                {getText(language, 'Resultados', 'Results')}
-              </motion.span>
-            </div>
-          </ScrollReveal>
-          
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-20">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
             {[{
               value: '50+',
-              label: getText(language, 'Projetos Entregues', 'Projects Delivered')
+              label: getText(language, 'Projetos', 'Projects')
             }, {
               value: '8+',
-              label: getText(language, 'Anos de Experiência', 'Years of Experience')
+              label: getText(language, 'Anos', 'Years')
             }, {
               value: '2',
-              label: getText(language, 'Empresas Fundadas', 'Companies Founded')
+              label: getText(language, 'Empresas', 'Companies')
             }, {
               value: '100%',
-              label: getText(language, 'Taxa de Satisfação', 'Satisfaction Rate')
+              label: getText(language, 'Satisfação', 'Satisfaction')
             }].map((stat, index) => (
-              <ScrollReveal key={stat.label} delay={index * 0.1}>
+              <ScrollReveal key={stat.label} delay={index * 0.08}>
                 <motion.div 
-                  className="text-center group cursor-default relative"
-                  whileHover={{ y: -6 }}
+                  className="relative text-center p-8 rounded-2xl group cursor-default"
+                  whileHover={{ y: -4 }}
                   transition={{ duration: 0.3 }}
                 >
-                  {/* Decorative line above */}
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: '2rem' }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="h-px bg-foreground/15 mx-auto mb-8"
-                  />
+                  {/* Hover background */}
+                  <div className="absolute inset-0 rounded-2xl bg-card/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 border border-border/20" />
+                  
                   <motion.p 
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="font-serif text-5xl lg:text-6xl xl:text-7xl text-foreground mb-5 transition-all duration-300"
-                    style={{
-                      textShadow: '0 0 60px hsl(var(--foreground) / 0.08)',
-                      letterSpacing: '-0.04em'
-                    }}
+                    transition={{ duration: 0.5, delay: index * 0.08 }}
+                    className="relative font-serif text-5xl lg:text-6xl text-foreground mb-3"
+                    style={{ letterSpacing: '-0.04em' }}
                   >
-                    <span className="group-hover:text-gradient transition-all duration-500">{stat.value}</span>
+                    {stat.value}
                   </motion.p>
-                  <p className="text-[11px] sm:text-xs tracking-[0.15em] uppercase text-muted-foreground/70 group-hover:text-muted-foreground transition-colors duration-300 font-medium">{stat.label}</p>
+                  <p className="relative text-xs tracking-[0.2em] uppercase text-muted-foreground/60 font-medium">{stat.label}</p>
                 </motion.div>
               </ScrollReveal>
             ))}
@@ -418,28 +390,27 @@ const Index = () => {
       </section>
 
       {/* Featured Projects - Premium Cards */}
-      <section className="py-36 relative overflow-hidden">
-        <div className="container mx-auto px-6 lg:px-8">
+      <section className="py-32 lg:py-40 relative overflow-hidden">
+        {/* Asymmetric background for visual interest */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-2/3 h-1/2 bg-gradient-to-bl from-card/30 to-transparent" />
+          <div className="absolute bottom-0 left-0 w-1/2 h-1/3 bg-gradient-to-tr from-card/20 to-transparent" />
+        </div>
+        
+        <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10 mb-24">
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
               <div className="max-w-xl">
                 <motion.span 
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/80 mb-8 font-medium"
+                  className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
                 >
+                  <span className="w-8 h-px bg-foreground/30" />
                   {getText(language, 'Portfolio', 'Portfolio')}
                 </motion.span>
-                {/* Decorative line */}
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: '3rem' }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="h-px bg-foreground/20 mb-8"
-                />
-                <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-8 leading-[1.1]">
+                <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
                   {t.projects.title}
                 </h2>
                 <p className="text-base text-muted-foreground leading-relaxed">
@@ -452,7 +423,7 @@ const Index = () => {
               >
                 <span className="relative">
                   {t.projects.viewAll}
-                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20 group-hover:bg-foreground/40 transition-colors duration-300" />
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
                   <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
                 </span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -460,46 +431,48 @@ const Index = () => {
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {featuredProjects.map((project, index) => (
-              <ScrollReveal key={project.title} delay={index * 0.15}>
+              <ScrollReveal key={project.title} delay={index * 0.1}>
                 <motion.div
-                  whileHover={{ y: -10 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  whileHover={{ y: -6 }}
+                  transition={{ duration: 0.3 }}
+                  className="h-full"
                 >
-                  <GlassCard className="p-10 h-full group hover:border-foreground/15 transition-all duration-500">
-                    {/* Project number with decorative line */}
-                    <div className="mb-8 relative">
-                      <span className="text-5xl font-serif text-foreground/[0.07] group-hover:text-foreground/15 transition-colors duration-300" style={{ letterSpacing: '-0.05em' }}>0{index + 1}</span>
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: '2.5rem' }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-                        className="absolute bottom-1 left-0 h-px bg-foreground/20"
-                      />
+                  <div 
+                    className="relative h-full p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm group overflow-hidden"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    {/* Hover gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    
+                    {/* Top accent line */}
+                    <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    
+                    {/* Project number */}
+                    <div className="mb-6 flex items-center gap-4">
+                      <span className="text-4xl font-serif text-foreground/[0.08] group-hover:text-foreground/15 transition-colors duration-500" style={{ letterSpacing: '-0.05em' }}>0{index + 1}</span>
+                      <div className="flex-1 h-px bg-gradient-to-r from-foreground/10 to-transparent" />
                     </div>
                     
-                    <h3 className="font-serif text-2xl lg:text-3xl text-foreground mb-5 group-hover:text-gradient transition-all duration-500 leading-[1.15]">
+                    <h3 className="font-serif text-xl lg:text-2xl text-foreground mb-4 group-hover:text-gradient transition-all duration-500 leading-tight">
                       {project.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed mb-8">
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-6">
                       {project.description}
                     </p>
                     
                     {/* Technologies */}
-                    <div className="flex flex-wrap gap-2 mb-8">
-                      {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                        <motion.span
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.technologies.slice(0, 3).map((tech) => (
+                        <span
                           key={tech}
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.3, delay: techIndex * 0.05 }}
-                          className="text-xs px-3 py-1.5 rounded-full border border-border/40 bg-card/30 text-muted-foreground/80 tracking-wide"
+                          className="text-xs px-2.5 py-1 rounded-md border border-border/30 bg-background/50 text-muted-foreground/70"
                         >
                           {tech}
-                        </motion.span>
+                        </span>
                       ))}
                     </div>
                     
@@ -517,7 +490,7 @@ const Index = () => {
                         <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
                       </a>
                     )}
-                  </GlassCard>
+                  </div>
                 </motion.div>
               </ScrollReveal>
             ))}
@@ -526,41 +499,43 @@ const Index = () => {
       </section>
 
       {/* Story Highlight - Premium */}
-      <section className="py-40 relative overflow-hidden">
-        {/* Ambient background */}
+      <section className="py-32 lg:py-40 relative overflow-hidden">
+        {/* Layered background */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-b from-card/20 via-background to-card/20" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-radial from-foreground/[0.03] to-transparent blur-3xl opacity-60" />
-          {/* Decorative line */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-card/30 via-background to-card/30" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
         </div>
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
             <motion.div
-              whileHover={{ y: -5 }}
+              whileHover={{ y: -4 }}
               transition={{ duration: 0.4 }}
+              className="max-w-3xl mx-auto"
             >
-              <GlassCard className="max-w-4xl mx-auto p-14 lg:p-20 text-center hover:border-foreground/15 transition-all duration-500">
-                {/* Decorative quote mark */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  className="text-9xl font-serif text-foreground/[0.04] mb-6 select-none leading-none"
-                  style={{ letterSpacing: '-0.1em' }}
-                >
-                  "
-                </motion.div>
+              <div 
+                className="relative p-12 lg:p-16 rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm text-center"
+                style={{
+                  boxShadow: '0 8px 40px hsl(var(--foreground) / 0.03)'
+                }}
+              >
+                {/* Corner decorations */}
+                <div className="absolute top-0 left-0 w-24 h-24 border-l border-t border-foreground/[0.06] rounded-tl-3xl" />
+                <div className="absolute bottom-0 right-0 w-24 h-24 border-r border-b border-foreground/[0.06] rounded-br-3xl" />
                 
-                <h2 className="font-serif text-3xl lg:text-4xl xl:text-5xl text-foreground mb-12 leading-[1.15]">
+                {/* Decorative quote */}
+                <div className="text-8xl font-serif text-foreground/[0.04] mb-4 select-none leading-none" style={{ letterSpacing: '-0.1em' }}>"</div>
+                
+                <h2 className="font-serif text-2xl lg:text-3xl xl:text-4xl text-foreground mb-10 leading-[1.2]">
                   {language === 'pt' ? 'Por que fundei minha empresa aos 17?' : 'Why I started my company at 17?'}
                 </h2>
                 
-                <p className="text-lg text-muted-foreground leading-[1.8] mb-6 max-w-2xl mx-auto">
-                  {language === 'pt' ? 'Em 2021, fui recusado em um processo seletivo não por falta de qualificação, mas por causa da minha cadeira de rodas. Esse momento transformou frustração em propósito: decidi criar meu próprio espaço onde competência e inclusão caminham juntas.' : 'In 2021, I was rejected in a selection process not for lack of qualification, but because of my wheelchair. That moment transformed frustration into purpose: I decided to create my own space where competence and inclusion walk together.'}
+                <p className="text-base text-muted-foreground leading-[1.85] mb-5 max-w-2xl mx-auto">
+                  {language === 'pt' ? 'Em 2021, fui recusado em um processo seletivo não por falta de qualificação, mas por causa da minha cadeira de rodas. Esse momento transformou frustração em propósito.' : 'In 2021, I was rejected in a selection process not for lack of qualification, but because of my wheelchair. That moment transformed frustration into purpose.'}
                 </p>
-                <p className="text-lg text-muted-foreground leading-[1.8] mb-14 max-w-2xl mx-auto">
+                <p className="text-base text-muted-foreground leading-[1.85] mb-12 max-w-2xl mx-auto">
                   {language === 'pt' ? 'Assim nasceu a Cheetah Network — mais que uma empresa, uma prova de que todos merecem oportunidades reais.' : 'Thus Cheetah Network was born — more than a company, proof that everyone deserves real opportunities.'}
                 </p>
                 
@@ -570,91 +545,91 @@ const Index = () => {
                 >
                   <span className="relative">
                     {language === 'pt' ? 'Ler história completa' : 'Read full story'}
-                    <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20 group-hover:bg-foreground/40 transition-colors duration-300" />
+                    <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
                     <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
                   </span>
                   <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
                 </Link>
-              </GlassCard>
+              </div>
             </motion.div>
           </ScrollReveal>
         </div>
       </section>
 
       {/* Testimonials - Premium Cards */}
-      <section className="py-36 relative overflow-hidden">
-        <div className="container mx-auto px-6 lg:px-8">
+      <section className="py-32 lg:py-40 relative overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-card/20 to-transparent" />
+        </div>
+        
+        <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <div className="mb-24">
+            <div className="mb-16">
               <motion.span 
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/80 mb-8 font-medium"
+                className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
               >
+                <span className="w-8 h-px bg-foreground/30" />
                 {getText(language, 'Depoimentos', 'Testimonials')}
               </motion.span>
-              {/* Decorative line */}
-              <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: '3rem' }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="h-px bg-foreground/20 mb-8"
-              />
-              <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-8 leading-[1.1]">
-                {language === 'pt' ? 'O que dizem sobre mim' : 'What they say about me'}
+              <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
+                {language === 'pt' ? 'O que dizem' : 'What they say'}
               </h2>
-              <p className="text-base text-muted-foreground max-w-lg leading-relaxed">
-                {language === 'pt' ? 'Feedback de colegas e clientes com quem tive o prazer de trabalhar.' : 'Feedback from colleagues and clients I had the pleasure of working with.'}
+              <p className="text-base text-muted-foreground max-w-md leading-relaxed">
+                {language === 'pt' ? 'Feedback de colegas e clientes.' : 'Feedback from colleagues and clients.'}
               </p>
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {[{
               initials: "PS",
               name: "Priscila Suanne",
               role: language === 'pt' ? 'Desenvolvedora Back End' : 'Back End Developer',
-              quote: language === 'pt' ? '"Tive o prazer de trabalhar com Talisson, um profissional extremamente comprometido, resiliente e dedicado. Sua postura ética e foco em resultados foram fundamentais para o sucesso dos projetos."' : '"I had the pleasure of working with Talisson, an extremely committed, resilient and dedicated professional. His ethical stance and focus on results were fundamental to the success of the projects."'
+              quote: language === 'pt' ? '"Tive o prazer de trabalhar com Talisson, um profissional extremamente comprometido, resiliente e dedicado. Sua postura ética e foco em resultados foram fundamentais."' : '"I had the pleasure of working with Talisson, an extremely committed, resilient and dedicated professional. His ethical stance and focus on results were fundamental."'
             }, {
               initials: "DF",
               name: "Davi R. Fraustino",
               role: language === 'pt' ? 'Consultor de Tecnologia' : 'Technology Consultant',
               quote: language === 'pt' ? '"Talisson é um excelente profissional capaz de unir conhecimento técnico com visão estratégica de negócios. Ele sempre entrega soluções criativas e eficientes."' : '"Talisson is an excellent professional capable of combining technical knowledge with strategic business vision. He always delivers creative and efficient solutions."'
             }].map((testimonial, index) => (
-              <ScrollReveal key={testimonial.name} delay={index * 0.2}>
+              <ScrollReveal key={testimonial.name} delay={index * 0.15}>
                 <motion.div
-                  whileHover={{ y: -8 }}
-                  transition={{ duration: 0.4 }}
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className="h-full"
                 >
-                  <GlassCard className="p-12 h-full group hover:border-foreground/15 transition-all duration-500">
+                  <div 
+                    className="relative h-full p-10 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm group"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    {/* Corner gradient */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-foreground/[0.02] to-transparent rounded-tr-2xl" />
+                    
                     <blockquote className="relative">
-                      {/* Large decorative quote */}
-                      <div className="absolute -top-6 -left-3 text-8xl text-foreground/[0.04] font-serif leading-none select-none">"</div>
+                      {/* Quote mark */}
+                      <div className="absolute -top-4 -left-2 text-6xl text-foreground/[0.05] font-serif leading-none select-none">"</div>
                       
-                      <p className="text-lg text-foreground/85 leading-[1.8] mb-10 relative z-10">
+                      <p className="text-base text-foreground/80 leading-[1.8] mb-8 relative z-10">
                         {testimonial.quote}
                       </p>
                       
-                      <footer className="flex items-center gap-5">
-                        {/* Avatar with subtle glow */}
-                        <motion.div 
-                          whileHover={{ scale: 1.05 }}
-                          className="w-14 h-14 rounded-full bg-gradient-to-br from-foreground/10 to-foreground/[0.03] flex items-center justify-center text-sm font-medium text-foreground/80 border border-foreground/[0.08]"
-                          style={{
-                            boxShadow: '0 0 25px hsl(var(--foreground) / 0.06)'
-                          }}
-                        >
+                      <footer className="flex items-center gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-card/80 border border-border/30 flex items-center justify-center text-sm font-medium text-foreground/70">
                           {testimonial.initials}
-                        </motion.div>
+                        </div>
                         <div>
-                          <p className="text-base font-medium text-foreground tracking-wide">{testimonial.name}</p>
-                          <p className="text-sm text-muted-foreground/80">{testimonial.role}</p>
+                          <p className="text-sm font-medium text-foreground">{testimonial.name}</p>
+                          <p className="text-xs text-muted-foreground/70">{testimonial.role}</p>
                         </div>
                       </footer>
                     </blockquote>
-                  </GlassCard>
+                  </div>
                 </motion.div>
               </ScrollReveal>
             ))}
@@ -663,25 +638,29 @@ const Index = () => {
       </section>
 
       {/* Services Preview - Premium */}
-      <section className="py-32 relative overflow-hidden">
-        {/* Background accents */}
+      <section className="py-28 lg:py-36 relative overflow-hidden">
+        {/* Layered background */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-br from-card/30 via-background to-card/20" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+          {/* Ambient orb */}
+          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl" />
         </div>
         
-        <div className="container mx-auto px-6 lg:px-8">
+        <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-20">
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
               <div className="max-w-xl">
                 <motion.span 
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+                  className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
                 >
-                  {getText(language, 'O que faço', 'What I do')}
+                  <span className="w-8 h-px bg-foreground/30" />
+                  {getText(language, 'Serviços', 'Services')}
                 </motion.span>
-                <h2 className="font-serif text-3xl lg:text-5xl text-foreground mb-6 leading-tight">
+                <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
                   {t.services.title}
                 </h2>
                 <p className="text-base text-muted-foreground leading-relaxed">
@@ -693,8 +672,8 @@ const Index = () => {
                 className="group inline-flex items-center gap-3 text-sm font-medium text-foreground self-start lg:self-auto"
               >
                 <span className="relative">
-                  {language === 'pt' ? 'Ver todos os serviços' : 'View all services'}
-                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/30 group-hover:bg-foreground transition-colors duration-300" />
+                  {language === 'pt' ? 'Ver todos' : 'View all'}
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
                   <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
                 </span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -702,45 +681,48 @@ const Index = () => {
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {[{
               number: '01',
               title: getText(language, 'Desenvolvimento Web', 'Web Development'),
-              description: getText(language, 'Sites e aplicações web modernas com as melhores tecnologias do mercado.', 'Modern websites and web applications with cutting-edge technologies.')
+              description: getText(language, 'Sites e aplicações web modernas com as melhores tecnologias.', 'Modern websites and web applications with cutting-edge technologies.')
             }, {
               number: '02',
               title: getText(language, 'Sistemas Corporativos', 'Corporate Systems'),
-              description: getText(language, 'Soluções empresariais sob medida para otimizar processos e escalar.', 'Custom enterprise solutions to optimize processes and scale.')
+              description: getText(language, 'Soluções empresariais sob medida para otimizar e escalar.', 'Custom enterprise solutions to optimize and scale.')
             }, {
               number: '03',
               title: getText(language, 'Consultoria Tech', 'Tech Consulting'),
-              description: getText(language, 'Orientação estratégica para projetos de tecnologia e transformação digital.', 'Strategic guidance for technology projects and digital transformation.')
+              description: getText(language, 'Orientação estratégica para projetos de tecnologia.', 'Strategic guidance for technology projects.')
             }].map((service, index) => (
-              <ScrollReveal key={service.number} delay={index * 0.15}>
+              <ScrollReveal key={service.number} delay={index * 0.1}>
                 <motion.div
-                  whileHover={{ y: -8 }}
-                  transition={{ duration: 0.4 }}
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className="h-full"
                 >
-                  <GlassCard className="p-8 h-full group hover:border-foreground/20 transition-all duration-500">
-                    {/* Service number */}
-                    <div className="mb-6 relative">
-                      <span className="text-4xl font-serif text-foreground/10 group-hover:text-foreground/20 transition-colors duration-300">{service.number}</span>
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: '2rem' }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-                        className="absolute bottom-0 left-0 h-px bg-foreground/30"
-                      />
+                  <div 
+                    className="relative h-full p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm group overflow-hidden"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    {/* Hover gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    
+                    {/* Number with line */}
+                    <div className="mb-6 flex items-center gap-4">
+                      <span className="text-3xl font-serif text-foreground/[0.1] group-hover:text-foreground/20 transition-colors duration-500">{service.number}</span>
+                      <div className="flex-1 h-px bg-gradient-to-r from-foreground/10 to-transparent" />
                     </div>
                     
-                    <h3 className="font-serif text-2xl text-foreground mb-4 group-hover:text-gradient transition-all duration-500 leading-tight">
+                    <h3 className="font-serif text-xl text-foreground mb-3 group-hover:text-gradient transition-all duration-500 leading-tight">
                       {service.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
                       {service.description}
                     </p>
-                  </GlassCard>
+                  </div>
                 </motion.div>
               </ScrollReveal>
             ))}
