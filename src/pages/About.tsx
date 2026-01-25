@@ -2,603 +2,539 @@ import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
+import GlassCard from "@/components/ui/GlassCard";
 import SocialIcons from "@/components/ui/SocialIcons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Download, User, Briefcase, GraduationCap, Heart, Music, Coffee, Gamepad2, BookOpen, Zap, Rocket, Star, Award, Calendar, ExternalLink, Users, ArrowRight, ArrowUpRight } from "lucide-react";
+import { Download, ArrowRight, ArrowUpRight, Briefcase, GraduationCap, Heart, Star, BookOpen, Zap, Users, Calendar, Award, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import bookCover from "@/assets/book-cover.jpg";
 
 const About = () => {
   const { language } = useTheme();
   const t = useTranslation(language);
 
-  const aboutTextPt = `Oi, tudo bem? Meu nome é Talisson Souza, mas muitos me chamam de Talinho. Sou Empreendedor Executivo, Diretor de Negócios Empresariais e Desenvolvedor Full Stack. Como CEO da Cheetah Network, minha jornada com tecnologia começou meio que na curiosidade, fuçando aqui e ali, até que virei apaixonado de vez. Aprendi muita coisa sozinho, encarando desafios e quebrando a cabeça e até hoje esse jeito de buscar conhecimento é o que me move.
+  const aboutTextPt = `Oi, tudo bem? Meu nome é Talisson Souza, mas muitos me chamam de Talinho. Sou Empreendedor Executivo, Diretor de Negócios Empresariais e Desenvolvedor Full Stack. Como CEO da Cheetah Network, minha jornada com tecnologia começou meio que na curiosidade, fuçando aqui e ali, até que virei apaixonado de vez.
 
-Gosto de estar envolvido em tudo que crio, desde a primeira linha de código até ver o resultado final funcionando na prática. Trabalhar com desenvolvimento web, mobile, bots inteligentes e infraestrutura não é só meu trabalho, é parte do meu dia a dia e da minha forma de me expressar.
+Gosto de estar envolvido em tudo que crio, desde a primeira linha de código até ver o resultado final funcionando na prática. Trabalhar com desenvolvimento web, mobile, bots inteligentes e infraestrutura não é só meu trabalho, é parte do meu dia a dia.
 
-Como CEO da Cheetah Network, tenho o privilégio de liderar uma equipe que acredita em tecnologia feita com propósito soluções que ajudam comunidades, criadores de conteúdo e empresas a crescer de verdade. O mais importante pra mim é lembrar que por trás de cada sistema tem pessoas reais, e é por isso que respeito, empatia e transparência são os pilares do que fazemos.
+No fim, minha missão é criar soluções que realmente façam diferença, com um toque humano, e continuar aprendendo e evoluindo todos os dias.`;
 
-Sou uma pessoa que valoriza a calma, o contato com a natureza e o silêncio para refletir ainda que nem sempre seja tão tranquilo assim (quem me conhece sabe rs). Sempre que posso, gosto de ajudar os outros, seja com um conselho, um apoio ou uma ideia.
+  const aboutTextEn = `Hi, how are you? My name is Talisson Souza, but many call me Talinho. I'm an Executive Entrepreneur, Business Director, and Full Stack Developer. As CEO of Cheetah Network, my journey with technology began out of curiosity, dabbling here and there, until I became completely passionate.
 
-Fora do mundo tech, música é minha companhia constante vou do Eletrônico ao Sertanejo, passando pelo Lo-Fi, Gospel e até um pouco de punk. Café e pudim são meus pequenos prazeres que nunca faltam.
+I enjoy being involved in everything I create, from the first line of code to seeing the final result in action. Working with web and mobile development, smart bots, and infrastructure isn't just my job; it's part of my daily life.
 
-No fim, minha missão é criar soluções que realmente façam diferença, com um toque humano, e continuar aprendendo e evoluindo todos os dias. :)`;
+Ultimately, my mission is to create solutions that truly make a difference, with a human touch, and to continue learning and evolving every day.`;
 
-  const aboutTextEn = `Hi, how are you? My name is Talisson Souza, but many call me Talinho. I'm an Executive Entrepreneur, Business Director, and Full Stack Developer. As CEO of Cheetah Network, my journey with technology began out of curiosity, dabbling here and there, until I became completely passionate. I learned a lot on my own, facing challenges and racking my brains, and to this day, this pursuit of knowledge is what drives me.
-
-I enjoy being involved in everything I create, from the first line of code to seeing the final result in action. Working with web and mobile development, smart bots, and infrastructure isn't just my job; it's part of my daily life and my way of expressing myself.
-
-As CEO of Cheetah Network, I have the privilege of leading a team that believes in purpose-built technology solutions that help communities, content creators, and businesses truly grow. The most important thing for me is to remember that behind every system are real people, and that's why respect, empathy, and transparency are the pillars of what we do.
-
-I'm a person who values calm, contact with nature, and silence to reflect, even though it's not always so peaceful (those who know me know, lol). Whenever I can, I like to help others, whether with advice, support, or an idea.
-
-Outside of the tech world, music is my constant companion; I go from electronic to country, passing through lo-fi, gospel, and even a bit of punk. Coffee and pudding are my little pleasures that never fail.
-
-Ultimately, my mission is to create solutions that truly make a difference, with a human touch, and to continue learning and evolving every day. :)`;
-
-  const experiencesPt = [
-    {
-      company: "Cheetah Network",
-      position: "CEO & Founder",
-      period: "2023 - Presente",
-      description: "Fundei e lidero a Cheetah Network, empresa especializada em soluções digitais. Responsável pela visão estratégica, gestão de equipes multidisciplinares e relacionamento com clientes."
-    },
-    {
-      company: "Werneck Group",
-      position: "Diretor Estratégico",
-      period: "2024 - Presente",
-      description: "Direção estratégica em consultoria empresarial, desenvolvimento de planos de negócios, gestão financeira e coordenação de operações."
-    },
-    {
-      company: "FastyGroup",
-      position: "Desenvolvedor Full Stack",
-      period: "2024 - Presente",
-      description: "Desenvolvimento de aplicações web completas utilizando tecnologias modernas e melhores práticas de desenvolvimento."
-    },
-    {
-      company: "Global Mode",
-      position: "CTO",
-      period: "2023 - 2024 (Encerrado)",
-      description: "Desenvolvimento de soluções personalizadas para clientes diversos, incluindo sistemas web e automações."
-    }
+  const experiences = language === 'pt' ? [
+    { company: "Cheetah Network", position: "CEO & Founder", period: "2023 - Presente", description: "Fundei e lidero a Cheetah Network, empresa especializada em soluções digitais." },
+    { company: "Werneck Group", position: "Diretor Estratégico", period: "2024 - Presente", description: "Direção estratégica em consultoria empresarial e gestão de operações." },
+    { company: "FastyGroup", position: "Desenvolvedor Full Stack", period: "2024 - Presente", description: "Desenvolvimento de aplicações web completas utilizando tecnologias modernas." }
+  ] : [
+    { company: "Cheetah Network", position: "CEO & Founder", period: "2023 - Present", description: "Founded and lead Cheetah Network, a company specialized in digital solutions." },
+    { company: "Werneck Group", position: "Strategic Director", period: "2024 - Present", description: "Strategic direction in business consulting and operations management." },
+    { company: "FastyGroup", position: "Full Stack Developer", period: "2024 - Present", description: "Development of complete web applications using modern technologies." }
   ];
 
-  const experiencesEn = [
-    {
-      company: "Cheetah Network",
-      position: "CEO & Founder",
-      period: "2023 - Present",
-      description: "Founded and lead Cheetah Network, a company specialized in digital solutions. Responsible for strategic vision, managing multidisciplinary teams and client relationships."
-    },
-    {
-      company: "Werneck Group",
-      position: "Strategic Director",
-      period: "2024 - Present",
-      description: "Strategic direction in business consulting, business plan development, financial management and operations coordination."
-    },
-    {
-      company: "FastyGroup",
-      position: "Full Stack Developer",
-      period: "2024 - Present",
-      description: "Development of complete web applications using modern technologies and best development practices."
-    },
-    {
-      company: "Global Mode",
-      position: "CTO",
-      period: "2023 - 2024 (Closed)",
-      description: "Development of custom solutions for diverse clients, including web systems and automation."
-    }
+  const values = language === 'pt' ? [
+    { icon: Zap, title: "Qualidade", description: "Código limpo, eficiente e bem documentado" },
+    { icon: BookOpen, title: "Aprendizado", description: "Sempre estudando novas tecnologias" },
+    { icon: Heart, title: "Colaboração", description: "Melhores projetos vêm do trabalho em equipe" }
+  ] : [
+    { icon: Zap, title: "Quality", description: "Clean, efficient and well-documented code" },
+    { icon: BookOpen, title: "Learning", description: "Always studying new technologies" },
+    { icon: Heart, title: "Collaboration", description: "Best projects come from teamwork" }
   ];
 
-  const educationPt = [
-    {
-      title: "Ensino Médio Completo",
-      institution: "Escola Estadual",
-      period: "2019 - 2022",
-      description: "Formação básica com foco em exatas e tecnologia"
-    },
-    {
-      title: "Cursos de Programação",
-      institution: "Autodidatismo",
-      period: "2020 - Presente",
-      description: "Aprendizado contínuo através de cursos online, documentações e projetos práticos"
-    }
+  const certificates = language === 'pt' ? [
+    { id: 1, title: "Administração no Século 21", issuer: "Fundação Bradesco", date: "2025", link: "https://drive.google.com/file/d/1uNq5H26X0WbQf2Ohxr3hWJ_bzHMnMT9Y" },
+    { id: 2, title: "Estratégia de Negócios", issuer: "Fundação Bradesco", date: "2025", link: "https://drive.google.com/file/d/1Mel2pK_6ajyFOHQIuvFF5XbljNjY40TA/view?usp=drive_link" },
+    { id: 3, title: "Gestão de Projetos", issuer: "Fundação Bradesco", date: "2023", link: "https://drive.google.com/file/d/1Y454v0F4R4G91iR2ZBC8ps1vfUNh-gHI/view?usp=drive_link" }
+  ] : [
+    { id: 1, title: "Administration in the 21st Century", issuer: "Bradesco Foundation", date: "2025", link: "https://drive.google.com/file/d/1uNq5H26X0WbQf2Ohxr3hWJ_bzHMnMT9Y" },
+    { id: 2, title: "Business Strategy", issuer: "Bradesco Foundation", date: "2025", link: "https://drive.google.com/file/d/1Mel2pK_6ajyFOHQIuvFF5XbljNjY40TA/view?usp=drive_link" },
+    { id: 3, title: "Project Management", issuer: "Bradesco Foundation", date: "2023", link: "https://drive.google.com/file/d/1Y454v0F4R4G91iR2ZBC8ps1vfUNh-gHI/view?usp=drive_link" }
   ];
-
-  const educationEn = [
-    {
-      title: "High School Complete",
-      institution: "State School",
-      period: "2019 - 2022",
-      description: "Basic education with focus on mathematics and technology"
-    },
-    {
-      title: "Programming Courses",
-      institution: "Self-taught",
-      period: "2020 - Present",
-      description: "Continuous learning through online courses, documentation and practical projects"
-    }
-  ];
-
-  const valuesPt = [
-    { title: "Qualidade", description: "Sempre busco entregar código limpo, eficiente e bem documentado", icon: Zap },
-    { title: "Aprendizado", description: "Estou sempre estudando novas tecnologias e aprimorando minhas habilidades", icon: BookOpen },
-    { title: "Colaboração", description: "Acredito que os melhores projetos surgem do trabalho em equipe", icon: Heart }
-  ];
-
-  const valuesEn = [
-    { title: "Quality", description: "I always strive to deliver clean, efficient and well-documented code", icon: Zap },
-    { title: "Learning", description: "I'm always studying new technologies and improving my skills", icon: BookOpen },
-    { title: "Collaboration", description: "I believe the best projects come from teamwork", icon: Heart }
-  ];
-
-  const hobbiesPt = [
-    { name: "Música Eletrônica", icon: Music },
-    { name: "Lo-Fi", icon: Music },
-    { name: "Café", icon: Coffee },
-    { name: "Gaming", icon: Gamepad2 }
-  ];
-
-  const hobbiesEn = [
-    { name: "Electronic Music", icon: Music },
-    { name: "Lo-Fi", icon: Music },
-    { name: "Coffee", icon: Coffee },
-    { name: "Gaming", icon: Gamepad2 }
-  ];
-
-  const certificatesPt = [
-    {
-      id: 1,
-      title: "Administração no Século 21",
-      issuer: "Fundação Bradesco",
-      date: "2025",
-      description: "Curso que aborda conceitos modernos de administração, liderança, tomada de decisão e inovação.",
-      link: "https://drive.google.com/file/d/1uNq5H26X0WbQf2Ohxr3hWJ_bzHMnMT9Y",
-      image: "https://oportunidadesprofissionais.com.br/wp-content/uploads/2025/04/Sobre-a-Escola-Virtual-da-Fundacao-Bradesco.webp"
-    },
-    {
-      id: 2,
-      title: "Estratégia de Negócios",
-      issuer: "Fundação Bradesco",
-      date: "2025",
-      description: "Capacitação sobre análise estratégica, posicionamento competitivo e desenvolvimento de planos de ação.",
-      link: "https://drive.google.com/file/d/1Mel2pK_6ajyFOHQIuvFF5XbljNjY40TA/view?usp=drive_link",
-      image: "https://oportunidadesprofissionais.com.br/wp-content/uploads/2025/04/Sobre-a-Escola-Virtual-da-Fundacao-Bradesco.webp"
-    },
-    {
-      id: 3,
-      title: "Gestão de Projetos",
-      issuer: "Fundação Bradesco",
-      date: "2023",
-      description: "Curso com foco nas boas práticas do gerenciamento de projetos.",
-      link: "https://drive.google.com/file/d/1Y454v0F4R4G91iR2ZBC8ps1vfUNh-gHI/view?usp=drive_link",
-      image: "https://oportunidadesprofissionais.com.br/wp-content/uploads/2025/04/Sobre-a-Escola-Virtual-da-Fundacao-Bradesco.webp"
-    }
-  ];
-
-  const certificatesEn = [
-    {
-      id: 1,
-      title: "Administration in the 21st Century",
-      issuer: "Bradesco Foundation",
-      date: "2025",
-      description: "Course covering modern concepts of management, leadership, decision-making, and innovation.",
-      link: "https://drive.google.com/file/d/1uNq5H26X0WbQf2Ohxr3hWJ_bzHMnMT9Y",
-      image: "https://oportunidadesprofissionais.com.br/wp-content/uploads/2025/04/Sobre-a-Escola-Virtual-da-Fundacao-Bradesco.webp"
-    },
-    {
-      id: 2,
-      title: "Business Strategy",
-      issuer: "Bradesco Foundation",
-      date: "2025",
-      description: "Training in strategic analysis, competitive positioning and development of effective action plans.",
-      link: "https://drive.google.com/file/d/1Mel2pK_6ajyFOHQIuvFF5XbljNjY40TA/view?usp=drive_link",
-      image: "https://oportunidadesprofissionais.com.br/wp-content/uploads/2025/04/Sobre-a-Escola-Virtual-da-Fundacao-Bradesco.webp"
-    },
-    {
-      id: 3,
-      title: "Project Management",
-      issuer: "Bradesco Foundation",
-      date: "2023",
-      description: "Course focused on best practices in project management.",
-      link: "https://drive.google.com/file/d/1Y454v0F4R4G91iR2ZBC8ps1vfUNh-gHI/view?usp=drive_link",
-      image: "https://oportunidadesprofissionais.com.br/wp-content/uploads/2025/04/Sobre-a-Escola-Virtual-da-Fundacao-Bradesco.webp"
-    }
-  ];
-
-  const currentExperiences = language === 'pt' ? experiencesPt : experiencesEn;
-  const currentEducation = language === 'pt' ? educationPt : educationEn;
-  const currentValues = language === 'pt' ? valuesPt : valuesEn;
-  const currentHobbies = language === 'pt' ? hobbiesPt : hobbiesEn;
-  const certificates = language === 'pt' ? certificatesPt : certificatesEn;
 
   return (
-    <Layout>
+    <Layout withPadding={false}>
       {/* Hero Section */}
+      <section className="min-h-[70vh] flex items-center relative overflow-hidden pt-24 pb-16">
+        {/* Background */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background" />
+          <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl" />
+          <div 
+            className="absolute inset-0 opacity-[0.015]"
+            style={{
+              backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+              backgroundSize: '60px 60px'
+            }}
+          />
+        </div>
+
+        <div 
+          className="absolute bottom-0 left-0 right-0 h-32 z-10 pointer-events-none"
+          style={{
+            background: 'linear-gradient(to top, hsl(var(--background)) 0%, transparent 100%)'
+          }}
+        />
+
+        <div className="container mx-auto px-6 lg:px-8 relative z-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Avatar Section */}
+            <ScrollReveal className="lg:col-span-4" direction="left">
+              <div className="flex flex-col items-center lg:items-start gap-8">
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.6 }}
+                  className="relative"
+                >
+                  <div className="absolute -inset-4 bg-gradient-radial from-foreground/10 to-transparent rounded-full blur-2xl opacity-50" />
+                  <Avatar className="h-40 w-40 lg:h-48 lg:w-48 border-2 border-border/30 relative z-10">
+                    <AvatarImage src="https://i.ibb.co/MySV14GV/Polish-20231015-221849134-112435.jpg" alt="Talisson Souza" className="object-cover" />
+                    <AvatarFallback>TS</AvatarFallback>
+                  </Avatar>
+                </motion.div>
+
+                <div className="flex flex-col items-center lg:items-start gap-4 w-full">
+                  <SocialIcons />
+                  <motion.button
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => window.open('https://drive.google.com/file/d/1JBmXK4aCAPfeY4kuEc5QpO-ehlA2rfWO/view?usp=sharing', '_blank')}
+                    className="group w-full max-w-[200px] inline-flex items-center justify-center gap-2 text-sm font-medium text-primary-foreground bg-foreground rounded-full py-3 transition-all duration-300"
+                    style={{
+                      boxShadow: '0 0 20px hsl(var(--foreground) / 0.15)'
+                    }}
+                  >
+                    <Download className="w-4 h-4" />
+                    {t.about.downloadCV}
+                  </motion.button>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Content Section */}
+            <div className="lg:col-span-8">
+              <ScrollReveal>
+                <motion.span 
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+                >
+                  <span className="w-8 h-px bg-foreground/30" />
+                  {t.about.title}
+                </motion.span>
+                <h1 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-foreground mb-6 leading-[1.05]">
+                  Talisson Souza
+                </h1>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-2xl">
+                  {t.about.subtitle}
+                </p>
+              </ScrollReveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Text Section */}
       <ParallaxSection 
-        className="pt-24 pb-10 lg:pt-28 lg:pb-12"
+        className="py-20 lg:py-24"
         speed={0.1}
         backgroundElement={
           <>
             <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
-            <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
           </>
         }
       >
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <div className="max-w-3xl">
-              <motion.span 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+            <motion.div
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.4 }}
+              className="max-w-4xl mx-auto"
+            >
+              <div 
+                className="relative p-10 lg:p-12 rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm"
+                style={{
+                  boxShadow: '0 8px 40px hsl(var(--foreground) / 0.03)'
+                }}
               >
-                <span className="w-8 h-px bg-foreground/30" />
-                {t.about.title}
-              </motion.span>
-              <h1 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-foreground mb-6 leading-[1.1]">
-                Talisson Souza
-              </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-                {t.about.subtitle}
-              </p>
-            </div>
+                <div className="absolute top-0 left-0 w-24 h-24 border-l border-t border-foreground/[0.06] rounded-tl-3xl" />
+                <div className="absolute bottom-0 right-0 w-24 h-24 border-r border-b border-foreground/[0.06] rounded-br-3xl" />
+                
+                <div className="text-6xl font-serif text-foreground/[0.04] mb-4 select-none leading-none" style={{ letterSpacing: '-0.1em' }}>"</div>
+                
+                <p className="text-base lg:text-lg text-muted-foreground leading-[1.9] whitespace-pre-line">
+                  {language === 'pt' ? aboutTextPt : aboutTextEn}
+                </p>
+              </div>
+            </motion.div>
           </ScrollReveal>
         </div>
       </ParallaxSection>
 
-      {/* Main Content */}
-      <section className="py-16 lg:py-20 relative">
-        <div className="container mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            {/* Sidebar */}
-            <ScrollReveal className="lg:col-span-4">
-              <div className="lg:sticky lg:top-32 space-y-6">
-                {/* Avatar */}
-                <div className="relative flex justify-center lg:justify-start">
-                  <div className="absolute inset-0 bg-gradient-radial from-foreground/10 to-transparent rounded-full blur-2xl opacity-30 scale-110" />
-                  <Avatar className="h-48 w-48 border-2 border-border/30 relative z-10">
-                    <AvatarImage src="https://i.ibb.co/MySV14GV/Polish-20231015-221849134-112435.jpg" alt="Talisson Souza" className="object-cover" />
-                    <AvatarFallback>TS</AvatarFallback>
-                  </Avatar>
-                </div>
-                
-                {/* Social */}
-                <div className="p-6 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm">
-                  <h3 className="text-sm font-medium text-foreground mb-4">{t.about.socials}</h3>
-                  <SocialIcons className="flex-wrap gap-3" />
-                </div>
-
-                {/* CV Download */}
-                <div className="p-6 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm">
-                  <h3 className="text-sm font-medium text-foreground mb-4">{t.about.curriculum}</h3>
-                  <button 
-                    onClick={() => window.open('https://drive.google.com/file/d/1JBmXK4aCAPfeY4kuEc5QpO-ehlA2rfWO/view?usp=sharing', '_blank')}
-                    className="w-full group inline-flex items-center justify-center gap-2 text-sm font-medium text-primary-foreground bg-foreground rounded-xl py-3 transition-all duration-300 hover:opacity-90"
-                  >
-                    <Download className="w-4 h-4" />
-                    {t.about.downloadCV}
-                  </button>
-                  <p className="text-xs text-muted-foreground/70 mt-3 leading-relaxed">
-                    {t.about.cvDescription}
-                  </p>
-                </div>
-              </div>
+      {/* Experience Section */}
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.12}
+        backgroundElement={
+          <>
+            <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-card/20 to-transparent" />
+            <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+            <ScrollReveal className="lg:col-span-5">
+              <motion.span 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+              >
+                <span className="w-8 h-px bg-foreground/30" />
+                {getText(language, 'Experiência', 'Experience')}
+              </motion.span>
+              <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
+                {getText(language, 'Trajetória Profissional', 'Professional Journey')}
+              </h2>
+              <p className="text-base text-muted-foreground leading-relaxed mb-10 max-w-md">
+                {getText(language, 'Posições de liderança e contribuições que moldaram minha carreira.', 'Leadership positions and contributions that shaped my career.')}
+              </p>
+              <Link 
+                to="/career" 
+                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"
+              >
+                <span className="relative">
+                  {getText(language, 'Ver trajetória completa', 'View full career')}
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
+                  <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
+                </span>
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+              </Link>
             </ScrollReveal>
-
-            {/* Content */}
-            <div className="lg:col-span-8 space-y-12">
-              {/* Tabs */}
-              <ScrollReveal>
-                <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-6 lg:p-8">
-                  <Tabs defaultValue="profile" className="w-full">
-                    <TabsList className="grid w-full grid-cols-4 mb-8 bg-background/50">
-                      <TabsTrigger value="profile" className="flex items-center gap-2 text-xs sm:text-sm">
-                        <User className="w-4 h-4" />
-                        <span className="hidden sm:inline">{t.about.profile}</span>
-                      </TabsTrigger>
-                      <TabsTrigger value="experience" className="flex items-center gap-2 text-xs sm:text-sm">
-                        <Briefcase className="w-4 h-4" />
-                        <span className="hidden sm:inline">{t.about.experience}</span>
-                      </TabsTrigger>
-                      <TabsTrigger value="education" className="flex items-center gap-2 text-xs sm:text-sm">
-                        <GraduationCap className="w-4 h-4" />
-                        <span className="hidden sm:inline">{language === 'pt' ? 'Formação' : 'Education'}</span>
-                      </TabsTrigger>
-                      <TabsTrigger value="career" className="flex items-center gap-2 text-xs sm:text-sm">
-                        <Rocket className="w-4 h-4" />
-                        <span className="hidden sm:inline">{language === 'pt' ? 'Carreira' : 'Career'}</span>
-                      </TabsTrigger>
-                    </TabsList>
+            
+            <div className="lg:col-span-7 space-y-6 relative">
+              <motion.div 
+                initial={{ scaleY: 0 }}
+                whileInView={{ scaleY: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                className="absolute left-6 lg:left-0 top-0 bottom-0 w-px origin-top hidden sm:block"
+                style={{
+                  background: 'linear-gradient(to bottom, hsl(var(--foreground) / 0.2), hsl(var(--foreground) / 0.05) 70%, transparent)'
+                }}
+              />
+              
+              {experiences.map((exp, index) => (
+                <ScrollReveal key={exp.company} delay={index * 0.15}>
+                  <motion.div
+                    whileHover={{ y: -3, x: 3 }}
+                    transition={{ duration: 0.3 }}
+                    className="relative pl-0 sm:pl-12 lg:pl-10"
+                  >
+                    <motion.div 
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.15 + 0.3 }}
+                      className="absolute left-4 lg:left-[-5px] top-8 hidden sm:flex items-center justify-center"
+                    >
+                      <div className="w-2.5 h-2.5 rounded-full bg-foreground/30 ring-4 ring-background" />
+                    </motion.div>
                     
-                    <TabsContent value="profile" className="space-y-6">
-                      <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
-                        {language === 'pt' ? aboutTextPt : aboutTextEn}
-                      </p>
-                    </TabsContent>
-                    
-                    <TabsContent value="experience" className="space-y-4">
-                      {currentExperiences.map((exp, index) => (
-                        <div key={index} className="p-5 rounded-xl border border-border/20 bg-background/50">
-                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
-                            <div>
-                              <h4 className="text-base font-medium text-foreground">{exp.position}</h4>
-                              <p className="text-sm text-foreground/70">{exp.company}</p>
-                            </div>
-                            <span className="text-xs text-muted-foreground px-3 py-1 rounded-full border border-border/30 bg-card/50 w-fit">
-                              {exp.period}
-                            </span>
-                          </div>
-                          <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
-                        </div>
-                      ))}
-                    </TabsContent>
-
-                    <TabsContent value="education" className="space-y-4">
-                      {currentEducation.map((edu, index) => (
-                        <div key={index} className="p-5 rounded-xl border border-border/20 bg-background/50">
-                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
-                            <div>
-                              <h4 className="text-base font-medium text-foreground">{edu.title}</h4>
-                              <p className="text-sm text-foreground/70">{edu.institution}</p>
-                            </div>
-                            <span className="text-xs text-muted-foreground px-3 py-1 rounded-full border border-border/30 bg-card/50 w-fit">
-                              {edu.period}
-                            </span>
-                          </div>
-                          <p className="text-sm text-muted-foreground leading-relaxed">{edu.description}</p>
-                        </div>
-                      ))}
-                    </TabsContent>
-
-                    <TabsContent value="career" className="space-y-6">
-                      <div className="p-6 rounded-xl border border-border/20 bg-background/50 text-center">
-                        <Rocket className="w-12 h-12 text-foreground/60 mx-auto mb-4" />
-                        <h3 className="text-lg font-serif text-foreground mb-3">
-                          {language === 'pt' ? 'Minha Jornada Profissional' : 'My Professional Journey'}
-                        </h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-md mx-auto">
-                          {language === 'pt' 
-                            ? 'Descubra a história completa de como transformei desafios em oportunidades e construí minha carreira no mundo da tecnologia.'
-                            : 'Discover the complete story of how I transformed challenges into opportunities and built my career in the tech world.'}
-                        </p>
-                        <Link 
-                          to="/career"
-                          className="group inline-flex items-center gap-2 text-sm font-medium text-primary-foreground bg-foreground rounded-full px-6 py-3 transition-all duration-300 hover:opacity-90"
-                        >
-                          {language === 'pt' ? 'Ver Página de Carreira' : 'View Career Page'}
-                          <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                        </Link>
-                      </div>
-                    </TabsContent>
-                  </Tabs>
-                </div>
-              </ScrollReveal>
-
-              {/* Book Section */}
-              <ScrollReveal>
-                <div className="space-y-6">
-                  <h2 className="font-serif text-2xl lg:text-3xl text-foreground">
-                    {language === 'pt' ? 'Meu Livro' : 'My Book'}
-                  </h2>
-                  
-                  <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm overflow-hidden">
-                    <div className="flex flex-col md:flex-row">
-                      <div className="md:w-1/3 p-8 flex items-center justify-center bg-gradient-to-br from-card/50 to-background">
-                        <div className="relative">
-                          <div className="absolute inset-0 bg-foreground/10 rounded-lg blur-xl scale-110" />
-                          <img
-                            src={bookCover}
-                            alt={t.book.title}
-                            className="relative w-40 h-auto rounded-lg shadow-xl"
-                          />
-                        </div>
-                      </div>
+                    <div 
+                      className="relative p-8 rounded-2xl border border-border/30 bg-card/40 backdrop-blur-sm group"
+                      style={{
+                        boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                      }}
+                    >
+                      <div className="absolute top-0 right-0 w-16 h-16 border-t border-r border-foreground/[0.04] rounded-tr-2xl" />
                       
-                      <div className="md:w-2/3 p-8 space-y-4">
-                        <span className="inline-block px-3 py-1 rounded-full text-xs font-medium border border-border/30 bg-card/50 text-foreground">
-                          {t.book.newRelease}
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
+                        <div>
+                          <h3 className="text-lg font-serif text-foreground">{exp.company}</h3>
+                          <p className="text-sm text-foreground/70">{exp.position}</p>
+                        </div>
+                        <span className="text-xs px-3 py-1.5 rounded-full border border-border/30 bg-card/50 text-muted-foreground w-fit">
+                          {exp.period}
                         </span>
-                        
-                        <h3 className="text-xl font-serif text-foreground">{t.book.title}</h3>
-                        
-                        <p className="text-xs text-muted-foreground">
-                          121 {language === 'pt' ? 'capítulos' : 'chapters'}
-                        </p>
-                        
-                        <div className="flex gap-1">
-                          {[1, 2, 3, 4, 5].map((star) => (
-                            <Star key={star} className="w-4 h-4 fill-foreground/70 text-foreground/70" />
-                          ))}
-                        </div>
-                        
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          {t.book.aboutText1}
-                        </p>
-                        
-                        <a 
-                          href="https://www.amazon.com.br/dp/B0FXV8WP3Y" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="group inline-flex items-center gap-2 text-sm font-medium text-foreground"
-                        >
-                          <span className="relative">
-                            {t.book.buyOnAmazon}
-                            <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-300" />
-                          </span>
-                          <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                        </a>
                       </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
                     </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-
-              {/* Community Section */}
-              <ScrollReveal>
-                <div className="space-y-6">
-                  <h2 className="font-serif text-2xl lg:text-3xl text-foreground">
-                    {language === 'pt' ? 'Comunidade' : 'Community'}
-                  </h2>
-                  
-                  <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-8">
-                    <div className="flex flex-col md:flex-row items-center gap-6">
-                      <div className="w-16 h-16 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center flex-shrink-0">
-                        <Users className="w-8 h-8 text-foreground/60" />
-                      </div>
-                      
-                      <div className="flex-1 text-center md:text-left">
-                        <h3 className="text-lg font-serif text-foreground mb-2">Tech Leaders Network</h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                          {language === 'pt' 
-                            ? 'Sou o fundador e administrador da Tech Leaders Network, uma comunidade no Discord que conecta desenvolvedores, designers, empreendedores e criadores de diversas áreas.'
-                            : "I'm the founder and administrator of Tech Leaders Network, a Discord community that connects developers, designers, entrepreneurs and creators from various fields."}
-                        </p>
-                        <a 
-                          href="https://discord.gg/esmCBMP8Md"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group inline-flex items-center gap-2 text-sm font-medium text-foreground"
-                        >
-                          <span className="relative">
-                            {language === 'pt' ? 'Entrar no Discord' : 'Join Discord'}
-                            <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-300" />
-                          </span>
-                          <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-
-              {/* Certificates */}
-              <ScrollReveal>
-                <div className="space-y-6">
-                  <h2 className="font-serif text-2xl lg:text-3xl text-foreground">
-                    {t.certificates.title}
-                  </h2>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {certificates.map((certificate, index) => (
-                      <motion.div
-                        key={certificate.id}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        whileHover={{ y: -4 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1, duration: 0.3 }}
-                        className="group rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm overflow-hidden cursor-pointer"
-                        style={{
-                          boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
-                        }}
-                      >
-                        <div className="relative h-32 overflow-hidden">
-                          <img
-                            src={certificate.image}
-                            alt={certificate.title}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                          />
-                          <div className="absolute top-3 right-3 px-2 py-1 rounded-full text-[10px] font-medium border border-border/30 bg-background/80 backdrop-blur-sm flex items-center gap-1">
-                            <Award className="w-3 h-3" />
-                            {t.certificates.certificate}
-                          </div>
-                        </div>
-
-                        <div className="p-4">
-                          <h4 className="text-sm font-medium text-foreground mb-2 line-clamp-1">
-                            {certificate.title}
-                          </h4>
-                          
-                          <div className="flex items-center text-muted-foreground mb-2">
-                            <Calendar className="w-3 h-3 mr-1" />
-                            <span className="text-xs">{certificate.date}</span>
-                          </div>
-
-                          <p className="text-xs text-muted-foreground mb-3 line-clamp-2">
-                            {certificate.description}
-                          </p>
-
-                          <div className="flex items-center justify-between">
-                            <span className="text-xs text-foreground/70">
-                              {certificate.issuer}
-                            </span>
-                            <a
-                              href={certificate.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 text-xs text-foreground hover:opacity-70 transition-opacity"
-                            >
-                              <ExternalLink className="w-3 h-3" />
-                              {t.certificates.view}
-                            </a>
-                          </div>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </ScrollReveal>
-
-              {/* Values */}
-              <ScrollReveal>
-                <div className="space-y-6">
-                  <h2 className="font-serif text-2xl lg:text-3xl text-foreground">
-                    {language === 'pt' ? 'Meus Valores' : 'My Values'}
-                  </h2>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {currentValues.map((value, index) => (
-                      <motion.div 
-                        key={index}
-                        whileHover={{ y: -4, scale: 1.02 }}
-                        transition={{ duration: 0.3 }}
-                        className="p-6 rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm text-center cursor-default group"
-                        style={{
-                          boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
-                        }}
-                      >
-                        <div className="w-12 h-12 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center mx-auto mb-4 group-hover:border-foreground/20 transition-colors duration-300">
-                          <value.icon className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
-                        </div>
-                        <h4 className="text-base font-medium text-foreground mb-2">{value.title}</h4>
-                        <p className="text-sm text-muted-foreground">{value.description}</p>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </ScrollReveal>
-
-              {/* Hobbies */}
-              <ScrollReveal>
-                <div className="space-y-6">
-                  <h2 className="font-serif text-2xl lg:text-3xl text-foreground">
-                    {language === 'pt' ? 'Meus Hobbies' : 'My Hobbies'}
-                  </h2>
-                  
-                  <div className="flex flex-wrap gap-3">
-                    {currentHobbies.map((hobby, index) => (
-                      <motion.div 
-                        key={index} 
-                        whileHover={{ y: -2, scale: 1.05 }}
-                        transition={{ duration: 0.3 }}
-                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm cursor-default group"
-                        style={{
-                          boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
-                        }}
-                      >
-                        <hobby.icon className="w-4 h-4 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
-                        <span className="text-sm text-foreground">{hobby.name}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </ScrollReveal>
+                  </motion.div>
+                </ScrollReveal>
+              ))}
             </div>
           </div>
+        </div>
+      </ParallaxSection>
+
+      {/* Values Section */}
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.1}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-card/30 via-background to-card/30" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <motion.span 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+              >
+                {getText(language, 'Valores', 'Values')}
+              </motion.span>
+              <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6 leading-tight">
+                {getText(language, 'O que me guia', 'What guides me')}
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {values.map((value, index) => (
+              <ScrollReveal key={value.title} delay={index * 0.1}>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className="h-full"
+                >
+                  <div 
+                    className="relative h-full p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm text-center group"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+                    
+                    <div className="w-14 h-14 rounded-2xl border border-border/30 bg-card/50 flex items-center justify-center mx-auto mb-6 group-hover:border-foreground/20 transition-colors duration-300">
+                      <value.icon className="w-6 h-6 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
+                    </div>
+                    <h3 className="text-lg font-serif text-foreground mb-3">{value.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
+                  </div>
+                </motion.div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </ParallaxSection>
+
+      {/* Book Section */}
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.12}
+        backgroundElement={
+          <>
+            <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-card/20 to-transparent" />
+            <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <motion.div
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.4 }}
+              className="max-w-4xl mx-auto"
+            >
+              <div 
+                className="relative rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm overflow-hidden"
+                style={{
+                  boxShadow: '0 8px 40px hsl(var(--foreground) / 0.03)'
+                }}
+              >
+                <div className="grid grid-cols-1 md:grid-cols-3">
+                  <div className="p-10 flex items-center justify-center bg-gradient-to-br from-card/50 to-background">
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                      className="relative"
+                    >
+                      <div className="absolute inset-0 bg-foreground/10 rounded-lg blur-xl scale-110" />
+                      <img
+                        src={bookCover}
+                        alt={t.book.title}
+                        className="relative w-36 h-auto rounded-lg shadow-xl"
+                      />
+                    </motion.div>
+                  </div>
+                  
+                  <div className="md:col-span-2 p-10 space-y-5">
+                    <span className="inline-block px-3 py-1 rounded-full text-xs font-medium border border-border/30 bg-card/50 text-foreground">
+                      {t.book.newRelease}
+                    </span>
+                    
+                    <h3 className="text-xl font-serif text-foreground">{t.book.title}</h3>
+                    
+                    <div className="flex gap-1">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star key={star} className="w-4 h-4 fill-foreground/70 text-foreground/70" />
+                      ))}
+                      <span className="text-xs text-muted-foreground ml-2">121 {language === 'pt' ? 'capítulos' : 'chapters'}</span>
+                    </div>
+                    
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {t.book.aboutText1}
+                    </p>
+                    
+                    <a 
+                      href="https://www.amazon.com.br/dp/B0FXV8WP3Y" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-2 text-sm font-medium text-foreground"
+                    >
+                      <span className="relative">
+                        {t.book.buyOnAmazon}
+                        <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-300" />
+                      </span>
+                      <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </ScrollReveal>
+        </div>
+      </ParallaxSection>
+
+      {/* Certificates Section */}
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.1}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <div className="mb-10">
+              <motion.span 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+              >
+                <span className="w-8 h-px bg-foreground/30" />
+                {t.certificates.title}
+              </motion.span>
+              <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
+                {getText(language, 'Certificações', 'Certifications')}
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {certificates.map((cert, index) => (
+              <ScrollReveal key={cert.id} delay={index * 0.1}>
+                <motion.a
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className="block h-full group"
+                >
+                  <div 
+                    className="relative h-full p-6 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+                    
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="w-10 h-10 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center group-hover:border-foreground/20 transition-colors duration-300">
+                        <Award className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-foreground/30 group-hover:text-foreground/70 transition-colors duration-300" />
+                    </div>
+                    
+                    <h3 className="text-base font-medium text-foreground mb-2">{cert.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-3">{cert.issuer}</p>
+                    
+                    <div className="flex items-center text-xs text-muted-foreground/70">
+                      <Calendar className="w-3 h-3 mr-1" />
+                      {cert.date}
+                    </div>
+                  </div>
+                </motion.a>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </ParallaxSection>
+
+      {/* Community Section */}
+      <section className="py-20 lg:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-card/30 via-background to-background" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-radial from-foreground/5 to-transparent blur-3xl opacity-50" />
+        </div>
+        
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <motion.div
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.4 }}
+            >
+              <GlassCard className="max-w-3xl mx-auto p-10 lg:p-12 text-center hover:border-foreground/20 transition-all duration-500">
+                <div className="w-16 h-16 rounded-2xl border border-border/30 bg-card/50 flex items-center justify-center mx-auto mb-6">
+                  <Users className="w-8 h-8 text-foreground/60" />
+                </div>
+                
+                <motion.span 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+                >
+                  {getText(language, 'Comunidade', 'Community')}
+                </motion.span>
+                
+                <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-4 leading-tight">
+                  Tech Leaders Network
+                </h2>
+                <p className="text-base text-muted-foreground mb-8 leading-relaxed max-w-xl mx-auto">
+                  {getText(language, 
+                    'Fundador da comunidade exclusiva para empreendedores e programadores que querem acelerar suas carreiras.', 
+                    'Founder of the exclusive community for entrepreneurs and programmers who want to accelerate their careers.'
+                  )}
+                </p>
+                
+                <a 
+                  href="https://discord.gg/edZWXqcxuF" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-3 px-8 py-4 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300"
+                  style={{
+                    boxShadow: '0 0 30px hsl(var(--foreground) / 0.2)'
+                  }}
+                >
+                  {getText(language, 'Entrar na comunidade', 'Join community')}
+                  <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              </GlassCard>
+            </motion.div>
+          </ScrollReveal>
         </div>
       </section>
     </Layout>
