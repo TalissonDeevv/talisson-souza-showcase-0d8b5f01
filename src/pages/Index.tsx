@@ -11,7 +11,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
 import logoSignature from "@/assets/logo-signature.png";
-import talissonPhoto from "@/assets/talisson-photo.png";
+// Photo removed - using abstract background instead
 import { motion } from "framer-motion";
 
 const Index = () => {
@@ -48,50 +48,126 @@ const Index = () => {
   }];
   const techStack = ['JavaScript', 'TypeScript', 'Python', 'React', 'Node.js', 'Next.js', 'Tailwind', 'MongoDB', 'PostgreSQL', 'Git', 'Docker', 'Firebase'];
   return <Layout withPadding={false}>
-      {/* Hero Section */}
-      <section className="min-h-[90vh] flex items-end pb-20 pt-32 relative overflow-hidden">
-        {/* Photo with fade effect only at bottom */}
-        <div 
-          className="absolute right-8 lg:right-16 top-1/2 -translate-y-1/2 w-[280px] sm:w-[340px] lg:w-[420px] xl:w-[480px] pointer-events-none select-none z-0"
-          style={{
-            maskImage: 'linear-gradient(to top, transparent 0%, black 60%)',
-            WebkitMaskImage: 'linear-gradient(to top, transparent 0%, black 60%)',
-          }}
-        >
-          <img 
-            src={talissonPhoto} 
-            alt="" 
-            className="w-full h-auto opacity-60 dark:opacity-40"
-            aria-hidden="true"
+      {/* Hero Section - Centered Premium Layout */}
+      <section className="min-h-[100vh] flex items-center justify-center relative overflow-hidden">
+        {/* Sophisticated Background Effect */}
+        <div className="absolute inset-0 z-0">
+          {/* Base gradient */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background" />
+          
+          {/* Radial glow effects */}
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/5 via-transparent to-transparent blur-3xl opacity-60" />
+          <div className="absolute bottom-1/3 right-1/4 w-[600px] h-[600px] bg-gradient-radial from-accent/5 via-transparent to-transparent blur-3xl opacity-40" />
+          <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-gradient-radial from-muted/10 via-transparent to-transparent blur-3xl opacity-30" />
+          
+          {/* Subtle grid texture overlay */}
+          <div 
+            className="absolute inset-0 opacity-[0.02]"
+            style={{
+              backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+              backgroundSize: '60px 60px'
+            }}
+          />
+          
+          {/* Animated floating orbs */}
+          <motion.div 
+            className="absolute top-1/3 right-1/3 w-2 h-2 rounded-full bg-foreground/20"
+            animate={{ 
+              y: [0, -20, 0],
+              opacity: [0.2, 0.5, 0.2]
+            }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div 
+            className="absolute top-2/3 left-1/3 w-1.5 h-1.5 rounded-full bg-foreground/15"
+            animate={{ 
+              y: [0, -15, 0],
+              opacity: [0.15, 0.4, 0.15]
+            }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          />
+          <motion.div 
+            className="absolute bottom-1/3 right-1/4 w-1 h-1 rounded-full bg-foreground/10"
+            animate={{ 
+              y: [0, -10, 0],
+              opacity: [0.1, 0.3, 0.1]
+            }}
+            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
           />
         </div>
 
-        <div className="container mx-auto px-6 lg:px-8 relative z-10">
-          <div className="max-w-xl lg:max-w-2xl">
-            <p className="text-sm tracking-widest uppercase text-muted-foreground mb-8">
+        {/* Bottom fade effect - smooth transition to next section */}
+        <div 
+          className="absolute bottom-0 left-0 right-0 h-40 z-10 pointer-events-none"
+          style={{
+            background: 'linear-gradient(to top, hsl(var(--background)) 0%, transparent 100%)'
+          }}
+        />
+
+        {/* Content */}
+        <div className="container mx-auto px-6 lg:px-8 relative z-20 pt-24">
+          <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
+            {/* Badge with entrance animation */}
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-xs sm:text-sm tracking-[0.3em] uppercase text-muted-foreground mb-10"
+            >
               {t.hero.badge}
-            </p>
+            </motion.p>
             
-            <img src={logoSignature} alt="Talisson Souza" className="h-20 sm:h-24 lg:h-28 w-auto mb-10 invert dark:invert-0 border-0 border-none" />
+            {/* Signature with entrance animation */}
+            <motion.img 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              src={logoSignature} 
+              alt="Talisson Souza" 
+              className="h-24 sm:h-28 lg:h-36 w-auto mb-10 invert dark:invert-0 border-0 border-none" 
+            />
 
-            <p className="text-lg text-muted-foreground max-w-xl mb-12 leading-relaxed">
+            {/* Subtitle with entrance animation */}
+            <motion.p 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              className="text-lg sm:text-xl text-muted-foreground max-w-2xl mb-14 leading-relaxed"
+            >
               {t.hero.subtitle}
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row items-start gap-6 mb-16">
+            {/* CTAs with entrance animation */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.6 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16"
+            >
               <ContactDialog>
-                <button className="group inline-flex items-center gap-2 text-sm font-medium text-foreground border-b border-foreground pb-1 hover:opacity-70 transition-opacity duration-200">
+                <button className="group inline-flex items-center gap-3 text-sm font-medium text-foreground px-8 py-3.5 rounded-full border border-foreground/20 bg-foreground/5 backdrop-blur-sm hover:bg-foreground/10 hover:border-foreground/40 hover:shadow-[0_0_30px_hsl(var(--foreground)/0.1)] transition-all duration-300">
                   {t.hero.contact}
-                  <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
               </ContactDialog>
               
-              <Link to="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
+              <Link 
+                to="/about" 
+                className="group text-sm text-muted-foreground hover:text-foreground transition-all duration-300 flex items-center gap-2"
+              >
                 {t.hero.about}
+                <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
               </Link>
-            </div>
+            </motion.div>
 
-            <SocialIcons />
+            {/* Social Icons with entrance animation */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <SocialIcons />
+            </motion.div>
           </div>
         </div>
       </section>

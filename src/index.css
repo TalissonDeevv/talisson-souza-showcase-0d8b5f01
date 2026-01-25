@@ -123,6 +123,11 @@
   }
 }
 
+/* Radial gradient utility for hero background */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
 /* Utility classes */
 @layer utilities {
   .text-editorial {
