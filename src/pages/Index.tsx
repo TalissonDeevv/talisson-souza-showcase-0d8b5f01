@@ -2,7 +2,6 @@ import Layout from "@/components/layout/Layout";
 import ContactDialog from "@/components/ui/ContactDialog";
 import SocialIcons from "@/components/ui/SocialIcons";
 import FAQ from "@/components/ui/FAQ";
-import FloatingTerminal from "@/components/ui/FloatingTerminal";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import GlassCard from "@/components/ui/GlassCard";
 import PremiumBadge from "@/components/ui/PremiumBadge";
@@ -13,6 +12,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
 import logoSignature from "@/assets/logo-signature.png";
 import { motion } from "framer-motion";
+import { SiJavascript, SiTypescript, SiPython, SiReact, SiNodedotjs, SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFirebase } from "react-icons/si";
 
 const Index = () => {
   const {
@@ -46,7 +46,20 @@ const Index = () => {
     period: "2024 - " + getText(language, 'Presente', 'Present'),
     description: getText(language, "Consultoria estratégica especializada em transformação digital e implementação de soluções tecnológicas empresariais.", "Strategic consulting specialized in digital transformation and implementation of enterprise technology solutions.")
   }];
-  const techStack = ['JavaScript', 'TypeScript', 'Python', 'React', 'Node.js', 'Next.js', 'Tailwind', 'MongoDB', 'PostgreSQL', 'Git', 'Docker', 'Firebase'];
+  const techStack = [
+    { name: 'JavaScript', icon: SiJavascript },
+    { name: 'TypeScript', icon: SiTypescript },
+    { name: 'Python', icon: SiPython },
+    { name: 'React', icon: SiReact },
+    { name: 'Node.js', icon: SiNodedotjs },
+    { name: 'Next.js', icon: SiNextdotjs },
+    { name: 'Tailwind', icon: SiTailwindcss },
+    { name: 'MongoDB', icon: SiMongodb },
+    { name: 'PostgreSQL', icon: SiPostgresql },
+    { name: 'Git', icon: SiGit },
+    { name: 'Docker', icon: SiDocker },
+    { name: 'Firebase', icon: SiFirebase },
+  ];
   return <Layout withPadding={false}>
       {/* Hero Section - Centered Premium Layout */}
       <section className="min-h-[100vh] flex items-center justify-center relative overflow-hidden">
@@ -194,33 +207,37 @@ const Index = () => {
               {/* Tech Grid - More visual interest */}
               <div className="lg:col-span-7">
                 <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
-                  {techStack.map((tech, index) => (
-                    <motion.div 
-                      key={tech}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: index * 0.03 }}
-                      whileHover={{ 
-                        y: -4,
-                        transition: { duration: 0.2 } 
-                      }}
-                      className="group relative p-4 rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm cursor-default overflow-hidden"
-                      style={{
-                        boxShadow: '0 2px 8px hsl(var(--foreground) / 0.02)'
-                      }}
-                    >
-                      {/* Gradient overlay on hover */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-foreground/[0.04] to-transparent" />
-                      
-                      {/* Top highlight line */}
-                      <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      
-                      <span className="relative text-sm font-medium text-foreground/70 group-hover:text-foreground transition-colors duration-300">
-                        {tech}
-                      </span>
-                    </motion.div>
-                  ))}
+                  {techStack.map((tech, index) => {
+                    const IconComponent = tech.icon;
+                    return (
+                      <motion.div 
+                        key={tech.name}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: index * 0.03 }}
+                        whileHover={{ 
+                          y: -4,
+                          transition: { duration: 0.2 } 
+                        }}
+                        className="group relative p-4 rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm cursor-default overflow-hidden flex flex-col items-center justify-center gap-2"
+                        style={{
+                          boxShadow: '0 2px 8px hsl(var(--foreground) / 0.02)'
+                        }}
+                      >
+                        {/* Gradient overlay on hover */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-foreground/[0.04] to-transparent" />
+                        
+                        {/* Top highlight line */}
+                        <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        
+                        <IconComponent className="relative w-6 h-6 text-foreground/50 group-hover:text-foreground transition-colors duration-300" />
+                        <span className="relative text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                          {tech.name}
+                        </span>
+                      </motion.div>
+                    );
+                  })}
                 </div>
               </div>
             </div>

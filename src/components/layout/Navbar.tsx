@@ -48,7 +48,7 @@ const Navbar = () => {
             <img 
               src={logo} 
               alt="TS" 
-              className="h-12 w-auto invert dark:invert-0 transition-opacity duration-200 group-hover:opacity-80" 
+              className="h-[72px] w-auto invert dark:invert-0 transition-opacity duration-200 group-hover:opacity-80" 
             />
           </Link>
 
