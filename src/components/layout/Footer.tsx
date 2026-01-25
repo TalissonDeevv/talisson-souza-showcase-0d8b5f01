@@ -36,39 +36,39 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="border-t border-border/40 mt-32">
+    <footer className="border-t border-border/40 mt-20">
       <div className="container mx-auto px-6 lg:px-8">
-        <div className="py-20 lg:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8">
+        <div className="py-12 lg:py-14">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8">
             
             {/* Brand & Description */}
-            <div className="lg:col-span-5">
-              <Link to="/" className="inline-block mb-8">
+            <div className="lg:col-span-4">
+              <Link to="/" className="inline-block mb-5">
                 <img 
                   src={logo} 
                   alt="Talisson Souza - Desenvolvedor Full Stack" 
-                  className="h-14 w-auto" 
+                  className="h-12 w-auto" 
                   loading="eager"
                 />
               </Link>
               
-              <p className="text-xs tracking-widest uppercase text-muted-foreground mb-4">
+              <p className="text-xs tracking-widest uppercase text-muted-foreground mb-3">
                 {t.footer.role}
               </p>
               
-              <p className="text-sm text-muted-foreground leading-relaxed max-w-sm mb-10">
+              <p className="text-sm text-muted-foreground leading-relaxed max-w-sm mb-6">
                 {t.footer.description}
               </p>
 
               {/* Professional Links */}
-              <div className="space-y-3">
+              <div className="flex flex-wrap gap-x-4 gap-y-2">
                 {professionalChannels.map((channel) => (
                   <a
                     key={channel.name}
                     href={channel.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-2 text-sm text-foreground/80 hover:text-foreground transition-colors duration-200"
+                    className="group flex items-center gap-1.5 text-sm text-foreground/80 hover:text-foreground transition-colors duration-200"
                   >
                     <span>{channel.name}</span>
                     <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
@@ -78,17 +78,17 @@ const Footer = () => {
             </div>
 
             {/* Navigation */}
-            <div className="lg:col-span-3">
-              <h3 className="text-xs tracking-widest uppercase text-muted-foreground mb-6">
+            <div className="lg:col-span-4">
+              <h3 className="text-xs tracking-widest uppercase text-muted-foreground mb-4">
                 {t.footer.explore}
               </h3>
               
-              <nav className="space-y-3">
+              <nav className="grid grid-cols-2 gap-x-6 gap-y-2">
                 {navigationLinks.map((item) => (
                   <Link 
                     key={item.name}
                     to={item.path} 
-                    className="block text-sm text-foreground/70 hover:text-foreground transition-colors duration-200"
+                    className="text-sm text-foreground/70 hover:text-foreground transition-colors duration-200"
                   >
                     {item.name}
                   </Link>
@@ -96,8 +96,8 @@ const Footer = () => {
               </nav>
 
               {/* Social */}
-              <div className="mt-10 pt-6 border-t border-border/30">
-                <p className="text-xs tracking-widest uppercase text-muted-foreground mb-4">
+              <div className="mt-6 pt-4 border-t border-border/30">
+                <p className="text-xs tracking-widest uppercase text-muted-foreground mb-3">
                   {t.footer.channels}
                 </p>
                 <div className="flex flex-wrap gap-x-4 gap-y-2">
@@ -118,7 +118,7 @@ const Footer = () => {
 
             {/* Contact */}
             <div className="lg:col-span-4">
-              <h3 className="text-xs tracking-widest uppercase text-muted-foreground mb-6">
+              <h3 className="text-xs tracking-widest uppercase text-muted-foreground mb-4">
                 {t.footer.contact}
               </h3>
               
@@ -130,18 +130,18 @@ const Footer = () => {
                 <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
               </a>
 
-              <p className="text-sm text-muted-foreground mt-6">
+              <p className="text-sm text-muted-foreground mt-4">
                 {t.footer.location}
               </p>
 
               {/* Back to Top Button */}
               <motion.button
                 onClick={scrollToTop}
-                whileHover={{ y: -4, scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="mt-10 group inline-flex items-center gap-3 px-5 py-3 text-sm font-medium text-foreground border border-border/30 rounded-xl hover:bg-card/50 hover:border-foreground/20 transition-all duration-300"
+                whileHover={{ y: -2, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="mt-6 group inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-foreground border border-border/30 rounded-lg hover:bg-card/50 hover:border-foreground/20 transition-all duration-300"
               >
-                <ArrowUp className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1" />
+                <ArrowUp className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5" />
                 {getText(language, 'Voltar ao topo', 'Back to top')}
               </motion.button>
             </div>
@@ -149,7 +149,7 @@ const Footer = () => {
         </div>
         
         {/* Bottom bar */}
-        <div className="py-6 border-t border-border/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="py-5 border-t border-border/30 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-muted-foreground">
             © {currentYear} TS
           </p>
