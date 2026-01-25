@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
-import { useTranslation } from "@/utils/translations";
-import { ArrowUpRight } from "lucide-react";
+import { useTranslation, getText } from "@/utils/translations";
+import { ArrowUpRight, ArrowUp } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const { language } = useTheme();
   const t = useTranslation(language);
   const currentYear = new Date().getFullYear();
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const professionalChannels = [
     { name: "GitHub", href: "https://github.com/TalinhoDev" },
@@ -41,7 +46,7 @@ const Footer = () => {
                 <img 
                   src={logo} 
                   alt="TS" 
-                  className="h-14 w-auto invert dark:invert-0" 
+                  className="h-14 w-auto" 
                 />
               </Link>
               
@@ -126,6 +131,17 @@ const Footer = () => {
               <p className="text-sm text-muted-foreground mt-6">
                 {t.footer.location}
               </p>
+
+              {/* Back to Top Button */}
+              <motion.button
+                onClick={scrollToTop}
+                whileHover={{ y: -4, scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="mt-10 group inline-flex items-center gap-3 px-5 py-3 text-sm font-medium text-foreground border border-border/30 rounded-xl hover:bg-card/50 hover:border-foreground/20 transition-all duration-300"
+              >
+                <ArrowUp className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1" />
+                {getText(language, 'Voltar ao topo', 'Back to top')}
+              </motion.button>
             </div>
           </div>
         </div>
