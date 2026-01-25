@@ -3,9 +3,10 @@ import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
+import GlassCard from "@/components/ui/GlassCard";
 import { 
   ArrowLeft, Code, Smartphone, Bot, Palette, Cloud, Users,
-  CheckCircle, Star, MessageSquare, ArrowRight
+  CheckCircle, Star, MessageSquare, ArrowUpRight, Clock, Coins
 } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
@@ -169,154 +170,300 @@ const ServiceDetail = () => {
 
   return (
     <Layout>
-      {/* Hero */}
+      {/* Hero Section */}
       <ParallaxSection 
-        className="pt-24 pb-10 lg:pt-28 lg:pb-12"
+        className="pt-24 pb-16 lg:pt-28 lg:pb-20"
         speed={0.1}
         backgroundElement={
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+            <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+          </>
         }
       >
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
             <Link 
               to="/services"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-10 transition-colors duration-300"
             >
               <ArrowLeft className="w-4 h-4" />
               {language === 'pt' ? 'Voltar aos Serviços' : 'Back to Services'}
             </Link>
             
-            <div className="flex items-start gap-6 mb-8">
-              <div className="w-16 h-16 rounded-2xl border border-border/30 bg-card/50 flex items-center justify-center flex-shrink-0">
-                <IconComponent className="w-8 h-8 text-foreground/70" />
-              </div>
-              <div>
-                <h1 className="font-serif text-3xl lg:text-4xl text-foreground mb-3">
-                  {service.title}
-                </h1>
-                <p className="text-lg text-muted-foreground max-w-2xl">
-                  {service.description}
-                </p>
+            <div className="max-w-3xl">
+              <motion.span 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+              >
+                <span className="w-8 h-px bg-foreground/30" />
+                {getText(language, 'Serviço', 'Service')}
+              </motion.span>
+              
+              <div className="flex items-start gap-6 mb-6">
+                <motion.div 
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="w-16 h-16 rounded-2xl border border-border/30 bg-card/50 flex items-center justify-center flex-shrink-0"
+                >
+                  <IconComponent className="w-8 h-8 text-foreground/70" />
+                </motion.div>
+                <div>
+                  <h1 className="font-serif text-3xl lg:text-4xl xl:text-5xl text-foreground mb-4 leading-[1.1]">
+                    {service.title}
+                  </h1>
+                  <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+                    {service.description}
+                  </p>
+                </div>
               </div>
             </div>
           </ScrollReveal>
         </div>
       </ParallaxSection>
 
-      {/* Content */}
-      <section className="py-12 lg:py-16 relative">
+      {/* Quick Stats */}
+      <section className="pb-12 relative">
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Main */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl">
+            {[
+              { icon: Clock, label: getText(language, 'Prazo', 'Timeline'), value: service.deliveryTime },
+              { icon: Coins, label: getText(language, 'Investimento', 'Investment'), value: service.pricing },
+              { icon: CheckCircle, label: getText(language, 'Recursos', 'Features'), value: `${service.features.length}+` },
+              { icon: Star, label: getText(language, 'Tecnologias', 'Technologies'), value: `${service.technologies.length}` }
+            ].map((stat, index) => (
+              <ScrollReveal key={index} delay={index * 0.1}>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-5"
+                  style={{
+                    boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                  }}
+                >
+                  <stat.icon className="w-5 h-5 text-foreground/50 mb-3" />
+                  <p className="text-xs text-muted-foreground/70 mb-1">{stat.label}</p>
+                  <p className="text-sm font-medium text-foreground">{stat.value}</p>
+                </motion.div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <section className="py-16 lg:py-20 relative">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+        </div>
+        
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+            {/* Main Column */}
             <div className="lg:col-span-2 space-y-8">
               {/* Features */}
               <ScrollReveal>
-                <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-8">
-                  <h2 className="font-serif text-xl text-foreground mb-6">
+                <GlassCard className="p-8" hover={false}>
+                  <h2 className="font-serif text-xl lg:text-2xl text-foreground mb-6">
                     {language === 'pt' ? 'Recursos Inclusos' : 'Included Features'}
                   </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {service.features.map((feature: string, index: number) => (
-                      <div key={index} className="flex items-center gap-3">
-                        <CheckCircle className="w-4 h-4 text-foreground/50 flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">{feature}</span>
-                      </div>
+                      <motion.div 
+                        key={index} 
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.05 }}
+                        className="flex items-start gap-3 group"
+                      >
+                        <div className="w-5 h-5 rounded-full border border-border/30 bg-card/50 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:border-foreground/30 transition-colors">
+                          <CheckCircle className="w-3 h-3 text-foreground/50" />
+                        </div>
+                        <span className="text-sm text-muted-foreground leading-relaxed">{feature}</span>
+                      </motion.div>
                     ))}
                   </div>
-                </div>
+                </GlassCard>
               </ScrollReveal>
 
               {/* Requirements */}
               <ScrollReveal>
-                <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-8">
-                  <h2 className="font-serif text-xl text-foreground mb-6">
+                <GlassCard className="p-8" hover={false}>
+                  <h2 className="font-serif text-xl lg:text-2xl text-foreground mb-6">
                     {language === 'pt' ? 'Requisitos do Projeto' : 'Project Requirements'}
                   </h2>
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     {service.requirements.map((req: string, index: number) => (
-                      <div key={index} className="flex items-center gap-3">
-                        <span className="w-6 h-6 rounded-full border border-border/30 bg-card/50 flex items-center justify-center text-xs text-foreground/50">
-                          {index + 1}
+                      <motion.div 
+                        key={index} 
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.05 }}
+                        className="flex items-center gap-4 group"
+                      >
+                        <span className="w-8 h-8 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center text-xs text-foreground/50 font-medium group-hover:border-foreground/30 transition-colors">
+                          {String(index + 1).padStart(2, '0')}
                         </span>
                         <span className="text-sm text-muted-foreground">{req}</span>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
-                </div>
+                </GlassCard>
               </ScrollReveal>
 
               {/* Technologies */}
               <ScrollReveal>
-                <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-8">
-                  <h2 className="font-serif text-xl text-foreground mb-6">
+                <GlassCard className="p-8" hover={false}>
+                  <h2 className="font-serif text-xl lg:text-2xl text-foreground mb-6">
                     {language === 'pt' ? 'Tecnologias Utilizadas' : 'Technologies Used'}
                   </h2>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-3">
                     {service.technologies.map((tech: string, index: number) => (
-                      <span key={index} className="text-xs px-3 py-1.5 rounded-lg border border-border/30 bg-background/50 text-muted-foreground">
+                      <motion.span 
+                        key={index}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.05 }}
+                        whileHover={{ y: -2 }}
+                        className="text-xs px-4 py-2 rounded-xl border border-border/30 bg-background/50 text-muted-foreground hover:border-foreground/20 hover:text-foreground transition-all duration-300 cursor-default"
+                      >
                         {tech}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
-                </div>
+                </GlassCard>
               </ScrollReveal>
             </div>
 
             {/* Sidebar */}
             <div className="space-y-6">
+              {/* CTA Card */}
               <ScrollReveal>
-                <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-6 lg:sticky lg:top-32">
-                  <h3 className="text-base font-medium text-foreground mb-4">
-                    {language === 'pt' ? 'Informações' : 'Information'}
-                  </h3>
-                  
-                  <div className="space-y-4 mb-6">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">{language === 'pt' ? 'Prazo' : 'Timeline'}</span>
-                      <span className="text-sm text-foreground">{service.deliveryTime}</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">{language === 'pt' ? 'Preço' : 'Price'}</span>
-                      <span className="text-sm font-medium text-foreground">{service.pricing}</span>
-                    </div>
-                  </div>
-
-                  <button 
-                    onClick={() => window.open('https://wa.me/5581993964261', '_blank')}
-                    className="w-full group inline-flex items-center justify-center gap-2 text-sm font-medium text-primary-foreground bg-foreground rounded-xl py-3 transition-all duration-300 hover:opacity-90 mb-3"
-                  >
-                    <MessageSquare className="w-4 h-4" />
-                    {language === 'pt' ? 'Solicitar Orçamento' : 'Request Quote'}
-                  </button>
-
-                  <Link 
-                    to="/contact"
-                    className="w-full inline-flex items-center justify-center gap-2 text-sm font-medium text-foreground border border-border/30 rounded-xl py-3 hover:bg-card/50 transition-all duration-300"
-                  >
-                    {language === 'pt' ? 'Mais Informações' : 'More Information'}
-                  </Link>
-                </div>
-              </ScrollReveal>
-
-              <ScrollReveal>
-                <div className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-6">
-                  <h3 className="text-base font-medium text-foreground mb-4 flex items-center gap-2">
-                    <Star className="w-4 h-4" />
-                    {language === 'pt' ? 'Por que escolher?' : 'Why choose?'}
-                  </h3>
-                  <div className="space-y-3">
-                    {benefits.map((benefit, index) => (
-                      <div key={index} className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-foreground/50 flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">{benefit}</span>
+                <div className="lg:sticky lg:top-32">
+                  <GlassCard className="p-6" hover={false} glow>
+                    <h3 className="font-serif text-lg text-foreground mb-6">
+                      {language === 'pt' ? 'Pronto para começar?' : 'Ready to start?'}
+                    </h3>
+                    
+                    <div className="space-y-4 mb-6 pb-6 border-b border-border/20">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">{language === 'pt' ? 'Prazo estimado' : 'Estimated timeline'}</span>
+                        <span className="text-sm text-foreground font-medium">{service.deliveryTime}</span>
                       </div>
-                    ))}
-                  </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">{language === 'pt' ? 'Investimento' : 'Investment'}</span>
+                        <span className="text-sm text-foreground font-medium">{service.pricing}</span>
+                      </div>
+                    </div>
+
+                    <motion.button 
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => window.open('https://wa.me/5581993964261', '_blank')}
+                      className="w-full group inline-flex items-center justify-center gap-2 text-sm font-medium text-primary-foreground bg-foreground rounded-xl py-3.5 transition-all duration-300 hover:opacity-90 mb-3"
+                      style={{
+                        boxShadow: '0 0 20px hsl(var(--foreground) / 0.15)'
+                      }}
+                    >
+                      <MessageSquare className="w-4 h-4" />
+                      {language === 'pt' ? 'Solicitar Orçamento' : 'Request Quote'}
+                    </motion.button>
+
+                    <Link 
+                      to="/contact"
+                      className="w-full inline-flex items-center justify-center gap-2 text-sm font-medium text-foreground border border-border/30 rounded-xl py-3.5 hover:bg-card/50 hover:border-foreground/20 transition-all duration-300"
+                    >
+                      {language === 'pt' ? 'Mais Informações' : 'More Information'}
+                      <ArrowUpRight className="w-4 h-4" />
+                    </Link>
+                  </GlassCard>
+
+                  {/* Benefits */}
+                  <GlassCard className="p-6 mt-6" hover={false}>
+                    <div className="flex items-center gap-3 mb-5">
+                      <div className="w-10 h-10 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center">
+                        <Star className="w-5 h-5 text-foreground/70" />
+                      </div>
+                      <h3 className="font-serif text-base text-foreground">
+                        {language === 'pt' ? 'Por que escolher?' : 'Why choose?'}
+                      </h3>
+                    </div>
+                    <div className="space-y-3">
+                      {benefits.map((benefit, index) => (
+                        <motion.div 
+                          key={index} 
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.05 }}
+                          className="flex items-center gap-3"
+                        >
+                          <CheckCircle className="w-4 h-4 text-foreground/40 flex-shrink-0" />
+                          <span className="text-sm text-muted-foreground">{benefit}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </GlassCard>
                 </div>
               </ScrollReveal>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 lg:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+        </div>
+        
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <motion.div
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.4 }}
+              className="max-w-2xl mx-auto"
+            >
+              <div 
+                className="relative p-10 lg:p-12 rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm text-center"
+                style={{
+                  boxShadow: '0 8px 40px hsl(var(--foreground) / 0.03)'
+                }}
+              >
+                <div className="absolute top-0 left-0 w-20 h-20 border-l border-t border-foreground/[0.06] rounded-tl-3xl" />
+                <div className="absolute bottom-0 right-0 w-20 h-20 border-r border-b border-foreground/[0.06] rounded-br-3xl" />
+                
+                <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-4 leading-tight">
+                  {getText(language, 'Tem alguma dúvida?', 'Have any questions?')}
+                </h2>
+                <p className="text-muted-foreground mb-8 leading-relaxed max-w-xl mx-auto">
+                  {getText(language, 
+                    'Entre em contato para discutir seu projeto e receber um orçamento personalizado.',
+                    'Get in touch to discuss your project and receive a personalized quote.'
+                  )}
+                </p>
+                
+                <a 
+                  href="https://wa.me/5581993964261" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-3 px-8 py-4 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300 hover:opacity-90"
+                  style={{
+                    boxShadow: '0 0 30px hsl(var(--foreground) / 0.2)'
+                  }}
+                >
+                  {getText(language, 'Falar no WhatsApp', 'Chat on WhatsApp')}
+                  <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              </div>
+            </motion.div>
+          </ScrollReveal>
         </div>
       </section>
     </Layout>

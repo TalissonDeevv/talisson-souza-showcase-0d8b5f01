@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation } from "@/utils/translations";
-import { Check } from "lucide-react";
+import { Check, Send } from "lucide-react";
 
 const ContactForm = () => {
   const { language } = useTheme();
@@ -28,7 +28,6 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
@@ -38,7 +37,6 @@ const ContactForm = () => {
         message: "",
       });
       
-      // Reset success message after some time
       setTimeout(() => {
         setIsSubmitted(false);
       }, 5000);
@@ -46,22 +44,27 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="bg-card rounded-lg shadow-sm border border-border p-6">
+    <div>
       {isSubmitted ? (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-center py-8"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="text-center py-12"
         >
-          <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Check className="h-8 w-8 text-primary" />
-          </div>
-          <h3 className="text-xl font-semibold text-foreground mb-2">{t.contact.form.success}</h3>
-          <p className="text-muted-foreground">{t.contact.form.successMessage}</p>
+          <motion.div 
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.1, type: "spring" }}
+            className="w-16 h-16 rounded-2xl border border-border/30 bg-card/50 flex items-center justify-center mx-auto mb-6"
+          >
+            <Check className="h-8 w-8 text-foreground/70" />
+          </motion.div>
+          <h3 className="font-serif text-xl text-foreground mb-2">{t.contact.form.success}</h3>
+          <p className="text-muted-foreground text-sm">{t.contact.form.successMessage}</p>
         </motion.div>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
             <label className="block text-foreground text-sm font-medium mb-2" htmlFor="name">
               {t.contact.form.name}
             </label>
@@ -72,11 +75,12 @@ const ContactForm = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-3 py-2 border border-border bg-background text-foreground rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+              className="w-full px-4 py-3 border border-border/30 bg-background/50 text-foreground rounded-xl focus:outline-none focus:ring-2 focus:ring-foreground/10 focus:border-foreground/30 transition-all duration-300 placeholder:text-muted-foreground/50"
+              placeholder={language === 'pt' ? 'Seu nome' : 'Your name'}
             />
           </div>
           
-          <div className="mb-4">
+          <div>
             <label className="block text-foreground text-sm font-medium mb-2" htmlFor="email">
               {t.contact.form.email}
             </label>
@@ -87,11 +91,12 @@ const ContactForm = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-3 py-2 border border-border bg-background text-foreground rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+              className="w-full px-4 py-3 border border-border/30 bg-background/50 text-foreground rounded-xl focus:outline-none focus:ring-2 focus:ring-foreground/10 focus:border-foreground/30 transition-all duration-300 placeholder:text-muted-foreground/50"
+              placeholder={language === 'pt' ? 'seu@email.com' : 'your@email.com'}
             />
           </div>
           
-          <div className="mb-6">
+          <div>
             <label className="block text-foreground text-sm font-medium mb-2" htmlFor="message">
               {t.contact.form.message}
             </label>
@@ -102,20 +107,37 @@ const ContactForm = () => {
               onChange={handleChange}
               required
               rows={5}
-              className="w-full px-3 py-2 border border-border bg-background text-foreground rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+              className="w-full px-4 py-3 border border-border/30 bg-background/50 text-foreground rounded-xl focus:outline-none focus:ring-2 focus:ring-foreground/10 focus:border-foreground/30 transition-all duration-300 resize-none placeholder:text-muted-foreground/50"
+              placeholder={language === 'pt' ? 'Conte sobre seu projeto...' : 'Tell us about your project...'}
             />
           </div>
           
-          <div>
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className={`w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-2 px-4 rounded-md transition-colors
-              ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
-            >
-              {isSubmitting ? t.contact.form.sending : t.contact.form.send}
-            </button>
-          </div>
+          <motion.button
+            type="submit"
+            disabled={isSubmitting}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className={`w-full inline-flex items-center justify-center gap-2 bg-foreground hover:opacity-90 text-primary-foreground font-medium py-3.5 px-6 rounded-xl transition-all duration-300 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+            style={{
+              boxShadow: '0 0 20px hsl(var(--foreground) / 0.15)'
+            }}
+          >
+            {isSubmitting ? (
+              <>
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                  className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full"
+                />
+                {t.contact.form.sending}
+              </>
+            ) : (
+              <>
+                <Send className="w-4 h-4" />
+                {t.contact.form.send}
+              </>
+            )}
+          </motion.button>
         </form>
       )}
     </div>

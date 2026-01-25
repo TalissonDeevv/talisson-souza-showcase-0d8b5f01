@@ -1,11 +1,11 @@
-
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
-import SectionTitle from "@/components/ui/SectionTitle";
-import { ArrowLeft } from "lucide-react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import ParallaxSection from "@/components/ui/ParallaxSection";
+import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
-import { useTranslation } from "@/utils/translations";
+import { useTranslation, getText } from "@/utils/translations";
 
 interface BlogPostProps {
   id: string;
@@ -16,45 +16,168 @@ interface BlogPostProps {
   tags: string[];
 }
 
-const BlogPost = ({ title, date, content, tags }: BlogPostProps) => {
+const BlogPost = ({ title, date, content, image, tags }: BlogPostProps) => {
   const { language } = useTheme();
   const t = useTranslation(language);
 
   return (
     <Layout>
-      <div className="container mx-auto px-4 pt-32 pb-16">
-        <div className="mb-8">
-          <Link 
-            to="/blog" 
-            className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors mb-6"
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            {t.blog.backToBlog}
-          </Link>
-        </div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="mb-6">
-            <SectionTitle>{title}</SectionTitle>
-            <div className="flex items-center gap-4 text-gray-500 dark:text-gray-400 mt-4">
-              <span>{date}</span>
-              <div className="flex flex-wrap gap-2">
+      {/* Hero Section */}
+      <ParallaxSection 
+        className="pt-24 pb-10 lg:pt-28 lg:pb-12"
+        speed={0.1}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+            <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <Link 
+              to="/blog"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors duration-300"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              {t.blog.backToBlog}
+            </Link>
+            
+            <div className="max-w-4xl">
+              <motion.span 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+              >
+                <span className="w-8 h-px bg-foreground/30" />
+                {getText(language, 'Artigo', 'Article')}
+              </motion.span>
+              
+              <h1 className="font-serif text-3xl lg:text-4xl xl:text-5xl text-foreground mb-6 leading-[1.1]">
+                {title}
+              </h1>
+              
+              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4" />
+                  <span>{date}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4" />
+                  <span>{getText(language, '5 min de leitura', '5 min read')}</span>
+                </div>
+              </div>
+              
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 mt-6">
                 {tags.map((tag, i) => (
-                  <span key={i} className="text-foreground/70">#{tag}</span>
+                  <span 
+                    key={i} 
+                    className="text-xs px-3 py-1.5 rounded-lg border border-border/30 bg-card/50 text-muted-foreground"
+                  >
+                    {tag}
+                  </span>
                 ))}
               </div>
             </div>
+          </ScrollReveal>
+        </div>
+      </ParallaxSection>
+
+      {/* Featured Image */}
+      {image && (
+        <section className="pb-8 relative">
+          <div className="container mx-auto px-6 lg:px-8">
+            <ScrollReveal>
+              <motion.div
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3 }}
+                className="max-w-4xl mx-auto"
+              >
+                <div 
+                  className="relative rounded-2xl border border-border/20 overflow-hidden"
+                  style={{
+                    boxShadow: '0 8px 40px hsl(var(--foreground) / 0.05)'
+                  }}
+                >
+                  <img 
+                    src={image} 
+                    alt={title}
+                    className="w-full h-auto object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
+                </div>
+              </motion.div>
+            </ScrollReveal>
           </div>
-          
-          <div className="prose lg:prose-xl max-w-none dark:prose-invert prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-code:text-foreground prose-a:text-foreground prose-a:underline hover:prose-a:no-underline">
-            {content}
+        </section>
+      )}
+
+      {/* Content */}
+      <section className="py-12 lg:py-16 relative">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+        </div>
+        
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <ScrollReveal>
+              <div className="prose prose-lg lg:prose-xl max-w-none dark:prose-invert prose-headings:font-serif prose-headings:text-foreground prose-p:text-muted-foreground prose-p:leading-relaxed prose-strong:text-foreground prose-code:text-foreground prose-code:bg-card/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-a:text-foreground prose-a:underline hover:prose-a:no-underline prose-li:text-muted-foreground prose-blockquote:border-foreground/20 prose-blockquote:text-muted-foreground">
+                {content}
+              </div>
+            </ScrollReveal>
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </section>
+
+      {/* Navigation */}
+      <section className="py-16 lg:py-20 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+        </div>
+        
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <motion.div
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.4 }}
+              className="max-w-2xl mx-auto"
+            >
+              <div 
+                className="relative p-10 lg:p-12 rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm text-center"
+                style={{
+                  boxShadow: '0 8px 40px hsl(var(--foreground) / 0.03)'
+                }}
+              >
+                <div className="absolute top-0 left-0 w-20 h-20 border-l border-t border-foreground/[0.06] rounded-tl-3xl" />
+                <div className="absolute bottom-0 right-0 w-20 h-20 border-r border-b border-foreground/[0.06] rounded-br-3xl" />
+                
+                <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-4 leading-tight">
+                  {getText(language, 'Gostou do conteúdo?', 'Enjoyed the content?')}
+                </h2>
+                <p className="text-muted-foreground mb-8 leading-relaxed max-w-xl mx-auto">
+                  {getText(language, 
+                    'Explore mais artigos sobre desenvolvimento e tecnologia.',
+                    'Explore more articles about development and technology.'
+                  )}
+                </p>
+                
+                <Link 
+                  to="/blog"
+                  className="group inline-flex items-center gap-3 px-8 py-4 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300 hover:opacity-90"
+                  style={{
+                    boxShadow: '0 0 30px hsl(var(--foreground) / 0.2)'
+                  }}
+                >
+                  {getText(language, 'Ver todos os artigos', 'View all articles')}
+                  <ArrowLeft className="w-4 h-4 rotate-180 transition-transform duration-300 group-hover:translate-x-0.5" />
+                </Link>
+              </div>
+            </motion.div>
+          </ScrollReveal>
+        </div>
+      </section>
     </Layout>
   );
 };
