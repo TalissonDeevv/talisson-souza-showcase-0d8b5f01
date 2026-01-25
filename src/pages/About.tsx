@@ -84,12 +84,12 @@ Ultimately, my mission is to create solutions that truly make a difference, with
   const stats = language === 'pt' ? [
     { value: "8+", label: "Anos de experiência", icon: Clock },
     { value: "50+", label: "Projetos entregues", icon: Layers },
-    { value: "3", label: "Empresas fundadas", icon: TrendingUp },
+    { value: "2", label: "Empresas fundadas", icon: TrendingUp },
     { value: "1", label: "Livro publicado", icon: BookOpen }
   ] : [
     { value: "8+", label: "Years of experience", icon: Clock },
     { value: "50+", label: "Projects delivered", icon: Layers },
-    { value: "3", label: "Companies founded", icon: TrendingUp },
+    { value: "2", label: "Companies founded", icon: TrendingUp },
     { value: "1", label: "Book published", icon: BookOpen }
   ];
 
