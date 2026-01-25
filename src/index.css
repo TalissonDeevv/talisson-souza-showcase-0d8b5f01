@@ -112,6 +112,39 @@
   background: radial-gradient(circle, var(--tw-gradient-stops));
 }
 
+/* Mobile Performance Optimizations */
+@media (max-width: 767px) {
+  /* Disable heavy blur effects on mobile */
+  .blur-3xl {
+    filter: blur(32px) !important; /* Reduced from 64px */
+  }
+  
+  .blur-2xl {
+    filter: blur(20px) !important; /* Reduced from 40px */
+  }
+  
+  /* Reduce backdrop blur on mobile */
+  .backdrop-blur-xl {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+  
+  .backdrop-blur-sm {
+    backdrop-filter: blur(2px) !important;
+    -webkit-backdrop-filter: blur(2px) !important;
+  }
+  
+  /* Disable radial gradients on mobile for performance */
+  .bg-gradient-radial {
+    background: transparent !important;
+  }
+  
+  /* Optimize box-shadows on mobile */
+  .glass-card {
+    box-shadow: 0 2px 8px hsl(0 0% 0% / 0.1) !important;
+  }
+}
+
 @layer utilities {
   /* Premium small text */
   .text-caption {
