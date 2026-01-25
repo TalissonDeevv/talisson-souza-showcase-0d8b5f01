@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import ParallaxSection from "@/components/ui/ParallaxSection";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import ShareButtons from "@/components/ui/ShareButtons";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
@@ -18,28 +17,21 @@ interface BlogPostProps {
   tags: string[];
 }
 
-const BlogPost = ({ title, date, content, image, tags }: BlogPostProps) => {
+const BlogPost = ({ title, date, content, tags }: BlogPostProps) => {
   const { language } = useTheme();
   const t = useTranslation(language);
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <ParallaxSection 
-        className="pt-24 pb-10 lg:pt-28 lg:pb-12"
-        speed={0.1}
-        backgroundElement={
-          <>
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
-            <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
-          </>
-        }
-      >
+      {/* Hero Section - Compact */}
+      <section className="pt-20 pb-8 lg:pt-24 lg:pb-10 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background pointer-events-none" />
+        
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
             <Link 
               to="/blog"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors duration-300"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-4 transition-colors duration-300"
             >
               <ArrowLeft className="w-4 h-4" />
               {t.blog.backToBlog}
@@ -49,17 +41,17 @@ const BlogPost = ({ title, date, content, image, tags }: BlogPostProps) => {
               <motion.span 
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+                className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-4 font-medium"
               >
                 <span className="w-8 h-px bg-foreground/30" />
                 {getText(language, 'Artigo', 'Article')}
               </motion.span>
               
-              <AnimatedTitle variant="hero" as="h1" className="mb-6">
+              <AnimatedTitle variant="hero" as="h1" className="mb-4">
                 {title}
               </AnimatedTitle>
               
-              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-6">
+              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-4">
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4" />
                   <span>{date}</span>
@@ -70,11 +62,8 @@ const BlogPost = ({ title, date, content, image, tags }: BlogPostProps) => {
                 </div>
               </div>
               
-              {/* Share Buttons */}
-              <ShareButtons title={title} className="mb-6" />
-              
               {/* Tags */}
-              <div className="flex flex-wrap gap-2 mt-6">
+              <div className="flex flex-wrap gap-2 mb-4">
                 {tags.map((tag, i) => (
                   <span 
                     key={i} 
@@ -84,42 +73,16 @@ const BlogPost = ({ title, date, content, image, tags }: BlogPostProps) => {
                   </span>
                 ))}
               </div>
+              
+              {/* Share Buttons */}
+              <ShareButtons title={title} />
             </div>
           </ScrollReveal>
         </div>
-      </ParallaxSection>
-
-      {/* Featured Image */}
-      {image && (
-        <section className="pb-8 relative">
-          <div className="container mx-auto px-6 lg:px-8">
-            <ScrollReveal>
-              <motion.div
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.3 }}
-                className="max-w-4xl mx-auto"
-              >
-                <div 
-                  className="relative rounded-2xl border border-border/20 overflow-hidden"
-                  style={{
-                    boxShadow: '0 8px 40px hsl(var(--foreground) / 0.05)'
-                  }}
-                >
-                  <img 
-                    src={image} 
-                    alt={title}
-                    className="w-full h-auto object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
-                </div>
-              </motion.div>
-            </ScrollReveal>
-          </div>
-        </section>
-      )}
+      </section>
 
       {/* Content */}
-      <section className="py-12 lg:py-16 relative">
+      <section className="py-10 lg:py-12 relative">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
         </div>
@@ -127,7 +90,7 @@ const BlogPost = ({ title, date, content, image, tags }: BlogPostProps) => {
         <div className="container mx-auto px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <ScrollReveal>
-              <div className="prose prose-lg lg:prose-xl max-w-none dark:prose-invert prose-headings:font-serif prose-headings:text-foreground prose-p:text-muted-foreground prose-p:leading-relaxed prose-strong:text-foreground prose-code:text-foreground prose-code:bg-card/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-a:text-foreground prose-a:underline hover:prose-a:no-underline prose-li:text-muted-foreground prose-blockquote:border-foreground/20 prose-blockquote:text-muted-foreground">
+              <div className="prose prose-lg lg:prose-xl max-w-none prose-invert prose-headings:font-serif prose-headings:text-foreground prose-p:text-muted-foreground prose-p:leading-relaxed prose-strong:text-foreground prose-code:text-foreground prose-code:bg-card/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-a:text-foreground prose-a:underline hover:prose-a:no-underline prose-li:text-muted-foreground prose-blockquote:border-foreground/20 prose-blockquote:text-muted-foreground">
                 {content}
               </div>
               
