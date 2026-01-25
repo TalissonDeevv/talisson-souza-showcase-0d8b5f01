@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import GlassCard from "./GlassCard";
-import PremiumBadge from "./PremiumBadge";
 
 interface BlogCardProps {
   id: string;
@@ -24,44 +23,44 @@ const BlogCard = ({ id, title, excerpt, date, tags, index }: BlogCardProps) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
+      whileHover={{ y: -8 }}
     >
       <Link to={`/blog/${id}`} className="block group">
-        <GlassCard className="p-6 h-full" hover glow>
+        <GlassCard className="p-8 h-full hover:border-foreground/20 transition-all duration-500">
           {/* Meta info */}
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-xs text-muted-foreground">{date}</span>
-            <span className="text-muted-foreground/50">•</span>
-            <div className="flex flex-wrap gap-2">
-              {tags.slice(0, 2).map((tag, i) => (
-                <PremiumBadge key={i} variant="outline">
-                  #{tag}
-                </PremiumBadge>
-              ))}
-              {tags.length > 2 && (
-                <span className="text-xs text-muted-foreground">+{tags.length - 2}</span>
-              )}
-            </div>
+          <div className="flex items-center gap-4 mb-6">
+            <motion.span
+              whileHover={{ scale: 1.05 }}
+              className="text-xs px-3 py-1.5 rounded-full border border-border/50 bg-card/50 text-muted-foreground"
+            >
+              {tags[0]}
+            </motion.span>
+            {tags.length > 1 && (
+              <span className="text-xs text-muted-foreground/60">
+                +{tags.length - 1} {language === 'pt' ? 'mais' : 'more'}
+              </span>
+            )}
+            <span className="text-xs text-muted-foreground/60">{date}</span>
           </div>
           
           {/* Title */}
-          <h3 className="text-xl font-serif text-foreground mb-3 group-hover:text-gradient transition-all duration-300">
+          <h3 className="font-serif text-2xl text-foreground mb-4 group-hover:text-gradient transition-all duration-500 leading-tight">
             {title}
           </h3>
           
           {/* Excerpt */}
-          <p className="text-sm text-muted-foreground line-clamp-3 mb-6 leading-relaxed">
+          <p className="text-muted-foreground leading-relaxed mb-6 line-clamp-3">
             {excerpt}
           </p>
           
           {/* Read more link */}
-          <motion.div 
-            className="inline-flex items-center gap-2 text-sm font-medium text-foreground"
-            whileHover={{ x: 4 }}
-            transition={{ duration: 0.2 }}
-          >
-            {language === 'pt' ? 'Leia mais' : 'Read more'}
-            <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-          </motion.div>
+          <div className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
+            <span className="relative">
+              {language === 'pt' ? 'Ler artigo' : 'Read article'}
+              <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-300" />
+            </span>
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </div>
         </GlassCard>
       </Link>
     </motion.div>

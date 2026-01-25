@@ -6,6 +6,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import GlassCard from "@/components/ui/GlassCard";
 import PremiumBadge from "@/components/ui/PremiumBadge";
 import ParticlesBackground from "@/components/ui/ParticlesBackground";
+import ParallaxSection from "@/components/ui/ParallaxSection";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -13,7 +14,6 @@ import { useTranslation, getText } from "@/utils/translations";
 import logoSignature from "@/assets/logo-signature.png";
 import { motion } from "framer-motion";
 import { SiJavascript, SiTypescript, SiPython, SiReact, SiNodedotjs, SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFirebase } from "react-icons/si";
-
 const Index = () => {
   const {
     language
@@ -163,17 +163,19 @@ const Index = () => {
       </section>
 
       {/* Tech Stack - Premium Interactive Cards */}
-      <section className="py-20 lg:py-24 relative overflow-hidden">
-        {/* Layered background with depth */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background" />
-          {/* Ambient orbs for depth */}
-          <div className="absolute top-20 right-[15%] w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
-          <div className="absolute bottom-20 left-[10%] w-[300px] h-[300px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl" />
-          {/* Top and bottom borders */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
-        </div>
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.1}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background" />
+            <div className="absolute top-20 right-[15%] w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+            <div className="absolute bottom-20 left-[10%] w-[300px] h-[300px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
+          </>
+        }
+      >
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
@@ -243,18 +245,20 @@ const Index = () => {
             </div>
           </ScrollReveal>
         </div>
-      </section>
+      </ParallaxSection>
 
       {/* Career Timeline - Premium Animated */}
-      <section className="py-20 lg:py-24 relative overflow-hidden">
-        {/* Layered background */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Side gradient accents */}
-          <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-card/20 to-transparent" />
-          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-card/20 to-transparent" />
-          {/* Ambient glow */}
-          <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
-        </div>
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.12}
+        backgroundElement={
+          <>
+            <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-card/20 to-transparent" />
+            <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-card/20 to-transparent" />
+            <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+          </>
+        }
+      >
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
@@ -350,16 +354,20 @@ const Index = () => {
             </div>
           </div>
         </div>
-      </section>
+      </ParallaxSection>
 
       {/* Achievements - Compact Stats */}
-      <section className="py-16 lg:py-20 relative overflow-hidden">
-        {/* Background layers */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-b from-card/20 via-background to-card/20" />
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
-        </div>
+      <ParallaxSection 
+        className="py-16 lg:py-20"
+        speed={0.08}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-card/20 via-background to-card/20" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+          </>
+        }
+      >
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
@@ -400,15 +408,19 @@ const Index = () => {
             ))}
           </div>
         </div>
-      </section>
+      </ParallaxSection>
 
       {/* Featured Projects - Premium Cards */}
-      <section className="py-20 lg:py-24 relative overflow-hidden">
-        {/* Asymmetric background for visual interest */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-2/3 h-1/2 bg-gradient-to-bl from-card/30 to-transparent" />
-          <div className="absolute bottom-0 left-0 w-1/2 h-1/3 bg-gradient-to-tr from-card/20 to-transparent" />
-        </div>
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.15}
+        backgroundElement={
+          <>
+            <div className="absolute top-0 right-0 w-2/3 h-1/2 bg-gradient-to-bl from-card/30 to-transparent" />
+            <div className="absolute bottom-0 left-0 w-1/2 h-1/3 bg-gradient-to-tr from-card/20 to-transparent" />
+          </>
+        }
+      >
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
@@ -509,17 +521,21 @@ const Index = () => {
             ))}
           </div>
         </div>
-      </section>
+      </ParallaxSection>
 
       {/* Story Highlight - Premium */}
-      <section className="py-20 lg:py-24 relative overflow-hidden">
-        {/* Layered background */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-b from-card/30 via-background to-card/30" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
-        </div>
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.12}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-card/30 via-background to-card/30" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+          </>
+        }
+      >
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
@@ -567,14 +583,16 @@ const Index = () => {
             </motion.div>
           </ScrollReveal>
         </div>
-      </section>
+      </ParallaxSection>
 
       {/* Testimonials - Premium Cards */}
-      <section className="py-20 lg:py-24 relative overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 pointer-events-none">
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.1}
+        backgroundElement={
           <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-card/20 to-transparent" />
-        </div>
+        }
+      >
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
@@ -648,17 +666,20 @@ const Index = () => {
             ))}
           </div>
         </div>
-      </section>
+      </ParallaxSection>
 
       {/* Services Preview - Premium */}
-      <section className="py-20 lg:py-24 relative overflow-hidden">
-        {/* Layered background */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-br from-card/30 via-background to-card/20" />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
-          {/* Ambient orb */}
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl" />
-        </div>
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.12}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-br from-card/30 via-background to-card/20" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+            <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl" />
+          </>
+        }
+      >
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
@@ -741,15 +762,19 @@ const Index = () => {
             ))}
           </div>
         </div>
-      </section>
+      </ParallaxSection>
 
       {/* Blog Preview - Premium Editorial Cards */}
-      <section className="py-20 lg:py-24 relative overflow-hidden">
-        {/* Background gradient */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />
-        </div>
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.1}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />
+          </>
+        }
+      >
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
@@ -842,7 +867,7 @@ const Index = () => {
             ))}
           </div>
         </div>
-      </section>
+      </ParallaxSection>
 
       {/* Philosophy Section */}
       <section className="py-16 lg:py-20 relative overflow-hidden">
