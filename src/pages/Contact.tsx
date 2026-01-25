@@ -31,7 +31,8 @@ const Contact = () => {
       icon: Phone,
       label: "WhatsApp",
       value: "+55 (81) 9 93964261",
-      link: "https://wa.me/5581993964261"
+      link: "https://wa.me/5581993964261",
+      note: getText(language, 'Apenas mensagens, não atendo ligações', 'Messages only, no calls')
     },
     {
       icon: MapPin,
@@ -215,6 +216,9 @@ const Contact = () => {
                               <div className="flex-1">
                                 <p className="text-xs text-muted-foreground/70 mb-0.5">{item.label}</p>
                                 <p className="text-foreground font-medium text-sm">{item.value}</p>
+                                {item.note && (
+                                  <p className="text-[10px] text-muted-foreground/50 mt-1 italic">{item.note}</p>
+                                )}
                               </div>
                               <ArrowUpRight className="w-4 h-4 text-foreground/30 group-hover:text-foreground/70 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                             </div>
