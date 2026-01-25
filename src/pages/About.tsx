@@ -73,8 +73,8 @@ Ultimately, my mission is to create solutions that truly make a difference, with
         {/* Background */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background" />
-          <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl" />
+          <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl hidden md:block" />
+          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl hidden md:block" />
           <div 
             className="absolute inset-0 opacity-[0.015]"
             style={{
@@ -102,7 +102,7 @@ Ultimately, my mission is to create solutions that truly make a difference, with
                   transition={{ duration: 0.6 }}
                   className="relative"
                 >
-                  <div className="absolute -inset-4 bg-gradient-radial from-foreground/10 to-transparent rounded-full blur-2xl opacity-50" />
+                  <div className="absolute -inset-4 bg-gradient-radial from-foreground/10 to-transparent rounded-full blur-2xl opacity-50 hidden md:block" />
                   <Avatar className="h-40 w-40 lg:h-48 lg:w-48 border-2 border-border/30 relative z-10">
                     <AvatarImage src="https://i.ibb.co/MySV14GV/Polish-20231015-221849134-112435.jpg" alt="Talisson Souza" className="object-cover" />
                     <AvatarFallback>TS</AvatarFallback>
