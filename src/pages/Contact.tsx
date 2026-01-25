@@ -6,9 +6,10 @@ import ParallaxSection from "@/components/ui/ParallaxSection";
 import ContactForm from "@/components/ui/ContactForm";
 import SocialIcons from "@/components/ui/SocialIcons";
 import GlassCard from "@/components/ui/GlassCard";
+import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
-import { Mail, Phone, MapPin, ArrowUpRight, Send, MessageSquare } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowUpRight, Send, MessageSquare, Clock } from "lucide-react";
 
 const Contact = () => {
   const { language } = useTheme();
@@ -42,7 +43,7 @@ const Contact = () => {
   ];
 
   return (
-    <Layout>
+    <Layout withPadding={false}>
       <SEO 
         title="Contato | Fale com Talisson Souza"
         description="Entre em contato para discutir seu projeto. Desenvolvimento web, sistemas sob medida, consultoria tecnológica. Resposta rápida via WhatsApp ou email."
@@ -51,17 +52,29 @@ const Contact = () => {
       />
       
       {/* Hero Section */}
-      <ParallaxSection 
-        className="pt-24 pb-16 lg:pt-28 lg:pb-20"
-        speed={0.1}
-        backgroundElement={
-          <>
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
-            <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl hidden md:block" />
-          </>
-        }
-      >
-        <div className="container mx-auto px-6 lg:px-8 relative">
+      <section className="min-h-[50vh] flex items-center relative overflow-hidden pt-24 pb-16">
+        {/* Background */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background" />
+          <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl hidden md:block" />
+          <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl hidden md:block" />
+          <div 
+            className="absolute inset-0 opacity-[0.015]"
+            style={{
+              backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+              backgroundSize: '60px 60px'
+            }}
+          />
+        </div>
+
+        <div 
+          className="absolute bottom-0 left-0 right-0 h-32 z-10 pointer-events-none"
+          style={{
+            background: 'linear-gradient(to top, hsl(var(--background)) 0%, transparent 100%)'
+          }}
+        />
+
+        <div className="container mx-auto px-6 lg:px-8 relative z-20">
           <ScrollReveal>
             <div className="max-w-3xl">
               <motion.span 
@@ -71,32 +84,51 @@ const Contact = () => {
               >
                 {getText(language, 'Contato', 'Contact')}
               </motion.span>
-              <h1 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-foreground mb-6 leading-[1.1]">
-                {t.contact.title}
-              </h1>
+              <AnimatedTitle variant="hero" as="h1" className="mb-6">
+                {getText(language, 'Vamos Conversar', "Let's Talk")}
+              </AnimatedTitle>
               <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
                 {t.contact.subtitle}
               </p>
             </div>
           </ScrollReveal>
         </div>
-      </ParallaxSection>
-
+      </section>
 
       {/* Main Content */}
-      <section className="py-16 lg:py-20 relative">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
-        </div>
-        
-        <div className="container mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.1}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
+            <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl hidden md:block" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
             {/* Contact Information */}
-            <div className="lg:col-span-2 space-y-8">
+            <div className="lg:col-span-5 space-y-8">
               <ScrollReveal>
-                <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-8">
+                <motion.span 
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+                >
+                  {getText(language, 'Informações', 'Information')}
+                </motion.span>
+                <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6 leading-[1.05]">
                   {t.contact.info}
                 </h2>
+                <p className="text-base text-muted-foreground leading-relaxed mb-8 max-w-md">
+                  {getText(language, 
+                    'Escolha o canal mais conveniente para você.',
+                    'Choose the most convenient channel for you.'
+                  )}
+                </p>
               </ScrollReveal>
               
               <div className="space-y-4">
@@ -113,7 +145,12 @@ const Contact = () => {
                           rel="noopener noreferrer"
                           className="block group"
                         >
-                          <GlassCard className="p-5" hover={false} glow>
+                          <div 
+                            className="relative p-5 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm transition-all duration-300 group-hover:border-foreground/10"
+                            style={{
+                              boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                            }}
+                          >
                             <div className="flex items-center gap-4">
                               <div className="w-12 h-12 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center group-hover:border-foreground/20 transition-colors duration-300">
                                 <item.icon className="w-5 h-5 text-foreground/70 group-hover:text-foreground transition-colors duration-300" />
@@ -124,10 +161,15 @@ const Contact = () => {
                               </div>
                               <ArrowUpRight className="w-4 h-4 text-foreground/30 group-hover:text-foreground/70 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                             </div>
-                          </GlassCard>
+                          </div>
                         </a>
                       ) : (
-                        <GlassCard className="p-5" hover={false}>
+                        <div 
+                          className="relative p-5 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm"
+                          style={{
+                            boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                          }}
+                        >
                           <div className="flex items-center gap-4">
                             <div className="w-12 h-12 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center">
                               <item.icon className="w-5 h-5 text-foreground/70" />
@@ -137,7 +179,7 @@ const Contact = () => {
                               <p className="text-foreground font-medium text-sm">{item.value}</p>
                             </div>
                           </div>
-                        </GlassCard>
+                        </div>
                       )}
                     </motion.div>
                   </ScrollReveal>
@@ -146,64 +188,106 @@ const Contact = () => {
               
               {/* Availability */}
               <ScrollReveal delay={0.3}>
-                <GlassCard className="p-6" hover={false}>
-                  <h3 className="font-serif text-base text-foreground mb-4">
-                    {getText(language, 'Disponibilidade', 'Availability')}
-                  </h3>
-                  <div className="space-y-3">
-                    {availabilityItems.map((item, index) => (
-                      <div key={index} className="flex items-center justify-between text-sm">
-                        <span className="text-muted-foreground">{item.label}</span>
-                        <span className="text-foreground font-medium">{item.value}</span>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div 
+                    className="relative p-6 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center">
+                        <Clock className="w-4 h-4 text-foreground/70" />
                       </div>
-                    ))}
+                      <h3 className="font-serif text-base text-foreground">
+                        {getText(language, 'Disponibilidade', 'Availability')}
+                      </h3>
+                    </div>
+                    <div className="space-y-3">
+                      {availabilityItems.map((item, index) => (
+                        <div key={index} className="flex items-center justify-between text-sm">
+                          <span className="text-muted-foreground">{item.label}</span>
+                          <span className="text-foreground font-medium">{item.value}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </GlassCard>
+                </motion.div>
               </ScrollReveal>
 
               {/* Social Icons */}
               <ScrollReveal delay={0.4}>
-                <GlassCard className="p-6" hover={false}>
-                  <h3 className="font-serif text-base text-foreground mb-4">
-                    {t.contact.social}
-                  </h3>
-                  <SocialIcons className="flex flex-wrap gap-3" />
-                </GlassCard>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div 
+                    className="relative p-6 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    <h3 className="font-serif text-base text-foreground mb-4">
+                      {t.contact.social}
+                    </h3>
+                    <SocialIcons className="flex flex-wrap gap-3" />
+                  </div>
+                </motion.div>
               </ScrollReveal>
             </div>
             
             {/* Contact Form */}
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-7">
               <ScrollReveal delay={0.2} direction="right">
                 <motion.div
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.4 }}
                 >
-                  <GlassCard className="p-8 lg:p-10" hover={false} glow>
+                  <div 
+                    className="relative p-8 lg:p-10 rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm"
+                    style={{
+                      boxShadow: '0 8px 40px hsl(var(--foreground) / 0.03)'
+                    }}
+                  >
+                    <div className="absolute top-0 left-0 w-20 h-20 border-l border-t border-foreground/[0.06] rounded-tl-3xl" />
+                    <div className="absolute bottom-0 right-0 w-20 h-20 border-r border-b border-foreground/[0.06] rounded-br-3xl" />
+                    
                     <div className="flex items-center gap-3 mb-8">
-                      <div className="w-10 h-10 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center">
                         <Send className="w-5 h-5 text-foreground/70" />
                       </div>
-                      <h2 className="font-serif text-xl text-foreground">
-                        {getText(language, 'Enviar mensagem', 'Send message')}
-                      </h2>
+                      <div>
+                        <h2 className="font-serif text-xl text-foreground">
+                          {getText(language, 'Enviar mensagem', 'Send message')}
+                        </h2>
+                        <p className="text-xs text-muted-foreground/70">
+                          {getText(language, 'Resposta em até 24h', 'Response within 24h')}
+                        </p>
+                      </div>
                     </div>
                     <ContactForm />
-                  </GlassCard>
+                  </div>
                 </motion.div>
               </ScrollReveal>
             </div>
           </div>
         </div>
-      </section>
+      </ParallaxSection>
 
       {/* CTA Section */}
-      <section className="py-20 lg:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
-        </div>
-        
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.12}
+        backgroundElement={
+          <>
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+          </>
+        }
+      >
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
             <motion.div
@@ -234,23 +318,25 @@ const Contact = () => {
                   )}
                 </p>
                 
-                <a 
+                <motion.a 
                   href="https://wa.me/5581993964261" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-3 px-8 py-4 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300 hover:opacity-90"
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group inline-flex items-center gap-3 px-8 py-4 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300"
                   style={{
                     boxShadow: '0 0 30px hsl(var(--foreground) / 0.2)'
                   }}
                 >
                   {getText(language, 'Chamar no WhatsApp', 'Message on WhatsApp')}
                   <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </a>
+                </motion.a>
               </div>
             </motion.div>
           </ScrollReveal>
         </div>
-      </section>
+      </ParallaxSection>
     </Layout>
   );
 };
