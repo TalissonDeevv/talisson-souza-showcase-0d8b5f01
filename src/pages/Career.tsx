@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
-import CompanyCard from "@/components/ui/CompanyCard";
+import GlassCard from "@/components/ui/GlassCard";
 import { 
   Rocket, Target, Heart, Users, Lightbulb, Shield, 
   Award, Calendar, Building2, Briefcase, Quote, Sparkles, 
@@ -18,69 +18,31 @@ const Career = () => {
   const content = {
     pt: {
       title: "Minha Carreira",
-      subtitle: "Transformando desafios em oportunidades",
-      myStory: "Minha História e Propósito",
-      myJourney: "Minha Jornada no Mundo Tech",
-      whyCompany: "Por que decidi criar minha própria empresa aos 17 anos?",
-      timeline: "Linha do Tempo",
-      testimonials: "Depoimentos",
-      values: "Valores Pessoais",
-      quotes: "Frases Inspiradoras",
-      inclusion: "Inclusão e Impacto Social",
-      partnerships: "Parcerias e Atuações",
-      companies: "Minhas Empresas",
-      cta: "Vamos Trabalhar Juntos"
+      subtitle: "Transformando desafios em oportunidades"
     },
     en: {
       title: "My Career",
-      subtitle: "Transforming challenges into opportunities",
-      myStory: "My Story and Purpose",
-      myJourney: "My Journey in the Tech World",
-      whyCompany: "Why I decided to start my own company at 17?",
-      timeline: "Timeline",
-      testimonials: "Testimonials",
-      values: "Personal Values",
-      quotes: "Inspiring Quotes",
-      inclusion: "Inclusion and Social Impact",
-      partnerships: "Partnerships and Activities",
-      companies: "My Companies",
-      cta: "Let's Work Together"
+      subtitle: "Transforming challenges into opportunities"
     }
   };
 
   const tt = content[language];
 
-  const storyPt = `Meu nome é Talisson Souza, mas muitos me conhecem como Talinho. Sou Empreendedor Executivo, Diretor de Negócios Empresariais e Desenvolvedor Full Stack. Minha relação com a tecnologia começou de forma simples: na curiosidade de explorar, aprender e descobrir. O que parecia apenas diversão virou paixão, e essa paixão se transformou em propósito de vida.
+  const storyPt = `Meu nome é Talisson Souza, mas muitos me conhecem como Talinho. Sou Empreendedor Executivo, Diretor de Negócios Empresariais e Desenvolvedor Full Stack. Minha relação com a tecnologia começou de forma simples: na curiosidade de explorar, aprender e descobrir.
 
-Aos 14 anos, desenvolvi meus primeiros bots para Discord. Ali percebi que tecnologia não era apenas código, mas sim uma forma de conectar pessoas e transformar ideias em soluções reais. Desde então, mergulhei de cabeça nesse universo, aprendendo de forma independente, encarando desafios e sempre buscando novas formas de crescer.
+Aos 14 anos, desenvolvi meus primeiros bots para Discord. Ali percebi que tecnologia não era apenas código, mas sim uma forma de conectar pessoas e transformar ideias em soluções reais.`;
 
-Com o tempo, a tecnologia deixou de ser apenas uma habilidade. Ela se tornou parte da minha identidade. Estar envolvido em cada etapa da primeira linha de código ao resultado final é o que me motiva a seguir criando. Desenvolvimento web, mobile, bots inteligentes e infraestrutura são mais do que áreas de atuação: são minha forma de me expressar e de impactar o mundo.`;
+  const storyEn = `My name is Talisson Souza, but many know me as Talinho. I'm an Executive Entrepreneur, Business Director, and Full Stack Developer. My relationship with technology began simply: in the curiosity to explore, learn and discover.
 
-  const storyEn = `My name is Talisson Souza, but many know me as Talinho. I'm an Executive Entrepreneur, Business Director, and Full Stack Developer. My relationship with technology began simply: in the curiosity to explore, learn and discover. What seemed like just fun became passion, and that passion transformed into a life purpose.
+At 14, I developed my first bots for Discord. There I realized that technology was not just code, but a way to connect people and transform ideas into real solutions.`;
 
-At 14, I developed my first bots for Discord. There I realized that technology was not just code, but a way to connect people and transform ideas into real solutions. Since then, I've dived headfirst into this universe, learning independently, facing challenges and always seeking new ways to grow.
+  const whyCompanyPt = `Em 2021, participei de um processo seletivo para uma vaga de Jovem Aprendiz. Passei por todas as etapas com dedicação: entrevista, exames médicos, preparação. No entanto, ao final do processo, fui recusado. Não por falta de qualificação. Mas por causa da minha cadeira de rodas.
 
-Over time, technology ceased to be just a skill. It became part of my identity. Being involved in every step from the first line of code to the final result is what motivates me to keep creating. Web, mobile development, smart bots and infrastructure are more than areas of work: they are my way of expressing myself and impacting the world.`;
+Naquele momento, tomei uma decisão: se não iam me dar espaço, eu criaria o meu próprio espaço. Assim nasceu a Cheetah Network.`;
 
-  const whyCompanyPt = `Em 2021, participei de um processo seletivo para uma vaga de Jovem Aprendiz. Passei por todas as etapas com dedicação e confiança: entrevista, exames médicos, preparação. A vaga era para trabalhar com computadores minha paixão desde cedo.
+  const whyCompanyEn = `In 2021, I participated in a selection process for a Young Apprentice position. I went through all stages with dedication: interview, medical exams, preparation. However, at the end of the process, I was rejected. Not for lack of qualification. But because of my wheelchair.
 
-No entanto, ao final do processo, fui recusado. Não por falta de qualificação. Não por falta de capacidade. Mas por causa da minha cadeira de rodas.
-
-Foi um choque. Senti tristeza, frustração e até raiva. Eu sabia que poderia desempenhar o trabalho com excelência, mas fui julgado por algo que não define meu potencial.
-
-Naquele momento, entendi que, por mais que nos preparemos, ainda existe muito preconceito e falta de inclusão em diversos lugares. Muitas vezes, somos enxergados apenas pela aparência, e não pelo que realmente somos capazes de fazer. Então, tomei uma decisão: se não iam me dar espaço, eu criaria o meu próprio espaço.
-
-Assim nasceu a Cheetah Network. Mais do que uma empresa, ela representa a transformação de uma dor em propósito. Um lugar onde competência e inclusão caminham juntas, e onde cada pessoa pode mostrar seu valor, independente de barreiras.`;
-
-  const whyCompanyEn = `In 2021, I participated in a selection process for a Young Apprentice position. I went through all stages with dedication and confidence: interview, medical exams, preparation. The position was to work with computers my passion since early age.
-
-However, at the end of the process, I was rejected. Not for lack of qualification. Not for lack of ability. But because of my wheelchair.
-
-It was a shock. I felt sadness, frustration and even anger. I knew I could perform the job excellently, but I was judged by something that doesn't define my potential.
-
-At that moment, I understood that no matter how much we prepare, there is still a lot of prejudice and lack of inclusion in many places. Often, we are seen only by appearance, not by what we are really capable of doing. So, I made a decision: if they wouldn't give me space, I would create my own space.
-
-Thus Cheetah Network was born. More than a company, it represents the transformation of pain into purpose. A place where competence and inclusion walk together, and where each person can show their value, regardless of barriers.`;
+At that moment, I made a decision: if they wouldn't give me space, I would create my own space. Thus Cheetah Network was born.`;
 
   const stats = [
     { icon: Award, label: getText(language, "Projetos Entregues", "Projects Delivered"), value: "50+" },
@@ -91,77 +53,73 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
 
   const timelineEvents = [
     { year: "2018", title: getText(language, "Início da Jornada", "Journey Begins"), description: getText(language, "Aos 14 anos, criei meus primeiros bots para Discord", "At 14, I created my first Discord bots"), icon: Rocket },
-    { year: "2021", title: getText(language, "Momento Decisivo", "Decisive Moment"), description: getText(language, "Experiência discriminatória que motivou a criação da própria empresa", "Discriminatory experience that motivated the creation of my own company"), icon: Target },
-    { year: "2023", title: getText(language, "Fundação da Cheetah Network", "Cheetah Network Founded"), description: getText(language, "Criação da empresa focada em inclusão e soluções digitais", "Company created focused on inclusion and digital solutions"), icon: Building2 },
-    { year: "2024", title: getText(language, "Diretor Estratégico", "Strategic Director"), description: getText(language, "Assumo nova posição estratégica em consultoria empresarial no Werneck Group", "Taking on new strategic position in business consulting at Werneck Group"), icon: Briefcase },
-    { year: "2024", title: getText(language, "Parcerias e Atuações", "Partnerships and Activities"), description: getText(language, "Parceiro Square Cloud e Influencer Rocketseat", "Square Cloud Partner and Rocketseat Influencer"), icon: HandHeart }
+    { year: "2021", title: getText(language, "Momento Decisivo", "Decisive Moment"), description: getText(language, "Experiência que motivou a criação da própria empresa", "Experience that motivated the creation of my own company"), icon: Target },
+    { year: "2023", title: getText(language, "Fundação da Cheetah Network", "Cheetah Network Founded"), description: getText(language, "Criação da empresa focada em soluções digitais", "Company created focused on digital solutions"), icon: Building2 },
+    { year: "2024", title: getText(language, "Diretor Estratégico", "Strategic Director"), description: getText(language, "Posição estratégica no Werneck Group", "Strategic position at Werneck Group"), icon: Briefcase }
   ];
 
   const testimonials = [
     {
       name: "Priscila Suanne",
-      role: language === 'pt' ? "Desenvolvedora Back End na Cheetah Network" : "Back End Developer at Cheetah Network",
+      role: language === 'pt' ? "Desenvolvedora Back End" : "Back End Developer",
       text: language === 'pt' 
-        ? "Tive o prazer de conhecer e trabalhar com Thalisson, um profissional extremamente comprometido, resiliente e dedicado em tudo o que faz. Sua postura ética, foco em resultados e capacidade de adaptação foram fundamentais para o sucesso dos projetos em que atuamos juntos."
-        : "I had the pleasure of meeting and working with Thalisson, an extremely committed, resilient and dedicated professional in everything he does. His ethical stance, focus on results and adaptability were fundamental to the success of the projects we worked on together.",
+        ? "Tive o prazer de trabalhar com Thalisson, um profissional extremamente comprometido, resiliente e dedicado em tudo o que faz."
+        : "I had the pleasure of working with Thalisson, an extremely committed, resilient and dedicated professional in everything he does.",
       image: "https://i.ibb.co/zWp10rhx/Priscila.jpg"
-    },
-    {
-      name: "Camile Vitória Barros",
-      role: language === 'pt' ? "Assistente de Suporte Administrativo" : "Administrative Support Assistant",
-      text: language === 'pt' 
-        ? "Recomendo os serviços de Talisson, pois acompanho de perto seu comprometimento, seriedade e dedicação em cada projeto. Seu trabalho é marcado pela qualidade e foco em entregar sempre os melhores resultados."
-        : "I recommend Talisson's services, as I closely follow his commitment, seriousness and dedication in each project. His work is marked by quality and focus on always delivering the best results.",
-      image: "https://i.ibb.co/nN5LJhpk/Camile.jpg"
     },
     {
       name: "Matheus Yuri Silva",
       role: language === 'pt' ? "Desenvolvedor de Software" : "Software Developer",
       text: language === 'pt' 
-        ? "É uma honra poder acompanhar o trabalho do Talisson. Ele demonstra uma combinação rara de expertise em desenvolvimento full stack e uma visão de negócios afiada. Suas soluções são sempre criativas, eficientes e focadas no impacto real."
-        : "It is an honor to follow Talisson's work. He demonstrates a rare combination of full stack development expertise and sharp business vision. His solutions are always creative, efficient and focused on real impact.",
+        ? "Talisson demonstra uma combinação rara de expertise técnica e visão estratégica de negócios."
+        : "Talisson demonstrates a rare combination of technical expertise and strategic business vision.",
       image: "https://i.ibb.co/V0P35B23/Matheus.jpg"
     }
   ];
 
   const values = [
-    { icon: Heart, title: language === 'pt' ? "Empatia" : "Empathy", description: language === 'pt' ? "Colocar-se no lugar do outro e criar soluções humanas" : "Putting yourself in others' shoes and creating human solutions" },
-    { icon: Lightbulb, title: language === 'pt' ? "Inovação" : "Innovation", description: language === 'pt' ? "Buscar constantemente novas formas de resolver problemas" : "Constantly seeking new ways to solve problems" },
-    { icon: Shield, title: language === 'pt' ? "Transparência" : "Transparency", description: language === 'pt' ? "Honestidade e clareza em todas as relações" : "Honesty and clarity in all relationships" },
-    { icon: Users, title: language === 'pt' ? "Inclusão" : "Inclusion", description: language === 'pt' ? "Criar oportunidades para todos, sem barreiras" : "Create opportunities for everyone, without barriers" }
-  ];
-
-  const quotes = [
-    language === 'pt' ? '"A verdadeira inovação nasce quando quebramos barreiras, não quando as aceitamos."' : '"True innovation is born when we break barriers, not when we accept them."',
-    language === 'pt' ? '"Tecnologia é a ferramenta, mas o propósito é humano."' : '"Technology is the tool, but the purpose is human."',
-    language === 'pt' ? '"Não espere pela oportunidade perfeita. Crie ela."' : '"Don\'t wait for the perfect opportunity. Create it."'
-  ];
-
-  const partnerships = [
-    { name: "Tech Leaders Network", description: language === 'pt' ? "Fundador da comunidade exclusiva para empreendedores e programadores" : "Founder of exclusive community for entrepreneurs and programmers", logo: "https://i.ibb.co/M5jS68gD/93afd9c07484ebe558d11e4b95c6d976.png", banner: "https://i.ibb.co/Zzn1NtJ1/Tech-Leaders.jpg", link: "https://discord.gg/edZWXqcxuF", badge: language === 'pt' ? 'Fundador' : 'Founder' },
-    { name: "Rocketseat", description: language === 'pt' ? "Influenciador oficial da maior comunidade de desenvolvedores do Brasil" : "Official influencer at the largest developer community in Brazil", logo: "https://i.ibb.co/jvVR1DzD/rocketseat-logo.jpg", banner: "https://i.ibb.co/5hR5T77f/banner-rocketseat.webp", link: "https://www.rocketseat.com.br/oferta/influencer/v2/talinho", badge: "Influencer" },
-    { name: "Square Cloud", description: language === 'pt' ? "Parceiro da maior empresa de hospedagem para bots da América Latina" : "Partner of the largest bot hosting company in Latin America", logo: "https://squarecloud.app/favicon.ico", banner: "https://i.ibb.co/7xPkwhZy/Square-Cloud.png", link: "https://squarecloud.app", badge: language === 'pt' ? 'Parceiro' : 'Partner' }
+    { icon: Heart, title: language === 'pt' ? "Empatia" : "Empathy", description: language === 'pt' ? "Criar soluções humanas" : "Create human solutions" },
+    { icon: Lightbulb, title: language === 'pt' ? "Inovação" : "Innovation", description: language === 'pt' ? "Novas formas de resolver" : "New ways to solve" },
+    { icon: Shield, title: language === 'pt' ? "Transparência" : "Transparency", description: language === 'pt' ? "Honestidade em tudo" : "Honesty in everything" },
+    { icon: Users, title: language === 'pt' ? "Inclusão" : "Inclusion", description: language === 'pt' ? "Oportunidades para todos" : "Opportunities for all" }
   ];
 
   const companies = [
-    { name: "Cheetah Network", description: language === 'pt' ? "Soluções digitais especializadas em desenvolvimento de bots, aplicações web." : "Digital solutions specialized in bot development and web applications.", logo: "https://i.ibb.co/0yQ0mnD6/bannercheetah2.png", skills: language === 'pt' ? ["Liderança como CEO", "Gestão de projetos", "Desenvolvimento de talentos"] : ["CEO leadership", "Project management", "Talent development"] },
-    { name: "Werneck Group", description: language === 'pt' ? "Consultoria estratégica especializada em transformação digital." : "Strategic consulting specialized in digital transformation.", logo: "https://i.ibb.co/YT7LK7Vc/bannerwerneck.jpg", skills: language === 'pt' ? ["Direção estratégica", "Gestão financeira", "Coordenação de operações"] : ["Strategic direction", "Financial management", "Operations coordination"] }
+    { name: "Cheetah Network", description: language === 'pt' ? "Soluções digitais especializadas em desenvolvimento de bots e aplicações web." : "Digital solutions specialized in bot development and web applications.", logo: "https://i.ibb.co/0yQ0mnD6/bannercheetah2.png", role: "CEO & Founder" },
+    { name: "Werneck Group", description: language === 'pt' ? "Consultoria estratégica especializada em transformação digital." : "Strategic consulting specialized in digital transformation.", logo: "https://i.ibb.co/YT7LK7Vc/bannerwerneck.jpg", role: getText(language, "Diretor Estratégico", "Strategic Director") }
+  ];
+
+  const partnerships = [
+    { name: "Tech Leaders Network", description: language === 'pt' ? "Fundador da comunidade exclusiva" : "Founder of exclusive community", logo: "https://i.ibb.co/M5jS68gD/93afd9c07484ebe558d11e4b95c6d976.png", link: "https://discord.gg/edZWXqcxuF", badge: language === 'pt' ? 'Fundador' : 'Founder' },
+    { name: "Rocketseat", description: language === 'pt' ? "Influenciador oficial" : "Official influencer", logo: "https://i.ibb.co/jvVR1DzD/rocketseat-logo.jpg", link: "https://www.rocketseat.com.br/oferta/influencer/v2/talinho", badge: "Influencer" },
+    { name: "Square Cloud", description: language === 'pt' ? "Parceiro oficial" : "Official partner", logo: "https://squarecloud.app/favicon.ico", link: "https://squarecloud.app", badge: language === 'pt' ? 'Parceiro' : 'Partner' }
   ];
 
   return (
-    <Layout>
+    <Layout withPadding={false}>
       {/* Hero Section */}
-      <ParallaxSection 
-        className="pt-24 pb-10 lg:pt-28 lg:pb-12"
-        speed={0.1}
-        backgroundElement={
-          <>
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
-            <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
-          </>
-        }
-      >
-        <div className="container mx-auto px-6 lg:px-8 relative">
+      <section className="min-h-[60vh] flex items-center relative overflow-hidden pt-24 pb-16">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background" />
+          <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/3 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl" />
+          <div 
+            className="absolute inset-0 opacity-[0.015]"
+            style={{
+              backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+              backgroundSize: '60px 60px'
+            }}
+          />
+        </div>
+
+        <div 
+          className="absolute bottom-0 left-0 right-0 h-32 z-10 pointer-events-none"
+          style={{
+            background: 'linear-gradient(to top, hsl(var(--background)) 0%, transparent 100%)'
+          }}
+        />
+
+        <div className="container mx-auto px-6 lg:px-8 relative z-20">
           <ScrollReveal>
             <div className="max-w-3xl">
               <motion.span 
@@ -172,15 +130,15 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
                 <span className="w-8 h-px bg-foreground/30" />
                 {tt.title}
               </motion.span>
-              <h1 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-foreground mb-6 leading-[1.1]">
+              <h1 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-foreground mb-6 leading-[1.05]">
                 {tt.subtitle}
               </h1>
             </div>
           </ScrollReveal>
         </div>
-      </ParallaxSection>
+      </section>
 
-      {/* Stats */}
+      {/* Stats Section */}
       <section className="py-8 relative">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -189,15 +147,15 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
                 <motion.div
                   whileHover={{ y: -4, scale: 1.02 }}
                   transition={{ duration: 0.3 }}
-                  className="rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm p-5 text-center cursor-default group"
+                  className="rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm p-6 text-center group"
                   style={{
                     boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
                   }}
                 >
-                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border/30 text-foreground/70 mb-3 group-hover:border-foreground/20 transition-colors duration-300">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl border border-border/30 text-foreground/70 mb-4 group-hover:border-foreground/20 transition-colors duration-300">
                     <stat.icon className="w-5 h-5 group-hover:text-foreground transition-colors duration-300" />
                   </div>
-                  <h3 className="text-2xl font-serif text-foreground mb-1">{stat.value}</h3>
+                  <h3 className="text-3xl font-serif text-foreground mb-1">{stat.value}</h3>
                   <p className="text-xs text-muted-foreground/70">{stat.label}</p>
                 </motion.div>
               </ScrollReveal>
@@ -206,87 +164,236 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
         </div>
       </section>
 
-      {/* My Story */}
-      <section className="py-16 lg:py-20 relative">
-        <div className="container mx-auto px-6 lg:px-8">
+      {/* My Story Section */}
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.1}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-8">{tt.myStory}</h2>
+            <motion.span 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+            >
+              <span className="w-8 h-px bg-foreground/30" />
+              {getText(language, 'História', 'Story')}
+            </motion.span>
+            <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-10 leading-[1.05]">
+              {getText(language, 'Minha Jornada', 'My Journey')}
+            </h2>
           </ScrollReveal>
           
-          <div className="space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <ScrollReveal>
               <motion.div
                 whileHover={{ y: -4 }}
-                transition={{ duration: 0.3 }}
-                className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-8 group"
-                style={{
-                  boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
-                }}
+                transition={{ duration: 0.4 }}
               >
-                <h3 className="text-base font-medium text-foreground mb-4 flex items-center gap-3">
-                  <Sparkles className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
-                  {tt.myJourney}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
-                  {language === 'pt' ? storyPt : storyEn}
-                </p>
+                <div 
+                  className="relative p-8 lg:p-10 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm h-full"
+                  style={{
+                    boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                  }}
+                >
+                  <div className="absolute top-0 left-0 w-16 h-16 border-l border-t border-foreground/[0.06] rounded-tl-2xl" />
+                  
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-10 h-10 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center">
+                      <Sparkles className="w-5 h-5 text-foreground/60" />
+                    </div>
+                    <h3 className="text-lg font-serif text-foreground">
+                      {getText(language, 'O Início', 'The Beginning')}
+                    </h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-[1.9] whitespace-pre-line">
+                    {language === 'pt' ? storyPt : storyEn}
+                  </p>
+                </div>
               </motion.div>
             </ScrollReveal>
 
             <ScrollReveal delay={0.1}>
               <motion.div
                 whileHover={{ y: -4 }}
-                transition={{ duration: 0.3 }}
-                className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-8 group"
-                style={{
-                  boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
-                }}
+                transition={{ duration: 0.4 }}
               >
-                <h3 className="text-base font-medium text-foreground mb-4 flex items-center gap-3">
-                  <Target className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
-                  {tt.whyCompany}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
-                  {language === 'pt' ? whyCompanyPt : whyCompanyEn}
-                </p>
-              </motion.div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="py-16 lg:py-20 relative">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
-        </div>
-        
-        <div className="container mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-8">{tt.timeline}</h2>
-          </ScrollReveal>
-          
-          <div className="space-y-4">
-            {timelineEvents.map((event, index) => (
-              <ScrollReveal key={index} delay={index * 0.1}>
-                <motion.div
-                  whileHover={{ y: -4, x: 4 }}
-                  transition={{ duration: 0.3 }}
-                  className="rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm p-6 group cursor-default"
+                <div 
+                  className="relative p-8 lg:p-10 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm h-full"
                   style={{
                     boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
                   }}
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border/30 text-foreground/60 flex-shrink-0 group-hover:border-foreground/20 transition-colors duration-300">
-                      <event.icon className="w-5 h-5 group-hover:text-foreground transition-colors duration-300" />
+                  <div className="absolute bottom-0 right-0 w-16 h-16 border-r border-b border-foreground/[0.06] rounded-br-2xl" />
+                  
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-10 h-10 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center">
+                      <Target className="w-5 h-5 text-foreground/60" />
                     </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="text-xl font-serif text-foreground">{event.year}</span>
-                        <h3 className="text-sm font-medium text-foreground">{event.title}</h3>
+                    <h3 className="text-lg font-serif text-foreground">
+                      {getText(language, 'A Decisão', 'The Decision')}
+                    </h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-[1.9] whitespace-pre-line">
+                    {language === 'pt' ? whyCompanyPt : whyCompanyEn}
+                  </p>
+                </div>
+              </motion.div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </ParallaxSection>
+
+      {/* Timeline Section */}
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.12}
+        backgroundElement={
+          <>
+            <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-card/20 to-transparent" />
+            <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+            <ScrollReveal className="lg:col-span-5">
+              <motion.span 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+              >
+                <span className="w-8 h-px bg-foreground/30" />
+                Timeline
+              </motion.span>
+              <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
+                {getText(language, 'Marcos Importantes', 'Key Milestones')}
+              </h2>
+              <p className="text-base text-muted-foreground leading-relaxed max-w-md">
+                {getText(language, 'Os momentos que definiram minha trajetória profissional.', 'The moments that defined my professional trajectory.')}
+              </p>
+            </ScrollReveal>
+            
+            <div className="lg:col-span-7 space-y-4 relative">
+              <motion.div 
+                initial={{ scaleY: 0 }}
+                whileInView={{ scaleY: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                className="absolute left-6 lg:left-0 top-0 bottom-0 w-px origin-top hidden sm:block"
+                style={{
+                  background: 'linear-gradient(to bottom, hsl(var(--foreground) / 0.2), hsl(var(--foreground) / 0.05) 70%, transparent)'
+                }}
+              />
+              
+              {timelineEvents.map((event, index) => (
+                <ScrollReveal key={index} delay={index * 0.1}>
+                  <motion.div
+                    whileHover={{ y: -3, x: 3 }}
+                    transition={{ duration: 0.3 }}
+                    className="relative pl-0 sm:pl-12 lg:pl-10"
+                  >
+                    <motion.div 
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.1 + 0.3 }}
+                      className="absolute left-4 lg:left-[-5px] top-6 hidden sm:flex items-center justify-center"
+                    >
+                      <div className="w-2.5 h-2.5 rounded-full bg-foreground/30 ring-4 ring-background" />
+                    </motion.div>
+                    
+                    <div 
+                      className="relative p-6 rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm group"
+                      style={{
+                        boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                      }}
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center flex-shrink-0 group-hover:border-foreground/20 transition-colors duration-300">
+                          <event.icon className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-2">
+                            <span className="text-xl font-serif text-foreground">{event.year}</span>
+                            <h3 className="text-sm font-medium text-foreground">{event.title}</h3>
+                          </div>
+                          <p className="text-sm text-muted-foreground leading-relaxed">{event.description}</p>
+                        </div>
                       </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{event.description}</p>
+                    </div>
+                  </motion.div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </ParallaxSection>
+
+      {/* Companies Section */}
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.1}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-card/30 via-background to-card/30" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <motion.span 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+            >
+              <span className="w-8 h-px bg-foreground/30" />
+              {getText(language, 'Empresas', 'Companies')}
+            </motion.span>
+            <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-10 leading-[1.05]">
+              {getText(language, 'Minhas Empresas', 'My Companies')}
+            </h2>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {companies.map((company, index) => (
+              <ScrollReveal key={company.name} delay={index * 0.15}>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className="h-full"
+                >
+                  <div 
+                    className="relative h-full rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm overflow-hidden group"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    <div className="h-40 overflow-hidden">
+                      <img 
+                        src={company.logo} 
+                        alt={company.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
+                    </div>
+                    
+                    <div className="p-8">
+                      <span className="inline-block px-3 py-1 rounded-full text-xs font-medium border border-border/30 bg-card/50 text-foreground/70 mb-4">
+                        {company.role}
+                      </span>
+                      <h3 className="text-xl font-serif text-foreground mb-3">{company.name}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{company.description}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -294,48 +401,38 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
             ))}
           </div>
         </div>
-      </section>
+      </ParallaxSection>
 
-      {/* Companies */}
-      <section className="py-16 lg:py-20 relative">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
-        </div>
-        
-        <div className="container mx-auto px-6 lg:px-8">
+      {/* Partnerships Section */}
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.12}
+        backgroundElement={
+          <>
+            <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-card/20 to-transparent" />
+            <div className="absolute bottom-1/3 left-1/4 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-8">{tt.companies}</h2>
+            <motion.span 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+            >
+              <span className="w-8 h-px bg-foreground/30" />
+              {getText(language, 'Parcerias', 'Partnerships')}
+            </motion.span>
+            <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-10 leading-[1.05]">
+              {getText(language, 'Parcerias e Atuações', 'Partnerships and Activities')}
+            </h2>
           </ScrollReveal>
-          
-          <div className="space-y-4">
-            {companies.map((company, index) => (
-              <CompanyCard
-                key={index}
-                index={index}
-                name={company.name}
-                description={company.description}
-                logo={company.logo}
-                skills={company.skills}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Partnerships */}
-      <section className="py-16 lg:py-20 relative">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
-        </div>
-        
-        <div className="container mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-8">{tt.partnerships}</h2>
-          </ScrollReveal>
-          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {partnerships.map((partnership, index) => (
-              <ScrollReveal key={index} delay={index * 0.1}>
+              <ScrollReveal key={partnership.name} delay={index * 0.1}>
                 <motion.a
                   href={partnership.link}
                   target="_blank"
@@ -344,39 +441,36 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
                   transition={{ duration: 0.3 }}
                   className="block h-full group"
                 >
-                  <div className="relative h-full rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm overflow-hidden">
-                    <div className="relative h-40 overflow-hidden">
+                  <div 
+                    className="relative h-full p-6 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+                    
+                    <div className="flex items-center gap-4 mb-4">
                       <img 
-                        src={partnership.banner} 
+                        src={partnership.logo} 
                         alt={partnership.name}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="w-12 h-12 rounded-xl object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
-                      <div className="absolute bottom-4 left-4 flex items-center gap-3">
-                        <img 
-                          src={partnership.logo} 
-                          alt={partnership.name}
-                          className="w-10 h-10 rounded-lg"
-                        />
-                        <div>
-                          <h3 className="text-sm font-medium text-foreground">{partnership.name}</h3>
-                          <span className="text-[10px] px-2 py-0.5 rounded-full border border-border/30 bg-background/80 text-foreground/70">
-                            {partnership.badge}
-                          </span>
-                        </div>
+                      <div>
+                        <h3 className="text-base font-medium text-foreground">{partnership.name}</h3>
+                        <span className="text-[10px] px-2 py-0.5 rounded-full border border-border/30 bg-background/80 text-foreground/70">
+                          {partnership.badge}
+                        </span>
                       </div>
                     </div>
-                    <div className="p-5">
-                      <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                        {partnership.description}
-                      </p>
-                      <div className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
-                        <span className="relative">
-                          {language === 'pt' ? 'Saiba mais' : 'Learn more'}
-                          <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-300" />
-                        </span>
-                        <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      </div>
+                    
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">{partnership.description}</p>
+                    
+                    <div className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
+                      <span className="relative">
+                        {language === 'pt' ? 'Saiba mais' : 'Learn more'}
+                        <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-300" />
+                      </span>
+                      <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>
                   </div>
                 </motion.a>
@@ -384,161 +478,140 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
             ))}
           </div>
         </div>
-      </section>
+      </ParallaxSection>
 
-      {/* Values */}
-      <section className="py-16 lg:py-20 relative">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
-        </div>
-        
-        <div className="container mx-auto px-6 lg:px-8">
+      {/* Values Section */}
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.1}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-8 text-center">{tt.values}</h2>
+            <div className="text-center mb-12">
+              <motion.span 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+              >
+                {getText(language, 'Valores', 'Values')}
+              </motion.span>
+              <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6 leading-tight">
+                {getText(language, 'Valores Pessoais', 'Personal Values')}
+              </h2>
+            </div>
           </ScrollReveal>
-          
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {values.map((value, index) => (
-              <ScrollReveal key={index} delay={index * 0.1}>
+              <ScrollReveal key={value.title} delay={index * 0.1}>
                 <motion.div
                   whileHover={{ y: -4, scale: 1.02 }}
                   transition={{ duration: 0.3 }}
-                  className="rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm p-6 text-center cursor-default group"
-                  style={{
-                    boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
-                  }}
+                  className="h-full"
                 >
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl border border-border/30 text-foreground/60 mb-4 group-hover:border-foreground/20 transition-colors duration-300">
-                    <value.icon className="w-6 h-6 group-hover:text-foreground transition-colors duration-300" />
-                  </div>
-                  <h3 className="text-base font-medium text-foreground mb-2">{value.title}</h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{value.description}</p>
-                </motion.div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Quotes */}
-      <section className="py-16 lg:py-20 relative">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
-        </div>
-        
-        <div className="container mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-8 text-center">{tt.quotes}</h2>
-          </ScrollReveal>
-          
-          <div className="space-y-4 max-w-3xl mx-auto">
-            {quotes.map((quote, index) => (
-              <ScrollReveal key={index} delay={index * 0.1}>
-                <motion.div
-                  whileHover={{ y: -4 }}
-                  transition={{ duration: 0.3 }}
-                  className="rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm p-6 group cursor-default"
-                  style={{
-                    boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
-                  }}
-                >
-                  <div className="flex items-start gap-4">
-                    <Quote className="w-6 h-6 text-foreground/40 flex-shrink-0 group-hover:text-foreground/60 transition-colors duration-300" />
-                    <p className="text-base font-serif text-foreground/90 italic">{quote}</p>
-                  </div>
-                </motion.div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-16 lg:py-20 relative">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
-        </div>
-        
-        <div className="container mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-8 text-center">{tt.testimonials}</h2>
-          </ScrollReveal>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <ScrollReveal key={index} delay={index * 0.1}>
-                <motion.div
-                  whileHover={{ y: -4 }}
-                  transition={{ duration: 0.3 }}
-                  className="rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm p-6 group cursor-default h-full"
-                  style={{
-                    boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
-                  }}
-                >
-                  <div className="flex items-center gap-4 mb-4">
-                    <img 
-                      src={testimonial.image} 
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover border border-border/30 group-hover:border-foreground/20 transition-colors duration-300"
-                    />
-                    <div>
-                      <h4 className="text-sm font-medium text-foreground">{testimonial.name}</h4>
-                      <p className="text-xs text-muted-foreground">{testimonial.role}</p>
+                  <div 
+                    className="relative h-full p-6 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm text-center group"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+                    
+                    <div className="w-12 h-12 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center mx-auto mb-4 group-hover:border-foreground/20 transition-colors duration-300">
+                      <value.icon className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
                     </div>
+                    <h3 className="text-base font-medium text-foreground mb-2">{value.title}</h3>
+                    <p className="text-xs text-muted-foreground">{value.description}</p>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-4">{testimonial.text}</p>
                 </motion.div>
               </ScrollReveal>
             ))}
           </div>
         </div>
-      </section>
+      </ParallaxSection>
 
-      {/* Inclusion */}
-      <section className="py-16 lg:py-20 relative">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
-        </div>
-        
-        <div className="container mx-auto px-6 lg:px-8">
+      {/* Testimonials Section */}
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.12}
+        backgroundElement={
+          <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-card/20 to-transparent" />
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-8 text-center">{tt.inclusion}</h2>
+            <div className="mb-10">
+              <motion.span 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+              >
+                <span className="w-8 h-px bg-foreground/30" />
+                {getText(language, 'Depoimentos', 'Testimonials')}
+              </motion.span>
+              <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
+                {language === 'pt' ? 'O que dizem' : 'What they say'}
+              </h2>
+            </div>
           </ScrollReveal>
-          
-          <ScrollReveal>
-            <motion.div
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.4 }}
-              className="max-w-3xl mx-auto rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-8 lg:p-10 group"
-              style={{
-                boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
-              }}
-            >
-              <div className="flex flex-col md:flex-row items-center gap-6">
-                <div className="w-16 h-16 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center flex-shrink-0 group-hover:border-foreground/20 transition-colors duration-300">
-                  <HandHeart className="w-8 h-8 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
-                </div>
-                <div className="text-center md:text-left">
-                  <h3 className="text-lg font-serif text-foreground mb-3">
-                    {language === 'pt' ? 'Comprometido com a Diversidade' : 'Committed to Diversity'}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {language === 'pt' 
-                      ? 'A minha história me ensinou que inclusão não é apenas uma palavra, mas uma prática diária. Como pessoa com deficiência, sei na pele os desafios que muitos enfrentam. Por isso, me comprometo a criar ambientes onde todas as pessoas possam crescer, aprender e contribuir.'
-                      : 'My story taught me that inclusion is not just a word, but a daily practice. As a person with a disability, I know firsthand the challenges many face. That\'s why I\'m committed to creating environments where all people can grow, learn, and contribute.'}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </ScrollReveal>
-        </div>
-      </section>
 
-      {/* CTA */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {testimonials.map((testimonial, index) => (
+              <ScrollReveal key={testimonial.name} delay={index * 0.15}>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className="h-full"
+                >
+                  <div 
+                    className="relative h-full p-10 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm group"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-foreground/[0.02] to-transparent rounded-tr-2xl" />
+                    
+                    <blockquote className="relative">
+                      <div className="absolute -top-4 -left-2 text-6xl text-foreground/[0.05] font-serif leading-none select-none">"</div>
+                      
+                      <p className="text-base text-foreground/80 leading-[1.8] mb-8 relative z-10">
+                        "{testimonial.text}"
+                      </p>
+                      
+                      <footer className="flex items-center gap-4">
+                        <img 
+                          src={testimonial.image} 
+                          alt={testimonial.name}
+                          className="w-12 h-12 rounded-xl object-cover border border-border/30"
+                        />
+                        <div>
+                          <p className="text-sm font-medium text-foreground">{testimonial.name}</p>
+                          <p className="text-xs text-muted-foreground/70">{testimonial.role}</p>
+                        </div>
+                      </footer>
+                    </blockquote>
+                  </div>
+                </motion.div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </ParallaxSection>
+
+      {/* Inclusion Section */}
       <section className="py-20 lg:py-24 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-t from-card/30 via-background to-background" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-radial from-foreground/5 to-transparent blur-3xl opacity-50" />
         </div>
         
         <div className="container mx-auto px-6 lg:px-8 relative">
@@ -546,36 +619,41 @@ Thus Cheetah Network was born. More than a company, it represents the transforma
             <motion.div
               whileHover={{ y: -4 }}
               transition={{ duration: 0.4 }}
-              className="max-w-2xl mx-auto"
             >
-              <div 
-                className="relative p-10 lg:p-12 rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm text-center"
-                style={{
-                  boxShadow: '0 8px 40px hsl(var(--foreground) / 0.03)'
-                }}
-              >
-                <div className="absolute top-0 left-0 w-20 h-20 border-l border-t border-foreground/[0.06] rounded-tl-3xl" />
-                <div className="absolute bottom-0 right-0 w-20 h-20 border-r border-b border-foreground/[0.06] rounded-br-3xl" />
+              <GlassCard className="max-w-3xl mx-auto p-10 lg:p-12 text-center hover:border-foreground/20 transition-all duration-500">
+                <div className="w-16 h-16 rounded-2xl border border-border/30 bg-card/50 flex items-center justify-center mx-auto mb-6">
+                  <HandHeart className="w-8 h-8 text-foreground/60" />
+                </div>
+                
+                <motion.span 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+                >
+                  {getText(language, 'Inclusão', 'Inclusion')}
+                </motion.span>
                 
                 <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-4 leading-tight">
-                  {tt.cta}
+                  {language === 'pt' ? 'Comprometido com a Diversidade' : 'Committed to Diversity'}
                 </h2>
-                <p className="text-muted-foreground mb-8 leading-relaxed max-w-xl mx-auto">
-                  {getText(language, 'Tem um projeto em mente? Vamos conversar sobre como posso ajudar.', "Have a project in mind? Let's talk about how I can help.")}
+                <p className="text-base text-muted-foreground mb-8 leading-relaxed max-w-xl mx-auto">
+                  {language === 'pt' 
+                    ? 'A minha história me ensinou que inclusão não é apenas uma palavra, mas uma prática diária. Me comprometo a criar ambientes onde todas as pessoas possam crescer e contribuir.'
+                    : 'My story taught me that inclusion is not just a word, but a daily practice. I\'m committed to creating environments where all people can grow and contribute.'}
                 </p>
-                <a 
-                  href="https://wa.me/5581993964261" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-3 px-8 py-4 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300 hover:opacity-90"
+                
+                <Link 
+                  to="/contact"
+                  className="group inline-flex items-center gap-3 px-8 py-4 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300"
                   style={{
                     boxShadow: '0 0 30px hsl(var(--foreground) / 0.2)'
                   }}
                 >
-                  {getText(language, 'Iniciar conversa', 'Start conversation')}
-                  <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </a>
-              </div>
+                  {getText(language, 'Vamos conversar', 'Let\'s talk')}
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+              </GlassCard>
             </motion.div>
           </ScrollReveal>
         </div>
