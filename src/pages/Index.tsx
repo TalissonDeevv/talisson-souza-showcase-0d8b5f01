@@ -6,12 +6,12 @@ import FloatingTerminal from "@/components/ui/FloatingTerminal";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import GlassCard from "@/components/ui/GlassCard";
 import PremiumBadge from "@/components/ui/PremiumBadge";
+import ParticlesBackground from "@/components/ui/ParticlesBackground";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
 import logoSignature from "@/assets/logo-signature.png";
-// Photo removed - using abstract background instead
 import { motion } from "framer-motion";
 
 const Index = () => {
@@ -69,31 +69,8 @@ const Index = () => {
             }}
           />
           
-          {/* Animated floating orbs */}
-          <motion.div 
-            className="absolute top-1/3 right-1/3 w-2 h-2 rounded-full bg-foreground/20"
-            animate={{ 
-              y: [0, -20, 0],
-              opacity: [0.2, 0.5, 0.2]
-            }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div 
-            className="absolute top-2/3 left-1/3 w-1.5 h-1.5 rounded-full bg-foreground/15"
-            animate={{ 
-              y: [0, -15, 0],
-              opacity: [0.15, 0.4, 0.15]
-            }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          />
-          <motion.div 
-            className="absolute bottom-1/3 right-1/4 w-1 h-1 rounded-full bg-foreground/10"
-            animate={{ 
-              y: [0, -10, 0],
-              opacity: [0.1, 0.3, 0.1]
-            }}
-            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          />
+          {/* Particles Effect */}
+          <ParticlesBackground />
         </div>
 
         {/* Bottom fade effect - smooth transition to next section */}

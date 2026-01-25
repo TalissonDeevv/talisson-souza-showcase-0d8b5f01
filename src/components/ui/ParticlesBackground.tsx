@@ -1,0 +1,134 @@
+import { useEffect, useMemo, useRef } from 'react';
+import { motion } from 'framer-motion';
+
+interface Particle {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  duration: number;
+  delay: number;
+  opacity: number;
+}
+
+const ParticlesBackground = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  const particles = useMemo<Particle[]>(() => {
+    return Array.from({ length: 50 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 2 + 0.5,
+      duration: Math.random() * 20 + 15,
+      delay: Math.random() * 10,
+      opacity: Math.random() * 0.3 + 0.1,
+    }));
+  }, []);
+
+  return (
+    <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none">
+      {particles.map((particle) => (
+        <motion.div
+          key={particle.id}
+          className="absolute rounded-full bg-foreground"
+          style={{
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+            width: particle.size,
+            height: particle.size,
+          }}
+          animate={{
+            y: [0, -100, 0],
+            x: [0, Math.random() * 30 - 15, 0],
+            opacity: [particle.opacity * 0.5, particle.opacity, particle.opacity * 0.5],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: particle.duration,
+            repeat: Infinity,
+            delay: particle.delay,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+      
+      {/* Larger floating orbs with glow */}
+      {[
+        { x: '15%', y: '20%', size: 4, duration: 8, delay: 0 },
+        { x: '85%', y: '30%', size: 3, duration: 10, delay: 2 },
+        { x: '25%', y: '70%', size: 3.5, duration: 9, delay: 1 },
+        { x: '75%', y: '80%', size: 2.5, duration: 11, delay: 3 },
+        { x: '50%', y: '50%', size: 5, duration: 12, delay: 0.5 },
+        { x: '10%', y: '45%', size: 2, duration: 7, delay: 4 },
+        { x: '90%', y: '60%', size: 3, duration: 9, delay: 2.5 },
+      ].map((orb, index) => (
+        <motion.div
+          key={`orb-${index}`}
+          className="absolute rounded-full"
+          style={{
+            left: orb.x,
+            top: orb.y,
+            width: orb.size,
+            height: orb.size,
+            background: 'hsl(var(--foreground))',
+            boxShadow: `0 0 ${orb.size * 4}px ${orb.size}px hsl(var(--foreground) / 0.15)`,
+          }}
+          animate={{
+            y: [0, -40, 0],
+            opacity: [0.2, 0.5, 0.2],
+            scale: [1, 1.3, 1],
+          }}
+          transition={{
+            duration: orb.duration,
+            repeat: Infinity,
+            delay: orb.delay,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+
+      {/* Connecting lines effect - subtle */}
+      <svg className="absolute inset-0 w-full h-full opacity-[0.03]">
+        <motion.line
+          x1="10%"
+          y1="20%"
+          x2="30%"
+          y2="40%"
+          stroke="hsl(var(--foreground))"
+          strokeWidth="0.5"
+          animate={{
+            opacity: [0.3, 0.8, 0.3],
+          }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.line
+          x1="70%"
+          y1="30%"
+          x2="85%"
+          y2="50%"
+          stroke="hsl(var(--foreground))"
+          strokeWidth="0.5"
+          animate={{
+            opacity: [0.5, 0.2, 0.5],
+          }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
+        <motion.line
+          x1="40%"
+          y1="60%"
+          x2="60%"
+          y2="80%"
+          stroke="hsl(var(--foreground))"
+          strokeWidth="0.5"
+          animate={{
+            opacity: [0.2, 0.6, 0.2],
+          }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
+      </svg>
+    </div>
+  );
+};
+
+export default ParticlesBackground;
