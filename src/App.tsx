@@ -14,6 +14,8 @@ import ServiceDetail from "./pages/ServiceDetail";
 import Career from "./pages/Career";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
+import HowIWork from "./pages/HowIWork";
+import TechDecisions from "./pages/TechDecisions";
 import BotDiscord from "./pages/blog/BotDiscord";
 import FullstackDevelopment from "./pages/blog/FullstackDevelopment";
 import CloudSolutions from "./pages/blog/CloudSolutions";
@@ -43,6 +45,8 @@ const App = () => (
               <Route path="/servicos/:serviceId" element={<ServiceDetail />} />
               <Route path="/carreira" element={<Career />} />
               <Route path="/contato" element={<Contact />} />
+              <Route path="/como-trabalho" element={<HowIWork />} />
+              <Route path="/decisoes-tecnicas" element={<TechDecisions />} />
               <Route path="/blog" element={<Blog />} />
               
               {/* Blog posts */}
