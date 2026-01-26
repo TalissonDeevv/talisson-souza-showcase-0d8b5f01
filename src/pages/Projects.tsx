@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
@@ -5,14 +6,16 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
 import GlassCard from "@/components/ui/GlassCard";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
+import CaseStudyModal from "@/components/ui/CaseStudyModal";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
-import { ArrowUpRight, ArrowRight, ExternalLink, Github, Layers } from "lucide-react";
+import { ArrowUpRight, ArrowRight, ExternalLink, Github, Layers, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Projects = () => {
   const { language } = useTheme();
   const t = useTranslation(language);
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
   const projects = [
     {
@@ -22,7 +25,27 @@ const Projects = () => {
       image: "https://i.ibb.co/rSQjVTs/wallpaper.png",
       technologies: ["TypeScript", "React", "Node.js", "MongoDB"],
       link: "https://werneckgroup.com",
-      featured: true
+      featured: true,
+      caseStudy: {
+        context: getText(language, 
+          "O Werneck Group precisava de uma presença digital que refletisse seu posicionamento como grupo empresarial de referência no mercado brasileiro.",
+          "Werneck Group needed a digital presence that reflected their positioning as a leading business group in the Brazilian market."
+        ),
+        problem: getText(language,
+          "O site anterior era desatualizado, não refletia a identidade visual da marca e tinha problemas de performance e SEO que prejudicavam a captação de leads.",
+          "The previous site was outdated, didn't reflect the brand's visual identity and had performance and SEO issues that hurt lead generation."
+        ),
+        solution: getText(language,
+          "Redesign completo com foco em storytelling institucional, otimização de performance (Core Web Vitals) e arquitetura de informação orientada à conversão.",
+          "Complete redesign focused on institutional storytelling, performance optimization (Core Web Vitals) and conversion-oriented information architecture."
+        ),
+        results: [
+          getText(language, "Aumento de 150% no tempo de permanência", "150% increase in time on site"),
+          getText(language, "Score de performance no Lighthouse acima de 90", "Lighthouse performance score above 90"),
+          getText(language, "Redução de 60% no bounce rate", "60% reduction in bounce rate"),
+          getText(language, "Design system escalável para futuras expansões", "Scalable design system for future expansions")
+        ]
+      }
     },
     {
       slug: "familia-werneck",
@@ -31,7 +54,26 @@ const Projects = () => {
       image: "https://i.ibb.co/20FBr03Q/Chat-GPT-Image-4-05-2025-15-12-34.png",
       technologies: ["React", "Firebase", "Styled Components"],
       link: "https://familiawerneck.vercel.app",
-      featured: true
+      featured: true,
+      caseStudy: {
+        context: getText(language,
+          "A Família Werneck queria um espaço digital privado para compartilhar memórias, notícias e eventos entre os membros da família.",
+          "The Werneck Family wanted a private digital space to share memories, news and events among family members."
+        ),
+        problem: getText(language,
+          "Grupos de WhatsApp e redes sociais não ofereciam a organização e privacidade necessárias para o conteúdo familiar.",
+          "WhatsApp groups and social networks didn't offer the organization and privacy needed for family content."
+        ),
+        solution: getText(language,
+          "Portal personalizado com autenticação segura, galeria de fotos, linha do tempo de eventos e sistema de notificações por email.",
+          "Customized portal with secure authentication, photo gallery, event timeline and email notification system."
+        ),
+        results: [
+          getText(language, "100% dos membros ativos no primeiro mês", "100% of members active in the first month"),
+          getText(language, "Mais de 500 fotos organizadas na galeria", "Over 500 photos organized in the gallery"),
+          getText(language, "Sistema de backup automático implementado", "Automatic backup system implemented")
+        ]
+      }
     },
     {
       slug: "sagiri-bot",
@@ -40,7 +82,26 @@ const Projects = () => {
       image: "https://i.ibb.co/jkPPHWdc/image.png",
       technologies: ["Next.js", "Tailwind CSS", "Framer Motion"],
       link: "https://sagiribot.vercel.app",
-      featured: true
+      featured: true,
+      caseStudy: {
+        context: getText(language,
+          "Bot de Discord popular precisava de uma presença web profissional para atrair parceiros e patrocinadores.",
+          "Popular Discord bot needed a professional web presence to attract partners and sponsors."
+        ),
+        problem: getText(language,
+          "Sem site próprio, a bot dependia apenas do Discord para comunicação, limitando oportunidades de monetização.",
+          "Without its own website, the bot relied only on Discord for communication, limiting monetization opportunities."
+        ),
+        solution: getText(language,
+          "Landing page moderna com animações fluidas, seção de features, estatísticas em tempo real e formulário de parcerias.",
+          "Modern landing page with fluid animations, features section, real-time statistics and partnership form."
+        ),
+        results: [
+          getText(language, "3x mais solicitações de parceria no primeiro mês", "3x more partnership requests in the first month"),
+          getText(language, "Tempo de carregamento abaixo de 1.5s", "Load time under 1.5s"),
+          getText(language, "Conversão de 12% no formulário de contato", "12% conversion on contact form")
+        ]
+      }
     }
   ];
 
@@ -51,8 +112,9 @@ const Projects = () => {
   ];
 
   return (
-    <Layout withPadding={false}>
-      <SEO 
+    <>
+      <Layout withPadding={false}>
+        <SEO 
         title="Projetos | Portfólio de Talisson Souza"
         description="Conheça os projetos desenvolvidos por Talisson Souza. Sites, aplicações web, sistemas empresariais e soluções digitais para empresas de diversos segmentos."
         canonical="/projetos"
@@ -142,10 +204,7 @@ const Projects = () => {
           <div className="space-y-8">
             {projects.filter(p => p.featured).map((project, index) => (
               <ScrollReveal key={project.slug} delay={index * 0.15}>
-                <motion.a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ duration: 0.4 }}
                   className="block group"
@@ -200,17 +259,32 @@ const Projects = () => {
                           ))}
                         </div>
 
-                        <div className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
-                          <span className="relative">
-                            {t.projects.seeProject}
-                            <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-300" />
-                          </span>
-                          <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        {/* Actions */}
+                        <div className="flex flex-wrap items-center gap-4">
+                          <button
+                            onClick={() => setSelectedProject(project)}
+                            className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:opacity-70 transition-opacity"
+                          >
+                            <Eye className="w-4 h-4" />
+                            <span>{getText(language, 'Ver estudo de caso', 'View case study')}</span>
+                          </button>
+                          
+                          {project.link && (
+                            <a 
+                              href={project.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                            >
+                              <span>{t.projects.seeProject}</span>
+                              <ArrowUpRight className="w-4 h-4" />
+                            </a>
+                          )}
                         </div>
                       </div>
                     </div>
                   </div>
-                </motion.a>
+                </motion.div>
               </ScrollReveal>
             ))}
           </div>
@@ -358,7 +432,15 @@ const Projects = () => {
           </ScrollReveal>
         </div>
       </section>
-    </Layout>
+      </Layout>
+
+      {/* Case Study Modal */}
+      <CaseStudyModal 
+        isOpen={!!selectedProject}
+        onClose={() => setSelectedProject(null)}
+        project={selectedProject}
+      />
+    </>
   );
 };
 

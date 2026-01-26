@@ -54,10 +54,38 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
   ];
 
   const timelineEvents = [
-    { year: "2018", title: getText(language, "Início da Jornada", "Journey Begins"), description: getText(language, "Aos 14 anos, criei meus primeiros bots para Discord", "At 14, I created my first Discord bots"), icon: Rocket },
-    { year: "2021", title: getText(language, "Momento Decisivo", "Decisive Moment"), description: getText(language, "Experiência que motivou a criação da própria empresa", "Experience that motivated the creation of my own company"), icon: Target },
-    { year: "2023", title: getText(language, "Fundação da Cheetah Network", "Cheetah Network Founded"), description: getText(language, "Criação da empresa focada em soluções digitais", "Company created focused on digital solutions"), icon: Building2 },
-    { year: "2024", title: getText(language, "Diretor Estratégico", "Strategic Director"), description: getText(language, "Posição estratégica no Werneck Group", "Strategic position at Werneck Group"), icon: Briefcase }
+    { 
+      year: "2018", 
+      title: getText(language, "Início da Jornada", "Journey Begins"), 
+      role: getText(language, "Desenvolvedor Iniciante", "Junior Developer"),
+      description: getText(language, "Aos 14 anos, criei meus primeiros bots para Discord", "At 14, I created my first Discord bots"), 
+      learning: getText(language, "Autodidatismo é um superpoder", "Self-learning is a superpower"),
+      icon: Rocket 
+    },
+    { 
+      year: "2021", 
+      title: getText(language, "Momento Decisivo", "Decisive Moment"), 
+      role: getText(language, "Freelancer", "Freelancer"),
+      description: getText(language, "Experiência que motivou a criação da própria empresa", "Experience that motivated the creation of my own company"), 
+      learning: getText(language, "Obstáculos podem ser trampolins", "Obstacles can be springboards"),
+      icon: Target 
+    },
+    { 
+      year: "2023", 
+      title: getText(language, "Fundação da Cheetah Network", "Cheetah Network Founded"), 
+      role: getText(language, "CEO & Founder", "CEO & Founder"),
+      description: getText(language, "Criação da empresa focada em soluções digitais", "Company created focused on digital solutions"), 
+      learning: getText(language, "Empreender é resolver problemas", "Entrepreneurship is problem-solving"),
+      icon: Building2 
+    },
+    { 
+      year: "2024", 
+      title: getText(language, "Diretor Estratégico", "Strategic Director"), 
+      role: getText(language, "Diretor no Werneck Group", "Director at Werneck Group"),
+      description: getText(language, "Posição estratégica no Werneck Group", "Strategic position at Werneck Group"), 
+      learning: getText(language, "Liderança é sobre pessoas", "Leadership is about people"),
+      icon: Briefcase 
+    }
   ];
 
   const testimonials = [
@@ -312,27 +340,46 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
                       whileInView={{ scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: index * 0.1 + 0.3 }}
-                      className="absolute left-4 lg:left-[-5px] top-6 hidden sm:flex items-center justify-center"
+                      className="absolute left-4 lg:left-[-5px] top-8 hidden sm:flex items-center justify-center"
                     >
-                      <div className="w-2.5 h-2.5 rounded-full bg-foreground/30 ring-4 ring-background" />
+                      <div className="w-3 h-3 rounded-full bg-foreground/40 ring-4 ring-background shadow-[0_0_10px_hsl(var(--foreground)/0.2)]" />
                     </motion.div>
                     
                     <div 
-                      className="relative p-6 rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm group"
+                      className="relative p-6 lg:p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm group overflow-hidden"
                       style={{
                         boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
                       }}
                     >
-                      <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center flex-shrink-0 group-hover:border-foreground/20 transition-colors duration-300">
-                          <event.icon className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center gap-3 mb-2">
-                            <span className="text-xl font-serif text-foreground">{event.year}</span>
-                            <h3 className="text-sm font-medium text-foreground">{event.title}</h3>
+                      <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      
+                      <div className="relative">
+                        <div className="flex items-start gap-4 mb-4">
+                          <div className="w-12 h-12 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center flex-shrink-0 group-hover:border-foreground/20 transition-colors duration-300">
+                            <event.icon className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
                           </div>
-                          <p className="text-sm text-muted-foreground leading-relaxed">{event.description}</p>
+                          <div className="flex-1">
+                            <div className="flex flex-wrap items-center gap-2 mb-1">
+                              <span className="text-2xl font-serif text-foreground">{event.year}</span>
+                              <span className="text-xs px-2 py-0.5 rounded-full border border-border/30 bg-card/50 text-muted-foreground">
+                                {event.role}
+                              </span>
+                            </div>
+                            <h3 className="text-base font-medium text-foreground">{event.title}</h3>
+                          </div>
+                        </div>
+                        
+                        <p className="text-sm text-muted-foreground leading-relaxed mb-4">{event.description}</p>
+                        
+                        {/* Learning Badge */}
+                        <div className="flex items-center gap-2 p-3 rounded-lg bg-foreground/[0.03] border border-border/10">
+                          <Lightbulb className="w-4 h-4 text-foreground/40 flex-shrink-0" />
+                          <span className="text-xs text-foreground/70 font-medium">
+                            {getText(language, 'Aprendizado:', 'Learning:')}
+                          </span>
+                          <span className="text-xs text-muted-foreground italic">
+                            "{event.learning}"
+                          </span>
                         </div>
                       </div>
                     </div>
