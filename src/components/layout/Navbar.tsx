@@ -35,6 +35,8 @@ const Navbar = () => {
     { name: language === 'pt' ? 'Carreira' : 'Career', path: "/carreira" },
     { name: t.nav.projects, path: "/projetos" },
     { name: t.nav.services, path: "/servicos" },
+    { name: language === 'pt' ? 'Como Trabalho' : 'How I Work', path: "/como-trabalho" },
+    { name: language === 'pt' ? 'Decisões Técnicas' : 'Tech Decisions', path: "/decisoes-tecnicas" },
     { name: t.nav.blog, path: "/blog" },
     { name: language === 'pt' ? 'Contato' : 'Contact', path: "/contato" },
   ];

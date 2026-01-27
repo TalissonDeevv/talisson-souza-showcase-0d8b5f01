@@ -130,7 +130,7 @@ const Services = () => {
               <GlassCard className="max-w-3xl mx-auto p-10 lg:p-12 text-center hover:border-foreground/20 transition-all duration-500">
                 <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-4 leading-tight">{t.servicesPage.projectIdea}</h2>
                 <p className="text-muted-foreground mb-8 leading-relaxed max-w-xl mx-auto">{t.servicesPage.projectIdeaDescription}</p>
-                <a href="https://wa.me/5581993964261" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-3 px-8 py-4 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300" style={{ boxShadow: '0 0 30px hsl(var(--foreground) / 0.2)' }}>{t.servicesPage.requestQuote}<ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" /></a>
+                <a href="https://wa.me/5581993964261" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-3 px-8 py-4 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300" style={{ boxShadow: '0 0 30px hsl(var(--foreground) / 0.2)' }}>{language === 'pt' ? 'Solicitar diagnóstico técnico' : 'Request technical diagnosis'}<ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" /></a>
               </GlassCard>
             </motion.div>
           </ScrollReveal>
