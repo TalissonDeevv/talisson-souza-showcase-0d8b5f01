@@ -7,6 +7,7 @@ import ParallaxSection from "@/components/ui/ParallaxSection";
 import GlassCard from "@/components/ui/GlassCard";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import CaseStudyModal from "@/components/ui/CaseStudyModal";
+import ProjectBehindTheScenes, { getDecisionIcon } from "@/components/ui/ProjectBehindTheScenes";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
 import { ArrowUpRight, ArrowRight, ExternalLink, Github, Layers, Eye } from "lucide-react";
@@ -45,7 +46,36 @@ const Projects = () => {
           getText(language, "Redução de 60% no bounce rate", "60% reduction in bounce rate"),
           getText(language, "Design system escalável para futuras expansões", "Scalable design system for future expansions")
         ]
-      }
+      },
+      behindTheScenes: [
+        {
+          icon: getDecisionIcon("architecture"),
+          title: getText(language, "React + Vite vs Next.js", "React + Vite vs Next.js"),
+          description: getText(language, "Escolha de stack para o frontend", "Frontend stack choice"),
+          reasoning: getText(language, 
+            "O site não precisava de SSR ou rotas dinâmicas complexas. React + Vite ofereceu build mais rápido e menor overhead para um site institucional.",
+            "The site didn't need SSR or complex dynamic routes. React + Vite offered faster builds and less overhead for an institutional site."
+          )
+        },
+        {
+          icon: getDecisionIcon("database"),
+          title: getText(language, "MongoDB para CMS", "MongoDB for CMS"),
+          description: getText(language, "Banco de dados flexível para conteúdo", "Flexible database for content"),
+          reasoning: getText(language,
+            "A estrutura do conteúdo institucional é semi-estruturada. MongoDB permitiu iteração rápida sem migrações complexas.",
+            "Institutional content structure is semi-structured. MongoDB allowed rapid iteration without complex migrations."
+          )
+        },
+        {
+          icon: getDecisionIcon("performance"),
+          title: getText(language, "Lazy loading agressivo", "Aggressive lazy loading"),
+          description: getText(language, "Otimização para Core Web Vitals", "Core Web Vitals optimization"),
+          reasoning: getText(language,
+            "Imagens pesadas do portfólio exigiam carregamento inteligente. Implementei intersection observer para garantir LCP abaixo de 2.5s.",
+            "Heavy portfolio images required smart loading. Implemented intersection observer to ensure LCP under 2.5s."
+          )
+        }
+      ]
     },
     {
       slug: "familia-werneck",
@@ -73,7 +103,36 @@ const Projects = () => {
           getText(language, "Mais de 500 fotos organizadas na galeria", "Over 500 photos organized in the gallery"),
           getText(language, "Sistema de backup automático implementado", "Automatic backup system implemented")
         ]
-      }
+      },
+      behindTheScenes: [
+        {
+          icon: getDecisionIcon("security"),
+          title: getText(language, "Firebase Auth vs Auth0", "Firebase Auth vs Auth0"),
+          description: getText(language, "Sistema de autenticação familiar", "Family authentication system"),
+          reasoning: getText(language,
+            "Firebase ofereceu integração mais simples com Firestore e custos previsíveis para o volume esperado de usuários familiares.",
+            "Firebase offered simpler integration with Firestore and predictable costs for the expected volume of family users."
+          )
+        },
+        {
+          icon: getDecisionIcon("database"),
+          title: getText(language, "Firestore vs Realtime Database", "Firestore vs Realtime Database"),
+          description: getText(language, "Estrutura de dados do portal", "Portal data structure"),
+          reasoning: getText(language,
+            "Firestore ofereceu queries mais flexíveis para buscar eventos por data e filtrar fotos por álbum.",
+            "Firestore offered more flexible queries to search events by date and filter photos by album."
+          )
+        },
+        {
+          icon: getDecisionIcon("idea"),
+          title: getText(language, "Styled Components vs Tailwind", "Styled Components vs Tailwind"),
+          description: getText(language, "Estratégia de estilização", "Styling strategy"),
+          reasoning: getText(language,
+            "Styled Components permitiu temas dinâmicos e isolamento de estilos por componente, ideal para um projeto com identidade visual única.",
+            "Styled Components allowed dynamic themes and style isolation per component, ideal for a project with unique visual identity."
+          )
+        }
+      ]
     },
     {
       slug: "sagiri-bot",
@@ -101,7 +160,36 @@ const Projects = () => {
           getText(language, "Tempo de carregamento abaixo de 1.5s", "Load time under 1.5s"),
           getText(language, "Conversão de 12% no formulário de contato", "12% conversion on contact form")
         ]
-      }
+      },
+      behindTheScenes: [
+        {
+          icon: getDecisionIcon("architecture"),
+          title: getText(language, "Next.js para landing page", "Next.js for landing page"),
+          description: getText(language, "Framework com SSG para SEO", "Framework with SSG for SEO"),
+          reasoning: getText(language,
+            "SSG do Next.js garantiu SEO excelente e performance máxima. Ideal para página de conversão onde cada milissegundo conta.",
+            "Next.js SSG ensured excellent SEO and maximum performance. Ideal for conversion page where every millisecond counts."
+          )
+        },
+        {
+          icon: getDecisionIcon("performance"),
+          title: getText(language, "Framer Motion otimizado", "Optimized Framer Motion"),
+          description: getText(language, "Animações sem impacto em performance", "Animations without performance impact"),
+          reasoning: getText(language,
+            "Usei layoutId e AnimatePresence apenas onde necessário, evitando re-renders desnecessários em animações decorativas.",
+            "Used layoutId and AnimatePresence only where needed, avoiding unnecessary re-renders in decorative animations."
+          )
+        },
+        {
+          icon: getDecisionIcon("idea"),
+          title: getText(language, "Stats via API Discord", "Stats via Discord API"),
+          description: getText(language, "Dados em tempo real da bot", "Real-time bot data"),
+          reasoning: getText(language,
+            "Integração com API do Discord para mostrar servidores e usuários ativos, aumentando credibilidade sem manutenção manual.",
+            "Discord API integration to show servers and active users, increasing credibility without manual maintenance."
+          )
+        }
+      ]
     }
   ];
 
@@ -260,7 +348,7 @@ const Projects = () => {
                         </div>
 
                         {/* Actions */}
-                        <div className="flex flex-wrap items-center gap-4">
+                        <div className="flex flex-wrap items-center gap-4 mb-6">
                           <button
                             onClick={() => setSelectedProject(project)}
                             className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:opacity-70 transition-opacity"
@@ -281,6 +369,11 @@ const Projects = () => {
                             </a>
                           )}
                         </div>
+
+                        {/* Behind the Scenes */}
+                        {project.behindTheScenes && (
+                          <ProjectBehindTheScenes decisions={project.behindTheScenes} />
+                        )}
                       </div>
                     </div>
                   </div>

@@ -16,6 +16,7 @@ import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import HowIWork from "./pages/HowIWork";
 import TechDecisions from "./pages/TechDecisions";
+import Accessibility from "./pages/Accessibility";
 import BotDiscord from "./pages/blog/BotDiscord";
 import FullstackDevelopment from "./pages/blog/FullstackDevelopment";
 import CloudSolutions from "./pages/blog/CloudSolutions";
@@ -47,6 +48,7 @@ const App = () => (
               <Route path="/contato" element={<Contact />} />
               <Route path="/como-trabalho" element={<HowIWork />} />
               <Route path="/decisoes-tecnicas" element={<TechDecisions />} />
+              <Route path="/acessibilidade" element={<Accessibility />} />
               <Route path="/blog" element={<Blog />} />
               
               {/* Blog posts */}
