@@ -31,10 +31,14 @@ const Footer = () => {
     { name: t.nav.about, path: "/sobre" },
     { name: t.nav.projects, path: "/projetos" },
     { name: t.nav.services, path: "/servicos" },
-    { name: language === 'pt' ? 'Como Trabalho' : 'How I Work', path: "/como-trabalho" },
-    { name: language === 'pt' ? 'Decisões Técnicas' : 'Tech Decisions', path: "/decisoes-tecnicas" },
     { name: t.nav.blog, path: "/blog" },
     { name: language === 'pt' ? 'Contato' : 'Contact', path: "/contato" },
+  ];
+
+  const insightLinks = [
+    { name: language === 'pt' ? 'Como Trabalho' : 'How I Work', path: "/como-trabalho" },
+    { name: language === 'pt' ? 'Decisões Técnicas' : 'Tech Decisions', path: "/decisoes-tecnicas" },
+    { name: language === 'pt' ? 'Acessibilidade' : 'Accessibility', path: "/acessibilidade" },
   ];
 
   return (
@@ -80,13 +84,32 @@ const Footer = () => {
             </div>
 
             {/* Navigation */}
-            <div className="lg:col-span-4">
+            <div className="lg:col-span-2">
               <h3 className="text-xs tracking-widest uppercase text-muted-foreground mb-4">
                 {t.footer.explore}
               </h3>
               
-              <nav className="grid grid-cols-2 gap-x-6 gap-y-2">
+              <nav className="flex flex-col gap-2">
                 {navigationLinks.map((item) => (
+                  <Link 
+                    key={item.name}
+                    to={item.path} 
+                    className="text-sm text-foreground/70 hover:text-foreground transition-colors duration-200"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+
+            {/* Insights */}
+            <div className="lg:col-span-2">
+              <h3 className="text-xs tracking-widest uppercase text-muted-foreground mb-4">
+                {getText(language, 'Insights', 'Insights')}
+              </h3>
+              
+              <nav className="flex flex-col gap-2">
+                {insightLinks.map((item) => (
                   <Link 
                     key={item.name}
                     to={item.path} 

@@ -945,6 +945,80 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Insights Section */}
+      <ParallaxSection 
+        className="py-16 lg:py-20"
+        speed={0.08}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="text-center mb-10">
+              <motion.span 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+              >
+                {getText(language, 'Insights', 'Insights')}
+              </motion.span>
+              <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-4 leading-tight">
+                {getText(language, 'Além do código', 'Beyond the code')}
+              </h2>
+              <p className="text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
+                {getText(language, 'Processo, decisões técnicas e compromisso com qualidade.', 'Process, technical decisions and commitment to quality.')}
+              </p>
+            </div>
+          </ScrollReveal>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {[
+              {
+                title: getText(language, 'Como Trabalho', 'How I Work'),
+                description: getText(language, 'Meu processo de desenvolvimento, validação de escopo e gestão de riscos.', 'My development process, scope validation and risk management.'),
+                path: '/como-trabalho'
+              },
+              {
+                title: getText(language, 'Decisões Técnicas', 'Tech Decisions'),
+                description: getText(language, 'Trade-offs reais, escolhas de stack e anti-padrões que evito.', 'Real trade-offs, stack choices and anti-patterns I avoid.'),
+                path: '/decisoes-tecnicas'
+              },
+              {
+                title: getText(language, 'Acessibilidade', 'Accessibility'),
+                description: getText(language, 'Compromisso com inclusão digital e boas práticas de a11y.', 'Commitment to digital inclusion and a11y best practices.'),
+                path: '/acessibilidade'
+              }
+            ].map((item, index) => (
+              <ScrollReveal key={item.path} delay={index * 0.1}>
+                <Link to={item.path}>
+                  <motion.div
+                    whileHover={{ y: -4 }}
+                    transition={{ duration: 0.3 }}
+                    className="group p-6 rounded-2xl border border-border/20 bg-card/30 h-full hover:border-foreground/20 transition-all duration-300"
+                  >
+                    <h3 className="font-serif text-lg text-foreground mb-2 group-hover:text-gradient transition-all duration-300">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                      {item.description}
+                    </p>
+                    <span className="inline-flex items-center gap-2 text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors">
+                      {getText(language, 'Explorar', 'Explore')}
+                      <ArrowRight className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" />
+                    </span>
+                  </motion.div>
+                </Link>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </ParallaxSection>
+
       {/* FAQ - Premium */}
       <section className="py-20 lg:py-24 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
