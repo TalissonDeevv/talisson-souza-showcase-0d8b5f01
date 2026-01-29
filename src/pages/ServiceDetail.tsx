@@ -87,7 +87,24 @@ const ServiceDetail = () => {
         description: language === 'pt' 
           ? "Plataforma corporativa moderna com sistema de gerenciamento interno, integrações com APIs de terceiros e dashboard analítico. Entregue em 5 semanas com aumento de 52% na eficiência operacional."
           : "Modern corporate platform with internal management system, third-party API integrations and analytics dashboard. Delivered in 5 weeks with 52% increase in operational efficiency."
-      }
+      },
+      additionalExamples: [
+        {
+          title: "Sagiri Bot Landing",
+          result: language === 'pt' ? "Taxa de conversão de 12% em visitas orgânicas" : "12% conversion rate on organic visits",
+          tech: "React + Tailwind CSS"
+        },
+        {
+          title: language === 'pt' ? "Portal Família Werneck" : "Werneck Family Portal",
+          result: language === 'pt' ? "500+ membros ativos em 2 meses" : "500+ active members in 2 months",
+          tech: "React + Firebase"
+        },
+        {
+          title: language === 'pt' ? "Dashboard Analítico" : "Analytics Dashboard",
+          result: language === 'pt' ? "Redução de 70% no tempo de análise" : "70% reduction in analysis time",
+          tech: "Next.js + PostgreSQL"
+        }
+      ]
     },
     "mobile-development": {
       icon: Smartphone,
@@ -157,7 +174,19 @@ const ServiceDetail = () => {
         description: language === 'pt' 
           ? "Aplicativo para equipe de vendas com tracking de metas, catálogo de produtos e relatórios em tempo real. Reduziu o tempo de fechamento de vendas em 35%."
           : "Sales team app with goal tracking, product catalog and real-time reports. Reduced sales closing time by 35%."
-      }
+      },
+      additionalExamples: [
+        {
+          title: language === 'pt' ? "App de Delivery" : "Delivery App",
+          result: language === 'pt' ? "4.8 estrelas na Play Store" : "4.8 stars on Play Store",
+          tech: "React Native + Node.js"
+        },
+        {
+          title: language === 'pt' ? "Gestão de Eventos" : "Event Management",
+          result: language === 'pt' ? "2.000+ check-ins processados" : "2,000+ check-ins processed",
+          tech: "Expo + Firebase"
+        }
+      ]
     },
     "bot-development": {
       icon: Bot,
@@ -227,7 +256,24 @@ const ServiceDetail = () => {
         description: language === 'pt' 
           ? "Bot multifuncional para Discord com sistema de economia, moderação avançada e integração com APIs externas. Atende milhares de usuários diariamente."
           : "Multifunctional Discord bot with economy system, advanced moderation and external API integration. Serves thousands of users daily."
-      }
+      },
+      additionalExamples: [
+        {
+          title: language === 'pt' ? "Bot de Moderação" : "Moderation Bot",
+          result: language === 'pt' ? "99.9% uptime em 12 meses" : "99.9% uptime in 12 months",
+          tech: "Node.js + Discord.js"
+        },
+        {
+          title: language === 'pt' ? "Bot de Atendimento" : "Support Bot",
+          result: language === 'pt' ? "85% dos tickets resolvidos automaticamente" : "85% tickets resolved automatically",
+          tech: "Python + Telegram API"
+        },
+        {
+          title: language === 'pt' ? "Bot de Integração" : "Integration Bot",
+          result: language === 'pt' ? "50+ integrações com APIs externas" : "50+ external API integrations",
+          tech: "Node.js + REST APIs"
+        }
+      ]
     },
     "uiux-design": {
       icon: Palette,
@@ -297,7 +343,24 @@ const ServiceDetail = () => {
         description: language === 'pt' 
           ? "Redesign completo de sistema de gestão empresarial. Interface simplificada resultou em 45% menos tempo de treinamento para novos funcionários."
           : "Complete redesign of business management system. Simplified interface resulted in 45% less training time for new employees."
-      }
+      },
+      additionalExamples: [
+        {
+          title: language === 'pt' ? "App Fintech" : "Fintech App",
+          result: language === 'pt' ? "NPS de 72 após redesign" : "NPS of 72 after redesign",
+          tech: "Figma + User Research"
+        },
+        {
+          title: language === 'pt' ? "E-commerce Premium" : "Premium E-commerce",
+          result: language === 'pt' ? "+38% em conversões" : "+38% in conversions",
+          tech: "Figma + Prototyping"
+        },
+        {
+          title: language === 'pt' ? "Design System" : "Design System",
+          result: language === 'pt' ? "60% mais rápido no desenvolvimento" : "60% faster in development",
+          tech: "Figma + Documentation"
+        }
+      ]
     },
     "cloud-solutions": {
       icon: Cloud,
@@ -367,7 +430,24 @@ const ServiceDetail = () => {
         description: language === 'pt' 
           ? "Migração de aplicação legada para AWS com containerização. Reduziu custos em 40% e melhorou tempo de resposta em 60%."
           : "Migration of legacy application to AWS with containerization. Reduced costs by 40% and improved response time by 60%."
-      }
+      },
+      additionalExamples: [
+        {
+          title: language === 'pt' ? "Infraestrutura Escalável" : "Scalable Infrastructure",
+          result: language === 'pt' ? "10x mais capacidade sob demanda" : "10x more capacity on demand",
+          tech: "AWS + Kubernetes"
+        },
+        {
+          title: language === 'pt' ? "CI/CD Pipeline" : "CI/CD Pipeline",
+          result: language === 'pt' ? "Deploy em 3 min vs 2h anteriores" : "Deploy in 3 min vs 2h before",
+          tech: "GitHub Actions + Docker"
+        },
+        {
+          title: language === 'pt' ? "Monitoramento 24/7" : "24/7 Monitoring",
+          result: language === 'pt' ? "MTTR reduzido de 4h para 15min" : "MTTR reduced from 4h to 15min",
+          tech: "Datadog + PagerDuty"
+        }
+      ]
     },
     "consulting": {
       icon: Users,
@@ -437,7 +517,24 @@ const ServiceDetail = () => {
         description: language === 'pt' 
           ? "Consultoria para startup fintech na definição de arquitetura de microserviços. Evitou retrabalho estimado em R$ 200k e acelerou time-to-market em 3 meses."
           : "Consulting for fintech startup on microservices architecture definition. Avoided estimated R$200k rework and accelerated time-to-market by 3 months."
-      }
+      },
+      additionalExamples: [
+        {
+          title: language === 'pt' ? "Mentoria de Time" : "Team Mentoring",
+          result: language === 'pt' ? "Produtividade +40% em 3 meses" : "Productivity +40% in 3 months",
+          tech: "Code Review + Workshops"
+        },
+        {
+          title: language === 'pt' ? "Auditoria de Código" : "Code Audit",
+          result: language === 'pt' ? "87 vulnerabilidades corrigidas" : "87 vulnerabilities fixed",
+          tech: "Security Analysis"
+        },
+        {
+          title: language === 'pt' ? "Planejamento Técnico" : "Technical Planning",
+          result: language === 'pt' ? "Roadmap de 18 meses definido" : "18-month roadmap defined",
+          tech: "Strategic Planning"
+        }
+      ]
     }
   };
 
@@ -711,7 +808,7 @@ const ServiceDetail = () => {
                       {language === 'pt' ? 'Exemplo real' : 'Real example'}
                     </h2>
                   </div>
-                  <div className="border-l-2 border-foreground/10 pl-6">
+                  <div className="border-l-2 border-foreground/10 pl-6 mb-8">
                     <h3 className="font-serif text-lg text-foreground mb-2">
                       {service.realExample.title}
                     </h3>
@@ -719,6 +816,31 @@ const ServiceDetail = () => {
                       {service.realExample.description}
                     </p>
                   </div>
+                  
+                  {/* Additional Examples */}
+                  {service.additionalExamples && service.additionalExamples.length > 0 && (
+                    <div className="pt-6 border-t border-border/20">
+                      <h4 className="text-xs tracking-[0.2em] uppercase text-muted-foreground/60 mb-4">
+                        {language === 'pt' ? 'Mais resultados' : 'More results'}
+                      </h4>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {service.additionalExamples.map((example: { title: string; result: string; tech: string }, index: number) => (
+                          <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                            className="p-4 rounded-xl border border-border/20 bg-card/30 group hover:border-foreground/20 transition-colors duration-300"
+                          >
+                            <p className="text-sm font-medium text-foreground mb-1">{example.title}</p>
+                            <p className="text-xs text-foreground/70 mb-2">{example.result}</p>
+                            <p className="text-[10px] text-muted-foreground/50 uppercase tracking-wider">{example.tech}</p>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </GlassCard>
               </ScrollReveal>
 

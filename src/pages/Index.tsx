@@ -15,6 +15,7 @@ import { useTranslation, getText } from "@/utils/translations";
 import logoSignature from "@/assets/logo-signature.png";
 import { motion } from "framer-motion";
 import { SiJavascript, SiTypescript, SiPython, SiReact, SiNodedotjs, SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFirebase } from "react-icons/si";
+import CompanyLogos from "@/components/ui/CompanyLogos";
 const Index = () => {
   const {
     language
@@ -363,7 +364,7 @@ const Index = () => {
         </div>
       </ParallaxSection>
 
-      {/* Achievements - Compact Stats */}
+      {/* Company Logos - Social Proof */}
       <ParallaxSection 
         className="py-16 lg:py-20"
         speed={0.08}
@@ -372,6 +373,23 @@ const Index = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-card/20 via-background to-card/20" />
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <CompanyLogos />
+          </ScrollReveal>
+        </div>
+      </ParallaxSection>
+
+      {/* Achievements - Compact Stats */}
+      <ParallaxSection 
+        className="py-16 lg:py-20"
+        speed={0.08}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/10 to-background" />
           </>
         }
       >
