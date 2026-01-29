@@ -383,57 +383,6 @@ const Index = () => {
         </div>
       </ParallaxSection>
 
-      {/* Achievements - Compact Stats */}
-      <ParallaxSection 
-        className="py-16 lg:py-20"
-        speed={0.08}
-        backgroundElement={
-          <>
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/10 to-background" />
-          </>
-        }
-      >
-        
-        <div className="container mx-auto px-6 lg:px-8 relative">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
-            {[{
-              value: '50+',
-              label: getText(language, 'Projetos', 'Projects')
-            }, {
-              value: '8+',
-              label: getText(language, 'Anos', 'Years')
-            }, {
-              value: '2',
-              label: getText(language, 'Empresas', 'Companies')
-            }, {
-              value: '100%',
-              label: getText(language, 'Satisfação', 'Satisfaction')
-            }].map((stat, index) => (
-              <ScrollReveal key={stat.label} delay={index * 0.06}>
-                <motion.div 
-                  className="relative text-center p-4 lg:p-5 rounded-xl group cursor-default"
-                  whileHover={{ y: -2 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div className="absolute inset-0 rounded-xl bg-card/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-border/10" />
-                  
-                  <motion.p 
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.06 }}
-                    className="relative font-serif text-2xl lg:text-3xl text-foreground mb-1"
-                    style={{ letterSpacing: '-0.02em' }}
-                  >
-                    {stat.value}
-                  </motion.p>
-                  <p className="relative text-[10px] tracking-[0.15em] uppercase text-muted-foreground/60 font-medium">{stat.label}</p>
-                </motion.div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </ParallaxSection>
 
       {/* Featured Projects - Premium Cards */}
       <ParallaxSection 
