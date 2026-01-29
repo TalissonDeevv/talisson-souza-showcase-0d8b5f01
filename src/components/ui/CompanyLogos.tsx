@@ -35,7 +35,7 @@ const CompanyLogos = () => {
       opacity: 1
     }} viewport={{
       once: true
-    }} className="text-center text-xs tracking-[0.2em] uppercase text-muted-foreground/50 mb-10">
+    }} className="text-xs tracking-[0.2em] uppercase text-muted-foreground/50 mb-10 text-left">
         {getText(language, "Empresas e projetos que confiam no meu trabalho", "Companies and projects that trust my work")}
       </motion.p>
       
