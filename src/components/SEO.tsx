@@ -48,7 +48,7 @@ const SEO = ({
     'Node.js',
     'TypeScript',
     'CEO',
-    'Cheetah Network',
+    'Cheetah Solutions Network',
     'soluções digitais',
     'tecnologia',
     'negócios digitais'
