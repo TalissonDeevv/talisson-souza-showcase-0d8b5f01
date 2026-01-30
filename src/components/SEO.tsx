@@ -13,8 +13,9 @@ interface SEOProps {
   noindex?: boolean;
 }
 
-const BASE_URL = 'https://talissonsouza.com';
-const DEFAULT_IMAGE = 'https://i.imgur.com/d51f9M8.png';
+// Canonical domain with www
+const BASE_URL = 'https://www.talissonsouza.com.br';
+const DEFAULT_IMAGE = 'https://www.talissonsouza.com.br/og-image.png';
 const SITE_NAME = 'Talisson Souza';
 
 const SEO = ({
@@ -30,7 +31,13 @@ const SEO = ({
   noindex = false,
 }: SEOProps) => {
   const fullTitle = title.includes('Talisson') ? title : `${title} | Talisson Souza`;
-  const url = canonical ? `${BASE_URL}${canonical}` : BASE_URL;
+  const canonicalPath = canonical?.startsWith('/') ? canonical : `/${canonical || ''}`;
+  const url = `${BASE_URL}${canonicalPath === '/' ? '' : canonicalPath}`;
+  
+  // Ensure image URL uses www domain
+  const ogImage = image.startsWith('http') 
+    ? image.replace('://talissonsouza.com.br', '://www.talissonsouza.com.br')
+    : `${BASE_URL}${image.startsWith('/') ? image : `/${image}`}`;
   
   const defaultKeywords = [
     'Talisson Souza',
@@ -66,7 +73,10 @@ const SEO = ({
       <meta property="og:description" content={description} />
       <meta property="og:type" content={type} />
       <meta property="og:url" content={url} />
-      <meta property="og:image" content={image} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:type" content="image/png" />
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:locale" content="pt_BR" />
       <meta property="og:locale:alternate" content="en_US" />
@@ -88,7 +98,8 @@ const SEO = ({
       <meta name="twitter:creator" content="@talinhozx" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:image:alt" content={fullTitle} />
     </Helmet>
   );
 };
