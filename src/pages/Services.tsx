@@ -6,7 +6,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
 import GlassCard from "@/components/ui/GlassCard";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
-import { Code, Smartphone, Bot, Palette, Cloud, Users, ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import { Code, Smartphone, Bot, Palette, Cloud, Users, ArrowRight, ArrowUpRight, Check, Zap, Shield, Clock } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
 
@@ -15,17 +15,85 @@ const Services = () => {
   const t = useTranslation(language);
 
   const serviceCategories = [
-    { id: "web-development", icon: Code, ...t.servicesPage.categories.webDevelopment },
-    { id: "mobile-development", icon: Smartphone, ...t.servicesPage.categories.mobileDevelopment },
-    { id: "bot-development", icon: Bot, ...t.servicesPage.categories.botDevelopment },
-    { id: "uiux-design", icon: Palette, ...t.servicesPage.categories.uiuxDesign },
-    { id: "cloud-solutions", icon: Cloud, ...t.servicesPage.categories.cloudSolutions },
-    { id: "consulting", icon: Users, ...t.servicesPage.categories.consulting }
+    { 
+      id: "web-development", 
+      icon: Code, 
+      ...t.servicesPage.categories.webDevelopment,
+      useCases: language === 'pt' 
+        ? ["Portais corporativos", "Dashboards analíticos", "E-commerces personalizados", "Sistemas internos"]
+        : ["Corporate portals", "Analytics dashboards", "Custom e-commerce", "Internal systems"]
+    },
+    { 
+      id: "mobile-development", 
+      icon: Smartphone, 
+      ...t.servicesPage.categories.mobileDevelopment,
+      useCases: language === 'pt'
+        ? ["Apps de delivery", "Gestão de equipes", "Catálogos digitais", "Apps de fidelidade"]
+        : ["Delivery apps", "Team management", "Digital catalogs", "Loyalty apps"]
+    },
+    { 
+      id: "bot-development", 
+      icon: Bot, 
+      ...t.servicesPage.categories.botDevelopment,
+      useCases: language === 'pt'
+        ? ["Moderação automatizada", "Atendimento 24/7", "Integrações com APIs", "Sistemas de economia"]
+        : ["Automated moderation", "24/7 support", "API integrations", "Economy systems"]
+    },
+    { 
+      id: "uiux-design", 
+      icon: Palette, 
+      ...t.servicesPage.categories.uiuxDesign,
+      useCases: language === 'pt'
+        ? ["Redesign de produtos", "Design systems", "Prototipagem rápida", "Pesquisa de usuários"]
+        : ["Product redesign", "Design systems", "Rapid prototyping", "User research"]
+    },
+    { 
+      id: "cloud-solutions", 
+      icon: Cloud, 
+      ...t.servicesPage.categories.cloudSolutions,
+      useCases: language === 'pt'
+        ? ["Migração para nuvem", "CI/CD automatizado", "Monitoramento 24/7", "Arquitetura escalável"]
+        : ["Cloud migration", "Automated CI/CD", "24/7 monitoring", "Scalable architecture"]
+    },
+    { 
+      id: "consulting", 
+      icon: Users, 
+      ...t.servicesPage.categories.consulting,
+      useCases: language === 'pt'
+        ? ["Code review", "Mentoria técnica", "Arquitetura de sistemas", "Planejamento estratégico"]
+        : ["Code review", "Technical mentoring", "System architecture", "Strategic planning"]
+    }
+  ];
+
+  const differentials = language === 'pt' ? [
+    { icon: Zap, title: "Entrega Rápida", description: "Metodologia ágil com sprints semanais e entregas incrementais" },
+    { icon: Shield, title: "Qualidade Garantida", description: "Código testado, documentado e com suporte pós-entrega incluso" },
+    { icon: Clock, title: "Comunicação Direta", description: "Acesso direto ao desenvolvedor, sem intermediários" }
+  ] : [
+    { icon: Zap, title: "Fast Delivery", description: "Agile methodology with weekly sprints and incremental deliveries" },
+    { icon: Shield, title: "Guaranteed Quality", description: "Tested, documented code with post-delivery support included" },
+    { icon: Clock, title: "Direct Communication", description: "Direct access to the developer, no intermediaries" }
   ];
 
   const clientProjects = [
-    { title: "Werneck Group", client: "Talisson Souza", description: language === 'pt' ? "Plataforma web moderna com funcionalidades avançadas." : "Modern web platform with advanced features.", image: "https://i.ibb.co/ymjQhFmG/image.png", technologies: ["React", "Node.js", "PostgreSQL"], link: "https://werneckgroup.com" },
-    { title: "Sagiri Bot", client: "Rodrigo", description: language === 'pt' ? "Landing page para bot de Discord." : "Landing page for Discord bot.", image: "https://i.ibb.co/jkPPHWdc/image.png", technologies: ["React", "Tailwind CSS"], link: "https://zafire.cloud" }
+    { 
+      title: "Werneck Group", 
+      client: "Talisson Souza", 
+      description: language === 'pt' ? "Plataforma web moderna com funcionalidades avançadas." : "Modern web platform with advanced features.", 
+      image: "https://i.ibb.co/ymjQhFmG/image.png", 
+      technologies: ["React", "Node.js", "PostgreSQL"], 
+      link: "https://werneckgroup.com",
+      result: language === 'pt' ? "+52% eficiência operacional" : "+52% operational efficiency"
+    },
+    { 
+      title: "Sagiri Bot", 
+      client: "Rodrigo", 
+      description: language === 'pt' ? "Landing page para bot de Discord." : "Landing page for Discord bot.", 
+      image: "https://i.ibb.co/jkPPHWdc/image.png", 
+      technologies: ["React", "Tailwind CSS"], 
+      link: "https://zafire.cloud",
+      result: language === 'pt' ? "12% taxa de conversão" : "12% conversion rate"
+    }
   ];
 
   return (
@@ -56,6 +124,27 @@ const Services = () => {
         </div>
       </section>
 
+      {/* Differentials */}
+      <section className="py-12 relative">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {differentials.map((diff, index) => (
+              <ScrollReveal key={index} delay={index * 0.1}>
+                <div className="flex items-start gap-4 p-6 rounded-2xl border border-border/10 bg-card/20">
+                  <div className="w-10 h-10 rounded-xl border border-border/20 bg-card/40 flex items-center justify-center flex-shrink-0">
+                    <diff.icon className="w-5 h-5 text-foreground/60" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-foreground mb-1">{diff.title}</h3>
+                    <p className="text-sm text-muted-foreground/70">{diff.description}</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Services Grid */}
       <ParallaxSection className="py-20 lg:py-24" speed={0.1} backgroundElement={<><div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" /><div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" /></>}>
         <div className="container mx-auto px-6 lg:px-8 relative">
@@ -72,6 +161,21 @@ const Services = () => {
                       </div>
                       <h3 className="font-serif text-xl text-foreground mb-3 leading-tight">{service.title}</h3>
                       <p className="text-sm text-muted-foreground leading-relaxed mb-6">{service.description}</p>
+                      
+                      {/* Use Cases */}
+                      <div className="mb-6">
+                        <p className="text-xs text-muted-foreground/50 uppercase tracking-wider mb-3">
+                          {getText(language, 'Casos de uso', 'Use cases')}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {service.useCases?.slice(0, 3).map((useCase, i) => (
+                            <span key={i} className="text-xs px-2 py-1 rounded-full border border-border/20 bg-background/50 text-muted-foreground/70">
+                              {useCase}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      
                       <div className="space-y-2 mb-6">
                         {service.features.slice(0, 3).map((feature, i) => (
                           <div key={i} className="flex items-center gap-2">
@@ -105,7 +209,13 @@ const Services = () => {
               <ScrollReveal key={index} delay={index * 0.1}>
                 <motion.a href={project.link} target="_blank" rel="noopener noreferrer" whileHover={{ y: -4 }} transition={{ duration: 0.3 }} className="block h-full group">
                   <div className="relative h-full rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm overflow-hidden" style={{ boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)' }}>
-                    <div className="h-48 overflow-hidden"><img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" /></div>
+                    <div className="h-48 overflow-hidden relative">
+                      <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                      {/* Result badge */}
+                      <div className="absolute bottom-3 left-3 px-3 py-1.5 rounded-full bg-background/90 backdrop-blur-sm border border-border/30">
+                        <span className="text-xs font-medium text-foreground">{project.result}</span>
+                      </div>
+                    </div>
                     <div className="p-6">
                       <h3 className="font-serif text-lg text-foreground mb-2">{project.title}</h3>
                       <p className="text-xs text-muted-foreground/60 mb-3">{getText(language, 'Cliente:', 'Client:')} {project.client}</p>
