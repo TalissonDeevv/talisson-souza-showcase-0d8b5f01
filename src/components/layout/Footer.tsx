@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
-import { ArrowUpRight, ArrowUp } from "lucide-react";
+import { ArrowUpRight, ArrowUp, BookOpen } from "lucide-react";
 import logo from "@/assets/logo.png";
+import bookCover from "@/assets/book-cover.jpg";
 
 const Footer = () => {
   const { language } = useTheme();
@@ -142,7 +143,7 @@ const Footer = () => {
             </div>
 
             {/* Contact */}
-            <div className="lg:col-span-4">
+            <div className="lg:col-span-2">
               <h3 className="text-xs tracking-widest uppercase text-muted-foreground mb-4">
                 {t.footer.contact}
               </h3>
@@ -169,6 +170,39 @@ const Footer = () => {
                 <ArrowUp className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5" />
                 {getText(language, 'Voltar ao topo', 'Back to top')}
               </motion.button>
+            </div>
+
+            {/* Book Highlight */}
+            <div className="lg:col-span-2">
+              <h3 className="text-xs tracking-widest uppercase text-muted-foreground mb-4">
+                {getText(language, 'Livro', 'Book')}
+              </h3>
+              
+              <Link 
+                to="/livro"
+                className="group block p-3 -mx-3 rounded-xl hover:bg-card/30 transition-all duration-300"
+              >
+                <div className="flex items-start gap-3">
+                  <img 
+                    src={bookCover}
+                    alt={getText(language, 'Superando Limites', 'Overcoming Limits')}
+                    className="w-12 h-auto rounded-md shadow-md group-hover:shadow-lg transition-shadow duration-300"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-foreground group-hover:text-foreground/90 transition-colors duration-200">
+                      {getText(language, 'Superando Limites', 'Overcoming Limits')}
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-0.5">
+                      {getText(language, 'da Rejeição ao Sucesso', 'from Rejection to Success')}
+                    </p>
+                    <span className="inline-flex items-center gap-1 text-xs text-foreground/60 mt-2 group-hover:text-foreground/80 transition-colors duration-200">
+                      <BookOpen className="w-3 h-3" />
+                      {getText(language, 'Ver obra completa', 'View complete work')}
+                      <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                    </span>
+                  </div>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
