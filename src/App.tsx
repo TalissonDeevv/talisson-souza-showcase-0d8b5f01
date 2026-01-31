@@ -23,6 +23,7 @@ import CloudSolutions from "./pages/blog/CloudSolutions";
 import WebAutomation from "./pages/blog/WebAutomation";
 import ProjectManagement from "./pages/blog/ProjectManagement";
 import ProjectDetail from "./pages/ProjectDetail";
+import Book from "./pages/Book";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -49,6 +50,7 @@ const App = () => (
               <Route path="/como-trabalho" element={<HowIWork />} />
               <Route path="/decisoes-tecnicas" element={<TechDecisions />} />
               <Route path="/acessibilidade" element={<Accessibility />} />
+              <Route path="/livro" element={<Book />} />
               <Route path="/blog" element={<Blog />} />
               
               {/* Blog posts */}
