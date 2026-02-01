@@ -137,7 +137,7 @@ const Book = () => {
 
                 <div className="flex flex-col items-center lg:items-start gap-4 w-full">
                   <motion.a
-                    href="https://www.amazon.com.br/dp/B0DKFL3MSR"
+                    href="https://www.amazon.com.br/dp/B0FXV8WP3Y"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.02, y: -2 }}
@@ -658,7 +658,7 @@ const Book = () => {
               </p>
 
               <motion.a
-                href="https://www.amazon.com.br/dp/B0DKFL3MSR"
+                href="https://www.amazon.com.br/dp/B0FXV8WP3Y"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02, y: -2 }}
