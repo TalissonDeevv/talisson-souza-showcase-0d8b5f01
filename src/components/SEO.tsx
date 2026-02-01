@@ -15,7 +15,8 @@ interface SEOProps {
 
 // Canonical domain with www
 const BASE_URL = 'https://www.talissonsouza.com.br';
-const DEFAULT_IMAGE = 'https://www.talissonsouza.com.br/og-image.png';
+// Use the general og-image from index.html
+const DEFAULT_IMAGE = '/og-image.png';
 const SITE_NAME = 'Talisson Souza';
 
 const SEO = ({
@@ -34,10 +35,8 @@ const SEO = ({
   const canonicalPath = canonical?.startsWith('/') ? canonical : `/${canonical || ''}`;
   const url = `${BASE_URL}${canonicalPath === '/' ? '' : canonicalPath}`;
   
-  // Ensure image URL uses www domain
-  const ogImage = image.startsWith('http') 
-    ? image.replace('://talissonsouza.com.br', '://www.talissonsouza.com.br')
-    : `${BASE_URL}${image.startsWith('/') ? image : `/${image}`}`;
+  // Always use absolute URL for og:image with the canonical domain
+  const ogImage = `${BASE_URL}${DEFAULT_IMAGE}`;
   
   const defaultKeywords = [
     'Talisson Souza',
