@@ -4,7 +4,6 @@ interface SEOProps {
   title: string;
   description: string;
   canonical?: string;
-  image?: string;
   type?: 'website' | 'article';
   publishedTime?: string;
   modifiedTime?: string;
@@ -13,17 +12,29 @@ interface SEOProps {
   noindex?: boolean;
 }
 
-// Canonical domain with www
+/**
+ * SEO Component - Standardized Open Graph & Meta Tags
+ * 
+ * IMPORTANT: This component ensures consistent SEO across the entire site:
+ * - og:image is ALWAYS the same (general og-image from index.html) for all pages
+ * - og:title and og:description are DYNAMIC per page
+ * - og:url reflects the canonical URL of the current page
+ * - All URLs use the canonical www version of the domain
+ */
+
+// Canonical domain - ALWAYS with www to avoid duplicate content issues
 const BASE_URL = 'https://www.talissonsouza.com.br';
-// Use the general og-image from index.html
-const DEFAULT_IMAGE = '/og-image.png';
+
+// FIXED og:image for ALL pages - same as index.html
+// This ensures consistent branding across all social shares
+const OG_IMAGE_URL = 'https://www.talissonsouza.com.br/og-image.png';
+
 const SITE_NAME = 'Talisson Souza';
 
 const SEO = ({
   title,
   description,
   canonical,
-  image = DEFAULT_IMAGE,
   type = 'website',
   publishedTime,
   modifiedTime,
@@ -31,13 +42,15 @@ const SEO = ({
   keywords = [],
   noindex = false,
 }: SEOProps) => {
+  // Build full title - ensure "Talisson Souza" is included for brand consistency
   const fullTitle = title.includes('Talisson') ? title : `${title} | Talisson Souza`;
+  
+  // Build canonical URL - normalize path and always use www domain
   const canonicalPath = canonical?.startsWith('/') ? canonical : `/${canonical || ''}`;
-  const url = `${BASE_URL}${canonicalPath === '/' ? '' : canonicalPath}`;
+  const cleanPath = canonicalPath === '/' ? '' : canonicalPath;
+  const canonicalUrl = `${BASE_URL}${cleanPath}`;
   
-  // Always use absolute URL for og:image with the canonical domain
-  const ogImage = `${BASE_URL}${DEFAULT_IMAGE}`;
-  
+  // Default keywords for all pages
   const defaultKeywords = [
     'Talisson Souza',
     'desenvolvedor full stack',
@@ -57,30 +70,47 @@ const SEO = ({
 
   return (
     <Helmet>
-      {/* Basic Meta Tags */}
+      {/* ===== Basic Meta Tags ===== */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={allKeywords} />
       <meta name="author" content={author} />
-      <link rel="canonical" href={url} />
+      
+      {/* Canonical URL - normalized to www version */}
+      <link rel="canonical" href={canonicalUrl} />
       
       {/* Robots */}
       <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
       
-      {/* Open Graph */}
+      {/* ===== Open Graph ===== */}
+      {/* og:title - DYNAMIC per page */}
       <meta property="og:title" content={fullTitle} />
+      
+      {/* og:description - DYNAMIC per page */}
       <meta property="og:description" content={description} />
+      
+      {/* og:type */}
       <meta property="og:type" content={type} />
-      <meta property="og:url" content={url} />
-      <meta property="og:image" content={ogImage} />
+      
+      {/* og:url - DYNAMIC per page (canonical URL) */}
+      <meta property="og:url" content={canonicalUrl} />
+      
+      {/* og:image - FIXED for ALL pages (same as home) */}
+      <meta property="og:image" content={OG_IMAGE_URL} />
+      <meta property="og:image:secure_url" content={OG_IMAGE_URL} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:alt" content={fullTitle} />
+      
+      {/* og:site_name */}
       <meta property="og:site_name" content={SITE_NAME} />
+      
+      {/* og:locale */}
       <meta property="og:locale" content="pt_BR" />
       <meta property="og:locale:alternate" content="en_US" />
       
-      {/* Article specific */}
+      {/* ===== Article-specific (for blog posts) ===== */}
       {type === 'article' && publishedTime && (
         <meta property="article:published_time" content={publishedTime} />
       )}
@@ -91,13 +121,13 @@ const SEO = ({
         <meta property="article:author" content={author} />
       )}
       
-      {/* Twitter Card */}
+      {/* ===== Twitter Card ===== */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@talinhozx" />
       <meta name="twitter:creator" content="@talinhozx" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:image" content={OG_IMAGE_URL} />
       <meta name="twitter:image:alt" content={fullTitle} />
     </Helmet>
   );
