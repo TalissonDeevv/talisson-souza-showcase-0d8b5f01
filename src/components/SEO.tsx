@@ -23,11 +23,11 @@ interface SEOProps {
  */
 
 // Canonical domain - ALWAYS with www to avoid duplicate content issues
-const BASE_URL = 'https://www.talissonsouza.com.br';
+const BASE_URL = 'https://www.talissonsouza.com.br/og-image.png';
 
 // FIXED og:image for ALL pages - same as index.html
 // This ensures consistent branding across all social shares
-const OG_IMAGE_URL = 'https://www.talissonsouza.com.br/';
+const OG_IMAGE_URL = 'https://www.talissonsouza.com.br/og-image.png';
 
 const SITE_NAME = 'Talisson Souza';
 
@@ -100,7 +100,7 @@ const SEO = ({
       <meta property="og:image:secure_url" content={OG_IMAGE_URL} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:type" content="https://i.ibb.co/7t4Y330m/image.png" />
       <meta property="og:image:alt" content={fullTitle} />
       
       {/* og:site_name */}
@@ -122,7 +122,7 @@ const SEO = ({
       )}
       
       {/* ===== Twitter Card ===== */}
-      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:card" content="https://i.ibb.co/7t4Y330m/image.png" />
       <meta name="twitter:site" content="@talinhozx" />
       <meta name="twitter:creator" content="@talinhozx" />
       <meta name="twitter:title" content={fullTitle} />
