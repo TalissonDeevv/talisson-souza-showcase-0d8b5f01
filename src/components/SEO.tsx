@@ -27,7 +27,7 @@ const BASE_URL = 'https://www.talissonsouza.com.br';
 
 // FIXED og:image for ALL pages - same as index.html
 // This ensures consistent branding across all social shares
-const OG_IMAGE_URL = 'https://www.talissonsouza.com.br/og-image.png';
+const OG_IMAGE_URL = 'https://www.talissonsouza.com.br/';
 
 const SITE_NAME = 'Talisson Souza';
 
