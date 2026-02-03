@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import DiscordPopup from "@/components/ui/DiscordPopup";
 
 interface LayoutProps {
   children: ReactNode;
@@ -17,6 +18,9 @@ const Layout = ({ children, withPadding = true }: LayoutProps) => {
       </main>
       
       <Footer />
+      
+      {/* Discord Popup - appears once per user */}
+      <DiscordPopup />
     </div>
   );
 };
