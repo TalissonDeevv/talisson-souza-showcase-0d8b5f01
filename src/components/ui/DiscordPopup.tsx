@@ -10,22 +10,16 @@ const DiscordPopup = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Check if user has already dismissed the popup
-    const isDismissed = localStorage.getItem(STORAGE_KEY);
+    // Show popup after a short delay for better UX
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 3000);
     
-    if (!isDismissed) {
-      // Show popup after a short delay for better UX
-      const timer = setTimeout(() => {
-        setIsVisible(true);
-      }, 3000);
-      
-      return () => clearTimeout(timer);
-    }
+    return () => clearTimeout(timer);
   }, []);
 
   const handleDismiss = () => {
     setIsVisible(false);
-    localStorage.setItem(STORAGE_KEY, "true");
   };
 
   const handleJoinDiscord = () => {
