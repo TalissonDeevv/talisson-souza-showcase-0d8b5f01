@@ -15,18 +15,19 @@ interface SEOProps {
 /**
  * SEO Component - Standardized Open Graph & Meta Tags
  * 
- * IMPORTANT: This component ensures consistent SEO across the entire site:
- * - og:image is ALWAYS the same (general og-image from index.html) for all pages
+ * CRITICAL RULES:
+ * - og:image is ALWAYS the same fixed image for ALL pages (same as home)
  * - og:title and og:description are DYNAMIC per page
  * - og:url reflects the canonical URL of the current page
  * - All URLs use the canonical www version of the domain
+ * - twitter:card MUST be "summary_large_image" for proper embed display
  */
 
 // Canonical domain - ALWAYS with www to avoid duplicate content issues
-const BASE_URL = 'https://www.talissonsouza.com.br/og-image.png';
+const BASE_URL = 'https://www.talissonsouza.com.br';
 
 // FIXED og:image for ALL pages - same as index.html
-// This ensures consistent branding across all social shares
+// This ensures consistent branding across all social shares (Discord, WhatsApp, etc.)
 const OG_IMAGE_URL = 'https://www.talissonsouza.com.br/og-image.png';
 
 const SITE_NAME = 'Talisson Souza';
@@ -100,7 +101,7 @@ const SEO = ({
       <meta property="og:image:secure_url" content={OG_IMAGE_URL} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:type" content="https://i.ibb.co/7t4Y330m/image.png" />
+      <meta property="og:image:type" content="image/png" />
       <meta property="og:image:alt" content={fullTitle} />
       
       {/* og:site_name */}
@@ -122,7 +123,7 @@ const SEO = ({
       )}
       
       {/* ===== Twitter Card ===== */}
-      <meta name="twitter:card" content="https://i.ibb.co/7t4Y330m/image.png" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@talinhozx" />
       <meta name="twitter:creator" content="@talinhozx" />
       <meta name="twitter:title" content={fullTitle} />
