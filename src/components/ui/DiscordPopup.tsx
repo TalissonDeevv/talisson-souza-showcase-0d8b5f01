@@ -81,8 +81,7 @@ const DiscordPopup = () => {
               
               {/* Description */}
               <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-                Compartilho meu dia a dia como Programador, Empreendedor e Influenciador. 
-                Conteúdos, conversas, networking e serviços.
+                Faça parte do meu servidor e acompanhe meu dia a dia como programador e empreendedor. Projetos, networking e muito mais.
               </p>
               
               {/* CTA Button */}
