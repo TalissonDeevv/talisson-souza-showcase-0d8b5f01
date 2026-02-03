@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, MessageCircle } from "lucide-react";
+import { X } from "lucide-react";
 import { SiDiscord } from "react-icons/si";
 
 const STORAGE_KEY = "discord_popup_dismissed";
@@ -72,7 +72,7 @@ const DiscordPopup = () => {
               {/* Icon */}
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl border border-border/30 bg-foreground/5 flex items-center justify-center">
-                  <MessageCircle className="w-5 h-5 text-foreground/70" />
+                  <SiDiscord className="w-5 h-5 text-foreground/70" />
                 </div>
                 <h3 className="font-serif text-lg text-foreground leading-tight">
                   Escritório do Talisson
