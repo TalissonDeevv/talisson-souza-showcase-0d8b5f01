@@ -45,8 +45,8 @@ const Footer = () => {
   return (
     <footer className="border-t border-border/40 mt-20">
       <div className="container mx-auto px-6 lg:px-8">
-        <div className="py-12 lg:py-14">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-6">
+        <div className="py-14 lg:py-16">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 lg:gap-8">
             
             {/* Brand & Description */}
             <div className="col-span-2 md:col-span-3 lg:col-span-2">
