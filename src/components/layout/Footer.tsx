@@ -46,10 +46,10 @@ const Footer = () => {
     <footer className="border-t border-border/40 mt-20">
       <div className="container mx-auto px-6 lg:px-8">
         <div className="py-12 lg:py-14">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-6">
             
             {/* Brand & Description */}
-            <div className="lg:col-span-4">
+            <div className="col-span-2 md:col-span-3 lg:col-span-2">
               <Link to="/" className="inline-block mb-5">
                 <img 
                   src={logo} 
@@ -85,7 +85,7 @@ const Footer = () => {
             </div>
 
             {/* Navigation */}
-            <div className="lg:col-span-2">
+            <div className="col-span-1">
               <h3 className="text-xs tracking-widest uppercase text-muted-foreground mb-4">
                 {t.footer.explore}
               </h3>
@@ -103,8 +103,8 @@ const Footer = () => {
               </nav>
             </div>
 
-            {/* Insights */}
-            <div className="lg:col-span-2">
+            {/* Insights & Social */}
+            <div className="col-span-1">
               <h3 className="text-xs tracking-widest uppercase text-muted-foreground mb-4">
                 {getText(language, 'Insights', 'Insights')}
               </h3>
@@ -126,14 +126,14 @@ const Footer = () => {
                 <p className="text-xs tracking-widest uppercase text-muted-foreground mb-3">
                   {t.footer.channels}
                 </p>
-                <div className="flex flex-wrap gap-x-4 gap-y-2">
+                <div className="flex flex-col gap-2">
                   {socialChannels.map((channel) => (
                     <a
                       key={channel.name}
                       href={channel.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-200"
+                      className="text-sm text-foreground/70 hover:text-foreground transition-colors duration-200"
                     >
                       {channel.name}
                     </a>
@@ -143,7 +143,7 @@ const Footer = () => {
             </div>
 
             {/* Contact */}
-            <div className="lg:col-span-2">
+            <div className="col-span-1">
               <h3 className="text-xs tracking-widest uppercase text-muted-foreground mb-4">
                 {t.footer.contact}
               </h3>
@@ -152,8 +152,7 @@ const Footer = () => {
                 href="mailto:talinhodev@gmail.com" 
                 className="group inline-flex items-center gap-2 text-foreground hover:text-foreground/80 transition-colors duration-200"
               >
-                <span className="text-sm">talinhodev@gmail.com</span>
-                <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                <span className="text-sm break-all">talinhodev@gmail.com</span>
               </a>
 
               <p className="text-sm text-muted-foreground mt-4">
@@ -165,43 +164,38 @@ const Footer = () => {
                 onClick={scrollToTop}
                 whileHover={{ y: -2, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="mt-6 group inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-foreground border border-border/30 rounded-lg hover:bg-card/50 hover:border-foreground/20 transition-all duration-300"
+                className="mt-6 group inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-foreground border border-border/30 rounded-lg hover:bg-card/50 hover:border-foreground/20 transition-all duration-300"
               >
-                <ArrowUp className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5" />
-                {getText(language, 'Voltar ao topo', 'Back to top')}
+                <ArrowUp className="w-4 h-4" />
+                <span className="hidden sm:inline">{getText(language, 'Voltar ao topo', 'Back to top')}</span>
               </motion.button>
             </div>
 
             {/* Book Highlight */}
-            <div className="lg:col-span-2">
+            <div className="col-span-1">
               <h3 className="text-xs tracking-widest uppercase text-muted-foreground mb-4">
                 {getText(language, 'Livro', 'Book')}
               </h3>
               
               <Link 
                 to="/livro"
-                className="group block p-3 -mx-3 rounded-xl hover:bg-card/30 transition-all duration-300"
+                className="group block"
               >
-                <div className="flex items-start gap-3">
-                  <img 
-                    src={bookCover}
-                    alt={getText(language, 'Superando Limites', 'Overcoming Limits')}
-                    className="w-12 h-auto rounded-md shadow-md group-hover:shadow-lg transition-shadow duration-300"
-                  />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-foreground group-hover:text-foreground/90 transition-colors duration-200">
-                      {getText(language, 'Superando Limites', 'Overcoming Limits')}
-                    </p>
-                    <p className="text-xs text-muted-foreground mt-0.5">
-                      {getText(language, 'da Rejeição ao Sucesso', 'from Rejection to Success')}
-                    </p>
-                    <span className="inline-flex items-center gap-1 text-xs text-foreground/60 mt-2 group-hover:text-foreground/80 transition-colors duration-200">
-                      <BookOpen className="w-3 h-3" />
-                      {getText(language, 'Ver obra completa', 'View complete work')}
-                      <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                    </span>
-                  </div>
-                </div>
+                <img 
+                  src={bookCover}
+                  alt={getText(language, 'Superando Limites', 'Overcoming Limits')}
+                  className="w-16 h-auto rounded-md shadow-md group-hover:shadow-lg transition-shadow duration-300 mb-3"
+                />
+                <p className="text-sm font-medium text-foreground group-hover:text-foreground/90 transition-colors duration-200">
+                  {getText(language, 'Superando Limites', 'Overcoming Limits')}
+                </p>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  {getText(language, 'da Rejeição ao Sucesso', 'from Rejection to Success')}
+                </p>
+                <span className="inline-flex items-center gap-1 text-xs text-foreground/60 mt-2 group-hover:text-foreground/80 transition-colors duration-200">
+                  <BookOpen className="w-3 h-3" />
+                  {getText(language, 'Ver obra', 'View book')}
+                </span>
               </Link>
             </div>
           </div>
