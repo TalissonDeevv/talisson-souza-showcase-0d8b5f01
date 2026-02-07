@@ -152,7 +152,7 @@ const Index = () => {
               </ContactDialog>
               
               <Link 
-                to="/sobre" 
+                to={language === 'en' ? '/en-us/about' : '/sobre'} 
                 className="group text-sm text-muted-foreground hover:text-foreground transition-all duration-300 flex items-center gap-2"
               >
                 {t.hero.about}
@@ -288,7 +288,7 @@ const Index = () => {
                 {getText(language, 'Posições de liderança e contribuições que moldaram minha carreira em tecnologia.', 'Leadership positions and contributions that shaped my career in technology.')}
               </p>
               <Link 
-                to="/carreira" 
+                to={language === 'en' ? '/en-us/career' : '/carreira'} 
                 className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"
               >
                 <span className="relative">
@@ -384,7 +384,6 @@ const Index = () => {
       </ParallaxSection>
 
 
-      {/* Featured Projects - Premium Cards */}
       <ParallaxSection 
         className="py-20 lg:py-24"
         speed={0.15}
@@ -416,7 +415,7 @@ const Index = () => {
                 </p>
               </div>
               <Link 
-                to="/projetos" 
+                to={language === 'en' ? '/en-us/projects' : '/projetos'} 
                 className="group inline-flex items-center gap-3 text-sm font-medium text-foreground self-start lg:self-auto"
               >
                 <span className="relative">
@@ -542,7 +541,7 @@ const Index = () => {
                 </p>
                 
                 <Link 
-                  to="/carreira" 
+                  to={language === 'en' ? '/en-us/career' : '/carreira'} 
                   className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"
                 >
                   <span className="relative">
@@ -673,7 +672,7 @@ const Index = () => {
                 </p>
               </div>
               <Link 
-                to="/servicos" 
+                to={language === 'en' ? '/en-us/services' : '/servicos'} 
                 className="group inline-flex items-center gap-3 text-sm font-medium text-foreground self-start lg:self-auto"
               >
                 <span className="relative">
@@ -767,7 +766,7 @@ const Index = () => {
                 </p>
               </div>
               <Link 
-                to="/blog" 
+                to={language === 'en' ? '/en-us/blog' : '/blog'} 
                 className="group inline-flex items-center gap-3 text-sm font-medium text-foreground self-start lg:self-auto"
               >
                 <span className="relative">
@@ -823,7 +822,7 @@ const Index = () => {
                     
                     {/* Read more link */}
                     <Link 
-                      to="/blog"
+                      to={language === 'en' ? '/en-us/blog' : '/blog'}
                       className="group/link inline-flex items-center gap-2 text-sm font-medium text-foreground"
                     >
                       <span className="relative">
@@ -948,17 +947,17 @@ const Index = () => {
               {
                 title: getText(language, 'Como Trabalho', 'How I Work'),
                 description: getText(language, 'Meu processo de desenvolvimento, validação de escopo e gestão de riscos.', 'My development process, scope validation and risk management.'),
-                path: '/como-trabalho'
+                path: language === 'en' ? '/en-us/how-i-work' : '/como-trabalho'
               },
               {
                 title: getText(language, 'Decisões Técnicas', 'Tech Decisions'),
                 description: getText(language, 'Trade-offs reais, escolhas de stack e anti-padrões que evito.', 'Real trade-offs, stack choices and anti-patterns I avoid.'),
-                path: '/decisoes-tecnicas'
+                path: language === 'en' ? '/en-us/tech-decisions' : '/decisoes-tecnicas'
               },
               {
                 title: getText(language, 'Acessibilidade', 'Accessibility'),
                 description: getText(language, 'Compromisso com inclusão digital e boas práticas de a11y.', 'Commitment to digital inclusion and a11y best practices.'),
-                path: '/acessibilidade'
+                path: language === 'en' ? '/en-us/accessibility' : '/acessibilidade'
               }
             ].map((item, index) => (
               <ScrollReveal key={item.path} delay={index * 0.1}>
@@ -983,6 +982,80 @@ const Index = () => {
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </ParallaxSection>
+
+      {/* Articles Section */}
+      <ParallaxSection 
+        className="py-16 lg:py-20"
+        speed={0.08}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="max-w-3xl mx-auto text-center mb-10">
+              <motion.span 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+              >
+                {getText(language, 'Publicações', 'Publications')}
+              </motion.span>
+              <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-4 leading-tight">
+                {getText(language, 'Artigos e Guias Técnicos', 'Articles & Technical Guides')}
+              </h2>
+              <p className="text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
+                {getText(language,
+                  'Publico artigos e guias técnicos sobre tecnologia, gestão, segurança, projetos digitais e boas práticas profissionais, com foco em maturidade, responsabilidade e crescimento sustentável.',
+                  'I publish articles and technical guides on technology, management, security, digital projects and professional best practices, with a focus on maturity, responsibility and sustainable growth.'
+                )}
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <div className="max-w-3xl mx-auto">
+              <Link to={language === 'en' ? '/en-us/articles/discord-bots' : '/artigos/bots-discord'}>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <GlassCard className="p-8 group hover:border-foreground/20 transition-all duration-500">
+                    <div className="flex items-center gap-3 mb-4 text-xs text-muted-foreground">
+                      <span>{getText(language, '7 de Fevereiro, 2025', 'February 7, 2025')}</span>
+                      <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
+                      <span>25 min {getText(language, 'de leitura', 'read')}</span>
+                    </div>
+                    <h3 className="font-serif text-xl lg:text-2xl text-foreground mb-3 group-hover:text-gradient transition-all duration-500 leading-tight">
+                      {getText(language,
+                        'Guia de Maturidade, Gestão e Segurança para Projetos de Bots no Discord',
+                        'Maturity, Management & Security Guide for Discord Bot Projects'
+                      )}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                      {getText(language,
+                        'Guia completo sobre maturidade, gestão e segurança em projetos de bots no Discord.',
+                        'A comprehensive guide on maturity, management and security in Discord bot projects.'
+                      )}
+                    </p>
+                    <span className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
+                      <span className="relative">
+                        {getText(language, 'Ler artigo', 'Read article')}
+                        <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-300" />
+                      </span>
+                      <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </span>
+                  </GlassCard>
+                </motion.div>
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </ParallaxSection>
 
@@ -1068,7 +1141,7 @@ const Index = () => {
                   </ContactDialog>
                   
                   <Link 
-                    to="/projetos" 
+                    to={language === 'en' ? '/en-us/projects' : '/projetos'} 
                     className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-all duration-300"
                   >
                     <span>{t.projects.viewAll}</span>
