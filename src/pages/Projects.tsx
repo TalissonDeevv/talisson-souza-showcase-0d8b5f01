@@ -203,10 +203,10 @@ const Projects = () => {
     <>
       <Layout withPadding={false}>
         <SEO 
-        title="Projetos | Portfólio de Talisson Souza"
-        description="Conheça os projetos desenvolvidos por Talisson Souza. Sites, aplicações web, sistemas empresariais e soluções digitais para empresas de diversos segmentos."
-        canonical="/projetos"
-        keywords={['projetos', 'portfólio', 'sites', 'aplicações web', 'sistemas', 'desenvolvimento']}
+        title={getText(language, 'Projetos | Portfólio de Talisson Souza', 'Projects | Talisson Souza Portfolio')}
+        description={getText(language, 'Conheça os projetos desenvolvidos por Talisson Souza. Sites, aplicações web, sistemas empresariais e soluções digitais para empresas de diversos segmentos.', 'Discover the projects developed by Talisson Souza. Websites, web applications, enterprise systems and digital solutions for businesses across various industries.')}
+        canonical={language === 'en' ? '/en-us/projects' : '/projetos'}
+        keywords={language === 'pt' ? ['projetos', 'portfólio', 'sites', 'aplicações web', 'sistemas', 'desenvolvimento'] : ['projects', 'portfolio', 'websites', 'web applications', 'systems', 'development']}
       />
       
       {/* Hero Section */}

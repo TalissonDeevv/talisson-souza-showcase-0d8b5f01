@@ -99,10 +99,10 @@ const Services = () => {
   return (
     <Layout withPadding={false}>
       <SEO 
-        title="Serviços de Desenvolvimento | Talisson Souza"
-        description="Serviços de desenvolvimento web, mobile, bots, UI/UX design, soluções cloud e consultoria tecnológica. Soluções digitais sob medida para sua empresa crescer."
-        canonical="/servicos"
-        keywords={['serviços', 'desenvolvimento web', 'desenvolvimento mobile', 'bots', 'UI/UX', 'cloud', 'consultoria']}
+        title={getText(language, 'Serviços de Desenvolvimento | Talisson Souza', 'Development Services | Talisson Souza')}
+        description={getText(language, 'Serviços de desenvolvimento web, mobile, bots, UI/UX design, soluções cloud e consultoria tecnológica. Soluções digitais sob medida para sua empresa crescer.', 'Web, mobile, bot development, UI/UX design, cloud solutions and technology consulting services. Custom digital solutions to grow your business.')}
+        canonical={language === 'en' ? '/en-us/services' : '/servicos'}
+        keywords={language === 'pt' ? ['serviços', 'desenvolvimento web', 'desenvolvimento mobile', 'bots', 'UI/UX', 'cloud', 'consultoria'] : ['services', 'web development', 'mobile development', 'bots', 'UI/UX', 'cloud', 'consulting']}
       />
       
       {/* Hero */}

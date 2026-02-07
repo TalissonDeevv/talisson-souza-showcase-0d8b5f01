@@ -2,15 +2,16 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { SiDiscord } from "react-icons/si";
+import { useTheme } from "@/contexts/ThemeContext";
+import { getText } from "@/utils/translations";
 
-const STORAGE_KEY = "discord_popup_dismissed";
 const DISCORD_LINK = "https://discord.gg/WXwguHWjxg";
 
 const DiscordPopup = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { language } = useTheme();
 
   useEffect(() => {
-    // Show popup after a short delay for better UX
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 3000);
@@ -46,39 +47,34 @@ const DiscordPopup = () => {
               boxShadow: '0 20px 60px -10px hsl(var(--foreground) / 0.15), 0 10px 30px -10px hsl(var(--foreground) / 0.1)'
             }}
           >
-            {/* Subtle gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent pointer-events-none" />
-            
-            {/* Top highlight line */}
             <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
             
-            {/* Close button */}
             <button
               onClick={handleDismiss}
               className="absolute top-3 right-3 p-1.5 rounded-full text-muted-foreground/60 hover:text-foreground hover:bg-foreground/5 transition-all duration-200"
-              aria-label="Fechar"
+              aria-label={getText(language, 'Fechar', 'Close')}
             >
               <X className="w-4 h-4" />
             </button>
             
-            {/* Content */}
             <div className="relative z-10">
-              {/* Icon */}
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl border border-border/30 bg-foreground/5 flex items-center justify-center">
                   <SiDiscord className="w-5 h-5 text-foreground/70" />
                 </div>
                 <h3 className="font-serif text-lg text-foreground leading-tight">
-                  Escritório do Talisson
+                  {getText(language, 'Escritório do Talisson', "Talisson's Office")}
                 </h3>
               </div>
               
-              {/* Description */}
               <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-                Faça parte do meu servidor e acompanhe meu dia a dia como programador e empreendedor. Projetos, networking e muito mais.
+                {getText(language, 
+                  'Faça parte do meu servidor e acompanhe meu dia a dia como programador e empreendedor. Projetos, networking e muito mais.',
+                  'Join my server and follow my daily life as a developer and entrepreneur. Projects, networking and much more.'
+                )}
               </p>
               
-              {/* CTA Button */}
               <motion.button
                 onClick={handleJoinDiscord}
                 whileHover={{ scale: 1.02, y: -1 }}
@@ -89,7 +85,7 @@ const DiscordPopup = () => {
                 }}
               >
                 <SiDiscord className="w-4 h-4" />
-                Entrar no Discord
+                {getText(language, 'Entrar no Discord', 'Join Discord')}
               </motion.button>
             </div>
           </div>
