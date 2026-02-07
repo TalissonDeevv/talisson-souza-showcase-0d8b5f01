@@ -103,10 +103,10 @@ const Contact = () => {
   return (
     <Layout withPadding={false}>
       <SEO 
-        title="Contato | Fale com Talisson Souza"
-        description="Entre em contato para discutir seu projeto. Desenvolvimento web, sistemas sob medida, consultoria tecnológica. Resposta rápida via WhatsApp ou email."
-        canonical="/contato"
-        keywords={['contato', 'orçamento', 'projeto', 'WhatsApp', 'email']}
+        title={getText(language, 'Contato | Fale com Talisson Souza', 'Contact | Talk to Talisson Souza')}
+        description={getText(language, 'Entre em contato para discutir seu projeto. Desenvolvimento web, sistemas sob medida, consultoria tecnológica. Resposta rápida via WhatsApp ou email.', 'Get in touch to discuss your project. Web development, custom systems, technology consulting. Quick response via WhatsApp or email.')}
+        canonical={language === 'en' ? '/en-us/contact' : '/contato'}
+        keywords={language === 'pt' ? ['contato', 'orçamento', 'projeto', 'WhatsApp', 'email'] : ['contact', 'quote', 'project', 'WhatsApp', 'email']}
       />
       
       {/* Hero Section */}

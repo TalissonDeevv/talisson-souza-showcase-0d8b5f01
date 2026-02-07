@@ -128,10 +128,10 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
   return (
     <Layout withPadding={false}>
       <SEO 
-        title="Carreira | Trajetória de Talisson Souza"
-        description="Conheça a trajetória profissional de Talisson Souza, desde os primeiros projetos até se tornar CEO da Cheetah Network e Diretor Estratégico do Werneck Group."
-        canonical="/carreira"
-        keywords={['carreira', 'trajetória', 'experiência profissional', 'CEO', 'empreendedor', 'desenvolvedor']}
+        title={getText(language, 'Carreira | Trajetória de Talisson Souza', 'Career | Talisson Souza Journey')}
+        description={getText(language, 'Conheça a trajetória profissional de Talisson Souza, desde os primeiros projetos até se tornar CEO da Cheetah Network e Diretor Estratégico do Werneck Group.', 'Discover Talisson Souza\'s professional journey, from his first projects to becoming CEO of Cheetah Network and Strategic Director of Werneck Group.')}
+        canonical={language === 'en' ? '/en-us/career' : '/carreira'}
+        keywords={language === 'pt' ? ['carreira', 'trajetória', 'experiência profissional', 'CEO', 'empreendedor', 'desenvolvedor'] : ['career', 'journey', 'professional experience', 'CEO', 'entrepreneur', 'developer']}
       />
       
       {/* Hero Section */}

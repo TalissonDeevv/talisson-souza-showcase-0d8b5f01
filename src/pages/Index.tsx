@@ -65,10 +65,10 @@ const Index = () => {
   return (
     <Layout withPadding={false}>
       <SEO 
-        title="Talisson Souza | Desenvolvedor Full Stack & CEO"
-        description="Desenvolvedor Full Stack com mais de 8 anos de experiência. CEO da Cheetah Network, especialista em sistemas web sob medida, APIs, React, Node.js e soluções digitais para empresas."
-        canonical="/"
-        keywords={['desenvolvedor full stack', 'CEO', 'sistemas sob medida', 'desenvolvimento web', 'React', 'Node.js', 'TypeScript', 'Cheetah Network']}
+        title={getText(language, 'Talisson Souza | Desenvolvedor Full Stack & CEO', 'Talisson Souza | Full Stack Developer & CEO')}
+        description={getText(language, 'Desenvolvedor Full Stack com mais de 8 anos de experiência. CEO da Cheetah Network, especialista em sistemas web sob medida, APIs, React, Node.js e soluções digitais para empresas.', 'Full Stack Developer with over 8 years of experience. CEO of Cheetah Network, specialist in custom web systems, APIs, React, Node.js and digital solutions for businesses.')}
+        canonical={language === 'en' ? '/en-us' : '/'}
+        keywords={language === 'pt' ? ['desenvolvedor full stack', 'CEO', 'sistemas sob medida', 'desenvolvimento web', 'React', 'Node.js', 'TypeScript', 'Cheetah Network'] : ['full stack developer', 'CEO', 'custom systems', 'web development', 'React', 'Node.js', 'TypeScript', 'Cheetah Network']}
       />
       <section className="min-h-[100vh] flex items-center justify-center relative overflow-hidden">
         {/* Sophisticated Background Effect */}
