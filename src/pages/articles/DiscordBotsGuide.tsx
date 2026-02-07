@@ -1,150 +1,154 @@
+import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import AnimatedTitle from "@/components/ui/AnimatedTitle";
+import ShareButtons from "@/components/ui/ShareButtons";
+import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
-import { motion } from "framer-motion";
 
 const DiscordBotsGuide = () => {
   const { language } = useTheme();
 
+  const tags = ['Discord', 'Security', 'Management', 'Bots', 'Infrastructure'];
+
   const sections = language === 'pt' ? [
     {
       title: '1. Falta de responsabilidade de donos e equipes',
-      content: `Um dos problemas mais recorrentes em projetos de bots para Discord e a falta de responsabilidade por parte dos proprios donos e das equipes envolvidas. Muitos iniciam projetos sem planejamento, sem definicao clara de objetivos e sem compreender o peso das decisoes que serao tomadas ao longo do caminho.
+      content: `Um dos problemas mais recorrentes em projetos de bots para Discord é a falta de responsabilidade por parte dos próprios donos e das equipes envolvidas. Muitos iniciam projetos sem planejamento, sem definição clara de objetivos e sem compreender o peso das decisões que serão tomadas ao longo do caminho.
 
-Quando nao existe responsabilidade, as consequencias sao inevitaveis: dados de usuarios ficam expostos, decisoes arbitrarias sao tomadas sem embasamento tecnico, e o projeto perde credibilidade rapidamente. A responsabilidade nao e apenas sobre o codigo, mas sobre cada pessoa que tera contato com o sistema, seus dados e sua experiencia.
+Quando não existe responsabilidade, as consequências são inevitáveis: dados de usuários ficam expostos, decisões arbitrárias são tomadas sem embasamento técnico, e o projeto perde credibilidade rapidamente. A responsabilidade não é apenas sobre o código, mas sobre cada pessoa que terá contato com o sistema, seus dados e sua experiência.
 
-Donos de projetos precisam entender que liderar um bot e liderar um produto digital. E como tal, exige postura profissional, compromisso com a qualidade e respeito pelos usuarios finais.`
+Donos de projetos precisam entender que liderar um bot é liderar um produto digital. E como tal, exige postura profissional, compromisso com a qualidade e respeito pelos usuários finais.`
     },
     {
-      title: '2. Concessao de acessos indevidos e sem criterio',
-      content: `Conceder acessos administrativos sem criterio e uma das falhas mais perigosas em projetos de bots. Muitos donos distribuem permissoes elevadas para amigos, conhecidos ou membros da equipe sem avaliar a real necessidade ou o nivel de confianca tecnica dessas pessoas.
+      title: '2. Concessão de acessos indevidos e sem critério',
+      content: `Conceder acessos administrativos sem critério é uma das falhas mais perigosas em projetos de bots. Muitos donos distribuem permissões elevadas para amigos, conhecidos ou membros da equipe sem avaliar a real necessidade ou o nível de confiança técnica dessas pessoas.
 
-O resultado e previsivel: alteracoes indevidas no codigo, exclusao acidental de dados, vazamento de tokens e chaves de API, e em casos mais graves, comprometimento total da infraestrutura do bot.
+O resultado é previsível: alterações indevidas no código, exclusão acidental de dados, vazamento de tokens e chaves de API, e em casos mais graves, comprometimento total da infraestrutura do bot.
 
-A regra deve ser simples: ninguem recebe acesso alem do estritamente necessario para executar sua funcao. Tokens, chaves de API e credenciais de banco de dados devem ser tratados como informacoes confidenciais e jamais compartilhados de forma casual.`
+A regra deve ser simples: ninguém recebe acesso além do estritamente necessário para executar sua função. Tokens, chaves de API e credenciais de banco de dados devem ser tratados como informações confidenciais e jamais compartilhados de forma casual.`
     },
     {
-      title: '3. Falta de maturidade para lidar com concorrencia e exposicao',
-      content: `Projetos de bots estao inseridos em um ecossistema competitivo. Muitos donos e equipes nao possuem maturidade para lidar com a existencia de projetos concorrentes, reagindo de forma impulsiva, agressiva ou antiProfissional.
+      title: '3. Falta de maturidade para lidar com concorrência e exposição',
+      content: `Projetos de bots estão inseridos em um ecossistema competitivo. Muitos donos e equipes não possuem maturidade para lidar com a existência de projetos concorrentes, reagindo de forma impulsiva, agressiva ou antiprofissional.
 
-Atitudes como difamar concorrentes, copiar funcionalidades sem agregar valor, ou tentar sabotar outros projetos sao sinais claros de imaturidade e prejudicam todo o ecossistema.
+Atitudes como difamar concorrentes, copiar funcionalidades sem agregar valor, ou tentar sabotar outros projetos são sinais claros de imaturidade e prejudicam todo o ecossistema.
 
-A postura correta e focar na qualidade do proprio projeto, aprender com o que o mercado oferece e buscar diferenciacao atraves de inovacao genuina e excelencia tecnica. Projetos maduros nao precisam diminuir outros para crescer.`
+A postura correta é focar na qualidade do próprio projeto, aprender com o que o mercado oferece e buscar diferenciação através de inovação genuína e excelência técnica. Projetos maduros não precisam diminuir outros para crescer.`
     },
     {
-      title: '4. Falhas de seguranca em bots e infraestrutura',
-      content: `Seguranca deve ser tratada como prioridade desde o primeiro dia de desenvolvimento, nao como algo a ser adicionado depois. As falhas mais comuns incluem:
+      title: '4. Falhas de segurança em bots e infraestrutura',
+      content: `Segurança deve ser tratada como prioridade desde o primeiro dia de desenvolvimento, não como algo a ser adicionado depois. As falhas mais comuns incluem:
 
-- Armazenamento de tokens e segredos diretamente no codigo fonte
-- Ausencia de variaveis de ambiente para configuracoes sensiveis
-- Falta de validacao e sanitizacao de entradas de usuarios
-- Endpoints de API expostos sem autenticacao adequada
-- Ausencia de rate limiting, permitindo abuso e ataques DDoS
-- Logs excessivos que expoem informacoes sensiveis
-- Falta de atualizacao de dependencias com vulnerabilidades conhecidas
+- Armazenamento de tokens e segredos diretamente no código fonte
+- Ausência de variáveis de ambiente para configurações sensíveis
+- Falta de validação e sanitização de entradas de usuários
+- Endpoints de API expostos sem autenticação adequada
+- Ausência de rate limiting, permitindo abuso e ataques DDoS
+- Logs excessivos que expõem informações sensíveis
+- Falta de atualização de dependências com vulnerabilidades conhecidas
 
-Cada um desses pontos pode ser explorado por agentes maliciosos para comprometer o bot, os dados dos usuarios e a infraestrutura do servidor. A seguranca comeca na mentalidade do desenvolvedor e se estende a cada linha de codigo e cada configuracao do ambiente.`
+Cada um desses pontos pode ser explorado por agentes maliciosos para comprometer o bot, os dados dos usuários e a infraestrutura do servidor. A segurança começa na mentalidade do desenvolvedor e se estende a cada linha de código e cada configuração do ambiente.`
     },
     {
       title: '5. Equipes grandes sem necessidade real',
       content: `Muitos projetos de bots cometem o erro de montar equipes excessivamente grandes sem que haja demanda real para tantas pessoas. Isso gera problemas como:
 
-- Diluicao de responsabilidades, onde ninguem sabe exatamente o que e de quem
-- Conflitos de comunicacao e decisao
-- Acessos desnecessarios a sistemas e dados sensiveis
-- Aumento da superficie de ataque por conta de mais credenciais circulando
-- Burocracia desnecessaria que atrasa o desenvolvimento
+- Diluição de responsabilidades, onde ninguém sabe exatamente o que é de quem
+- Conflitos de comunicação e decisão
+- Acessos desnecessários a sistemas e dados sensíveis
+- Aumento da superfície de ataque por conta de mais credenciais circulando
+- Burocracia desnecessária que atrasa o desenvolvimento
 
-Uma equipe enxuta, com responsabilidades bem definidas, e mais eficiente, segura e produtiva. A qualidade de uma equipe se mede pela competencia de seus membros, nao pela quantidade.`
+Uma equipe enxuta, com responsabilidades bem definidas, é mais eficiente, segura e produtiva. A qualidade de uma equipe se mede pela competência de seus membros, não pela quantidade.`
     },
     {
-      title: '6. Ma gestao do bot, do codigo e dos processos',
-      content: `A gestao de um projeto de bot vai muito alem de escrever codigo. Envolve planejamento de releases, controle de versao, documentacao, monitoramento de performance, gestao de incidentes e comunicacao com a comunidade de usuarios.
+      title: '6. Má gestão do bot, do código e dos processos',
+      content: `A gestão de um projeto de bot vai muito além de escrever código. Envolve planejamento de releases, controle de versão, documentação, monitoramento de performance, gestão de incidentes e comunicação com a comunidade de usuários.
 
-Projetos sem gestao adequada acumulam divida tecnica rapidamente, perdem a capacidade de evoluir e se tornam frageis a ponto de qualquer mudanca causar falhas em cascata.
+Projetos sem gestão adequada acumulam dívida técnica rapidamente, perdem a capacidade de evoluir e se tornam frágeis a ponto de qualquer mudança causar falhas em cascata.
 
-Boas praticas de gestao incluem: uso consistente de controle de versao (Git), revisao de codigo por pares, testes automatizados, documentacao atualizada, e processos claros para deploy e rollback.`
+Boas práticas de gestão incluem: uso consistente de controle de versão (Git), revisão de código por pares, testes automatizados, documentação atualizada, e processos claros para deploy e rollback.`
     },
     {
       title: '7. Comportamento inadequado do dono e da equipe',
-      content: `O comportamento dos responsaveis por um projeto reflete diretamente na imagem e na confiabilidade do bot. Atitudes como arrogancia, desrespeito com usuarios, abuso de poder em servidores e falta de transparencia destroem a reputacao de qualquer projeto.
+      content: `O comportamento dos responsáveis por um projeto reflete diretamente na imagem e na confiabilidade do bot. Atitudes como arrogância, desrespeito com usuários, abuso de poder em servidores e falta de transparência destroem a reputação de qualquer projeto.
 
-Lideres de projetos de bots precisam entender que estao gerenciando um produto que serve a uma comunidade. A postura deve ser sempre profissional, transparente e respeitosa, independentemente do tamanho do projeto ou da base de usuarios.
+Líderes de projetos de bots precisam entender que estão gerenciando um produto que serve a uma comunidade. A postura deve ser sempre profissional, transparente e respeitosa, independentemente do tamanho do projeto ou da base de usuários.
 
-Feedbacks negativos devem ser recebidos com maturidade e usados como oportunidade de melhoria, nao como motivo para retaliacao.`
+Feedbacks negativos devem ser recebidos com maturidade e usados como oportunidade de melhoria, não como motivo para retaliação.`
     },
     {
-      title: '8. Abuso de poder e decisoes sem criterio tecnico',
-      content: `Decisoes tecnicas devem ser tomadas com base em criterios tecnicos, nao em preferencias pessoais, vaidade ou politica interna. Quando donos ou lideres de equipe tomam decisoes arbitrarias sem embasamento, o projeto sofre.
+      title: '8. Abuso de poder e decisões sem critério técnico',
+      content: `Decisões técnicas devem ser tomadas com base em critérios técnicos, não em preferências pessoais, vaidade ou política interna. Quando donos ou líderes de equipe tomam decisões arbitrárias sem embasamento, o projeto sofre.
 
-Exemplos comuns incluem: escolher tecnologias por modismo, ignorar boas praticas por conveniencia, priorizar funcionalidades visiveis em detrimento da seguranca, e tomar decisoes de arquitetura sem consultar a equipe tecnica.
+Exemplos comuns incluem: escolher tecnologias por modismo, ignorar boas práticas por conveniência, priorizar funcionalidades visíveis em detrimento da segurança, e tomar decisões de arquitetura sem consultar a equipe técnica.
 
-O abuso de poder tambem se manifesta na forma como acessos e permissoes sao gerenciados. Donos que usam seu acesso privilegiado para tomar decisoes unilaterais sem consulta ou justificativa tecnica prejudicam a confianca da equipe e a qualidade do projeto.`
+O abuso de poder também se manifesta na forma como acessos e permissões são gerenciados. Donos que usam seu acesso privilegiado para tomar decisões unilaterais sem consulta ou justificativa técnica prejudicam a confiança da equipe e a qualidade do projeto.`
     },
     {
-      title: '9. Como manter seguranca no bot e nos dados',
-      content: `Manter a seguranca de um bot e um processo continuo que exige disciplina e conhecimento. As praticas essenciais incluem:
+      title: '9. Como manter segurança no bot e nos dados',
+      content: `Manter a segurança de um bot é um processo contínuo que exige disciplina e conhecimento. As práticas essenciais incluem:
 
-- Utilizar variaveis de ambiente para todos os segredos e configuracoes sensiveis
-- Implementar autenticacao e autorizacao robustas em todas as APIs
-- Aplicar o principio do menor privilegio em todos os niveis de acesso
-- Manter todas as dependencias atualizadas e monitorar vulnerabilidades
+- Utilizar variáveis de ambiente para todos os segredos e configurações sensíveis
+- Implementar autenticação e autorização robustas em todas as APIs
+- Aplicar o princípio do menor privilégio em todos os níveis de acesso
+- Manter todas as dependências atualizadas e monitorar vulnerabilidades
 - Implementar logging e monitoramento para detectar atividades suspeitas
-- Realizar backups regulares e testar procedimentos de recuperacao
-- Criptografar dados sensiveis em repouso e em transito
-- Conduzir revisoes de seguranca periodicas no codigo e na infraestrutura
+- Realizar backups regulares e testar procedimentos de recuperação
+- Criptografar dados sensíveis em repouso e em trânsito
+- Conduzir revisões de segurança periódicas no código e na infraestrutura
 
-Seguranca nao e um destino, e uma jornada. Cada decisao de desenvolvimento deve considerar as implicacoes de seguranca.`
+Segurança não é um destino, é uma jornada. Cada decisão de desenvolvimento deve considerar as implicações de segurança.`
     },
     {
-      title: '10. Como estruturar permissoes corretas do bot',
-      content: `A configuracao de permissoes de um bot no Discord e um dos aspectos mais criticos e frequentemente negligenciados. A regra fundamental e: a permissao de Administrador nao deve ser padrao.
+      title: '10. Como estruturar permissões corretas do bot',
+      content: `A configuração de permissões de um bot no Discord é um dos aspectos mais críticos e frequentemente negligenciados. A regra fundamental é: a permissão de Administrador não deve ser padrão.
 
-A permissao de Administrador concede controle total sobre o servidor, incluindo a capacidade de excluir canais, banir membros, alterar configuracoes do servidor e acessar todas as mensagens. Nenhum bot deveria ter esse nivel de acesso por padrao.
+A permissão de Administrador concede controle total sobre o servidor, incluindo a capacidade de excluir canais, banir membros, alterar configurações do servidor e acessar todas as mensagens. Nenhum bot deveria ter esse nível de acesso por padrão.
 
-O principio do menor privilegio deve ser aplicado rigorosamente:
+O princípio do menor privilégio deve ser aplicado rigorosamente:
 
-- Identifique exatamente quais acoes o bot precisa executar
-- Conceda apenas as permissoes especificas para essas acoes
-- Documente claramente por que cada permissao e necessaria
-- Revise periodicamente se todas as permissoes ainda sao necessarias
-- Crie comandos de auditoria para verificar as permissoes atuais do bot
+- Identifique exatamente quais ações o bot precisa executar
+- Conceda apenas as permissões específicas para essas ações
+- Documente claramente por que cada permissão é necessária
+- Revise periodicamente se todas as permissões ainda são necessárias
+- Crie comandos de auditoria para verificar as permissões atuais do bot
 
-Ma configuracao de permissoes e causa direta de incidentes graves, incluindo exclusao acidental de dados, vazamento de informacoes e comprometimento de servidores inteiros.`
+Má configuração de permissões é causa direta de incidentes graves, incluindo exclusão acidental de dados, vazamento de informações e comprometimento de servidores inteiros.`
     },
     {
-      title: '11. Boas praticas para evitar ataques e incidentes',
-      content: `A prevencao de ataques e incidentes comeca com uma mentalidade de seguranca proativa:
+      title: '11. Boas práticas para evitar ataques e incidentes',
+      content: `A prevenção de ataques e incidentes começa com uma mentalidade de segurança proativa:
 
-- Nunca confie em entrada de usuarios sem validacao
+- Nunca confie em entrada de usuários sem validação
 - Implemente rate limiting em todos os comandos e endpoints
 - Use tokens com escopo limitado e rotacione-os regularmente
-- Monitore logs em tempo real para detectar padroes anomalos
+- Monitore logs em tempo real para detectar padrões anômalos
 - Tenha um plano de resposta a incidentes documentado e testado
-- Mantenha canais de comunicacao seguros para a equipe
-- Faca testes de penetracao periodicos
-- Mantenha um inventario atualizado de todos os acessos e credenciais
+- Mantenha canais de comunicação seguros para a equipe
+- Faça testes de penetração periódicos
+- Mantenha um inventário atualizado de todos os acessos e credenciais
 
-A maioria dos ataques bem-sucedidos explora falhas basicas de seguranca que poderiam ter sido evitadas com praticas simples e consistentes.`
+A maioria dos ataques bem-sucedidos explora falhas básicas de segurança que poderiam ter sido evitadas com práticas simples e consistentes.`
     },
     {
       title: '12. Como montar uma equipe profissional',
-      content: `Uma equipe profissional para um projeto de bot deve ser construida com criterio e proposito. Cada membro deve ter um papel claro e responsabilidades bem definidas:
+      content: `Uma equipe profissional para um projeto de bot deve ser construída com critério e propósito. Cada membro deve ter um papel claro e responsabilidades bem definidas:
 
-- Defina cargos com descricoes claras de responsabilidades e limites de acesso
-- Avalie competencias tecnicas antes de conceder qualquer acesso
-- Estabeleca processos de onboarding e offboarding para membros da equipe
-- Crie canais de comunicacao estruturados e documentados
-- Implemente revisao de codigo obrigatoria antes de qualquer merge
-- Defina politicas claras sobre uso de credenciais e acessos
-- Realize reunioes periodicas de alinhamento e planejamento
-- Documente todas as decisoes tecnicas e seus motivos
+- Defina cargos com descrições claras de responsabilidades e limites de acesso
+- Avalie competências técnicas antes de conceder qualquer acesso
+- Estabeleça processos de onboarding e offboarding para membros da equipe
+- Crie canais de comunicação estruturados e documentados
+- Implemente revisão de código obrigatória antes de qualquer merge
+- Defina políticas claras sobre uso de credenciais e acessos
+- Realize reuniões periódicas de alinhamento e planejamento
+- Documente todas as decisões técnicas e seus motivos
 
-Uma equipe pequena e competente sempre sera superior a uma equipe grande e desorganizada. Qualidade sobre quantidade, sempre.`
+Uma equipe pequena e competente sempre será superior a uma equipe grande e desorganizada. Qualidade sobre quantidade, sempre.`
     },
   ] : [
     {
@@ -288,128 +292,169 @@ A small, competent team will always be superior to a large, disorganized one. Qu
     <Layout>
       <SEO
         title={getText(language,
-          'Guia de Maturidade, Gestao e Seguranca para Projetos de Bots no Discord | Talisson Souza',
+          'Guia de Maturidade, Gestão e Segurança para Projetos de Bots no Discord | Talisson Souza',
           'Maturity, Management & Security Guide for Discord Bot Projects | Talisson Souza'
         )}
         description={getText(language,
-          'Guia completo sobre maturidade, gestao e seguranca em projetos de bots no Discord, abordando boas praticas, permissoes, postura profissional e prevencao de falhas graves.',
+          'Guia completo sobre maturidade, gestão e segurança em projetos de bots no Discord, abordando boas práticas, permissões, postura profissional e prevenção de falhas graves.',
           'A comprehensive guide on maturity, management and security in Discord bot projects, covering best practices, permissions, professional conduct and prevention of critical failures.'
         )}
-        canonical={getText(language, '/artigos/bots-discord', '/en-us/articles/discord-bots')}
+        canonical={language === 'en' ? '/en-us/articles/discord-bots' : '/artigos/bots-discord'}
         type="article"
         publishedTime="2025-02-07"
-        keywords={getText(language,
-          'bots discord, seguranca em bots, gestao de bots, permissoes discord, maturidade em projetos, desenvolvimento de bots',
-          'discord bots, bot security, bot management, discord permissions, project maturity, bot development'
-        ).split(', ')}
+        keywords={language === 'pt'
+          ? ['bots discord', 'segurança em bots', 'gestão de bots', 'permissões discord', 'maturidade em projetos', 'desenvolvimento de bots']
+          : ['discord bots', 'bot security', 'bot management', 'discord permissions', 'project maturity', 'bot development']
+        }
       />
 
-      <section className="pt-32 pb-20">
-        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
-          {/* Back link */}
+      {/* Hero Section - Blog Post Style */}
+      <section className="pt-20 pb-8 lg:pt-24 lg:pb-10 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background pointer-events-none" />
+
+        <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
             <Link
-              to={getText(language, '/artigos', '/en-us/articles')}
-              className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 mb-10"
+              to={language === 'en' ? '/en-us/articles' : '/artigos'}
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-4 transition-colors duration-300"
             >
-              <ArrowLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
+              <ArrowLeft className="w-4 h-4" />
               {getText(language, 'Voltar aos artigos', 'Back to articles')}
             </Link>
-          </ScrollReveal>
 
-          {/* Header */}
-          <ScrollReveal>
-            <div className="mb-16">
+            <div className="max-w-4xl">
               <motion.span
                 initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+                animate={{ opacity: 1, x: 0 }}
+                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-4 font-medium"
               >
                 {getText(language, 'Artigo', 'Article')}
               </motion.span>
-              <h1 className="font-serif text-3xl lg:text-5xl text-foreground mb-6 leading-[1.1]">
+
+              <AnimatedTitle variant="hero" as="h1" className="mb-4">
                 {getText(language,
-                  'Guia de Maturidade, Gestao e Seguranca para Projetos de Bots no Discord',
+                  'Guia de Maturidade, Gestão e Segurança para Projetos de Bots no Discord',
                   'Maturity, Management & Security Guide for Discord Bot Projects'
                 )}
-              </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
-                {getText(language,
-                  'Um guia responsavel para prevenir falhas graves e promover maturidade, boa gestao e seguranca real em projetos de bots.',
-                  'A responsible guide to prevent critical failures and promote maturity, good management and real security in bot projects.'
-                )}
-              </p>
-              <div className="flex items-center gap-3 mt-6 text-xs text-muted-foreground">
-                <span>{getText(language, '7 de Fevereiro, 2025', 'February 7, 2025')}</span>
-                <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
-                <span>25 min {getText(language, 'de leitura', 'read')}</span>
+              </AnimatedTitle>
+
+              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-4">
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4" />
+                  <span>{getText(language, '7 de Fevereiro, 2025', 'February 7, 2025')}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4" />
+                  <span>{getText(language, '25 min de leitura', '25 min read')}</span>
+                </div>
               </div>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs px-3 py-1.5 rounded-lg border border-border/30 bg-card/50 text-muted-foreground"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* Share Buttons */}
+              <ShareButtons title={getText(language,
+                'Guia de Maturidade, Gestão e Segurança para Projetos de Bots no Discord',
+                'Maturity, Management & Security Guide for Discord Bot Projects'
+              )} />
             </div>
           </ScrollReveal>
+        </div>
+      </section>
 
-          {/* Introduction */}
-          <ScrollReveal>
-            <div className="mb-16 p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm">
-              <p className="text-base text-foreground/90 leading-[1.9]">
-                {getText(language,
-                  'O ecossistema de bots para Discord cresceu exponencialmente nos ultimos anos, atraindo desenvolvedores de todos os niveis de experiencia. No entanto, esse crescimento trouxe consigo uma serie de problemas que vao muito alem da parte tecnica. Este guia aborda os aspectos mais criticos e frequentemente ignorados na gestao de projetos de bots: maturidade, responsabilidade, seguranca e postura profissional.',
-                  'The Discord bot ecosystem has grown exponentially in recent years, attracting developers of all experience levels. However, this growth has brought a series of problems that go far beyond the technical aspects. This guide addresses the most critical and frequently overlooked aspects of bot project management: maturity, responsibility, security, and professional conduct.'
-                )}
-              </p>
-            </div>
-          </ScrollReveal>
+      {/* Content */}
+      <section className="py-10 lg:py-12 relative">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+        </div>
 
-          {/* Sections */}
-          <div className="space-y-12">
-            {sections.map((section, index) => (
-              <ScrollReveal key={index} delay={0.05}>
-                <article className="relative">
-                  <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-6 leading-tight">
-                    {section.title}
-                  </h2>
-                  <div className="text-base text-muted-foreground leading-[1.9] whitespace-pre-line">
-                    {section.content}
-                  </div>
-                  {index < sections.length - 1 && (
-                    <div className="mt-12 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            {/* Introduction */}
+            <ScrollReveal>
+              <div className="mb-16 p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm">
+                <p className="text-base text-foreground/90 leading-[1.9]">
+                  {getText(language,
+                    'O ecossistema de bots para Discord cresceu exponencialmente nos últimos anos, atraindo desenvolvedores de todos os níveis de experiência. No entanto, esse crescimento trouxe consigo uma série de problemas que vão muito além da parte técnica. Este guia aborda os aspectos mais críticos e frequentemente ignorados na gestão de projetos de bots: maturidade, responsabilidade, segurança e postura profissional.',
+                    'The Discord bot ecosystem has grown exponentially in recent years, attracting developers of all experience levels. However, this growth has brought a series of problems that go far beyond the technical aspects. This guide addresses the most critical and frequently overlooked aspects of bot project management: maturity, responsibility, security, and professional conduct.'
                   )}
-                </article>
-              </ScrollReveal>
-            ))}
-          </div>
+                </p>
+              </div>
+            </ScrollReveal>
 
-          {/* Central Message */}
-          <ScrollReveal>
-            <div className="my-16 p-10 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm text-center">
-              <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-6 leading-tight">
-                {getText(language, 'Mensagem Central', 'Core Message')}
-              </h2>
-              <p className="text-base text-muted-foreground leading-[1.9] max-w-2xl mx-auto mb-4">
-                {getText(language,
-                  'A maioria dos problemas em projetos de bots nao e tecnica. Os maiores erros sao de postura, gestao e falta de maturidade. Projetos que desejam crescer de forma sustentavel precisam assumir responsabilidade em todas as frentes.',
-                  'Most problems in bot projects are not technical. The biggest mistakes come from poor conduct, management, and lack of maturity. Projects that wish to grow sustainably need to take responsibility on all fronts.'
-                )}
-              </p>
-              <p className="text-base text-foreground/90 font-medium leading-[1.9] max-w-2xl mx-auto">
-                {getText(language,
-                  'Seguranca comeca na mentalidade, nao apenas no codigo.',
-                  'Security starts in the mindset, not just in the code.'
-                )}
-              </p>
+            {/* Sections */}
+            <div className="space-y-12">
+              {sections.map((section, index) => (
+                <ScrollReveal key={index} delay={0.05}>
+                  <article className="relative">
+                    <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-6 leading-tight">
+                      {section.title}
+                    </h2>
+                    <div className="text-base text-muted-foreground leading-[1.9] whitespace-pre-line">
+                      {section.content}
+                    </div>
+                    {index < sections.length - 1 && (
+                      <div className="mt-12 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+                    )}
+                  </article>
+                </ScrollReveal>
+              ))}
             </div>
-          </ScrollReveal>
 
-          {/* Signature */}
-          <ScrollReveal>
-            <div className="mt-20 pt-10 border-t border-border/30">
-              <div className="flex flex-col items-center text-center">
-                <p className="text-lg font-serif text-foreground mb-1">Talisson Souza</p>
-                <p className="text-sm text-muted-foreground">CEO {getText(language, 'e Fundador da', 'and Founder of')} Cheetah Solutions Network</p>
-                <p className="text-xs text-muted-foreground/70 mt-1">Cheetah Developers Brasil</p>
+            {/* Central Message */}
+            <ScrollReveal>
+              <div className="my-16 p-10 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm text-center">
+                <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-6 leading-tight">
+                  {getText(language, 'Mensagem Central', 'Core Message')}
+                </h2>
+                <p className="text-base text-muted-foreground leading-[1.9] max-w-2xl mx-auto mb-4">
+                  {getText(language,
+                    'A maioria dos problemas em projetos de bots não é técnica. Os maiores erros são de postura, gestão e falta de maturidade. Projetos que desejam crescer de forma sustentável precisam assumir responsabilidade em todas as frentes.',
+                    'Most problems in bot projects are not technical. The biggest mistakes come from poor conduct, management, and lack of maturity. Projects that wish to grow sustainably need to take responsibility on all fronts.'
+                  )}
+                </p>
+                <p className="text-base text-foreground/90 font-medium leading-[1.9] max-w-2xl mx-auto">
+                  {getText(language,
+                    'Segurança começa na mentalidade, não apenas no código.',
+                    'Security starts in the mindset, not just in the code.'
+                  )}
+                </p>
+              </div>
+            </ScrollReveal>
+
+            {/* Share at end */}
+            <div className="mt-12 pt-8 border-t border-border/20">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <p className="text-sm text-muted-foreground">
+                  {getText(language, 'Gostou do artigo? Compartilhe!', 'Enjoyed the article? Share it!')}
+                </p>
+                <ShareButtons title={getText(language,
+                  'Guia de Maturidade, Gestão e Segurança para Projetos de Bots no Discord',
+                  'Maturity, Management & Security Guide for Discord Bot Projects'
+                )} />
               </div>
             </div>
-          </ScrollReveal>
+
+            {/* Signature */}
+            <ScrollReveal>
+              <div className="mt-20 pt-10 border-t border-border/30">
+                <div className="flex flex-col items-center text-center">
+                  <p className="text-lg font-serif text-foreground mb-1">Talisson Souza</p>
+                  <p className="text-sm text-muted-foreground">CEO {getText(language, 'e Fundador da', 'and Founder of')} Cheetah Solutions Network</p>
+                  <p className="text-xs text-muted-foreground/70 mt-1">Cheetah Developers Brasil</p>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
     </Layout>
