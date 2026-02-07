@@ -27,20 +27,36 @@ const Footer = () => {
     { name: "Twitch", href: "https://www.twitch.tv/talinhosz" },
   ];
 
-  const navigationLinks = [
+  const navigationLinks = language === 'pt' ? [
     { name: t.nav.home, path: "/" },
-    { name: t.nav.about, path: "/sobre" },
+    { name: "Sobre", path: "/sobre" },
     { name: t.nav.projects, path: "/projetos" },
     { name: t.nav.services, path: "/servicos" },
     { name: t.nav.blog, path: "/blog" },
-    { name: language === 'pt' ? 'Contato' : 'Contact', path: "/contato" },
+    { name: "Artigos", path: "/artigos" },
+    { name: "Contato", path: "/contato" },
+  ] : [
+    { name: t.nav.home, path: "/en-us" },
+    { name: "About", path: "/en-us/about" },
+    { name: t.nav.projects, path: "/en-us/projects" },
+    { name: t.nav.services, path: "/en-us/services" },
+    { name: t.nav.blog, path: "/en-us/blog" },
+    { name: "Articles", path: "/en-us/articles" },
+    { name: "Contact", path: "/en-us/contact" },
   ];
 
-  const insightLinks = [
-    { name: language === 'pt' ? 'Como Trabalho' : 'How I Work', path: "/como-trabalho" },
-    { name: language === 'pt' ? 'Decisões Técnicas' : 'Tech Decisions', path: "/decisoes-tecnicas" },
-    { name: language === 'pt' ? 'Acessibilidade' : 'Accessibility', path: "/acessibilidade" },
+  const insightLinks = language === 'pt' ? [
+    { name: 'Como Trabalho', path: "/como-trabalho" },
+    { name: 'Decisoes Tecnicas', path: "/decisoes-tecnicas" },
+    { name: 'Acessibilidade', path: "/acessibilidade" },
+  ] : [
+    { name: 'How I Work', path: "/en-us/how-i-work" },
+    { name: 'Tech Decisions', path: "/en-us/tech-decisions" },
+    { name: 'Accessibility', path: "/en-us/accessibility" },
   ];
+
+  const homePath = language === 'en' ? '/en-us' : '/';
+  const bookPath = language === 'en' ? '/en-us/book' : '/livro';
 
   return (
     <footer className="border-t border-border/40 mt-20">
@@ -50,7 +66,7 @@ const Footer = () => {
             
             {/* Brand & Description */}
             <div className="col-span-2 md:col-span-3 lg:col-span-2">
-              <Link to="/" className="inline-block mb-5">
+              <Link to={homePath} className="inline-block mb-5">
                 <img 
                   src={logo} 
                   alt="Talisson Souza - Desenvolvedor Full Stack" 
@@ -67,7 +83,6 @@ const Footer = () => {
                 {t.footer.description}
               </p>
 
-              {/* Professional Links */}
               <div className="flex flex-wrap gap-x-4 gap-y-2">
                 {professionalChannels.map((channel) => (
                   <a
@@ -121,7 +136,6 @@ const Footer = () => {
                 ))}
               </nav>
 
-              {/* Social */}
               <div className="mt-6 pt-4 border-t border-border/30">
                 <p className="text-xs tracking-widest uppercase text-muted-foreground mb-3">
                   {t.footer.channels}
@@ -159,7 +173,6 @@ const Footer = () => {
                 {t.footer.location}
               </p>
 
-              {/* Back to Top Button */}
               <motion.button
                 onClick={scrollToTop}
                 whileHover={{ y: -2, scale: 1.02 }}
@@ -178,7 +191,7 @@ const Footer = () => {
               </h3>
               
               <Link 
-                to="/livro"
+                to={bookPath}
                 className="group block"
               >
                 <img 
@@ -190,7 +203,7 @@ const Footer = () => {
                   {getText(language, 'Superando Limites', 'Overcoming Limits')}
                 </p>
                 <p className="text-xs text-muted-foreground mt-0.5">
-                  {getText(language, 'da Rejeição ao Sucesso', 'from Rejection to Success')}
+                  {getText(language, 'da Rejeicao ao Sucesso', 'from Rejection to Success')}
                 </p>
                 <span className="inline-flex items-center gap-1 text-xs text-foreground/60 mt-2 group-hover:text-foreground/80 transition-colors duration-200">
                   <BookOpen className="w-3 h-3" />

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
-import { useTranslation } from "@/utils/translations";
+import { useTranslation, getText } from "@/utils/translations";
 import ThemeLanguageToggle from "@/components/ui/ThemeLanguageToggle";
 import logo from "@/assets/logo.png";
 
@@ -13,7 +13,8 @@ const Navbar = () => {
   const { language } = useTheme();
   const t = useTranslation(language);
 
-  const isHome = location.pathname === "/";
+  const isHome = location.pathname === "/" || location.pathname === "/en-us";
+  const prefix = language === 'en' ? '/en-us' : '';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,19 +26,30 @@ const Navbar = () => {
   }, []);
 
   const isActive = (path: string) => {
-    if (path === '/') return location.pathname === '/';
+    if (path === '/' || path === '/en-us') return location.pathname === '/' || location.pathname === '/en-us';
     return location.pathname.startsWith(path);
   };
 
-  const navItems = [
+  const navItems = language === 'pt' ? [
     { name: t.nav.home, path: "/" },
-    { name: t.nav.about, path: "/sobre" },
-    { name: language === 'pt' ? 'Carreira' : 'Career', path: "/carreira" },
+    { name: "Sobre", path: "/sobre" },
+    { name: "Carreira", path: "/carreira" },
     { name: t.nav.projects, path: "/projetos" },
     { name: t.nav.services, path: "/servicos" },
-    { name: language === 'pt' ? 'Livro' : 'Book', path: "/livro", highlight: true },
+    { name: "Livro", path: "/livro" },
+    { name: "Artigos", path: "/artigos" },
     { name: t.nav.blog, path: "/blog" },
-    { name: language === 'pt' ? 'Contato' : 'Contact', path: "/contato" },
+    { name: "Contato", path: "/contato" },
+  ] : [
+    { name: t.nav.home, path: "/en-us" },
+    { name: "About", path: "/en-us/about" },
+    { name: "Career", path: "/en-us/career" },
+    { name: t.nav.projects, path: "/en-us/projects" },
+    { name: t.nav.services, path: "/en-us/services" },
+    { name: "Book", path: "/en-us/book" },
+    { name: "Articles", path: "/en-us/articles" },
+    { name: t.nav.blog, path: "/en-us/blog" },
+    { name: "Contact", path: "/en-us/contact" },
   ];
 
   const navBackground = isHome && !isScrolled 
@@ -48,8 +60,7 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${navBackground}`}>
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Brand */}
-          <Link to="/" className="group">
+          <Link to={language === 'en' ? '/en-us' : '/'} className="group">
             <img 
               src={logo} 
               alt="Talisson Souza - Desenvolvedor Full Stack" 
@@ -59,7 +70,6 @@ const Navbar = () => {
             />
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <Link
@@ -79,7 +89,6 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Right side */}
           <div className="flex items-center gap-4">
             <ThemeLanguageToggle />
             
@@ -93,7 +102,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         {isOpen && (
           <div className="lg:hidden py-6 border-t border-border/40">
             <div className="flex flex-col gap-1">
