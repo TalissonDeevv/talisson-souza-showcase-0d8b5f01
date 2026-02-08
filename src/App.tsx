@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import { AuthProvider } from "@/hooks/useAuth";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -27,11 +28,13 @@ import Book from "./pages/Book";
 import NotFound from "./pages/NotFound";
 import Articles from "./pages/Articles";
 import DiscordBotsGuide from "./pages/articles/DiscordBotsGuide";
+import Login from "./pages/Login";
 
 const queryClient = new QueryClient();
 
 const AppRoutes = () => (
   <ThemeProvider>
+    <AuthProvider>
     <TooltipProvider>
       <Toaster />
       <Sonner />
@@ -53,6 +56,7 @@ const AppRoutes = () => (
         <Route path="/blog" element={<Blog />} />
         <Route path="/artigos" element={<Articles />} />
         <Route path="/artigos/bots-discord" element={<DiscordBotsGuide />} />
+        <Route path="/login" element={<Login />} />
         
         {/* Blog posts PT */}
         <Route path="/blog/bot-discord" element={<BotDiscord />} />
@@ -77,6 +81,7 @@ const AppRoutes = () => (
         <Route path="/en-us/blog" element={<Blog />} />
         <Route path="/en-us/articles" element={<Articles />} />
         <Route path="/en-us/articles/discord-bots" element={<DiscordBotsGuide />} />
+        <Route path="/en-us/login" element={<Login />} />
         
         {/* Blog posts EN */}
         <Route path="/en-us/blog/discord-bot" element={<BotDiscord />} />
@@ -102,6 +107,7 @@ const AppRoutes = () => (
         <Route path="*" element={<NotFound />} />
       </Routes>
     </TooltipProvider>
+    </AuthProvider>
   </ThemeProvider>
 );
 
