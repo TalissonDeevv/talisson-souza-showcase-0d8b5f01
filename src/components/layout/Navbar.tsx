@@ -4,7 +4,6 @@ import { Menu, X } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
 import ThemeLanguageToggle from "@/components/ui/ThemeLanguageToggle";
-import UserMenu from "@/components/ui/UserMenu";
 import logo from "@/assets/logo.png";
 
 const Navbar = () => {
@@ -91,7 +90,6 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <UserMenu />
             <ThemeLanguageToggle />
             
             <button

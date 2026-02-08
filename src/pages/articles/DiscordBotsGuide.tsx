@@ -8,7 +8,6 @@ import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
-import ArticleComments from "@/components/ui/ArticleComments";
 
 const DiscordBotsGuide = () => {
   const { language } = useTheme();
@@ -455,9 +454,6 @@ A small, competent team will always be superior to a large, disorganized one. Qu
                 </div>
               </div>
             </ScrollReveal>
-
-            {/* Comments */}
-            <ArticleComments articleSlug="discord-bots-guide" />
           </div>
         </div>
       </section>
