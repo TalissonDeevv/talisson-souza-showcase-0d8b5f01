@@ -174,20 +174,20 @@ function getMetaForPath(pathname: string): PageMeta {
         };
   }
 
-  // Blog
-  if (pathname.startsWith('/blog') || pathname.startsWith('/en-us/blog')) {
+  // Vision and Persistence article
+  if (pathname === '/artigos/visao-e-persistencia' || pathname === '/en-us/articles/vision-and-persistence') {
     return isEnglish
       ? {
-          title: 'Blog | Talisson Souza',
-          description: 'Articles about web development, technology and digital solutions.',
+          title: 'If We Can Imagine It, It\'s Because It\'s Possible | Talisson Souza',
+          description: 'A reflection on vision, persistence and entrepreneurship. Every great company started with someone imagining something that didn\'t exist yet.',
           locale: 'en_US',
-          type: 'website',
+          type: 'article',
         }
       : {
-          title: 'Blog | Talisson Souza',
-          description: 'Artigos sobre desenvolvimento web, tecnologia e soluções digitais.',
+          title: 'Se a Gente Consegue Imaginar, É Porque É Possível | Talisson Souza',
+          description: 'Reflexão sobre visão, persistência e empreendedorismo. Toda grande empresa começou com alguém imaginando algo que ainda não existia.',
           locale: 'pt_BR',
-          type: 'website',
+          type: 'article',
         };
   }
 

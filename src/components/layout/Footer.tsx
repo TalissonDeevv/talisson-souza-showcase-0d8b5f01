@@ -32,7 +32,7 @@ const Footer = () => {
     { name: "Sobre", path: "/sobre" },
     { name: t.nav.projects, path: "/projetos" },
     { name: t.nav.services, path: "/servicos" },
-    { name: t.nav.blog, path: "/blog" },
+    
     { name: "Artigos", path: "/artigos" },
     { name: "Contato", path: "/contato" },
   ] : [
@@ -40,7 +40,7 @@ const Footer = () => {
     { name: "About", path: "/en-us/about" },
     { name: t.nav.projects, path: "/en-us/projects" },
     { name: t.nav.services, path: "/en-us/services" },
-    { name: t.nav.blog, path: "/en-us/blog" },
+    
     { name: "Articles", path: "/en-us/articles" },
     { name: "Contact", path: "/en-us/contact" },
   ];

@@ -16,6 +16,20 @@ const Articles = () => {
   const articles = [
     {
       title: getText(language,
+        'Se a Gente Consegue Imaginar, É Porque É Possível',
+        'If We Can Imagine It, It\'s Because It\'s Possible'
+      ),
+      excerpt: getText(language,
+        'Reflexão sobre visão, persistência e empreendedorismo. Toda grande empresa começou com alguém imaginando algo que ainda não existia.',
+        'A reflection on vision, persistence and entrepreneurship. Every great company started with someone imagining something that didn\'t exist yet.'
+      ),
+      date: getText(language, '10 de Fevereiro, 2025', 'February 10, 2025'),
+      readTime: '8 min',
+      path: language === 'en' ? '/en-us/articles/vision-and-persistence' : '/artigos/visao-e-persistencia',
+      tags: [getText(language, 'Empreendedorismo', 'Entrepreneurship'), getText(language, 'Visão', 'Vision'), getText(language, 'Persistência', 'Persistence')],
+    },
+    {
+      title: getText(language,
         'Guia de Maturidade, Gestão e Segurança para Projetos de Bots no Discord',
         'Maturity, Management & Security Guide for Discord Bot Projects'
       ),
@@ -26,7 +40,7 @@ const Articles = () => {
       date: getText(language, '7 de Fevereiro, 2025', 'February 7, 2025'),
       readTime: '25 min',
       path: language === 'en' ? '/en-us/articles/discord-bots' : '/artigos/bots-discord',
-      tags: ['Discord', 'Security', 'Management'],
+      tags: ['Discord', getText(language, 'Segurança', 'Security'), getText(language, 'Gestão', 'Management')],
     },
   ];
 

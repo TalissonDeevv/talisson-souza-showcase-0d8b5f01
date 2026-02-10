@@ -63,7 +63,7 @@ const Index = () => {
     { name: 'Firebase', icon: SiFirebase },
   ];
   return (
-    <Layout withPadding={false}>
+    <Layout withPadding={false} showDiscordPopup={true}>
       <SEO 
         title={getText(language, 'Talisson Souza | Desenvolvedor Full Stack & CEO', 'Talisson Souza | Full Stack Developer & CEO')}
         description={getText(language, 'Desenvolvedor Full Stack com mais de 8 anos de experiência. CEO da Cheetah Network, especialista em sistemas web sob medida, APIs, React, Node.js e soluções digitais para empresas.', 'Full Stack Developer with over 8 years of experience. CEO of Cheetah Network, specialist in custom web systems, APIs, React, Node.js and digital solutions for businesses.')}
@@ -734,112 +734,7 @@ const Index = () => {
         </div>
       </ParallaxSection>
 
-      {/* Blog Preview - Premium Editorial Cards */}
-      <ParallaxSection 
-        className="py-20 lg:py-24"
-        speed={0.1}
-        backgroundElement={
-          <>
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />
-          </>
-        }
-      >
-        
-        <div className="container mx-auto px-6 lg:px-8 relative">
-          <ScrollReveal>
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
-              <div className="max-w-xl">
-                <motion.span 
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
-                >
-                  {getText(language, 'Artigos', 'Articles')}
-                </motion.span>
-                <h2 className="font-serif text-3xl lg:text-5xl text-foreground mb-6 leading-tight">
-                  {t.blog.title}
-                </h2>
-                <p className="text-base text-muted-foreground leading-relaxed">
-                  {t.blog.subtitle}
-                </p>
-              </div>
-              <Link 
-                to={language === 'en' ? '/en-us/blog' : '/blog'} 
-                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground self-start lg:self-auto"
-              >
-                <span className="relative">
-                  {t.blog.viewAll}
-                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/30 group-hover:bg-foreground transition-colors duration-300" />
-                  <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
-                </span>
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
-              </Link>
-            </div>
-          </ScrollReveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {[{
-              title: getText(language, 'Desenvolvimento Full Stack', 'Full Stack Development'),
-              excerpt: getText(language, 'Explore as melhores práticas e tendências no desenvolvimento web moderno.', 'Explore best practices and trends in modern web development.'),
-              category: getText(language, 'Desenvolvimento', 'Development'),
-              readTime: '5 min'
-            }, {
-              title: getText(language, 'Automação Web', 'Web Automation'),
-              excerpt: getText(language, 'Aprenda como automatizar processos e aumentar a produtividade.', 'Learn how to automate processes and increase productivity.'),
-              category: getText(language, 'Automação', 'Automation'),
-              readTime: '4 min'
-            }, {
-              title: getText(language, 'Soluções Cloud', 'Cloud Solutions'),
-              excerpt: getText(language, 'Descubra as vantagens da computação em nuvem para seu negócio.', 'Discover the advantages of cloud computing for your business.'),
-              category: 'Cloud',
-              readTime: '6 min'
-            }].map((post, index) => (
-              <ScrollReveal key={post.title} delay={index * 0.15}>
-                <motion.div
-                  whileHover={{ y: -8 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <GlassCard className="p-8 h-full group hover:border-foreground/20 transition-all duration-500">
-                    {/* Category and read time */}
-                    <div className="flex items-center gap-4 mb-6">
-                      <motion.span
-                        whileHover={{ scale: 1.05 }}
-                        className="text-xs px-3 py-1.5 rounded-full border border-border/50 bg-card/50 text-muted-foreground"
-                      >
-                        {post.category}
-                      </motion.span>
-                      <span className="text-xs text-muted-foreground/60">{post.readTime} {getText(language, 'de leitura', 'read')}</span>
-                    </div>
-                    
-                    <h3 className="font-serif text-2xl text-foreground mb-4 group-hover:text-gradient transition-all duration-500 leading-tight">
-                      {post.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed mb-6">
-                      {post.excerpt}
-                    </p>
-                    
-                    {/* Read more link */}
-                    <Link 
-                      to={language === 'en' ? '/en-us/blog' : '/blog'}
-                      className="group/link inline-flex items-center gap-2 text-sm font-medium text-foreground"
-                    >
-                      <span className="relative">
-                        {getText(language, 'Ler artigo', 'Read article')}
-                        <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover/link:w-full transition-all duration-300" />
-                      </span>
-                      <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
-                    </Link>
-                  </GlassCard>
-                </motion.div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </ParallaxSection>
-
-      {/* Philosophy Section */}
       <section className="py-16 lg:py-20 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
@@ -1019,8 +914,44 @@ const Index = () => {
             </div>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.1}>
-            <div className="max-w-3xl mx-auto">
+          <div className="max-w-3xl mx-auto space-y-6">
+            <ScrollReveal delay={0.1}>
+              <Link to={language === 'en' ? '/en-us/articles/vision-and-persistence' : '/artigos/visao-e-persistencia'}>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <GlassCard className="p-8 group hover:border-foreground/20 transition-all duration-500">
+                    <div className="flex items-center gap-3 mb-4 text-xs text-muted-foreground">
+                      <span>{getText(language, '10 de Fevereiro, 2025', 'February 10, 2025')}</span>
+                      <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
+                      <span>8 min {getText(language, 'de leitura', 'read')}</span>
+                    </div>
+                    <h3 className="font-serif text-xl lg:text-2xl text-foreground mb-3 group-hover:text-gradient transition-all duration-500 leading-tight">
+                      {getText(language,
+                        'Se a Gente Consegue Imaginar, É Porque É Possível',
+                        'If We Can Imagine It, It\'s Because It\'s Possible'
+                      )}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                      {getText(language,
+                        'Reflexão sobre visão, persistência e empreendedorismo.',
+                        'A reflection on vision, persistence and entrepreneurship.'
+                      )}
+                    </p>
+                    <span className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
+                      <span className="relative">
+                        {getText(language, 'Ler artigo', 'Read article')}
+                        <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-300" />
+                      </span>
+                      <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </span>
+                  </GlassCard>
+                </motion.div>
+              </Link>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.15}>
               <Link to={language === 'en' ? '/en-us/articles/discord-bots' : '/artigos/bots-discord'}>
                 <motion.div
                   whileHover={{ y: -4 }}
@@ -1054,8 +985,8 @@ const Index = () => {
                   </GlassCard>
                 </motion.div>
               </Link>
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
+          </div>
         </div>
       </ParallaxSection>
 

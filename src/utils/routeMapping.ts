@@ -8,18 +8,14 @@ export const ptToEnRoutes: Record<string, string> = {
   '/servicos': '/en-us/services',
   '/carreira': '/en-us/career',
   '/contato': '/en-us/contact',
-  '/blog': '/en-us/blog',
+  
   '/livro': '/en-us/book',
   '/como-trabalho': '/en-us/how-i-work',
   '/decisoes-tecnicas': '/en-us/tech-decisions',
   '/acessibilidade': '/en-us/accessibility',
   '/artigos': '/en-us/articles',
   '/artigos/bots-discord': '/en-us/articles/discord-bots',
-  '/blog/bot-discord': '/en-us/blog/discord-bot',
-  '/blog/desenvolvimento-fullstack': '/en-us/blog/fullstack-development',
-  '/blog/solucoes-cloud': '/en-us/blog/cloud-solutions',
-  '/blog/automacao-web': '/en-us/blog/web-automation',
-  '/blog/gestao-projetos': '/en-us/blog/project-management',
+  '/artigos/visao-e-persistencia': '/en-us/articles/vision-and-persistence',
 };
 
 // Reverse mapping: English to Portuguese
