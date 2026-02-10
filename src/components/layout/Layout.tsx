@@ -6,9 +6,10 @@ import DiscordPopup from "@/components/ui/DiscordPopup";
 interface LayoutProps {
   children: ReactNode;
   withPadding?: boolean;
+  showDiscordPopup?: boolean;
 }
 
-const Layout = ({ children, withPadding = true }: LayoutProps) => {
+const Layout = ({ children, withPadding = true, showDiscordPopup = false }: LayoutProps) => {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Navbar />
@@ -19,8 +20,7 @@ const Layout = ({ children, withPadding = true }: LayoutProps) => {
       
       <Footer />
       
-      {/* Discord Popup - appears once per user */}
-      <DiscordPopup />
+      {showDiscordPopup && <DiscordPopup />}
     </div>
   );
 };

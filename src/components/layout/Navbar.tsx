@@ -38,7 +38,7 @@ const Navbar = () => {
     { name: t.nav.services, path: "/servicos" },
     { name: "Livro", path: "/livro" },
     { name: "Artigos", path: "/artigos" },
-    { name: t.nav.blog, path: "/blog" },
+    
     { name: "Contato", path: "/contato" },
   ] : [
     { name: t.nav.home, path: "/en-us" },
@@ -48,7 +48,7 @@ const Navbar = () => {
     { name: t.nav.services, path: "/en-us/services" },
     { name: "Book", path: "/en-us/book" },
     { name: "Articles", path: "/en-us/articles" },
-    { name: t.nav.blog, path: "/en-us/blog" },
+    
     { name: "Contact", path: "/en-us/contact" },
   ];
 

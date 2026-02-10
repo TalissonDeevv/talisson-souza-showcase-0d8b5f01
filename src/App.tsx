@@ -12,21 +12,17 @@ import Projects from "./pages/Projects";
 import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
 import Career from "./pages/Career";
-import Blog from "./pages/Blog";
+
 import Contact from "./pages/Contact";
 import HowIWork from "./pages/HowIWork";
 import TechDecisions from "./pages/TechDecisions";
 import Accessibility from "./pages/Accessibility";
-import BotDiscord from "./pages/blog/BotDiscord";
-import FullstackDevelopment from "./pages/blog/FullstackDevelopment";
-import CloudSolutions from "./pages/blog/CloudSolutions";
-import WebAutomation from "./pages/blog/WebAutomation";
-import ProjectManagement from "./pages/blog/ProjectManagement";
 import ProjectDetail from "./pages/ProjectDetail";
 import Book from "./pages/Book";
 import NotFound from "./pages/NotFound";
 import Articles from "./pages/Articles";
 import DiscordBotsGuide from "./pages/articles/DiscordBotsGuide";
+import VisionAndPersistence from "./pages/articles/VisionAndPersistence";
 
 const queryClient = new QueryClient();
 
@@ -50,17 +46,11 @@ const AppRoutes = () => (
         <Route path="/decisoes-tecnicas" element={<TechDecisions />} />
         <Route path="/acessibilidade" element={<Accessibility />} />
         <Route path="/livro" element={<Book />} />
-        <Route path="/blog" element={<Blog />} />
+        
         <Route path="/artigos" element={<Articles />} />
         <Route path="/artigos/bots-discord" element={<DiscordBotsGuide />} />
+        <Route path="/artigos/visao-e-persistencia" element={<VisionAndPersistence />} />
         
-        {/* Blog posts PT */}
-        <Route path="/blog/bot-discord" element={<BotDiscord />} />
-        <Route path="/blog/desenvolvimento-fullstack" element={<FullstackDevelopment />} />
-        <Route path="/blog/solucoes-cloud" element={<CloudSolutions />} />
-        <Route path="/blog/automacao-web" element={<WebAutomation />} />
-        <Route path="/blog/gestao-projetos" element={<ProjectManagement />} />
-
         {/* ===== EN-US Routes (/en-us prefix) ===== */}
         <Route path="/en-us" element={<Index />} />
         <Route path="/en-us/about" element={<About />} />
@@ -74,17 +64,11 @@ const AppRoutes = () => (
         <Route path="/en-us/tech-decisions" element={<TechDecisions />} />
         <Route path="/en-us/accessibility" element={<Accessibility />} />
         <Route path="/en-us/book" element={<Book />} />
-        <Route path="/en-us/blog" element={<Blog />} />
+        
         <Route path="/en-us/articles" element={<Articles />} />
         <Route path="/en-us/articles/discord-bots" element={<DiscordBotsGuide />} />
+        <Route path="/en-us/articles/vision-and-persistence" element={<VisionAndPersistence />} />
         
-        {/* Blog posts EN */}
-        <Route path="/en-us/blog/discord-bot" element={<BotDiscord />} />
-        <Route path="/en-us/blog/fullstack-development" element={<FullstackDevelopment />} />
-        <Route path="/en-us/blog/cloud-solutions" element={<CloudSolutions />} />
-        <Route path="/en-us/blog/web-automation" element={<WebAutomation />} />
-        <Route path="/en-us/blog/project-management" element={<ProjectManagement />} />
-
         {/* Legacy routes */}
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
@@ -93,11 +77,6 @@ const AppRoutes = () => (
         <Route path="/services/:serviceId" element={<ServiceDetail />} />
         <Route path="/career" element={<Career />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/blog/fullstack-development" element={<FullstackDevelopment />} />
-        <Route path="/blog/cloud-solutions" element={<CloudSolutions />} />
-        <Route path="/blog/web-automation" element={<WebAutomation />} />
-        <Route path="/blog/project-management" element={<ProjectManagement />} />
-        
         {/* 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
