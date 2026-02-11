@@ -124,43 +124,44 @@ const Articles = () => {
         }
       >
         <div className="container mx-auto px-6 lg:px-8 relative">
-          <div className="grid grid-cols-1 gap-6 max-w-4xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {articles.map((article, index) => (
               <ScrollReveal key={article.path} delay={index * 0.1}>
-                <Link to={article.path}>
+                <Link to={article.path} className="block h-full">
                   <motion.div
                     whileHover={{ y: -4 }}
                     transition={{ duration: 0.3 }}
+                    className="h-full"
                   >
-                    <GlassCard className="p-8 lg:p-10 group hover:border-foreground/20 transition-all duration-500">
-                      <div className="flex items-center gap-4 mb-5">
-                        <div className="w-10 h-10 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center">
-                          <FileText className="w-5 h-5 text-foreground/50" />
+                    <GlassCard className="p-6 lg:p-8 group hover:border-foreground/20 transition-all duration-500 h-full flex flex-col">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-9 h-9 rounded-lg border border-border/30 bg-card/50 flex items-center justify-center shrink-0">
+                          <FileText className="w-4 h-4 text-foreground/50" />
                         </div>
-                        <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground">
                           <span>{article.date}</span>
                           <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
                           <span>{article.readTime} {getText(language, 'de leitura', 'read')}</span>
                         </div>
                       </div>
 
-                      <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-4 group-hover:text-gradient transition-all duration-500 leading-tight">
+                      <h2 className="font-serif text-xl lg:text-2xl text-foreground mb-3 group-hover:text-gradient transition-all duration-500 leading-tight">
                         {article.title}
                       </h2>
-                      <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
                         {article.excerpt}
                       </p>
 
                       {/* Tags */}
-                      <div className="flex flex-wrap gap-2 mb-6">
+                      <div className="flex flex-wrap gap-1.5 mb-4">
                         {article.tags.map((tag) => (
-                          <span key={tag} className="text-xs px-2 py-1 rounded-full border border-border/20 bg-background/50 text-muted-foreground/70">
+                          <span key={tag} className="text-[11px] px-2 py-1 rounded-full border border-border/20 bg-background/50 text-muted-foreground/70">
                             {tag}
                           </span>
                         ))}
                       </div>
 
-                      <span className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
+                      <span className="inline-flex items-center gap-2 text-sm font-medium text-foreground mt-auto">
                         <span className="relative">
                           {getText(language, 'Ler artigo', 'Read article')}
                           <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-300" />
