@@ -18,129 +18,53 @@ const VisionAndPersistence = () => {
 
   const sections = language === 'pt' ? [
     {
-      title: '1. Toda grande empresa começou com alguém imaginando algo que ainda não existia',
-      content: `Eu tava observando esses prédios comerciais grandes, bem estruturados, e me bateu uma reflexão. Do nada me veio a imagem da Cheetah Solutions tendo um prédio nesse nível um dia.
-
-E aí eu pensei: isso não vale só pra mim. Vale pra todos nós que temos empresa, projeto, sonho, ideia.
-
-Às vezes a gente desanima, pensa em desistir, acha que tá andando devagar demais. Mas toda empresa grande começou exatamente assim: com alguém imaginando algo que ainda não existia.
-
-Quis mandar essa mensagem só pra lembrar vocês que não desistam dos objetivos de vocês. Continuem, mesmo cansados, mesmo sem ver resultado agora.
-
-Se a gente consegue imaginar, é porque é possível. Uma hora a gente chega lá.`
+      title: 'O prédio que ainda não existe',
+      content: `Outro dia eu estava passando por uma região comercial da cidade, observando aqueles prédios corporativos enormes, bem estruturados, com fachadas que transmitem solidez e presença. E no meio desse percurso, quase sem querer, me veio uma imagem à cabeça: a Cheetah Solutions num lugar assim, com um andar inteiro, uma equipe consolidada, projetos de impacto rodando em paralelo. Não foi um delírio nem um momento de euforia. Foi algo mais silencioso, mais profundo. Uma visão. E o que me chamou atenção não foi a imagem em si, mas o fato de que ela pareceu possível. Não fácil, não próxima, mas possível. E aí eu percebi que esse sentimento não é exclusivo meu. Qualquer pessoa que empreende, que constrói algo do zero, que aposta numa ideia antes de ter qualquer validação externa, já sentiu isso em algum momento. A diferença entre quem segue e quem para está justamente na forma como cada um lida com essa visão quando o dia a dia aperta.`
     },
     {
-      title: '2. A distância entre o sonho e a realidade é o tempo e a consistência',
-      content: `Muita gente olha pra uma empresa consolidada e pensa que foi da noite pro dia. Mas a verdade é que por trás de cada marca forte existe uma história de noites mal dormidas, decisões difíceis, momentos de dúvida e muita insistência.
-
-O que separa quem consegue de quem desiste não é talento, é persistência. É acordar todo dia e escolher continuar, mesmo quando ninguém tá vendo, mesmo quando os números ainda não fazem sentido.
-
-A Cheetah Solutions não nasceu grande. Nasceu de uma ideia, de um computador, de muita vontade de fazer diferente. E cada passo dado, por menor que parecesse, construiu o caminho até aqui.`
+      title: 'A ilusão do sucesso repentino',
+      content: `Existe uma narrativa muito comum, especialmente nas redes sociais, de que empresas de sucesso surgiram da noite para o dia. Alguém postou um vídeo, viralizou, e de repente está faturando milhões. Essa narrativa é perigosa porque cria uma expectativa completamente desconectada da realidade. O que não aparece nos posts são os anos de tentativa, os meses sem faturamento, as noites em que o fundador se perguntou se estava no caminho certo, as decisões difíceis tomadas com informação incompleta e sob pressão. A Cheetah Solutions, por exemplo, não nasceu como empresa. Nasceu como vontade. Nasceu de um computador, de madrugadas escrevendo código, de projetos que não deram certo e de lições que só o erro ensina. Cada pequeno passo, por mais invisível que parecesse na época, foi construindo algo. E é exatamente essa construção silenciosa que separa quem empreende de verdade de quem apenas fantasia sobre empreender.`
     },
     {
-      title: '3. Desistir é a única forma garantida de não chegar lá',
-      content: `Quando você tá no meio do processo, parece que nada tá funcionando. Parece que os outros tão na frente, que você tá atrasado, que não vai dar certo. Mas isso é parte do caminho.
-
-Os momentos mais difíceis são justamente os que mais ensinam. Cada problema resolvido te prepara pro próximo nível. Cada "não" que você recebe te fortalece pra quando o "sim" vier.
-
-Desistir é a única forma garantida de não chegar lá. Enquanto você tiver tentando, existe chance. E chance é tudo que a gente precisa.`
+      title: 'Persistência não é romantismo',
+      content: `É comum ouvir que "persistência é a chave do sucesso", como se fosse um mantra mágico que resolve qualquer problema. Mas persistência, na prática, é muito menos glamourosa do que parece. Persistir é abrir o computador na segunda-feira sabendo que a semana vai ser difícil. É responder e-mails que não vão gerar retorno imediato. É investir tempo em algo que ainda não paga as contas. É ouvir "não" repetidamente e continuar ajustando a rota sem perder a direção. Quando você está no meio do processo, parece que nada está funcionando. Parece que os outros estão na frente, que você está atrasado, que não vai dar certo. Mas essa sensação é parte do caminho, não o sinal para parar. Os momentos mais difíceis são justamente os que mais ensinam, porque cada problema resolvido te prepara para o próximo nível de complexidade. Desistir é a única forma garantida de não chegar lá. Enquanto você estiver tentando, existe chance. E chance é tudo que qualquer empreendedor precisa.`
     },
     {
-      title: '4. Cerque-se de pessoas que entendem a jornada',
-      content: `Uma das coisas mais importantes no empreendedorismo é o ambiente. Se você tá cercado de pessoas que não entendem o que você tá construindo, que duvidam, que desmotivam, vai ser muito mais difícil continuar.
-
-Procure pessoas que estão na mesma caminhada. Que entendem o sacrifício, que celebram as pequenas vitórias, que te puxam pra cima quando você quer desistir.
-
-Comunidade importa. Networking importa. Não como algo superficial, mas como troca genuína entre pessoas que acreditam no que estão fazendo.`
+      title: 'O ambiente define o ritmo',
+      content: `Uma coisa que aprendi ao longo dos últimos anos é que o ambiente em que você está inserido influencia diretamente a sua capacidade de continuar. Se você está cercado de pessoas que não entendem o que você está construindo, que duvidam das suas escolhas, que minimizam seu esforço ou que simplesmente não compartilham da mesma mentalidade, o peso de cada dia fica desproporcional. Por outro lado, quando você encontra pessoas que estão na mesma caminhada, que entendem o sacrifício envolvido, que celebram as pequenas vitórias e que te puxam pra cima quando o cansaço bate, tudo muda. Comunidade importa. Networking importa. Não como algo superficial ou transacional, mas como troca genuína entre pessoas que acreditam no que estão fazendo e que sabem que construir algo relevante exige tempo, paciência e consistência.`
     },
     {
-      title: '5. O progresso nem sempre é visível, mas está acontecendo',
-      content: `Tem dias que você trabalha 12 horas e parece que nada mudou. Tem semanas que o faturamento não sai do lugar. Tem meses que você se pergunta se valeu a pena.
-
-Mas o progresso nem sempre é visível no momento em que acontece. Cada linha de código, cada reunião, cada decisão tomada com responsabilidade está construindo algo maior do que você consegue ver agora.
-
-Plante as sementes certas, regue com consistência, e os resultados vão aparecer. Não no tempo que você quer, mas no tempo certo.`
+      title: 'A visão como combustível',
+      content: `Medo de falhar, medo de julgamento, medo de investir e perder, medo de não ser bom o suficiente. Todo empreendedor lida com isso, independentemente do estágio em que está. A diferença é que quem vai longe não deixa o medo tomar as decisões. A visão precisa ser maior que o medo. Quando você tem clareza do que quer construir, quando entende por que está fazendo o que faz, o medo deixa de ser um obstáculo e passa a ser combustível. Ele te mantém alerta, te obriga a ser melhor, te impede de ficar confortável demais. E talvez esse seja o ponto central de tudo: empreender não é sobre ausência de medo, é sobre agir apesar dele. Tem dias que você trabalha doze horas e parece que nada mudou. Tem semanas que o faturamento não sai do lugar. Tem meses que você se pergunta se valeu a pena. Mas o progresso nem sempre é visível no momento em que acontece. Cada linha de código, cada reunião, cada decisão tomada com responsabilidade está construindo algo maior do que você consegue ver agora. Plante as sementes certas, regue com consistência, e os resultados aparecem. Não no tempo que você quer, mas no tempo certo.`
     },
     {
-      title: '6. A visão precisa ser maior que o medo',
-      content: `Medo de falhar, medo de julgamento, medo de investir e perder, medo de não ser bom o suficiente. Todo empreendedor lida com isso. A diferença é que quem vai longe não deixa o medo decidir por ele.
-
-A visão precisa ser maior que o medo. Quando você tem clareza do que quer construir, quando você sabe por que está fazendo o que faz, o medo vira combustível, não obstáculo.
-
-Não estou dizendo que é fácil. Estou dizendo que é possível. E que vale a pena cada segundo de luta.`
-    },
-    {
-      title: '7. Construa um legado, não apenas um negócio',
-      content: `No final das contas, o que fica não é quanto dinheiro você fez ou quantos funcionários você teve. O que fica é o impacto que você gerou, as pessoas que você ajudou, a diferença que você fez no mercado.
-
-Construa algo que você tenha orgulho de assinar. Algo que quando alguém perguntar "quem fez isso?", você possa levantar a mão sem hesitar.
-
-Empreender é sobre deixar o mundo melhor do que você encontrou. Uma empresa de cada vez, um projeto de cada vez, um dia de cada vez.
-
-Se a gente consegue imaginar, é porque é possível. Uma hora a gente chega lá.`
+      title: 'Legado, não apenas negócio',
+      content: `No final das contas, o que fica não é quanto dinheiro você fez ou quantos funcionários teve. O que fica é o impacto que você gerou, as pessoas que ajudou a crescer, a diferença que fez no mercado e na vida de quem cruzou o seu caminho. Construa algo que você tenha orgulho de assinar. Algo que, quando alguém perguntar "quem fez isso?", você possa levantar a mão sem hesitar. Empreender é, no fundo, sobre deixar o mundo um pouco melhor do que você encontrou. Uma empresa de cada vez, um projeto de cada vez, um dia de cada vez. Se a gente consegue imaginar, é porque é possível. E se é possível, a única variável que falta é o tempo. Uma hora a gente chega lá.`
     },
   ] : [
     {
-      title: '1. Every great company started with someone imagining something that didn\'t exist yet',
-      content: `I was observing these large commercial buildings, well structured, and it hit me with a reflection. Out of nowhere, the image of Cheetah Solutions having a building at that level one day came to my mind.
-
-And then I thought: this isn't just for me. It's for all of us who have a company, a project, a dream, an idea.
-
-Sometimes we get discouraged, think about giving up, feel like we're moving too slowly. But every big company started exactly like this: with someone imagining something that didn't exist yet.
-
-I wanted to send this message just to remind you not to give up on your goals. Keep going, even when tired, even without seeing results now.
-
-If we can imagine it, it's because it's possible. We'll get there eventually.`
+      title: 'The building that doesn\'t exist yet',
+      content: `The other day I was walking through a commercial district, observing those enormous corporate buildings, well-structured, with facades that convey solidity and presence. And somewhere along the way, almost involuntarily, an image came to mind: Cheetah Solutions in a place like that, with an entire floor, a consolidated team, impactful projects running in parallel. It wasn't a delusion or a moment of euphoria. It was something quieter, deeper. A vision. What struck me wasn't the image itself, but the fact that it felt possible. Not easy, not close, but possible. And then I realized that this feeling isn't exclusive to me. Anyone who builds something from scratch, who bets on an idea before having any external validation, has felt this at some point. The difference between those who keep going and those who stop lies precisely in how each person handles that vision when daily life gets tough.`
     },
     {
-      title: '2. The distance between the dream and reality is time and consistency',
-      content: `Many people look at a consolidated company and think it happened overnight. But the truth is that behind every strong brand there's a story of sleepless nights, difficult decisions, moments of doubt, and a lot of persistence.
-
-What separates those who succeed from those who give up isn't talent, it's persistence. It's waking up every day and choosing to continue, even when nobody's watching, even when the numbers still don't make sense.
-
-Cheetah Solutions wasn't born big. It was born from an idea, a computer, and a lot of desire to do things differently. And every step taken, no matter how small it seemed, built the path to where we are today.`
+      title: 'The illusion of overnight success',
+      content: `There's a very common narrative, especially on social media, that successful companies emerged overnight. Someone posted a video, it went viral, and suddenly they're making millions. This narrative is dangerous because it creates expectations completely disconnected from reality. What doesn't show up in the posts are the years of trying, the months without revenue, the nights when the founder wondered if they were on the right path, the difficult decisions made with incomplete information and under pressure. Cheetah Solutions, for example, wasn't born as a company. It was born as desire. It came from a computer, from late nights writing code, from projects that didn't work out and lessons that only failure teaches. Every small step, no matter how invisible it seemed at the time, was building something. And it's precisely this silent construction that separates those who truly build from those who merely fantasize about building.`
     },
     {
-      title: '3. Giving up is the only guaranteed way to not get there',
-      content: `When you're in the middle of the process, it feels like nothing is working. It feels like others are ahead, that you're behind, that it won't work out. But that's part of the journey.
-
-The hardest moments are precisely the ones that teach the most. Every problem solved prepares you for the next level. Every "no" you receive strengthens you for when the "yes" comes.
-
-Giving up is the only guaranteed way to not get there. As long as you're trying, there's a chance. And a chance is all we need.`
+      title: 'Persistence isn\'t romanticism',
+      content: `It's common to hear that "persistence is the key to success," as if it were a magic mantra that solves everything. But persistence, in practice, is far less glamorous than it sounds. Persisting means opening your computer on Monday knowing the week will be tough. It means answering emails that won't generate immediate returns. It means investing time in something that doesn't yet pay the bills. It means hearing "no" repeatedly and continuing to adjust course without losing direction. When you're in the middle of the process, it feels like nothing is working. It feels like others are ahead, that you're behind, that it won't work out. But that feeling is part of the path, not the signal to stop. The hardest moments are precisely the ones that teach the most, because every problem solved prepares you for the next level of complexity. Giving up is the only guaranteed way to not get there. As long as you're trying, there's a chance. And a chance is all any entrepreneur needs.`
     },
     {
-      title: '4. Surround yourself with people who understand the journey',
-      content: `One of the most important things in entrepreneurship is the environment. If you're surrounded by people who don't understand what you're building, who doubt, who demotivate, it will be much harder to continue.
-
-Look for people who are on the same path. Who understand the sacrifice, who celebrate small victories, who pull you up when you want to give up.
-
-Community matters. Networking matters. Not as something superficial, but as genuine exchange between people who believe in what they're doing.`
+      title: 'The environment sets the pace',
+      content: `One thing I've learned over the past few years is that the environment you're in directly influences your ability to keep going. If you're surrounded by people who don't understand what you're building, who doubt your choices, who minimize your effort or who simply don't share the same mindset, the weight of each day becomes disproportionate. On the other hand, when you find people who are on the same journey, who understand the sacrifice involved, who celebrate small victories and pull you up when exhaustion hits, everything changes. Community matters. Networking matters. Not as something superficial or transactional, but as genuine exchange between people who believe in what they're doing and who know that building something relevant requires time, patience, and consistency.`
     },
     {
-      title: '5. Progress isn\'t always visible, but it\'s happening',
-      content: `There are days when you work 12 hours and it seems like nothing changed. There are weeks when revenue doesn't budge. There are months when you wonder if it was worth it.
-
-But progress isn't always visible at the moment it happens. Every line of code, every meeting, every decision made with responsibility is building something bigger than you can see right now.
-
-Plant the right seeds, water with consistency, and the results will come. Not in the time you want, but at the right time.`
+      title: 'Vision as fuel',
+      content: `Fear of failing, fear of judgment, fear of investing and losing, fear of not being good enough. Every entrepreneur deals with this, regardless of the stage they're at. The difference is that those who go far don't let fear make the decisions. The vision needs to be bigger than the fear. When you have clarity about what you want to build, when you understand why you're doing what you do, fear stops being an obstacle and becomes fuel. It keeps you alert, forces you to be better, prevents you from getting too comfortable. And perhaps that's the central point of everything: entrepreneurship isn't about the absence of fear, it's about acting despite it. There are days when you work twelve hours and it seems like nothing changed. There are weeks when revenue doesn't budge. There are months when you wonder if it was worth it. But progress isn't always visible at the moment it happens. Every line of code, every meeting, every decision made with responsibility is building something bigger than you can see right now. Plant the right seeds, water with consistency, and the results will come. Not in the time you want, but at the right time.`
     },
     {
-      title: '6. The vision needs to be bigger than the fear',
-      content: `Fear of failing, fear of judgment, fear of investing and losing, fear of not being good enough. Every entrepreneur deals with this. The difference is that those who go far don't let fear decide for them.
-
-The vision needs to be bigger than the fear. When you have clarity about what you want to build, when you know why you're doing what you do, fear becomes fuel, not an obstacle.
-
-I'm not saying it's easy. I'm saying it's possible. And that every second of the fight is worth it.`
-    },
-    {
-      title: '7. Build a legacy, not just a business',
-      content: `At the end of the day, what remains isn't how much money you made or how many employees you had. What remains is the impact you generated, the people you helped, the difference you made in the market.
-
-Build something you're proud to sign. Something that when someone asks "who did this?", you can raise your hand without hesitation.
-
-Entrepreneurship is about leaving the world better than you found it. One company at a time, one project at a time, one day at a time.
-
-If we can imagine it, it's because it's possible. We'll get there eventually.`
+      title: 'Legacy, not just business',
+      content: `At the end of the day, what remains isn't how much money you made or how many employees you had. What remains is the impact you generated, the people you helped grow, the difference you made in the market and in the lives of those who crossed your path. Build something you're proud to sign. Something that when someone asks "who did this?", you can raise your hand without hesitation. Entrepreneurship is, at its core, about leaving the world a little better than you found it. One company at a time, one project at a time, one day at a time. If we can imagine it, it's because it's possible. And if it's possible, the only variable left is time. We'll get there eventually.`
     },
   ];
 
