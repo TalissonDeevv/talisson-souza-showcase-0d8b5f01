@@ -23,6 +23,7 @@ import NotFound from "./pages/NotFound";
 import Articles from "./pages/Articles";
 import DiscordBotsGuide from "./pages/articles/DiscordBotsGuide";
 import VisionAndPersistence from "./pages/articles/VisionAndPersistence";
+import INPIGuide from "./pages/articles/INPIGuide";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const AppRoutes = () => (
         <Route path="/artigos" element={<Articles />} />
         <Route path="/artigos/bots-discord" element={<DiscordBotsGuide />} />
         <Route path="/artigos/visao-e-persistencia" element={<VisionAndPersistence />} />
+        <Route path="/artigos/inpi" element={<INPIGuide />} />
         
         {/* ===== EN-US Routes (/en-us prefix) ===== */}
         <Route path="/en-us" element={<Index />} />
@@ -68,6 +70,7 @@ const AppRoutes = () => (
         <Route path="/en-us/articles" element={<Articles />} />
         <Route path="/en-us/articles/discord-bots" element={<DiscordBotsGuide />} />
         <Route path="/en-us/articles/vision-and-persistence" element={<VisionAndPersistence />} />
+        <Route path="/en-us/articles/inpi" element={<INPIGuide />} />
         
         {/* Legacy routes */}
         <Route path="/about" element={<About />} />
