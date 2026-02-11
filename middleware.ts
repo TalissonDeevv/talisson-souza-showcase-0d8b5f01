@@ -1,4 +1,4 @@
-import { next } from '@vercel/edge';
+// Vercel Edge Middleware — no external imports needed
 
 const CRAWLER_USER_AGENTS = [
   'facebookexternalhit',
@@ -191,6 +191,23 @@ function getMetaForPath(pathname: string): PageMeta {
         };
   }
 
+  // INPI article
+  if (pathname === '/artigos/inpi' || pathname === '/en-us/articles/inpi') {
+    return isEnglish
+      ? {
+          title: 'How to Register a Trademark at INPI | Talisson Souza',
+          description: 'Complete guide on how to register a trademark at INPI in Brazil. Step by step, costs, deadlines and common mistakes for entrepreneurs and businesses.',
+          locale: 'en_US',
+          type: 'article',
+        }
+      : {
+          title: 'Como Registrar uma Marca no INPI | Talisson Souza',
+          description: 'Guia completo sobre como registrar uma marca no INPI. Passo a passo, custos, prazos e erros comuns para empreendedores e empresas.',
+          locale: 'pt_BR',
+          type: 'article',
+        };
+  }
+
   // Book
   if (pathname === '/livro' || pathname === '/en-us/book') {
     return isEnglish
@@ -275,7 +292,7 @@ export default function middleware(request: Request) {
   );
 
   if (!isCrawler) {
-    return next();
+    return;
   }
 
   const url = new URL(request.url);

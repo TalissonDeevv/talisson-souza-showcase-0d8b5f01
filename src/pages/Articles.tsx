@@ -16,6 +16,20 @@ const Articles = () => {
   const articles = [
     {
       title: getText(language,
+        'Como Registrar uma Marca no INPI',
+        'How to Register a Trademark at INPI'
+      ),
+      excerpt: getText(language,
+        'Guia completo e didático sobre o processo de registro de marca no INPI para empreendedores, freelancers, startups e donos de pequenas empresas no Brasil.',
+        'A complete and didactic guide on the trademark registration process at INPI for entrepreneurs, freelancers, startups, and small business owners in Brazil.'
+      ),
+      date: getText(language, '11 de Fevereiro, 2025', 'February 11, 2025'),
+      readTime: '20 min',
+      path: language === 'en' ? '/en-us/articles/inpi' : '/artigos/inpi',
+      tags: [getText(language, 'Registro de Marca', 'Trademark'), 'INPI', getText(language, 'Empreendedorismo', 'Entrepreneurship')],
+    },
+    {
+      title: getText(language,
         'Se a Gente Consegue Imaginar, É Porque É Possível',
         'If We Can Imagine It, It\'s Because It\'s Possible'
       ),

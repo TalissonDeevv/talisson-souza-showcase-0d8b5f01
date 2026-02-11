@@ -16,6 +16,7 @@ export const ptToEnRoutes: Record<string, string> = {
   '/artigos': '/en-us/articles',
   '/artigos/bots-discord': '/en-us/articles/discord-bots',
   '/artigos/visao-e-persistencia': '/en-us/articles/vision-and-persistence',
+  '/artigos/inpi': '/en-us/articles/inpi',
 };
 
 // Reverse mapping: English to Portuguese
