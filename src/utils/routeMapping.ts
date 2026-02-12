@@ -17,6 +17,12 @@ export const ptToEnRoutes: Record<string, string> = {
   '/artigos/bots-discord': '/en-us/articles/discord-bots',
   '/artigos/visao-e-persistencia': '/en-us/articles/vision-and-persistence',
   '/artigos/inpi': '/en-us/articles/inpi',
+  '/artigos/bot-profissional-discord': '/en-us/articles/professional-discord-bot',
+  '/artigos/aluguel-bots-discord': '/en-us/articles/discord-bot-rental',
+  '/artigos/monetizar-bots': '/en-us/articles/monetizing-bots',
+  '/artigos/nicho-bot-discord': '/en-us/articles/discord-bot-niche',
+  '/artigos/desenvolvimento-full-stack': '/en-us/articles/full-stack-development',
+  '/artigos/custo-desenvolvimento-sistema': '/en-us/articles/system-development-cost',
 };
 
 // Reverse mapping: English to Portuguese

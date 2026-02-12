@@ -15,10 +15,7 @@ const Articles = () => {
 
   const articles = [
     {
-      title: getText(language,
-        'Como Registrar uma Marca no INPI',
-        'How to Register a Trademark at INPI'
-      ),
+      title: getText(language, 'Como Registrar uma Marca no INPI', 'How to Register a Trademark at INPI'),
       excerpt: getText(language,
         'Guia completo e didático sobre o processo de registro de marca no INPI para empreendedores, freelancers, startups e donos de pequenas empresas no Brasil.',
         'A complete and didactic guide on the trademark registration process at INPI for entrepreneurs, freelancers, startups, and small business owners in Brazil.'
@@ -27,6 +24,72 @@ const Articles = () => {
       readTime: '20 min',
       path: language === 'en' ? '/en-us/articles/inpi' : '/artigos/inpi',
       tags: [getText(language, 'Registro de Marca', 'Trademark'), 'INPI', getText(language, 'Empreendedorismo', 'Entrepreneurship')],
+    },
+    {
+      title: getText(language, 'Como Criar um Bot Profissional no Discord', 'How to Create a Professional Discord Bot'),
+      excerpt: getText(language,
+        'Guia estratégico sobre como criar um bot profissional no Discord com foco em planejamento, qualidade, postura e visão de longo prazo.',
+        'Strategic guide on how to create a professional Discord bot focusing on planning, quality, conduct, and long-term vision.'
+      ),
+      date: getText(language, '12 de Fevereiro, 2025', 'February 12, 2025'),
+      readTime: '15 min',
+      path: language === 'en' ? '/en-us/articles/professional-discord-bot' : '/artigos/bot-profissional-discord',
+      tags: ['Discord', getText(language, 'Bots', 'Bots'), getText(language, 'Gestão', 'Management')],
+    },
+    {
+      title: getText(language, 'Por que Alugar Bots no Discord Está Cada Vez Mais Nichado', 'Why Discord Bot Rental Is Becoming Increasingly Niche'),
+      excerpt: getText(language,
+        'Análise estratégica sobre o mercado de aluguel de bots no Discord, saturação, falta de originalidade e os caminhos para construir projetos genuínos.',
+        'Strategic analysis on the Discord bot rental market, saturation, lack of originality, and paths to building genuine projects.'
+      ),
+      date: getText(language, '12 de Fevereiro, 2025', 'February 12, 2025'),
+      readTime: '12 min',
+      path: language === 'en' ? '/en-us/articles/discord-bot-rental' : '/artigos/aluguel-bots-discord',
+      tags: ['Discord', getText(language, 'Mercado', 'Market'), getText(language, 'Estratégia', 'Strategy')],
+    },
+    {
+      title: getText(language, 'Como Monetizar Bots no Discord Corretamente', 'How to Monetize Discord Bots Correctly'),
+      excerpt: getText(language,
+        'Guia estratégico sobre como monetizar bots no Discord de forma profissional, sustentável e transparente.',
+        'Strategic guide on how to monetize Discord bots professionally, sustainably, and transparently.'
+      ),
+      date: getText(language, '12 de Fevereiro, 2025', 'February 12, 2025'),
+      readTime: '14 min',
+      path: language === 'en' ? '/en-us/articles/monetizing-bots' : '/artigos/monetizar-bots',
+      tags: ['Discord', getText(language, 'Monetização', 'Monetization'), getText(language, 'Negócios', 'Business')],
+    },
+    {
+      title: getText(language, 'Como Criar um Nicho Para Seu Projeto de Bot no Discord', 'How to Create a Niche for Your Discord Bot Project'),
+      excerpt: getText(language,
+        'Guia estratégico sobre como encontrar e construir um nicho para projetos de bots no Discord, com foco em diferenciação e posicionamento.',
+        'Strategic guide on finding and building a niche for Discord bot projects, focusing on differentiation and positioning.'
+      ),
+      date: getText(language, '12 de Fevereiro, 2025', 'February 12, 2025'),
+      readTime: '13 min',
+      path: language === 'en' ? '/en-us/articles/discord-bot-niche' : '/artigos/nicho-bot-discord',
+      tags: ['Discord', getText(language, 'Nicho', 'Niche'), getText(language, 'Posicionamento', 'Positioning')],
+    },
+    {
+      title: getText(language, 'O Que é Desenvolvimento Full Stack?', 'What is Full Stack Development?'),
+      excerpt: getText(language,
+        'Entenda o que realmente significa ser um desenvolvedor full stack, as competências envolvidas e o valor estratégico desse perfil.',
+        'Understand what it really means to be a full stack developer, the competencies involved, and the strategic value of this profile.'
+      ),
+      date: getText(language, '12 de Fevereiro, 2025', 'February 12, 2025'),
+      readTime: '12 min',
+      path: language === 'en' ? '/en-us/articles/full-stack-development' : '/artigos/desenvolvimento-full-stack',
+      tags: ['Full Stack', getText(language, 'Carreira', 'Career'), getText(language, 'Tecnologia', 'Technology')],
+    },
+    {
+      title: getText(language, 'Quanto Custa Desenvolver um Sistema?', 'How Much Does It Cost to Develop a System?'),
+      excerpt: getText(language,
+        'Entenda os fatores que definem o custo de desenvolvimento de um sistema e como planejar seu investimento em tecnologia.',
+        'Understand the factors that define system development costs and how to plan your technology investment.'
+      ),
+      date: getText(language, '12 de Fevereiro, 2025', 'February 12, 2025'),
+      readTime: '12 min',
+      path: language === 'en' ? '/en-us/articles/system-development-cost' : '/artigos/custo-desenvolvimento-sistema',
+      tags: [getText(language, 'Desenvolvimento', 'Development'), getText(language, 'Custos', 'Costs'), getText(language, 'Estratégia', 'Strategy')],
     },
     {
       title: getText(language,
@@ -48,8 +111,8 @@ const Articles = () => {
         'Maturity, Management & Security Guide for Discord Bot Projects'
       ),
       excerpt: getText(language,
-        'Guia completo sobre maturidade, gestão e segurança em projetos de bots no Discord, abordando boas práticas, permissões, postura profissional e prevenção de falhas graves.',
-        'A comprehensive guide on maturity, management and security in Discord bot projects, covering best practices, permissions, professional conduct and prevention of critical failures.'
+        'Guia completo sobre maturidade, gestão e segurança em projetos de bots no Discord, abordando boas práticas, permissões e postura profissional.',
+        'A comprehensive guide on maturity, management and security in Discord bot projects, covering best practices, permissions and professional conduct.'
       ),
       date: getText(language, '7 de Fevereiro, 2025', 'February 7, 2025'),
       readTime: '25 min',
@@ -126,7 +189,7 @@ const Articles = () => {
         <div className="container mx-auto px-6 lg:px-8 relative">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {articles.map((article, index) => (
-              <ScrollReveal key={article.path} delay={index * 0.1}>
+              <ScrollReveal key={article.path} delay={index * 0.05}>
                 <Link to={article.path} className="block h-full">
                   <motion.div
                     whileHover={{ y: -4 }}

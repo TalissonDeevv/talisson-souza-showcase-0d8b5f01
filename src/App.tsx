@@ -24,6 +24,12 @@ import Articles from "./pages/Articles";
 import DiscordBotsGuide from "./pages/articles/DiscordBotsGuide";
 import VisionAndPersistence from "./pages/articles/VisionAndPersistence";
 import INPIGuide from "./pages/articles/INPIGuide";
+import ProfessionalDiscordBot from "./pages/articles/ProfessionalDiscordBot";
+import DiscordBotRental from "./pages/articles/DiscordBotRental";
+import MonetizingBots from "./pages/articles/MonetizingBots";
+import DiscordBotNiche from "./pages/articles/DiscordBotNiche";
+import WhatIsFullStack from "./pages/articles/WhatIsFullStack";
+import SystemDevelopmentCost from "./pages/articles/SystemDevelopmentCost";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +58,12 @@ const AppRoutes = () => (
         <Route path="/artigos/bots-discord" element={<DiscordBotsGuide />} />
         <Route path="/artigos/visao-e-persistencia" element={<VisionAndPersistence />} />
         <Route path="/artigos/inpi" element={<INPIGuide />} />
+        <Route path="/artigos/bot-profissional-discord" element={<ProfessionalDiscordBot />} />
+        <Route path="/artigos/aluguel-bots-discord" element={<DiscordBotRental />} />
+        <Route path="/artigos/monetizar-bots" element={<MonetizingBots />} />
+        <Route path="/artigos/nicho-bot-discord" element={<DiscordBotNiche />} />
+        <Route path="/artigos/desenvolvimento-full-stack" element={<WhatIsFullStack />} />
+        <Route path="/artigos/custo-desenvolvimento-sistema" element={<SystemDevelopmentCost />} />
         
         {/* ===== EN-US Routes (/en-us prefix) ===== */}
         <Route path="/en-us" element={<Index />} />
@@ -71,6 +83,12 @@ const AppRoutes = () => (
         <Route path="/en-us/articles/discord-bots" element={<DiscordBotsGuide />} />
         <Route path="/en-us/articles/vision-and-persistence" element={<VisionAndPersistence />} />
         <Route path="/en-us/articles/inpi" element={<INPIGuide />} />
+        <Route path="/en-us/articles/professional-discord-bot" element={<ProfessionalDiscordBot />} />
+        <Route path="/en-us/articles/discord-bot-rental" element={<DiscordBotRental />} />
+        <Route path="/en-us/articles/monetizing-bots" element={<MonetizingBots />} />
+        <Route path="/en-us/articles/discord-bot-niche" element={<DiscordBotNiche />} />
+        <Route path="/en-us/articles/full-stack-development" element={<WhatIsFullStack />} />
+        <Route path="/en-us/articles/system-development-cost" element={<SystemDevelopmentCost />} />
         
         {/* Legacy routes */}
         <Route path="/about" element={<About />} />

@@ -194,18 +194,44 @@ function getMetaForPath(pathname: string): PageMeta {
   // INPI article
   if (pathname === '/artigos/inpi' || pathname === '/en-us/articles/inpi') {
     return isEnglish
-      ? {
-          title: 'How to Register a Trademark at INPI | Talisson Souza',
-          description: 'Complete guide on how to register a trademark at INPI in Brazil. Step by step, costs, deadlines and common mistakes for entrepreneurs and businesses.',
-          locale: 'en_US',
-          type: 'article',
-        }
-      : {
-          title: 'Como Registrar uma Marca no INPI | Talisson Souza',
-          description: 'Guia completo sobre como registrar uma marca no INPI. Passo a passo, custos, prazos e erros comuns para empreendedores e empresas.',
-          locale: 'pt_BR',
-          type: 'article',
-        };
+      ? { title: 'How to Register a Trademark at INPI | Talisson Souza', description: 'Complete guide on how to register a trademark at INPI in Brazil. Step by step, costs, deadlines and common mistakes for entrepreneurs and businesses.', locale: 'en_US', type: 'article' }
+      : { title: 'Como Registrar uma Marca no INPI | Talisson Souza', description: 'Guia completo sobre como registrar uma marca no INPI. Passo a passo, custos, prazos e erros comuns para empreendedores e empresas.', locale: 'pt_BR', type: 'article' };
+  }
+
+  if (pathname === '/artigos/bot-profissional-discord' || pathname === '/en-us/articles/professional-discord-bot') {
+    return isEnglish
+      ? { title: 'How to Create a Professional Discord Bot | Talisson Souza', description: 'Strategic guide on how to create a professional Discord bot focusing on planning, quality, conduct, and long-term vision.', locale: 'en_US', type: 'article' }
+      : { title: 'Como Criar um Bot Profissional no Discord | Talisson Souza', description: 'Guia estratégico sobre como criar um bot profissional no Discord com foco em planejamento, qualidade, postura e visão de longo prazo.', locale: 'pt_BR', type: 'article' };
+  }
+
+  if (pathname === '/artigos/aluguel-bots-discord' || pathname === '/en-us/articles/discord-bot-rental') {
+    return isEnglish
+      ? { title: 'Why Discord Bot Rental Is Becoming Increasingly Niche | Talisson Souza', description: 'Strategic analysis on the Discord bot rental market, saturation, lack of originality, and paths to building genuine projects.', locale: 'en_US', type: 'article' }
+      : { title: 'Por que Alugar Bots no Discord Está Cada Vez Mais Nichado | Talisson Souza', description: 'Análise estratégica sobre o mercado de aluguel de bots no Discord, saturação, falta de originalidade e os caminhos para construir projetos genuínos.', locale: 'pt_BR', type: 'article' };
+  }
+
+  if (pathname === '/artigos/monetizar-bots' || pathname === '/en-us/articles/monetizing-bots') {
+    return isEnglish
+      ? { title: 'How to Monetize Discord Bots Correctly | Talisson Souza', description: 'Strategic guide on how to monetize Discord bots professionally, sustainably, and transparently.', locale: 'en_US', type: 'article' }
+      : { title: 'Como Monetizar Bots no Discord Corretamente | Talisson Souza', description: 'Guia estratégico sobre como monetizar bots no Discord de forma profissional, sustentável e transparente.', locale: 'pt_BR', type: 'article' };
+  }
+
+  if (pathname === '/artigos/nicho-bot-discord' || pathname === '/en-us/articles/discord-bot-niche') {
+    return isEnglish
+      ? { title: 'How to Create a Niche for Your Discord Bot Project | Talisson Souza', description: 'Strategic guide on finding and building a niche for Discord bot projects, focusing on differentiation and positioning.', locale: 'en_US', type: 'article' }
+      : { title: 'Como Criar um Nicho Para Seu Projeto de Bot no Discord | Talisson Souza', description: 'Guia estratégico sobre como encontrar e construir um nicho para projetos de bots no Discord.', locale: 'pt_BR', type: 'article' };
+  }
+
+  if (pathname === '/artigos/desenvolvimento-full-stack' || pathname === '/en-us/articles/full-stack-development') {
+    return isEnglish
+      ? { title: 'What is Full Stack Development? | Talisson Souza', description: 'Understand what it really means to be a full stack developer, the competencies involved, and the strategic value of this profile.', locale: 'en_US', type: 'article' }
+      : { title: 'O Que é Desenvolvimento Full Stack? | Talisson Souza', description: 'Entenda o que realmente significa ser um desenvolvedor full stack, as competências envolvidas e o valor estratégico desse perfil.', locale: 'pt_BR', type: 'article' };
+  }
+
+  if (pathname === '/artigos/custo-desenvolvimento-sistema' || pathname === '/en-us/articles/system-development-cost') {
+    return isEnglish
+      ? { title: 'How Much Does It Cost to Develop a System? | Talisson Souza', description: 'Understand the factors that define system development costs and how to plan your technology investment.', locale: 'en_US', type: 'article' }
+      : { title: 'Quanto Custa Desenvolver um Sistema? | Talisson Souza', description: 'Entenda os fatores que definem o custo de desenvolvimento de um sistema e como planejar seu investimento em tecnologia.', locale: 'pt_BR', type: 'article' };
   }
 
   // Book
