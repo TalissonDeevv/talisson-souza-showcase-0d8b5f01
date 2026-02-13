@@ -3,7 +3,7 @@ import { useState, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
-import { Play, Pause, Music } from "lucide-react";
+import { Play, Pause, Music, ArrowUp } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
@@ -24,6 +24,18 @@ const Footer = () => {
     { name: "Services", path: "/en-us/services" },
     { name: "Articles", path: "/en-us/articles" },
     { name: "Contact", path: "/en-us/contact" },
+  ];
+
+  const secondaryLinks = language === 'pt' ? [
+    { name: "Home", path: "/" },
+    { name: "Sobre", path: "/sobre" },
+    { name: "Carreira", path: "/carreira" },
+    { name: "Livro", path: "/livro" },
+  ] : [
+    { name: "Home", path: "/en-us" },
+    { name: "About", path: "/en-us/about" },
+    { name: "Career", path: "/en-us/career" },
+    { name: "Book", path: "/en-us/book" },
   ];
 
   const socialLinks = [
@@ -78,16 +90,29 @@ const Footer = () => {
             </div>
 
             {/* 2 — Navigation */}
-            <div className="flex gap-5 flex-wrap md:justify-center">
-              {navLinks.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.path}
-                  className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-200"
-                >
-                  {item.name}
-                </Link>
-              ))}
+            <div className="flex flex-col gap-2 md:items-center">
+              <div className="flex gap-5 flex-wrap md:justify-center">
+                {navLinks.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.path}
+                    className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-200"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+              <div className="flex gap-5 flex-wrap md:justify-center">
+                {secondaryLinks.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.path}
+                    className="text-xs text-muted-foreground/60 hover:text-foreground transition-colors duration-200"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
             </div>
 
             {/* 3 — Mini Player + Signature */}
@@ -125,6 +150,13 @@ const Footer = () => {
           <p className="text-[10px] text-muted-foreground/40">
             {getText(language, 'Feito com dedicação e muito café ☕', 'Made with dedication and lots of coffee ☕')}
           </p>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="p-1.5 rounded-full border border-border/30 hover:border-border/60 text-muted-foreground/50 hover:text-foreground transition-all duration-200"
+            aria-label="Back to top"
+          >
+            <ArrowUp className="w-3 h-3" />
+          </button>
         </div>
       </div>
     </footer>
