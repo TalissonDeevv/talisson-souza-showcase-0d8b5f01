@@ -23,6 +23,7 @@ export const ptToEnRoutes: Record<string, string> = {
   '/artigos/nicho-bot-discord': '/en-us/articles/discord-bot-niche',
   '/artigos/desenvolvimento-full-stack': '/en-us/articles/full-stack-development',
   '/artigos/custo-desenvolvimento-sistema': '/en-us/articles/system-development-cost',
+  '/artigos/clt-para-freelancer': '/en-us/articles/clt-to-freelancer',
 };
 
 // Reverse mapping: English to Portuguese

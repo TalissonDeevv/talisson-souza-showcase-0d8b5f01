@@ -30,6 +30,7 @@ import MonetizingBots from "./pages/articles/MonetizingBots";
 import DiscordBotNiche from "./pages/articles/DiscordBotNiche";
 import WhatIsFullStack from "./pages/articles/WhatIsFullStack";
 import SystemDevelopmentCost from "./pages/articles/SystemDevelopmentCost";
+import CltToFreelancer from "./pages/articles/CltToFreelancer";
 
 const queryClient = new QueryClient();
 
@@ -64,6 +65,7 @@ const AppRoutes = () => (
         <Route path="/artigos/nicho-bot-discord" element={<DiscordBotNiche />} />
         <Route path="/artigos/desenvolvimento-full-stack" element={<WhatIsFullStack />} />
         <Route path="/artigos/custo-desenvolvimento-sistema" element={<SystemDevelopmentCost />} />
+        <Route path="/artigos/clt-para-freelancer" element={<CltToFreelancer />} />
         
         {/* ===== EN-US Routes (/en-us prefix) ===== */}
         <Route path="/en-us" element={<Index />} />
@@ -89,6 +91,7 @@ const AppRoutes = () => (
         <Route path="/en-us/articles/discord-bot-niche" element={<DiscordBotNiche />} />
         <Route path="/en-us/articles/full-stack-development" element={<WhatIsFullStack />} />
         <Route path="/en-us/articles/system-development-cost" element={<SystemDevelopmentCost />} />
+        <Route path="/en-us/articles/clt-to-freelancer" element={<CltToFreelancer />} />
         
         {/* Legacy routes */}
         <Route path="/about" element={<About />} />

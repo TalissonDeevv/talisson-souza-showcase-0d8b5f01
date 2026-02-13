@@ -234,6 +234,12 @@ function getMetaForPath(pathname: string): PageMeta {
       : { title: 'Quanto Custa Desenvolver um Sistema? | Talisson Souza', description: 'Entenda os fatores que definem o custo de desenvolvimento de um sistema e como planejar seu investimento em tecnologia.', locale: 'pt_BR', type: 'article' };
   }
 
+  if (pathname === '/artigos/clt-para-freelancer' || pathname === '/en-us/articles/clt-to-freelancer') {
+    return isEnglish
+      ? { title: 'From Employee to Freelancer: How to Make the Transition Strategically | Talisson Souza', description: 'Strategic guide for employed developers who want to migrate to the freelance market with positioning, authority, and professional planning.', locale: 'en_US', type: 'article' }
+      : { title: 'De CLT a Freelancer: Como Fazer a Transição com Estratégia | Talisson Souza', description: 'Guia estratégico para desenvolvedores CLT que desejam migrar para o mercado freelancer com posicionamento, autoridade e planejamento profissional.', locale: 'pt_BR', type: 'article' };
+  }
+
   // Book
   if (pathname === '/livro' || pathname === '/en-us/book') {
     return isEnglish
