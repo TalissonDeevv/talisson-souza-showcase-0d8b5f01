@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import { Play, Pause, Music } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const { language } = useTheme();
@@ -55,8 +56,8 @@ const Footer = () => {
 
             {/* 1 — Brand */}
             <div>
-              <Link to={homePath} className="text-sm font-serif font-semibold tracking-tight text-foreground">
-                Talisson Souza
+              <Link to={homePath} className="inline-block">
+                <img src={logo} alt="Talisson Souza" className="h-10 w-auto" loading="lazy" />
               </Link>
               <p className="text-xs text-muted-foreground mt-1.5 max-w-[220px]">
                 Full Stack Developer & CEO
