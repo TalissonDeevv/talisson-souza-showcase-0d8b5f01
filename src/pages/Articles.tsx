@@ -15,6 +15,17 @@ const Articles = () => {
 
   const articles = [
     {
+      title: getText(language, 'De CLT a Freelancer: Como Fazer a Transição com Estratégia', 'From Employee to Freelancer: How to Make the Transition Strategically'),
+      excerpt: getText(language,
+        'Guia estratégico para desenvolvedores CLT que desejam migrar para o mercado freelancer com posicionamento, autoridade e planejamento profissional.',
+        'Strategic guide for employed developers who want to migrate to the freelance market with positioning, authority, and professional planning.'
+      ),
+      date: getText(language, '13 de Fevereiro, 2025', 'February 13, 2025'),
+      readTime: '18 min',
+      path: language === 'en' ? '/en-us/articles/clt-to-freelancer' : '/artigos/clt-para-freelancer',
+      tags: [getText(language, 'Carreira', 'Career'), 'Freelancer', getText(language, 'Estratégia', 'Strategy')],
+    },
+    {
       title: getText(language, 'Como Registrar uma Marca no INPI', 'How to Register a Trademark at INPI'),
       excerpt: getText(language,
         'Guia completo e didático sobre o processo de registro de marca no INPI para empreendedores, freelancers, startups e donos de pequenas empresas no Brasil.',
