@@ -5,8 +5,6 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import { Play, Pause, Music } from "lucide-react";
 
-const YOUTUBE_URL = "https://www.youtube.com/watch?v=SC4xMk98Pdc&list=RDSC4xMk98Pdc&start_radio=1";
-
 const Footer = () => {
   const { language } = useTheme();
   const currentYear = new Date().getFullYear();
@@ -34,10 +32,20 @@ const Footer = () => {
   ];
 
   const handlePlayPause = useCallback(() => {
-    // Since we can't stream YouTube audio directly, open the link
-    window.open(YOUTUBE_URL, "_blank", "noopener,noreferrer");
-    setIsPlaying(prev => !prev);
-  }, []);
+    if (!audioRef.current) {
+      audioRef.current = new Audio("/audio/congratulations.mp3");
+      audioRef.current.volume = 0.4;
+      audioRef.current.addEventListener("ended", () => setIsPlaying(false));
+    }
+
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      audioRef.current.play();
+      setIsPlaying(true);
+    }
+  }, [isPlaying]);
 
   return (
     <footer className="border-t border-border/30 mt-20">
@@ -51,7 +59,7 @@ const Footer = () => {
                 Talisson Souza
               </Link>
               <p className="text-xs text-muted-foreground mt-1.5 max-w-[220px]">
-                {getText(language, 'Full Stack Developer & CEO', 'Full Stack Developer & CEO')}
+                Full Stack Developer & CEO
               </p>
               <div className="flex gap-3 mt-3">
                 {socialLinks.map((link) => (
