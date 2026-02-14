@@ -15,6 +15,61 @@ const Articles = () => {
 
   const articles = [
     {
+      title: getText(language, 'Vulnerabilidade ao Instalar Dependências: O Risco que Ninguém Leva a Sério', 'Vulnerability When Installing Dependencies: The Risk Nobody Takes Seriously'),
+      excerpt: getText(language,
+        'Análise sobre os riscos de segurança ao instalar dependências em projetos de software, responsabilidade do desenvolvedor e mentalidade preventiva.',
+        'Analysis on security risks when installing dependencies in software projects, developer responsibility, and preventive mindset.'
+      ),
+      date: getText(language, '14 de Fevereiro, 2025', 'February 14, 2025'),
+      readTime: '16 min',
+      path: language === 'en' ? '/en-us/articles/dependency-vulnerabilities' : '/artigos/vulnerabilidade-dependencias',
+      tags: [getText(language, 'Segurança', 'Security'), getText(language, 'Dependências', 'Dependencies'), 'npm'],
+    },
+    {
+      title: getText(language, 'Política e Empreendedorismo: Por Que Estudar Antes de Opinar', 'Politics and Entrepreneurship: Why Study Before Opining'),
+      excerpt: getText(language,
+        'Reflexão sobre como decisões políticas impactam negócios e tecnologia, a importância do pensamento crítico e a responsabilidade ao produzir conteúdo.',
+        'Reflection on how political decisions impact business and technology, the importance of critical thinking, and responsibility when producing content.'
+      ),
+      date: getText(language, '14 de Fevereiro, 2025', 'February 14, 2025'),
+      readTime: '17 min',
+      path: language === 'en' ? '/en-us/articles/politics-entrepreneurship' : '/artigos/politica-empreendedorismo',
+      tags: [getText(language, 'Política', 'Politics'), getText(language, 'Empreendedorismo', 'Entrepreneurship'), getText(language, 'Pensamento Crítico', 'Critical Thinking')],
+    },
+    {
+      title: getText(language, 'Fundamentos de Tecnologia: A Lógica Por Trás dos Sistemas', 'Technology Fundamentals: The Logic Behind Systems'),
+      excerpt: getText(language,
+        'Reflexão sobre a importância dos fundamentos de tecnologia, raciocínio lógico, arquitetura de sistemas e pensamento estruturado antes das ferramentas.',
+        'Reflection on the importance of technology fundamentals, logical reasoning, systems architecture, and structured thinking before tools.'
+      ),
+      date: getText(language, '14 de Fevereiro, 2025', 'February 14, 2025'),
+      readTime: '15 min',
+      path: language === 'en' ? '/en-us/articles/tech-fundamentals' : '/artigos/fundamentos-tecnologia',
+      tags: [getText(language, 'Fundamentos', 'Fundamentals'), getText(language, 'Arquitetura', 'Architecture'), getText(language, 'Lógica', 'Logic')],
+    },
+    {
+      title: getText(language, 'Como Divulgar Comunidades e Bots no Discord de Forma Estratégica', 'How to Strategically Promote Discord Communities and Bots'),
+      excerpt: getText(language,
+        'Guia estratégico sobre divulgação de comunidades e bots no Discord com foco em crescimento orgânico, posicionamento e autoridade.',
+        'Strategic guide on promoting Discord communities and bots focusing on organic growth, positioning, and authority.'
+      ),
+      date: getText(language, '14 de Fevereiro, 2025', 'February 14, 2025'),
+      readTime: '16 min',
+      path: language === 'en' ? '/en-us/articles/discord-promotion' : '/artigos/divulgacao-discord',
+      tags: ['Discord', getText(language, 'Divulgação', 'Promotion'), getText(language, 'Crescimento', 'Growth')],
+    },
+    {
+      title: getText(language, 'Moderação, Gestão e Administração de Servidores Discord', 'Moderation, Management and Administration of Discord Servers'),
+      excerpt: getText(language,
+        'Guia sobre moderação, gestão e administração de servidores Discord com foco em responsabilidade, estrutura organizacional, regras e segurança.',
+        'Guide on Discord server moderation, management, and administration focusing on responsibility, organizational structure, rules, and security.'
+      ),
+      date: getText(language, '14 de Fevereiro, 2025', 'February 14, 2025'),
+      readTime: '18 min',
+      path: language === 'en' ? '/en-us/articles/discord-moderation' : '/artigos/moderacao-discord',
+      tags: ['Discord', getText(language, 'Moderação', 'Moderation'), getText(language, 'Gestão', 'Management')],
+    },
+    {
       title: getText(language, 'De CLT a Freelancer: Como Fazer a Transição com Estratégia', 'From Employee to Freelancer: How to Make the Transition Strategically'),
       excerpt: getText(language,
         'Guia estratégico para desenvolvedores CLT que desejam migrar para o mercado freelancer com posicionamento, autoridade e planejamento profissional.',

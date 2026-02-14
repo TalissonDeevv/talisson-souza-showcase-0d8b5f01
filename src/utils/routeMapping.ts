@@ -24,6 +24,11 @@ export const ptToEnRoutes: Record<string, string> = {
   '/artigos/desenvolvimento-full-stack': '/en-us/articles/full-stack-development',
   '/artigos/custo-desenvolvimento-sistema': '/en-us/articles/system-development-cost',
   '/artigos/clt-para-freelancer': '/en-us/articles/clt-to-freelancer',
+  '/artigos/vulnerabilidade-dependencias': '/en-us/articles/dependency-vulnerabilities',
+  '/artigos/politica-empreendedorismo': '/en-us/articles/politics-entrepreneurship',
+  '/artigos/fundamentos-tecnologia': '/en-us/articles/tech-fundamentals',
+  '/artigos/divulgacao-discord': '/en-us/articles/discord-promotion',
+  '/artigos/moderacao-discord': '/en-us/articles/discord-moderation',
 };
 
 // Reverse mapping: English to Portuguese

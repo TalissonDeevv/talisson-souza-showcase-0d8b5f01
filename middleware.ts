@@ -240,6 +240,36 @@ function getMetaForPath(pathname: string): PageMeta {
       : { title: 'De CLT a Freelancer: Como Fazer a Transição com Estratégia | Talisson Souza', description: 'Guia estratégico para desenvolvedores CLT que desejam migrar para o mercado freelancer com posicionamento, autoridade e planejamento profissional.', locale: 'pt_BR', type: 'article' };
   }
 
+  if (pathname === '/artigos/vulnerabilidade-dependencias' || pathname === '/en-us/articles/dependency-vulnerabilities') {
+    return isEnglish
+      ? { title: 'Vulnerability When Installing Dependencies: The Risk Nobody Takes Seriously | Talisson Souza', description: 'Analysis on security risks when installing dependencies in software projects, developer responsibility, and preventive mindset.', locale: 'en_US', type: 'article' }
+      : { title: 'Vulnerabilidade ao Instalar Dependências: O Risco que Ninguém Leva a Sério | Talisson Souza', description: 'Análise sobre os riscos de segurança ao instalar dependências em projetos de software, responsabilidade do desenvolvedor e mentalidade preventiva.', locale: 'pt_BR', type: 'article' };
+  }
+
+  if (pathname === '/artigos/politica-empreendedorismo' || pathname === '/en-us/articles/politics-entrepreneurship') {
+    return isEnglish
+      ? { title: 'Politics and Entrepreneurship: Why Study Before Opining | Talisson Souza', description: 'Reflection on how political decisions impact business and technology, the importance of critical thinking, and responsibility when producing content.', locale: 'en_US', type: 'article' }
+      : { title: 'Política e Empreendedorismo: Por Que Estudar Antes de Opinar | Talisson Souza', description: 'Reflexão sobre como decisões políticas impactam negócios e tecnologia, a importância do pensamento crítico e a responsabilidade ao produzir conteúdo.', locale: 'pt_BR', type: 'article' };
+  }
+
+  if (pathname === '/artigos/fundamentos-tecnologia' || pathname === '/en-us/articles/tech-fundamentals') {
+    return isEnglish
+      ? { title: 'Technology Fundamentals: The Logic Behind Systems | Talisson Souza', description: 'Reflection on the importance of technology fundamentals, logical reasoning, systems architecture, and structured thinking before tools.', locale: 'en_US', type: 'article' }
+      : { title: 'Fundamentos de Tecnologia: A Lógica Por Trás dos Sistemas | Talisson Souza', description: 'Reflexão sobre a importância dos fundamentos de tecnologia, raciocínio lógico, arquitetura de sistemas e pensamento estruturado antes das ferramentas.', locale: 'pt_BR', type: 'article' };
+  }
+
+  if (pathname === '/artigos/divulgacao-discord' || pathname === '/en-us/articles/discord-promotion') {
+    return isEnglish
+      ? { title: 'How to Strategically Promote Discord Communities and Bots | Talisson Souza', description: 'Strategic guide on promoting Discord communities and bots focusing on organic growth, positioning, and authority.', locale: 'en_US', type: 'article' }
+      : { title: 'Como Divulgar Comunidades e Bots no Discord de Forma Estratégica | Talisson Souza', description: 'Guia estratégico sobre divulgação de comunidades e bots no Discord com foco em crescimento orgânico, posicionamento e autoridade.', locale: 'pt_BR', type: 'article' };
+  }
+
+  if (pathname === '/artigos/moderacao-discord' || pathname === '/en-us/articles/discord-moderation') {
+    return isEnglish
+      ? { title: 'Moderation, Management and Administration of Discord Servers | Talisson Souza', description: 'Guide on Discord server moderation, management, and administration focusing on responsibility, organizational structure, rules, and security.', locale: 'en_US', type: 'article' }
+      : { title: 'Moderação, Gestão e Administração de Servidores Discord | Talisson Souza', description: 'Guia sobre moderação, gestão e administração de servidores Discord com foco em responsabilidade, estrutura organizacional, regras e segurança.', locale: 'pt_BR', type: 'article' };
+  }
+
   // Book
   if (pathname === '/livro' || pathname === '/en-us/book') {
     return isEnglish
