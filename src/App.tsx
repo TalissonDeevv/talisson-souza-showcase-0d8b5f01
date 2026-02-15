@@ -21,6 +21,7 @@ import ProjectDetail from "./pages/ProjectDetail";
 import Book from "./pages/Book";
 import NotFound from "./pages/NotFound";
 import Articles from "./pages/Articles";
+import TagPage from "./pages/TagPage";
 import DiscordBotsGuide from "./pages/articles/DiscordBotsGuide";
 import VisionAndPersistence from "./pages/articles/VisionAndPersistence";
 import INPIGuide from "./pages/articles/INPIGuide";
@@ -36,6 +37,9 @@ import PoliticsEntrepreneurship from "./pages/articles/PoliticsEntrepreneurship"
 import TechFundamentals from "./pages/articles/TechFundamentals";
 import DiscordPromotion from "./pages/articles/DiscordPromotion";
 import DiscordModeration from "./pages/articles/DiscordModeration";
+import JuniorToStrategic from "./pages/articles/JuniorToStrategic";
+import WhatCompaniesSeek from "./pages/articles/WhatCompaniesSeek";
+import BuildingPortfolio from "./pages/articles/BuildingPortfolio";
 
 const queryClient = new QueryClient();
 
@@ -61,6 +65,7 @@ const AppRoutes = () => (
         <Route path="/livro" element={<Book />} />
         
         <Route path="/artigos" element={<Articles />} />
+        <Route path="/artigos/tag/:tag" element={<TagPage />} />
         <Route path="/artigos/bots-discord" element={<DiscordBotsGuide />} />
         <Route path="/artigos/visao-e-persistencia" element={<VisionAndPersistence />} />
         <Route path="/artigos/inpi" element={<INPIGuide />} />
@@ -76,6 +81,9 @@ const AppRoutes = () => (
         <Route path="/artigos/fundamentos-tecnologia" element={<TechFundamentals />} />
         <Route path="/artigos/divulgacao-discord" element={<DiscordPromotion />} />
         <Route path="/artigos/moderacao-discord" element={<DiscordModeration />} />
+        <Route path="/artigos/junior-para-estrategico" element={<JuniorToStrategic />} />
+        <Route path="/artigos/o-que-empresas-procuram" element={<WhatCompaniesSeek />} />
+        <Route path="/artigos/construir-portfolio" element={<BuildingPortfolio />} />
         
         {/* ===== EN-US Routes (/en-us prefix) ===== */}
         <Route path="/en-us" element={<Index />} />
@@ -92,6 +100,7 @@ const AppRoutes = () => (
         <Route path="/en-us/book" element={<Book />} />
         
         <Route path="/en-us/articles" element={<Articles />} />
+        <Route path="/en-us/articles/tag/:tag" element={<TagPage />} />
         <Route path="/en-us/articles/discord-bots" element={<DiscordBotsGuide />} />
         <Route path="/en-us/articles/vision-and-persistence" element={<VisionAndPersistence />} />
         <Route path="/en-us/articles/inpi" element={<INPIGuide />} />
@@ -107,6 +116,9 @@ const AppRoutes = () => (
         <Route path="/en-us/articles/tech-fundamentals" element={<TechFundamentals />} />
         <Route path="/en-us/articles/discord-promotion" element={<DiscordPromotion />} />
         <Route path="/en-us/articles/discord-moderation" element={<DiscordModeration />} />
+        <Route path="/en-us/articles/junior-to-strategic" element={<JuniorToStrategic />} />
+        <Route path="/en-us/articles/what-companies-seek" element={<WhatCompaniesSeek />} />
+        <Route path="/en-us/articles/building-portfolio" element={<BuildingPortfolio />} />
         
         {/* Legacy routes */}
         <Route path="/about" element={<About />} />

@@ -270,6 +270,24 @@ function getMetaForPath(pathname: string): PageMeta {
       : { title: 'Moderação, Gestão e Administração de Servidores Discord | Talisson Souza', description: 'Guia sobre moderação, gestão e administração de servidores Discord com foco em responsabilidade, estrutura organizacional, regras e segurança.', locale: 'pt_BR', type: 'article' };
   }
 
+  if (pathname === '/artigos/junior-para-estrategico' || pathname === '/en-us/articles/junior-to-strategic') {
+    return isEnglish
+      ? { title: 'How to Evolve from Junior Developer to Strategic Professional | Talisson Souza', description: 'Reflection on the professional evolution journey, strategic mindset, and what truly separates a junior developer from a mature professional.', locale: 'en_US', type: 'article' }
+      : { title: 'Como Evoluir de Desenvolvedor Júnior para Profissional Estratégico | Talisson Souza', description: 'Reflexão sobre a jornada de evolução profissional, mentalidade estratégica e o que realmente separa um desenvolvedor júnior de um profissional maduro.', locale: 'pt_BR', type: 'article' };
+  }
+
+  if (pathname === '/artigos/o-que-empresas-procuram' || pathname === '/en-us/articles/what-companies-seek') {
+    return isEnglish
+      ? { title: 'What Companies Really Look for in a Developer | Talisson Souza', description: 'Strategic analysis on what the market truly values in developers, beyond technical skills and trendy frameworks.', locale: 'en_US', type: 'article' }
+      : { title: 'O Que Empresas Realmente Procuram em um Desenvolvedor | Talisson Souza', description: 'Análise estratégica sobre o que o mercado realmente valoriza em desenvolvedores, além das competências técnicas e frameworks da moda.', locale: 'pt_BR', type: 'article' };
+  }
+
+  if (pathname === '/artigos/construir-portfolio' || pathname === '/en-us/articles/building-portfolio') {
+    return isEnglish
+      ? { title: 'How to Build a Portfolio with Relevant Projects | Talisson Souza', description: 'Strategic guide on building a portfolio that demonstrates real value, not just repository count.', locale: 'en_US', type: 'article' }
+      : { title: 'Como Construir Portfólio com Projetos Relevantes | Talisson Souza', description: 'Guia estratégico sobre como construir um portfólio que demonstre valor real, não apenas quantidade de repositórios.', locale: 'pt_BR', type: 'article' };
+  }
+
   // Book
   if (pathname === '/livro' || pathname === '/en-us/book') {
     return isEnglish
