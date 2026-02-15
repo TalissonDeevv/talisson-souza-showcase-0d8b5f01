@@ -29,6 +29,9 @@ export const ptToEnRoutes: Record<string, string> = {
   '/artigos/fundamentos-tecnologia': '/en-us/articles/tech-fundamentals',
   '/artigos/divulgacao-discord': '/en-us/articles/discord-promotion',
   '/artigos/moderacao-discord': '/en-us/articles/discord-moderation',
+  '/artigos/junior-para-estrategico': '/en-us/articles/junior-to-strategic',
+  '/artigos/o-que-empresas-procuram': '/en-us/articles/what-companies-seek',
+  '/artigos/construir-portfolio': '/en-us/articles/building-portfolio',
 };
 
 // Reverse mapping: English to Portuguese
