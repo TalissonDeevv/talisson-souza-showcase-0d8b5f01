@@ -32,6 +32,8 @@ export const ptToEnRoutes: Record<string, string> = {
   '/artigos/junior-para-estrategico': '/en-us/articles/junior-to-strategic',
   '/artigos/o-que-empresas-procuram': '/en-us/articles/what-companies-seek',
   '/artigos/construir-portfolio': '/en-us/articles/building-portfolio',
+  '/artigos/seguranca-contas-discord': '/en-us/articles/discord-account-security',
+  '/artigos/infraestrutura-hospedagem': '/en-us/articles/infrastructure-hosting',
 };
 
 // Reverse mapping: English to Portuguese

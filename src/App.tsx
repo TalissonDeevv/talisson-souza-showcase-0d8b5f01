@@ -40,6 +40,8 @@ import DiscordModeration from "./pages/articles/DiscordModeration";
 import JuniorToStrategic from "./pages/articles/JuniorToStrategic";
 import WhatCompaniesSeek from "./pages/articles/WhatCompaniesSeek";
 import BuildingPortfolio from "./pages/articles/BuildingPortfolio";
+import DiscordAccountSecurity from "./pages/articles/DiscordAccountSecurity";
+import InfrastructureHosting from "./pages/articles/InfrastructureHosting";
 
 const queryClient = new QueryClient();
 
@@ -84,6 +86,8 @@ const AppRoutes = () => (
         <Route path="/artigos/junior-para-estrategico" element={<JuniorToStrategic />} />
         <Route path="/artigos/o-que-empresas-procuram" element={<WhatCompaniesSeek />} />
         <Route path="/artigos/construir-portfolio" element={<BuildingPortfolio />} />
+        <Route path="/artigos/seguranca-contas-discord" element={<DiscordAccountSecurity />} />
+        <Route path="/artigos/infraestrutura-hospedagem" element={<InfrastructureHosting />} />
         
         {/* ===== EN-US Routes (/en-us prefix) ===== */}
         <Route path="/en-us" element={<Index />} />
@@ -119,6 +123,8 @@ const AppRoutes = () => (
         <Route path="/en-us/articles/junior-to-strategic" element={<JuniorToStrategic />} />
         <Route path="/en-us/articles/what-companies-seek" element={<WhatCompaniesSeek />} />
         <Route path="/en-us/articles/building-portfolio" element={<BuildingPortfolio />} />
+        <Route path="/en-us/articles/discord-account-security" element={<DiscordAccountSecurity />} />
+        <Route path="/en-us/articles/infrastructure-hosting" element={<InfrastructureHosting />} />
         
         {/* Legacy routes */}
         <Route path="/about" element={<About />} />

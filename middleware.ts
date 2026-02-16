@@ -288,6 +288,18 @@ function getMetaForPath(pathname: string): PageMeta {
       : { title: 'Como Construir Portfólio com Projetos Relevantes | Talisson Souza', description: 'Guia estratégico sobre como construir um portfólio que demonstre valor real, não apenas quantidade de repositórios.', locale: 'pt_BR', type: 'article' };
   }
 
+  if (pathname === '/artigos/seguranca-contas-discord' || pathname === '/en-us/articles/discord-account-security') {
+    return isEnglish
+      ? { title: 'Discord Account Protection: Security for Those with High-Value Assets | Talisson Souza', description: 'In-depth guide on Discord security for server owners, bot developers, and accounts with high-value badges.', locale: 'en_US', type: 'article' }
+      : { title: 'Proteção de Contas no Discord: Segurança para Quem Possui Ativos de Alto Valor | Talisson Souza', description: 'Guia aprofundado sobre segurança no Discord para donos de servidores, desenvolvedores de bots e contas com insígnias de alto valor.', locale: 'pt_BR', type: 'article' };
+  }
+
+  if (pathname === '/artigos/infraestrutura-hospedagem' || pathname === '/en-us/articles/infrastructure-hosting') {
+    return isEnglish
+      ? { title: 'Infrastructure and Hosting: Technical Criteria for Developers and Companies | Talisson Souza', description: 'Technical and strategic analysis on infrastructure and hosting for websites, bots, and databases.', locale: 'en_US', type: 'article' }
+      : { title: 'Infraestrutura e Hospedagem: Critérios Técnicos para Desenvolvedores e Empresas | Talisson Souza', description: 'Análise técnica e estratégica sobre infraestrutura e hospedagem para sites, bots e bancos de dados.', locale: 'pt_BR', type: 'article' };
+  }
+
   // Book
   if (pathname === '/livro' || pathname === '/en-us/book') {
     return isEnglish
