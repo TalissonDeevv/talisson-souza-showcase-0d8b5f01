@@ -11,6 +11,38 @@ export interface ArticleData {
 
 export const articles: ArticleData[] = [
   {
+    id: 'discord-account-security',
+    title: {
+      pt: 'Proteção de Contas no Discord: Segurança para Quem Possui Ativos de Alto Valor',
+      en: 'Discord Account Protection: Security for Those with High-Value Assets',
+    },
+    excerpt: {
+      pt: 'Guia aprofundado sobre segurança no Discord para donos de servidores, desenvolvedores de bots e contas com insígnias de alto valor.',
+      en: 'In-depth guide on Discord security for server owners, bot developers, and accounts with high-value badges.',
+    },
+    date: { pt: '16 de Fevereiro, 2025', en: 'February 16, 2025' },
+    readTime: '20 min',
+    path: { pt: '/artigos/seguranca-contas-discord', en: '/en-us/articles/discord-account-security' },
+    tags: { pt: ['Discord', 'Segurança', 'Engenharia Social', 'Proteção'], en: ['Discord', 'Security', 'Social Engineering', 'Protection'] },
+    publishedDate: '2025-02-16',
+  },
+  {
+    id: 'infrastructure-hosting',
+    title: {
+      pt: 'Infraestrutura e Hospedagem: Critérios Técnicos para Desenvolvedores e Empresas',
+      en: 'Infrastructure and Hosting: Technical Criteria for Developers and Companies',
+    },
+    excerpt: {
+      pt: 'Análise técnica e estratégica sobre infraestrutura e hospedagem para sites, bots e bancos de dados.',
+      en: 'Technical and strategic analysis on infrastructure and hosting for websites, bots, and databases.',
+    },
+    date: { pt: '16 de Fevereiro, 2025', en: 'February 16, 2025' },
+    readTime: '18 min',
+    path: { pt: '/artigos/infraestrutura-hospedagem', en: '/en-us/articles/infrastructure-hosting' },
+    tags: { pt: ['Infraestrutura', 'Hospedagem', 'Arquitetura', 'DevOps'], en: ['Infrastructure', 'Hosting', 'Architecture', 'DevOps'] },
+    publishedDate: '2025-02-16',
+  },
+  {
     id: 'junior-to-strategic',
     title: {
       pt: 'Como Evoluir de Desenvolvedor Júnior para Profissional Estratégico',
