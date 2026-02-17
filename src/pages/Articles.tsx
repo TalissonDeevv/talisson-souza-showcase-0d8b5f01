@@ -163,8 +163,7 @@ const Articles = () => {
                   <Link to={trail.path[language]} className="block h-full">
                     <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3 }} className="h-full">
                       <GlassCard className="p-6 lg:p-8 group hover:border-foreground/20 transition-all duration-500 h-full flex flex-col">
-                        <div className="flex items-center gap-3 mb-4">
-                          <span className="text-2xl">{trail.icon}</span>
+                        <div className="mb-4">
                           <h2 className="font-serif text-xl lg:text-2xl text-foreground group-hover:text-gradient transition-all duration-500">
                             {trail.title[language]}
                           </h2>

@@ -15,7 +15,11 @@ const TrailPage = () => {
   const { language } = useTheme();
   const { trailId } = useParams<{ trailId: string }>();
 
-  const trail = trails.find((t) => t.id === trailId);
+  const trail = trails.find((t) => {
+    const ptSlug = t.path.pt.split('/').pop();
+    const enSlug = t.path.en.split('/').pop();
+    return trailId === ptSlug || trailId === enSlug || trailId === t.id;
+  });
 
   if (!trail) {
     return <Navigate to={language === 'en' ? '/en-us/articles' : '/artigos'} replace />;
@@ -66,7 +70,7 @@ const TrailPage = () => {
               {getText(language, 'Trilha de Conteúdo', 'Content Trail')}
             </motion.span>
             <AnimatedTitle variant="hero" as="h1" className="mb-6">
-              {`${trail.icon} ${trail.title[language]}`}
+              {trail.title[language]}
             </AnimatedTitle>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
               {trail.description[language]}
