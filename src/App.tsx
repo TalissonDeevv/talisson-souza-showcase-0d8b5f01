@@ -22,6 +22,7 @@ import Book from "./pages/Book";
 import NotFound from "./pages/NotFound";
 import Articles from "./pages/Articles";
 import TagPage from "./pages/TagPage";
+import TrailPage from "./pages/TrailPage";
 import DiscordBotsGuide from "./pages/articles/DiscordBotsGuide";
 import VisionAndPersistence from "./pages/articles/VisionAndPersistence";
 import INPIGuide from "./pages/articles/INPIGuide";
@@ -68,6 +69,7 @@ const AppRoutes = () => (
         
         <Route path="/artigos" element={<Articles />} />
         <Route path="/artigos/tag/:tag" element={<TagPage />} />
+        <Route path="/trilhas/:trailId" element={<TrailPage />} />
         <Route path="/artigos/bots-discord" element={<DiscordBotsGuide />} />
         <Route path="/artigos/visao-e-persistencia" element={<VisionAndPersistence />} />
         <Route path="/artigos/inpi" element={<INPIGuide />} />
@@ -105,6 +107,7 @@ const AppRoutes = () => (
         
         <Route path="/en-us/articles" element={<Articles />} />
         <Route path="/en-us/articles/tag/:tag" element={<TagPage />} />
+        <Route path="/en-us/trails/:trailId" element={<TrailPage />} />
         <Route path="/en-us/articles/discord-bots" element={<DiscordBotsGuide />} />
         <Route path="/en-us/articles/vision-and-persistence" element={<VisionAndPersistence />} />
         <Route path="/en-us/articles/inpi" element={<INPIGuide />} />
