@@ -9,6 +9,70 @@ export interface ArticleData {
   publishedDate: string; // ISO for sorting
 }
 
+export interface TrailData {
+  id: string;
+  title: { pt: string; en: string };
+  description: { pt: string; en: string };
+  icon: string;
+  path: { pt: string; en: string };
+  articleIds: string[];
+}
+
+export const trails: TrailData[] = [
+  {
+    id: 'digital-security',
+    title: { pt: 'Segurança Digital', en: 'Digital Security' },
+    description: {
+      pt: 'Conteúdos sobre proteção de contas, engenharia social, vulnerabilidades, segurança de servidores e boas práticas técnicas.',
+      en: 'Content on account protection, social engineering, vulnerabilities, server security, and technical best practices.',
+    },
+    icon: '🔐',
+    path: { pt: '/trilhas/seguranca-digital', en: '/en-us/trails/digital-security' },
+    articleIds: ['discord-account-security', 'dependency-vulnerabilities', 'discord-bots-guide'],
+  },
+  {
+    id: 'architecture-infrastructure',
+    title: { pt: 'Arquitetura & Infraestrutura', en: 'Architecture & Infrastructure' },
+    description: {
+      pt: 'Conteúdos sobre hospedagem, deploy, escalabilidade, banco de dados, estrutura de sistemas e decisões arquiteturais.',
+      en: 'Content on hosting, deploy, scalability, databases, system structure, and architectural decisions.',
+    },
+    icon: '💻',
+    path: { pt: '/trilhas/arquitetura-infraestrutura', en: '/en-us/trails/architecture-infrastructure' },
+    articleIds: ['infrastructure-hosting', 'tech-fundamentals', 'full-stack-development', 'system-development-cost'],
+  },
+  {
+    id: 'community-management',
+    title: { pt: 'Gestão de Comunidades', en: 'Community Management' },
+    description: {
+      pt: 'Conteúdos sobre moderação, administração de servidores, cultura interna, estrutura de staff e crescimento estruturado.',
+      en: 'Content on moderation, server administration, internal culture, staff structure, and structured growth.',
+    },
+    icon: '🌐',
+    path: { pt: '/trilhas/gestao-de-comunidades', en: '/en-us/trails/community-management' },
+    articleIds: ['discord-moderation', 'discord-promotion', 'professional-discord-bot', 'discord-bot-niche', 'monetizing-bots', 'discord-bot-rental'],
+  },
+  {
+    id: 'strategy-mindset',
+    title: { pt: 'Estratégia & Mentalidade', en: 'Strategy & Mindset' },
+    description: {
+      pt: 'Conteúdos sobre pensamento crítico, empreendedorismo digital, responsabilidade técnica e tomada de decisão estratégica.',
+      en: 'Content on critical thinking, digital entrepreneurship, technical responsibility, and strategic decision-making.',
+    },
+    icon: '💼',
+    path: { pt: '/trilhas/estrategia-mentalidade', en: '/en-us/trails/strategy-mindset' },
+    articleIds: ['junior-to-strategic', 'what-companies-seek', 'building-portfolio', 'politics-entrepreneurship', 'clt-to-freelancer', 'vision-and-persistence', 'inpi'],
+  },
+];
+
+export function getTrailArticles(trailId: string): ArticleData[] {
+  const trail = trails.find((t) => t.id === trailId);
+  if (!trail) return [];
+  return trail.articleIds
+    .map((id) => articles.find((a) => a.id === id))
+    .filter(Boolean) as ArticleData[];
+}
+
 export const articles: ArticleData[] = [
   {
     id: 'discord-account-security',
