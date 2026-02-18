@@ -5,7 +5,6 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
 import ThemeLanguageToggle from "@/components/ui/ThemeLanguageToggle";
 import { trails } from "@/data/articles";
-import { checklists } from "@/pages/Checklists";
 import logo from "@/assets/logo.png";
 
 interface DropdownItem {
@@ -51,16 +50,12 @@ const Navbar = () => {
   const simpleNavItems = language === 'pt' ? [
     { name: t.nav.home, path: "/" },
     { name: "Sobre", path: "/sobre" },
-    { name: "Carreira", path: "/carreira" },
     { name: "Artigos", path: "/artigos" },
-    { name: "Livro", path: "/livro" },
     { name: "Contato", path: "/contato" },
   ] : [
     { name: t.nav.home, path: "/en-us" },
     { name: "About", path: "/en-us/about" },
-    { name: "Career", path: "/en-us/career" },
     { name: "Articles", path: "/en-us/articles" },
-    { name: "Book", path: "/en-us/book" },
     { name: "Contact", path: "/en-us/contact" },
   ];
 
@@ -70,17 +65,12 @@ const Navbar = () => {
       items: [
         { name: t.nav.projects, path: "/projetos" },
         { name: t.nav.services, path: "/servicos" },
+        { name: "Carreira", path: "/carreira" },
+        { name: "Livro", path: "/livro" },
         { name: "Princípios", path: "/principios" },
+        { name: "Checklists", path: "/checklists" },
+        ...trails.map((trail) => ({ name: trail.title.pt, path: trail.path.pt })),
       ],
-    },
-    {
-      label: "Trilhas",
-      items: trails.map((trail) => ({ name: trail.title.pt, path: trail.path.pt })),
-    },
-    {
-      label: "Checklists",
-      allLink: { name: "Ver todos", path: "/checklists" },
-      items: checklists.map((c) => ({ name: c.title.pt, path: c.path.pt })),
     },
   ] : [
     {
@@ -88,17 +78,12 @@ const Navbar = () => {
       items: [
         { name: t.nav.projects, path: "/en-us/projects" },
         { name: t.nav.services, path: "/en-us/services" },
+        { name: "Career", path: "/en-us/career" },
+        { name: "Book", path: "/en-us/book" },
         { name: "Principles", path: "/en-us/principles" },
+        { name: "Checklists", path: "/en-us/checklists" },
+        ...trails.map((trail) => ({ name: trail.title.en, path: trail.path.en })),
       ],
-    },
-    {
-      label: "Trails",
-      items: trails.map((trail) => ({ name: trail.title.en, path: trail.path.en })),
-    },
-    {
-      label: "Checklists",
-      allLink: { name: "View all", path: "/en-us/checklists" },
-      items: checklists.map((c) => ({ name: c.title.en, path: c.path.en })),
     },
   ];
 
