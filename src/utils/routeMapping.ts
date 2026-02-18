@@ -8,11 +8,16 @@ export const ptToEnRoutes: Record<string, string> = {
   '/servicos': '/en-us/services',
   '/carreira': '/en-us/career',
   '/contato': '/en-us/contact',
-  
   '/livro': '/en-us/book',
   '/como-trabalho': '/en-us/how-i-work',
   '/decisoes-tecnicas': '/en-us/tech-decisions',
   '/acessibilidade': '/en-us/accessibility',
+  '/principios': '/en-us/principles',
+  '/checklists': '/en-us/checklists',
+  '/checklists/seguranca-conta-discord': '/en-us/checklists/discord-account-security',
+  '/checklists/bot-em-producao': '/en-us/checklists/bot-in-production',
+  '/checklists/abrir-servidor-publico': '/en-us/checklists/opening-public-server',
+  '/checklists/infraestrutura-minima': '/en-us/checklists/minimum-infrastructure',
   '/artigos': '/en-us/articles',
   '/trilhas/seguranca-digital': '/en-us/trails/digital-security',
   '/trilhas/arquitetura-infraestrutura': '/en-us/trails/architecture-infrastructure',
@@ -53,25 +58,23 @@ export function getEquivalentRoute(currentPath: string, targetLang: 'pt' | 'en')
   const path = currentPath === '/' ? '/' : currentPath.replace(/\/$/, '');
   
   if (targetLang === 'en') {
-    // Check if path has dynamic segments (e.g., /projetos/some-id)
     const mapped = ptToEnRoutes[path];
     if (mapped) return mapped;
 
-    // Handle /projetos/:id -> /en-us/projects/:id
+    // Handle dynamic segments
     if (path.startsWith('/projetos/')) return path.replace('/projetos/', '/en-us/projects/');
     if (path.startsWith('/servicos/')) return path.replace('/servicos/', '/en-us/services/');
+    if (path.startsWith('/checklists/')) return path.replace('/checklists/', '/en-us/checklists/');
     
-    // Fallback
     return '/en-us';
   } else {
     const mapped = enToPtRoutes[path];
     if (mapped) return mapped;
 
-    // Handle /en-us/projects/:id -> /projetos/:id
     if (path.startsWith('/en-us/projects/')) return path.replace('/en-us/projects/', '/projetos/');
     if (path.startsWith('/en-us/services/')) return path.replace('/en-us/services/', '/servicos/');
+    if (path.startsWith('/en-us/checklists/')) return path.replace('/en-us/checklists/', '/checklists/');
 
-    // Fallback
     return '/';
   }
 }
