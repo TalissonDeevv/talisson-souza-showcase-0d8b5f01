@@ -12,7 +12,6 @@ import Projects from "./pages/Projects";
 import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
 import Career from "./pages/Career";
-
 import Contact from "./pages/Contact";
 import HowIWork from "./pages/HowIWork";
 import TechDecisions from "./pages/TechDecisions";
@@ -23,6 +22,9 @@ import NotFound from "./pages/NotFound";
 import Articles from "./pages/Articles";
 import TagPage from "./pages/TagPage";
 import TrailPage from "./pages/TrailPage";
+import Principles from "./pages/Principles";
+import Checklists from "./pages/Checklists";
+import ChecklistDetail from "./pages/ChecklistDetail";
 import DiscordBotsGuide from "./pages/articles/DiscordBotsGuide";
 import VisionAndPersistence from "./pages/articles/VisionAndPersistence";
 import INPIGuide from "./pages/articles/INPIGuide";
@@ -66,6 +68,9 @@ const AppRoutes = () => (
         <Route path="/decisoes-tecnicas" element={<TechDecisions />} />
         <Route path="/acessibilidade" element={<Accessibility />} />
         <Route path="/livro" element={<Book />} />
+        <Route path="/principios" element={<Principles />} />
+        <Route path="/checklists" element={<Checklists />} />
+        <Route path="/checklists/:checklistId" element={<ChecklistDetail />} />
         
         <Route path="/artigos" element={<Articles />} />
         <Route path="/artigos/tag/:tag" element={<TagPage />} />
@@ -104,6 +109,9 @@ const AppRoutes = () => (
         <Route path="/en-us/tech-decisions" element={<TechDecisions />} />
         <Route path="/en-us/accessibility" element={<Accessibility />} />
         <Route path="/en-us/book" element={<Book />} />
+        <Route path="/en-us/principles" element={<Principles />} />
+        <Route path="/en-us/checklists" element={<Checklists />} />
+        <Route path="/en-us/checklists/:checklistId" element={<ChecklistDetail />} />
         
         <Route path="/en-us/articles" element={<Articles />} />
         <Route path="/en-us/articles/tag/:tag" element={<TagPage />} />
