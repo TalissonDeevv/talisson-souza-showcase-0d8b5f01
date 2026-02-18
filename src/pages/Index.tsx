@@ -837,8 +837,23 @@ const Index = () => {
             </div>
           </ScrollReveal>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {[
+              {
+                title: getText(language, 'Princípios', 'Principles'),
+                description: getText(language, 'Os fundamentos que orientam cada conteúdo e decisão técnica publicada aqui.', 'The foundations that guide every content and technical decision published here.'),
+                path: language === 'en' ? '/en-us/principles' : '/principios'
+              },
+              {
+                title: getText(language, 'Trilhas de Conteúdo', 'Content Trails'),
+                description: getText(language, 'Caminhos estratégicos de aprendizado organizados por área de conhecimento.', 'Strategic learning paths organized by knowledge area.'),
+                path: language === 'en' ? '/en-us/articles' : '/artigos'
+              },
+              {
+                title: 'Checklists',
+                description: getText(language, 'Guias práticos e objetivos para garantir que nenhum passo crítico seja esquecido.', 'Practical guides to ensure no critical step is missed.'),
+                path: language === 'en' ? '/en-us/checklists' : '/checklists'
+              },
               {
                 title: getText(language, 'Como Trabalho', 'How I Work'),
                 description: getText(language, 'Meu processo de desenvolvimento, validação de escopo e gestão de riscos.', 'My development process, scope validation and risk management.'),
