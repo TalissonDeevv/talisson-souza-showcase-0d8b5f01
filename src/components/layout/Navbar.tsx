@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -23,7 +23,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [openMobileAccordion, setOpenMobileAccordion] = useState<string | null>(null);
-  const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  
   const location = useLocation();
   const { language } = useTheme();
   const t = useTranslation(language);
@@ -87,14 +87,20 @@ const Navbar = () => {
     },
   ];
 
-  const handleMouseEnter = (label: string) => {
-    if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
-    setOpenDropdown(label);
+  const toggleDropdown = (label: string) => {
+    setOpenDropdown(openDropdown === label ? null : label);
   };
 
-  const handleMouseLeave = () => {
-    dropdownTimeoutRef.current = setTimeout(() => setOpenDropdown(null), 150);
-  };
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (openDropdown && !(e.target as HTMLElement).closest('[data-dropdown]')) {
+        setOpenDropdown(null);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [openDropdown]);
 
   const navBackground = isHome && !isScrolled
     ? "bg-transparent border-transparent"
@@ -137,12 +143,11 @@ const Navbar = () => {
               <div
                 key={dropdown.label}
                 className="relative"
-                onMouseEnter={() => handleMouseEnter(dropdown.label)}
-                onMouseLeave={handleMouseLeave}
+                data-dropdown
               >
                 <button
                   className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-1"
-                  onClick={() => setOpenDropdown(openDropdown === dropdown.label ? null : dropdown.label)}
+                  onClick={(e) => { e.stopPropagation(); toggleDropdown(dropdown.label); }}
                   aria-expanded={openDropdown === dropdown.label}
                   aria-haspopup="true"
                 >
@@ -153,8 +158,7 @@ const Navbar = () => {
                 {openDropdown === dropdown.label && (
                   <div
                     className="absolute top-full left-0 mt-1 min-w-[220px] bg-popover border border-border rounded-md shadow-lg py-2 z-[60]"
-                    onMouseEnter={() => handleMouseEnter(dropdown.label)}
-                    onMouseLeave={handleMouseLeave}
+                    data-dropdown
                   >
                     {dropdown.allLink && (
                       <>
