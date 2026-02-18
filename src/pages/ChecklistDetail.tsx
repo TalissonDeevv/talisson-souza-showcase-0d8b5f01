@@ -53,14 +53,14 @@ const ChecklistDetail = () => {
           <ScrollReveal>
             <Link
               to={language === 'en' ? '/en-us/checklists' : '/checklists'}
-              className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
+              className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-10 block"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               {getText(language, 'Voltar aos checklists', 'Back to checklists')}
             </Link>
 
             <motion.span
-              className="inline-block text-xs tracking-[0.3em] uppercase text-muted-foreground mb-6"
+              className="block text-xs tracking-[0.3em] uppercase text-muted-foreground mb-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
