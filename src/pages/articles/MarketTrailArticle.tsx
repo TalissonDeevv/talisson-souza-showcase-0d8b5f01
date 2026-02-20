@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import AnimatedTitle from "@/components/ui/AnimatedTitle";
+
 import ShareButtons from "@/components/ui/ShareButtons";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
