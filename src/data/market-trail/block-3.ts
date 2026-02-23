@@ -1,6 +1,6 @@
 import type { MarketTrailArticle } from './types';
 
-// BLOCO 3 — Conhecimentos Técnicos Essenciais (Artigos 13-18)
+// BLOCO 3: Conhecimentos Técnicos Essenciais (Artigos 13-18)
 export const block3Articles: MarketTrailArticle[] = [
   {
     id: 'mt-basics-beginners-ignore',

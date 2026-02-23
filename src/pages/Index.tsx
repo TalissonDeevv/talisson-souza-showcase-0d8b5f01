@@ -537,7 +537,7 @@ const Index = () => {
                   {language === 'pt' ? 'Em 2021, fui recusado em um processo seletivo não por falta de qualificação, mas por causa da minha cadeira de rodas. Esse momento transformou frustração em propósito.' : 'In 2021, I was rejected in a selection process not for lack of qualification, but because of my wheelchair. That moment transformed frustration into purpose.'}
                 </p>
                 <p className="text-sm text-muted-foreground leading-[1.8] mb-8 max-w-2xl mx-auto">
-                  {language === 'pt' ? 'Assim nasceu a Cheetah Network — mais que uma empresa, uma prova de que todos merecem oportunidades reais.' : 'Thus Cheetah Network was born — more than a company, proof that everyone deserves real opportunities.'}
+                  {language === 'pt' ? 'Assim nasceu a Cheetah Network. Mais que uma empresa, uma prova de que todos merecem oportunidades reais.' : 'Thus Cheetah Network was born. More than a company, proof that everyone deserves real opportunities.'}
                 </p>
                 
                 <Link 

@@ -1,6 +1,6 @@
 import type { MarketTrailArticle } from './types';
 
-// BLOCO 6 — Armadilhas e Erros Estratégicos (Artigos 31-36)
+// BLOCO 6: Armadilhas e Erros Estratégicos (Artigos 31-36)
 export const block6Articles: MarketTrailArticle[] = [
   {
     id: 'mt-trend-stack-danger',
