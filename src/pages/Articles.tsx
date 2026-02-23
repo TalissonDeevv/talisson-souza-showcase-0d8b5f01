@@ -113,7 +113,7 @@ const Articles = () => {
             </button>
           </div>
 
-          {/* Tags filter — only in "all" mode */}
+          {/* Tags filter - only in "all" mode */}
           {viewMode === 'all' && (
             <div className="flex flex-wrap gap-2">
               <button
@@ -193,7 +193,7 @@ const Articles = () => {
         </ParallaxSection>
       )}
 
-      {/* Articles Grid — "all" mode */}
+      {/* Articles Grid - "all" mode */}
       {viewMode === 'all' && (
         <ParallaxSection
           className="py-20 lg:py-24"

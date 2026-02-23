@@ -1,6 +1,6 @@
 import type { MarketTrailArticle } from './types';
 
-// BLOCO 2 — Metodologia de Aprendizado (Artigos 7-12)
+// BLOCO 2: Metodologia de Aprendizado (Artigos 7-12)
 export const block2Articles: MarketTrailArticle[] = [
   {
     id: 'mt-how-to-study',

@@ -3,8 +3,9 @@ import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-
 import ShareButtons from "@/components/ui/ShareButtons";
+import ArticleSEOFooter from "@/components/ui/ArticleSEOFooter";
+import TrailNavigation from "@/components/ui/TrailNavigation";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -98,6 +99,10 @@ const MarketTrailArticle = () => {
                 <ShareButtons title={articleTitle} />
               </div>
             </ScrollReveal>
+
+            <TrailNavigation currentSlugPt={article.slugPt} currentSlugEn={article.slugEn} />
+
+            <ArticleSEOFooter />
           </div>
         </div>
       </section>

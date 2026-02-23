@@ -1,6 +1,6 @@
 import type { MarketTrailArticle } from './types';
 
-// BLOCO 1 — Fundamentos Conceituais (Artigos 1-6)
+// BLOCO 1: Fundamentos Conceituais (Artigos 1-6)
 export const block1Articles: MarketTrailArticle[] = [
   {
     id: 'mt-what-programming-means',

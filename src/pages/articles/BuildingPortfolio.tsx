@@ -4,6 +4,7 @@ import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import ShareButtons from "@/components/ui/ShareButtons";
+import ArticleSEOFooter from "@/components/ui/ArticleSEOFooter";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -79,7 +80,7 @@ An effective project narrative is not a chronological account of what was done. 
       title: 'Depth versus quantity',
       content: `One of the most common mistakes in portfolio building is the pursuit of quantity. Developers fill their profiles with dozens of repositories, many of them incomplete, without documentation, and without any context explanation. This approach is counterproductive. A recruiter or client visiting a portfolio with twenty superficial projects can't identify which ones the developer actually invested significant effort in. The abundance of weak projects dilutes the impact of strong ones.
 
-The most effective strategy is to select three to five projects that truly represent your best work and invest deeply in their presentation. Each selected project should have detailed documentation, explanation of technical decisions, results analysis, and reflection on learnings. This curation demonstrates discernment and prioritization ability—two qualities highly valued by those evaluating professionals. A lean and deep portfolio communicates much more competence than an extensive and superficial one.`
+The most effective strategy is to select three to five projects that truly represent your best work and invest deeply in their presentation. Each selected project should have detailed documentation, explanation of technical decisions, results analysis, and reflection on learnings. This curation demonstrates discernment and prioritization ability, two qualities highly valued by those evaluating professionals. A lean and deep portfolio communicates much more competence than an extensive and superficial one.`
     },
     {
       title: 'Documentation as a demonstration of maturity',
@@ -89,7 +90,7 @@ Effective documentation doesn't need to be extensive. It needs to be clear, orga
     },
     {
       title: 'The portfolio as an extension of professional identity',
-      content: `The ideal portfolio is not just a collection of projects. It's a coherent extension of the developer's professional identity. It communicates not only what the professional can do, but how they think, what their values are, what their level of commitment to quality is. Visual consistency, writing quality, information organization—all of this composes an impression that goes far beyond the technical competencies listed.
+      content: `The ideal portfolio is not just a collection of projects. It's a coherent extension of the developer's professional identity. It communicates not only what the professional can do, but how they think, what their values are, what their level of commitment to quality is. Visual consistency, writing quality, information organization, all of this composes an impression that goes far beyond the technical competencies listed.
 
 Building a portfolio with this intention requires honest self-reflection. Which projects best represent who you are as a professional? Which demonstrate the competencies you want the market to associate with your name? Which tell stories you're proud to share? This conscious curation transforms the portfolio from a bureaucratic obligation into a powerful professional positioning tool. The developer who treats their portfolio with the same seriousness they treat their code is investing in building a reputation that will open doors throughout their entire career.`
     },
@@ -183,6 +184,7 @@ Building a portfolio with this intention requires honest self-reflection. Which 
                 <ShareButtons title={articleTitle} />
               </div>
             </div>
+            <ArticleSEOFooter />
             <ScrollReveal>
               <div className="mt-20 pt-10 border-t border-border/30">
                 <div className="flex flex-col items-center text-center">

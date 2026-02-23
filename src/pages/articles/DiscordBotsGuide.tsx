@@ -4,6 +4,7 @@ import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import ShareButtons from "@/components/ui/ShareButtons";
+import ArticleSEOFooter from "@/components/ui/ArticleSEOFooter";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -445,6 +446,7 @@ A small, competent team will always be superior to a large, disorganized one. Qu
             </div>
 
             {/* Signature */}
+            <ArticleSEOFooter />
             <ScrollReveal>
               <div className="mt-20 pt-10 border-t border-border/30">
                 <div className="flex flex-col items-center text-center">

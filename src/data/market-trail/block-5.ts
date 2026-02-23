@@ -1,6 +1,6 @@
 import type { MarketTrailArticle } from './types';
 
-// BLOCO 5 — Portfólio e Primeiros Passos no Mercado (Artigos 25-30)
+// BLOCO 5: Portfólio e Primeiros Passos no Mercado (Artigos 25-30)
 export const block5Articles: MarketTrailArticle[] = [
   {
     id: 'mt-portfolio-that-impresses',

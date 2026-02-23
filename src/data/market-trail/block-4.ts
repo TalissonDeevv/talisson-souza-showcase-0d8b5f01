@@ -1,6 +1,6 @@
 import type { MarketTrailArticle } from './types';
 
-// BLOCO 4 — Mentalidade Profissional (Artigos 19-24)
+// BLOCO 4: Mentalidade Profissional (Artigos 19-24)
 export const block4Articles: MarketTrailArticle[] = [
   {
     id: 'mt-student-vs-developer',

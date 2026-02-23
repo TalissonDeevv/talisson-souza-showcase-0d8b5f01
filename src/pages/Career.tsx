@@ -8,7 +8,7 @@ import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { 
   Rocket, Target, Heart, Users, Lightbulb, Shield, 
   Award, Calendar, Building2, Briefcase, Quote, Sparkles, 
-  HandHeart, ArrowRight, ArrowUpRight, Star
+  HandHeart, ArrowRight, ArrowUpRight, Star, BookOpen
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -652,6 +652,156 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
                 </motion.div>
               </ScrollReveal>
             ))}
+          </div>
+        </div>
+      </ParallaxSection>
+
+      {/* Mindset & Foundations Section */}
+      <ParallaxSection 
+        className="py-20 lg:py-24"
+        speed={0.1}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <motion.span 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+              >
+                {getText(language, 'Mentalidade', 'Mindset')}
+              </motion.span>
+              <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-4 leading-tight">
+                {getText(language, 'Base Sólida: Caráter e Profissão', 'Solid Foundation: Character and Profession')}
+              </h2>
+              <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                {getText(
+                  language,
+                  'Carreira não é apenas técnica. É também mentalidade, disciplina e visão de longo prazo. Os princípios abaixo guiam a construção de uma trajetória profissional com propósito.',
+                  'Career is not just about technique. It is also mindset, discipline and long-term vision. The principles below guide the construction of a purposeful professional trajectory.'
+                )}
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="max-w-3xl mx-auto space-y-6">
+            {[
+              {
+                verse: getText(language, 'Josué 1:9', 'Joshua 1:9'),
+                text: getText(
+                  language,
+                  '"Seja forte e corajoso! Não se apavore, nem se desanime, pois o Senhor, o seu Deus, estará com você por onde você andar."',
+                  '"Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go."'
+                ),
+                reflection: getText(
+                  language,
+                  'O mercado de tecnologia é volátil. Tecnologias mudam, empresas fecham, projetos falham. A coragem de continuar construindo mesmo diante da incerteza é o que separa profissionais que evoluem daqueles que estacionam. Força e coragem não significam ausência de medo, mas a decisão consciente de agir apesar dele.',
+                  'The technology market is volatile. Technologies change, companies close, projects fail. The courage to keep building even in the face of uncertainty is what separates professionals who evolve from those who stagnate. Strength and courage do not mean the absence of fear, but the conscious decision to act despite it.'
+                ),
+              },
+              {
+                verse: getText(language, 'Isaías 40:29-31', 'Isaiah 40:29-31'),
+                text: getText(
+                  language,
+                  '"Ele dá força ao cansado e aumenta o poder do fraco. Os que esperam no Senhor renovam as suas forças; sobem com asas como águias; correm e não se cansam; caminham e não se fatigam."',
+                  '"He gives strength to the weary and increases the power of the weak. Those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint."'
+                ),
+                reflection: getText(
+                  language,
+                  'Persistência em programação não é romantismo. É a prática diária de resolver problemas quando a motivação já passou. O profissional que se renova constantemente, estuda com consistência e não depende de empolgação passageira constrói algo que nenhum atalho substitui: competência real acumulada ao longo do tempo.',
+                  'Persistence in programming is not romanticism. It is the daily practice of solving problems when motivation has already passed. The professional who constantly renews themselves, studies consistently, and does not depend on fleeting excitement builds something no shortcut can replace: real competence accumulated over time.'
+                ),
+              },
+              {
+                verse: getText(language, 'Provérbios 12:24', 'Proverbs 12:24'),
+                text: getText(
+                  language,
+                  '"As mãos diligentes governarão, mas a preguiça acaba em trabalho escravo."',
+                  '"Diligent hands will rule, but laziness ends in forced labor."'
+                ),
+                reflection: getText(
+                  language,
+                  'Disciplina define trajetórias. O desenvolvedor que se dedica a entender fundamentos profundamente, que documenta seu trabalho, que refatora código por convicção e não por obrigação, eventualmente assume posições de liderança técnica. Quem busca atalhos acaba preso em ciclos de retrabalho e dependência.',
+                  'Discipline defines trajectories. The developer who is dedicated to deeply understanding fundamentals, who documents their work, who refactors code out of conviction rather than obligation, eventually assumes technical leadership positions. Those who seek shortcuts end up trapped in cycles of rework and dependency.'
+                ),
+              },
+              {
+                verse: getText(language, 'Eclesiastes 9:10', 'Ecclesiastes 9:10'),
+                text: getText(
+                  language,
+                  '"Tudo o que a sua mão encontrar para fazer, faça-o com toda a sua força."',
+                  '"Whatever your hand finds to do, do it with all your might."'
+                ),
+                reflection: getText(
+                  language,
+                  'Cada projeto, cada commit, cada revisão de código é uma oportunidade de demonstrar excelência. O profissional que trata o menor bug com a mesma seriedade de uma feature crítica constrói uma reputação que abre portas de forma orgânica. Qualidade consistente é o marketing mais eficiente que existe.',
+                  'Every project, every commit, every code review is an opportunity to demonstrate excellence. The professional who treats the smallest bug with the same seriousness as a critical feature builds a reputation that opens doors organically. Consistent quality is the most efficient marketing that exists.'
+                ),
+              },
+              {
+                verse: getText(language, 'Provérbios 27:17', 'Proverbs 27:17'),
+                text: getText(
+                  language,
+                  '"Assim como o ferro afia o ferro, o homem afia o seu companheiro."',
+                  '"As iron sharpens iron, so one person sharpens another."'
+                ),
+                reflection: getText(
+                  language,
+                  'Crescimento profissional não acontece isoladamente. Cercar-se de pessoas que desafiam seu raciocínio, que apontam falhas com honestidade e que compartilham conhecimento sem reservas acelera o desenvolvimento de forma que nenhum curso individual consegue. A comunidade certa é um multiplicador de competência.',
+                  'Professional growth does not happen in isolation. Surrounding yourself with people who challenge your reasoning, who point out flaws honestly, and who share knowledge without reservations accelerates development in a way that no individual course can. The right community is a competence multiplier.'
+                ),
+              },
+            ].map((item, index) => (
+              <ScrollReveal key={index} delay={index * 0.1}>
+                <motion.div
+                  whileHover={{ y: -3 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div 
+                    className="relative p-8 lg:p-10 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm"
+                    style={{ boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)' }}
+                  >
+                    <div className="absolute top-0 left-0 w-16 h-16 border-l border-t border-foreground/[0.06] rounded-tl-2xl" />
+                    
+                    <div className="flex items-center gap-3 mb-5">
+                      <div className="w-10 h-10 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center">
+                        <BookOpen className="w-5 h-5 text-foreground/60" />
+                      </div>
+                      <span className="text-xs tracking-[0.2em] uppercase text-muted-foreground/70 font-medium">
+                        {item.verse}
+                      </span>
+                    </div>
+
+                    <blockquote className="text-base font-serif text-foreground/90 leading-[1.8] mb-6 pl-4 border-l-2 border-foreground/10">
+                      {item.text}
+                    </blockquote>
+
+                    <p className="text-sm text-muted-foreground leading-[1.9]">
+                      {item.reflection}
+                    </p>
+                  </div>
+                </motion.div>
+              </ScrollReveal>
+            ))}
+
+            <ScrollReveal delay={0.5}>
+              <div className="text-center pt-8">
+                <p className="font-serif text-xl text-foreground leading-relaxed max-w-xl mx-auto">
+                  {getText(
+                    language,
+                    'Técnica se aprende. Caráter se constrói. Uma carreira sólida exige os dois.',
+                    'Technique is learned. Character is built. A solid career demands both.'
+                  )}
+                </p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </ParallaxSection>

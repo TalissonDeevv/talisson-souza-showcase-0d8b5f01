@@ -1,6 +1,6 @@
 import type { MarketTrailArticle } from './types';
 
-// BLOCO 7 — Visão Estratégica e Longo Prazo (Artigos 37-42)
+// BLOCO 7: Visão Estratégica e Longo Prazo (Artigos 37-42)
 export const block7Articles: MarketTrailArticle[] = [
   {
     id: 'mt-when-to-specialize',
