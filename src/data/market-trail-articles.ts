@@ -3,8 +3,19 @@ import type { MarketTrailArticle } from './market-trail/types';
 export type { MarketTrailArticle };
 
 import { block1Articles } from './market-trail/block-1';
+import { block2Articles } from './market-trail/block-2';
+import { block3Articles } from './market-trail/block-3';
+import { block4Articles } from './market-trail/block-4';
+import { block5Articles } from './market-trail/block-5';
+import { block6Articles } from './market-trail/block-6';
+import { block7Articles } from './market-trail/block-7';
 
-// Blocks 2-7 will be added as they are created
 export const marketTrailArticles: MarketTrailArticle[] = [
   ...block1Articles,
+  ...block2Articles,
+  ...block3Articles,
+  ...block4Articles,
+  ...block5Articles,
+  ...block6Articles,
+  ...block7Articles,
 ];
