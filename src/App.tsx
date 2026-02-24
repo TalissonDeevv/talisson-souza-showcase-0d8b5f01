@@ -46,6 +46,7 @@ import BuildingPortfolio from "./pages/articles/BuildingPortfolio";
 import DiscordAccountSecurity from "./pages/articles/DiscordAccountSecurity";
 import InfrastructureHosting from "./pages/articles/InfrastructureHosting";
 import MarketTrailArticle from "./pages/articles/MarketTrailArticle";
+import LinkedInProfile from "./pages/articles/LinkedInProfile";
 
 const queryClient = new QueryClient();
 
@@ -96,6 +97,7 @@ const AppRoutes = () => (
         <Route path="/artigos/construir-portfolio" element={<BuildingPortfolio />} />
         <Route path="/artigos/seguranca-contas-discord" element={<DiscordAccountSecurity />} />
         <Route path="/artigos/infraestrutura-hospedagem" element={<InfrastructureHosting />} />
+        <Route path="/artigos/perfil-linkedin-tecnologia" element={<LinkedInProfile />} />
         <Route path="/artigos/:slug" element={<MarketTrailArticle />} />
         
         {/* ===== EN-US Routes (/en-us prefix) ===== */}
@@ -138,6 +140,7 @@ const AppRoutes = () => (
         <Route path="/en-us/articles/building-portfolio" element={<BuildingPortfolio />} />
         <Route path="/en-us/articles/discord-account-security" element={<DiscordAccountSecurity />} />
         <Route path="/en-us/articles/infrastructure-hosting" element={<InfrastructureHosting />} />
+        <Route path="/en-us/articles/linkedin-profile-tech" element={<LinkedInProfile />} />
         <Route path="/en-us/articles/:slug" element={<MarketTrailArticle />} />
         
         {/* Legacy routes */}
