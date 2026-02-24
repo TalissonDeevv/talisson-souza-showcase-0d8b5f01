@@ -5,6 +5,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import ShareButtons from "@/components/ui/ShareButtons";
 import ArticleSEOFooter from "@/components/ui/ArticleSEOFooter";
+import RelatedArticles from "@/components/ui/RelatedArticles";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -210,6 +211,7 @@ Protecting accounts, servers, and bots on Discord isn't a peripheral concern. It
               </div>
             </div>
             <ArticleSEOFooter />
+            <RelatedArticles currentArticleId="discord-account-security" />
             <ScrollReveal>
               <div className="mt-20 pt-10 border-t border-border/30">
                 <div className="flex flex-col items-center text-center">

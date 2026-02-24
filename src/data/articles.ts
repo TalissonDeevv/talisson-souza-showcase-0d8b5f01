@@ -61,7 +61,7 @@ export const trails: TrailData[] = [
     },
     icon: '💼',
     path: { pt: '/trilhas/estrategia-mentalidade', en: '/en-us/trails/strategy-mindset' },
-    articleIds: ['junior-to-strategic', 'what-companies-seek', 'building-portfolio', 'politics-entrepreneurship', 'clt-to-freelancer', 'vision-and-persistence', 'inpi'],
+    articleIds: ['junior-to-strategic', 'what-companies-seek', 'building-portfolio', 'politics-entrepreneurship', 'clt-to-freelancer', 'vision-and-persistence', 'inpi', 'linkedin-profile-tech'],
   },
   {
     id: 'market-programming',
@@ -412,6 +412,22 @@ export const articles: ArticleData[] = [
     path: { pt: '/artigos/bots-discord', en: '/en-us/articles/discord-bots' },
     tags: { pt: ['Discord', 'Segurança', 'Gestão'], en: ['Discord', 'Security', 'Management'] },
     publishedDate: '2025-02-07',
+  },
+  {
+    id: 'linkedin-profile-tech',
+    title: {
+      pt: 'Como Construir um Perfil Forte no LinkedIn e se Posicionar no Mercado de Tecnologia',
+      en: 'How to Build a Strong LinkedIn Profile and Position Yourself in the Tech Market',
+    },
+    excerpt: {
+      pt: 'Guia completo e estratégico sobre como criar um perfil forte no LinkedIn, chamar atenção de recrutadores e se posicionar no mercado de tecnologia.',
+      en: 'Complete strategic guide on building a strong LinkedIn profile, catching recruiters attention and positioning yourself in the tech market.',
+    },
+    date: { pt: '24 de Fevereiro, 2025', en: 'February 24, 2025' },
+    readTime: '22 min',
+    path: { pt: '/artigos/perfil-linkedin-tecnologia', en: '/en-us/articles/linkedin-profile-tech' },
+    tags: { pt: ['LinkedIn', 'Carreira', 'Posicionamento', 'Mercado de Tecnologia', 'Networking'], en: ['LinkedIn', 'Career', 'Positioning', 'Tech Market', 'Networking'] },
+    publishedDate: '2025-02-24',
   },
   // ===== Market Trail Articles (42 articles) =====
   { id: 'mt-what-programming-means', title: { pt: 'O Que Realmente Significa Saber Programar', en: 'What It Really Means to Know How to Program' }, excerpt: { pt: 'Análise sobre o que diferencia quem sabe programar de quem apenas reproduz código, com foco em raciocínio lógico e resolução de problemas.', en: 'Analysis on what separates those who know how to program from those who merely reproduce code, focusing on logical reasoning and problem-solving.' }, date: { pt: '19 de Fevereiro, 2026', en: 'February 19, 2026' }, readTime: '14 min', path: { pt: '/artigos/o-que-significa-saber-programar', en: '/en-us/articles/what-programming-really-means' }, tags: { pt: ['Fundamentos', 'Programação', 'Carreira'], en: ['Fundamentals', 'Programming', 'Career'] }, publishedDate: '2026-02-19' },
