@@ -104,12 +104,15 @@ const Book = () => {
         <div className="container mx-auto px-6 lg:px-8 relative z-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Book Cover Section */}
-            <ScrollReveal className="lg:col-span-5" direction="left">
+            <div className="lg:col-span-5">
               <div className="flex flex-col items-center lg:items-start gap-8">
                 <img
                   src={bookMockup}
                   alt={`${bookTitle} - ${bookSubtitle}`}
                   className="w-56 lg:w-64 h-auto"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
                 />
 
                 <div className="flex flex-col items-center lg:items-start gap-4 w-full">
@@ -130,7 +133,7 @@ const Book = () => {
                   </motion.a>
                 </div>
               </div>
-            </ScrollReveal>
+            </div>
 
             {/* Content Section */}
             <div className="lg:col-span-7">
