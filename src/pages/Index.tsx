@@ -1017,14 +1017,6 @@ const Index = () => {
           <div className="max-w-5xl mx-auto">
             <ScrollReveal>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                <div className="flex justify-center lg:justify-start">
-                  <img
-                    src={bookMockupImg}
-                    alt={getText(language, 'Superando Limites - Da Rejeição ao Sucesso', 'Overcoming Limits - From Rejection to Success')}
-                    className="w-48 lg:w-56 h-auto"
-                  />
-                </div>
-                
                 <div>
                   <motion.span 
                     initial={{ opacity: 0, x: -20 }}
@@ -1057,6 +1049,14 @@ const Index = () => {
                     </span>
                     <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
                   </Link>
+                </div>
+                
+                <div className="flex justify-center lg:justify-end">
+                  <img
+                    src={bookMockupImg}
+                    alt={getText(language, 'Superando Limites - Da Rejeição ao Sucesso', 'Overcoming Limits - From Rejection to Success')}
+                    className="w-56 lg:w-72 h-auto"
+                  />
                 </div>
               </div>
             </ScrollReveal>
