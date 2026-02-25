@@ -1051,12 +1051,11 @@ const Index = () => {
                   </Link>
                 </div>
                 
-                <a href="https://www.amazon.com.br/dp/B0FXV8WP3Y" target="_blank" rel="noopener noreferrer" className="flex justify-center lg:justify-start relative">
-                  <div className="absolute inset-0 translate-x-3 translate-y-3 bg-black/40 rounded-xl blur-xl" />
+                <a href="https://www.amazon.com.br/dp/B0FXV8WP3Y" target="_blank" rel="noopener noreferrer" className="flex justify-center lg:justify-start">
                   <img
                     src={bookMockupImg}
                     alt={getText(language, 'Superando Limites - Da Rejeição ao Sucesso', 'Overcoming Limits - From Rejection to Success')}
-                    className="w-56 lg:w-72 h-auto cursor-pointer relative"
+                    className="w-56 lg:w-72 h-auto cursor-pointer"
                   />
                 </a>
               </div>
