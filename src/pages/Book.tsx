@@ -7,7 +7,7 @@ import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { ArrowUpRight, BookOpen, Heart, Lightbulb, Users, Target, Zap, Star, CheckCircle2, Clock, TrendingUp, Sparkles, User, Award, Rocket, Shield, Eye, PenTool } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
-import bookCover from "@/assets/book-cover.jpg";
+import bookMockup from "@/assets/book-mockup.png";
 
 const Book = () => {
   const { language } = useTheme();
@@ -106,34 +106,11 @@ const Book = () => {
             {/* Book Cover Section */}
             <ScrollReveal className="lg:col-span-5" direction="left">
               <div className="flex flex-col items-center lg:items-start gap-8">
-                <motion.div
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.6 }}
-                  className="relative group"
-                >
-                  {/* Glow effect */}
-                  <div className="absolute -inset-6 bg-gradient-radial from-foreground/10 to-transparent rounded-2xl blur-2xl opacity-50 hidden md:block" />
-                  
-                  {/* Book shadow */}
-                  <div className="absolute inset-0 translate-x-4 translate-y-4 bg-foreground/20 rounded-xl blur-xl" />
-                  
-                  <img
-                    src={bookCover}
-                    alt={`${bookTitle} - ${bookSubtitle}`}
-                    className="relative w-56 lg:w-64 h-auto rounded-xl shadow-2xl transform group-hover:-translate-y-2 transition-transform duration-500 border border-border/10"
-                  />
-                  
-                  {/* Badge */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.6 }}
-                    className="absolute -top-3 -right-3 px-4 py-2 rounded-full bg-foreground text-background text-xs font-medium shadow-lg"
-                  >
-                    {getText(language, "Disponível na Amazon", "Available on Amazon")}
-                  </motion.div>
-                </motion.div>
+                <img
+                  src={bookMockup}
+                  alt={`${bookTitle} - ${bookSubtitle}`}
+                  className="w-56 lg:w-64 h-auto"
+                />
 
                 <div className="flex flex-col items-center lg:items-start gap-4 w-full">
                   <motion.a

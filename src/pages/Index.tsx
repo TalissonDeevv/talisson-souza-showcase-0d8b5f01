@@ -16,6 +16,7 @@ import logoSignature from "@/assets/logo-signature.png";
 import { motion } from "framer-motion";
 import { SiJavascript, SiTypescript, SiPython, SiReact, SiNodedotjs, SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFirebase } from "react-icons/si";
 import CompanyLogos from "@/components/ui/CompanyLogos";
+import bookMockupImg from "@/assets/book-mockup.png";
 const Index = () => {
   const {
     language
@@ -1004,6 +1005,64 @@ const Index = () => {
           </div>
         </div>
       </ParallaxSection>
+
+      {/* Book Section */}
+      <section className="py-16 lg:py-20 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-card/10 to-background" />
+        </div>
+        
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <div className="max-w-5xl mx-auto">
+            <ScrollReveal>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div className="flex justify-center lg:justify-start">
+                  <img
+                    src={bookMockupImg}
+                    alt={getText(language, 'Superando Limites - Da Rejeição ao Sucesso', 'Overcoming Limits - From Rejection to Success')}
+                    className="w-48 lg:w-56 h-auto"
+                  />
+                </div>
+                
+                <div>
+                  <motion.span 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+                  >
+                    {getText(language, 'Obra Autoral', 'Original Work')}
+                  </motion.span>
+                  <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-4 leading-tight">
+                    {getText(language, 'Superando Limites', 'Overcoming Limits')}
+                  </h2>
+                  <p className="text-sm text-muted-foreground/80 mb-4">
+                    {getText(language, 'Da Rejeição ao Sucesso', 'From Rejection to Success')}
+                  </p>
+                  <p className="text-base text-muted-foreground leading-relaxed mb-6">
+                    {getText(language,
+                      'Um livro com mais de 120 capítulos sobre superação, resiliência, empreendedorismo e liderança. Escrito a partir de experiências reais de quem transformou cada dificuldade em força.',
+                      'A book with over 120 chapters on overcoming, resilience, entrepreneurship and leadership. Written from real experiences of someone who transformed every difficulty into strength.'
+                    )}
+                  </p>
+                  <Link 
+                    to={language === 'en' ? '/en-us/book' : '/livro'} 
+                    className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"
+                  >
+                    <span className="relative">
+                      {getText(language, 'Conhecer o livro', 'Discover the book')}
+                      <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
+                    </span>
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+                  </Link>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
 
       {/* FAQ - Premium */}
       <section className="py-20 lg:py-24 relative overflow-hidden">
