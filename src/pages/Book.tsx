@@ -7,7 +7,7 @@ import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { ArrowUpRight, BookOpen, Heart, Lightbulb, Users, Target, Zap, Star, CheckCircle2, Clock, TrendingUp, Sparkles, User, Award, Rocket, Shield, Eye, PenTool } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
-import bookMockup from "@/assets/book-mockup.png";
+import bookMockup from "@/assets/book-mockup-opt.jpg";
 
 const Book = () => {
   const { language } = useTheme();
