@@ -1016,7 +1016,7 @@ const Index = () => {
         <div className="container mx-auto px-6 lg:px-8 relative">
           <div className="max-w-5xl mx-auto">
             <ScrollReveal>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
                 <div>
                   <motion.span 
                     initial={{ opacity: 0, x: -20 }}
@@ -1051,11 +1051,12 @@ const Index = () => {
                   </Link>
                 </div>
                 
-                <a href="https://www.amazon.com.br/dp/B0FXV8WP3Y" target="_blank" rel="noopener noreferrer" className="flex justify-center lg:justify-end">
+                <a href="https://www.amazon.com.br/dp/B0FXV8WP3Y" target="_blank" rel="noopener noreferrer" className="flex justify-center lg:justify-start relative">
+                  <div className="absolute inset-0 translate-x-3 translate-y-3 bg-black/40 rounded-xl blur-xl" />
                   <img
                     src={bookMockupImg}
                     alt={getText(language, 'Superando Limites - Da Rejeição ao Sucesso', 'Overcoming Limits - From Rejection to Success')}
-                    className="w-56 lg:w-72 h-auto cursor-pointer"
+                    className="w-56 lg:w-72 h-auto cursor-pointer relative"
                   />
                 </a>
               </div>
