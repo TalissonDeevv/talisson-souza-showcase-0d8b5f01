@@ -1051,13 +1051,13 @@ const Index = () => {
                   </Link>
                 </div>
                 
-                <div className="flex justify-center lg:justify-end">
+                <a href="https://www.amazon.com.br/dp/B0FXV8WP3Y" target="_blank" rel="noopener noreferrer" className="flex justify-center lg:justify-end">
                   <img
                     src={bookMockupImg}
                     alt={getText(language, 'Superando Limites - Da Rejeição ao Sucesso', 'Overcoming Limits - From Rejection to Success')}
-                    className="w-56 lg:w-72 h-auto"
+                    className="w-56 lg:w-72 h-auto cursor-pointer"
                   />
-                </div>
+                </a>
               </div>
             </ScrollReveal>
           </div>
