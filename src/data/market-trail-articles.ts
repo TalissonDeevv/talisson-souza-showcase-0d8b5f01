@@ -12,6 +12,7 @@ import { block7Articles } from './market-trail/block-7';
 import { securityTrailArticles } from './market-trail/security-trail';
 import { architectureTrailArticles } from './market-trail/architecture-trail';
 import { communityTrailArticles } from './market-trail/community-trail';
+import { strategyTrailArticles } from './market-trail/strategy-trail';
 
 export const marketTrailArticles: MarketTrailArticle[] = [
   ...block1Articles,
@@ -24,4 +25,5 @@ export const marketTrailArticles: MarketTrailArticle[] = [
   ...securityTrailArticles,
   ...architectureTrailArticles,
   ...communityTrailArticles,
+  ...strategyTrailArticles,
 ];

@@ -25,15 +25,7 @@ import TrailPage from "./pages/TrailPage";
 import Principles from "./pages/Principles";
 import Checklists from "./pages/Checklists";
 import ChecklistDetail from "./pages/ChecklistDetail";
-import VisionAndPersistence from "./pages/articles/VisionAndPersistence";
-import INPIGuide from "./pages/articles/INPIGuide";
-import CltToFreelancer from "./pages/articles/CltToFreelancer";
-import PoliticsEntrepreneurship from "./pages/articles/PoliticsEntrepreneurship";
-import JuniorToStrategic from "./pages/articles/JuniorToStrategic";
-import WhatCompaniesSeek from "./pages/articles/WhatCompaniesSeek";
-import BuildingPortfolio from "./pages/articles/BuildingPortfolio";
 import MarketTrailArticle from "./pages/articles/MarketTrailArticle";
-import LinkedInProfile from "./pages/articles/LinkedInProfile";
 
 const queryClient = new QueryClient();
 
@@ -64,14 +56,6 @@ const AppRoutes = () => (
         <Route path="/artigos" element={<Articles />} />
         <Route path="/artigos/tag/:tag" element={<TagPage />} />
         <Route path="/trilhas/:trailId" element={<TrailPage />} />
-        <Route path="/artigos/visao-e-persistencia" element={<VisionAndPersistence />} />
-        <Route path="/artigos/inpi" element={<INPIGuide />} />
-        <Route path="/artigos/clt-para-freelancer" element={<CltToFreelancer />} />
-        <Route path="/artigos/politica-empreendedorismo" element={<PoliticsEntrepreneurship />} />
-        <Route path="/artigos/junior-para-estrategico" element={<JuniorToStrategic />} />
-        <Route path="/artigos/o-que-empresas-procuram" element={<WhatCompaniesSeek />} />
-        <Route path="/artigos/construir-portfolio" element={<BuildingPortfolio />} />
-        <Route path="/artigos/perfil-linkedin-tecnologia" element={<LinkedInProfile />} />
         <Route path="/artigos/:slug" element={<MarketTrailArticle />} />
         
         {/* ===== EN-US Routes (/en-us prefix) ===== */}
@@ -94,14 +78,6 @@ const AppRoutes = () => (
         <Route path="/en-us/articles" element={<Articles />} />
         <Route path="/en-us/articles/tag/:tag" element={<TagPage />} />
         <Route path="/en-us/trails/:trailId" element={<TrailPage />} />
-        <Route path="/en-us/articles/vision-and-persistence" element={<VisionAndPersistence />} />
-        <Route path="/en-us/articles/inpi" element={<INPIGuide />} />
-        <Route path="/en-us/articles/clt-to-freelancer" element={<CltToFreelancer />} />
-        <Route path="/en-us/articles/politics-entrepreneurship" element={<PoliticsEntrepreneurship />} />
-        <Route path="/en-us/articles/junior-to-strategic" element={<JuniorToStrategic />} />
-        <Route path="/en-us/articles/what-companies-seek" element={<WhatCompaniesSeek />} />
-        <Route path="/en-us/articles/building-portfolio" element={<BuildingPortfolio />} />
-        <Route path="/en-us/articles/linkedin-profile-tech" element={<LinkedInProfile />} />
         <Route path="/en-us/articles/:slug" element={<MarketTrailArticle />} />
         
         {/* Legacy routes */}
