@@ -661,7 +661,7 @@ const Book = () => {
       <section className="pb-12">
         <div className="container mx-auto px-6 lg:px-8 text-center">
           <p className="text-xs text-muted-foreground/50">
-            © {new Date().getFullYear()} Talisson Souza. Obra registrada na Biblioteca Nacional sob nº XXXXX, nos termos da Lei nº 9.610/98.
+            © {new Date().getFullYear()} Talisson Souza. {getText(language, "Obra registrada na Biblioteca Nacional sob nº XXXXX, nos termos da Lei nº 9.610/98.", "Work registered at the National Library under nº XXXXX, in accordance with Law nº 9.610/98.")}
           </p>
         </div>
       </section>
