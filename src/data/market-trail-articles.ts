@@ -9,6 +9,9 @@ import { block4Articles } from './market-trail/block-4';
 import { block5Articles } from './market-trail/block-5';
 import { block6Articles } from './market-trail/block-6';
 import { block7Articles } from './market-trail/block-7';
+import { securityTrailArticles } from './market-trail/security-trail';
+import { architectureTrailArticles } from './market-trail/architecture-trail';
+import { communityTrailArticles } from './market-trail/community-trail';
 
 export const marketTrailArticles: MarketTrailArticle[] = [
   ...block1Articles,
@@ -18,4 +21,7 @@ export const marketTrailArticles: MarketTrailArticle[] = [
   ...block5Articles,
   ...block6Articles,
   ...block7Articles,
+  ...securityTrailArticles,
+  ...architectureTrailArticles,
+  ...communityTrailArticles,
 ];
