@@ -50,27 +50,27 @@ const Index = () => {
     description: getText(language, "Consultoria estratégica especializada em transformação digital e implementação de soluções tecnológicas empresariais.", "Strategic consulting specialized in digital transformation and implementation of enterprise technology solutions.")
   }];
   const techStack = [
-    { name: 'JavaScript', icon: SiJavascript },
-    { name: 'TypeScript', icon: SiTypescript },
-    { name: 'Python', icon: SiPython },
-    { name: 'React', icon: SiReact },
-    { name: 'Node.js', icon: SiNodedotjs },
-    { name: 'Next.js', icon: SiNextdotjs },
-    { name: 'Tailwind', icon: SiTailwindcss },
-    { name: 'MongoDB', icon: SiMongodb },
-    { name: 'PostgreSQL', icon: SiPostgresql },
-    { name: 'Git', icon: SiGit },
-    { name: 'Docker', icon: SiDocker },
-    { name: 'Firebase', icon: SiFirebase },
-  ];
+  { name: 'JavaScript', icon: SiJavascript },
+  { name: 'TypeScript', icon: SiTypescript },
+  { name: 'Python', icon: SiPython },
+  { name: 'React', icon: SiReact },
+  { name: 'Node.js', icon: SiNodedotjs },
+  { name: 'Next.js', icon: SiNextdotjs },
+  { name: 'Tailwind', icon: SiTailwindcss },
+  { name: 'MongoDB', icon: SiMongodb },
+  { name: 'PostgreSQL', icon: SiPostgresql },
+  { name: 'Git', icon: SiGit },
+  { name: 'Docker', icon: SiDocker },
+  { name: 'Firebase', icon: SiFirebase }];
+
   return (
     <Layout withPadding={false} showDiscordPopup={true}>
-      <SEO 
+      <SEO
         title={getText(language, 'Talisson Souza | Desenvolvedor Full Stack & CEO', 'Talisson Souza | Full Stack Developer & CEO')}
         description={getText(language, 'Desenvolvedor Full Stack com mais de 8 anos de experiência. CEO da Cheetah Network, especialista em sistemas web sob medida, APIs, React, Node.js e soluções digitais para empresas.', 'Full Stack Developer with over 8 years of experience. CEO of Cheetah Network, specialist in custom web systems, APIs, React, Node.js and digital solutions for businesses.')}
         canonical={language === 'en' ? '/en-us' : '/'}
-        keywords={language === 'pt' ? ['desenvolvedor full stack', 'CEO', 'sistemas sob medida', 'desenvolvimento web', 'React', 'Node.js', 'TypeScript', 'Cheetah Network'] : ['full stack developer', 'CEO', 'custom systems', 'web development', 'React', 'Node.js', 'TypeScript', 'Cheetah Network']}
-      />
+        keywords={language === 'pt' ? ['desenvolvedor full stack', 'CEO', 'sistemas sob medida', 'desenvolvimento web', 'React', 'Node.js', 'TypeScript', 'Cheetah Network'] : ['full stack developer', 'CEO', 'custom systems', 'web development', 'React', 'Node.js', 'TypeScript', 'Cheetah Network']} />
+
       <section className="min-h-[100vh] flex items-center justify-center relative overflow-hidden">
         {/* Sophisticated Background Effect */}
         <div className="absolute inset-0 z-0">
@@ -83,68 +83,68 @@ const Index = () => {
           <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-gradient-radial from-muted/10 via-transparent to-transparent blur-3xl opacity-30 hidden md:block" />
           
           {/* Subtle grid texture overlay */}
-          <div 
+          <div
             className="absolute inset-0 opacity-[0.02]"
             style={{
               backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
               backgroundSize: '60px 60px'
-            }}
-          />
+            }} />
+
           
           {/* Particles Effect */}
           <ParticlesBackground />
         </div>
 
         {/* Bottom fade effect - smooth transition to next section */}
-        <div 
+        <div
           className="absolute bottom-0 left-0 right-0 h-40 z-10 pointer-events-none"
           style={{
             background: 'linear-gradient(to top, hsl(var(--background)) 0%, transparent 100%)'
-          }}
-        />
+          }} />
+
 
         {/* Content */}
         <div className="container mx-auto px-6 lg:px-8 relative z-20 pt-24">
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
             {/* Badge with entrance animation */}
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-xs sm:text-sm tracking-[0.3em] uppercase text-muted-foreground mb-10"
-            >
+              className="text-xs sm:text-sm tracking-[0.3em] uppercase text-muted-foreground mb-10">
+
               {t.hero.badge}
             </motion.p>
             
             {/* Signature with fast entrance animation */}
-            <motion.img 
+            <motion.img
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.05 }}
-              src={logoSignature} 
-              alt="Talisson Souza" 
-              className="h-24 sm:h-28 lg:h-36 w-auto mb-10 invert dark:invert-0 border-0 border-none" 
+              src={logoSignature}
+              alt="Talisson Souza"
+              className="h-24 sm:h-28 lg:h-36 w-auto mb-10 invert dark:invert-0 border-0 border-none"
               loading="eager"
-              fetchPriority="high"
-            />
+              fetchPriority="high" />
+
 
             {/* Subtitle with entrance animation */}
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
-              className="text-lg sm:text-xl text-muted-foreground max-w-2xl mb-14 leading-relaxed"
-            >
+              className="text-lg sm:text-xl text-muted-foreground max-w-2xl mb-14 leading-relaxed">
+
               {t.hero.subtitle}
             </motion.p>
 
             {/* CTAs with entrance animation */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.6 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16"
-            >
+              className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
+
               <ContactDialog>
                 <button className="group inline-flex items-center gap-3 text-sm font-medium text-foreground px-8 py-3.5 rounded-full border border-foreground/20 bg-foreground/5 backdrop-blur-sm hover:bg-foreground/10 hover:border-foreground/40 hover:shadow-[0_0_30px_hsl(var(--foreground)/0.1)] transition-all duration-300">
                   {t.hero.contact}
@@ -152,10 +152,10 @@ const Index = () => {
                 </button>
               </ContactDialog>
               
-              <Link 
-                to={language === 'en' ? '/en-us/about' : '/sobre'} 
-                className="group text-sm text-muted-foreground hover:text-foreground transition-all duration-300 flex items-center gap-2"
-              >
+              <Link
+                to={language === 'en' ? '/en-us/about' : '/sobre'}
+                className="group text-sm text-muted-foreground hover:text-foreground transition-all duration-300 flex items-center gap-2">
+
                 {t.hero.about}
                 <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
               </Link>
@@ -165,8 +165,8 @@ const Index = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-            >
+              transition={{ duration: 0.6, delay: 0.8 }}>
+
               <SocialIcons />
             </motion.div>
           </div>
@@ -174,31 +174,31 @@ const Index = () => {
       </section>
 
       {/* Tech Stack - Premium Interactive Cards */}
-      <ParallaxSection 
+      <ParallaxSection
         className="py-20 lg:py-24"
         speed={0.1}
         backgroundElement={
-          <>
+        <>
             <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background" />
             <div className="absolute top-20 right-[15%] w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl hidden md:block" />
             <div className="absolute bottom-20 left-[10%] w-[300px] h-[300px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl hidden md:block" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
           </>
-        }
-      >
+        }>
+
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
               {/* Header */}
               <div className="lg:col-span-5 lg:sticky lg:top-32">
-                <motion.span 
+                <motion.span
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
-                >
+                  className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium">
+
                   {getText(language, 'Tecnologias', 'Technologies')}
                 </motion.span>
                 <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
@@ -222,21 +222,21 @@ const Index = () => {
                   {techStack.map((tech, index) => {
                     const IconComponent = tech.icon;
                     return (
-                      <motion.div 
+                      <motion.div
                         key={tech.name}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: index * 0.03 }}
-                        whileHover={{ 
+                        whileHover={{
                           y: -4,
-                          transition: { duration: 0.2 } 
+                          transition: { duration: 0.2 }
                         }}
                         className="group relative p-4 rounded-xl border border-border/20 bg-card/30 backdrop-blur-sm cursor-default overflow-hidden flex flex-col items-center justify-center gap-2"
                         style={{
                           boxShadow: '0 2px 8px hsl(var(--foreground) / 0.02)'
-                        }}
-                      >
+                        }}>
+
                         {/* Gradient overlay on hover */}
                         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-foreground/[0.04] to-transparent" />
                         
@@ -247,8 +247,8 @@ const Index = () => {
                         <span className="relative text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">
                           {tech.name}
                         </span>
-                      </motion.div>
-                    );
+                      </motion.div>);
+
                   })}
                 </div>
               </div>
@@ -258,28 +258,28 @@ const Index = () => {
       </ParallaxSection>
 
       {/* Career Timeline - Premium Animated */}
-      <ParallaxSection 
+      <ParallaxSection
         className="py-20 lg:py-24"
         speed={0.12}
         backgroundElement={
-          <>
+        <>
             <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-card/20 to-transparent" />
             <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-card/20 to-transparent" />
             <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl hidden md:block" />
           </>
-        }
-      >
+        }>
+
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
             {/* Header */}
             <ScrollReveal className="lg:col-span-5">
-              <motion.span 
+              <motion.span
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
-              >
+                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium">
+
                 {getText(language, 'Experiência', 'Experience')}
               </motion.span>
               <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
@@ -288,10 +288,10 @@ const Index = () => {
               <p className="text-base text-muted-foreground leading-relaxed mb-10 max-w-md">
                 {getText(language, 'Posições de liderança e contribuições que moldaram minha carreira em tecnologia.', 'Leadership positions and contributions that shaped my career in technology.')}
               </p>
-              <Link 
-                to={language === 'en' ? '/en-us/career' : '/carreira'} 
-                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"
-              >
+              <Link
+                to={language === 'en' ? '/en-us/career' : '/carreira'}
+                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground">
+
                 <span className="relative">
                   {getText(language, 'Ver trajetória completa', 'View full career')}
                   <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
@@ -304,7 +304,7 @@ const Index = () => {
             {/* Timeline Cards */}
             <div className="lg:col-span-7 space-y-6 relative">
               {/* Animated Timeline Line with gradient */}
-              <motion.div 
+              <motion.div
                 initial={{ scaleY: 0 }}
                 whileInView={{ scaleY: 1 }}
                 viewport={{ once: true }}
@@ -312,37 +312,37 @@ const Index = () => {
                 className="absolute left-6 lg:left-0 top-0 bottom-0 w-px origin-top hidden sm:block"
                 style={{
                   background: 'linear-gradient(to bottom, hsl(var(--foreground) / 0.2), hsl(var(--foreground) / 0.05) 70%, transparent)'
-                }}
-              />
+                }} />
+
               
-              {featuredCompanies.map((company, index) => (
-                <ScrollReveal key={company.name} delay={index * 0.15}>
+              {featuredCompanies.map((company, index) =>
+              <ScrollReveal key={company.name} delay={index * 0.15}>
                   <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="relative pl-0 sm:pl-12 lg:pl-10"
-                  >
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="relative pl-0 sm:pl-12 lg:pl-10">
+
                     {/* Timeline dot */}
-                    <motion.div 
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.3, delay: index * 0.15 + 0.3 }}
-                      className="absolute left-4 lg:left-[-5px] top-8 hidden sm:flex items-center justify-center"
-                    >
+                    <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: index * 0.15 + 0.3 }}
+                    className="absolute left-4 lg:left-[-5px] top-8 hidden sm:flex items-center justify-center">
+
                       <div className="w-2.5 h-2.5 rounded-full bg-foreground/30 ring-4 ring-background" />
                     </motion.div>
                     
                     <motion.div
-                      whileHover={{ y: -3, x: 3 }}
-                      transition={{ duration: 0.3 }}
-                      className="relative p-8 rounded-2xl border border-border/30 bg-card/40 backdrop-blur-sm group"
-                      style={{
-                        boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
-                      }}
-                    >
+                    whileHover={{ y: -3, x: 3 }}
+                    transition={{ duration: 0.3 }}
+                    className="relative p-8 rounded-2xl border border-border/30 bg-card/40 backdrop-blur-sm group"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}>
+
                       {/* Corner accent */}
                       <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-foreground/[0.02] to-transparent rounded-tr-2xl" />
                       
@@ -359,24 +359,24 @@ const Index = () => {
                     </motion.div>
                   </motion.div>
                 </ScrollReveal>
-              ))}
+              )}
             </div>
           </div>
         </div>
       </ParallaxSection>
 
       {/* Company Logos - Social Proof */}
-      <ParallaxSection 
+      <ParallaxSection
         className="py-16 lg:py-20"
         speed={0.08}
         backgroundElement={
-          <>
+        <>
             <div className="absolute inset-0 bg-gradient-to-b from-card/20 via-background to-card/20" />
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
           </>
-        }
-      >
+        }>
+
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
             <CompanyLogos />
@@ -385,27 +385,27 @@ const Index = () => {
       </ParallaxSection>
 
 
-      <ParallaxSection 
+      <ParallaxSection
         className="py-20 lg:py-24"
         speed={0.15}
         backgroundElement={
-          <>
+        <>
             <div className="absolute top-0 right-0 w-2/3 h-1/2 bg-gradient-to-bl from-card/30 to-transparent" />
             <div className="absolute bottom-0 left-0 w-1/2 h-1/3 bg-gradient-to-tr from-card/20 to-transparent" />
           </>
-        }
-      >
+        }>
+
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
               <div className="max-w-xl">
-                <motion.span 
+                <motion.span
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
-                >
+                  className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium">
+
                   {getText(language, 'Portfolio', 'Portfolio')}
                 </motion.span>
                 <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
@@ -415,10 +415,10 @@ const Index = () => {
                   {t.projects.subtitle}
                 </p>
               </div>
-              <Link 
-                to={language === 'en' ? '/en-us/projects' : '/projetos'} 
-                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground self-start lg:self-auto"
-              >
+              <Link
+                to={language === 'en' ? '/en-us/projects' : '/projetos'}
+                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground self-start lg:self-auto">
+
                 <span className="relative">
                   {t.projects.viewAll}
                   <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
@@ -430,19 +430,19 @@ const Index = () => {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {featuredProjects.map((project, index) => (
-              <ScrollReveal key={project.title} delay={index * 0.1}>
+            {featuredProjects.map((project, index) =>
+            <ScrollReveal key={project.title} delay={index * 0.1}>
                 <motion.div
-                  whileHover={{ y: -6 }}
-                  transition={{ duration: 0.3 }}
-                  className="h-full"
-                >
-                  <div 
-                    className="relative h-full p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm group overflow-hidden"
-                    style={{
-                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
-                    }}
-                  >
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.3 }}
+                className="h-full">
+
+                  <div
+                  className="relative h-full p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm group overflow-hidden"
+                  style={{
+                    boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                  }}>
+
                     {/* Hover gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     
@@ -464,65 +464,65 @@ const Index = () => {
                     
                     {/* Technologies */}
                     <div className="flex flex-wrap gap-2 mb-6">
-                      {project.technologies.slice(0, 3).map((tech) => (
-                        <span
-                          key={tech}
-                          className="text-xs px-2.5 py-1 rounded-md border border-border/30 bg-background/50 text-muted-foreground/70"
-                        >
+                      {project.technologies.slice(0, 3).map((tech) =>
+                    <span
+                      key={tech}
+                      className="text-xs px-2.5 py-1 rounded-md border border-border/30 bg-background/50 text-muted-foreground/70">
+
                           {tech}
                         </span>
-                      ))}
+                    )}
                     </div>
                     
-                    {project.link && (
-                      <a 
-                        href={project.link} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="group/link inline-flex items-center gap-2 text-sm font-medium text-foreground"
-                      >
+                    {project.link &&
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/link inline-flex items-center gap-2 text-sm font-medium text-foreground">
+
                         <span className="relative">
                           {t.projects.seeProject}
                           <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover/link:w-full transition-all duration-300" />
                         </span>
                         <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
                       </a>
-                    )}
+                  }
                   </div>
                 </motion.div>
               </ScrollReveal>
-            ))}
+            )}
           </div>
         </div>
       </ParallaxSection>
 
       {/* Story Highlight - Premium */}
-      <ParallaxSection 
+      <ParallaxSection
         className="py-20 lg:py-24"
         speed={0.12}
         backgroundElement={
-          <>
+        <>
             <div className="absolute inset-0 bg-gradient-to-b from-card/30 via-background to-card/30" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
           </>
-        }
-      >
+        }>
+
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
             <motion.div
               whileHover={{ y: -4 }}
               transition={{ duration: 0.4 }}
-              className="max-w-3xl mx-auto"
-            >
-              <div 
+              className="max-w-3xl mx-auto">
+
+              <div
                 className="relative p-10 lg:p-12 rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm text-center"
                 style={{
                   boxShadow: '0 8px 40px hsl(var(--foreground) / 0.03)'
-                }}
-              >
+                }}>
+
                 {/* Corner decorations */}
                 <div className="absolute top-0 left-0 w-24 h-24 border-l border-t border-foreground/[0.06] rounded-tl-3xl" />
                 <div className="absolute bottom-0 right-0 w-24 h-24 border-r border-b border-foreground/[0.06] rounded-br-3xl" />
@@ -541,10 +541,10 @@ const Index = () => {
                   {language === 'pt' ? 'Assim nasceu a Cheetah Network. Mais que uma empresa, uma prova de que todos merecem oportunidades reais.' : 'Thus Cheetah Network was born. More than a company, proof that everyone deserves real opportunities.'}
                 </p>
                 
-                <Link 
-                  to={language === 'en' ? '/en-us/career' : '/carreira'} 
-                  className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"
-                >
+                <Link
+                  to={language === 'en' ? '/en-us/career' : '/carreira'}
+                  className="group inline-flex items-center gap-3 text-sm font-medium text-foreground">
+
                   <span className="relative">
                     {language === 'pt' ? 'Ler história completa' : 'Read full story'}
                     <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
@@ -559,23 +559,23 @@ const Index = () => {
       </ParallaxSection>
 
       {/* Testimonials - Premium Cards */}
-      <ParallaxSection 
+      <ParallaxSection
         className="py-20 lg:py-24"
         speed={0.1}
         backgroundElement={
-          <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-card/20 to-transparent" />
-        }
-      >
+        <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-card/20 to-transparent" />
+        }>
+
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
             <div className="mb-10">
-              <motion.span 
+              <motion.span
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
-              >
+                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium">
+
                 {getText(language, 'Depoimentos', 'Testimonials')}
               </motion.span>
               <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
@@ -598,19 +598,19 @@ const Index = () => {
               name: "Davi R. Fraustino",
               role: language === 'pt' ? 'Consultor de Tecnologia' : 'Technology Consultant',
               quote: language === 'pt' ? '"Talisson é um excelente profissional capaz de unir conhecimento técnico com visão estratégica de negócios. Ele sempre entrega soluções criativas e eficientes."' : '"Talisson is an excellent professional capable of combining technical knowledge with strategic business vision. He always delivers creative and efficient solutions."'
-            }].map((testimonial, index) => (
-              <ScrollReveal key={testimonial.name} delay={index * 0.15}>
+            }].map((testimonial, index) =>
+            <ScrollReveal key={testimonial.name} delay={index * 0.15}>
                 <motion.div
-                  whileHover={{ y: -4 }}
-                  transition={{ duration: 0.3 }}
-                  className="h-full"
-                >
-                  <div 
-                    className="relative h-full p-10 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm group"
-                    style={{
-                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
-                    }}
-                  >
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3 }}
+                className="h-full">
+
+                  <div
+                  className="relative h-full p-10 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm group"
+                  style={{
+                    boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                  }}>
+
                     {/* Corner gradient */}
                     <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-foreground/[0.02] to-transparent rounded-tr-2xl" />
                     
@@ -635,34 +635,34 @@ const Index = () => {
                   </div>
                 </motion.div>
               </ScrollReveal>
-            ))}
+            )}
           </div>
         </div>
       </ParallaxSection>
 
       {/* Services Preview - Premium */}
-      <ParallaxSection 
+      <ParallaxSection
         className="py-20 lg:py-24"
         speed={0.12}
         backgroundElement={
-          <>
+        <>
             <div className="absolute inset-0 bg-gradient-to-br from-card/30 via-background to-card/20" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
             <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl hidden md:block" />
           </>
-        }
-      >
+        }>
+
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
               <div className="max-w-xl">
-                <motion.span 
+                <motion.span
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
-                >
+                  className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium">
+
                   {getText(language, 'Serviços', 'Services')}
                 </motion.span>
                 <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
@@ -672,10 +672,10 @@ const Index = () => {
                   {t.services.subtitle}
                 </p>
               </div>
-              <Link 
-                to={language === 'en' ? '/en-us/services' : '/servicos'} 
-                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground self-start lg:self-auto"
-              >
+              <Link
+                to={language === 'en' ? '/en-us/services' : '/servicos'}
+                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground self-start lg:self-auto">
+
                 <span className="relative">
                   {language === 'pt' ? 'Ver todos' : 'View all'}
                   <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
@@ -699,19 +699,19 @@ const Index = () => {
               number: '03',
               title: getText(language, 'Consultoria Tech', 'Tech Consulting'),
               description: getText(language, 'Orientação estratégica para projetos de tecnologia.', 'Strategic guidance for technology projects.')
-            }].map((service, index) => (
-              <ScrollReveal key={service.number} delay={index * 0.1}>
+            }].map((service, index) =>
+            <ScrollReveal key={service.number} delay={index * 0.1}>
                 <motion.div
-                  whileHover={{ y: -4 }}
-                  transition={{ duration: 0.3 }}
-                  className="h-full"
-                >
-                  <div 
-                    className="relative h-full p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm group overflow-hidden"
-                    style={{
-                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
-                    }}
-                  >
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3 }}
+                className="h-full">
+
+                  <div
+                  className="relative h-full p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm group overflow-hidden"
+                  style={{
+                    boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                  }}>
+
                     {/* Hover gradient */}
                     <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     
@@ -730,7 +730,7 @@ const Index = () => {
                   </div>
                 </motion.div>
               </ScrollReveal>
-            ))}
+            )}
           </div>
         </div>
       </ParallaxSection>
@@ -748,26 +748,26 @@ const Index = () => {
             <ScrollReveal>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 <div>
-                  <motion.span 
+                  <motion.span
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
-                  >
+                    className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium">
+
                     {getText(language, 'Filosofia', 'Philosophy')}
                   </motion.span>
                   <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6 leading-tight">
                     {language === 'pt' ? 'Como eu trabalho' : 'How I work'}
                   </h2>
                   <p className="text-base text-muted-foreground leading-relaxed mb-4">
-                    {language === 'pt' 
-                      ? 'Acredito que a tecnologia deve simplificar, não complicar. Cada projeto é uma oportunidade de criar algo que realmente faça diferença.' 
-                      : 'I believe technology should simplify, not complicate. Every project is an opportunity to create something that truly makes a difference.'}
+                    {language === 'pt' ?
+                    'Acredito que a tecnologia deve simplificar, não complicar. Cada projeto é uma oportunidade de criar algo que realmente faça diferença.' :
+                    'I believe technology should simplify, not complicate. Every project is an opportunity to create something that truly makes a difference.'}
                   </p>
                   <p className="text-base text-muted-foreground leading-relaxed">
-                    {language === 'pt' 
-                      ? 'Meu foco está em soluções elegantes, código limpo e resultados mensuráveis.' 
-                      : 'My focus is on elegant solutions, clean code, and measurable results.'}
+                    {language === 'pt' ?
+                    'Meu foco está em soluções elegantes, código limpo e resultados mensuráveis.' :
+                    'My focus is on elegant solutions, clean code, and measurable results.'}
                   </p>
                 </div>
                 
@@ -784,22 +784,22 @@ const Index = () => {
                     number: '03',
                     title: getText(language, 'Resultado', 'Results'),
                     text: getText(language, 'Foco em impacto real e mensurável.', 'Focus on real and measurable impact.')
-                  }].map((item, index) => (
-                    <motion.div
-                      key={item.number}
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: index * 0.1 }}
-                      className="flex gap-4 p-4 rounded-xl border border-border/20 bg-card/20 group hover:bg-card/40 transition-colors duration-300"
-                    >
+                  }].map((item, index) =>
+                  <motion.div
+                    key={item.number}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    className="flex gap-4 p-4 rounded-xl border border-border/20 bg-card/20 group hover:bg-card/40 transition-colors duration-300">
+
                       <span className="text-lg font-serif text-foreground/20 group-hover:text-foreground/40 transition-colors duration-300">{item.number}</span>
                       <div>
                         <h3 className="text-sm font-medium text-foreground mb-1">{item.title}</h3>
                         <p className="text-xs text-muted-foreground">{item.text}</p>
                       </div>
                     </motion.div>
-                  ))}
+                  )}
                 </div>
               </div>
             </ScrollReveal>
@@ -808,25 +808,25 @@ const Index = () => {
       </section>
 
       {/* Insights Section */}
-      <ParallaxSection 
+      <ParallaxSection
         className="py-16 lg:py-20"
         speed={0.08}
         backgroundElement={
-          <>
+        <>
             <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
           </>
-        }
-      >
+        }>
+
         <div className="container mx-auto px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-10">
-              <motion.span 
+              <motion.span
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
-              >
+                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6">
+
                 {getText(language, 'Insights', 'Insights')}
               </motion.span>
               <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-4 leading-tight">
@@ -840,44 +840,44 @@ const Index = () => {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {[
-              {
-                title: getText(language, 'Princípios', 'Principles'),
-                description: getText(language, 'Os fundamentos que orientam cada conteúdo e decisão técnica publicada aqui.', 'The foundations that guide every content and technical decision published here.'),
-                path: language === 'en' ? '/en-us/principles' : '/principios'
-              },
-              {
-                title: getText(language, 'Trilhas de Conteúdo', 'Content Trails'),
-                description: getText(language, 'Caminhos estratégicos de aprendizado organizados por área de conhecimento.', 'Strategic learning paths organized by knowledge area.'),
-                path: language === 'en' ? '/en-us/articles' : '/artigos'
-              },
-              {
-                title: 'Checklists',
-                description: getText(language, 'Guias práticos e objetivos para garantir que nenhum passo crítico seja esquecido.', 'Practical guides to ensure no critical step is missed.'),
-                path: language === 'en' ? '/en-us/checklists' : '/checklists'
-              },
-              {
-                title: getText(language, 'Como Trabalho', 'How I Work'),
-                description: getText(language, 'Meu processo de desenvolvimento, validação de escopo e gestão de riscos.', 'My development process, scope validation and risk management.'),
-                path: language === 'en' ? '/en-us/how-i-work' : '/como-trabalho'
-              },
-              {
-                title: getText(language, 'Decisões Técnicas', 'Tech Decisions'),
-                description: getText(language, 'Trade-offs reais, escolhas de stack e anti-padrões que evito.', 'Real trade-offs, stack choices and anti-patterns I avoid.'),
-                path: language === 'en' ? '/en-us/tech-decisions' : '/decisoes-tecnicas'
-              },
-              {
-                title: getText(language, 'Acessibilidade', 'Accessibility'),
-                description: getText(language, 'Compromisso com inclusão digital e boas práticas de a11y.', 'Commitment to digital inclusion and a11y best practices.'),
-                path: language === 'en' ? '/en-us/accessibility' : '/acessibilidade'
-              }
-            ].map((item, index) => (
-              <ScrollReveal key={item.path} delay={index * 0.1}>
+            {
+              title: getText(language, 'Princípios', 'Principles'),
+              description: getText(language, 'Os fundamentos que orientam cada conteúdo e decisão técnica publicada aqui.', 'The foundations that guide every content and technical decision published here.'),
+              path: language === 'en' ? '/en-us/principles' : '/principios'
+            },
+            {
+              title: getText(language, 'Trilhas de Conteúdo', 'Content Trails'),
+              description: getText(language, 'Caminhos estratégicos de aprendizado organizados por área de conhecimento.', 'Strategic learning paths organized by knowledge area.'),
+              path: language === 'en' ? '/en-us/articles' : '/artigos'
+            },
+            {
+              title: 'Checklists',
+              description: getText(language, 'Guias práticos e objetivos para garantir que nenhum passo crítico seja esquecido.', 'Practical guides to ensure no critical step is missed.'),
+              path: language === 'en' ? '/en-us/checklists' : '/checklists'
+            },
+            {
+              title: getText(language, 'Como Trabalho', 'How I Work'),
+              description: getText(language, 'Meu processo de desenvolvimento, validação de escopo e gestão de riscos.', 'My development process, scope validation and risk management.'),
+              path: language === 'en' ? '/en-us/how-i-work' : '/como-trabalho'
+            },
+            {
+              title: getText(language, 'Decisões Técnicas', 'Tech Decisions'),
+              description: getText(language, 'Trade-offs reais, escolhas de stack e anti-padrões que evito.', 'Real trade-offs, stack choices and anti-patterns I avoid.'),
+              path: language === 'en' ? '/en-us/tech-decisions' : '/decisoes-tecnicas'
+            },
+            {
+              title: getText(language, 'Acessibilidade', 'Accessibility'),
+              description: getText(language, 'Compromisso com inclusão digital e boas práticas de a11y.', 'Commitment to digital inclusion and a11y best practices.'),
+              path: language === 'en' ? '/en-us/accessibility' : '/acessibilidade'
+            }].
+            map((item, index) =>
+            <ScrollReveal key={item.path} delay={index * 0.1}>
                 <Link to={item.path}>
                   <motion.div
-                    whileHover={{ y: -4 }}
-                    transition={{ duration: 0.3 }}
-                    className="group p-6 rounded-2xl border border-border/20 bg-card/30 h-full hover:border-foreground/20 transition-all duration-300"
-                  >
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className="group p-6 rounded-2xl border border-border/20 bg-card/30 h-full hover:border-foreground/20 transition-all duration-300">
+
                     <h3 className="font-serif text-lg text-foreground mb-2 group-hover:text-gradient transition-all duration-300">
                       {item.title}
                     </h3>
@@ -891,31 +891,31 @@ const Index = () => {
                   </motion.div>
                 </Link>
               </ScrollReveal>
-            ))}
+            )}
           </div>
         </div>
       </ParallaxSection>
 
       {/* Articles Section */}
-      <ParallaxSection 
+      <ParallaxSection
         className="py-16 lg:py-20"
         speed={0.08}
         backgroundElement={
-          <>
+        <>
             <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
           </>
-        }
-      >
+        }>
+
         <div className="container mx-auto px-6 lg:px-8">
           <ScrollReveal>
             <div className="max-w-3xl mx-auto text-center mb-10">
-              <motion.span 
+              <motion.span
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
-              >
+                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6">
+
                 {getText(language, 'Publicações', 'Publications')}
               </motion.span>
               <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-4 leading-tight">
@@ -923,8 +923,8 @@ const Index = () => {
               </h2>
               <p className="text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
                 {getText(language,
-                  'Publico artigos e guias técnicos sobre tecnologia, gestão, segurança, projetos digitais e boas práticas profissionais, com foco em maturidade, responsabilidade e crescimento sustentável.',
-                  'I publish articles and technical guides on technology, management, security, digital projects and professional best practices, with a focus on maturity, responsibility and sustainable growth.'
+                'Publico artigos e guias técnicos sobre tecnologia, gestão, segurança, projetos digitais e boas práticas profissionais, com foco em maturidade, responsabilidade e crescimento sustentável.',
+                'I publish articles and technical guides on technology, management, security, digital projects and professional best practices, with a focus on maturity, responsibility and sustainable growth.'
                 )}
               </p>
             </div>
@@ -935,8 +935,8 @@ const Index = () => {
               <Link to={language === 'en' ? '/en-us/articles/vision-and-persistence' : '/artigos/visao-e-persistencia'}>
                 <motion.div
                   whileHover={{ y: -4 }}
-                  transition={{ duration: 0.3 }}
-                >
+                  transition={{ duration: 0.3 }}>
+
                   <GlassCard className="p-8 group hover:border-foreground/20 transition-all duration-500">
                     <div className="flex items-center gap-3 mb-4 text-xs text-muted-foreground">
                       <span>{getText(language, '10 de Fevereiro, 2025', 'February 10, 2025')}</span>
@@ -945,14 +945,14 @@ const Index = () => {
                     </div>
                     <h3 className="font-serif text-xl lg:text-2xl text-foreground mb-3 group-hover:text-gradient transition-all duration-500 leading-tight">
                       {getText(language,
-                        'Se a Gente Consegue Imaginar, É Porque É Possível',
-                        'If We Can Imagine It, It\'s Because It\'s Possible'
+                      'Se a Gente Consegue Imaginar, É Porque É Possível',
+                      'If We Can Imagine It, It\'s Because It\'s Possible'
                       )}
                     </h3>
                     <p className="text-sm text-muted-foreground leading-relaxed mb-5">
                       {getText(language,
-                        'Reflexão sobre visão, persistência e empreendedorismo.',
-                        'A reflection on vision, persistence and entrepreneurship.'
+                      'Reflexão sobre visão, persistência e empreendedorismo.',
+                      'A reflection on vision, persistence and entrepreneurship.'
                       )}
                     </p>
                     <span className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
@@ -971,8 +971,8 @@ const Index = () => {
               <Link to={language === 'en' ? '/en-us/articles/discord-bots' : '/artigos/bots-discord'}>
                 <motion.div
                   whileHover={{ y: -4 }}
-                  transition={{ duration: 0.3 }}
-                >
+                  transition={{ duration: 0.3 }}>
+
                   <GlassCard className="p-8 group hover:border-foreground/20 transition-all duration-500">
                     <div className="flex items-center gap-3 mb-4 text-xs text-muted-foreground">
                       <span>{getText(language, '7 de Fevereiro, 2025', 'February 7, 2025')}</span>
@@ -981,14 +981,14 @@ const Index = () => {
                     </div>
                     <h3 className="font-serif text-xl lg:text-2xl text-foreground mb-3 group-hover:text-gradient transition-all duration-500 leading-tight">
                       {getText(language,
-                        'Guia de Maturidade, Gestão e Segurança para Projetos de Bots no Discord',
-                        'Maturity, Management & Security Guide for Discord Bot Projects'
+                      'Guia de Maturidade, Gestão e Segurança para Projetos de Bots no Discord',
+                      'Maturity, Management & Security Guide for Discord Bot Projects'
                       )}
                     </h3>
                     <p className="text-sm text-muted-foreground leading-relaxed mb-5">
                       {getText(language,
-                        'Guia completo sobre maturidade, gestão e segurança em projetos de bots no Discord.',
-                        'A comprehensive guide on maturity, management and security in Discord bot projects.'
+                      'Guia completo sobre maturidade, gestão e segurança em projetos de bots no Discord.',
+                      'A comprehensive guide on maturity, management and security in Discord bot projects.'
                       )}
                     </p>
                     <span className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
@@ -1018,12 +1018,12 @@ const Index = () => {
             <ScrollReveal>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
                 <div>
-                  <motion.span 
+                  <motion.span
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
-                  >
+                    className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium">
+
                     {getText(language, 'Obra Autoral', 'Original Work')}
                   </motion.span>
                   <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-4 leading-tight">
@@ -1034,14 +1034,14 @@ const Index = () => {
                   </p>
                   <p className="text-base text-muted-foreground leading-relaxed mb-6">
                     {getText(language,
-                      'Um livro com mais de 120 capítulos sobre superação, resiliência, empreendedorismo e liderança. Escrito a partir de experiências reais de quem transformou cada dificuldade em força.',
-                      'A book with over 120 chapters on overcoming, resilience, entrepreneurship and leadership. Written from real experiences of someone who transformed every difficulty into strength.'
+                    'Um livro com mais de 120 capítulos sobre superação, resiliência, empreendedorismo e liderança. Escrito a partir de experiências reais de quem transformou cada dificuldade em força.',
+                    'A book with over 120 chapters on overcoming, resilience, entrepreneurship and leadership. Written from real experiences of someone who transformed every difficulty into strength.'
                     )}
                   </p>
-                  <Link 
-                    to={language === 'en' ? '/en-us/book' : '/livro'} 
-                    className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"
-                  >
+                  <Link
+                    to={language === 'en' ? '/en-us/book' : '/livro'}
+                    className="group inline-flex items-center gap-3 text-sm font-medium text-foreground">
+
                     <span className="relative">
                       {getText(language, 'Conhecer o livro', 'Discover the book')}
                       <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
@@ -1055,8 +1055,8 @@ const Index = () => {
                   <img
                     src={bookMockupImg}
                     alt={getText(language, 'Superando Limites - Da Rejeição ao Sucesso', 'Overcoming Limits - From Rejection to Success')}
-                    className="w-56 lg:w-72 h-auto cursor-pointer"
-                  />
+                    className="w-56 lg:w-72 h-auto cursor-pointer" />
+
                 </a>
               </div>
             </ScrollReveal>
@@ -1074,12 +1074,12 @@ const Index = () => {
           <div className="max-w-3xl mx-auto">
             <ScrollReveal>
               <div className="text-center mb-12">
-                <motion.span 
+                <motion.span
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
-                >
+                  className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6">
+
                   FAQ
                 </motion.span>
                 <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6 leading-tight">
@@ -1111,15 +1111,15 @@ const Index = () => {
           <ScrollReveal>
             <motion.div
               whileHover={{ y: -4 }}
-              transition={{ duration: 0.4 }}
-            >
+              transition={{ duration: 0.4 }}>
+
               <GlassCard className="max-w-3xl mx-auto p-10 lg:p-12 text-center hover:border-foreground/20 transition-all duration-500">
-                <motion.span 
+                <motion.span
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
-                >
+                  className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6">
+
                   {getText(language, 'Vamos conversar', 'Let\'s talk')}
                 </motion.span>
                 
@@ -1132,23 +1132,23 @@ const Index = () => {
                 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                   <ContactDialog>
-                    <motion.button 
+                    <motion.button
                       whileHover={{ scale: 1.02, y: -2 }}
                       whileTap={{ scale: 0.98 }}
                       className="group inline-flex items-center gap-3 px-8 py-4 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300"
                       style={{
                         boxShadow: '0 0 30px hsl(var(--foreground) / 0.2), 0 10px 40px hsl(var(--foreground) / 0.1)'
-                      }}
-                    >
+                      }}>
+
                       {t.cta.button}
                       <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </motion.button>
                   </ContactDialog>
                   
-                  <Link 
-                    to={language === 'en' ? '/en-us/projects' : '/projetos'} 
-                    className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-all duration-300"
-                  >
+                  <Link
+                    to={language === 'en' ? '/en-us/projects' : '/projetos'}
+                    className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-all duration-300">
+
                     <span>{t.projects.viewAll}</span>
                     <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                   </Link>
@@ -1158,8 +1158,8 @@ const Index = () => {
           </ScrollReveal>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>);
+
 };
 
 export default Index;
