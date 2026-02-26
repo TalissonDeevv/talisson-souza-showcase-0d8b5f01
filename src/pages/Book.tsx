@@ -656,6 +656,15 @@ const Book = () => {
           </ScrollReveal>
         </div>
       </ParallaxSection>
+
+      {/* Copyright Notice */}
+      <section className="pb-12">
+        <div className="container mx-auto px-6 lg:px-8 text-center">
+          <p className="text-xs text-muted-foreground/50">
+            © 2026 Talisson Souza. Obra registrada na Biblioteca Nacional sob nº 000.000.
+          </p>
+        </div>
+      </section>
     </Layout>
   );
 };
