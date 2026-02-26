@@ -25,26 +25,13 @@ import TrailPage from "./pages/TrailPage";
 import Principles from "./pages/Principles";
 import Checklists from "./pages/Checklists";
 import ChecklistDetail from "./pages/ChecklistDetail";
-import DiscordBotsGuide from "./pages/articles/DiscordBotsGuide";
 import VisionAndPersistence from "./pages/articles/VisionAndPersistence";
 import INPIGuide from "./pages/articles/INPIGuide";
-import ProfessionalDiscordBot from "./pages/articles/ProfessionalDiscordBot";
-import DiscordBotRental from "./pages/articles/DiscordBotRental";
-import MonetizingBots from "./pages/articles/MonetizingBots";
-import DiscordBotNiche from "./pages/articles/DiscordBotNiche";
-import WhatIsFullStack from "./pages/articles/WhatIsFullStack";
-import SystemDevelopmentCost from "./pages/articles/SystemDevelopmentCost";
 import CltToFreelancer from "./pages/articles/CltToFreelancer";
-import DependencyVulnerabilities from "./pages/articles/DependencyVulnerabilities";
 import PoliticsEntrepreneurship from "./pages/articles/PoliticsEntrepreneurship";
-import TechFundamentals from "./pages/articles/TechFundamentals";
-import DiscordPromotion from "./pages/articles/DiscordPromotion";
-import DiscordModeration from "./pages/articles/DiscordModeration";
 import JuniorToStrategic from "./pages/articles/JuniorToStrategic";
 import WhatCompaniesSeek from "./pages/articles/WhatCompaniesSeek";
 import BuildingPortfolio from "./pages/articles/BuildingPortfolio";
-import DiscordAccountSecurity from "./pages/articles/DiscordAccountSecurity";
-import InfrastructureHosting from "./pages/articles/InfrastructureHosting";
 import MarketTrailArticle from "./pages/articles/MarketTrailArticle";
 import LinkedInProfile from "./pages/articles/LinkedInProfile";
 
@@ -77,26 +64,13 @@ const AppRoutes = () => (
         <Route path="/artigos" element={<Articles />} />
         <Route path="/artigos/tag/:tag" element={<TagPage />} />
         <Route path="/trilhas/:trailId" element={<TrailPage />} />
-        <Route path="/artigos/bots-discord" element={<DiscordBotsGuide />} />
         <Route path="/artigos/visao-e-persistencia" element={<VisionAndPersistence />} />
         <Route path="/artigos/inpi" element={<INPIGuide />} />
-        <Route path="/artigos/bot-profissional-discord" element={<ProfessionalDiscordBot />} />
-        <Route path="/artigos/aluguel-bots-discord" element={<DiscordBotRental />} />
-        <Route path="/artigos/monetizar-bots" element={<MonetizingBots />} />
-        <Route path="/artigos/nicho-bot-discord" element={<DiscordBotNiche />} />
-        <Route path="/artigos/desenvolvimento-full-stack" element={<WhatIsFullStack />} />
-        <Route path="/artigos/custo-desenvolvimento-sistema" element={<SystemDevelopmentCost />} />
         <Route path="/artigos/clt-para-freelancer" element={<CltToFreelancer />} />
-        <Route path="/artigos/vulnerabilidade-dependencias" element={<DependencyVulnerabilities />} />
         <Route path="/artigos/politica-empreendedorismo" element={<PoliticsEntrepreneurship />} />
-        <Route path="/artigos/fundamentos-tecnologia" element={<TechFundamentals />} />
-        <Route path="/artigos/divulgacao-discord" element={<DiscordPromotion />} />
-        <Route path="/artigos/moderacao-discord" element={<DiscordModeration />} />
         <Route path="/artigos/junior-para-estrategico" element={<JuniorToStrategic />} />
         <Route path="/artigos/o-que-empresas-procuram" element={<WhatCompaniesSeek />} />
         <Route path="/artigos/construir-portfolio" element={<BuildingPortfolio />} />
-        <Route path="/artigos/seguranca-contas-discord" element={<DiscordAccountSecurity />} />
-        <Route path="/artigos/infraestrutura-hospedagem" element={<InfrastructureHosting />} />
         <Route path="/artigos/perfil-linkedin-tecnologia" element={<LinkedInProfile />} />
         <Route path="/artigos/:slug" element={<MarketTrailArticle />} />
         
@@ -120,26 +94,13 @@ const AppRoutes = () => (
         <Route path="/en-us/articles" element={<Articles />} />
         <Route path="/en-us/articles/tag/:tag" element={<TagPage />} />
         <Route path="/en-us/trails/:trailId" element={<TrailPage />} />
-        <Route path="/en-us/articles/discord-bots" element={<DiscordBotsGuide />} />
         <Route path="/en-us/articles/vision-and-persistence" element={<VisionAndPersistence />} />
         <Route path="/en-us/articles/inpi" element={<INPIGuide />} />
-        <Route path="/en-us/articles/professional-discord-bot" element={<ProfessionalDiscordBot />} />
-        <Route path="/en-us/articles/discord-bot-rental" element={<DiscordBotRental />} />
-        <Route path="/en-us/articles/monetizing-bots" element={<MonetizingBots />} />
-        <Route path="/en-us/articles/discord-bot-niche" element={<DiscordBotNiche />} />
-        <Route path="/en-us/articles/full-stack-development" element={<WhatIsFullStack />} />
-        <Route path="/en-us/articles/system-development-cost" element={<SystemDevelopmentCost />} />
         <Route path="/en-us/articles/clt-to-freelancer" element={<CltToFreelancer />} />
-        <Route path="/en-us/articles/dependency-vulnerabilities" element={<DependencyVulnerabilities />} />
         <Route path="/en-us/articles/politics-entrepreneurship" element={<PoliticsEntrepreneurship />} />
-        <Route path="/en-us/articles/tech-fundamentals" element={<TechFundamentals />} />
-        <Route path="/en-us/articles/discord-promotion" element={<DiscordPromotion />} />
-        <Route path="/en-us/articles/discord-moderation" element={<DiscordModeration />} />
         <Route path="/en-us/articles/junior-to-strategic" element={<JuniorToStrategic />} />
         <Route path="/en-us/articles/what-companies-seek" element={<WhatCompaniesSeek />} />
         <Route path="/en-us/articles/building-portfolio" element={<BuildingPortfolio />} />
-        <Route path="/en-us/articles/discord-account-security" element={<DiscordAccountSecurity />} />
-        <Route path="/en-us/articles/infrastructure-hosting" element={<InfrastructureHosting />} />
         <Route path="/en-us/articles/linkedin-profile-tech" element={<LinkedInProfile />} />
         <Route path="/en-us/articles/:slug" element={<MarketTrailArticle />} />
         
