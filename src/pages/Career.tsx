@@ -50,7 +50,7 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
     { icon: Award, label: getText(language, "Projetos Entregues", "Projects Delivered"), value: "50+" },
     { icon: Building2, label: getText(language, "Empresas Fundadas", "Companies Founded"), value: "2" },
     { icon: Star, label: getText(language, "Satisfação", "Satisfaction"), value: "100%" },
-    { icon: Calendar, label: getText(language, "Anos de Experiência", "Years of Experience"), value: "8+" }
+    { icon: Calendar, label: getText(language, "Anos de Experiência", "Years of Experience"), value: `${new Date().getFullYear() - 2018}+` }
   ];
 
   const timelineEvents = [
