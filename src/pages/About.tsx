@@ -81,13 +81,14 @@ Ultimately, my mission is to create solutions that truly make a difference, with
   ];
 
   // Stats/Achievements
+  const yearsOfExperience = `${new Date().getFullYear() - 2018}+`;
   const stats = language === 'pt' ? [
-    { value: "8+", label: "Anos de experiência", icon: Clock },
+    { value: yearsOfExperience, label: "Anos de experiência", icon: Clock },
     { value: "50+", label: "Projetos entregues", icon: Layers },
     { value: "2", label: "Empresas fundadas", icon: TrendingUp },
     { value: "1", label: "Livro publicado", icon: BookOpen }
   ] : [
-    { value: "8+", label: "Years of experience", icon: Clock },
+    { value: yearsOfExperience, label: "Years of experience", icon: Clock },
     { value: "50+", label: "Projects delivered", icon: Layers },
     { value: "2", label: "Companies founded", icon: TrendingUp },
     { value: "1", label: "Book published", icon: BookOpen }
