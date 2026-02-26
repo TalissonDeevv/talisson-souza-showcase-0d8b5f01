@@ -1055,7 +1055,7 @@ const Index = () => {
                   <img
                     src={bookMockupImg}
                     alt={getText(language, 'Superando Limites - Da Rejeição ao Sucesso', 'Overcoming Limits - From Rejection to Success')}
-                    className="w-56 lg:w-72 h-auto cursor-pointer animate-float border-8" />
+                    className="w-56 lg:w-72 h-auto cursor-pointer animate-float border-8 border-none" />
                 </a>
               </div>
             </ScrollReveal>
