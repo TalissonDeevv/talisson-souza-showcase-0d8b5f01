@@ -16,7 +16,7 @@ import logoSignature from "@/assets/logo-signature.png";
 import { motion } from "framer-motion";
 import { SiJavascript, SiTypescript, SiPython, SiReact, SiNodedotjs, SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFirebase } from "react-icons/si";
 import CompanyLogos from "@/components/ui/CompanyLogos";
-import bookMockupImg from "@/assets/book-mockup-opt.jpg";
+import bookMockupImg from "@/assets/book-mockup-v3.png";
 const Index = () => {
   const {
     language
