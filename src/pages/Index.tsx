@@ -1051,7 +1051,7 @@ const Index = () => {
                   </Link>
                 </div>
                 
-                <a href="https://www.amazon.com.br/dp/B0FXV8WP3Y" target="_blank" rel="noopener noreferrer" className="flex justify-center lg:justify-end lg:translate-x-16 xl:translate-x-24">
+                <a href="https://www.amazon.com.br/dp/B0FXV8WP3Y" target="_blank" rel="noopener noreferrer" className="flex justify-center lg:justify-center">
                   <img
                     src={bookMockupImg}
                     alt={getText(language, 'Superando Limites - Da Rejeição ao Sucesso', 'Overcoming Limits - From Rejection to Success')}
