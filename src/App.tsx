@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "@/contexts/ThemeContext";
-import { AudioPlayerProvider } from "@/contexts/AudioPlayerContext";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -27,12 +26,11 @@ import Principles from "./pages/Principles";
 import Checklists from "./pages/Checklists";
 import ChecklistDetail from "./pages/ChecklistDetail";
 import MarketTrailArticle from "./pages/articles/MarketTrailArticle";
-import GenerateAudio from "./pages/GenerateAudio";
+
 const queryClient = new QueryClient();
 
 const AppRoutes = () => (
   <ThemeProvider>
-    <AudioPlayerProvider>
     <TooltipProvider>
       <Toaster />
       <Sonner />
@@ -90,13 +88,10 @@ const AppRoutes = () => (
         <Route path="/services/:serviceId" element={<ServiceDetail />} />
         <Route path="/career" element={<Career />} />
         <Route path="/contact" element={<Contact />} />
-        {/* Admin */}
-        <Route path="/admin/generate-audio" element={<GenerateAudio />} />
         {/* 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </TooltipProvider>
-    </AudioPlayerProvider>
   </ThemeProvider>
 );
 
