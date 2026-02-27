@@ -54,7 +54,7 @@ const DiscordPopup = () => {
             }}
           >
             {/* Banner */}
-            <div className="relative h-20 overflow-hidden">
+            <div className="relative h-20 rounded-t-2xl overflow-hidden">
               <img
                 src={escritorioBanner}
                 alt=""
@@ -72,16 +72,16 @@ const DiscordPopup = () => {
               >
                 <X className="w-4 h-4 pointer-events-none" />
               </button>
+            </div>
 
-              {/* Logo overlapping banner */}
-              <div className="absolute -bottom-5 left-4">
-                <div className="w-11 h-11 rounded-xl border-2 border-card bg-card overflow-hidden shadow-lg">
-                  <img
-                    src={escritorioLogo}
-                    alt="Escritório do Talisson"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+            {/* Logo - outside overflow-hidden */}
+            <div className="absolute top-[52px] left-4 z-10">
+              <div className="w-11 h-11 rounded-xl border-2 border-card bg-card overflow-hidden shadow-lg">
+                <img
+                  src={escritorioLogo}
+                  alt="Escritório do Talisson"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
             
