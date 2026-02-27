@@ -55,17 +55,19 @@ const TrailPage = () => {
         />
         <div className="container mx-auto px-6 lg:px-8 relative z-20">
           <ScrollReveal>
-            <Link
-              to={articlesPath}
-              className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors mb-8"
-            >
-              <ArrowLeft className="w-3 h-3" />
-              {getText(language, 'Voltar aos artigos', 'Back to articles')}
-            </Link>
+            <div className="mb-8">
+              <Link
+                to={articlesPath}
+                className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <ArrowLeft className="w-3 h-3" />
+                {getText(language, 'Voltar aos artigos', 'Back to articles')}
+              </Link>
+            </div>
             <motion.span
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+              className="block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
             >
               {getText(language, 'Trilha de Conteúdo', 'Content Trail')}
             </motion.span>
