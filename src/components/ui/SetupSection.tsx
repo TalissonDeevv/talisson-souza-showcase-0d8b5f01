@@ -350,8 +350,8 @@ const SetupSection = () => {
                 <div>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                     {getText(language,
-                      'Essa máquina não é sobre ter o melhor hardware do mercado. É sobre ter exatamente o que eu preciso para entregar código de qualidade todos os dias, sem gargalos e sem desperdício. Qualquer desenvolvedor pode ser produtivo com menos do que isso — o que define seu trabalho é conhecimento, disciplina e consistência.',
-                      "This machine isn't about having the best hardware on the market. It's about having exactly what I need to deliver quality code every day, without bottlenecks and without waste. Any developer can be productive with less than this — what defines your work is knowledge, discipline and consistency."
+                      'Essa máquina não é sobre ter o melhor hardware do mercado. É sobre ter exatamente o que eu preciso para entregar código de qualidade todos os dias, sem gargalos e sem desperdício. Qualquer desenvolvedor pode ser produtivo com menos do que isso o que define seu trabalho é conhecimento, disciplina e consistência.',
+                      "This machine isn't about having the best hardware on the market. It's about having exactly what I need to deliver quality code every day, without bottlenecks and without waste. Any developer can be productive with less than this what defines your work is knowledge, discipline and consistency."
                     )}
                   </p>
                   <p className="text-xs text-foreground/40 italic">
