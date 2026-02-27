@@ -4,8 +4,8 @@ import { X } from "lucide-react";
 import { SiDiscord } from "react-icons/si";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
-import escritorioLogo from "@/assets/discord/escritorio-logo.png";
-import escritorioBanner from "@/assets/discord/escritorio-banner.png";
+const escritorioLogo = "/images/discord/escritorio-logo.png";
+const escritorioBanner = "/images/discord/escritorio-banner.png";
 
 const DISCORD_LINK = "https://discord.gg/WXwguHWjxg";
 

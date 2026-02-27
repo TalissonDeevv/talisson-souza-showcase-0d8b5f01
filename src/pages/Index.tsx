@@ -17,14 +17,14 @@ import { motion } from "framer-motion";
 import { SiJavascript, SiTypescript, SiPython, SiReact, SiNodedotjs, SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFirebase } from "react-icons/si";
 import CompanyLogos from "@/components/ui/CompanyLogos";
 import DiscordCommunityCard from "@/components/ui/DiscordCommunityCard";
-import agonLogo from "@/assets/discord/agon-logo.png";
-import agonBanner from "@/assets/discord/agon-banner.png";
-import hytaleLogo from "@/assets/discord/hytale-logo.gif";
-import hytaleBanner from "@/assets/discord/hytale-banner.png";
-import modsclubLogo from "@/assets/discord/modsclub-logo.png";
-import modsclubBanner from "@/assets/discord/modsclub-banner.png";
-import escritorioLogo from "@/assets/discord/escritorio-logo.png";
-import escritorioBannerFull from "@/assets/discord/escritorio-banner-full.png";
+const agonLogo = "/images/discord/agon-logo.png";
+const agonBanner = "/images/discord/agon-banner.png";
+const hytaleLogo = "/images/discord/hytale-logo.gif";
+const hytaleBanner = "/images/discord/hytale-banner.png";
+const modsclubLogo = "/images/discord/modsclub-logo.png";
+const modsclubBanner = "/images/discord/modsclub-banner.png";
+const escritorioLogo = "/images/discord/escritorio-logo.png";
+const escritorioBannerFull = "/images/discord/escritorio-banner-full.png";
 import bookMockupImg from "@/assets/book-mockup-v3.png";
 const Index = () => {
   const {
