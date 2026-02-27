@@ -872,61 +872,8 @@ Ultimately, my mission is to create solutions that truly make a difference, with
       {/* Setup Section */}
       <SetupSection />
 
-      {/* Community Section */}
-      <section className="py-20 lg:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-card/30 via-background to-background" />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-radial from-foreground/5 to-transparent blur-3xl opacity-50" />
-        </div>
-        
-        <div className="container mx-auto px-6 lg:px-8 relative">
-          <ScrollReveal>
-            <motion.div
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.4 }}
-            >
-              <GlassCard className="max-w-3xl mx-auto p-10 lg:p-12 text-center hover:border-foreground/20 transition-all duration-500">
-                <div className="w-16 h-16 rounded-2xl border border-border/30 bg-card/50 flex items-center justify-center mx-auto mb-6">
-                  <Users className="w-8 h-8 text-foreground/60" />
-                </div>
-                
-                <motion.span 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
-                >
-                  {getText(language, 'Comunidade', 'Community')}
-                </motion.span>
-                
-                <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-4 leading-tight">
-                  Tech Leaders Network
-                </h2>
-                <p className="text-base text-muted-foreground mb-8 leading-relaxed max-w-xl mx-auto">
-                  {getText(language, 
-                    'Fundador da comunidade exclusiva para empreendedores e programadores que querem acelerar suas carreiras.', 
-                    'Founder of the exclusive community for entrepreneurs and programmers who want to accelerate their careers.'
-                  )}
-                </p>
-                
-                <a 
-                  href="https://discord.gg/edZWXqcxuF" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-3 px-8 py-4 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300"
-                  style={{
-                    boxShadow: '0 0 30px hsl(var(--foreground) / 0.2)'
-                  }}
-                >
-                  {getText(language, 'Entrar na comunidade', 'Join community')}
-                  <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </a>
-              </GlassCard>
-            </motion.div>
-          </ScrollReveal>
-        </div>
-      </section>
+
+
     </Layout>
   );
 };
