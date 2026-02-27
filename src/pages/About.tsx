@@ -27,23 +27,23 @@ const About = () => {
     return age;
   };
 
-  const aboutTextPt = `Oi, tudo bem? Meu nome é Talisson Souza, mas muitos me chamam de Talinho. Tenho ${getAge()} anos, sou Empreendedor Executivo, Diretor de Negócios Empresariais e Desenvolvedor Full Stack. Como CEO da Cheetah Network, minha jornada com tecnologia começou meio que na curiosidade, fuçando aqui e ali, até que virei apaixonado de vez.
+  const aboutTextPt = `Oi, tudo bem? Meu nome é Talisson Souza, mas muitos me chamam de Talinho. Tenho ${getAge()} anos, sou Empreendedor Executivo, Diretor de Negócios Empresariais e Desenvolvedor Full Stack. Como CEO da Cheetah Solutions Network, minha jornada com tecnologia começou meio que na curiosidade, fuçando aqui e ali, até que virei apaixonado de vez.
 
 Gosto de estar envolvido em tudo que crio, desde a primeira linha de código até ver o resultado final funcionando na prática. Trabalhar com desenvolvimento web, mobile, bots inteligentes e infraestrutura não é só meu trabalho, é parte do meu dia a dia.
 
 No fim, minha missão é criar soluções que realmente façam diferença, com um toque humano, e continuar aprendendo e evoluindo todos os dias.`;
 
-  const aboutTextEn = `Hi, how are you? My name is Talisson Souza, but many call me Talinho. I'm ${getAge()} years old, an Executive Entrepreneur, Business Director, and Full Stack Developer. As CEO of Cheetah Network, my journey with technology began out of curiosity, dabbling here and there, until I became completely passionate.
+  const aboutTextEn = `Hi, how are you? My name is Talisson Souza, but many call me Talinho. I'm ${getAge()} years old, an Executive Entrepreneur, Business Director, and Full Stack Developer. As CEO of Cheetah Solutions Network, my journey with technology began out of curiosity, dabbling here and there, until I became completely passionate.
 
 I enjoy being involved in everything I create, from the first line of code to seeing the final result in action. Working with web and mobile development, smart bots, and infrastructure isn't just my job; it's part of my daily life.
 
 Ultimately, my mission is to create solutions that truly make a difference, with a human touch, and to continue learning and evolving every day.`;
 
   const experiences = language === 'pt' ? [
-    { company: "Cheetah Network", position: "CEO & Founder", period: "2023 - Presente", description: "Fundei e lidero a Cheetah Network, empresa especializada em soluções digitais." },
+    { company: "Cheetah Solutions Network", position: "CEO & Founder", period: "2023 - Presente", description: "Fundei e lidero a Cheetah Solutions Network, empresa especializada em soluções digitais." },
     { company: "Werneck Group", position: "Diretor Estratégico", period: "2024 - Presente", description: "Direção estratégica em consultoria empresarial e gestão de operações." }
   ] : [
-    { company: "Cheetah Network", position: "CEO & Founder", period: "2023 - Present", description: "Founded and lead Cheetah Network, a company specialized in digital solutions." },
+    { company: "Cheetah Solutions Network", position: "CEO & Founder", period: "2023 - Present", description: "Founded and lead Cheetah Solutions Network, a company specialized in digital solutions." },
     { company: "Werneck Group", position: "Strategic Director", period: "2024 - Present", description: "Strategic direction in business consulting and operations management." }
   ];
 
@@ -108,14 +108,14 @@ Ultimately, my mission is to create solutions that truly make a difference, with
   const careerMilestones = language === 'pt' ? [
     { year: "2016", title: "Primeiros Passos", description: "Comecei a explorar programação e tecnologia por curiosidade", icon: Code2 },
     { year: "2018", title: "Primeiro Projeto", description: "Desenvolvi meu primeiro projeto web completo para um cliente real", icon: Rocket },
-    { year: "2020", title: "Cheetah Network", description: "Fundei a Cheetah Network, minha primeira empresa de tecnologia", icon: TrendingUp },
+    { year: "2020", title: "Cheetah Solutions Network", description: "Fundei a Cheetah Solutions Network, minha primeira empresa de tecnologia", icon: TrendingUp },
     { year: "2022", title: "Especialização", description: "Foquei em desenvolvimento Full Stack com React e Node.js", icon: Target },
     { year: "2024", title: "Expansão", description: "Assumi posição de liderança no Werneck Group", icon: Briefcase },
     { year: "2025", title: "Livro Publicado", description: "Publiquei meu primeiro livro sobre empreendedorismo e tecnologia", icon: BookOpen }
   ] : [
     { year: "2016", title: "First Steps", description: "Started exploring programming and technology out of curiosity", icon: Code2 },
     { year: "2018", title: "First Project", description: "Developed my first complete web project for a real client", icon: Rocket },
-    { year: "2020", title: "Cheetah Network", description: "Founded Cheetah Network, my first technology company", icon: TrendingUp },
+    { year: "2020", title: "Cheetah Solutions Network", description: "Founded Cheetah Solutions Network, my first technology company", icon: TrendingUp },
     { year: "2022", title: "Specialization", description: "Focused on Full Stack development with React and Node.js", icon: Target },
     { year: "2024", title: "Expansion", description: "Took leadership position at Werneck Group", icon: Briefcase },
     { year: "2025", title: "Book Published", description: "Published my first book about entrepreneurship and technology", icon: BookOpen }
@@ -142,9 +142,9 @@ Ultimately, my mission is to create solutions that truly make a difference, with
     <Layout withPadding={false}>
       <SEO 
         title={getText(language, 'Sobre Talisson Souza | Desenvolvedor Full Stack', 'About Talisson Souza | Full Stack Developer')}
-        description={getText(language, 'Conheça Talisson Souza, desenvolvedor full stack com mais de 8 anos de experiência, CEO da Cheetah Network e Diretor Estratégico do Werneck Group. Especialista em React, Node.js e soluções digitais.', 'Meet Talisson Souza, full stack developer with over 8 years of experience, CEO of Cheetah Network and Strategic Director of Werneck Group. Specialist in React, Node.js and digital solutions.')}
+        description={getText(language, 'Conheça Talisson Souza, desenvolvedor full stack com mais de 8 anos de experiência, CEO da Cheetah Solutions Network e Diretor Estratégico do Werneck Group. Especialista em React, Node.js e soluções digitais.', 'Meet Talisson Souza, full stack developer with over 8 years of experience, CEO of Cheetah Solutions Network and Strategic Director of Werneck Group. Specialist in React, Node.js and digital solutions.')}
         canonical={language === 'en' ? '/en-us/about' : '/sobre'}
-        keywords={language === 'pt' ? ['sobre', 'desenvolvedor', 'full stack', 'experiência', 'Cheetah Network', 'Werneck Group'] : ['about', 'developer', 'full stack', 'experience', 'Cheetah Network', 'Werneck Group']}
+        keywords={language === 'pt' ? ['sobre', 'desenvolvedor', 'full stack', 'experiência', 'Cheetah Solutions Network', 'Werneck Group'] : ['about', 'developer', 'full stack', 'experience', 'Cheetah Solutions Network', 'Werneck Group']}
       />
       
       {/* Hero Section */}

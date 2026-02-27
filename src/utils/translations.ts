@@ -180,7 +180,7 @@ const translations: Translations = {
       title: "Empresas",
       subtitle: "Empresas que fundei ou que trabalho atualmente",
       cheetahNetwork: {
-        about: "Cheetah Network nasceu em Recife, Pernambuco, com o propósito de transformar o cenário digital por meio de soluções modernas e eficientes. Fundada há 2 anos, começamos com foco no desenvolvimento de bots para Discord e evoluímos rapidamente, consolidando nossa atuação em Desenvolvimento de Sites, Sistemas, APIs, Bots para Discord e Telegram, entre outras soluções tecnológicas personalizadas."
+        about: "Cheetah Solutions Network nasceu em Recife, Pernambuco, com o propósito de transformar o cenário digital por meio de soluções modernas e eficientes. Fundada há 2 anos, começamos com foco no desenvolvimento de bots para Discord e evoluímos rapidamente, consolidando nossa atuação em Desenvolvimento de Sites, Sistemas, APIs, Bots para Discord e Telegram, entre outras soluções tecnológicas personalizadas."
       },
       werneckGroup: {
         about: "O Werneck Group é um grupo empresarial brasileiro que nasce com a missão de conectar negócios, impulsionar inovação e liderar iniciativas no ecossistema digital e tecnológico. Atuamos como uma ponte estratégica entre diferentes frentes operacionais, promovendo a integração entre marcas e garantindo a excelência em cada projeto conduzido sob nossa liderança."
@@ -409,7 +409,7 @@ const translations: Translations = {
       title: "Companies",
       subtitle: "Companies I founded or currently work for",
       cheetahNetwork: {
-        about: "Cheetah Network was born in Recife, Pernambuco, with the purpose of transforming the digital landscape through modern and efficient solutions. Founded 2 years ago, we started with a focus on developing Discord bots and evolved rapidly, consolidating our work in Website Development, Systems, APIs, Discord and Telegram Bots, among other customized technological solutions."
+        about: "Cheetah Solutions Network was born in Recife, Pernambuco, with the purpose of transforming the digital landscape through modern and efficient solutions. Founded 2 years ago, we started with a focus on developing Discord bots and evolved rapidly, consolidating our work in Website Development, Systems, APIs, Discord and Telegram Bots, among other customized technological solutions."
       },
       werneckGroup: {
         about: "Werneck Group is a Brazilian business group that was born with the mission of connecting businesses, driving innovation and leading initiatives in the digital and technological ecosystem. We act as a strategic bridge between different operational fronts, promoting integration between brands and ensuring excellence in each project conducted under our leadership."

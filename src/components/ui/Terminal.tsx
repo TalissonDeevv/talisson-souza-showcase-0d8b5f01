@@ -70,8 +70,8 @@ const Terminal = () => {
       en: "📋 Available commands:\n\n  📄 Navigation:\n  • about      - Information about me\n  • projects   - My projects\n  • contact    - Get in touch\n  • companies  - My companies\n  • services   - Services provided\n  • blog       - Articles and tutorials\n  • career     - My journey\n  • book       - My book\n  • partnerships - Partnerships & activities\n\n  🛠️ Utilities:\n  • skills     - My skills\n  • whoami     - Who am I\n  • neofetch   - System info\n  • date       - Current date\n  • ls         - List pages\n  • joke       - Dev joke\n  • matrix     - Matrix effect\n  • clear      - Clear terminal\n\n  💡 Tips:\n  • Use 'open <page>' to navigate\n  • Use ↑↓ for command history\n  • Tab to autocomplete"
     },
     sobre: {
-      pt: "👨‍💻 Talisson Souza (Talinho)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💼 Empreendedor Executivo | Diretor de Negócios | Dev Full Stack\n📍 Recife, Pernambuco, Brasil\n\n🎯 Especialista em:\n   • React, Node.js, TypeScript, Python\n   • Gestão de Projetos e Equipes\n   • Consultoria Empresarial\n\n🚀 Fundador:\n   • Cheetah Network (CEO)\n   • Werneck Group (Diretor Estratégico)\n\n🤝 Parcerias:\n   • Square Cloud (Parceiro Oficial)\n   • Rocketseat (Influencer)\n\n📚 Autor do livro 'Superando Limites'\n\n💡 Digite 'open sobre' para ver mais",
-      en: "👨‍💻 Talisson Souza (Talinho)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💼 Executive Entrepreneur | Business Director | Full Stack Dev\n📍 Recife, Pernambuco, Brazil\n\n🎯 Specialist in:\n   • React, Node.js, TypeScript, Python\n   • Project & Team Management\n   • Business Consulting\n\n🚀 Founder:\n   • Cheetah Network (CEO)\n   • Werneck Group (Strategic Director)\n\n🤝 Partnerships:\n   • Square Cloud (Official Partner)\n   • Rocketseat (Influencer)\n\n📚 Author of 'Overcoming Limits'\n\n💡 Type 'open about' to see more"
+      pt: "👨‍💻 Talisson Souza (Talinho)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💼 Empreendedor Executivo | Diretor de Negócios | Dev Full Stack\n📍 Recife, Pernambuco, Brasil\n\n🎯 Especialista em:\n   • React, Node.js, TypeScript, Python\n   • Gestão de Projetos e Equipes\n   • Consultoria Empresarial\n\n🚀 Fundador:\n   • Cheetah Solutions Network (CEO)\n   • Werneck Group (Diretor Estratégico)\n\n🤝 Parcerias:\n   • Square Cloud (Parceiro Oficial)\n   • Rocketseat (Influencer)\n\n📚 Autor do livro 'Superando Limites'\n\n💡 Digite 'open sobre' para ver mais",
+      en: "👨‍💻 Talisson Souza (Talinho)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💼 Executive Entrepreneur | Business Director | Full Stack Dev\n📍 Recife, Pernambuco, Brazil\n\n🎯 Specialist in:\n   • React, Node.js, TypeScript, Python\n   • Project & Team Management\n   • Business Consulting\n\n🚀 Founder:\n   • Cheetah Solutions Network (CEO)\n   • Werneck Group (Strategic Director)\n\n🤝 Partnerships:\n   • Square Cloud (Official Partner)\n   • Rocketseat (Influencer)\n\n📚 Author of 'Overcoming Limits'\n\n💡 Type 'open about' to see more"
     },
     about: { pt: "", en: "" },
     whoami: {
@@ -89,8 +89,8 @@ const Terminal = () => {
     },
     contact: { pt: "", en: "" },
     empresas: {
-      pt: "🏢 Minhas Empresas:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🐆 Cheetah Network\n   └── CEO & Founder (2023 - Presente)\n       Soluções digitais: bots, sites, sistemas\n\n🏛️ Werneck Group\n   └── Diretor Estratégico (2024 - Presente)\n       Consultoria empresarial e tecnologia\n\n💡 Digite 'open empresas' para mais detalhes",
-      en: "🏢 My Companies:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🐆 Cheetah Network\n   └── CEO & Founder (2023 - Present)\n       Digital solutions: bots, websites, systems\n\n🏛️ Werneck Group\n   └── Strategic Director (2024 - Present)\n       Business consulting and technology\n\n💡 Type 'open companies' for more details"
+      pt: "🏢 Minhas Empresas:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🐆 Cheetah Solutions Network\n   └── CEO & Founder (2023 - Presente)\n       Soluções digitais: bots, sites, sistemas\n\n🏛️ Werneck Group\n   └── Diretor Estratégico (2024 - Presente)\n       Consultoria empresarial e tecnologia\n\n💡 Digite 'open empresas' para mais detalhes",
+      en: "🏢 My Companies:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🐆 Cheetah Solutions Network\n   └── CEO & Founder (2023 - Present)\n       Digital solutions: bots, websites, systems\n\n🏛️ Werneck Group\n   └── Strategic Director (2024 - Present)\n       Business consulting and technology\n\n💡 Type 'open companies' for more details"
     },
     companies: { pt: "", en: "" },
     servicos: {
@@ -99,8 +99,8 @@ const Terminal = () => {
     },
     services: { pt: "", en: "" },
     carreira: {
-      pt: "📈 Minha Trajetória:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n2018 │ 🚀 Início da jornada (14 anos)\n     │    Primeiros bots para Discord\n     │\n2021 │ 💪 Momento decisivo\n     │    Superação de desafios pessoais\n     │\n2023 │ 🐆 Fundação Cheetah Network\n     │    Criação da própria empresa\n     │\n2024 │ 🏛️ Werneck Group\n     │    Diretor Estratégico\n     │\n2025 │ 🤝 Parcerias\n     │    Square Cloud + Rocketseat\n\n💡 Digite 'open carreira' para história completa",
-      en: "📈 My Journey:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n2018 │ 🚀 Journey begins (14 years old)\n     │    First Discord bots\n     │\n2021 │ 💪 Decisive moment\n     │    Overcoming personal challenges\n     │\n2023 │ 🐆 Cheetah Network Founded\n     │    Created my own company\n     │\n2024 │ 🏛️ Werneck Group\n     │    Strategic Director\n     │\n2025 │ 🤝 Partnerships\n     │    Square Cloud + Rocketseat\n\n💡 Type 'open career' for full story"
+      pt: "📈 Minha Trajetória:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n2018 │ 🚀 Início da jornada (14 anos)\n     │    Primeiros bots para Discord\n     │\n2021 │ 💪 Momento decisivo\n     │    Superação de desafios pessoais\n     │\n2023 │ 🐆 Fundação Cheetah Solutions Network\n     │    Criação da própria empresa\n     │\n2024 │ 🏛️ Werneck Group\n     │    Diretor Estratégico\n     │\n2025 │ 🤝 Parcerias\n     │    Square Cloud + Rocketseat\n\n💡 Digite 'open carreira' para história completa",
+      en: "📈 My Journey:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n2018 │ 🚀 Journey begins (14 years old)\n     │    First Discord bots\n     │\n2021 │ 💪 Decisive moment\n     │    Overcoming personal challenges\n     │\n2023 │ 🐆 Cheetah Solutions Network Founded\n     │    Created my own company\n     │\n2024 │ 🏛️ Werneck Group\n     │    Strategic Director\n     │\n2025 │ 🤝 Partnerships\n     │    Square Cloud + Rocketseat\n\n💡 Type 'open career' for full story"
     },
     career: { pt: "", en: "" },
     livro: {

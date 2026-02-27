@@ -43,13 +43,13 @@ function getMetaForPath(pathname: string): PageMeta {
     return isEnglish
       ? {
           title: 'Talisson Souza | Full Stack Developer & CEO',
-          description: 'Full Stack Developer with over 8 years of experience. CEO of Cheetah Network, specialist in custom web systems, APIs, React, Node.js and digital solutions for businesses.',
+          description: 'Full Stack Developer with over 8 years of experience. CEO of Cheetah Solutions Network, specialist in custom web systems, APIs, React, Node.js and digital solutions for businesses.',
           locale: 'en_US',
           type: 'website',
         }
       : {
           title: 'Talisson Souza | Desenvolvedor Full Stack & CEO',
-          description: 'Desenvolvedor Full Stack com mais de 8 anos de experiência. CEO da Cheetah Network, especialista em sistemas web sob medida, APIs, React, Node.js e soluções digitais para empresas.',
+          description: 'Desenvolvedor Full Stack com mais de 8 anos de experiência. CEO da Cheetah Solutions Network, especialista em sistemas web sob medida, APIs, React, Node.js e soluções digitais para empresas.',
           locale: 'pt_BR',
           type: 'website',
         };
@@ -60,13 +60,13 @@ function getMetaForPath(pathname: string): PageMeta {
     return isEnglish
       ? {
           title: 'About Talisson Souza | Full Stack Developer',
-          description: 'Meet Talisson Souza, full stack developer with over 8 years of experience, CEO of Cheetah Network and Strategic Director of Werneck Group.',
+          description: 'Meet Talisson Souza, full stack developer with over 8 years of experience, CEO of Cheetah Solutions Network and Strategic Director of Werneck Group.',
           locale: 'en_US',
           type: 'website',
         }
       : {
           title: 'Sobre Talisson Souza | Desenvolvedor Full Stack',
-          description: 'Conheça Talisson Souza, desenvolvedor full stack com mais de 8 anos de experiência, CEO da Cheetah Network e Diretor Estratégico do Werneck Group.',
+          description: 'Conheça Talisson Souza, desenvolvedor full stack com mais de 8 anos de experiência, CEO da Cheetah Solutions Network e Diretor Estratégico do Werneck Group.',
           locale: 'pt_BR',
           type: 'website',
         };
@@ -77,13 +77,13 @@ function getMetaForPath(pathname: string): PageMeta {
     return isEnglish
       ? {
           title: 'Career | Talisson Souza Journey',
-          description: "Discover Talisson Souza's professional journey, from his first projects to becoming CEO of Cheetah Network and Strategic Director of Werneck Group.",
+          description: "Discover Talisson Souza's professional journey, from his first projects to becoming CEO of Cheetah Solutions Network and Strategic Director of Werneck Group.",
           locale: 'en_US',
           type: 'website',
         }
       : {
           title: 'Carreira | Trajetória de Talisson Souza',
-          description: 'Conheça a trajetória profissional de Talisson Souza, desde os primeiros projetos até se tornar CEO da Cheetah Network e Diretor Estratégico do Werneck Group.',
+          description: 'Conheça a trajetória profissional de Talisson Souza, desde os primeiros projetos até se tornar CEO da Cheetah Solutions Network e Diretor Estratégico do Werneck Group.',
           locale: 'pt_BR',
           type: 'website',
         };
@@ -321,13 +321,13 @@ function getMetaForPath(pathname: string): PageMeta {
   return isEnglish
     ? {
         title: 'Talisson Souza | Full Stack Developer & CEO',
-        description: 'Full Stack Developer with over 8 years of experience. CEO of Cheetah Network.',
+        description: 'Full Stack Developer with over 8 years of experience. CEO of Cheetah Solutions Network.',
         locale: 'en_US',
         type: 'website',
       }
     : {
         title: 'Talisson Souza | Desenvolvedor Full Stack & CEO',
-        description: 'Desenvolvedor Full Stack com mais de 8 anos de experiência. CEO da Cheetah Network.',
+        description: 'Desenvolvedor Full Stack com mais de 8 anos de experiência. CEO da Cheetah Solutions Network.',
         locale: 'pt_BR',
         type: 'website',
       };
