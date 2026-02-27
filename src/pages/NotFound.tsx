@@ -48,7 +48,7 @@ const NotFound = () => {
             <img 
               src={illustration} 
               alt="404 illustration" 
-              className="w-full max-w-md mx-auto mb-8"
+              className="w-full max-w-[280px] mx-auto mb-8"
             />
           </motion.div>
 
