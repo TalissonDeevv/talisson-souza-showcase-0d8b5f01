@@ -50,7 +50,7 @@ const Index = () => {
   const featuredCompanies = [{
     name: "Cheetah Solutions Network",
     role: "CEO & Founder",
-    period: "2023 - " + getText(language, 'Presente', 'Present'),
+    period: "2020 - " + getText(language, 'Presente', 'Present'),
     description: getText(language, "Soluções digitais especializadas em desenvolvimento de bots, aplicações web.", "Digital solutions specialized in bot development and web applications.")
   }, {
     name: "Werneck Group",
