@@ -121,17 +121,14 @@ const NotFound = () => {
 
         {/* Attribution */}
         <div className="text-center mt-16">
-          <p className="text-xs text-muted-foreground/50">
-            {getText(language, 'Ilustrações por ', 'Illustrations by ')}
-            <a
-              href="https://storyset.com/people"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-muted-foreground transition-colors"
-            >
-              Storyset
-            </a>
-          </p>
+          <a
+            href="https://storyset.com/people"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-muted-foreground/50 hover:text-muted-foreground underline underline-offset-2 transition-colors duration-300 cursor-pointer"
+          >
+            {getText(language, 'Ilustrações por Storyset', 'Illustrations by Storyset')}
+          </a>
         </div>
       </div>
     </div>
