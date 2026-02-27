@@ -84,7 +84,7 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
       icon: Target 
     },
     { 
-      year: "2023", 
+      year: "2020", 
       title: getText(language, "Fundação da Cheetah Solutions Network", "Cheetah Solutions Network Founded"), 
       role: getText(language, "CEO & Founder", "CEO & Founder"),
       description: getText(language, "Criação da empresa focada em soluções digitais", "Company created focused on digital solutions"), 

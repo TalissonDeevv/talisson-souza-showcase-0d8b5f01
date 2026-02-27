@@ -40,10 +40,10 @@ I enjoy being involved in everything I create, from the first line of code to se
 Ultimately, my mission is to create solutions that truly make a difference, with a human touch, and to continue learning and evolving every day.`;
 
   const experiences = language === 'pt' ? [
-    { company: "Cheetah Solutions Network", position: "CEO & Founder", period: "2023 - Presente", description: "Fundei e lidero a Cheetah Solutions Network, empresa especializada em soluções digitais." },
+    { company: "Cheetah Solutions Network", position: "CEO & Founder", period: "2020 - Presente", description: "Fundei e lidero a Cheetah Solutions Network, empresa especializada em soluções digitais." },
     { company: "Werneck Group", position: "Diretor Estratégico", period: "2024 - Presente", description: "Direção estratégica em consultoria empresarial e gestão de operações." }
   ] : [
-    { company: "Cheetah Solutions Network", position: "CEO & Founder", period: "2023 - Present", description: "Founded and lead Cheetah Solutions Network, a company specialized in digital solutions." },
+    { company: "Cheetah Solutions Network", position: "CEO & Founder", period: "2020 - Present", description: "Founded and lead Cheetah Solutions Network, a company specialized in digital solutions." },
     { company: "Werneck Group", position: "Strategic Director", period: "2024 - Present", description: "Strategic direction in business consulting and operations management." }
   ];
 

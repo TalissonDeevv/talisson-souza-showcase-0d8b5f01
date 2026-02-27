@@ -89,8 +89,8 @@ const Terminal = () => {
     },
     contact: { pt: "", en: "" },
     empresas: {
-      pt: "🏢 Minhas Empresas:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🐆 Cheetah Solutions Network\n   └── CEO & Founder (2023 - Presente)\n       Soluções digitais: bots, sites, sistemas\n\n🏛️ Werneck Group\n   └── Diretor Estratégico (2024 - Presente)\n       Consultoria empresarial e tecnologia\n\n💡 Digite 'open empresas' para mais detalhes",
-      en: "🏢 My Companies:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🐆 Cheetah Solutions Network\n   └── CEO & Founder (2023 - Present)\n       Digital solutions: bots, websites, systems\n\n🏛️ Werneck Group\n   └── Strategic Director (2024 - Present)\n       Business consulting and technology\n\n💡 Type 'open companies' for more details"
+      pt: "🏢 Minhas Empresas:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🐆 Cheetah Solutions Network\n   └── CEO & Founder (2020 - Presente)\n       Soluções digitais: bots, sites, sistemas\n\n🏛️ Werneck Group\n   └── Diretor Estratégico (2024 - Presente)\n       Consultoria empresarial e tecnologia\n\n💡 Digite 'open empresas' para mais detalhes",
+      en: "🏢 My Companies:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🐆 Cheetah Solutions Network\n   └── CEO & Founder (2020 - Present)\n       Digital solutions: bots, websites, systems\n\n🏛️ Werneck Group\n   └── Strategic Director (2024 - Present)\n       Business consulting and technology\n\n💡 Type 'open companies' for more details"
     },
     companies: { pt: "", en: "" },
     servicos: {
@@ -99,8 +99,8 @@ const Terminal = () => {
     },
     services: { pt: "", en: "" },
     carreira: {
-      pt: "📈 Minha Trajetória:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n2018 │ 🚀 Início da jornada (14 anos)\n     │    Primeiros bots para Discord\n     │\n2021 │ 💪 Momento decisivo\n     │    Superação de desafios pessoais\n     │\n2023 │ 🐆 Fundação Cheetah Solutions Network\n     │    Criação da própria empresa\n     │\n2024 │ 🏛️ Werneck Group\n     │    Diretor Estratégico\n     │\n2025 │ 🤝 Parcerias\n     │    Square Cloud + Rocketseat\n\n💡 Digite 'open carreira' para história completa",
-      en: "📈 My Journey:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n2018 │ 🚀 Journey begins (14 years old)\n     │    First Discord bots\n     │\n2021 │ 💪 Decisive moment\n     │    Overcoming personal challenges\n     │\n2023 │ 🐆 Cheetah Solutions Network Founded\n     │    Created my own company\n     │\n2024 │ 🏛️ Werneck Group\n     │    Strategic Director\n     │\n2025 │ 🤝 Partnerships\n     │    Square Cloud + Rocketseat\n\n💡 Type 'open career' for full story"
+      pt: "📈 Minha Trajetória:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n2018 │ 🚀 Início da jornada (14 anos)\n     │    Primeiros bots para Discord\n     │\n2020 │ 🐆 Fundação Cheetah Solutions Network\n     │    Criação da própria empresa\n     │\n2021 │ 💪 Momento decisivo\n     │    Superação de desafios pessoais\n     │\n2024 │ 🏛️ Werneck Group\n     │    Diretor Estratégico\n     │\n2025 │ 🤝 Parcerias\n     │    Square Cloud + Rocketseat\n\n💡 Digite 'open carreira' para história completa",
+      en: "📈 My Journey:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n2018 │ 🚀 Journey begins (14 years old)\n     │    First Discord bots\n     │\n2020 │ 🐆 Cheetah Solutions Network Founded\n     │    Created my own company\n     │\n2021 │ 💪 Decisive moment\n     │    Overcoming personal challenges\n     │\n2024 │ 🏛️ Werneck Group\n     │    Strategic Director\n     │\n2025 │ 🤝 Partnerships\n     │    Square Cloud + Rocketseat\n\n💡 Type 'open career' for full story"
     },
     career: { pt: "", en: "" },
     livro: {
