@@ -97,7 +97,7 @@ const ArticleSearch = ({ variant = 'compact' }: ArticleSearchProps) => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -4 }}
               transition={{ duration: 0.15 }}
-              className="absolute top-full left-0 right-0 mt-2 max-h-[420px] overflow-y-auto rounded-xl border border-border/30 bg-card/95 backdrop-blur-xl shadow-2xl z-50"
+              className="absolute top-full left-0 right-0 mt-2 max-h-[420px] overflow-y-auto rounded-xl border border-border/50 bg-card backdrop-blur-xl shadow-2xl z-50"
             >
               {results.length === 0 ? (
                 <div className="p-6 text-center">
@@ -120,7 +120,7 @@ const ArticleSearch = ({ variant = 'compact' }: ArticleSearchProps) => {
                       key={article.id}
                       to={article.path[language]}
                       onClick={handleClose}
-                      className="group flex items-center gap-3 px-4 py-3 hover:bg-foreground/[0.03] transition-colors duration-150"
+                      className="group flex items-center gap-3 px-4 py-3 hover:bg-foreground/[0.06] transition-colors duration-150 border-t border-border/20"
                     >
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-foreground leading-snug truncate">
