@@ -19,6 +19,10 @@ import CompanyLogos from "@/components/ui/CompanyLogos";
 import DiscordCommunityCard from "@/components/ui/DiscordCommunityCard";
 import agonLogo from "@/assets/discord/agon-logo.png";
 import agonBanner from "@/assets/discord/agon-banner.png";
+import hytaleLogo from "@/assets/discord/hytale-logo.gif";
+import hytaleBanner from "@/assets/discord/hytale-banner.png";
+import modsclubLogo from "@/assets/discord/modsclub-logo.png";
+import modsclubBanner from "@/assets/discord/modsclub-banner.png";
 import bookMockupImg from "@/assets/book-mockup-v3.png";
 const Index = () => {
   const {
@@ -855,16 +859,38 @@ const Index = () => {
               </Link>
             </ScrollReveal>
 
-            <ScrollReveal className="lg:col-span-7 max-w-md lg:ml-auto" delay={0.15}>
-              <DiscordCommunityCard
-                name="AGON by AOC"
-                description={getText(language, "Servidor oficial da AGON by AOC no Discord Brasil. Um espaço para gamers competitivos e entusiastas de hardware, com foco em performance, tecnologia, lançamentos, eventos oficiais e interação direta com a comunidade AGON.", "Official AGON by AOC server on Discord Brazil. A space for competitive gamers and hardware enthusiasts, focused on performance, technology, launches, official events and direct interaction with the AGON community.")}
-                logo={agonLogo}
-                banner={agonBanner}
-                link="https://discord.gg/yBy8Vu79J3"
-                role={getText(language, "Moderador", "Moderator")}
-              />
-            </ScrollReveal>
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <ScrollReveal delay={0.1}>
+                <DiscordCommunityCard
+                  name="AGON by AOC"
+                  description={getText(language, "Servidor oficial da AGON by AOC no Discord Brasil. Um espaço para gamers competitivos e entusiastas de hardware.", "Official AGON by AOC server on Discord Brazil. A space for competitive gamers and hardware enthusiasts.")}
+                  logo={agonLogo}
+                  banner={agonBanner}
+                  link="https://discord.gg/yBy8Vu79J3"
+                  role={getText(language, "Moderador", "Moderator")}
+                />
+              </ScrollReveal>
+              <ScrollReveal delay={0.2}>
+                <DiscordCommunityCard
+                  name="Hytale Brasil"
+                  description={getText(language, "O servidor definitivo de Hytale no Discord! O lar dos jogadores brasileiros.", "The ultimate Hytale server on Discord! The home of Brazilian players.")}
+                  logo={hytaleLogo}
+                  banner={hytaleBanner}
+                  link="https://discord.gg/x2SvJd2NsZ"
+                  role={getText(language, "Desenvolvedor Interno", "Internal Developer")}
+                />
+              </ScrollReveal>
+              <ScrollReveal delay={0.3}>
+                <DiscordCommunityCard
+                  name="ModsClub"
+                  description={getText(language, "Comunidade que reúne moderadores e administradores de comunidades brasileiras.", "Community that brings together moderators and administrators of Brazilian communities.")}
+                  logo={modsclubLogo}
+                  banner={modsclubBanner}
+                  link="https://discord.gg/uuHdJUNYQs"
+                  role={getText(language, "Especialista em Comunidades", "Community Specialist")}
+                />
+              </ScrollReveal>
+            </div>
           </div>
         </div>
       </ParallaxSection>
