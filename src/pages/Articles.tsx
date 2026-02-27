@@ -74,7 +74,7 @@ const Articles = () => {
       />
 
       {/* Hero */}
-      <section className="min-h-[50vh] flex items-center relative overflow-hidden pt-24 pb-12">
+      <section className="min-h-[50vh] flex items-center relative overflow-visible pt-24 pb-12">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background" />
           <div
