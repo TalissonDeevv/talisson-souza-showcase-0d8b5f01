@@ -108,15 +108,15 @@ Ultimately, my mission is to create solutions that truly make a difference, with
   const careerMilestones = language === 'pt' ? [
     { year: "2016", title: "Primeiros Passos", description: "Comecei a explorar programação e tecnologia por curiosidade", icon: Code2 },
     { year: "2018", title: "Primeiro Projeto", description: "Desenvolvi meu primeiro projeto web completo para um cliente real", icon: Rocket },
-    { year: "2020", title: "Especialização", description: "Foquei em desenvolvimento Full Stack com React e Node.js", icon: Target },
-    { year: "2023", title: "Cheetah Network", description: "Fundei a Cheetah Network, minha primeira empresa de tecnologia", icon: TrendingUp },
+    { year: "2020", title: "Cheetah Network", description: "Fundei a Cheetah Network, minha primeira empresa de tecnologia", icon: TrendingUp },
+    { year: "2022", title: "Especialização", description: "Foquei em desenvolvimento Full Stack com React e Node.js", icon: Target },
     { year: "2024", title: "Expansão", description: "Assumi posição de liderança no Werneck Group", icon: Briefcase },
     { year: "2025", title: "Livro Publicado", description: "Publiquei meu primeiro livro sobre empreendedorismo e tecnologia", icon: BookOpen }
   ] : [
     { year: "2016", title: "First Steps", description: "Started exploring programming and technology out of curiosity", icon: Code2 },
     { year: "2018", title: "First Project", description: "Developed my first complete web project for a real client", icon: Rocket },
-    { year: "2020", title: "Specialization", description: "Focused on Full Stack development with React and Node.js", icon: Target },
-    { year: "2023", title: "Cheetah Network", description: "Founded Cheetah Network, my first technology company", icon: TrendingUp },
+    { year: "2020", title: "Cheetah Network", description: "Founded Cheetah Network, my first technology company", icon: TrendingUp },
+    { year: "2022", title: "Specialization", description: "Focused on Full Stack development with React and Node.js", icon: Target },
     { year: "2024", title: "Expansion", description: "Took leadership position at Werneck Group", icon: Briefcase },
     { year: "2025", title: "Book Published", description: "Published my first book about entrepreneurship and technology", icon: BookOpen }
   ];
