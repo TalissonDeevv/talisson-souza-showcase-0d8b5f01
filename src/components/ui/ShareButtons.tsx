@@ -3,14 +3,16 @@ import { Share2 } from "lucide-react";
 import { SiWhatsapp, SiLinkedin, SiX } from "react-icons/si";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
+import ArticleAudioAutoButton from "./ArticleAudioAutoButton";
 
 interface ShareButtonsProps {
   title: string;
   url?: string;
   className?: string;
+  showAudio?: boolean;
 }
 
-const ShareButtons = ({ title, url, className = "" }: ShareButtonsProps) => {
+const ShareButtons = ({ title, url, className = "", showAudio = true }: ShareButtonsProps) => {
   const { language } = useTheme();
   const shareUrl = url || (typeof window !== 'undefined' ? window.location.href : '');
   const encodedUrl = encodeURIComponent(shareUrl);
@@ -95,6 +97,8 @@ const ShareButtons = ({ title, url, className = "" }: ShareButtonsProps) => {
           </motion.button>
         )}
       </div>
+      
+      {showAudio && <ArticleAudioAutoButton />}
     </motion.div>
   );
 };

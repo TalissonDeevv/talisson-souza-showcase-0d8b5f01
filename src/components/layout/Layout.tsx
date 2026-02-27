@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import DiscordPopup from "@/components/ui/DiscordPopup";
+import GlobalAudioPlayer from "@/components/ui/GlobalAudioPlayer";
 
 interface LayoutProps {
   children: ReactNode;
@@ -21,6 +22,7 @@ const Layout = ({ children, withPadding = true, showDiscordPopup = false }: Layo
       <Footer />
       
       {showDiscordPopup && <DiscordPopup />}
+      <GlobalAudioPlayer />
     </div>
   );
 };
