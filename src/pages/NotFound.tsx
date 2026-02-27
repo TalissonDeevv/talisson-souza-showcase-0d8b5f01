@@ -5,7 +5,7 @@ import { Home, MessageSquare, ArrowLeft } from "lucide-react";
 import { SiDiscord } from "react-icons/si";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
-import illustration from "@/assets/404-illustration.svg";
+import illustration from "@/assets/404-illustration.gif";
 
 const DISCORD_LINK = "https://discord.gg/WXwguHWjxg";
 
@@ -117,6 +117,21 @@ const NotFound = () => {
               />
             </div>
           </motion.div>
+        </div>
+
+        {/* Attribution */}
+        <div className="text-center mt-16">
+          <p className="text-xs text-muted-foreground/50">
+            {getText(language, 'Ilustrações por ', 'Illustrations by ')}
+            <a
+              href="https://storyset.com/people"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-muted-foreground transition-colors"
+            >
+              Storyset
+            </a>
+          </p>
         </div>
       </div>
     </div>
