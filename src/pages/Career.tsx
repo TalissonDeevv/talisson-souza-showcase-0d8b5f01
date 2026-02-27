@@ -8,8 +8,19 @@ import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { 
   Rocket, Target, Heart, Users, Lightbulb, Shield, 
   Award, Calendar, Building2, Briefcase, Quote, Sparkles, 
-  HandHeart, ArrowRight, ArrowUpRight, Star, BookOpen
+  HandHeart, ArrowRight, ArrowUpRight, Star, BookOpen, MessageCircle
 } from "lucide-react";
+import DiscordCommunityCard from "@/components/ui/DiscordCommunityCard";
+import elixirLogo from "@/assets/discord/elixir-lab-logo.png";
+import elixirBanner from "@/assets/discord/elixir-lab-banner.png";
+import agonLogo from "@/assets/discord/agon-logo.png";
+import agonBanner from "@/assets/discord/agon-banner.png";
+import dunecoLogo from "@/assets/discord/duneco-logo.png";
+import dunecoBanner from "@/assets/discord/duneco-banner.png";
+import hytaleLogo from "@/assets/discord/hytale-logo.gif";
+import hytaleBanner from "@/assets/discord/hytale-banner.png";
+import modsclubLogo from "@/assets/discord/modsclub-logo.png";
+import modsclubBanner from "@/assets/discord/modsclub-banner.png";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
@@ -117,6 +128,49 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
   const companies = [
     { name: "Cheetah Network", description: language === 'pt' ? "Soluções digitais especializadas em desenvolvimento de bots e aplicações web." : "Digital solutions specialized in bot development and web applications.", logo: "https://i.ibb.co/0yQ0mnD6/bannercheetah2.png", role: "CEO & Founder" },
     { name: "Werneck Group", description: language === 'pt' ? "Consultoria estratégica especializada em transformação digital." : "Strategic consulting specialized in digital transformation.", logo: "https://i.ibb.co/YT7LK7Vc/bannerwerneck.jpg", role: getText(language, "Diretor Estratégico", "Strategic Director") }
+  ];
+
+  const discordCommunities = [
+    {
+      name: "Elixir Lab",
+      description: getText(language, "A porta de entrada para o Discord brasileiro! Temos espaços de interação, jogos e suporte sobre Discord e Bots.", "The gateway to Brazilian Discord! We have interaction spaces, games and support about Discord and Bots."),
+      logo: elixirLogo,
+      banner: elixirBanner,
+      link: "https://discord.gg/elixirlab",
+      role: getText(language, "Ex Moderador", "Former Moderator"),
+    },
+    {
+      name: "AGON by AOC",
+      description: getText(language, "Servidor oficial da AGON by AOC no Discord Brasil. Um espaço para gamers competitivos e entusiastas de hardware, com foco em performance, tecnologia, lançamentos, eventos oficiais e interação direta com a comunidade AGON.", "Official AGON by AOC server on Discord Brazil. A space for competitive gamers and hardware enthusiasts, focused on performance, technology, launches, official events and direct interaction with the AGON community."),
+      logo: agonLogo,
+      banner: agonBanner,
+      link: "https://discord.gg/yBy8Vu79J3",
+      role: getText(language, "Moderador", "Moderator"),
+    },
+    {
+      name: "DuneCo Dungeons",
+      description: getText(language, "DuneCo Dungeons nasceu para ajudar marcas, criadores, times, DAOs e projetos de Web 3.0 a explorar o Discord e construir comunidades cada vez mais fortes.", "DuneCo Dungeons was born to help brands, creators, teams, DAOs and Web 3.0 projects explore Discord and build stronger communities."),
+      logo: dunecoLogo,
+      banner: dunecoBanner,
+      link: "https://discord.gg/SyEnrAknqA",
+      role: getText(language, "Criador Independente Verificado", "Verified Independent Creator"),
+    },
+    {
+      name: "Comunidade Hytale Brasil",
+      description: getText(language, "Hytale Brasil é o servidor definitivo de Hytale no Discord! O lar dos jogadores brasileiros, reunindo tudo sobre Hytale em um só lugar.", "Hytale Brasil is the ultimate Hytale server on Discord! The home of Brazilian players, bringing everything about Hytale in one place."),
+      logo: hytaleLogo,
+      banner: hytaleBanner,
+      link: "https://discord.gg/x2SvJd2NsZ",
+      role: getText(language, "Desenvolvedor Interno", "Internal Developer"),
+    },
+    {
+      name: "ModsClub",
+      description: getText(language, "Comunidade que reúne moderadores, administradores e proprietários de comunidades brasileiras, dedicando um espaço de aprendizagem sobre o Discord e suas ferramentas.", "Community that brings together moderators, administrators and owners of Brazilian communities, dedicating a learning space about Discord and its tools."),
+      logo: modsclubLogo,
+      banner: modsclubBanner,
+      link: "https://discord.gg/uuHdJUNYQs",
+      role: getText(language, "Especialista em Comunidades", "Community Specialist"),
+    },
   ];
 
   const partnerships = [
@@ -802,6 +856,49 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
                 </p>
               </div>
             </ScrollReveal>
+          </div>
+        </div>
+      </ParallaxSection>
+
+      {/* Discord Communities Section */}
+      <ParallaxSection
+        className="py-20 lg:py-24"
+        speed={0.1}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <motion.span
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+            >
+              Discord
+            </motion.span>
+            <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-4 leading-[1.05]">
+              {getText(language, 'Comunidades no Discord', 'Discord Communities')}
+            </h2>
+            <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mb-12">
+              {getText(
+                language,
+                'Comunidades onde possuo ou possuí cargo, contribuindo com moderação, desenvolvimento e gestão comunitária.',
+                'Communities where I hold or held a role, contributing with moderation, development and community management.'
+              )}
+            </p>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {discordCommunities.map((community, index) => (
+              <ScrollReveal key={community.name} delay={index * 0.08}>
+                <DiscordCommunityCard {...community} />
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </ParallaxSection>
