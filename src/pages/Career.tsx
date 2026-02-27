@@ -21,6 +21,8 @@ import hytaleLogo from "@/assets/discord/hytale-logo.gif";
 import hytaleBanner from "@/assets/discord/hytale-banner.png";
 import modsclubLogo from "@/assets/discord/modsclub-logo.png";
 import modsclubBanner from "@/assets/discord/modsclub-banner.png";
+import escritorioLogo from "@/assets/discord/escritorio-logo.png";
+import escritorioBannerFull from "@/assets/discord/escritorio-banner-full.png";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
@@ -170,6 +172,14 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
       banner: modsclubBanner,
       link: "https://discord.gg/uuHdJUNYQs",
       role: getText(language, "Especialista em Comunidades", "Community Specialist"),
+    },
+    {
+      name: "Escritório do Talisson",
+      description: getText(language, "Espaço oficial onde concentro minha comunidade, projetos e conteúdos relacionados a tecnologia, desenvolvimento de produtos digitais e estratégia de negócios.", "Official space where I concentrate my community, projects and content related to technology, digital product development and business strategy."),
+      logo: escritorioLogo,
+      banner: escritorioBannerFull,
+      link: "https://discord.gg/DzZN6tUJKq",
+      role: getText(language, "Proprietário", "Owner"),
     },
   ];
 

@@ -23,6 +23,8 @@ import hytaleLogo from "@/assets/discord/hytale-logo.gif";
 import hytaleBanner from "@/assets/discord/hytale-banner.png";
 import modsclubLogo from "@/assets/discord/modsclub-logo.png";
 import modsclubBanner from "@/assets/discord/modsclub-banner.png";
+import escritorioLogo from "@/assets/discord/escritorio-logo.png";
+import escritorioBannerFull from "@/assets/discord/escritorio-banner-full.png";
 import bookMockupImg from "@/assets/book-mockup-v3.png";
 const Index = () => {
   const {
@@ -859,8 +861,18 @@ const Index = () => {
               </Link>
             </ScrollReveal>
 
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <ScrollReveal delay={0.1}>
+                <DiscordCommunityCard
+                  name="Escritório do Talisson"
+                  description={getText(language, "Espaço oficial onde concentro minha comunidade, projetos e conteúdos de tecnologia e estratégia de negócios.", "Official space where I concentrate my community, projects and content on technology and business strategy.")}
+                  logo={escritorioLogo}
+                  banner={escritorioBannerFull}
+                  link="https://discord.gg/DzZN6tUJKq"
+                  role={getText(language, "Proprietário", "Owner")}
+                />
+              </ScrollReveal>
+              <ScrollReveal delay={0.2}>
                 <DiscordCommunityCard
                   name="AGON by AOC"
                   description={getText(language, "Servidor oficial da AGON by AOC no Discord Brasil. Um espaço para gamers competitivos e entusiastas de hardware.", "Official AGON by AOC server on Discord Brazil. A space for competitive gamers and hardware enthusiasts.")}
@@ -870,7 +882,7 @@ const Index = () => {
                   role={getText(language, "Moderador", "Moderator")}
                 />
               </ScrollReveal>
-              <ScrollReveal delay={0.2}>
+              <ScrollReveal delay={0.3}>
                 <DiscordCommunityCard
                   name="Hytale Brasil"
                   description={getText(language, "O servidor definitivo de Hytale no Discord! O lar dos jogadores brasileiros.", "The ultimate Hytale server on Discord! The home of Brazilian players.")}
@@ -880,7 +892,7 @@ const Index = () => {
                   role={getText(language, "Desenvolvedor Interno", "Internal Developer")}
                 />
               </ScrollReveal>
-              <ScrollReveal delay={0.3}>
+              <ScrollReveal delay={0.4}>
                 <DiscordCommunityCard
                   name="ModsClub"
                   description={getText(language, "Comunidade que reúne moderadores e administradores de comunidades brasileiras.", "Community that brings together moderators and administrators of Brazilian communities.")}
