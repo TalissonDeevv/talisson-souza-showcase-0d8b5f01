@@ -27,7 +27,7 @@ import Principles from "./pages/Principles";
 import Checklists from "./pages/Checklists";
 import ChecklistDetail from "./pages/ChecklistDetail";
 import MarketTrailArticle from "./pages/articles/MarketTrailArticle";
-
+import GenerateAudio from "./pages/GenerateAudio";
 const queryClient = new QueryClient();
 
 const AppRoutes = () => (
@@ -90,6 +90,8 @@ const AppRoutes = () => (
         <Route path="/services/:serviceId" element={<ServiceDetail />} />
         <Route path="/career" element={<Career />} />
         <Route path="/contact" element={<Contact />} />
+        {/* Admin */}
+        <Route path="/admin/generate-audio" element={<GenerateAudio />} />
         {/* 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
