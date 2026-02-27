@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
 import bookCover from "@/assets/book-cover.jpg";
+import SetupSection from "@/components/ui/SetupSection";
 
 const About = () => {
   const { language } = useTheme();
@@ -944,6 +945,9 @@ Ultimately, my mission is to create solutions that truly make a difference, with
           </div>
         </div>
       </ParallaxSection>
+
+      {/* Setup Section */}
+      <SetupSection />
 
       {/* Community Section */}
       <section className="py-20 lg:py-24 relative overflow-hidden">
