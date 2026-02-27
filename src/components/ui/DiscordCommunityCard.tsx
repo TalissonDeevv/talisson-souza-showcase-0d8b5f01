@@ -18,29 +18,31 @@ const DiscordCommunityCard = ({ name, description, logo, banner, link, role }: D
       rel="noopener noreferrer"
       whileHover={{ y: -6 }}
       transition={{ duration: 0.3 }}
-      className="group block rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm overflow-hidden"
+      className="group block relative rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm"
       style={{ boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)' }}
     >
       {/* Banner */}
-      <div className="relative h-32 overflow-hidden">
+      <div className="relative h-32 rounded-t-2xl overflow-hidden">
         <img
           src={banner}
           alt={`${name} banner`}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          loading="lazy"
+          loading="eager"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-        
-        {/* Logo overlapping banner */}
-        <div className="absolute -bottom-6 left-5">
-          <div className="w-14 h-14 rounded-xl border-2 border-background bg-card overflow-hidden shadow-lg">
-            <img
-              src={logo}
-              alt={`${name} logo`}
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </div>
+      </div>
+
+      {/* Logo - positioned outside the overflow-hidden banner */}
+      <div className="absolute top-[104px] left-5 z-10">
+        <div className="w-14 h-14 rounded-xl border-2 border-background bg-card overflow-hidden shadow-lg">
+          <img
+            src={logo}
+            alt={`${name} logo`}
+            className="w-full h-full object-cover"
+            loading="eager"
+            decoding="async"
+          />
         </div>
       </div>
 
