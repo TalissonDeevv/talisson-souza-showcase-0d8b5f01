@@ -218,7 +218,7 @@ const SetupSection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
                 <p className="text-xs text-foreground/60 tracking-wider uppercase">
-                  {getText(language, 'Ambiente de desenvolvimento • Recife, PE', 'Development environment • Recife, PE')}
+                  {getText(language, 'IMAGEM DO COMPUTADOR', 'COMPUTER IMAGE')}
                 </p>
               </div>
             </div>
