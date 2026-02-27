@@ -50,11 +50,13 @@ const Navbar = () => {
   const simpleNavItems = language === 'pt' ? [
     { name: t.nav.home, path: "/" },
     { name: "Sobre", path: "/sobre" },
+    { name: "Carreira", path: "/carreira" },
     { name: "Artigos", path: "/artigos" },
     { name: "Contato", path: "/contato" },
   ] : [
     { name: t.nav.home, path: "/en-us" },
     { name: "About", path: "/en-us/about" },
+    { name: "Career", path: "/en-us/career" },
     { name: "Articles", path: "/en-us/articles" },
     { name: "Contact", path: "/en-us/contact" },
   ];
@@ -65,7 +67,6 @@ const Navbar = () => {
       items: [
         { name: t.nav.projects, path: "/projetos" },
         { name: t.nav.services, path: "/servicos" },
-        { name: "Carreira", path: "/carreira" },
         { name: "Livro", path: "/livro" },
         { name: "Princípios", path: "/principios" },
         { name: "Checklists", path: "/checklists" },
@@ -78,7 +79,6 @@ const Navbar = () => {
       items: [
         { name: t.nav.projects, path: "/en-us/projects" },
         { name: t.nav.services, path: "/en-us/services" },
-        { name: "Career", path: "/en-us/career" },
         { name: "Book", path: "/en-us/book" },
         { name: "Principles", path: "/en-us/principles" },
         { name: "Checklists", path: "/en-us/checklists" },
