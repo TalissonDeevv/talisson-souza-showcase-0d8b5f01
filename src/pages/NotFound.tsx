@@ -5,7 +5,7 @@ import { Home, MessageSquare, ArrowLeft } from "lucide-react";
 import { SiDiscord } from "react-icons/si";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
-import illustration from "@/assets/404-illustration.gif";
+import illustration from "@/assets/404-illustration.svg";
 
 const DISCORD_LINK = "https://discord.gg/WXwguHWjxg";
 
