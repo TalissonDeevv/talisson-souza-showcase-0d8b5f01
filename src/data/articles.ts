@@ -493,25 +493,63 @@ export function getArticlesByTag(tag: string, lang: 'pt' | 'en'): ArticleData[] 
 }
 
 /**
- * Simple client-side search across title, excerpt, and tags.
+ * Search across all articles (regular + market trail) by title, excerpt, tags, keywords and content.
  */
-export function searchArticles(query: string, lang: 'pt' | 'en'): ArticleData[] {
+export function searchArticles(query: string, lang: 'pt' | 'en', trailArticles?: any[]): ArticleData[] {
   const q = query.toLowerCase().trim();
   if (!q) return [];
 
-  return articles
-    .map((a) => {
-      let score = 0;
-      const title = a.title[lang].toLowerCase();
-      const excerpt = a.excerpt[lang].toLowerCase();
-      const tags = a.tags[lang].map((t) => t.toLowerCase());
+  // Score regular articles
+  const regularResults = articles.map((a) => {
+    let score = 0;
+    const title = a.title[lang].toLowerCase();
+    const excerpt = a.excerpt[lang].toLowerCase();
+    const tags = a.tags[lang].map((t) => t.toLowerCase());
 
-      if (title.includes(q)) score += 10;
-      if (tags.some((t) => t.includes(q))) score += 5;
-      if (excerpt.includes(q)) score += 3;
+    if (title.includes(q)) score += 10;
+    if (tags.some((t) => t.includes(q))) score += 5;
+    if (excerpt.includes(q)) score += 3;
 
-      return { article: a, score };
-    })
+    return { article: a, score };
+  });
+
+  // Score market trail articles if provided
+  const trailResults = (trailArticles || []).map((a: any) => {
+    let score = 0;
+    const title = (a.title[lang] || '').toLowerCase();
+    const excerpt = (a.excerpt[lang] || '').toLowerCase();
+    const tags = (a.tags?.[lang] || []).map((t: string) => t.toLowerCase());
+    const keywords = (a.keywords?.[lang] || []).map((k: string) => k.toLowerCase());
+
+    if (title.includes(q)) score += 10;
+    if (tags.some((t: string) => t.includes(q))) score += 5;
+    if (keywords.some((k: string) => k.includes(q))) score += 5;
+    if (excerpt.includes(q)) score += 3;
+
+    // Search inside section content
+    const contentMatch = (a.sections || []).some((s: any) =>
+      (s.content[lang] || '').toLowerCase().includes(q) || (s.title[lang] || '').toLowerCase().includes(q)
+    );
+    if (contentMatch) score += 2;
+
+    const converted: ArticleData = {
+      id: a.id,
+      title: a.title,
+      excerpt: a.excerpt,
+      date: a.date,
+      readTime: a.readTime,
+      path: {
+        pt: `/artigos/${a.slugPt}`,
+        en: `/en-us/articles/${a.slugEn}`,
+      },
+      tags: a.tags,
+      publishedDate: a.publishedDate,
+    };
+
+    return { article: converted, score };
+  });
+
+  return [...regularResults, ...trailResults]
     .filter((r) => r.score > 0)
     .sort((a, b) => b.score - a.score)
     .map((r) => r.article);
