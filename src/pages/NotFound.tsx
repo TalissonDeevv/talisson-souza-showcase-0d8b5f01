@@ -105,15 +105,15 @@ const NotFound = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="order-1 lg:order-2 flex items-center justify-center"
+            className="order-1 lg:order-2 flex items-center justify-center self-stretch"
           >
-            <div className="relative">
+            <div className="relative w-full h-full flex items-center justify-center">
               {/* Decorative glow behind illustration */}
               <div className="absolute inset-0 bg-gradient-radial from-foreground/[0.04] to-transparent blur-3xl scale-150 hidden md:block" />
               <img 
                 src={illustration} 
                 alt="404 illustration" 
-                className="relative w-full max-w-[420px] lg:max-w-[500px] mx-auto"
+                className="relative w-full max-w-full mx-auto"
               />
             </div>
           </motion.div>
