@@ -828,26 +828,72 @@ const Index = () => {
         }
       >
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-            <ScrollReveal className="lg:col-span-5">
-              <motion.span
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
-              >
-                Discord
-              </motion.span>
-              <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-4 leading-tight">
-                {getText(language, 'Comunidades no Discord', 'Discord Communities')}
-              </h2>
-              <p className="text-base text-muted-foreground leading-relaxed mb-8 max-w-md">
-                {getText(
-                  language,
-                  'Comunidades onde possuo ou possuí cargo, contribuindo com moderação, desenvolvimento e gestão comunitária.',
-                  'Communities where I hold or held a role, contributing with moderation, development and community management.'
-                )}
-              </p>
+          <ScrollReveal>
+            <motion.span
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+            >
+              Discord
+            </motion.span>
+            <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-4 leading-[1.05]">
+              {getText(language, 'Comunidades no Discord', 'Discord Communities')}
+            </h2>
+            <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mb-12">
+              {getText(
+                language,
+                'Comunidades onde possuo ou possuí cargo, contribuindo com moderação, desenvolvimento e gestão comunitária.',
+                'Communities where I hold or held a role, contributing with moderation, development and community management.'
+              )}
+            </p>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <ScrollReveal delay={0.05}>
+              <DiscordCommunityCard
+                name="Escritório do Talisson"
+                description={getText(language, "Espaço oficial onde concentro minha comunidade, projetos e conteúdos de tecnologia e estratégia de negócios.", "Official space where I concentrate my community, projects and content on technology and business strategy.")}
+                logo={escritorioLogo}
+                banner={escritorioBannerFull}
+                link="https://discord.gg/DzZN6tUJKq"
+                role={getText(language, "Proprietário", "Owner")}
+              />
+            </ScrollReveal>
+            <ScrollReveal delay={0.1}>
+              <DiscordCommunityCard
+                name="AGON by AOC"
+                description={getText(language, "Servidor oficial da AGON by AOC no Discord Brasil. Um espaço para gamers competitivos e entusiastas de hardware.", "Official AGON by AOC server on Discord Brazil. A space for competitive gamers and hardware enthusiasts.")}
+                logo={agonLogo}
+                banner={agonBanner}
+                link="https://discord.gg/yBy8Vu79J3"
+                role={getText(language, "Moderador", "Moderator")}
+              />
+            </ScrollReveal>
+            <ScrollReveal delay={0.15}>
+              <DiscordCommunityCard
+                name="Hytale Brasil"
+                description={getText(language, "O servidor definitivo de Hytale no Discord! O lar dos jogadores brasileiros.", "The ultimate Hytale server on Discord! The home of Brazilian players.")}
+                logo={hytaleLogo}
+                banner={hytaleBanner}
+                link="https://discord.gg/x2SvJd2NsZ"
+                role={getText(language, "Desenvolvedor Interno", "Internal Developer")}
+              />
+            </ScrollReveal>
+            <ScrollReveal delay={0.2}>
+              <DiscordCommunityCard
+                name="ModsClub"
+                description={getText(language, "Comunidade que reúne moderadores e administradores de comunidades brasileiras.", "Community that brings together moderators and administrators of Brazilian communities.")}
+                logo={modsclubLogo}
+                banner={modsclubBanner}
+                link="https://discord.gg/uuHdJUNYQs"
+                role={getText(language, "Especialista em Comunidades", "Community Specialist")}
+              />
+            </ScrollReveal>
+          </div>
+
+          <ScrollReveal delay={0.3}>
+            <div className="mt-10 text-center">
               <Link
                 to={language === 'en' ? '/en-us/career' : '/carreira'}
                 className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"
@@ -859,51 +905,8 @@ const Index = () => {
                 </span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
               </Link>
-            </ScrollReveal>
-
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <ScrollReveal delay={0.1}>
-                <DiscordCommunityCard
-                  name="Escritório do Talisson"
-                  description={getText(language, "Espaço oficial onde concentro minha comunidade, projetos e conteúdos de tecnologia e estratégia de negócios.", "Official space where I concentrate my community, projects and content on technology and business strategy.")}
-                  logo={escritorioLogo}
-                  banner={escritorioBannerFull}
-                  link="https://discord.gg/DzZN6tUJKq"
-                  role={getText(language, "Proprietário", "Owner")}
-                />
-              </ScrollReveal>
-              <ScrollReveal delay={0.2}>
-                <DiscordCommunityCard
-                  name="AGON by AOC"
-                  description={getText(language, "Servidor oficial da AGON by AOC no Discord Brasil. Um espaço para gamers competitivos e entusiastas de hardware.", "Official AGON by AOC server on Discord Brazil. A space for competitive gamers and hardware enthusiasts.")}
-                  logo={agonLogo}
-                  banner={agonBanner}
-                  link="https://discord.gg/yBy8Vu79J3"
-                  role={getText(language, "Moderador", "Moderator")}
-                />
-              </ScrollReveal>
-              <ScrollReveal delay={0.3}>
-                <DiscordCommunityCard
-                  name="Hytale Brasil"
-                  description={getText(language, "O servidor definitivo de Hytale no Discord! O lar dos jogadores brasileiros.", "The ultimate Hytale server on Discord! The home of Brazilian players.")}
-                  logo={hytaleLogo}
-                  banner={hytaleBanner}
-                  link="https://discord.gg/x2SvJd2NsZ"
-                  role={getText(language, "Desenvolvedor Interno", "Internal Developer")}
-                />
-              </ScrollReveal>
-              <ScrollReveal delay={0.4}>
-                <DiscordCommunityCard
-                  name="ModsClub"
-                  description={getText(language, "Comunidade que reúne moderadores e administradores de comunidades brasileiras.", "Community that brings together moderators and administrators of Brazilian communities.")}
-                  logo={modsclubLogo}
-                  banner={modsclubBanner}
-                  link="https://discord.gg/uuHdJUNYQs"
-                  role={getText(language, "Especialista em Comunidades", "Community Specialist")}
-                />
-              </ScrollReveal>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </ParallaxSection>
 
