@@ -3,6 +3,7 @@ import { Search, X, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { searchArticles } from "@/data/articles";
+import { marketTrailArticles } from "@/data/market-trail-articles";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 
@@ -17,7 +18,7 @@ const ArticleSearch = ({ variant = 'compact' }: ArticleSearchProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const results = query.length >= 2 ? searchArticles(query, language) : [];
+  const results = query.length >= 2 ? searchArticles(query, language, marketTrailArticles) : [];
 
   const handleClose = useCallback(() => {
     setIsFocused(false);
