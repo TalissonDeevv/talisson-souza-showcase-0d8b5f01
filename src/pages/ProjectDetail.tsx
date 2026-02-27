@@ -245,7 +245,7 @@ const ProjectDetail = () => {
         ]
     },
     "cheetah-network": {
-      title: "Cheetah Network",
+      title: "Cheetah Solutions Network",
       description: language === 'pt'
         ? "Soluções Digitais Inovadoras."
         : "Innovative Digital Solutions.",

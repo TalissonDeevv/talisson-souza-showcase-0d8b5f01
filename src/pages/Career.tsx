@@ -53,11 +53,11 @@ At 14, I developed my first bots for Discord. There I realized that technology w
 
   const whyCompanyPt = `Em 2021, participei de um processo seletivo para uma vaga de Jovem Aprendiz. Passei por todas as etapas com dedicação: entrevista, exames médicos, preparação. No entanto, ao final do processo, fui recusado. Não por falta de qualificação. Mas por causa da minha cadeira de rodas.
 
-Naquele momento, tomei uma decisão: se não iam me dar espaço, eu criaria o meu próprio espaço. Assim nasceu a Cheetah Network.`;
+Naquele momento, tomei uma decisão: se não iam me dar espaço, eu criaria o meu próprio espaço. Assim nasceu a Cheetah Solutions Network.`;
 
   const whyCompanyEn = `In 2021, I participated in a selection process for a Young Apprentice position. I went through all stages with dedication: interview, medical exams, preparation. However, at the end of the process, I was rejected. Not for lack of qualification. But because of my wheelchair.
 
-At that moment, I made a decision: if they wouldn't give me space, I would create my own space. Thus Cheetah Network was born.`;
+At that moment, I made a decision: if they wouldn't give me space, I would create my own space. Thus Cheetah Solutions Network was born.`;
 
   const stats = [
     { icon: Award, label: getText(language, "Projetos Entregues", "Projects Delivered"), value: "50+" },
@@ -85,7 +85,7 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
     },
     { 
       year: "2023", 
-      title: getText(language, "Fundação da Cheetah Network", "Cheetah Network Founded"), 
+      title: getText(language, "Fundação da Cheetah Solutions Network", "Cheetah Solutions Network Founded"), 
       role: getText(language, "CEO & Founder", "CEO & Founder"),
       description: getText(language, "Criação da empresa focada em soluções digitais", "Company created focused on digital solutions"), 
       learning: getText(language, "Empreender é resolver problemas", "Entrepreneurship is problem-solving"),
@@ -128,7 +128,7 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
   ];
 
   const companies = [
-    { name: "Cheetah Network", description: language === 'pt' ? "Soluções digitais especializadas em desenvolvimento de bots e aplicações web." : "Digital solutions specialized in bot development and web applications.", logo: "https://i.ibb.co/0yQ0mnD6/bannercheetah2.png", role: "CEO & Founder" },
+    { name: "Cheetah Solutions Network", description: language === 'pt' ? "Soluções digitais especializadas em desenvolvimento de bots e aplicações web." : "Digital solutions specialized in bot development and web applications.", logo: "https://i.ibb.co/0yQ0mnD6/bannercheetah2.png", role: "CEO & Founder" },
     { name: "Werneck Group", description: language === 'pt' ? "Consultoria estratégica especializada em transformação digital." : "Strategic consulting specialized in digital transformation.", logo: "https://i.ibb.co/YT7LK7Vc/bannerwerneck.jpg", role: getText(language, "Diretor Estratégico", "Strategic Director") }
   ];
 
@@ -193,7 +193,7 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
     <Layout withPadding={false}>
       <SEO 
         title={getText(language, 'Carreira | Trajetória de Talisson Souza', 'Career | Talisson Souza Journey')}
-        description={getText(language, 'Conheça a trajetória profissional de Talisson Souza, desde os primeiros projetos até se tornar CEO da Cheetah Network e Diretor Estratégico do Werneck Group.', 'Discover Talisson Souza\'s professional journey, from his first projects to becoming CEO of Cheetah Network and Strategic Director of Werneck Group.')}
+        description={getText(language, 'Conheça a trajetória profissional de Talisson Souza, desde os primeiros projetos até se tornar CEO da Cheetah Solutions Network e Diretor Estratégico do Werneck Group.', 'Discover Talisson Souza\'s professional journey, from his first projects to becoming CEO of Cheetah Solutions Network and Strategic Director of Werneck Group.')}
         canonical={language === 'en' ? '/en-us/career' : '/carreira'}
         keywords={language === 'pt' ? ['carreira', 'trajetória', 'experiência profissional', 'CEO', 'empreendedor', 'desenvolvedor'] : ['career', 'journey', 'professional experience', 'CEO', 'entrepreneur', 'developer']}
       />

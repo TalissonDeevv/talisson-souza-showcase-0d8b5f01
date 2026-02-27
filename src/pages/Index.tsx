@@ -48,7 +48,7 @@ const Index = () => {
     link: "https://familiawerneck.vercel.app"
   }];
   const featuredCompanies = [{
-    name: "Cheetah Network",
+    name: "Cheetah Solutions Network",
     role: "CEO & Founder",
     period: "2023 - " + getText(language, 'Presente', 'Present'),
     description: getText(language, "Soluções digitais especializadas em desenvolvimento de bots, aplicações web.", "Digital solutions specialized in bot development and web applications.")
@@ -76,9 +76,9 @@ const Index = () => {
     <Layout withPadding={false} showDiscordPopup={true}>
       <SEO
         title={getText(language, 'Talisson Souza | Desenvolvedor Full Stack & CEO', 'Talisson Souza | Full Stack Developer & CEO')}
-        description={getText(language, 'Desenvolvedor Full Stack com mais de 8 anos de experiência. CEO da Cheetah Network, especialista em sistemas web sob medida, APIs, React, Node.js e soluções digitais para empresas.', 'Full Stack Developer with over 8 years of experience. CEO of Cheetah Network, specialist in custom web systems, APIs, React, Node.js and digital solutions for businesses.')}
+        description={getText(language, 'Desenvolvedor Full Stack com mais de 8 anos de experiência. CEO da Cheetah Solutions Network, especialista em sistemas web sob medida, APIs, React, Node.js e soluções digitais para empresas.', 'Full Stack Developer with over 8 years of experience. CEO of Cheetah Solutions Network, specialist in custom web systems, APIs, React, Node.js and digital solutions for businesses.')}
         canonical={language === 'en' ? '/en-us' : '/'}
-        keywords={language === 'pt' ? ['desenvolvedor full stack', 'CEO', 'sistemas sob medida', 'desenvolvimento web', 'React', 'Node.js', 'TypeScript', 'Cheetah Network'] : ['full stack developer', 'CEO', 'custom systems', 'web development', 'React', 'Node.js', 'TypeScript', 'Cheetah Network']} />
+        keywords={language === 'pt' ? ['desenvolvedor full stack', 'CEO', 'sistemas sob medida', 'desenvolvimento web', 'React', 'Node.js', 'TypeScript', 'Cheetah Solutions Network'] : ['full stack developer', 'CEO', 'custom systems', 'web development', 'React', 'Node.js', 'TypeScript', 'Cheetah Solutions Network']} />
 
       <section className="min-h-[100vh] flex items-center justify-center relative overflow-hidden">
         {/* Sophisticated Background Effect */}
@@ -547,7 +547,7 @@ const Index = () => {
                   {language === 'pt' ? 'Em 2021, fui recusado em um processo seletivo não por falta de qualificação, mas por causa da minha cadeira de rodas. Esse momento transformou frustração em propósito.' : 'In 2021, I was rejected in a selection process not for lack of qualification, but because of my wheelchair. That moment transformed frustration into purpose.'}
                 </p>
                 <p className="text-sm text-muted-foreground leading-[1.8] mb-8 max-w-2xl mx-auto">
-                  {language === 'pt' ? 'Assim nasceu a Cheetah Network. Mais que uma empresa, uma prova de que todos merecem oportunidades reais.' : 'Thus Cheetah Network was born. More than a company, proof that everyone deserves real opportunities.'}
+                  {language === 'pt' ? 'Assim nasceu a Cheetah Solutions Network. Mais que uma empresa, uma prova de que todos merecem oportunidades reais.' : 'Thus Cheetah Solutions Network was born. More than a company, proof that everyone deserves real opportunities.'}
                 </p>
                 
                 <Link
