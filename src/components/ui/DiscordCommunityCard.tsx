@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
@@ -11,6 +12,9 @@ interface DiscordCommunityCardProps {
 }
 
 const DiscordCommunityCard = ({ name, description, logo, banner, link, role }: DiscordCommunityCardProps) => {
+  const [bannerLoaded, setBannerLoaded] = useState(false);
+  const [logoLoaded, setLogoLoaded] = useState(false);
+
   return (
     <motion.a
       href={link}
@@ -22,13 +26,17 @@ const DiscordCommunityCard = ({ name, description, logo, banner, link, role }: D
       style={{ boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)' }}
     >
       {/* Banner */}
-      <div className="relative h-32 rounded-t-2xl overflow-hidden">
+      <div className="relative h-32 rounded-t-2xl overflow-hidden bg-secondary/30">
+        {!bannerLoaded && (
+          <div className="absolute inset-0 animate-pulse bg-secondary/50" />
+        )}
         <img
           src={banner}
           alt={`${name} banner`}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className={`w-full h-full object-cover transition-all duration-300 group-hover:scale-105 ${bannerLoaded ? 'opacity-100' : 'opacity-0'}`}
           loading="eager"
-          decoding="async"
+          decoding="sync"
+          onLoad={() => setBannerLoaded(true)}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
       </div>
@@ -36,12 +44,16 @@ const DiscordCommunityCard = ({ name, description, logo, banner, link, role }: D
       {/* Logo - positioned outside the overflow-hidden banner */}
       <div className="absolute top-[104px] left-5 z-10">
         <div className="w-14 h-14 rounded-xl border-2 border-background bg-card overflow-hidden shadow-lg">
+          {!logoLoaded && (
+            <div className="absolute inset-0 animate-pulse bg-secondary/50" />
+          )}
           <img
             src={logo}
             alt={`${name} logo`}
-            className="w-full h-full object-cover"
+            className={`w-full h-full object-cover transition-opacity duration-200 ${logoLoaded ? 'opacity-100' : 'opacity-0'}`}
             loading="eager"
-            decoding="async"
+            decoding="sync"
+            onLoad={() => setLogoLoaded(true)}
           />
         </div>
       </div>
