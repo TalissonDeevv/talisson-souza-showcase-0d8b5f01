@@ -16,6 +16,9 @@ import logoSignature from "@/assets/logo-signature.png";
 import { motion } from "framer-motion";
 import { SiJavascript, SiTypescript, SiPython, SiReact, SiNodedotjs, SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFirebase } from "react-icons/si";
 import CompanyLogos from "@/components/ui/CompanyLogos";
+import DiscordCommunityCard from "@/components/ui/DiscordCommunityCard";
+import agonLogo from "@/assets/discord/agon-logo.png";
+import agonBanner from "@/assets/discord/agon-banner.png";
 import bookMockupImg from "@/assets/book-mockup-v3.png";
 const Index = () => {
   const {
@@ -806,6 +809,65 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Discord Communities Section */}
+      <ParallaxSection
+        className="py-16 lg:py-20"
+        speed={0.08}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <ScrollReveal className="lg:col-span-5">
+              <motion.span
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+              >
+                Discord
+              </motion.span>
+              <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-4 leading-tight">
+                {getText(language, 'Comunidades no Discord', 'Discord Communities')}
+              </h2>
+              <p className="text-base text-muted-foreground leading-relaxed mb-8 max-w-md">
+                {getText(
+                  language,
+                  'Comunidades onde possuo ou possuí cargo, contribuindo com moderação, desenvolvimento e gestão comunitária.',
+                  'Communities where I hold or held a role, contributing with moderation, development and community management.'
+                )}
+              </p>
+              <Link
+                to={language === 'en' ? '/en-us/career' : '/carreira'}
+                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"
+              >
+                <span className="relative">
+                  {getText(language, 'Ver todas as comunidades', 'View all communities')}
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
+                  <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
+                </span>
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+              </Link>
+            </ScrollReveal>
+
+            <ScrollReveal className="lg:col-span-7 max-w-md lg:ml-auto" delay={0.15}>
+              <DiscordCommunityCard
+                name="AGON by AOC"
+                description={getText(language, "Servidor oficial da AGON by AOC no Discord Brasil. Um espaço para gamers competitivos e entusiastas de hardware, com foco em performance, tecnologia, lançamentos, eventos oficiais e interação direta com a comunidade AGON.", "Official AGON by AOC server on Discord Brazil. A space for competitive gamers and hardware enthusiasts, focused on performance, technology, launches, official events and direct interaction with the AGON community.")}
+                logo={agonLogo}
+                banner={agonBanner}
+                link="https://discord.gg/yBy8Vu79J3"
+                role={getText(language, "Moderador", "Moderator")}
+              />
+            </ScrollReveal>
+          </div>
+        </div>
+      </ParallaxSection>
 
       {/* Insights Section */}
       <ParallaxSection
