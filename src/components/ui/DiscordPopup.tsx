@@ -4,6 +4,8 @@ import { X } from "lucide-react";
 import { SiDiscord } from "react-icons/si";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
+import escritorioLogo from "@/assets/discord/escritorio-logo.png";
+import escritorioBanner from "@/assets/discord/escritorio-banner.png";
 
 const DISCORD_LINK = "https://discord.gg/WXwguHWjxg";
 
@@ -46,34 +48,47 @@ const DiscordPopup = () => {
           className="fixed bottom-6 right-6 z-50 max-w-[320px] w-[calc(100%-3rem)]"
         >
           <div 
-            className="relative overflow-hidden rounded-2xl border border-border/30 bg-card/95 backdrop-blur-xl p-5"
+            className="relative overflow-hidden rounded-2xl border border-border/30 bg-card/95 backdrop-blur-xl"
             style={{
               boxShadow: '0 20px 60px -10px hsl(var(--foreground) / 0.15), 0 10px 30px -10px hsl(var(--foreground) / 0.1)'
             }}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent pointer-events-none" />
-            <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent pointer-events-none" />
-            
-            {/* Close button - larger touch target */}
-            <button
-              onClick={handleDismiss}
-              onTouchEnd={handleDismiss}
-              className="absolute top-2 right-2 z-20 w-10 h-10 flex items-center justify-center rounded-full text-muted-foreground/60 hover:text-foreground hover:bg-foreground/5 active:bg-foreground/10 transition-all duration-200 cursor-pointer"
-              aria-label={getText(language, 'Fechar', 'Close')}
-              type="button"
-            >
-              <X className="w-5 h-5 pointer-events-none" />
-            </button>
-            
-            <div className="relative z-10 pr-8">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl border border-border/30 bg-foreground/5 flex items-center justify-center flex-shrink-0">
-                  <SiDiscord className="w-5 h-5 text-foreground/70" />
+            {/* Banner */}
+            <div className="relative h-20 overflow-hidden">
+              <img
+                src={escritorioBanner}
+                alt=""
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
+              
+              {/* Close button over banner */}
+              <button
+                onClick={handleDismiss}
+                onTouchEnd={handleDismiss}
+                className="absolute top-2 right-2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-black/40 text-white/80 hover:text-white hover:bg-black/60 active:bg-black/70 transition-all duration-200 cursor-pointer backdrop-blur-sm"
+                aria-label={getText(language, 'Fechar', 'Close')}
+                type="button"
+              >
+                <X className="w-4 h-4 pointer-events-none" />
+              </button>
+
+              {/* Logo overlapping banner */}
+              <div className="absolute -bottom-5 left-4">
+                <div className="w-11 h-11 rounded-xl border-2 border-card bg-card overflow-hidden shadow-lg">
+                  <img
+                    src={escritorioLogo}
+                    alt="Escritório do Talisson"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <h3 className="font-serif text-lg text-foreground leading-tight">
-                  {getText(language, 'Escritório do Talisson', "Talisson's Office")}
-                </h3>
               </div>
+            </div>
+            
+            <div className="relative z-10 pt-7 px-5 pb-5">
+              <h3 className="font-serif text-lg text-foreground leading-tight mb-2">
+                {getText(language, 'Escritório do Talisson', "Talisson's Office")}
+              </h3>
               
               <p className="text-sm text-muted-foreground leading-relaxed mb-5">
                 {getText(language, 
