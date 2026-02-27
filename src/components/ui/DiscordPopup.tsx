@@ -9,12 +9,26 @@ import escritorioBanner from "@/assets/discord/escritorio-banner.png";
 
 const DISCORD_LINK = "https://discord.gg/WXwguHWjxg";
 
+function preloadImage(src: string): Promise<void> {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve();
+    img.onerror = () => resolve();
+    img.src = src;
+  });
+}
+
 const DiscordPopup = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { language } = useTheme();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    // Preload images first, then show after delay
+    const timer = setTimeout(async () => {
+      await Promise.all([
+        preloadImage(escritorioBanner),
+        preloadImage(escritorioLogo),
+      ]);
       setIsVisible(true);
     }, 3000);
     
