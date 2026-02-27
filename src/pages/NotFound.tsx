@@ -39,79 +39,58 @@ const NotFound = () => {
       </div>
 
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
+          
+          {/* Text content */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            className="order-2 lg:order-1"
           >
-            <img 
-              src={illustration} 
-              alt="404 illustration" 
-              className="w-full max-w-[280px] mx-auto mb-8"
-            />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <span className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-4 font-medium">
+            <span className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium">
               {getText(language, 'Erro 404', '404 Error')}
             </span>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground mb-4 leading-[1.05]">
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 leading-[1.05]">
               {getText(language, 'Página não encontrada', 'Page not found')}
             </h1>
-            <p className="text-base text-muted-foreground leading-relaxed max-w-lg mx-auto mb-10">
+            <p className="text-base text-muted-foreground leading-relaxed max-w-md mb-10">
               {getText(
                 language,
                 'O conteúdo que você procura não existe ou foi movido. Use os links abaixo para continuar navegando.',
                 'The content you are looking for does not exist or has been moved. Use the links below to continue browsing.'
               )}
             </p>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Link
-              to={homePath}
-              className="group inline-flex items-center gap-3 px-8 py-4 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300 w-full sm:w-auto justify-center"
-              style={{ boxShadow: '0 0 30px hsl(var(--foreground) / 0.15)' }}
-            >
-              <Home className="w-4 h-4" />
-              {getText(language, 'Voltar para a Home', 'Back to Home')}
-            </Link>
+            <div className="flex flex-col sm:flex-row items-start gap-3 mb-8">
+              <Link
+                to={homePath}
+                className="group inline-flex items-center gap-3 px-7 py-3.5 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300"
+                style={{ boxShadow: '0 0 30px hsl(var(--foreground) / 0.15)' }}
+              >
+                <Home className="w-4 h-4" />
+                {getText(language, 'Voltar para a Home', 'Back to Home')}
+              </Link>
 
-            <Link
-              to={contactPath}
-              className="group inline-flex items-center gap-3 px-8 py-4 text-sm font-medium text-foreground border border-border/30 bg-card/30 backdrop-blur-sm rounded-full transition-all duration-300 hover:border-foreground/20 w-full sm:w-auto justify-center"
-            >
-              <MessageSquare className="w-4 h-4" />
-              {getText(language, 'Relatar erro', 'Report error')}
-            </Link>
+              <Link
+                to={contactPath}
+                className="group inline-flex items-center gap-3 px-7 py-3.5 text-sm font-medium text-foreground border border-border/30 bg-card/30 backdrop-blur-sm rounded-full transition-all duration-300 hover:border-foreground/20"
+              >
+                <MessageSquare className="w-4 h-4" />
+                {getText(language, 'Relatar erro', 'Report error')}
+              </Link>
 
-            <a
-              href={DISCORD_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 px-8 py-4 text-sm font-medium text-foreground border border-border/30 bg-card/30 backdrop-blur-sm rounded-full transition-all duration-300 hover:border-foreground/20 w-full sm:w-auto justify-center"
-            >
-              <SiDiscord className="w-4 h-4" />
-              {getText(language, 'Entrar no Discord', 'Join Discord')}
-            </a>
-          </motion.div>
+              <a
+                href={DISCORD_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-3 px-7 py-3.5 text-sm font-medium text-foreground border border-border/30 bg-card/30 backdrop-blur-sm rounded-full transition-all duration-300 hover:border-foreground/20"
+              >
+                <SiDiscord className="w-4 h-4" />
+                Discord
+              </a>
+            </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-8"
-          >
             <button
               onClick={() => window.history.back()}
               className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
@@ -119,6 +98,24 @@ const NotFound = () => {
               <ArrowLeft className="w-4 h-4" />
               {getText(language, 'Voltar à página anterior', 'Go back to previous page')}
             </button>
+          </motion.div>
+
+          {/* Illustration */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="order-1 lg:order-2 flex items-center justify-center"
+          >
+            <div className="relative">
+              {/* Decorative glow behind illustration */}
+              <div className="absolute inset-0 bg-gradient-radial from-foreground/[0.04] to-transparent blur-3xl scale-150 hidden md:block" />
+              <img 
+                src={illustration} 
+                alt="404 illustration" 
+                className="relative w-full max-w-sm lg:max-w-md mx-auto"
+              />
+            </div>
           </motion.div>
         </div>
       </div>
