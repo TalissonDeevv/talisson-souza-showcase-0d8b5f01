@@ -26,6 +26,10 @@ import Principles from "./pages/Principles";
 import Checklists from "./pages/Checklists";
 import ChecklistDetail from "./pages/ChecklistDetail";
 import MarketTrailArticle from "./pages/articles/MarketTrailArticle";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminLayout from "./pages/admin/AdminLayout";
+import AdminArticles from "./pages/admin/AdminArticles";
+import ArticleEditor from "./pages/admin/ArticleEditor";
 
 const queryClient = new QueryClient();
 
@@ -57,6 +61,14 @@ const AppRoutes = () => (
         <Route path="/artigos/tag/:tag" element={<TagPage />} />
         <Route path="/trilhas/:trailId" element={<TrailPage />} />
         <Route path="/artigos/:slug" element={<MarketTrailArticle />} />
+        
+        {/* ===== Admin Routes ===== */}
+        <Route path="/paineladmin/login" element={<AdminLogin />} />
+        <Route path="/paineladmin" element={<AdminLayout />}>
+          <Route index element={<AdminArticles />} />
+          <Route path="criar-artigo" element={<ArticleEditor />} />
+          <Route path="editar/:id" element={<ArticleEditor />} />
+        </Route>
         
         {/* ===== EN-US Routes (/en-us prefix) ===== */}
         <Route path="/en-us" element={<Index />} />
