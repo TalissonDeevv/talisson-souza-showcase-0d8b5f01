@@ -47,7 +47,7 @@ const CompanyLogos = () => {
         viewport={{ once: true }}
         className="text-xs tracking-[0.2em] uppercase text-muted-foreground/50 mb-12 text-left"
       >
-        {getText(language, "Empresas e projetos que confiam no meu trabalho", "Companies and projects that trust my work")}
+        {getText(language, "Marcas que confiam no meu trabalho", "Brands that trust my work")}
       </motion.p>
       
       <div className="flex flex-wrap items-center justify-center gap-12 lg:gap-16">
