@@ -122,7 +122,7 @@ const translations: Translations = {
         "Desenvolvo sistemas sob medida e lidero equipes que transformam ideias em produtos digitais de alto impacto.",
       contact: "Falar sobre seu projeto",
       about: "Conhecer minha trajetória",
-      badge: "Full Stack Developer & CEO"
+      badge: "Tecnologia. Sistemas. Decisões."
     },
     book: {
       newRelease: "Novo Lançamento",
@@ -351,7 +351,7 @@ const translations: Translations = {
         "I build custom systems and lead teams that turn ideas into high-impact digital products.",
       contact: "Discuss your project",
       about: "Learn my story",
-      badge: "Full Stack Developer & CEO"
+      badge: "Tecnologia. Sistemas. Decisões."
     },
     book: {
       newRelease: "New Release",
