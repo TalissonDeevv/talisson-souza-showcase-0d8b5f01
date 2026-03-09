@@ -7,9 +7,7 @@ const SocialIcons = ({ className = "" }: SocialIconsProps) => {
     { name: "GitHub", href: "https://github.com/TalinhoDev" },
     { name: "LinkedIn", href: "https://www.linkedin.com/in/talinho" },
     { name: "Instagram", href: "https://instagram.com/talissondev" },
-    { name: "Twitter", href: "https://x.com/talinhozx" },
     { name: "YouTube", href: "https://www.youtube.com/TalissonSouza" },
-    { name: "Twitch", href: "https://www.twitch.tv/talinhosz" },
   ];
 
   return (
