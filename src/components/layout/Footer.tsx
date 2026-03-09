@@ -64,17 +64,20 @@ const Footer = () => {
     <footer className="border-t border-border/30 mt-20">
       <div className="container mx-auto px-6 lg:px-8">
         <div className="py-8 lg:py-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 items-start">
+          {/* Logo */}
+          <Link to={homePath} className="inline-block mb-5">
+            <img src={logo} alt="Talisson Souza" className="h-10 w-auto" loading="lazy" />
+          </Link>
 
-            {/* 1 — Brand */}
-            <div>
-              <Link to={homePath} className="inline-block">
-                <img src={logo} alt="Talisson Souza" className="h-10 w-auto" loading="lazy" />
-              </Link>
-              <p className="text-xs text-muted-foreground mt-1.5 max-w-[220px]">
+          {/* Content grid — all columns aligned */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-6 items-start">
+
+            {/* 1 — Tagline + Social */}
+            <div className="flex flex-col gap-3">
+              <p className="text-xs text-muted-foreground max-w-[220px]">
                 Tecnologia. Sistemas. Decisões.
               </p>
-              <div className="flex gap-3 mt-3">
+              <div className="flex gap-3">
                 {socialLinks.map((link) =>
                 <a
                   key={link.name}
@@ -82,7 +85,6 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-200">
-                  
                     {link.name}
                   </a>
                 )}
@@ -97,7 +99,6 @@ const Footer = () => {
                   key={item.name}
                   to={item.path}
                   className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-200">
-                  
                     {item.name}
                   </Link>
                 )}
@@ -108,7 +109,6 @@ const Footer = () => {
                   key={item.name}
                   to={item.path}
                   className="text-xs text-muted-foreground/60 hover:text-foreground transition-colors duration-200">
-                  
                     {item.name}
                   </Link>
                 )}
@@ -116,12 +116,11 @@ const Footer = () => {
             </div>
 
             {/* 3 — Mini Player + Signature */}
-            <div className="md:flex md:flex-col md:items-end">
+            <div className="flex flex-col gap-2.5 md:items-end">
               <motion.button
                 onClick={handlePlayPause}
                 whileTap={{ scale: 0.95 }}
                 className="group flex items-center gap-2.5 px-3 py-1.5 rounded-full border border-border/40 hover:border-border/70 bg-card/40 backdrop-blur-sm transition-all duration-300">
-                
                 <Music className="w-3 h-3 text-muted-foreground" />
                 <span className="text-[11px] text-muted-foreground group-hover:text-foreground transition-colors duration-200">
                   Congratulations — Post Malone
@@ -129,13 +128,12 @@ const Footer = () => {
                 <span className="flex items-center justify-center w-5 h-5 rounded-full bg-foreground/5 group-hover:bg-foreground/10 transition-colors duration-200">
                   {isPlaying ?
                   <Pause className="w-2.5 h-2.5 text-foreground/70" /> :
-
                   <Play className="w-2.5 h-2.5 text-foreground/70 ml-px" />
                   }
                 </span>
               </motion.button>
 
-              <p className="text-[11px] text-muted-foreground/60 mt-2.5 md:text-right italic">
+              <p className="text-[11px] text-muted-foreground/60 md:text-right italic">
                 {getText(language, 'Nada aqui é por acaso.', 'Nothing here is by chance.')}
               </p>
             </div>
