@@ -13,6 +13,7 @@ import { securityTrailArticles } from './market-trail/security-trail';
 import { architectureTrailArticles } from './market-trail/architecture-trail';
 import { communityTrailArticles } from './market-trail/community-trail';
 import { strategyTrailArticles } from './market-trail/strategy-trail';
+import { ecaDigitalArticle } from './market-trail/eca-digital-article';
 
 export const marketTrailArticles: MarketTrailArticle[] = [
   ...block1Articles,
@@ -26,4 +27,5 @@ export const marketTrailArticles: MarketTrailArticle[] = [
   ...architectureTrailArticles,
   ...communityTrailArticles,
   ...strategyTrailArticles,
+  ...ecaDigitalArticle,
 ];

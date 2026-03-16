@@ -87,6 +87,7 @@ export const ptToEnRoutes: Record<string, string> = {
   '/artigos/entender-negocios-nao-so-codigo': '/en-us/articles/understanding-business-not-just-code',
   '/artigos/construir-reputacao-mercado': '/en-us/articles/building-market-reputation',
   '/artigos/trabalho-remoto-preparacao': '/en-us/articles/remote-work-preparation',
+  '/artigos/eca-digital-anpd-monitoramento': '/en-us/articles/eca-digital-anpd-monitoring',
 };
 
 // Reverse mapping: English to Portuguese
