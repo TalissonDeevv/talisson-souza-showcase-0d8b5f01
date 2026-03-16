@@ -7,6 +7,7 @@ import cheetahLogo from "@/assets/logos/cheetah-solutions.png";
 import squareCloudLogo from "@/assets/logos/square-cloud.png";
 import quackPayLogo from "@/assets/logos/quack-pay.png";
 import rocketseatLogo from "@/assets/logos/rocketseat.png";
+import splendoriLogo from "@/assets/logos/splendori.png";
 
 const CompanyLogos = () => {
   const { language } = useTheme();
