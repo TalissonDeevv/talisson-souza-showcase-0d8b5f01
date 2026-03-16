@@ -75,7 +75,7 @@ const Footer = () => {
             {/* 1 — Tagline + Social */}
             <div className="flex flex-col gap-3">
               <p className="text-xs text-muted-foreground max-w-[220px]">
-                Tecnologia. Sistemas. Decisões.
+                {getText(language, 'Tecnologia. Sistemas. Decisões.', 'Technology. Systems. Decisions.')}
               </p>
               <div className="flex gap-3">
                 {socialLinks.map((link) =>
