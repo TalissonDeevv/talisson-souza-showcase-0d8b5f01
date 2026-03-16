@@ -38,8 +38,8 @@ interface PageMeta {
 // ── Static page metadata ──────────────────────────────────────────────
 const STATIC_PAGES: Record<string, { pt: Omit<PageMeta, 'locale'>; en: Omit<PageMeta, 'locale'> }> = {
   '/': {
-    pt: { title: 'Talisson Souza | Desenvolvedor Full Stack & CEO', description: 'Desenvolvedor Full Stack com mais de 8 anos de experiência. CEO da Cheetah Solutions Network.', type: 'website' },
-    en: { title: 'Talisson Souza | Full Stack Developer & CEO', description: 'Full Stack Developer with over 8 years of experience. CEO of Cheetah Solutions Network.', type: 'website' },
+    pt: { title: 'Talisson Souza | Engenheiro de Software e Fundador da Cheetah Solutions', description: 'Engenheiro de software e fundador da Cheetah Solutions Network. Com mais de 8 anos de experiência no desenvolvimento de sistemas e soluções digitais, atuo na criação de tecnologias, automações e arquiteturas que ajudam empresas a transformar software em eficiência, decisões estratégicas e crescimento.', type: 'website' },
+    en: { title: 'Talisson Souza | Software Engineer & Founder of Cheetah Solutions', description: 'Software engineer and founder of Cheetah Solutions Network. With over 8 years of experience in systems development and digital solutions, I create technologies, automations and architectures that help companies transform software into efficiency, strategic decisions and growth.', type: 'website' },
   },
   '/sobre': {
     pt: { title: 'Sobre Talisson Souza | Desenvolvedor Full Stack', description: 'Conheça Talisson Souza, desenvolvedor full stack com mais de 8 anos de experiência, CEO da Cheetah Solutions Network e Diretor Estratégico do Werneck Group.', type: 'website' },
