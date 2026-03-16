@@ -94,6 +94,22 @@ export function getTrailArticles(trailId: string): ArticleData[] {
 
 export const articles: ArticleData[] = [
   {
+    id: 'eca-digital-anpd',
+    title: {
+      pt: 'ECA Digital e ANPD: O Que o Monitoramento de Plataformas Significa para o Ecossistema Tecnológico Brasileiro',
+      en: 'ECA Digital and ANPD: What Platform Monitoring Means for the Brazilian Tech Ecosystem',
+    },
+    excerpt: {
+      pt: 'Análise técnica e regulatória sobre a ação de monitoramento da ANPD relacionada ao ECA Digital, seus impactos para empresas de tecnologia e a relevância da proteção de dados de menores no ambiente digital.',
+      en: 'Technical and regulatory analysis of ANPD\'s monitoring action related to the ECA Digital, its impacts on technology companies, and the relevance of protecting minors\' data in the digital environment.',
+    },
+    date: { pt: '16 de Março, 2026', en: 'March 16, 2026' },
+    readTime: '18 min',
+    path: { pt: '/artigos/eca-digital-anpd-monitoramento', en: '/en-us/articles/eca-digital-anpd-monitoring' },
+    tags: { pt: ['Governança Digital', 'Privacidade', 'Regulação', 'Segurança', 'Estratégia'], en: ['Digital Governance', 'Privacy', 'Regulation', 'Security', 'Strategy'] },
+    publishedDate: '2026-03-16',
+  },
+  {
     id: 'discord-account-security',
     title: {
       pt: 'Proteção de Contas no Discord: Segurança para Quem Possui Ativos de Alto Valor',
