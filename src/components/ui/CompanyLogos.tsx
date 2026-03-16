@@ -37,6 +37,13 @@ const CompanyLogos = () => {
       logo: rocketseatLogo,
       url: "https://www.rocketseat.com.br/oferta/influencer/v2/talinho",
       scale: 1.0
+    },
+    {
+      name: "Splendori",
+      logo: splendoriLogo,
+      url: "https://www.linkedin.com/company/splendoribr/",
+      scale: 0.9,
+      showLabel: true
     }
   ];
 
