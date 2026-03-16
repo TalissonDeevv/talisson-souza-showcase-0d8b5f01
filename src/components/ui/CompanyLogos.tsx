@@ -72,12 +72,19 @@ const CompanyLogos = () => {
             whileHover={{ y: -3 }}
             className="group cursor-pointer flex items-center justify-center"
           >
-            <img 
-              src={company.logo} 
-              alt={company.name}
-              style={{ transform: `scale(${company.scale})` }}
-              className="h-10 lg:h-12 w-auto max-w-[140px] lg:max-w-[160px] object-contain grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
-            />
+            <div className="flex flex-col items-center gap-1.5">
+              <img 
+                src={company.logo} 
+                alt={company.name}
+                style={{ transform: `scale(${company.scale})` }}
+                className="h-10 lg:h-12 w-auto max-w-[140px] lg:max-w-[160px] object-contain grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+              />
+              {company.showLabel && (
+                <span className="text-[11px] font-sans tracking-wide text-muted-foreground/70 group-hover:text-foreground/80 transition-colors duration-500">
+                  {company.name}
+                </span>
+              )}
+            </div>
           </motion.a>
         ))}
       </div>
