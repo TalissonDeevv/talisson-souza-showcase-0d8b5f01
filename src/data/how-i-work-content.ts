@@ -45,8 +45,8 @@ export const heroContent = {
   label: { pt: "Metodologia", en: "Methodology" },
   title: { pt: "Como eu trabalho", en: "How I work" },
   description: {
-    pt: "Meu trabalho vai além de escrever código. Envolve processo, responsabilidade técnica e compromisso com qualidade em cada decisão. Aqui você entende como conduzo projetos — do diagnóstico à entrega — com método, previsibilidade e transparência.",
-    en: "My work goes beyond writing code. It involves process, technical responsibility and a commitment to quality in every decision. Here you'll understand how I manage projects — from diagnosis to delivery — with method, predictability and transparency."
+    pt: "Meu trabalho vai além de escrever código. Envolve processo, responsabilidade técnica e compromisso com qualidade em cada decisão. Aqui você entende como conduzo projetos. do diagnóstico à entrega. com método, previsibilidade e transparência.",
+    en: "My work goes beyond writing code. It involves process, technical responsibility and a commitment to quality in every decision. Here you'll understand how I manage projects. from diagnosis to delivery. with method, predictability and transparency."
   }
 };
 
@@ -71,16 +71,16 @@ export const philosophyContent = {
       icon: Compass,
       title: { pt: "Processo antes de velocidade", en: "Process before speed" },
       description: {
-        pt: "Velocidade sem direção é desperdício. Trabalho com método estruturado porque previsibilidade é mais valiosa que pressa. Cada etapa existe por uma razão — e pular etapas cria dívida técnica que alguém vai pagar.",
-        en: "Speed without direction is waste. I work with a structured method because predictability is more valuable than rush. Each step exists for a reason — and skipping steps creates technical debt someone will pay."
+        pt: "Velocidade sem direção é desperdício. Trabalho com método estruturado porque previsibilidade é mais valiosa que pressa. Cada etapa existe por uma razão. e pular etapas cria dívida técnica que alguém vai pagar.",
+        en: "Speed without direction is waste. I work with a structured method because predictability is more valuable than rush. Each step exists for a reason. and skipping steps creates technical debt someone will pay."
       }
     },
     {
       icon: Layers,
       title: { pt: "Sustentabilidade antes de improviso", en: "Sustainability before improvisation" },
       description: {
-        pt: "Código que funciona hoje mas não se mantém amanhã não é solução — é problema adiado. Penso em arquitetura, manutenibilidade e escalabilidade desde o primeiro dia, porque projetos precisam sobreviver além da entrega.",
-        en: "Code that works today but can't be maintained tomorrow isn't a solution — it's a deferred problem. I think about architecture, maintainability and scalability from day one, because projects need to survive beyond delivery."
+        pt: "Código que funciona hoje mas não se mantém amanhã não é solução. é problema adiado. Penso em arquitetura, manutenibilidade e escalabilidade desde o primeiro dia, porque projetos precisam sobreviver além da entrega.",
+        en: "Code that works today but can't be maintained tomorrow isn't a solution. it's a deferred problem. I think about architecture, maintainability and scalability from day one, because projects need to survive beyond delivery."
       }
     },
     {
@@ -123,8 +123,8 @@ export const processContent = {
       icon: Search,
       title: { pt: "Definição de Escopo", en: "Scope Definition" },
       description: {
-        pt: "Escopo indefinido é a maior causa de projetos fracassados. Documento cada funcionalidade, cada entrega e cada limitação. Ambiguidade gera conflito — clareza gera resultado.",
-        en: "Undefined scope is the biggest cause of failed projects. I document every feature, every delivery and every limitation. Ambiguity creates conflict — clarity creates results."
+        pt: "Escopo indefinido é a maior causa de projetos fracassados. Documento cada funcionalidade, cada entrega e cada limitação. Ambiguidade gera conflito. clareza gera resultado.",
+        en: "Undefined scope is the biggest cause of failed projects. I document every feature, every delivery and every limitation. Ambiguity creates conflict. clarity creates results."
       },
       details: [
         { pt: "Documento de requisitos detalhado", en: "Detailed requirements document" },
@@ -138,8 +138,8 @@ export const processContent = {
       icon: FileCode,
       title: { pt: "Planejamento e Arquitetura", en: "Planning & Architecture" },
       description: {
-        pt: "Cada escolha técnica é justificada e documentada. Stack é definida pelo contexto do projeto, não por tendência. Trade-offs são analisados com base em dados — nunca por opinião.",
-        en: "Every technical choice is justified and documented. Stack is defined by project context, not by trends. Trade-offs are analyzed based on data — never by opinion."
+        pt: "Cada escolha técnica é justificada e documentada. Stack é definida pelo contexto do projeto, não por tendência. Trade-offs são analisados com base em dados. nunca por opinião.",
+        en: "Every technical choice is justified and documented. Stack is defined by project context, not by trends. Trade-offs are analyzed based on data. never by opinion."
       },
       details: [
         { pt: "Escolha de stack baseada no contexto", en: "Stack choice based on context" },
@@ -153,8 +153,8 @@ export const processContent = {
       icon: TestTube,
       title: { pt: "Execução Controlada", en: "Controlled Execution" },
       description: {
-        pt: "Desenvolvimento em ciclos curtos com validação constante. Cada entrega parcial é verificável — você acompanha progresso real, não promessas. Feedback é incorporado sem comprometer a arquitetura.",
-        en: "Development in short cycles with constant validation. Each partial delivery is verifiable — you follow real progress, not promises. Feedback is incorporated without compromising architecture."
+        pt: "Desenvolvimento em ciclos curtos com validação constante. Cada entrega parcial é verificável. você acompanha progresso real, não promessas. Feedback é incorporado sem comprometer a arquitetura.",
+        en: "Development in short cycles with constant validation. Each partial delivery is verifiable. you follow real progress, not promises. Feedback is incorporated without compromising architecture."
       },
       details: [
         { pt: "Sprints semanais ou quinzenais", en: "Weekly or bi-weekly sprints" },
@@ -168,8 +168,8 @@ export const processContent = {
       icon: Shield,
       title: { pt: "Testes e Validação", en: "Testing & Validation" },
       description: {
-        pt: "Antes da entrega, cada funcionalidade é validada. Testes não são opcionais — são parte do processo. Problemas identificados aqui custam uma fração do que custariam em produção.",
-        en: "Before delivery, each feature is validated. Tests are not optional — they're part of the process. Problems identified here cost a fraction of what they would in production."
+        pt: "Antes da entrega, cada funcionalidade é validada. Testes não são opcionais. são parte do processo. Problemas identificados aqui custam uma fração do que custariam em produção.",
+        en: "Before delivery, each feature is validated. Tests are not optional. they're part of the process. Problems identified here cost a fraction of what they would in production."
       },
       details: [
         { pt: "Validação funcional de cada entrega", en: "Functional validation of each delivery" },
@@ -201,16 +201,16 @@ export const technicalDecisionsContent = {
   label: { pt: "Decisões Técnicas", en: "Technical Decisions" },
   title: { pt: "Como penso sobre tecnologia", en: "How I think about technology" },
   subtitle: {
-    pt: "Toda escolha técnica envolve trade-offs. Não existe bala de prata — existe a decisão certa para o contexto certo.",
-    en: "Every technical choice involves trade-offs. There is no silver bullet — there is the right decision for the right context."
+    pt: "Toda escolha técnica envolve trade-offs. Não existe bala de prata. existe a decisão certa para o contexto certo.",
+    en: "Every technical choice involves trade-offs. There is no silver bullet. there is the right decision for the right context."
   },
   cards: [
     {
       icon: Target,
       title: { pt: "Contexto define a stack", en: "Context defines the stack" },
       description: {
-        pt: "A melhor tecnologia é a que resolve o problema dentro das restrições do projeto. Escolho ferramentas por adequação técnica, maturidade do ecossistema e capacidade de manutenção — não por popularidade ou preferência pessoal.",
-        en: "The best technology is the one that solves the problem within the project's constraints. I choose tools by technical fit, ecosystem maturity and maintainability — not by popularity or personal preference."
+        pt: "A melhor tecnologia é a que resolve o problema dentro das restrições do projeto. Escolho ferramentas por adequação técnica, maturidade do ecossistema e capacidade de manutenção. não por popularidade ou preferência pessoal.",
+        en: "The best technology is the one that solves the problem within the project's constraints. I choose tools by technical fit, ecosystem maturity and maintainability. not by popularity or personal preference."
       }
     },
     {
@@ -225,16 +225,16 @@ export const technicalDecisionsContent = {
       icon: BarChart3,
       title: { pt: "Performance é requisito, não extra", en: "Performance is a requirement, not extra" },
       description: {
-        pt: "Performance impacta experiência do usuário, custos de infraestrutura e posicionamento em buscadores. Não é algo que se adiciona no final — é considerada desde a arquitetura inicial.",
-        en: "Performance impacts user experience, infrastructure costs and search ranking. It's not something added at the end — it's considered from the initial architecture."
+        pt: "Performance impacta experiência do usuário, custos de infraestrutura e posicionamento em buscadores. Não é algo que se adiciona no final. é considerada desde a arquitetura inicial.",
+        en: "Performance impacts user experience, infrastructure costs and search ranking. It's not something added at the end. it's considered from the initial architecture."
       }
     },
     {
       icon: Lock,
       title: { pt: "Segurança não é opcional", en: "Security is not optional" },
       description: {
-        pt: "Validação de dados, controle de acesso, proteção contra vulnerabilidades conhecidas — segurança é parte do desenvolvimento, não uma camada separada que se adiciona depois.",
-        en: "Data validation, access control, protection against known vulnerabilities — security is part of development, not a separate layer added afterwards."
+        pt: "Validação de dados, controle de acesso, proteção contra vulnerabilidades conhecidas. segurança é parte do desenvolvimento, não uma camada separada que se adiciona depois.",
+        en: "Data validation, access control, protection against known vulnerabilities. security is part of development, not a separate layer added afterwards."
       }
     }
   ] as PrincipleCard[]
@@ -291,24 +291,24 @@ export const policyContent = {
       icon: Scale,
       title: { pt: "Escopo definido protege todos", en: "Defined scope protects everyone" },
       description: {
-        pt: "Mudanças de escopo acontecem — mas são tratadas formalmente. Cada alteração é avaliada, documentada e aprovada antes de ser implementada. Isso evita surpresas para ambas as partes.",
-        en: "Scope changes happen — but they are handled formally. Each change is evaluated, documented and approved before implementation. This avoids surprises for both parties."
+        pt: "Mudanças de escopo acontecem. mas são tratadas formalmente. Cada alteração é avaliada, documentada e aprovada antes de ser implementada. Isso evita surpresas para ambas as partes.",
+        en: "Scope changes happen. but they are handled formally. Each change is evaluated, documented and approved before implementation. This avoids surprises for both parties."
       }
     },
     {
       icon: Handshake,
       title: { pt: "Pagamento e prazos acordados", en: "Payment and deadlines agreed" },
       description: {
-        pt: "Condições financeiras e cronograma são definidos antes do início. Marcos de pagamento são vinculados a entregas verificáveis — não a promessas.",
-        en: "Financial conditions and timeline are defined before starting. Payment milestones are tied to verifiable deliveries — not promises."
+        pt: "Condições financeiras e cronograma são definidos antes do início. Marcos de pagamento são vinculados a entregas verificáveis. não a promessas.",
+        en: "Financial conditions and timeline are defined before starting. Payment milestones are tied to verifiable deliveries. not promises."
       }
     },
     {
       icon: MessageSquare,
       title: { pt: "Comunicação estruturada", en: "Structured communication" },
       description: {
-        pt: "Canais, frequência e formato de comunicação são definidos no início. Relatórios de progresso são regulares. Problemas são comunicados imediatamente — não escondidos.",
-        en: "Channels, frequency and communication format are defined at the start. Progress reports are regular. Problems are communicated immediately — not hidden."
+        pt: "Canais, frequência e formato de comunicação são definidos no início. Relatórios de progresso são regulares. Problemas são comunicados imediatamente. não escondidos.",
+        en: "Channels, frequency and communication format are defined at the start. Progress reports are regular. Problems are communicated immediately. not hidden."
       }
     }
   ] as PolicyItem[]
@@ -335,8 +335,8 @@ export const riskContent = {
       icon: Wrench,
       title: { pt: "Planos de mitigação", en: "Mitigation plans" },
       description: {
-        pt: "Para cada risco relevante, existe um plano de contingência. Não é paranoia — é engenharia. Projetos que ignoram riscos pagam caro quando eles se materializam.",
-        en: "For each relevant risk, there's a contingency plan. It's not paranoia — it's engineering. Projects that ignore risks pay dearly when they materialize."
+        pt: "Para cada risco relevante, existe um plano de contingência. Não é paranoia. é engenharia. Projetos que ignoram riscos pagam caro quando eles se materializam.",
+        en: "For each relevant risk, there's a contingency plan. It's not paranoia. it's engineering. Projects that ignore risks pay dearly when they materialize."
       }
     },
     {
@@ -363,8 +363,8 @@ export const qualityContent = {
   label: { pt: "Qualidade", en: "Quality" },
   title: { pt: "O que considero inegociável", en: "What I consider non-negotiable" },
   subtitle: {
-    pt: "Qualidade não é perfeccionismo — é responsabilidade. Estes são os padrões que aplico em cada projeto, independentemente do tamanho.",
-    en: "Quality is not perfectionism — it's responsibility. These are the standards I apply to every project, regardless of size."
+    pt: "Qualidade não é perfeccionismo. é responsabilidade. Estes são os padrões que aplico em cada projeto, independentemente do tamanho.",
+    en: "Quality is not perfectionism. it's responsibility. These are the standards I apply to every project, regardless of size."
   },
   cards: [
     {
@@ -410,8 +410,8 @@ export const ctaContent = {
     en: "Ready to work with method?"
   },
   description: {
-    pt: "Se você busca um profissional que entrega com processo, responsabilidade e compromisso técnico, vamos conversar. O primeiro passo é um diagnóstico — sem compromisso, sem pressa.",
-    en: "If you're looking for a professional who delivers with process, responsibility and technical commitment, let's talk. The first step is a diagnosis — no commitment, no rush."
+    pt: "Se você busca um profissional que entrega com processo, responsabilidade e compromisso técnico, vamos conversar. O primeiro passo é um diagnóstico. sem compromisso, sem pressa.",
+    en: "If you're looking for a professional who delivers with process, responsibility and technical commitment, let's talk. The first step is a diagnosis. no commitment, no rush."
   },
   primaryCta: { pt: "Solicitar diagnóstico", en: "Request diagnosis" },
   secondaryCta: { pt: "Ver serviços", en: "View services" }
