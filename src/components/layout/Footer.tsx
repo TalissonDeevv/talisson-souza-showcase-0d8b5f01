@@ -69,10 +69,10 @@ const Footer = () => {
             <img src={logo} alt="Talisson Souza" className="h-10 w-auto" loading="lazy" />
           </Link>
 
-          {/* Content grid — all columns aligned */}
+          {/* Content grid. all columns aligned */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-6 items-start">
 
-            {/* 1 — Tagline + Social */}
+            {/* 1. Tagline + Social */}
             <div className="flex flex-col gap-3">
               <p className="text-xs text-muted-foreground max-w-[220px]">
                 {getText(language, 'Tecnologia. Sistemas. Decisões.', 'Technology. Systems. Decisions.')}
@@ -91,7 +91,7 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* 2 — Navigation */}
+            {/* 2. Navigation */}
             <div className="flex flex-col gap-2 md:items-center">
               <div className="flex gap-5 flex-wrap md:justify-center">
                 {navLinks.map((item) =>
@@ -115,7 +115,7 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* 3 — Mini Player + Signature */}
+            {/* 3. Mini Player + Signature */}
             <div className="flex flex-col gap-2.5 md:items-end">
               <motion.button
                 onClick={handlePlayPause}
@@ -123,7 +123,7 @@ const Footer = () => {
                 className="group flex items-center gap-2.5 px-3 py-1.5 rounded-full border border-border/40 hover:border-border/70 bg-card/40 backdrop-blur-sm transition-all duration-300">
                 <Music className="w-3 h-3 text-muted-foreground" />
                 <span className="text-[11px] text-muted-foreground group-hover:text-foreground transition-colors duration-200">
-                  Congratulations — Post Malone
+                  Congratulations. Post Malone
                 </span>
                 <span className="flex items-center justify-center w-5 h-5 rounded-full bg-foreground/5 group-hover:bg-foreground/10 transition-colors duration-200">
                   {isPlaying ?

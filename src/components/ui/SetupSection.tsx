@@ -192,8 +192,8 @@ const SetupSection = () => {
           </p>
           <p className="text-sm text-muted-foreground/70 leading-relaxed max-w-2xl mb-16">
             {getText(language,
-              'Escolhi AM4 conscientemente. É uma plataforma madura, com preços estabilizados, compatibilidade ampla e peças disponíveis no mercado secundário. Não preciso da última geração para compilar código — preciso de estabilidade, headroom térmico e custo controlado.',
-              "I chose AM4 consciously. It's a mature platform with stabilized prices, wide compatibility and parts available on the secondary market. I don't need the latest generation to compile code — I need stability, thermal headroom and controlled cost."
+              'Escolhi AM4 conscientemente. É uma plataforma madura, com preços estabilizados, compatibilidade ampla e peças disponíveis no mercado secundário. Não preciso da última geração para compilar código. preciso de estabilidade, headroom térmico e custo controlado.',
+              "I chose AM4 consciously. It's a mature platform with stabilized prices, wide compatibility and parts available on the secondary market. I don't need the latest generation to compile code. I need stability, thermal headroom and controlled cost."
             )}
           </p>
         </ScrollReveal>
@@ -211,7 +211,7 @@ const SetupSection = () => {
             >
               <img 
                 src={setupImage} 
-                alt={getText(language, 'Setup de trabalho — PC principal com iluminação RGB', 'Work setup — main PC with RGB lighting')} 
+                alt={getText(language, 'Setup de trabalho. PC principal com iluminação RGB', 'Work setup. main PC with RGB lighting')} 
                 className="w-full h-auto object-cover max-h-[500px]"
                 loading="lazy"
               />
