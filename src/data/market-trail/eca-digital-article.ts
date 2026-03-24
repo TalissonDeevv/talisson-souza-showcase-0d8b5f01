@@ -24,6 +24,11 @@ export const ecaDigitalArticle: MarketTrailArticle[] = [
       pt: ['eca digital', 'anpd', 'proteção de dados', 'crianças e adolescentes', 'lgpd', 'governança digital', 'privacidade', 'regulação tecnológica', 'plataformas digitais', 'games', 'felca', 'adultização infantil', 'gta vi', 'verificação de idade'],
       en: ['eca digital', 'anpd', 'data protection', 'children and adolescents', 'lgpd', 'digital governance', 'privacy', 'tech regulation', 'digital platforms', 'gaming', 'child protection', 'gta vi', 'age verification'],
     },
+    sourceUrl: 'https://www.gov.br/anpd/pt-br/assuntos/noticias/em-acao-de-monitoramento-do-eca-digital-a-anpd-estende-o-prazo-para-que-empresas-prestem-informacoes-sobre-implementacao-das-novas-regras',
+    sourceLabel: {
+      pt: 'Fonte oficial da notícia (gov.br)',
+      en: 'Official news source (gov.br)',
+    },
     sections: [
       {
         title: { pt: 'Isso é a minha opinião como profissional da área', en: 'This is my opinion as an industry professional' },

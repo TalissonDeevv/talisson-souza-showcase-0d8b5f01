@@ -6,7 +6,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import ShareButtons from "@/components/ui/ShareButtons";
 import ArticleSEOFooter from "@/components/ui/ArticleSEOFooter";
 import TrailNavigation from "@/components/ui/TrailNavigation";
-import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
