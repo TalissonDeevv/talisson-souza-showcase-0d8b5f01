@@ -94,6 +94,22 @@ const MarketTrailArticle = () => {
               </ScrollReveal>
             ))}
 
+            {article.sourceUrl && (
+              <ScrollReveal delay={0.2}>
+                <div className="mb-10">
+                  <a
+                    href={article.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-3 text-sm font-medium rounded-lg border border-border/30 bg-card/50 text-foreground hover:bg-card hover:border-foreground/20 transition-all duration-300"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    {article.sourceLabel?.[language] || getText(language, 'Fonte oficial', 'Official source')}
+                  </a>
+                </div>
+              </ScrollReveal>
+            )}
+
             <ScrollReveal delay={0.3}>
               <div className="mt-12 pt-8 border-t border-border/50">
                 <ShareButtons title={articleTitle} />
