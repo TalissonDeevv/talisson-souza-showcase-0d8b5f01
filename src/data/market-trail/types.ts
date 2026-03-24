@@ -9,6 +9,8 @@ export interface MarketTrailArticle {
   readTime: string;
   tags: { pt: string[]; en: string[] };
   keywords: { pt: string[]; en: string[] };
+  sourceUrl?: string;
+  sourceLabel?: { pt: string; en: string };
   sections: {
     title: { pt: string; en: string };
     content: { pt: string; en: string };
