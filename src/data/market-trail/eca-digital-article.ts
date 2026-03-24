@@ -42,9 +42,7 @@ Ao mesmo tempo, não vou ignorar os riscos. Regulação pode ser mal feita. Pode
 
 My position is clear: I consider this initiative, overall, positive. There is a concrete problem involving minors in the digital environment. Platforms have accumulated a level of influence over children and adolescents that simply did not exist before. And when a company has that degree of impact, it is reasonable to expect proportional responsibility. I am not talking about anything radical. It is logic.
 
-At the same time, I will not ignore the risks. Regulation can be poorly done. It can create more bureaucracy than protection. It can generate side effects nobody predicted. And I will talk about that here too, because supporting a cause does not mean accepting any solution blindly.
-
-Official news source: gov.br/anpd/pt-br/assuntos/noticias/em-acao-de-monitoramento-do-eca-digital-a-anpd-estende-o-prazo-para-que-empresas-prestem-informacoes-sobre-implementacao-das-novas-regras`,
+At the same time, I will not ignore the risks. Regulation can be poorly done. It can create more bureaucracy than protection. It can generate side effects nobody predicted. And I will talk about that here too, because supporting a cause does not mean accepting any solution blindly.`,
         },
       },
       {
