@@ -37,9 +37,7 @@ export const ecaDigitalArticle: MarketTrailArticle[] = [
 
 Minha posição é clara: considero essa iniciativa, no geral, positiva. Existe um problema concreto envolvendo menores de idade no ambiente digital. Plataformas acumularam um nível de influência sobre crianças e adolescentes que simplesmente não existia antes. E quando uma empresa tem esse grau de impacto, é razoável esperar que exista responsabilidade proporcional. Não estou falando de algo radical. É lógica.
 
-Ao mesmo tempo, não vou ignorar os riscos. Regulação pode ser mal feita. Pode criar mais burocracia do que proteção. Pode gerar efeitos colaterais que ninguém previu. E eu vou falar disso aqui também, porque defender uma causa não significa aceitar qualquer solução de olhos fechados.
-
-Fonte oficial da notícia: gov.br/anpd/pt-br/assuntos/noticias/em-acao-de-monitoramento-do-eca-digital-a-anpd-estende-o-prazo-para-que-empresas-prestem-informacoes-sobre-implementacao-das-novas-regras`,
+Ao mesmo tempo, não vou ignorar os riscos. Regulação pode ser mal feita. Pode criar mais burocracia do que proteção. Pode gerar efeitos colaterais que ninguém previu. E eu vou falar disso aqui também, porque defender uma causa não significa aceitar qualquer solução de olhos fechados.`,
           en: `I need to start by being direct: what is written here reflects my personal position as a software developer and technology professional. This is not a news article. It is not a neutral explanation made to please everyone. It is the result of having followed this topic since ANPD started taking action, having read the official notice, researched the developments, and cross-referenced all of it with what I observe daily in the market.
 
 My position is clear: I consider this initiative, overall, positive. There is a concrete problem involving minors in the digital environment. Platforms have accumulated a level of influence over children and adolescents that simply did not exist before. And when a company has that degree of impact, it is reasonable to expect proportional responsibility. I am not talking about anything radical. It is logic.
