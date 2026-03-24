@@ -113,6 +113,56 @@ const Articles = () => {
         </div>
       </section>
 
+      {/* Featured Article */}
+      <section className="py-8 lg:py-12">
+        <div className="container mx-auto px-6 lg:px-8">
+          <ScrollReveal>
+            {(() => {
+              const featured = articles.find(a => a.id === 'eca-digital-anpd');
+              if (!featured) return null;
+              return (
+                <Link to={featured.path[language]} className="block group">
+                  <motion.div whileHover={{ y: -3 }} transition={{ duration: 0.3 }}>
+                    <GlassCard className="p-6 lg:p-10 relative overflow-hidden hover:border-foreground/15 transition-all duration-500">
+                      <div className="absolute top-4 right-4 lg:top-6 lg:right-6">
+                        <span className="text-[10px] tracking-[0.2em] uppercase text-primary/80 font-medium px-3 py-1 rounded-full border border-primary/20 bg-primary/5">
+                          {getText(language, 'Destaque', 'Featured')}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2 text-[11px] text-muted-foreground/50 mb-3">
+                        <span>{featured.date[language]}</span>
+                        <span className="w-0.5 h-0.5 rounded-full bg-muted-foreground/30" />
+                        <span>{featured.readTime} {getText(language, 'de leitura', 'read')}</span>
+                      </div>
+                      <h2 className="font-serif text-xl lg:text-2xl xl:text-3xl text-foreground leading-snug mb-3 group-hover:text-gradient transition-all duration-500 max-w-3xl">
+                        {featured.title[language]}
+                      </h2>
+                      <p className="text-sm lg:text-base text-muted-foreground/60 leading-relaxed max-w-2xl mb-5">
+                        {featured.excerpt[language]}
+                      </p>
+                      <div className="flex items-center gap-3 flex-wrap">
+                        {featured.tags[language].slice(0, 4).map(tag => (
+                          <span key={tag} className="text-[10px] px-2.5 py-1 rounded-md border border-border/20 text-muted-foreground/50">
+                            {tag}
+                          </span>
+                        ))}
+                        <span className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground/70 group-hover:text-foreground transition-colors duration-300 ml-auto">
+                          <span className="relative">
+                            {getText(language, 'Ler artigo', 'Read article')}
+                            <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-300" />
+                          </span>
+                          <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                        </span>
+                      </div>
+                    </GlassCard>
+                  </motion.div>
+                </Link>
+              );
+            })()}
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* View mode toggle + Category filters */}
       <section className="py-6">
         <div className="container mx-auto px-6 lg:px-8">
