@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout";
-import NewsletterForm from "@/components/ui/NewsletterForm";
+import WhatsAppNewsletter from "@/components/ui/WhatsAppNewsletter";
 import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
@@ -403,7 +403,7 @@ const Articles = () => {
         <div className="container mx-auto px-6 lg:px-8">
           <ScrollReveal>
             <div className="max-w-2xl mx-auto">
-              <NewsletterForm variant="card" />
+              <WhatsAppNewsletter variant="card" />
             </div>
           </ScrollReveal>
         </div>
