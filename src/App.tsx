@@ -64,6 +64,7 @@ const AppRoutes = () => (
         <Route path="/newsletter/confirmar" element={<NewsletterConfirm />} />
         <Route path="/newsletter/cancelar" element={<NewsletterUnsubscribe />} />
         <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
+        <Route path="/newsletter" element={<Newsletter />} />
         
         <Route path="/en-us" element={<Index />} />
         <Route path="/en-us/about" element={<About />} />
