@@ -26,6 +26,8 @@ import Principles from "./pages/Principles";
 import Checklists from "./pages/Checklists";
 import ChecklistDetail from "./pages/ChecklistDetail";
 import MarketTrailArticle from "./pages/articles/MarketTrailArticle";
+import NewsletterConfirm from "./pages/NewsletterConfirm";
+import NewsletterUnsubscribe from "./pages/NewsletterUnsubscribe";
 
 const queryClient = new QueryClient();
 
@@ -57,7 +59,8 @@ const AppRoutes = () => (
         <Route path="/artigos/tag/:tag" element={<TagPage />} />
         <Route path="/trilhas/:trailId" element={<TrailPage />} />
         <Route path="/artigos/:slug" element={<MarketTrailArticle />} />
-        
+        <Route path="/newsletter/confirmar" element={<NewsletterConfirm />} />
+        <Route path="/newsletter/cancelar" element={<NewsletterUnsubscribe />} />
         {/* ===== EN-US Routes (/en-us prefix) ===== */}
         <Route path="/en-us" element={<Index />} />
         <Route path="/en-us/about" element={<About />} />
@@ -79,7 +82,8 @@ const AppRoutes = () => (
         <Route path="/en-us/articles/tag/:tag" element={<TagPage />} />
         <Route path="/en-us/trails/:trailId" element={<TrailPage />} />
         <Route path="/en-us/articles/:slug" element={<MarketTrailArticle />} />
-        
+        <Route path="/en-us/newsletter/confirm" element={<NewsletterConfirm />} />
+        <Route path="/en-us/newsletter/unsubscribe" element={<NewsletterUnsubscribe />} />
         {/* Legacy routes */}
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
