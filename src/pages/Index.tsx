@@ -1208,23 +1208,6 @@ const Index = () => {
         </div>
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <div className="max-w-2xl mx-auto text-center mb-10">
-              <span className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground/60 mb-4">
-                Newsletter
-              </span>
-              <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-4 leading-tight">
-                {getText(language,
-                  'Fique por dentro do que importa',
-                  'Stay in the loop on what matters'
-                )}
-              </h2>
-              <p className="text-sm text-muted-foreground/60 leading-relaxed max-w-lg mx-auto">
-                {getText(language,
-                  'Conteúdo quinzenal sobre tecnologia, arquitetura de software, carreira e decisões estratégicas. Sem spam, direto ao ponto.',
-                  'Biweekly content on technology, software architecture, career and strategic decisions. No spam, straight to the point.'
-                )}
-              </p>
-            </div>
             <div className="max-w-xl mx-auto">
               <WhatsAppNewsletter variant="card" />
             </div>
