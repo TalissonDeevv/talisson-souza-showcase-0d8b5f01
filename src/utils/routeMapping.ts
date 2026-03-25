@@ -89,9 +89,6 @@ export const ptToEnRoutes: Record<string, string> = {
   '/artigos/trabalho-remoto-preparacao': '/en-us/articles/remote-work-preparation',
   '/artigos/eca-digital-anpd-monitoramento': '/en-us/articles/eca-digital-anpd-monitoring',
   '/politica-de-privacidade': '/en-us/privacy-policy',
-  '/newsletter/confirmar': '/en-us/newsletter/confirm',
-  '/newsletter/cancelar': '/en-us/newsletter/unsubscribe',
-  '/newsletter': '/en-us/newsletter',
 };
 
 // Reverse mapping: English to Portuguese
