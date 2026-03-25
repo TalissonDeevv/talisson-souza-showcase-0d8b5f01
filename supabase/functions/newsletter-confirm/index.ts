@@ -153,7 +153,7 @@ async function sendWelcomeEmail(
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: "Talisson Souza <newsletter@talissonsouza.com>",
+      from: "Talisson Souza <onboarding@resend.dev>",
       to: [email],
       subject,
       html,
