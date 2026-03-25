@@ -232,7 +232,8 @@ async function sendConfirmationEmail(
   `;
 
   // Use onboarding@resend.dev as fallback if custom domain is not verified
-  const fromAddress = "Talisson Souza <newsletter@talissonsouza.com.br>";
+  // TODO: Change to "Talisson Souza <newsletter@talissonsouza.com.br>" once domain is verified in Resend
+  const fromAddress = "Talisson Souza <onboarding@resend.dev>";
 
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
