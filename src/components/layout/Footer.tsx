@@ -30,12 +30,14 @@ const Footer = () => {
   { name: "Home", path: "/" },
   { name: "Sobre", path: "/sobre" },
   { name: "Carreira", path: "/carreira" },
-  { name: "Livro", path: "/livro" }] :
+  { name: "Livro", path: "/livro" },
+  { name: "Privacidade", path: "/politica-de-privacidade" }] :
   [
   { name: "Home", path: "/en-us" },
   { name: "About", path: "/en-us/about" },
   { name: "Career", path: "/en-us/career" },
-  { name: "Book", path: "/en-us/book" }];
+  { name: "Book", path: "/en-us/book" },
+  { name: "Privacy", path: "/en-us/privacy-policy" }];
 
 
   const socialLinks = [

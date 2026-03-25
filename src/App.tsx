@@ -28,6 +28,7 @@ import ChecklistDetail from "./pages/ChecklistDetail";
 import MarketTrailArticle from "./pages/articles/MarketTrailArticle";
 import NewsletterConfirm from "./pages/NewsletterConfirm";
 import NewsletterUnsubscribe from "./pages/NewsletterUnsubscribe";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const queryClient = new QueryClient();
 
@@ -61,7 +62,8 @@ const AppRoutes = () => (
         <Route path="/artigos/:slug" element={<MarketTrailArticle />} />
         <Route path="/newsletter/confirmar" element={<NewsletterConfirm />} />
         <Route path="/newsletter/cancelar" element={<NewsletterUnsubscribe />} />
-        {/* ===== EN-US Routes (/en-us prefix) ===== */}
+        <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
+        
         <Route path="/en-us" element={<Index />} />
         <Route path="/en-us/about" element={<About />} />
         <Route path="/en-us/projects" element={<Projects />} />
@@ -84,7 +86,8 @@ const AppRoutes = () => (
         <Route path="/en-us/articles/:slug" element={<MarketTrailArticle />} />
         <Route path="/en-us/newsletter/confirm" element={<NewsletterConfirm />} />
         <Route path="/en-us/newsletter/unsubscribe" element={<NewsletterUnsubscribe />} />
-        {/* Legacy routes */}
+        <Route path="/en-us/privacy-policy" element={<PrivacyPolicy />} />
+        
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/:id" element={<ProjectDetail />} />

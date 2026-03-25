@@ -88,6 +88,9 @@ export const ptToEnRoutes: Record<string, string> = {
   '/artigos/construir-reputacao-mercado': '/en-us/articles/building-market-reputation',
   '/artigos/trabalho-remoto-preparacao': '/en-us/articles/remote-work-preparation',
   '/artigos/eca-digital-anpd-monitoramento': '/en-us/articles/eca-digital-anpd-monitoring',
+  '/politica-de-privacidade': '/en-us/privacy-policy',
+  '/newsletter/confirmar': '/en-us/newsletter/confirm',
+  '/newsletter/cancelar': '/en-us/newsletter/unsubscribe',
 };
 
 // Reverse mapping: English to Portuguese

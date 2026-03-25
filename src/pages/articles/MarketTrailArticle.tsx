@@ -6,6 +6,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import ShareButtons from "@/components/ui/ShareButtons";
 import ArticleSEOFooter from "@/components/ui/ArticleSEOFooter";
 import TrailNavigation from "@/components/ui/TrailNavigation";
+import NewsletterForm from "@/components/ui/NewsletterForm";
 import { ArrowLeft, Calendar, Clock, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -117,6 +118,12 @@ const MarketTrailArticle = () => {
             </ScrollReveal>
 
             <TrailNavigation currentSlugPt={article.slugPt} currentSlugEn={article.slugEn} />
+
+            <ScrollReveal delay={0.4}>
+              <div className="mt-12">
+                <NewsletterForm variant="article-footer" />
+              </div>
+            </ScrollReveal>
 
             <ArticleSEOFooter />
           </div>
