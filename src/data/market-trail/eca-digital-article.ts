@@ -15,7 +15,7 @@ export const ecaDigitalArticle: MarketTrailArticle[] = [
     },
     date: { pt: '16 de Março, 2026', en: 'March 16, 2026' },
     publishedDate: '2026-03-16',
-    readTime: '18 min',
+    readTime: '24 min',
     tags: {
       pt: ['Governança Digital', 'Privacidade', 'Regulação', 'Segurança', 'Estratégia'],
       en: ['Digital Governance', 'Privacy', 'Regulation', 'Security', 'Strategy'],
