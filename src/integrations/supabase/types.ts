@@ -172,6 +172,48 @@ export type Database = {
           },
         ]
       }
+      newsletter_subscribers: {
+        Row: {
+          confirmation_token: string | null
+          confirmed_at: string | null
+          created_at: string
+          email: string
+          id: string
+          is_confirmed: boolean
+          name: string | null
+          subscribed_at: string
+          unsubscribe_token: string | null
+          unsubscribed_at: string | null
+          updated_at: string
+        }
+        Insert: {
+          confirmation_token?: string | null
+          confirmed_at?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          is_confirmed?: boolean
+          name?: string | null
+          subscribed_at?: string
+          unsubscribe_token?: string | null
+          unsubscribed_at?: string | null
+          updated_at?: string
+        }
+        Update: {
+          confirmation_token?: string | null
+          confirmed_at?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          is_confirmed?: boolean
+          name?: string | null
+          subscribed_at?: string
+          unsubscribe_token?: string | null
+          unsubscribed_at?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
