@@ -26,6 +26,8 @@ import Principles from "./pages/Principles";
 import Checklists from "./pages/Checklists";
 import ChecklistDetail from "./pages/ChecklistDetail";
 import MarketTrailArticle from "./pages/articles/MarketTrailArticle";
+import NewsletterConfirm from "./pages/NewsletterConfirm";
+import NewsletterUnsubscribe from "./pages/NewsletterUnsubscribe";
 
 const queryClient = new QueryClient();
 
