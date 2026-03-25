@@ -67,11 +67,11 @@ const PrivacyPolicy = () => {
                   <ul className="list-disc list-inside text-sm text-muted-foreground/70 leading-relaxed space-y-2 ml-2">
                     <li>
                       <strong className="text-foreground/80">
-                        {getText(language, "Newsletter:", "Newsletter:")}
+                        {getText(language, "Newsletter (WhatsApp):", "Newsletter (WhatsApp):")}
                       </strong>{" "}
                       {getText(language,
-                        "Endereço de email e nome (opcional), coletados mediante consentimento explícito para envio de conteúdos periódicos.",
-                        "Email address and name (optional), collected with explicit consent for periodic content delivery."
+                        "A newsletter é distribuída via canal do WhatsApp. Nenhum dado pessoal é coletado diretamente por este site para esse fim.",
+                        "The newsletter is distributed via WhatsApp channel. No personal data is collected directly by this site for that purpose."
                       )}
                     </li>
                     <li>
@@ -142,21 +142,10 @@ const PrivacyPolicy = () => {
                   <h2 className="font-serif text-xl text-foreground mb-3">
                     {getText(language, "5. Newsletter e comunicações", "5. Newsletter and communications")}
                   </h2>
-                  <p className="text-sm text-muted-foreground/70 leading-relaxed mb-3">
+                  <p className="text-sm text-muted-foreground/70 leading-relaxed">
                     {getText(language,
-                      "A inscrição na newsletter é realizada mediante dupla confirmação (double opt-in). Ao se inscrever, o usuário recebe um email de confirmação que precisa ser aceito antes de qualquer envio posterior. Os dados da newsletter incluem:",
-                      "Newsletter subscription is performed via double opt-in. When subscribing, the user receives a confirmation email that must be accepted before any subsequent sending. Newsletter data includes:"
-                    )}
-                  </p>
-                  <ul className="list-disc list-inside text-sm text-muted-foreground/70 leading-relaxed space-y-2 ml-2">
-                    <li>{getText(language, "Email (obrigatório)", "Email (required)")}</li>
-                    <li>{getText(language, "Nome (opcional)", "Name (optional)")}</li>
-                    <li>{getText(language, "Data de inscrição e confirmação", "Subscription and confirmation date")}</li>
-                  </ul>
-                  <p className="text-sm text-muted-foreground/70 leading-relaxed mt-3">
-                    {getText(language,
-                      "O cancelamento pode ser feito a qualquer momento através do link presente em todos os emails enviados. Os dados serão marcados como inativos e não utilizados para novos envios.",
-                      "Unsubscription can be done at any time through the link present in all sent emails. Data will be marked as inactive and not used for new sendings."
+                      "A newsletter é distribuída exclusivamente via canal do WhatsApp. Para segui-la, o usuário acessa o link do canal e opta por seguir dentro da própria plataforma do WhatsApp. Nenhum dado pessoal adicional é coletado por este site para esse fim. A política de privacidade do WhatsApp (Meta) se aplica ao uso do canal.",
+                      "The newsletter is distributed exclusively via WhatsApp channel. To follow it, the user accesses the channel link and opts to follow within the WhatsApp platform itself. No additional personal data is collected by this site for that purpose. WhatsApp's (Meta) privacy policy applies to channel usage."
                     )}
                   </p>
                 </section>
