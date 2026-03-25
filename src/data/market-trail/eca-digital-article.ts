@@ -46,6 +46,29 @@ At the same time, I will not ignore the risks. Regulation can be poorly done. It
         },
       },
       {
+        title: { pt: 'O que impulsionou esse debate recentemente', en: 'What fueled this debate recently' },
+        content: {
+          pt: `Essa discussao sobre protecao de menores no digital nao surgiu de um vazio institucional. Ela ganhou tracalo concreta por causa de episodios que trouxeram o tema para o centro da atencao publica.
+
+O primeiro momento de virada foi o video publicado pelo influenciador Felca, que trouxe a tona denuncias sobre conteudos relacionados a exposicao e adultizacao de criancas e adolescentes em plataformas digitais. O video gerou uma repercussao massiva. Nao por ser algo novo, mas porque tornou visivel de forma direta e acessivel um problema que existia ha anos dentro de algoritmos, recomendacoes automaticas e lacunas de moderacao. Funcionou como um catalisador. A sociedade viu, reagiu e comecou a cobrar respostas.
+
+Outro episodio que ampliou significativamente a pressao publica envolveu o criador de conteudo Hytalo Santos. Sem entrar em julgamentos ou conclusoes juridicas, o fato e que situacoes envolvendo esse influenciador geraram controvérsias publicas e chamaram atencao para a relacao entre criadores de conteudo, audiencias jovens e a responsabilidade das plataformas que hospedam e monetizam esse tipo de presenca digital. A repercussao negativa em torno do caso reforcou a percepcao de que o ambiente digital estava operando sem limites claros quando o assunto envolve menores.
+
+Esses episodios, somados a relatorios tecnicos sobre coleta abusiva de dados de menores e mecanicas de monetizacao projetadas para explorar vulnerabilidades cognitivas de adolescentes, criaram um cenario onde a inacao institucional nao era mais sustentavel. A pressao veio de varios lados: opiniao publica, organizacoes de protecao a infancia, profissionais de tecnologia e a propria comunidade legislativa.
+
+Foi nesse contexto que a aplicacao mais rigorosa do Estatuto da Crianca e do Adolescente no ambiente digital ganhou forca. Nao como reacao impulsiva, mas como resposta a uma demanda que ja existia e que precisou de visibilidade social para sair do papel.`,
+          en: `This discussion about protecting minors in the digital space did not emerge from an institutional vacuum. It gained concrete traction because of episodes that brought the topic to the center of public attention.
+
+The first turning point was the video published by the influencer Felca, which brought to light reports about content related to the exposure and adultification of children and adolescents on digital platforms. The video generated massive repercussion. Not because it was something new, but because it made visible in a direct and accessible way a problem that had existed for years within algorithms, automatic recommendations, and moderation gaps. It worked as a catalyst. Society saw it, reacted, and started demanding answers.
+
+Another episode that significantly amplified public pressure involved the content creator Hytalo Santos. Without making judgments or legal conclusions, the fact is that situations involving this influencer generated public controversies and drew attention to the relationship between content creators, young audiences, and the responsibility of platforms that host and monetize this type of digital presence. The negative repercussion around the case reinforced the perception that the digital environment was operating without clear limits when it comes to minors.
+
+These episodes, combined with technical reports on abusive data collection from minors and monetization mechanics designed to exploit the cognitive vulnerabilities of adolescents, created a scenario where institutional inaction was no longer sustainable. The pressure came from multiple directions: public opinion, child protection organizations, technology professionals, and the legislative community itself.
+
+It was in this context that the more rigorous enforcement of the Child and Adolescent Statute in the digital environment gained momentum. Not as an impulsive reaction, but as a response to a demand that already existed and needed social visibility to materialize.`,
+        },
+      },
+      {
         title: { pt: 'De onde surgiu esse debate', en: 'Where this debate came from' },
         content: {
           pt: `A proteção de menores na internet não virou pauta do dia pra noite. Essa discussão existe há anos, mas ganhou tração real quando casos concretos começaram a estourar publicamente.
