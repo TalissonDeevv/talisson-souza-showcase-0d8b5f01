@@ -142,6 +142,18 @@ const NewsletterForm = ({ variant = "card", className = "" }: NewsletterFormProp
               />
             </div>
 
+            {/* Honeypot anti-spam (hidden from users, visible to bots) */}
+            <div className="absolute opacity-0 h-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
+              <input
+                type="text"
+                name="website"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                autoComplete="off"
+                tabIndex={-1}
+              />
+            </div>
+
             {/* LGPD consent */}
             <label className="flex items-start gap-2 cursor-pointer group">
               <input
