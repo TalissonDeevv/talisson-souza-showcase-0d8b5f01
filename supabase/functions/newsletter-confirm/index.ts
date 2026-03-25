@@ -153,8 +153,7 @@ async function sendWelcomeEmail(
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      // TODO: Change to "Talisson Souza <newsletter@talissonsouza.com.br>" once domain is verified
-      from: "Talisson Souza <onboarding@resend.dev>",
+      from: "Talisson Souza <newsletter@talissonsouza.com.br>",
       to: [email],
       subject,
       html,
