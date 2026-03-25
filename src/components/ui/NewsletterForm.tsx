@@ -17,6 +17,7 @@ const NewsletterForm = ({ variant = "card", className = "" }: NewsletterFormProp
   const { language } = useTheme();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<FormStatus>("idle");
   const [message, setMessage] = useState("");
@@ -39,7 +40,7 @@ const NewsletterForm = ({ variant = "card", className = "" }: NewsletterFormProp
 
     try {
       const { data, error } = await supabase.functions.invoke("newsletter-subscribe", {
-        body: { email: email.trim(), name: name.trim() || null, language },
+        body: { email: email.trim(), name: name.trim() || null, language, honeypot },
       });
 
       if (error) throw error;
@@ -138,6 +139,18 @@ const NewsletterForm = ({ variant = "card", className = "" }: NewsletterFormProp
                 className="flex-1 h-10 px-3 py-2 rounded-md border border-border/30 bg-background text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:ring-1 focus:ring-ring/30 transition-colors"
                 disabled={status === "loading"}
                 maxLength={255}
+              />
+            </div>
+
+            {/* Honeypot anti-spam (hidden from users, visible to bots) */}
+            <div className="absolute opacity-0 h-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
+              <input
+                type="text"
+                name="website"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                autoComplete="off"
+                tabIndex={-1}
               />
             </div>
 

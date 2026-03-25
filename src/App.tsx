@@ -29,6 +29,7 @@ import MarketTrailArticle from "./pages/articles/MarketTrailArticle";
 import NewsletterConfirm from "./pages/NewsletterConfirm";
 import NewsletterUnsubscribe from "./pages/NewsletterUnsubscribe";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Newsletter from "./pages/Newsletter";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +64,7 @@ const AppRoutes = () => (
         <Route path="/newsletter/confirmar" element={<NewsletterConfirm />} />
         <Route path="/newsletter/cancelar" element={<NewsletterUnsubscribe />} />
         <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
+        <Route path="/newsletter" element={<Newsletter />} />
         
         <Route path="/en-us" element={<Index />} />
         <Route path="/en-us/about" element={<About />} />
@@ -87,6 +89,7 @@ const AppRoutes = () => (
         <Route path="/en-us/newsletter/confirm" element={<NewsletterConfirm />} />
         <Route path="/en-us/newsletter/unsubscribe" element={<NewsletterUnsubscribe />} />
         <Route path="/en-us/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/en-us/newsletter" element={<Newsletter />} />
         
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
