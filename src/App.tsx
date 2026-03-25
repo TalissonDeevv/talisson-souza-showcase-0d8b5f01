@@ -89,6 +89,7 @@ const AppRoutes = () => (
         <Route path="/en-us/newsletter/confirm" element={<NewsletterConfirm />} />
         <Route path="/en-us/newsletter/unsubscribe" element={<NewsletterUnsubscribe />} />
         <Route path="/en-us/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/en-us/newsletter" element={<Newsletter />} />
         
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
