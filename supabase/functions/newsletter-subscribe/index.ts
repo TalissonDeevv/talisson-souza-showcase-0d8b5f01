@@ -6,13 +6,64 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
+// Simple in-memory rate limiter (per edge function instance)
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute
+const RATE_LIMIT_MAX = 3; // max 3 requests per minute per IP
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+
+  entry.count++;
+  return entry.count > RATE_LIMIT_MAX;
+}
+
+// Cleanup old entries periodically
+setInterval(() => {
+  const now = Date.now();
+  for (const [key, val] of rateLimitMap) {
+    if (now > val.resetAt) rateLimitMap.delete(key);
+  }
+}, 60_000);
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const { email, name, language = "pt" } = await req.json();
+    // Rate limiting by IP
+    const clientIp = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || 
+                     req.headers.get("cf-connecting-ip") || 
+                     "unknown";
+
+    if (isRateLimited(clientIp)) {
+      return new Response(
+        JSON.stringify({ error: "Too many requests. Please try again later." }),
+        { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const { email, name, language = "pt", honeypot } = await req.json();
+
+    // Honeypot anti-spam: if this hidden field has a value, it's a bot
+    if (honeypot) {
+      // Silently accept to not reveal the trap
+      return new Response(
+        JSON.stringify({
+          message: language === "pt"
+            ? "Verifique seu email para confirmar a inscrição."
+            : "Check your email to confirm your subscription.",
+        }),
+        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
 
     // Validate email
     if (!email || typeof email !== "string") {
@@ -30,6 +81,13 @@ Deno.serve(async (req) => {
       );
     }
 
+    if (email.trim().length > 255) {
+      return new Response(
+        JSON.stringify({ error: language === "pt" ? "Email muito longo" : "Email too long" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
     const sanitizedEmail = email.trim().toLowerCase();
     const sanitizedName = name ? String(name).trim().slice(0, 100) : null;
 
@@ -42,7 +100,7 @@ Deno.serve(async (req) => {
     // Check if already subscribed
     const { data: existing } = await supabase
       .from("newsletter_subscribers")
-      .select("id, is_confirmed, unsubscribed_at")
+      .select("id, is_confirmed, unsubscribed_at, name")
       .eq("email", sanitizedEmail)
       .maybeSingle();
 
@@ -173,6 +231,9 @@ async function sendConfirmationEmail(
     </div>
   `;
 
+  // Use onboarding@resend.dev as fallback if custom domain is not verified
+  const fromAddress = "Talisson Souza <onboarding@resend.dev>";
+
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -180,7 +241,7 @@ async function sendConfirmationEmail(
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: "Talisson Souza <newsletter@talissonsouza.com>",
+      from: fromAddress,
       to: [email],
       subject,
       html,
