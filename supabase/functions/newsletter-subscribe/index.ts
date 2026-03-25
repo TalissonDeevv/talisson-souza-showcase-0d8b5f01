@@ -232,7 +232,7 @@ async function sendConfirmationEmail(
   `;
 
   // Use onboarding@resend.dev as fallback if custom domain is not verified
-  const fromAddress = "Talisson Souza <onboarding@resend.dev>";
+  const fromAddress = "Talisson Souza <newsletter@talissonsouza.com.br>";
 
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
