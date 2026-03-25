@@ -17,6 +17,7 @@ const NewsletterForm = ({ variant = "card", className = "" }: NewsletterFormProp
   const { language } = useTheme();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<FormStatus>("idle");
   const [message, setMessage] = useState("");
@@ -39,7 +40,7 @@ const NewsletterForm = ({ variant = "card", className = "" }: NewsletterFormProp
 
     try {
       const { data, error } = await supabase.functions.invoke("newsletter-subscribe", {
-        body: { email: email.trim(), name: name.trim() || null, language },
+        body: { email: email.trim(), name: name.trim() || null, language, honeypot },
       });
 
       if (error) throw error;
