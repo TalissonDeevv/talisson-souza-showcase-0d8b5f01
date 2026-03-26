@@ -46,7 +46,7 @@ export const block4Articles: MarketTrailArticle[] = [
   },
   {
     id: 'mt-technical-responsibility', slugPt: 'responsabilidade-tecnica', slugEn: 'technical-responsibility',
-    title: { pt: 'Responsabilidade Técnica: Seu Código Impacta Pessoas', en: 'Technical Responsibility: Your Code Impacts People' },
+    title: { pt: 'Seu Código Impacta Pessoas', en: 'Your Code Impacts People' },
     excerpt: { pt: 'Reflexão sobre como decisões técnicas afetam usuários reais e a importância da responsabilidade ética e profissional no desenvolvimento de software.', en: 'Reflection on how technical decisions affect real users and the importance of ethical and professional responsibility in software development.' },
     date: { pt: '19 de Fevereiro, 2026', en: 'February 19, 2026' }, publishedDate: '2026-02-19', readTime: '21 min',
     tags: { pt: ['Responsabilidade', 'Ética', 'Profissionalismo'], en: ['Responsibility', 'Ethics', 'Professionalism'] },

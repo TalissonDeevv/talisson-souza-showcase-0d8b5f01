@@ -86,7 +86,7 @@ export const block1Articles: MarketTrailArticle[] = [
     id: 'mt-not-memorizing-syntax',
     slugPt: 'programar-nao-e-decorar-sintaxe',
     slugEn: 'programming-is-not-memorizing-syntax',
-    title: { pt: 'Programar Não É Decorar Sintaxe: É Resolver Problemas', en: 'Programming Is Not Memorizing Syntax: It\'s Solving Problems' },
+    title: { pt: 'Programar Não É Decorar Sintaxe', en: 'Programming Is Not Memorizing Syntax: It\'s Solving Problems' },
     excerpt: {
       pt: 'Por que focar em decorar comandos é uma armadilha que limita o desenvolvimento profissional e como cultivar a mentalidade correta para resolver problemas reais com código.',
       en: 'Why focusing on memorizing commands is a trap that limits professional development and how to cultivate the right mindset to solve real problems with code.',
@@ -326,7 +326,7 @@ export const block1Articles: MarketTrailArticle[] = [
     id: 'mt-frontend-backend-infra',
     slugPt: 'frontend-backend-infraestrutura',
     slugEn: 'frontend-backend-infrastructure',
-    title: { pt: 'Frontend, Backend e Infraestrutura: O Que Cada Um Realmente Faz', en: 'Frontend, Backend and Infrastructure: What Each One Really Does' },
+    title: { pt: 'O Que Frontend, Backend e Infraestrutura Realmente Fazem', en: 'What Frontend, Backend and Infrastructure Really Do' },
     excerpt: {
       pt: 'Explicação técnica e detalhada sobre as responsabilidades de cada camada de desenvolvimento e como elas se conectam e dependem umas das outras em sistemas reais.',
       en: 'Technical and detailed explanation of each development layer\'s responsibilities and how they connect and depend on each other in real systems.',

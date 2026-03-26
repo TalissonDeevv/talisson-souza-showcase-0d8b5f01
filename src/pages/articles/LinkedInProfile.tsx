@@ -102,7 +102,7 @@ Como usar o algoritmo a seu favor: O algoritmo do LinkedIn prioriza conteúdo qu
 Como transformar aprendizado em autoridade: Cada conceito novo que você aprende é uma oportunidade de criar conteúdo. Documente o processo, não apenas o resultado. "Como eu resolvi esse problema" é mais valioso do que "eu resolvi esse problema". A consistência na publicação de conteúdo técnico, ao longo de meses e anos, constrói uma reputação digital sólida que se traduz em oportunidades concretas.`
     },
     {
-      title: 'Mentalidade e Consistência: O Que o LinkedIn Amplifica',
+      title: 'O Que o LinkedIn Amplifica',
       content: `O LinkedIn amplifica competência, mas não substitui construção técnica. Um perfil impecável sem habilidades reais será rapidamente exposto em qualquer processo seletivo ou projeto profissional. A plataforma funciona como um multiplicador: se a base é sólida, a amplificação gera resultados extraordinários. Se a base é fraca, a amplificação expõe fragilidades.
 
 A disciplina necessária para manter um perfil ativo e relevante no LinkedIn é a mesma disciplina necessária para evoluir tecnicamente. Postar com consistência exige planejamento. Criar conteúdo de qualidade exige estudo. Interagir de forma relevante exige conhecimento. Não existe atalho para construir uma presença profissional genuína na plataforma.
@@ -203,7 +203,7 @@ Using the algorithm in your favor: LinkedIn's algorithm prioritizes content that
 Transforming learning into authority: Every new concept you learn is an opportunity to create content. Document the process, not just the result. "How I solved this problem" is more valuable than "I solved this problem." Consistency in publishing technical content, over months and years, builds a solid digital reputation that translates into concrete opportunities.`
     },
     {
-      title: 'Mindset and Consistency: What LinkedIn Amplifies',
+      title: 'What LinkedIn Amplifies',
       content: `LinkedIn amplifies competence but doesn't substitute technical construction. A flawless profile without real skills will be quickly exposed in any selection process or professional project. The platform works as a multiplier: if the foundation is solid, amplification generates extraordinary results. If the foundation is weak, amplification exposes fragilities.
 
 The discipline needed to maintain an active and relevant LinkedIn profile is the same discipline needed to evolve technically. Posting consistently requires planning. Creating quality content requires study. Interacting relevantly requires knowledge. There's no shortcut to building a genuine professional presence on the platform.
