@@ -341,8 +341,6 @@ A small, competent team will always be superior to a large, disorganized one. Qu
                 )}
               </AnimatedTitle>
 
-              <ArticleAuthorHeader date="2025-02-07" readingTime={25} />
-
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {tags.map((tag) => (
@@ -354,6 +352,8 @@ A small, competent team will always be superior to a large, disorganized one. Qu
                   </span>
                 ))}
               </div>
+
+              <ArticleAuthorHeader date="2025-02-07" readingTime={25} />
 
               {/* Share Buttons */}
               <ShareButtons title={getText(language,

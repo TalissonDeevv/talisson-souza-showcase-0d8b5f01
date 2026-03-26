@@ -132,11 +132,11 @@ Security in software development is not an exclusively technical problem. It's a
               <motion.span initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-4 font-medium">
                 {getText(language, 'Artigo', 'Article')}
               </motion.span>
-              <AnimatedTitle variant="hero" as="h1" className="mb-4">{articleTitle}</AnimatedTitle>
-              <ArticleAuthorHeader date="2025-02-14" readingTime={16} />
-              <div className="flex flex-wrap gap-2 mb-4">
+              <AnimatedTitle variant="hero" as="h1" className="mb-4">{articleTitle}</AnimatedTitle>              <div className="flex flex-wrap gap-2 mb-4">
                 {tags.map((tag) => (<span key={tag} className="text-xs px-3 py-1.5 rounded-lg border border-border/30 bg-card/50 text-muted-foreground">{tag}</span>))}
               </div>
+              <ArticleAuthorHeader date="2025-02-14" readingTime={16} />
+
               <ShareButtons title={articleTitle} />
             </div>
           </ScrollReveal>

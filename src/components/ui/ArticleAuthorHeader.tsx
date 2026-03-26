@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { BadgeCheck } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import { useRelativeTime } from "@/hooks/useRelativeTime";
@@ -50,13 +51,13 @@ const ArticleAuthorHeader = ({ date, readingTime }: ArticleAuthorHeaderProps) =>
           >
             Talisson Souza
           </Link>
-          <span className="text-primary text-xs" title={getText(language, 'Verificado', 'Verified')}>✓</span>
+          <BadgeCheck className="w-4 h-4 text-primary shrink-0" />
         </div>
 
         <p className="text-xs sm:text-sm text-muted-foreground/80 leading-snug">
           {getText(language,
-            'Engenheiro de Software | Founder & CEO da Cheetah Solutions',
-            'Software Engineer | Founder & CEO at Cheetah Solutions'
+            'Engenheiro de Software, Fundador & CEO da Cheetah Solutions',
+            'Software Engineer, Founder & CEO at Cheetah Solutions'
           )}
         </p>
 

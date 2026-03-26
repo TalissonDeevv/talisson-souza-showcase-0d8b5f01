@@ -197,9 +197,6 @@ Beyond the loss of the name, all investment in branding, paid traffic, SEO, and 
                   'A complete and didactic guide on the trademark registration process at INPI for entrepreneurs, freelancers, startups, and small business owners in Brazil.'
                 )}
               </p>
-
-              <ArticleAuthorHeader date="2025-02-11" readingTime={20} />
-
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {tags.map((tag) => (
@@ -213,6 +210,9 @@ Beyond the loss of the name, all investment in branding, paid traffic, SEO, and 
               </div>
 
               {/* Share Buttons */}
+
+              <ArticleAuthorHeader date="2025-02-11" readingTime={20} />
+
               <ShareButtons title={articleTitle} />
             </div>
           </ScrollReveal>
