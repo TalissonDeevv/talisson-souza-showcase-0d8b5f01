@@ -122,9 +122,6 @@ const VisionAndPersistence = () => {
               <AnimatedTitle variant="hero" as="h1" className="mb-4">
                 {articleTitle}
               </AnimatedTitle>
-
-              <ArticleAuthorHeader date="2025-02-10" readingTime={8} />
-
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {tags.map((tag) => (
@@ -138,6 +135,9 @@ const VisionAndPersistence = () => {
               </div>
 
               {/* Share Buttons */}
+
+              <ArticleAuthorHeader date="2025-02-10" readingTime={8} />
+
               <ShareButtons title={articleTitle} />
             </div>
           </ScrollReveal>
