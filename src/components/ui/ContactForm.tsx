@@ -106,11 +106,9 @@ const ContactForm = () => {
       }
       
       setIsSubmitted(true);
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
-      });
+      setFormData({ name: "", email: "", message: "" });
+      setCaptchaInput("");
+      setCaptcha(generateCaptcha());
       
       toast({
         title: language === 'pt' ? "Mensagem enviada!" : "Message sent!",
