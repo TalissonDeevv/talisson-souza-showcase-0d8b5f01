@@ -24,7 +24,7 @@ const LinkedInProfile = () => {
 
   const sections = language === 'pt' ? [
     {
-      title: 'Introdução Estratégica: Por Que o LinkedIn Decide Carreiras na Tecnologia',
+      title: 'Por Que o LinkedIn Decide Carreiras na Tecnologia',
       content: `O LinkedIn não é uma rede social comum. Para desenvolvedores e profissionais de tecnologia, ele funciona como uma vitrine profissional permanente, acessível por recrutadores, gestores técnicos e decisores de empresas em todo o mundo. Ignorar essa plataforma ou tratá-la com descaso equivale a abrir mão de oportunidades reais de emprego, freelance, parcerias e crescimento profissional.
 
 Um perfil mal estruturado no LinkedIn gera perda concreta de oportunidades. Recrutadores utilizam filtros de busca baseados em palavras-chave, habilidades e cargos. Se o seu perfil não contém os termos corretos, não aparece nas buscas. Se a headline é genérica, o recrutador passa direto. Se o resumo é vazio ou superficial, a impressão imediata é de um profissional que não se posiciona com seriedade.
@@ -114,7 +114,7 @@ O crescimento de longo prazo no mercado de tecnologia depende dessa combinação
 O profissionalismo no LinkedIn não se mede por métricas de vaidade como número de conexões ou curtidas. Se mede pela qualidade das interações, pela consistência do conteúdo e pela coerência entre o que o profissional comunica e o que ele entrega na prática. Essa integridade é o fundamento de toda reputação profissional duradoura.`
     },
     {
-      title: 'Conclusão: Construa Sua Presença com Intenção',
+      title: 'Construa Sua Presença com Intenção',
       content: `O LinkedIn é uma ferramenta poderosa quando utilizada com estratégia e consistência. Não basta criar um perfil e esperar que oportunidades surjam. É necessário construir ativamente sua presença, compartilhar conhecimento, interagir com a comunidade e demonstrar, dia após dia, que você é um profissional comprometido com evolução constante.
 
 A construção de um perfil forte no LinkedIn para desenvolvedores não acontece da noite para o dia. É um processo gradual que exige paciência, disciplina e autenticidade. Cada post publicado, cada conexão feita, cada comentário relevante contribui para a construção de uma reputação profissional que abrirá portas ao longo de toda a sua carreira.
@@ -125,7 +125,7 @@ O próximo passo é prático. Revise seu perfil hoje. Atualize sua headline, ree
     },
   ] : [
     {
-      title: 'Strategic Introduction: Why LinkedIn Decides Careers in Technology',
+      title: 'Why LinkedIn Decides Careers in Technology',
       content: `LinkedIn is not an ordinary social network. For developers and technology professionals, it functions as a permanent professional showcase, accessible by recruiters, technical managers, and company decision-makers worldwide. Ignoring this platform or treating it carelessly is equivalent to giving up real opportunities for employment, freelancing, partnerships, and professional growth.
 
 A poorly structured LinkedIn profile generates concrete loss of opportunities. Recruiters use search filters based on keywords, skills, and job titles. If your profile doesn't contain the correct terms, it doesn't appear in searches. If the headline is generic, the recruiter scrolls past. If the summary is empty or superficial, the immediate impression is of a professional who doesn't position themselves seriously.
@@ -215,7 +215,7 @@ Long-term growth in the technology market depends on this combination of technic
 Professionalism on LinkedIn isn't measured by vanity metrics like connection counts or likes. It's measured by the quality of interactions, content consistency, and coherence between what the professional communicates and what they deliver in practice. This integrity is the foundation of every lasting professional reputation.`
     },
     {
-      title: 'Conclusion: Build Your Presence with Intention',
+      title: 'Build Your Presence with Intention',
       content: `LinkedIn is a powerful tool when used with strategy and consistency. Simply creating a profile and waiting for opportunities to arise isn't enough. You must actively build your presence, share knowledge, interact with the community, and demonstrate, day after day, that you're a professional committed to constant evolution.
 
 Building a strong LinkedIn profile for developers doesn't happen overnight. It's a gradual process that requires patience, discipline, and authenticity. Every post published, every connection made, every relevant comment contributes to building a professional reputation that will open doors throughout your entire career.
