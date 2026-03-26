@@ -8,7 +8,8 @@ import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { 
   Rocket, Target, Heart, Users, Lightbulb, Shield, 
   Award, Calendar, Building2, Briefcase, Quote, Sparkles, 
-  HandHeart, ArrowRight, ArrowUpRight, Star, BookOpen, MessageCircle
+  HandHeart, ArrowRight, ArrowUpRight, Star, BookOpen, MessageCircle,
+  Video, Megaphone, Settings, Handshake
 } from "lucide-react";
 import DiscordCommunityCard from "@/components/ui/DiscordCommunityCard";
 const elixirLogo = "/images/discord/elixir-lab-logo.png";
