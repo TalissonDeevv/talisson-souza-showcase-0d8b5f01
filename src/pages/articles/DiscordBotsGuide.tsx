@@ -4,9 +4,10 @@ import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import ShareButtons from "@/components/ui/ShareButtons";
+import ArticleAuthorHeader from "@/components/ui/ArticleAuthorHeader";
 import ArticleSEOFooter from "@/components/ui/ArticleSEOFooter";
 import RelatedArticles from "@/components/ui/RelatedArticles";
-import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
@@ -340,16 +341,7 @@ A small, competent team will always be superior to a large, disorganized one. Qu
                 )}
               </AnimatedTitle>
 
-              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-4">
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
-                  <span>{getText(language, '7 de Fevereiro, 2025', 'February 7, 2025')}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4" />
-                  <span>{getText(language, '25 min de leitura', '25 min read')}</span>
-                </div>
-              </div>
+              <ArticleAuthorHeader date="2025-02-07" readingTime={25} />
 
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-4">
