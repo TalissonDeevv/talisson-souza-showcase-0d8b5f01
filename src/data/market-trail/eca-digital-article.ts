@@ -281,7 +281,7 @@ These practices are not costs. They are investments. Systems designed with priva
         },
       },
       {
-        title: { pt: 'Conclusão: a iniciativa faz sentido, mas o impacto real depende de execução', en: 'Conclusion: the initiative makes sense, but real impact depends on execution' },
+        title: { pt: 'a iniciativa faz sentido, mas o impacto real depende de execução', en: 'the initiative makes sense, but real impact depends on execution' },
         content: {
           pt: `A ação da ANPD em relação ao ECA Digital mostra que o ecossistema regulatório brasileiro está amadurecendo. Temos legislação de proteção de dados, autoridade fiscalizadora e marcos legais específicos pra proteção de menores no digital. Isso é relevante.
 
