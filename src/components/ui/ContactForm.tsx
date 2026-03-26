@@ -1,10 +1,25 @@
-import { useState } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation } from "@/utils/translations";
-import { Check, Send, AlertCircle } from "lucide-react";
+import { Check, Send, AlertCircle, ShieldCheck } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+
+function generateCaptcha() {
+  const ops = ['+', '-', '×'] as const;
+  const op = ops[Math.floor(Math.random() * ops.length)];
+  let a: number, b: number;
+  if (op === '-') {
+    a = Math.floor(Math.random() * 20) + 5;
+    b = Math.floor(Math.random() * a);
+  } else {
+    a = Math.floor(Math.random() * 15) + 1;
+    b = Math.floor(Math.random() * 15) + 1;
+  }
+  const answer = op === '+' ? a + b : op === '-' ? a - b : a * b;
+  return { question: `${a} ${op} ${b}`, answer };
+}
 
 const ContactForm = () => {
   const { language } = useTheme();
@@ -16,9 +31,11 @@ const ContactForm = () => {
     email: "",
     message: "",
   });
+  const [captchaInput, setCaptchaInput] = useState("");
+  const [captcha, setCaptcha] = useState(generateCaptcha);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [errors, setErrors] = useState<{name?: string; email?: string; message?: string}>({});
+  const [errors, setErrors] = useState<{name?: string; email?: string; message?: string; captcha?: string}>({});
 
   const validateForm = () => {
     const newErrors: {name?: string; email?: string; message?: string} = {};
