@@ -53,10 +53,6 @@ const MarketTrailArticle = () => {
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-            <ArticleAuthorHeader date={article.publishedDate} readingTime={parseInt(article.readTime) || 5} />
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.2}>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -67,7 +63,7 @@ const MarketTrailArticle = () => {
             </motion.h1>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.3}>
+          <ScrollReveal delay={0.2}>
             <div className="flex flex-wrap gap-2 mb-6">
               {tags.map((tag) => (
                 <Link key={tag} to={`${tagBasePath}/${tagToSlug(tag)}`} className="px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
@@ -75,6 +71,10 @@ const MarketTrailArticle = () => {
                 </Link>
               ))}
             </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.3}>
+            <ArticleAuthorHeader date={article.publishedDate} readingTime={parseInt(article.readTime) || 5} />
           </ScrollReveal>
         </div>
       </section>
