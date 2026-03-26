@@ -94,6 +94,22 @@ export function getTrailArticles(trailId: string): ArticleData[] {
 
 export const articles: ArticleData[] = [
   {
+    id: 'dev-financial-growth',
+    title: {
+      pt: 'Por Que a Maioria dos Desenvolvedores Não Consegue Crescer Financeiramente',
+      en: 'Why Most Developers Fail to Grow Financially',
+    },
+    excerpt: {
+      pt: 'Exploramos o paradoxo de desenvolvedores tecnicamente brilhantes que enfrentam estagnação financeira. Este artigo desvenda as raízes desse problema, focando em mentalidade e escolhas de carreira.',
+      en: 'We delve into the paradox of technically brilliant developers who face financial stagnation. This article uncovers the roots of this issue, focusing on mindset and career choices.',
+    },
+    date: { pt: '26 de Março, 2026', en: 'March 26, 2026' },
+    readTime: '24 min',
+    path: { pt: '/artigos/por-que-devs-nao-crescem-financeiramente', en: '/en-us/articles/why-devs-dont-grow-financially' },
+    tags: { pt: ['Carreira', 'Finanças', 'Estratégia', 'Empreendedorismo'], en: ['Career', 'Finance', 'Strategy', 'Entrepreneurship'] },
+    publishedDate: '2026-03-26',
+  },
+  {
     id: 'eca-digital-anpd',
     title: {
       pt: 'ECA Digital e ANPD: O Que o Monitoramento de Plataformas Significa para o Ecossistema Tecnológico Brasileiro',
