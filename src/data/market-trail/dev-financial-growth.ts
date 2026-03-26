@@ -74,7 +74,7 @@ export const devFinancialGrowthArticle: MarketTrailArticle[] = [
       },
       {
         "title": {
-          "pt": "O mecanismo real: Trocar tempo por dinheiro é um teto invisível",
+          "pt": "Trocar tempo por dinheiro é um teto invisível",
           "en": "The real mechanism: Trading time for money is an invisible ceiling"
         },
         "content": {
@@ -104,7 +104,7 @@ export const devFinancialGrowthArticle: MarketTrailArticle[] = [
       },
       {
         "title": {
-          "pt": "A camada mais profunda: Quem decide o que construir ganha mais do que quem executa",
+          "pt": "Quem decide o que construir ganha mais do que quem executa",
           "en": "The deeper layer: Those who decide what to build earn more than those who execute"
         },
         "content": {
@@ -114,7 +114,7 @@ export const devFinancialGrowthArticle: MarketTrailArticle[] = [
       },
       {
         "title": {
-          "pt": "Equilíbrio: Ser dev é uma vantagem competitiva enorme",
+          "pt": "Ser dev é uma vantagem competitiva enorme",
           "en": "Balance: Being a developer is a huge competitive advantage"
         },
         "content": {
