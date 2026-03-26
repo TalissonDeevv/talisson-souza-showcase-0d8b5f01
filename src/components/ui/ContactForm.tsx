@@ -1,10 +1,25 @@
-import { useState } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation } from "@/utils/translations";
-import { Check, Send, AlertCircle } from "lucide-react";
+import { Check, Send, AlertCircle, ShieldCheck } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+
+function generateCaptcha() {
+  const ops = ['+', '-', '×'] as const;
+  const op = ops[Math.floor(Math.random() * ops.length)];
+  let a: number, b: number;
+  if (op === '-') {
+    a = Math.floor(Math.random() * 20) + 5;
+    b = Math.floor(Math.random() * a);
+  } else {
+    a = Math.floor(Math.random() * 15) + 1;
+    b = Math.floor(Math.random() * 15) + 1;
+  }
+  const answer = op === '+' ? a + b : op === '-' ? a - b : a * b;
+  return { question: `${a} ${op} ${b}`, answer };
+}
 
 const ContactForm = () => {
   const { language } = useTheme();
@@ -16,12 +31,14 @@ const ContactForm = () => {
     email: "",
     message: "",
   });
+  const [captchaInput, setCaptchaInput] = useState("");
+  const [captcha, setCaptcha] = useState(generateCaptcha);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [errors, setErrors] = useState<{name?: string; email?: string; message?: string}>({});
+  const [errors, setErrors] = useState<{name?: string; email?: string; message?: string; captcha?: string}>({});
 
   const validateForm = () => {
-    const newErrors: {name?: string; email?: string; message?: string} = {};
+    const newErrors: {name?: string; email?: string; message?: string; captcha?: string} = {};
     
     if (!formData.name.trim()) {
       newErrors.name = language === 'pt' ? 'Nome é obrigatório' : 'Name is required';
@@ -42,6 +59,12 @@ const ContactForm = () => {
       newErrors.message = language === 'pt' ? 'Mensagem é obrigatória' : 'Message is required';
     } else if (formData.message.length > 5000) {
       newErrors.message = language === 'pt' ? 'Mensagem muito longa (máx. 5000)' : 'Message too long (max. 5000)';
+    }
+
+    if (!captchaInput.trim()) {
+      newErrors.captcha = language === 'pt' ? 'Resolva o captcha' : 'Solve the captcha';
+    } else if (parseInt(captchaInput.trim()) !== captcha.answer) {
+      newErrors.captcha = language === 'pt' ? 'Resposta incorreta' : 'Incorrect answer';
     }
     
     setErrors(newErrors);
@@ -83,11 +106,9 @@ const ContactForm = () => {
       }
       
       setIsSubmitted(true);
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
-      });
+      setFormData({ name: "", email: "", message: "" });
+      setCaptchaInput("");
+      setCaptcha(generateCaptcha());
       
       toast({
         title: language === 'pt' ? "Mensagem enviada!" : "Message sent!",
@@ -191,6 +212,38 @@ const ContactForm = () => {
               <p className="text-red-400 text-xs mt-1 flex items-center gap-1">
                 <AlertCircle className="w-3 h-3" />
                 {errors.message}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <label className="block text-foreground text-sm font-medium mb-2" htmlFor="captcha">
+              <span className="flex items-center gap-1.5">
+                <ShieldCheck className="w-4 h-4 text-muted-foreground" />
+                {language === 'pt' ? 'Verificação de segurança' : 'Security verification'}
+              </span>
+            </label>
+            <div className="flex items-center gap-3">
+              <span className="text-sm font-mono text-foreground bg-card/60 border border-border/30 rounded-lg px-4 py-3 select-none whitespace-nowrap">
+                {captcha.question} = ?
+              </span>
+              <input
+                type="text"
+                id="captcha"
+                inputMode="numeric"
+                value={captchaInput}
+                onChange={(e) => {
+                  setCaptchaInput(e.target.value);
+                  if (errors.captcha) setErrors(prev => ({ ...prev, captcha: undefined }));
+                }}
+                className={`w-24 px-4 py-3 border bg-background/50 text-foreground rounded-xl focus:outline-none focus:ring-2 focus:ring-foreground/10 focus:border-foreground/30 transition-all duration-300 placeholder:text-muted-foreground/50 text-center ${errors.captcha ? 'border-red-500/50' : 'border-border/30'}`}
+                placeholder="?"
+              />
+            </div>
+            {errors.captcha && (
+              <p className="text-red-400 text-xs mt-1 flex items-center gap-1">
+                <AlertCircle className="w-3 h-3" />
+                {errors.captcha}
               </p>
             )}
           </div>
