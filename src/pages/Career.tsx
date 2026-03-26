@@ -70,19 +70,11 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
   const timelineEvents = [
     { 
       year: "2018", 
-      title: getText(language, "Início da Jornada", "Journey Begins"), 
-      role: getText(language, "Desenvolvedor Iniciante", "Junior Developer"),
-      description: getText(language, "Aos 14 anos, criei meus primeiros bots para Discord", "At 14, I created my first Discord bots"), 
-      learning: getText(language, "Autodidatismo é um superpoder", "Self-learning is a superpower"),
-      icon: Rocket 
-    },
-    { 
-      year: "2021", 
-      title: getText(language, "Momento Decisivo", "Decisive Moment"), 
-      role: getText(language, "Freelancer", "Freelancer"),
-      description: getText(language, "Experiência que motivou a criação da própria empresa", "Experience that motivated the creation of my own company"), 
-      learning: getText(language, "Obstáculos podem ser trampolins", "Obstacles can be springboards"),
-      icon: Target 
+      title: getText(language, "Fundador e Criador de Conteúdo", "Founder & Content Creator"), 
+      role: getText(language, "Talisson Souza Mídia · Autônomo", "Talisson Souza Media · Self-employed"),
+      description: getText(language, "Fundador e criador de conteúdo focado em Games. Canal com mais de 2,5 mil inscritos e 118 mil visualizações", "Founder and content creator focused on Games. Channel with over 2.5K subscribers and 118K views"), 
+      learning: getText(language, "Consistência constrói audiência", "Consistency builds audience"),
+      icon: Video 
     },
     { 
       year: "2020", 
@@ -93,12 +85,52 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
       icon: Building2 
     },
     { 
+      year: "2021", 
+      title: getText(language, "Momento Decisivo", "Decisive Moment"), 
+      role: getText(language, "Freelancer", "Freelancer"),
+      description: getText(language, "Experiência que motivou a criação da própria empresa", "Experience that motivated the creation of my own company"), 
+      learning: getText(language, "Obstáculos podem ser trampolins", "Obstacles can be springboards"),
+      icon: Target 
+    },
+    { 
       year: "2024", 
       title: getText(language, "Diretor Estratégico", "Strategic Director"), 
       role: getText(language, "Diretor no Werneck Group", "Director at Werneck Group"),
       description: getText(language, "Posição estratégica no Werneck Group", "Strategic position at Werneck Group"), 
       learning: getText(language, "Liderança é sobre pessoas", "Leadership is about people"),
       icon: Briefcase 
+    },
+    { 
+      year: "2025", 
+      title: getText(language, "Criador Independente Verificado", "Verified Independent Creator"), 
+      role: getText(language, "Warlocks · Autônomo", "Warlocks · Self-employed"),
+      description: getText(language, "Atuação na Warlocks Dungeons, profissionalizando a criação de projetos dentro do ecossistema Discord", "Working at Warlocks Dungeons, professionalizing project creation within the Discord ecosystem"), 
+      learning: getText(language, "Autonomia exige posicionamento", "Autonomy requires positioning"),
+      icon: Sparkles 
+    },
+    { 
+      year: "2025", 
+      title: getText(language, "Influenciador na Rocketseat", "Rocketseat Influencer"), 
+      role: getText(language, "Influencer · Rocketseat", "Influencer · Rocketseat"),
+      description: getText(language, "Influencer Academy na Rocketseat — criação de conteúdo digital e publicidade no ecossistema de tecnologia", "Influencer Academy at Rocketseat — digital content creation and publicity in the tech ecosystem"), 
+      learning: getText(language, "Educação escala impacto", "Education scales impact"),
+      icon: Megaphone 
+    },
+    { 
+      year: "2026", 
+      title: getText(language, "Diretor de Operações", "Operations Director"), 
+      role: getText(language, "Noyevel · Temporário", "Noyevel · Temporary"),
+      description: getText(language, "Organização de processos internos, definição de KPIs, gestão de equipe e implementação de padrões estratégicos", "Internal process organization, KPI definition, team management and strategic standards implementation"), 
+      learning: getText(language, "Processos geram previsibilidade", "Processes create predictability"),
+      icon: Settings 
+    },
+    { 
+      year: "2026", 
+      title: getText(language, "Parceiro Estratégico", "Strategic Partner"), 
+      role: getText(language, "Splendori · Tempo integral", "Splendori · Full-time"),
+      description: getText(language, "Parceiro estratégico em iniciativas de tecnologia e desenvolvimento de produtos digitais. Colaboração em desenvolvimento web, landing pages, automações e criação de soluções", "Strategic partner in technology initiatives and digital product development. Collaboration in web development, landing pages, automations and solution creation"), 
+      learning: getText(language, "Parcerias ampliam alcance", "Partnerships expand reach"),
+      icon: Handshake 
     }
   ];
 
@@ -130,7 +162,9 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
 
   const companies = [
     { name: "Cheetah Solutions Network", description: language === 'pt' ? "Soluções digitais especializadas em desenvolvimento de bots e aplicações web." : "Digital solutions specialized in bot development and web applications.", logo: "https://i.ibb.co/0yQ0mnD6/bannercheetah2.png", role: "CEO & Founder" },
-    { name: "Werneck Group", description: language === 'pt' ? "Consultoria estratégica especializada em transformação digital." : "Strategic consulting specialized in digital transformation.", logo: "https://i.ibb.co/YT7LK7Vc/bannerwerneck.jpg", role: getText(language, "Diretor Estratégico", "Strategic Director") }
+    { name: "Werneck Group", description: language === 'pt' ? "Consultoria estratégica especializada em transformação digital." : "Strategic consulting specialized in digital transformation.", logo: "https://i.ibb.co/YT7LK7Vc/bannerwerneck.jpg", role: getText(language, "Diretor Estratégico", "Strategic Director") },
+    { name: "Splendori", description: language === 'pt' ? "Parceiro estratégico em iniciativas de tecnologia e desenvolvimento de produtos digitais." : "Strategic partner in technology initiatives and digital product development.", logo: "", role: getText(language, "Parceiro Estratégico", "Strategic Partner") },
+    { name: "Noyevel", description: language === 'pt' ? "Organização de processos internos, KPIs e gestão de equipe." : "Internal process organization, KPIs and team management.", logo: "", role: getText(language, "Diretor de Operações", "Operations Director") }
   ];
 
   const discordCommunities = [
