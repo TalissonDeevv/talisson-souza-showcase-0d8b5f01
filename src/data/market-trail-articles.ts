@@ -14,6 +14,7 @@ import { architectureTrailArticles } from './market-trail/architecture-trail';
 import { communityTrailArticles } from './market-trail/community-trail';
 import { strategyTrailArticles } from './market-trail/strategy-trail';
 import { ecaDigitalArticle } from './market-trail/eca-digital-article';
+import { devFinancialGrowthArticle } from './market-trail/dev-financial-growth';
 
 export const marketTrailArticles: MarketTrailArticle[] = [
   ...block1Articles,
@@ -28,4 +29,5 @@ export const marketTrailArticles: MarketTrailArticle[] = [
   ...communityTrailArticles,
   ...strategyTrailArticles,
   ...ecaDigitalArticle,
+  ...devFinancialGrowthArticle,
 ];
