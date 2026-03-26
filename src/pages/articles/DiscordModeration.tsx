@@ -21,31 +21,31 @@ const DiscordModeration = () => {
 
   const sections = language === 'pt' ? [
     {
-      title: 'Poder e responsabilidade: a distinção que define a qualidade da gestão',
+      title: 'A distinção entre poder e responsabilidade na gestão',
       content: `A moderação em servidores Discord é frequentemente tratada como uma função de poder. Quem modera pode silenciar, banir, apagar mensagens e controlar quem fala e quem não fala. Essa visão, além de reducionista, é a raiz da maioria dos problemas que comunidades enfrentam em termos de gestão. O moderador que entende sua função como exercício de poder inevitavelmente abusa dele, seja de forma consciente ou inconsciente. A moderação competente não se define pelo poder que exerce, mas pela responsabilidade que carrega. O moderador é o guardião da cultura da comunidade, o mediador de conflitos, e o representante dos valores que o projeto defende.
 
 A distinção entre poder e responsabilidade não é filosófica. Ela tem consequências práticas diretas na saúde de qualquer comunidade. Moderadores que operam com mentalidade de poder criam ambientes autoritários onde membros têm medo de se expressar, onde as regras são aplicadas de forma arbitrária, e onde o favoritismo determina quem recebe tolerância e quem recebe punição. Moderadores que operam com mentalidade de responsabilidade criam ambientes seguros, previsíveis e respeitosos, onde as regras existem para proteger a experiência de todos e onde a consistência na aplicação dessas regras gera confiança e estabilidade.`
     },
     {
-      title: 'Estrutura organizacional da staff: hierarquia com propósito',
+      title: 'Hierarquia com propósito na estrutura da staff',
       content: `Uma equipe de moderação eficiente precisa de estrutura organizacional clara. Isso não significa criar uma hierarquia rígida e burocrática com dezenas de cargos e níveis de permissão. Significa definir com clareza quem é responsável por quê, quais são os limites de atuação de cada nível, como as decisões são tomadas e escaladas, e como a comunicação interna funciona. A falta de estrutura gera confusão, sobreposição de responsabilidades, decisões contraditórias e, inevitavelmente, conflitos internos que se tornam visíveis para a comunidade.
 
 A estrutura ideal depende do tamanho e da complexidade da comunidade, mas alguns princípios são universais. Primeiro, cada membro da equipe deve saber exatamente quais são suas responsabilidades e seus limites. Segundo, deve existir um canal de comunicação interno exclusivo para a staff onde decisões são discutidas, documentadas e alinhadas. Terceiro, deve haver um processo claro de escalação para situações que excedem a autoridade ou a capacidade de um moderador individual. Quarto, deve existir revisão periódica das decisões tomadas pela equipe para identificar inconsistências e oportunidades de melhoria. Uma equipe sem estrutura é apenas um grupo de pessoas com permissões elevadas, e permissões elevadas sem direção são uma receita para problemas.`
     },
     {
-      title: 'Regras claras e cultura interna: o fundamento de tudo',
+      title: 'Regras claras e cultura interna como fundamento',
       content: `As regras de uma comunidade não são apenas um texto legal que ninguém lê. São a expressão codificada da cultura que o projeto deseja cultivar. Regras bem escritas comunicam não apenas o que é proibido, mas por que é proibido. Elas estabelecem expectativas claras sobre o comportamento esperado, sobre o tom das interações, sobre os limites do aceitável, e sobre as consequências de violações. Regras vagas geram interpretações conflitantes. Regras excessivamente detalhadas geram burocracia. O equilíbrio está em regras que são claras o suficiente para serem aplicadas com consistência, mas flexíveis o suficiente para permitir julgamento contextual.
 
 A cultura interna de uma comunidade é muito mais do que suas regras escritas. É o conjunto de comportamentos, valores e expectativas não escritos que definem como as pessoas interagem. A cultura é moldada principalmente pelo exemplo da liderança e da equipe de moderação. Se a equipe de moderação é profissional, respeitosa e consistente, a comunidade tende a refletir esses valores. Se a equipe de moderação é arbitrária, desrespeitosa ou inconsistente, a comunidade absorve esses padrões e os reproduz. Construir uma cultura saudável exige atenção constante, autocrítica, e disposição para corrigir o próprio comportamento antes de exigir padrões dos outros.`
     },
     {
-      title: 'Gestão de conflitos: prevenção sobre reação',
+      title: 'Prevenir conflitos antes de precisar reagir',
       content: `Conflitos são inevitáveis em qualquer comunidade com interação humana significativa. A questão não é se conflitos vão acontecer, mas como serão geridos quando acontecerem. A abordagem mais madura é a preventiva: criar condições que minimizam a ocorrência de conflitos antes que eles se manifestem. Isso inclui regras claras, comunicação transparente, canais adequados para diferentes tipos de interação, e uma cultura onde desentendimentos são resolvidos com diálogo em vez de confronto.
 
 Quando conflitos inevitavelmente surgem, a forma como são geridos define a percepção que a comunidade tem da liderança. Moderadores que reagem emocionalmente, que tomam partido sem investigar, que punem com severidade desproporcional, ou que ignoram conflitos esperando que se resolvam sozinhos, estão falhando na sua responsabilidade fundamental. A gestão competente de conflitos exige escuta ativa, investigação dos fatos, comunicação clara das decisões tomadas e dos motivos por trás delas, e disponibilidade para reconhecer erros e corrigir curso quando necessário. Cada conflito bem gerido fortalece a confiança da comunidade na liderança. Cada conflito mal gerido a enfraquece.`
     },
     {
-      title: 'Segurança e organização: proteção do ecossistema',
+      title: 'Proteção do ecossistema da comunidade',
       content: `A segurança em servidores Discord vai além de configurar permissões de canal. Envolve proteção contra raids, prevenção de phishing e engenharia social, gestão cuidadosa de integrações e bots de terceiros, backup de configurações críticas, e monitoramento contínuo de atividades suspeitas. A maioria dos administradores só pensa em segurança depois de sofrer um incidente, quando os danos já foram causados e a confiança da comunidade já foi comprometida. A abordagem profissional é antecipar ameaças e implementar medidas preventivas antes que sejam necessárias.
 
 A organização do servidor é igualmente crítica para a experiência da comunidade. Canais devem ter propósitos claros e bem definidos. A estrutura de categorias deve ser intuitiva para novos membros. Canais desnecessários ou redundantes devem ser removidos. Informações importantes devem ser facilmente acessíveis. A experiência de um membro que entra pela primeira vez no servidor define se ele vai explorar e se engajar ou se vai sair imediatamente. Servidores desorganizados, com dezenas de canais sem propósito claro, com informações desatualizadas e com navegação confusa, comunicam descuido e amadorismo, independentemente da qualidade do conteúdo que existe em algum canto escondido da estrutura.`
@@ -58,31 +58,31 @@ O moderador estratégico entende que seu trabalho vai além de reagir a violaç�
     },
   ] : [
     {
-      title: 'Power and responsibility: the distinction that defines management quality',
+      title: 'The distinction between power and responsibility in management',
       content: `Moderation in Discord servers is frequently treated as a power function. Those who moderate can mute, ban, delete messages, and control who speaks and who doesn't. This view, besides being reductionist, is the root of most problems communities face in terms of management. The moderator who understands their role as an exercise of power inevitably abuses it, whether consciously or unconsciously. Competent moderation isn't defined by the power it exercises but by the responsibility it carries. The moderator is the guardian of community culture, the mediator of conflicts, and the representative of the values the project defends.
 
 The distinction between power and responsibility isn't philosophical. It has direct practical consequences on any community's health. Moderators who operate with a power mentality create authoritarian environments where members are afraid to express themselves, where rules are applied arbitrarily, and where favoritism determines who receives tolerance and who receives punishment. Moderators who operate with a responsibility mentality create safe, predictable, and respectful environments where rules exist to protect everyone's experience and where consistency in applying these rules generates trust and stability.`
     },
     {
-      title: 'Staff organizational structure: hierarchy with purpose',
+      title: 'Hierarchy with purpose in staff structure',
       content: `An efficient moderation team needs clear organizational structure. This doesn't mean creating a rigid, bureaucratic hierarchy with dozens of roles and permission levels. It means clearly defining who is responsible for what, what are the limits of each level's authority, how decisions are made and escalated, and how internal communication works. Lack of structure generates confusion, overlapping responsibilities, contradictory decisions, and inevitably internal conflicts that become visible to the community.
 
 The ideal structure depends on the community's size and complexity, but some principles are universal. First, each team member must know exactly what their responsibilities and limits are. Second, there must be an exclusive internal communication channel for staff where decisions are discussed, documented, and aligned. Third, there must be a clear escalation process for situations exceeding an individual moderator's authority or capability. Fourth, there must be periodic review of team decisions to identify inconsistencies and improvement opportunities. A team without structure is just a group of people with elevated permissions, and elevated permissions without direction are a recipe for problems.`
     },
     {
-      title: 'Clear rules and internal culture: the foundation of everything',
+      title: 'Clear rules and internal culture as foundation',
       content: `A community's rules aren't just legal text nobody reads. They're the codified expression of the culture the project wants to cultivate. Well-written rules communicate not only what is prohibited but why it's prohibited. They establish clear expectations about expected behavior, interaction tone, acceptable limits, and consequences of violations. Vague rules generate conflicting interpretations. Overly detailed rules generate bureaucracy. The balance lies in rules clear enough to be applied consistently but flexible enough to allow contextual judgment.
 
 A community's internal culture is much more than its written rules. It's the set of unwritten behaviors, values, and expectations that define how people interact. Culture is shaped primarily by the example set by leadership and the moderation team. If the moderation team is professional, respectful, and consistent, the community tends to reflect those values. If the moderation team is arbitrary, disrespectful, or inconsistent, the community absorbs those patterns and reproduces them. Building a healthy culture requires constant attention, self-criticism, and willingness to correct one's own behavior before demanding standards from others.`
     },
     {
-      title: 'Conflict management: prevention over reaction',
+      title: 'Preventing conflicts before needing to react',
       content: `Conflicts are inevitable in any community with significant human interaction. The question isn't whether conflicts will happen, but how they'll be managed when they do. The most mature approach is preventive: creating conditions that minimize conflict occurrence before they manifest. This includes clear rules, transparent communication, appropriate channels for different types of interaction, and a culture where disagreements are resolved through dialogue rather than confrontation.
 
 When conflicts inevitably arise, how they're managed defines the community's perception of leadership. Moderators who react emotionally, take sides without investigating, punish with disproportionate severity, or ignore conflicts hoping they'll resolve themselves are failing in their fundamental responsibility. Competent conflict management requires active listening, fact investigation, clear communication of decisions made and the reasons behind them, and willingness to acknowledge mistakes and correct course when necessary. Each well-managed conflict strengthens the community's trust in leadership. Each poorly managed conflict weakens it.`
     },
     {
-      title: 'Security and organization: ecosystem protection',
+      title: 'Protecting the community ecosystem',
       content: `Security in Discord servers goes beyond configuring channel permissions. It involves protection against raids, prevention of phishing and social engineering, careful management of third-party integrations and bots, backup of critical configurations, and continuous monitoring of suspicious activities. Most administrators only think about security after suffering an incident, when damage has already been done and community trust has already been compromised. The professional approach is anticipating threats and implementing preventive measures before they're needed.
 
 Server organization is equally critical for the community experience. Channels must have clear, well-defined purposes. The category structure must be intuitive for new members. Unnecessary or redundant channels should be removed. Important information must be easily accessible. A member's first-time experience entering the server defines whether they'll explore and engage or leave immediately. Disorganized servers with dozens of channels without clear purpose, outdated information, and confusing navigation communicate carelessness and amateurism, regardless of the quality of content that exists in some hidden corner of the structure.`

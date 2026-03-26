@@ -27,7 +27,7 @@ const DiscordAccountSecurity = () => {
 O problema não é apenas o roubo de uma conta. É o controle sobre comunidades inteiras, o acesso a bots que processam dados sensíveis, a manipulação de servidores que geram receita, e a destruição de reputações construídas ao longo de anos. Quem possui uma conta de alto valor precisa entender que não está lidando com golpistas amadores. Está lidando com operações estruturadas que investem tempo, recursos e criatividade para comprometer alvos específicos. A primeira camada de proteção é justamente essa consciência: entender que você é um alvo, e agir de acordo com essa realidade.`
     },
     {
-      title: 'Engenharia social sofisticada: o ataque que não parece ataque',
+      title: 'O ataque que não parece ataque',
       content: `A engenharia social aplicada contra proprietários de contas valiosas no Discord evoluiu drasticamente nos últimos anos. Não estamos falando de mensagens genéricas pedindo para clicar em links suspeitos. Estamos falando de abordagens cuidadosamente construídas que simulam oportunidades legítimas. Um contato profissional oferecendo uma parceria remunerada. Um e-mail com identidade visual impecável de uma suposta empresa de jogos. Uma reunião por videochamada com apresentação elaborada. Um convite para testar um jogo em fase beta que exige a execução de um arquivo específico.
 
 Esses ataques são projetados para contornar o ceticismo natural de pessoas experientes. Eles utilizam contextos familiares ao alvo: se você é desenvolvedor de bots, a abordagem virá como uma proposta de integração. Se você administra um servidor grande, virá como uma parceria de crescimento. Se você possui insígnias raras, virá como uma oportunidade exclusiva que exige verificação de conta. Os atacantes pesquisam seus alvos, estudam seus interesses, identificam suas vulnerabilidades psicológicas e constroem narrativas personalizadas. QR Codes para login, scripts aparentemente inofensivos, extensões de navegador, arquivos executáveis disfarçados, e até processos de seleção falsos com múltiplas etapas são ferramentas comuns nesse arsenal.
@@ -35,7 +35,7 @@ Esses ataques são projetados para contornar o ceticismo natural de pessoas expe
 O denominador comum é que o ataque nunca se apresenta como ataque. Ele se apresenta como oportunidade, como conveniência, como algo que faz sentido dentro do seu contexto profissional. E é exatamente por isso que funciona contra pessoas que normalmente seriam cautelosas.`
     },
     {
-      title: 'Comprometimento indireto: quando o ataque vem de quem você confia',
+      title: 'Quando o ataque vem de quem você confia',
       content: `Uma das formas mais eficazes e menos discutidas de comprometimento é o ataque indireto. Em vez de atacar diretamente o proprietário de uma conta valiosa, o atacante compromete alguém do círculo de confiança dessa pessoa. Um moderador, um amigo próximo, um colaborador de projeto. Uma vez que essa conta intermediária é comprometida, o atacante a utiliza para enviar mensagens, links ou arquivos que o alvo jamais questionaria, porque vêm de alguém em quem confia.
 
 A eficácia desse método reside na exploração da confiança interpessoal. Quando um amigo próximo envia uma mensagem dizendo que precisa de ajuda urgente, ou que encontrou algo interessante que você precisa ver, a tendência natural é agir sem questionar. A falsa urgência é uma técnica recorrente: mensagens que criam pressão temporal para que o alvo aja antes de pensar. A combinação de confiança e urgência é devastadoramente eficaz porque desativa os mecanismos de cautela que normalmente protegeriam a pessoa.
@@ -43,7 +43,7 @@ A eficácia desse método reside na exploração da confiança interpessoal. Qua
 A proteção contra esse vetor de ataque exige uma mudança de mentalidade difícil mas necessária: verificar a identidade e a intenção por trás de qualquer solicitação incomum, independentemente de quem a envia. Isso não significa desconfiar de todos permanentemente. Significa criar protocolos de verificação que se ativam automaticamente quando certas condições são identificadas, como solicitações inesperadas, pedidos de urgência, ou qualquer situação que envolva clicar em links, baixar arquivos ou compartilhar informações sensíveis.`
     },
     {
-      title: 'O mercado oculto: por que sua conta tem preço',
+      title: 'Por que sua conta tem preço no mercado oculto',
       content: `O mercado negro de contas Discord é mais estruturado do que a maioria das pessoas imagina. Contas com insígnias raras, servidores com grande número de membros, bots com bases de usuários significativas e tokens de acesso são mercadorias negociadas em canais específicos. O valor não está apenas no perfil em si, mas no que ele representa e no que ele controla. Uma conta com a insígnia de Parceiro do Discord carrega um status de credibilidade que pode ser explorado para aplicar golpes em terceiros. Um servidor com milhares de membros pode ser vendido, renomeado e utilizado para propaganda, distribuição de malware ou esquemas de fraude.
 
 O roubo de tokens é particularmente perigoso porque permite que o atacante assuma o controle total da conta sem alterar a senha, muitas vezes sem que o proprietário perceba imediatamente. Bots comprometidos podem ser utilizados para coletar dados dos servidores onde estão instalados, distribuir links maliciosos para milhares de usuários, ou simplesmente serem desligados para prejudicar comunidades que dependem deles. O controle de uma comunidade estabelecida tem valor estratégico real porque permite ao atacante acessar uma audiência já construída e engajada.
@@ -51,7 +51,7 @@ O roubo de tokens é particularmente perigoso porque permite que o atacante assu
 Compreender que sua conta tem valor de mercado é essencial para calibrar adequadamente o nível de proteção que você adota. Se algo tem valor, alguém vai querer roubá-lo. E quanto maior o valor, mais sofisticado será o método.`
     },
     {
-      title: 'Erros comuns de pessoas experientes: a armadilha da confiança',
+      title: 'A armadilha da confiança em pessoas experientes',
       content: `Paradoxalmente, pessoas experientes frequentemente são alvos mais fáceis do que iniciantes em determinados contextos. O excesso de confiança é a vulnerabilidade mais explorada em perfis de alto valor. A mentalidade de que isso nunca vai acontecer comigo é o primeiro passo para que aconteça. Essa confiança excessiva se manifesta de diversas formas: ignorar pequenas inconsistências em mensagens recebidas, não verificar URLs antes de clicar, executar arquivos sem análise prévia, manter sessões abertas em dispositivos compartilhados, e não ativar camadas adicionais de segurança por considerá-las inconvenientes.
 
 Outro erro frequente é a subestimação da sofisticação dos ataques. Muitos profissionais experientes baseiam sua percepção de ameaça em golpes que viram anos atrás, quando os métodos eram evidentemente amadores. A realidade atual é que os ataques evoluíram para um nível de profissionalismo que rivaliza com campanhas de phishing corporativo. Identidades visuais clonadas, domínios similares, interações em múltiplas etapas projetadas para construir confiança gradualmente, e personalização baseada em informações publicamente disponíveis sobre o alvo são práticas comuns.
@@ -80,7 +80,7 @@ A proteção das contas, servidores e bots no Discord não é uma preocupação 
 The problem is not just account theft. It's the control over entire communities, access to bots processing sensitive data, manipulation of revenue-generating servers, and the destruction of reputations built over years. Anyone with a high-value account needs to understand they're not dealing with amateur scammers. They're dealing with structured operations that invest time, resources, and creativity to compromise specific targets. The first layer of protection is precisely this awareness: understanding that you are a target, and acting accordingly.`
     },
     {
-      title: 'Sophisticated social engineering: the attack that doesn\'t look like one',
+      title: 'The attack that doesn\'t look like one',
       content: `Social engineering applied against owners of valuable Discord accounts has evolved dramatically in recent years. We're not talking about generic messages asking you to click suspicious links. We're talking about carefully constructed approaches that simulate legitimate opportunities. A professional contact offering a paid partnership. An email with impeccable branding from a supposed gaming company. A video call meeting with an elaborate presentation. An invitation to beta-test a game requiring execution of a specific file.
 
 These attacks are designed to bypass the natural skepticism of experienced people. They use contexts familiar to the target: if you're a bot developer, the approach will come as an integration proposal. If you manage a large server, it will come as a growth partnership. If you have rare badges, it will come as an exclusive opportunity requiring account verification. Attackers research their targets, study their interests, identify psychological vulnerabilities, and build personalized narratives. QR codes for login, seemingly harmless scripts, browser extensions, disguised executable files, and even fake multi-stage selection processes are common tools in this arsenal.
@@ -88,7 +88,7 @@ These attacks are designed to bypass the natural skepticism of experienced peopl
 The common denominator is that the attack never presents itself as an attack. It presents itself as opportunity, convenience, something that makes sense within your professional context. And that's precisely why it works against people who would normally be cautious.`
     },
     {
-      title: 'Indirect compromise: when the attack comes from someone you trust',
+      title: 'When the attack comes from someone you trust',
       content: `One of the most effective and least discussed forms of compromise is the indirect attack. Instead of directly attacking the owner of a valuable account, the attacker compromises someone in that person's circle of trust. A moderator, a close friend, a project collaborator. Once this intermediary account is compromised, the attacker uses it to send messages, links, or files that the target would never question because they come from someone they trust.
 
 The effectiveness of this method lies in exploiting interpersonal trust. When a close friend sends a message saying they need urgent help or found something interesting you need to see, the natural tendency is to act without questioning. False urgency is a recurring technique: messages creating time pressure so the target acts before thinking. The combination of trust and urgency is devastatingly effective because it disables the caution mechanisms that would normally protect the person.
@@ -96,7 +96,7 @@ The effectiveness of this method lies in exploiting interpersonal trust. When a 
 Protection against this attack vector requires a difficult but necessary mindset shift: verifying the identity and intention behind any unusual request, regardless of who sends it. This doesn't mean permanently distrusting everyone. It means creating verification protocols that activate automatically when certain conditions are identified, such as unexpected requests, urgency demands, or any situation involving clicking links, downloading files, or sharing sensitive information.`
     },
     {
-      title: 'The hidden market: why your account has a price',
+      title: 'Why your account has a price in the hidden market',
       content: `The black market for Discord accounts is more structured than most people imagine. Accounts with rare badges, servers with large member counts, bots with significant user bases, and access tokens are commodities traded in specific channels. The value isn't just in the profile itself but in what it represents and controls. A Partner badge account carries credibility status that can be exploited to scam third parties. A server with thousands of members can be sold, renamed, and used for propaganda, malware distribution, or fraud schemes.
 
 Token theft is particularly dangerous because it allows the attacker to take full control of the account without changing the password, often without the owner noticing immediately. Compromised bots can be used to collect data from servers where they're installed, distribute malicious links to thousands of users, or simply be shut down to harm communities that depend on them. Control of an established community has real strategic value because it gives the attacker access to an already built and engaged audience.
@@ -104,7 +104,7 @@ Token theft is particularly dangerous because it allows the attacker to take ful
 Understanding that your account has market value is essential for adequately calibrating the level of protection you adopt. If something has value, someone will want to steal it. And the higher the value, the more sophisticated the method.`
     },
     {
-      title: 'Common mistakes of experienced people: the confidence trap',
+      title: 'The confidence trap in experienced people',
       content: `Paradoxically, experienced people are often easier targets than beginners in certain contexts. Overconfidence is the most exploited vulnerability in high-value profiles. The mentality that this will never happen to me is the first step toward it happening. This excessive confidence manifests in various ways: ignoring minor inconsistencies in received messages, not verifying URLs before clicking, executing files without prior analysis, maintaining open sessions on shared devices, and not enabling additional security layers because they're considered inconvenient.
 
 Another frequent mistake is underestimating attack sophistication. Many experienced professionals base their threat perception on scams they saw years ago, when methods were obviously amateur. The current reality is that attacks have evolved to a level of professionalism rivaling corporate phishing campaigns. Cloned visual identities, similar domains, multi-stage interactions designed to gradually build trust, and personalization based on publicly available information about the target are common practices.
