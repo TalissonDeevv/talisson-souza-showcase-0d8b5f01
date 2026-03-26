@@ -5,7 +5,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import { useRelativeTime } from "@/hooks/useRelativeTime";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import authorPhoto from "@/assets/author-talisson.png";
+import authorPhoto from "@/assets/author-talisson-small.jpg";
 
 interface ArticleAuthorHeaderProps {
   date: string;
