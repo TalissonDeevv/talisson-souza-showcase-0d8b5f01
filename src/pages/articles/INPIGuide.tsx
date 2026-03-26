@@ -4,9 +4,10 @@ import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import ShareButtons from "@/components/ui/ShareButtons";
+import ArticleAuthorHeader from "@/components/ui/ArticleAuthorHeader";
 import ArticleSEOFooter from "@/components/ui/ArticleSEOFooter";
 import RelatedArticles from "@/components/ui/RelatedArticles";
-import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
@@ -197,16 +198,7 @@ Beyond the loss of the name, all investment in branding, paid traffic, SEO, and 
                 )}
               </p>
 
-              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-4">
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
-                  <span>{getText(language, '11 de Fevereiro, 2025', 'February 11, 2025')}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4" />
-                  <span>{getText(language, '20 min de leitura', '20 min read')}</span>
-                </div>
-              </div>
+              <ArticleAuthorHeader date="2025-02-11" readingTime={20} />
 
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-4">

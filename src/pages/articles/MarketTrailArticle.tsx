@@ -7,7 +7,8 @@ import ShareButtons from "@/components/ui/ShareButtons";
 import ArticleSEOFooter from "@/components/ui/ArticleSEOFooter";
 import TrailNavigation from "@/components/ui/TrailNavigation";
 import WhatsAppNewsletter from "@/components/ui/WhatsAppNewsletter";
-import { ArrowLeft, Calendar, Clock, ExternalLink } from "lucide-react";
+import ArticleAuthorHeader from "@/components/ui/ArticleAuthorHeader";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
@@ -52,10 +53,7 @@ const MarketTrailArticle = () => {
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-4">
-              <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> {article.date[language]}</span>
-              <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> {article.readTime} {getText(language, 'de leitura', 'read')}</span>
-            </div>
+            <ArticleAuthorHeader date={article.publishedDate} readingTime={parseInt(article.readTime) || 5} />
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>

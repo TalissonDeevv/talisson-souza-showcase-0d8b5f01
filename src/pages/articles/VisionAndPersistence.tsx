@@ -4,9 +4,10 @@ import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import ShareButtons from "@/components/ui/ShareButtons";
+import ArticleAuthorHeader from "@/components/ui/ArticleAuthorHeader";
 import ArticleSEOFooter from "@/components/ui/ArticleSEOFooter";
 import RelatedArticles from "@/components/ui/RelatedArticles";
-import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
@@ -122,16 +123,7 @@ const VisionAndPersistence = () => {
                 {articleTitle}
               </AnimatedTitle>
 
-              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-4">
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
-                  <span>{getText(language, '10 de Fevereiro, 2025', 'February 10, 2025')}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4" />
-                  <span>{getText(language, '8 min de leitura', '8 min read')}</span>
-                </div>
-              </div>
+              <ArticleAuthorHeader date="2025-02-10" readingTime={8} />
 
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-4">

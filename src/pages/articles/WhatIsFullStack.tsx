@@ -4,9 +4,10 @@ import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import ShareButtons from "@/components/ui/ShareButtons";
+import ArticleAuthorHeader from "@/components/ui/ArticleAuthorHeader";
 import ArticleSEOFooter from "@/components/ui/ArticleSEOFooter";
 import RelatedArticles from "@/components/ui/RelatedArticles";
-import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
@@ -120,10 +121,7 @@ Full stack development is, above all, a mindset. It's the willingness to not lim
                 {getText(language, 'Artigo', 'Article')}
               </motion.span>
               <AnimatedTitle variant="hero" as="h1" className="mb-4">{articleTitle}</AnimatedTitle>
-              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-4">
-                <div className="flex items-center gap-2"><Calendar className="w-4 h-4" /><span>{getText(language, '12 de Fevereiro, 2025', 'February 12, 2025')}</span></div>
-                <div className="flex items-center gap-2"><Clock className="w-4 h-4" /><span>{getText(language, '12 min de leitura', '12 min read')}</span></div>
-              </div>
+              <ArticleAuthorHeader date="2025-02-12" readingTime={12} />
               <div className="flex flex-wrap gap-2 mb-4">
                 {tags.map((tag) => (<span key={tag} className="text-xs px-3 py-1.5 rounded-lg border border-border/30 bg-card/50 text-muted-foreground">{tag}</span>))}
               </div>
