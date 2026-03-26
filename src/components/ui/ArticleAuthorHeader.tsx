@@ -51,7 +51,16 @@ const ArticleAuthorHeader = ({ date, readingTime }: ArticleAuthorHeaderProps) =>
           >
             Talisson Souza
           </Link>
-          <BadgeCheck className="w-4 h-4 text-primary shrink-0" />
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <BadgeCheck className="w-4 h-4 text-primary shrink-0 cursor-default" />
+              </TooltipTrigger>
+              <TooltipContent side="top" className="text-xs">
+                {getText(language, 'Usuário Verificado', 'Verified User')}
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
 
         <p className="text-xs sm:text-sm text-muted-foreground/80 leading-snug">
