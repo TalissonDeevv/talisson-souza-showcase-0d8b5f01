@@ -111,18 +111,22 @@ Ultimately, my mission is to create solutions that truly make a difference, with
   // Career Timeline Milestones
   const careerMilestones = language === 'pt' ? [
     { year: "2016", title: "Primeiros Passos", description: "Comecei a explorar programação e tecnologia por curiosidade", icon: Code2 },
-    { year: "2018", title: "Primeiro Projeto", description: "Desenvolvi meu primeiro projeto web completo para um cliente real", icon: Rocket },
+    { year: "2018", title: "Talisson Souza Mídia", description: "Fundador e criador de conteúdo focado em Games, com mais de 2,5 mil inscritos e 118 mil visualizações", icon: Rocket },
     { year: "2020", title: "Cheetah Solutions Network", description: "Fundei a Cheetah Solutions Network, minha primeira empresa de tecnologia", icon: TrendingUp },
     { year: "2022", title: "Especialização", description: "Foquei em desenvolvimento Full Stack com React e Node.js", icon: Target },
-    { year: "2024", title: "Expansão", description: "Assumi posição de liderança no Werneck Group", icon: Briefcase },
-    { year: "2025", title: "Livro Publicado", description: "Publiquei meu primeiro livro sobre empreendedorismo e tecnologia", icon: BookOpen }
+    { year: "2024", title: "Werneck Group", description: "Assumi posição de liderança como Diretor Estratégico no Werneck Group", icon: Briefcase },
+    { year: "2025", title: "Warlocks & Rocketseat", description: "Criador verificado na Warlocks e Influencer Academy na Rocketseat", icon: Star },
+    { year: "2025", title: "Livro Publicado", description: "Publiquei meu primeiro livro sobre empreendedorismo e tecnologia", icon: BookOpen },
+    { year: "2026", title: "Noyevel & Splendori", description: "Diretor de Operações na Noyevel e Parceiro Estratégico na Splendori", icon: Award },
   ] : [
     { year: "2016", title: "First Steps", description: "Started exploring programming and technology out of curiosity", icon: Code2 },
-    { year: "2018", title: "First Project", description: "Developed my first complete web project for a real client", icon: Rocket },
+    { year: "2018", title: "Talisson Souza Media", description: "Founder and content creator focused on Games, with over 2.5K subscribers and 118K views", icon: Rocket },
     { year: "2020", title: "Cheetah Solutions Network", description: "Founded Cheetah Solutions Network, my first technology company", icon: TrendingUp },
     { year: "2022", title: "Specialization", description: "Focused on Full Stack development with React and Node.js", icon: Target },
-    { year: "2024", title: "Expansion", description: "Took leadership position at Werneck Group", icon: Briefcase },
-    { year: "2025", title: "Book Published", description: "Published my first book about entrepreneurship and technology", icon: BookOpen }
+    { year: "2024", title: "Werneck Group", description: "Took leadership position as Strategic Director at Werneck Group", icon: Briefcase },
+    { year: "2025", title: "Warlocks & Rocketseat", description: "Verified creator at Warlocks and Influencer Academy at Rocketseat", icon: Star },
+    { year: "2025", title: "Book Published", description: "Published my first book about entrepreneurship and technology", icon: BookOpen },
+    { year: "2026", title: "Noyevel & Splendori", description: "Operations Director at Noyevel and Strategic Partner at Splendori", icon: Award },
   ];
 
   // Hobbies and Interests
