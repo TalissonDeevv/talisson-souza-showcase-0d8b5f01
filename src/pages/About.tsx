@@ -41,10 +41,14 @@ Ultimately, my mission is to create solutions that truly make a difference, with
 
   const experiences = language === 'pt' ? [
     { company: "Cheetah Solutions Network", position: "CEO & Founder", period: "2020 - Presente", description: "Fundei e lidero a Cheetah Solutions Network, empresa especializada em soluções digitais." },
-    { company: "Werneck Group", position: "Diretor Estratégico", period: "2024 - Presente", description: "Direção estratégica em consultoria empresarial e gestão de operações." }
+    { company: "Werneck Group", position: "Diretor Estratégico", period: "2024 - Presente", description: "Direção estratégica em consultoria empresarial e gestão de operações." },
+    { company: "Splendori", position: "Parceiro Estratégico", period: "2026 - Presente", description: "Parceiro estratégico em iniciativas de tecnologia e desenvolvimento de produtos digitais." },
+    { company: "Noyevel", position: "Diretor de Operações", period: "2026 - Temporário", description: "Organização de processos internos, definição de KPIs e gestão de equipe." },
   ] : [
     { company: "Cheetah Solutions Network", position: "CEO & Founder", period: "2020 - Present", description: "Founded and lead Cheetah Solutions Network, a company specialized in digital solutions." },
-    { company: "Werneck Group", position: "Strategic Director", period: "2024 - Present", description: "Strategic direction in business consulting and operations management." }
+    { company: "Werneck Group", position: "Strategic Director", period: "2024 - Present", description: "Strategic direction in business consulting and operations management." },
+    { company: "Splendori", position: "Strategic Partner", period: "2026 - Present", description: "Strategic partner in technology initiatives and digital product development." },
+    { company: "Noyevel", position: "Operations Director", period: "2026 - Temporary", description: "Internal process organization, KPI definition and team management." },
   ];
 
   const values = language === 'pt' ? [
@@ -95,30 +99,34 @@ Ultimately, my mission is to create solutions that truly make a difference, with
   const stats = language === 'pt' ? [
     { value: yearsOfExperience, label: "Anos de experiência", icon: Clock },
     { value: "50+", label: "Projetos entregues", icon: Layers },
-    { value: "2", label: "Empresas fundadas", icon: TrendingUp },
+    { value: "4", label: "Empresas & Parcerias", icon: TrendingUp },
     { value: "1", label: "Livro publicado", icon: BookOpen }
   ] : [
     { value: yearsOfExperience, label: "Years of experience", icon: Clock },
     { value: "50+", label: "Projects delivered", icon: Layers },
-    { value: "2", label: "Companies founded", icon: TrendingUp },
+    { value: "4", label: "Companies & Partnerships", icon: TrendingUp },
     { value: "1", label: "Book published", icon: BookOpen }
   ];
 
   // Career Timeline Milestones
   const careerMilestones = language === 'pt' ? [
     { year: "2016", title: "Primeiros Passos", description: "Comecei a explorar programação e tecnologia por curiosidade", icon: Code2 },
-    { year: "2018", title: "Primeiro Projeto", description: "Desenvolvi meu primeiro projeto web completo para um cliente real", icon: Rocket },
+    { year: "2018", title: "Talisson Souza Mídia", description: "Fundador e criador de conteúdo focado em Games, com mais de 2,5 mil inscritos e 118 mil visualizações", icon: Rocket },
     { year: "2020", title: "Cheetah Solutions Network", description: "Fundei a Cheetah Solutions Network, minha primeira empresa de tecnologia", icon: TrendingUp },
     { year: "2022", title: "Especialização", description: "Foquei em desenvolvimento Full Stack com React e Node.js", icon: Target },
-    { year: "2024", title: "Expansão", description: "Assumi posição de liderança no Werneck Group", icon: Briefcase },
-    { year: "2025", title: "Livro Publicado", description: "Publiquei meu primeiro livro sobre empreendedorismo e tecnologia", icon: BookOpen }
+    { year: "2024", title: "Werneck Group", description: "Assumi posição de liderança como Diretor Estratégico no Werneck Group", icon: Briefcase },
+    { year: "2025", title: "Warlocks & Rocketseat", description: "Criador verificado na Warlocks e Influencer Academy na Rocketseat", icon: Star },
+    { year: "2025", title: "Livro Publicado", description: "Publiquei meu primeiro livro sobre empreendedorismo e tecnologia", icon: BookOpen },
+    { year: "2026", title: "Noyevel & Splendori", description: "Diretor de Operações na Noyevel e Parceiro Estratégico na Splendori", icon: Award },
   ] : [
     { year: "2016", title: "First Steps", description: "Started exploring programming and technology out of curiosity", icon: Code2 },
-    { year: "2018", title: "First Project", description: "Developed my first complete web project for a real client", icon: Rocket },
+    { year: "2018", title: "Talisson Souza Media", description: "Founder and content creator focused on Games, with over 2.5K subscribers and 118K views", icon: Rocket },
     { year: "2020", title: "Cheetah Solutions Network", description: "Founded Cheetah Solutions Network, my first technology company", icon: TrendingUp },
     { year: "2022", title: "Specialization", description: "Focused on Full Stack development with React and Node.js", icon: Target },
-    { year: "2024", title: "Expansion", description: "Took leadership position at Werneck Group", icon: Briefcase },
-    { year: "2025", title: "Book Published", description: "Published my first book about entrepreneurship and technology", icon: BookOpen }
+    { year: "2024", title: "Werneck Group", description: "Took leadership position as Strategic Director at Werneck Group", icon: Briefcase },
+    { year: "2025", title: "Warlocks & Rocketseat", description: "Verified creator at Warlocks and Influencer Academy at Rocketseat", icon: Star },
+    { year: "2025", title: "Book Published", description: "Published my first book about entrepreneurship and technology", icon: BookOpen },
+    { year: "2026", title: "Noyevel & Splendori", description: "Operations Director at Noyevel and Strategic Partner at Splendori", icon: Award },
   ];
 
   // Hobbies and Interests
