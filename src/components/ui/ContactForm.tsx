@@ -65,6 +65,8 @@ const ContactForm = () => {
       newErrors.captcha = language === 'pt' ? 'Resolva o captcha' : 'Solve the captcha';
     } else if (parseInt(captchaInput.trim()) !== captcha.answer) {
       newErrors.captcha = language === 'pt' ? 'Resposta incorreta' : 'Incorrect answer';
+      setCaptcha(generateCaptcha());
+      setCaptchaInput("");
     }
     
     setErrors(newErrors);
