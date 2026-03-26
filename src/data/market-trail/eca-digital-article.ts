@@ -6,8 +6,8 @@ export const ecaDigitalArticle: MarketTrailArticle[] = [
     slugPt: 'eca-digital-anpd-monitoramento',
     slugEn: 'eca-digital-anpd-monitoring',
     title: {
-      pt: 'ECA Digital e ANPD: O Que o Monitoramento de Plataformas Significa para o Ecossistema Tecnológico Brasileiro',
-      en: 'ECA Digital and ANPD: What Platform Monitoring Means for the Brazilian Tech Ecosystem',
+      pt: 'O Que o Monitoramento de Plataformas Significa para o Ecossistema Tecnológico Brasileiro',
+      en: 'What Platform Monitoring Means for the Brazilian Tech Ecosystem',
     },
     excerpt: {
       pt: 'Minha análise sobre a ação da ANPD no monitoramento do ECA Digital, o impacto em plataformas e empresas de games, o caso Felca como catalisador do debate, e por que considero esse movimento necessário para o amadurecimento do ecossistema digital brasileiro.',

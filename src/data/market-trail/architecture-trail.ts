@@ -6,8 +6,8 @@ export const architectureTrailArticles: MarketTrailArticle[] = [
     slugPt: 'infraestrutura-hospedagem',
     slugEn: 'infrastructure-hosting',
     title: {
-      pt: 'Infraestrutura e Hospedagem: Critérios Técnicos para Desenvolvedores e Empresas',
-      en: 'Infrastructure and Hosting: Technical Criteria for Developers and Companies',
+      pt: 'Critérios Técnicos para Desenvolvedores e Empresas',
+      en: 'Technical Criteria for Developers and Companies',
     },
     excerpt: {
       pt: 'Análise técnica e estratégica sobre infraestrutura e hospedagem para sites, bots e bancos de dados.',
@@ -30,7 +30,7 @@ export const architectureTrailArticles: MarketTrailArticle[] = [
         title: { pt: 'o que define uma infraestrutura profissional', en: 'what defines professional infrastructure' },
         content: {
           pt: 'Uma infraestrutura profissional se define por um conjunto de características que vão muito além de simplesmente manter um servidor funcionando. O primeiro pilar é a disponibilidade: a capacidade do sistema de permanecer acessível e funcional de forma contínua, com mecanismos de redundância e failover que minimizam o impacto de falhas individuais. O segundo pilar é a escalabilidade: a capacidade de absorver aumentos de demanda sem degradação significativa de performance, seja por escalonamento vertical (mais recursos no mesmo servidor) ou horizontal (mais servidores distribuindo a carga).\n\nO terceiro pilar é a segurança: desde a proteção física dos servidores até a implementação de firewalls, criptografia, controle de acesso e monitoramento de intrusões. O quarto pilar é a observabilidade: a capacidade de monitorar em tempo real o comportamento do sistema, identificar anomalias, gerar alertas automatizados e manter logs detalhados para diagnóstico de problemas. Esses quatro pilares formam a base sobre a qual toda decisão de infraestrutura deveria ser construída. Projetos que ignoram qualquer um deles estão assumindo riscos que podem ser aceitáveis em ambientes de desenvolvimento, mas que são inaceitáveis em produção.',
-          en: 'Professional infrastructure is defined by a set of characteristics that go far beyond simply keeping a server running. The first pillar is availability: the system\'s ability to remain accessible and functional continuously, with redundancy and failover mechanisms that minimize the impact of individual failures. The second pillar is scalability: the ability to absorb demand increases without significant performance degradation, whether through vertical scaling (more resources on the same server) or horizontal scaling (more servers distributing the load).\n\nThe third pillar is security: from physical server protection to implementing firewalls, encryption, access control, and intrusion monitoring. The fourth pillar is observability: the ability to monitor system behavior in real-time, identify anomalies, generate automated alerts, and maintain detailed logs for problem diagnosis. These four pillars form the foundation upon which every infrastructure decision should be built. Projects that ignore any of them are assuming risks that may be acceptable in development environments but are unacceptable in production.',
+          en: 'The system\'s ability to remain accessible and functional continuously, with redundancy and failover mechanisms that minimize the impact of individual failures. The second pillar is scalability: the ability to absorb demand increases without significant performance degradation, whether through vertical scaling (more resources on the same server) or horizontal scaling (more servers distributing the load).\n\nThe third pillar is security: from physical server protection to implementing firewalls, encryption, access control, and intrusion monitoring. The fourth pillar is observability: the ability to monitor system behavior in real-time, identify anomalies, generate automated alerts, and maintain detailed logs for problem diagnosis. These four pillars form the foundation upon which every infrastructure decision should be built. Projects that ignore any of them are assuming risks that may be acceptable in development environments but are unacceptable in production.',
         },
       },
       {
@@ -89,8 +89,8 @@ export const architectureTrailArticles: MarketTrailArticle[] = [
     slugPt: 'fundamentos-tecnologia',
     slugEn: 'tech-fundamentals',
     title: {
-      pt: 'Fundamentos de Tecnologia: A Lógica Por Trás dos Sistemas',
-      en: 'Technology Fundamentals: The Logic Behind Systems',
+      pt: 'A Lógica Por Trás dos Sistemas',
+      en: 'The Logic Behind Systems',
     },
     excerpt: {
       pt: 'Reflexão sobre a importância dos fundamentos de tecnologia, raciocínio lógico, arquitetura de sistemas e pensamento estruturado antes das ferramentas.',
