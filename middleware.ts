@@ -75,6 +75,14 @@ const STATIC_PAGES: Record<string, { pt: Omit<PageMeta, 'locale'>; en: Omit<Page
 // This covers ALL articles: regular + market trail + trail expansions
 const ARTICLE_META: Record<string, { pt: { title: string; description: string }; en: { title: string; description: string } }> = {
   // Regular articles
+  'por-que-devs-nao-crescem-financeiramente': {
+    pt: { title: 'Por Que a Maioria dos Desenvolvedores Não Consegue Crescer Financeiramente', description: 'Exploramos o paradoxo de desenvolvedores tecnicamente brilhantes que enfrentam estagnação financeira, focando em mentalidade e escolhas de carreira.' },
+    en: { title: 'Why Most Developers Fail to Grow Financially', description: 'We delve into the paradox of technically brilliant developers who face financial stagnation, focusing on mindset and career choices.' },
+  },
+  'why-devs-dont-grow-financially': {
+    pt: { title: 'Por Que a Maioria dos Desenvolvedores Não Consegue Crescer Financeiramente', description: 'Exploramos o paradoxo de desenvolvedores tecnicamente brilhantes que enfrentam estagnação financeira, focando em mentalidade e escolhas de carreira.' },
+    en: { title: 'Why Most Developers Fail to Grow Financially', description: 'We delve into the paradox of technically brilliant developers who face financial stagnation, focusing on mindset and career choices.' },
+  },
   'bots-discord': {
     pt: { title: 'Guia de Maturidade, Gestão e Segurança para Projetos de Bots no Discord', description: 'Guia completo sobre maturidade, gestão e segurança em projetos de bots no Discord.' },
     en: { title: 'Maturity, Management & Security Guide for Discord Bot Projects', description: 'A comprehensive guide on maturity, management and security in Discord bot projects.' },
