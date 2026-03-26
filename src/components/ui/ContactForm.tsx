@@ -60,6 +60,12 @@ const ContactForm = () => {
     } else if (formData.message.length > 5000) {
       newErrors.message = language === 'pt' ? 'Mensagem muito longa (máx. 5000)' : 'Message too long (max. 5000)';
     }
+
+    if (!captchaInput.trim()) {
+      newErrors.captcha = language === 'pt' ? 'Resolva o captcha' : 'Solve the captcha';
+    } else if (parseInt(captchaInput.trim()) !== captcha.answer) {
+      newErrors.captcha = language === 'pt' ? 'Resposta incorreta' : 'Incorrect answer';
+    }
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
