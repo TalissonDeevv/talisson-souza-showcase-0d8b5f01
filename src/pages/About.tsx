@@ -41,10 +41,14 @@ Ultimately, my mission is to create solutions that truly make a difference, with
 
   const experiences = language === 'pt' ? [
     { company: "Cheetah Solutions Network", position: "CEO & Founder", period: "2020 - Presente", description: "Fundei e lidero a Cheetah Solutions Network, empresa especializada em soluções digitais." },
-    { company: "Werneck Group", position: "Diretor Estratégico", period: "2024 - Presente", description: "Direção estratégica em consultoria empresarial e gestão de operações." }
+    { company: "Werneck Group", position: "Diretor Estratégico", period: "2024 - Presente", description: "Direção estratégica em consultoria empresarial e gestão de operações." },
+    { company: "Splendori", position: "Parceiro Estratégico", period: "2026 - Presente", description: "Parceiro estratégico em iniciativas de tecnologia e desenvolvimento de produtos digitais." },
+    { company: "Noyevel", position: "Diretor de Operações", period: "2026 - Temporário", description: "Organização de processos internos, definição de KPIs e gestão de equipe." },
   ] : [
     { company: "Cheetah Solutions Network", position: "CEO & Founder", period: "2020 - Present", description: "Founded and lead Cheetah Solutions Network, a company specialized in digital solutions." },
-    { company: "Werneck Group", position: "Strategic Director", period: "2024 - Present", description: "Strategic direction in business consulting and operations management." }
+    { company: "Werneck Group", position: "Strategic Director", period: "2024 - Present", description: "Strategic direction in business consulting and operations management." },
+    { company: "Splendori", position: "Strategic Partner", period: "2026 - Present", description: "Strategic partner in technology initiatives and digital product development." },
+    { company: "Noyevel", position: "Operations Director", period: "2026 - Temporary", description: "Internal process organization, KPI definition and team management." },
   ];
 
   const values = language === 'pt' ? [
