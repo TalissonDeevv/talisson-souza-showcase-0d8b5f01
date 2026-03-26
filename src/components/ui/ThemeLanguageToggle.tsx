@@ -13,7 +13,7 @@ const ThemeLanguageToggle = () => {
   const handleToggle = () => {
     const targetLang = language === 'pt' ? 'en' : 'pt';
     const equivalentRoute = getEquivalentRoute(location.pathname, targetLang);
-    navigate(equivalentRoute);
+    navigate(equivalentRoute, { state: { languageSwitch: true } });
   };
 
   return (
