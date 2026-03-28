@@ -1,10 +1,17 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
-import { Check, Send, AlertCircle, ShieldCheck, ChevronDown } from "lucide-react";
+import { Check, Send, AlertCircle, ShieldCheck } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 function generateCaptcha() {
   const ops = ['+', '-', '×'] as const;
@@ -128,11 +135,18 @@ const ContactForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name as keyof typeof errors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  const handleSelectChange = (field: keyof FormData, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    if (errors[field]) {
+      setErrors((prev) => ({ ...prev, [field]: undefined }));
     }
   };
 
@@ -190,9 +204,6 @@ const ContactForm = () => {
   const inputClass = (field: keyof FormData | 'captcha') =>
     `w-full px-4 py-3 border bg-background/50 text-foreground rounded-xl focus:outline-none focus:ring-2 focus:ring-foreground/10 focus:border-foreground/30 transition-all duration-300 placeholder:text-muted-foreground/50 ${errors[field] ? 'border-red-500/50' : 'border-border/30'}`;
 
-  const selectClass = (field: keyof FormData) =>
-    `w-full px-4 py-3 border bg-background/50 text-foreground rounded-xl focus:outline-none focus:ring-2 focus:ring-foreground/10 focus:border-foreground/30 transition-all duration-300 appearance-none cursor-pointer ${!formData[field] ? 'text-muted-foreground/50' : ''} ${errors[field] ? 'border-red-500/50' : 'border-border/30'}`;
-
   const ErrorMsg = ({ field }: { field: keyof FormData | 'captcha' }) =>
     errors[field] ? (
       <p className="text-red-400 text-xs mt-1 flex items-center gap-1">
@@ -201,11 +212,19 @@ const ContactForm = () => {
       </p>
     ) : null;
 
-  const SelectWrapper = ({ children }: { children: React.ReactNode }) => (
-    <div className="relative">
-      {children}
-      <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/50 pointer-events-none" />
-    </div>
+  const CustomSelect = ({ field, placeholder, options }: { field: keyof FormData; placeholder: string; options: string[] }) => (
+    <Select value={formData[field]} onValueChange={(val) => handleSelectChange(field, val)}>
+      <SelectTrigger className={`w-full px-4 py-3 h-auto border bg-background/50 text-foreground rounded-xl transition-all duration-300 ${!formData[field] ? 'text-muted-foreground/50' : ''} ${errors[field] ? 'border-red-500/50' : 'border-border/30'}`}>
+        <SelectValue placeholder={placeholder} />
+      </SelectTrigger>
+      <SelectContent className="bg-background border border-border/50 rounded-xl shadow-lg">
+        {options.map((opt) => (
+          <SelectItem key={opt} value={opt} className="cursor-pointer rounded-lg">
+            {opt}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
   );
 
   if (isSubmitted) {
@@ -277,79 +296,49 @@ const ContactForm = () => {
       {/* Row 3: Subject + Project Type */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-foreground text-sm font-medium mb-2" htmlFor="subject">
+          <label className="block text-foreground text-sm font-medium mb-2">
             {getText(language, 'Assunto', 'Subject')} <span className="text-red-400">*</span>
           </label>
-          <SelectWrapper>
-            <select id="subject" name="subject" value={formData.subject} onChange={handleChange} className={selectClass('subject')}>
-              <option value="">{getText(language, 'Selecione o assunto', 'Select subject')}</option>
-              {subjectOptions.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
-            </select>
-          </SelectWrapper>
+          <CustomSelect field="subject" placeholder={getText(language, 'Selecione o assunto', 'Select subject')} options={subjectOptions} />
           <ErrorMsg field="subject" />
         </div>
         <div>
-          <label className="block text-foreground text-sm font-medium mb-2" htmlFor="projectType">
+          <label className="block text-foreground text-sm font-medium mb-2">
             {getText(language, 'Tipo de projeto', 'Project type')}
           </label>
-          <SelectWrapper>
-            <select id="projectType" name="projectType" value={formData.projectType} onChange={handleChange} className={selectClass('projectType')}>
-              <option value="">{getText(language, 'Selecione o tipo', 'Select type')}</option>
-              {projectTypes.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
-            </select>
-          </SelectWrapper>
+          <CustomSelect field="projectType" placeholder={getText(language, 'Selecione o tipo', 'Select type')} options={projectTypes} />
         </div>
       </div>
 
       {/* Row 4: Budget + Timeline */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-foreground text-sm font-medium mb-2" htmlFor="budget">
+          <label className="block text-foreground text-sm font-medium mb-2">
             {getText(language, 'Orçamento estimado', 'Estimated budget')}
           </label>
-          <SelectWrapper>
-            <select id="budget" name="budget" value={formData.budget} onChange={handleChange} className={selectClass('budget')}>
-              <option value="">{getText(language, 'Selecione a faixa', 'Select range')}</option>
-              {budgetRanges.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
-            </select>
-          </SelectWrapper>
+          <CustomSelect field="budget" placeholder={getText(language, 'Selecione a faixa', 'Select range')} options={budgetRanges} />
         </div>
         <div>
-          <label className="block text-foreground text-sm font-medium mb-2" htmlFor="timeline">
+          <label className="block text-foreground text-sm font-medium mb-2">
             {getText(language, 'Prazo desejado', 'Desired timeline')}
           </label>
-          <SelectWrapper>
-            <select id="timeline" name="timeline" value={formData.timeline} onChange={handleChange} className={selectClass('timeline')}>
-              <option value="">{getText(language, 'Selecione o prazo', 'Select timeline')}</option>
-              {timelines.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
-            </select>
-          </SelectWrapper>
+          <CustomSelect field="timeline" placeholder={getText(language, 'Selecione o prazo', 'Select timeline')} options={timelines} />
         </div>
       </div>
 
       {/* Row 5: Preferred Contact + How Found */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-foreground text-sm font-medium mb-2" htmlFor="preferredContact">
+          <label className="block text-foreground text-sm font-medium mb-2">
             {getText(language, 'Contato preferido', 'Preferred contact')}
           </label>
-          <SelectWrapper>
-            <select id="preferredContact" name="preferredContact" value={formData.preferredContact} onChange={handleChange} className={selectClass('preferredContact')}>
-              <option value="">{getText(language, 'Selecione', 'Select')}</option>
-              {contactMethods.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
-            </select>
-          </SelectWrapper>
+          <CustomSelect field="preferredContact" placeholder={getText(language, 'Selecione', 'Select')} options={contactMethods} />
         </div>
         <div>
-          <label className="block text-foreground text-sm font-medium mb-2" htmlFor="howFound">
+          <label className="block text-foreground text-sm font-medium mb-2">
             {getText(language, 'Como me encontrou?', 'How did you find me?')}
           </label>
-          <SelectWrapper>
-            <select id="howFound" name="howFound" value={formData.howFound} onChange={handleChange} className={selectClass('howFound')}>
-              <option value="">{getText(language, 'Selecione', 'Select')}</option>
-              {howFoundOptions.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
-            </select>
-          </SelectWrapper>
+          <CustomSelect field="howFound" placeholder={getText(language, 'Selecione', 'Select')} options={howFoundOptions} />
         </div>
       </div>
 
