@@ -42,54 +42,7 @@ const Contact = () => {
     { label: getText(language, 'Domingo', 'Sunday'), value: getText(language, 'Fechado', 'Closed') }
   ];
 
-      answer: "O prazo varia conforme a complexidade. Um site institucional pode levar de 2 a 4 semanas. Sistemas mais complexos, como plataformas ou aplicativos, podem levar de 2 a 6 meses. Sempre defino prazos realistas após entender bem o escopo."
-    },
-    {
-      question: "Qual o valor de um projeto?",
-      answer: "Cada projeto é único. O investimento depende da complexidade, funcionalidades e prazo. Após nossa conversa inicial, envio uma proposta detalhada com escopo, cronograma e valores. Trabalho com projetos a partir de R$ 3.000."
-    },
-    {
-      question: "Como funciona o processo de trabalho?",
-      answer: "Começo com uma reunião de briefing para entender suas necessidades. Depois, apresento uma proposta com escopo e cronograma. Após aprovação, inicio o desenvolvimento com entregas parciais para validação. Ao final, faço a entrega com treinamento e suporte."
-    },
-    {
-      question: "Você oferece suporte após a entrega?",
-      answer: "Sim! Ofereço 30 dias de suporte gratuito para ajustes após a entrega. Também disponibilizo planos de manutenção mensal para atualizações, correções e melhorias contínuas."
-    },
-    {
-      question: "Trabalha com projetos fora do Brasil?",
-      answer: "Sim, atendo clientes de qualquer lugar do mundo. A comunicação pode ser em português ou inglês, e os pagamentos podem ser feitos via transferência internacional ou PayPal."
-    },
-    {
-      question: "Quais tecnologias você utiliza?",
-      answer: "Trabalho principalmente com React, TypeScript, Node.js, Python, PostgreSQL e serviços cloud como AWS e Vercel. Escolho a stack mais adequada para cada projeto, priorizando performance e escalabilidade."
-    }
-  ] : [
-    {
-      question: "How long does it take to develop a project?",
-      answer: "The timeline varies by complexity. An institutional website can take 2-4 weeks. More complex systems like platforms or apps can take 2-6 months. I always set realistic deadlines after fully understanding the scope."
-    },
-    {
-      question: "What is the cost of a project?",
-      answer: "Each project is unique. The investment depends on complexity, features, and timeline. After our initial conversation, I send a detailed proposal with scope, schedule, and pricing. I work on projects starting from $600."
-    },
-    {
-      question: "How does your work process function?",
-      answer: "I start with a briefing meeting to understand your needs. Then, I present a proposal with scope and timeline. After approval, I begin development with partial deliveries for validation. Finally, I deliver with training and support."
-    },
-    {
-      question: "Do you offer support after delivery?",
-      answer: "Yes! I offer 30 days of free support for adjustments after delivery. I also provide monthly maintenance plans for updates, fixes, and continuous improvements."
-    },
-    {
-      question: "Do you work with clients outside Brazil?",
-      answer: "Yes, I serve clients from anywhere in the world. Communication can be in Portuguese or English, and payments can be made via international transfer or PayPal."
-    },
-    {
-      question: "What technologies do you use?",
-      answer: "I mainly work with React, TypeScript, Node.js, Python, PostgreSQL, and cloud services like AWS and Vercel. I choose the most suitable stack for each project, prioritizing performance and scalability."
-    }
-  ];
+
 
   return (
     <Layout withPadding={false}>
