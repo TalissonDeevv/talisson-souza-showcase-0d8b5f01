@@ -346,23 +346,23 @@ const FAQ = () => {
         }
       >
         <div className="container mx-auto px-6 lg:px-8 relative">
-          <div className="max-w-4xl mx-auto space-y-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {categories.map((category, catIndex) => (
               <ScrollReveal key={catIndex} delay={catIndex * 0.05}>
                 <div
-                  className="relative p-8 lg:p-10 rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm"
+                  className="relative p-6 lg:p-8 rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm h-full"
                   style={{
                     boxShadow: '0 8px 40px hsl(var(--foreground) / 0.03)'
                   }}
                 >
-                  <div className="absolute top-0 left-0 w-16 h-16 border-l border-t border-foreground/[0.06] rounded-tl-3xl" />
-                  <div className="absolute bottom-0 right-0 w-16 h-16 border-r border-b border-foreground/[0.06] rounded-br-3xl" />
+                  <div className="absolute top-0 left-0 w-12 h-12 border-l border-t border-foreground/[0.06] rounded-tl-3xl" />
+                  <div className="absolute bottom-0 right-0 w-12 h-12 border-r border-b border-foreground/[0.06] rounded-br-3xl" />
 
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-9 h-9 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center">
                       <HelpCircle className="w-4 h-4 text-foreground/70" />
                     </div>
-                    <h2 className="font-serif text-xl lg:text-2xl text-foreground">
+                    <h2 className="font-serif text-lg lg:text-xl text-foreground">
                       {category.title}
                     </h2>
                   </div>
@@ -374,10 +374,10 @@ const FAQ = () => {
                         value={`cat-${catIndex}-q-${qIndex}`}
                         className="border-b border-border/30 last:border-b-0"
                       >
-                        <AccordionTrigger className="text-left py-5 text-foreground hover:no-underline hover:opacity-70 transition-opacity duration-200 text-sm font-medium gap-4">
+                        <AccordionTrigger className="text-left py-4 text-foreground hover:no-underline hover:opacity-70 transition-opacity duration-200 text-sm font-medium gap-4">
                           {item.q}
                         </AccordionTrigger>
-                        <AccordionContent className="pb-5 text-sm text-muted-foreground leading-relaxed">
+                        <AccordionContent className="pb-4 text-sm text-muted-foreground leading-relaxed">
                           {item.a}
                         </AccordionContent>
                       </AccordionItem>
