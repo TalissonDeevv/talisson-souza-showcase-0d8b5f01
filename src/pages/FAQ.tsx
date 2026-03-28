@@ -288,6 +288,27 @@ const FAQ = () => {
         },
       ]
     },
+    {
+      title: "Technology and technical decisions",
+      questions: [
+        {
+          q: "Why do you choose one technology over another?",
+          a: "Each project has different needs. I analyze performance, scalability, maintenance and cost requirements before defining the stack. I don't follow trends, I follow what best solves the client's problem."
+        },
+        {
+          q: "Do you work with WordPress or ready-made platforms?",
+          a: "No. My focus is custom development with proprietary code. This ensures full control over performance, security and scalability, something ready-made platforms cannot offer with the same quality."
+        },
+        {
+          q: "Are your projects responsive?",
+          a: "Yes. All projects I develop are responsive by default, working on desktop, tablet and mobile. User experience across different devices is a priority."
+        },
+        {
+          q: "How do you handle security in projects?",
+          a: "Security is addressed from the start of development. I apply best practices such as input validation, robust authentication, sensitive data encryption and the principle of least privilege for access and permissions."
+        },
+      ]
+    },
   ];
 
   const contactPath = language === 'en' ? '/en-us/contact' : '/contato';
