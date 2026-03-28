@@ -155,12 +155,12 @@ const Index = () => {
               transition={{ duration: 0.7, delay: 0.6 }}
               className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
 
-              <ContactDialog>
-                <button className="group inline-flex items-center gap-3 text-sm font-medium text-foreground px-8 py-3.5 rounded-full border border-foreground/20 bg-foreground/5 backdrop-blur-sm hover:bg-foreground/10 hover:border-foreground/40 hover:shadow-[0_0_30px_hsl(var(--foreground)/0.1)] transition-all duration-300">
-                  {t.hero.contact}
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </button>
-              </ContactDialog>
+              <Link
+                to={language === 'en' ? '/en-us/contact' : '/contato'}
+                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground px-8 py-3.5 rounded-full border border-foreground/20 bg-foreground/5 backdrop-blur-sm hover:bg-foreground/10 hover:border-foreground/40 hover:shadow-[0_0_30px_hsl(var(--foreground)/0.1)] transition-all duration-300">
+                {t.hero.contact}
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
               
               <Link
                 to={language === 'en' ? '/en-us/about' : '/sobre'}
@@ -1248,19 +1248,20 @@ const Index = () => {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                  <ContactDialog>
-                    <motion.button
+                  <Link
+                    to={language === 'en' ? '/en-us/contact' : '/contato'}
+                  >
+                    <motion.span
                       whileHover={{ scale: 1.02, y: -2 }}
                       whileTap={{ scale: 0.98 }}
                       className="group inline-flex items-center gap-3 px-8 py-4 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300"
                       style={{
                         boxShadow: '0 0 30px hsl(var(--foreground) / 0.2), 0 10px 40px hsl(var(--foreground) / 0.1)'
                       }}>
-
                       {t.cta.button}
                       <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </motion.button>
-                  </ContactDialog>
+                    </motion.span>
+                  </Link>
                   
                   <Link
                     to={language === 'en' ? '/en-us/projects' : '/projetos'}
