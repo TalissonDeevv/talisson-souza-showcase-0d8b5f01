@@ -30,7 +30,7 @@ const CompanyCard = ({ name, description, logo, index, skills }: CompanyCardProp
       <div className="grid grid-cols-1 gap-6">
         
         {/* Content */}
-        <div className="lg:col-span-7 flex flex-col justify-between">
+        <div className="flex flex-col justify-between">
           <div>
             <span className="text-xs text-muted-foreground mb-3 block font-mono">0{index + 1}</span>
             <h3 className="font-serif text-xl lg:text-2xl text-foreground mb-3 group-hover:text-foreground/80 transition-colors duration-300">
