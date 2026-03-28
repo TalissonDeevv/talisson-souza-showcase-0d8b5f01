@@ -148,7 +148,7 @@ const Footer = () => {
             © {currentYear} Talisson Souza
           </p>
           <p className="text-[10px] text-muted-foreground/40">
-            {getText(language, 'Feito com dedicação e muito café ☕', 'Made with dedication and lots of coffee ☕')}
+            {getText(language, 'Automações, arquitetura de sistemas e escalabilidade como base de cada projeto.', 'Automation, systems architecture and scalability as the foundation of every project.')}
           </p>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
