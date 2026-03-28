@@ -145,6 +145,27 @@ const FAQ = () => {
         },
       ]
     },
+    {
+      title: "Tecnologia e decisões técnicas",
+      questions: [
+        {
+          q: "Por que você escolhe uma tecnologia e não outra?",
+          a: "Cada projeto tem necessidades diferentes. Analiso requisitos de performance, escalabilidade, manutenção e custo antes de definir a stack. Não sigo modas, sigo o que resolve o problema do cliente da melhor forma."
+        },
+        {
+          q: "Você trabalha com WordPress ou plataformas prontas?",
+          a: "Não. Meu foco é desenvolvimento sob medida com código próprio. Isso garante controle total sobre performance, segurança e escalabilidade, algo que plataformas prontas não conseguem oferecer com a mesma qualidade."
+        },
+        {
+          q: "Seus projetos são responsivos?",
+          a: "Sim. Todos os projetos que desenvolvo são responsivos por padrão, funcionando em desktop, tablet e celular. A experiência do usuário em diferentes dispositivos é uma prioridade."
+        },
+        {
+          q: "Como você lida com segurança nos projetos?",
+          a: "Segurança é tratada desde o início do desenvolvimento. Aplico boas práticas como validação de entrada, autenticação robusta, criptografia de dados sensíveis e o princípio do menor privilégio em acessos e permissões."
+        },
+      ]
+    },
   ] : [
     {
       title: "About me and my journey",
@@ -264,6 +285,27 @@ const FAQ = () => {
         {
           q: "How does the first contact work?",
           a: "You send a message describing your need. I analyze it, ask complementary questions if necessary, and then send a proposal with scope, timeline and investment."
+        },
+      ]
+    },
+    {
+      title: "Technology and technical decisions",
+      questions: [
+        {
+          q: "Why do you choose one technology over another?",
+          a: "Each project has different needs. I analyze performance, scalability, maintenance and cost requirements before defining the stack. I don't follow trends, I follow what best solves the client's problem."
+        },
+        {
+          q: "Do you work with WordPress or ready-made platforms?",
+          a: "No. My focus is custom development with proprietary code. This ensures full control over performance, security and scalability, something ready-made platforms cannot offer with the same quality."
+        },
+        {
+          q: "Are your projects responsive?",
+          a: "Yes. All projects I develop are responsive by default, working on desktop, tablet and mobile. User experience across different devices is a priority."
+        },
+        {
+          q: "How do you handle security in projects?",
+          a: "Security is addressed from the start of development. I apply best practices such as input validation, robust authentication, sensitive data encryption and the principle of least privilege for access and permissions."
         },
       ]
     },
