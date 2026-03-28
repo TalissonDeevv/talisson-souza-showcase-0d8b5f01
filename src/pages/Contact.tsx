@@ -8,13 +8,7 @@ import SocialIcons from "@/components/ui/SocialIcons";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
-import { Mail, Phone, MapPin, ArrowUpRight, Send, MessageSquare, Clock, HelpCircle } from "lucide-react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Mail, Phone, MapPin, ArrowUpRight, Send, Clock } from "lucide-react";
 
 const Contact = () => {
   const { language } = useTheme();
