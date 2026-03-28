@@ -1,23 +1,17 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /_next/
 
-# Sitemap
 Sitemap: https://www.talissonsouza.com.br/sitemap.xml
 
-# Crawl-delay
 Crawl-delay: 1
 
-# Google
 User-agent: Googlebot
 Allow: /
 
-# Bing
 User-agent: Bingbot
 Allow: /
 
-# Social Media Bots
 User-agent: Twitterbot
 Allow: /
 
