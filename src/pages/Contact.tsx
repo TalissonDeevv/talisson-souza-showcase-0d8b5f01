@@ -42,9 +42,6 @@ const Contact = () => {
     { label: getText(language, 'Domingo', 'Sunday'), value: getText(language, 'Fechado', 'Closed') }
   ];
 
-  const faqItems = language === 'pt' ? [
-    {
-      question: "Quanto tempo leva para desenvolver um projeto?",
       answer: "O prazo varia conforme a complexidade. Um site institucional pode levar de 2 a 4 semanas. Sistemas mais complexos, como plataformas ou aplicativos, podem levar de 2 a 6 meses. Sempre defino prazos realistas após entender bem o escopo."
     },
     {
