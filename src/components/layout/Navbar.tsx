@@ -70,7 +70,7 @@ const Navbar = () => {
         { name: "Livro", path: "/livro" },
         { name: "Princípios", path: "/principios" },
         { name: "Checklists", path: "/checklists" },
-        ...trails.map((trail) => ({ name: trail.title.pt, path: trail.path.pt })),
+        
       ],
     },
   ] : [
@@ -82,7 +82,7 @@ const Navbar = () => {
         { name: "Book", path: "/en-us/book" },
         { name: "Principles", path: "/en-us/principles" },
         { name: "Checklists", path: "/en-us/checklists" },
-        ...trails.map((trail) => ({ name: trail.title.en, path: trail.path.en })),
+        
       ],
     },
   ];
