@@ -145,6 +145,27 @@ const FAQ = () => {
         },
       ]
     },
+    {
+      title: "Tecnologia e decisões técnicas",
+      questions: [
+        {
+          q: "Por que você escolhe uma tecnologia e não outra?",
+          a: "Cada projeto tem necessidades diferentes. Analiso requisitos de performance, escalabilidade, manutenção e custo antes de definir a stack. Não sigo modas, sigo o que resolve o problema do cliente da melhor forma."
+        },
+        {
+          q: "Você trabalha com WordPress ou plataformas prontas?",
+          a: "Não. Meu foco é desenvolvimento sob medida com código próprio. Isso garante controle total sobre performance, segurança e escalabilidade, algo que plataformas prontas não conseguem oferecer com a mesma qualidade."
+        },
+        {
+          q: "Seus projetos são responsivos?",
+          a: "Sim. Todos os projetos que desenvolvo são responsivos por padrão, funcionando em desktop, tablet e celular. A experiência do usuário em diferentes dispositivos é uma prioridade."
+        },
+        {
+          q: "Como você lida com segurança nos projetos?",
+          a: "Segurança é tratada desde o início do desenvolvimento. Aplico boas práticas como validação de entrada, autenticação robusta, criptografia de dados sensíveis e o princípio do menor privilégio em acessos e permissões."
+        },
+      ]
+    },
   ] : [
     {
       title: "About me and my journey",
