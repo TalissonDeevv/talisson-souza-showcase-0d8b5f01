@@ -123,6 +123,30 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
+    // Validação adicional de campos opcionais
+    if (phone && (typeof phone !== 'string' || phone.length > 30)) {
+      return new Response(
+        JSON.stringify({ error: "Telefone inválido" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    if (company && (typeof company !== 'string' || company.length > 100)) {
+      return new Response(
+        JSON.stringify({ error: "Nome da empresa muito longo" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    // Limitar tamanho de todos os campos de select para evitar payloads abusivos
+    const selectFields = [subject, projectType, budget, timeline, preferredContact, howFound];
+    if (selectFields.some(f => f && (typeof f !== 'string' || f.length > 100))) {
+      return new Response(
+        JSON.stringify({ error: "Campo inválido" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
     const detailRows = [
       buildInfoRow("Telefone / WhatsApp", phone),
       buildInfoRow("Empresa", company),
