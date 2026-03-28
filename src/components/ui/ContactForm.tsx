@@ -185,7 +185,7 @@ const ContactForm = () => {
         description: getText(language, "Entrarei em contato em breve.", "I'll get back to you soon."),
       });
 
-      setTimeout(() => setIsSubmitted(false), 5000);
+      
     } catch (error: any) {
       console.error('Error sending contact form:', error);
       toast({
