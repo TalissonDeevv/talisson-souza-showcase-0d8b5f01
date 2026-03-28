@@ -8,7 +8,7 @@ import SocialIcons from "@/components/ui/SocialIcons";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
-import { Mail, Phone, MapPin, ArrowUpRight, Send, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowUpRight, Send, Clock, MessageCircle, Users } from "lucide-react";
 
 const Contact = () => {
   const { language } = useTheme();
@@ -33,7 +33,19 @@ const Contact = () => {
       label: t.contact.location,
       value: "Recife, Pernambuco, Brasil",
       link: null
-    }
+    },
+    {
+      icon: Users,
+      label: getText(language, 'Servidor Discord', 'Discord Server'),
+      value: getText(language, 'Comunidade de tecnologia', 'Tech community'),
+      link: "https://discord.com/invite/WXwguHWjxg"
+    },
+    {
+      icon: MessageCircle,
+      label: getText(language, 'Canal no WhatsApp', 'WhatsApp Channel'),
+      value: getText(language, 'Conteúdo e novidades', 'Content and updates'),
+      link: "https://whatsapp.com/channel/0029Vb7TfXuLI8YWaMpsJ13v"
+    },
   ];
 
   const availabilityItems = [
