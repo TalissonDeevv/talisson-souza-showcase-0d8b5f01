@@ -69,6 +69,10 @@ const STATIC_PAGES: Record<string, { pt: Omit<PageMeta, 'locale'>; en: Omit<Page
     pt: { title: 'Livro | Talisson Souza', description: 'Conheça o livro de Talisson Souza sobre tecnologia e empreendedorismo digital.', type: 'website' },
     en: { title: 'Book | Talisson Souza', description: 'Discover the book by Talisson Souza about technology and digital entrepreneurship.', type: 'website' },
   },
+  '/faq': {
+    pt: { title: 'Perguntas Frequentes | Talisson Souza', description: 'Respostas para as dúvidas mais comuns sobre serviços, processo de trabalho, tecnologias, consultoria, comunidade e formas de contato com Talisson Souza.', type: 'website' },
+    en: { title: 'Frequently Asked Questions | Talisson Souza', description: 'Answers to the most common questions about services, work process, technologies, consulting, community and contact with Talisson Souza.', type: 'website' },
+  },
 };
 
 // ── Article metadata (slug → title/description per language) ──────────
