@@ -3,11 +3,21 @@ import { Resend } from "https://esm.sh/resend@2.0.0";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
-};
+const ALLOWED_ORIGINS = [
+  "https://www.talissonsouza.com.br",
+  "https://talissonsouza.com.br",
+];
+
+function getCorsHeaders(req: Request) {
+  const origin = req.headers.get("origin") || "";
+  const allowedOrigin = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+  return {
+    "Access-Control-Allow-Origin": allowedOrigin,
+    "Access-Control-Allow-Headers":
+      "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
+    "Vary": "Origin",
+  };
+}
 
 interface ContactRequest {
   name: string;
@@ -62,6 +72,8 @@ function buildInfoRow(label: string, value: string | null | undefined): string {
 }
 
 const handler = async (req: Request): Promise<Response> => {
+  const corsHeaders = getCorsHeaders(req);
+
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
@@ -107,6 +119,30 @@ const handler = async (req: Request): Promise<Response> => {
     if (message.length > 5000) {
       return new Response(
         JSON.stringify({ error: "Mensagem deve ter no máximo 5000 caracteres" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    // Validação adicional de campos opcionais
+    if (phone && (typeof phone !== 'string' || phone.length > 30)) {
+      return new Response(
+        JSON.stringify({ error: "Telefone inválido" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    if (company && (typeof company !== 'string' || company.length > 100)) {
+      return new Response(
+        JSON.stringify({ error: "Nome da empresa muito longo" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    // Limitar tamanho de todos os campos de select para evitar payloads abusivos
+    const selectFields = [subject, projectType, budget, timeline, preferredContact, howFound];
+    if (selectFields.some(f => f && (typeof f !== 'string' || f.length > 100))) {
+      return new Response(
+        JSON.stringify({ error: "Campo inválido" }),
         { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
