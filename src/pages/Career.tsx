@@ -766,11 +766,17 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
                       </p>
                       
                       <footer className="flex items-center gap-4">
-                        <img 
-                          src={testimonial.image} 
-                          alt={testimonial.name}
-                          className="w-12 h-12 rounded-xl object-cover border border-border/30"
-                        />
+                        {testimonial.image ? (
+                          <img 
+                            src={testimonial.image} 
+                            alt={testimonial.name}
+                            className="w-12 h-12 rounded-xl object-cover border border-border/30"
+                          />
+                        ) : (
+                          <div className="w-12 h-12 rounded-xl border border-border/30 bg-primary/10 flex items-center justify-center text-primary font-semibold text-sm">
+                            {testimonial.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                          </div>
+                        )}
                         <div>
                           <p className="text-sm font-medium text-foreground">{testimonial.name}</p>
                           <p className="text-xs text-muted-foreground/70">{testimonial.role}</p>
