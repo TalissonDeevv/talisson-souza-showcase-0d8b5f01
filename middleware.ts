@@ -73,6 +73,10 @@ const STATIC_PAGES: Record<string, { pt: Omit<PageMeta, 'locale'>; en: Omit<Page
     pt: { title: 'Perguntas Frequentes | Talisson Souza', description: 'Respostas para as dúvidas mais comuns sobre serviços, processo de trabalho, tecnologias, consultoria, comunidade e formas de contato com Talisson Souza.', type: 'website' },
     en: { title: 'Frequently Asked Questions | Talisson Souza', description: 'Answers to the most common questions about services, work process, technologies, consulting, community and contact with Talisson Souza.', type: 'website' },
   },
+  '/feedbacks': {
+    pt: { title: 'Feedbacks | Talisson Souza', description: 'Veja o que colegas, parceiros e clientes dizem sobre o trabalho de Talisson Souza. Feedbacks reais de quem já colaborou comigo.', type: 'website' },
+    en: { title: 'Feedbacks | Talisson Souza', description: 'See what colleagues, partners and clients say about Talisson Souza\'s work. Real feedback from people who have worked with me.', type: 'website' },
+  },
 };
 
 // ── Article metadata (slug → title/description per language) ──────────
