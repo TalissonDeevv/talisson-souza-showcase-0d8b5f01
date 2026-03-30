@@ -90,6 +90,7 @@ export const ptToEnRoutes: Record<string, string> = {
   '/artigos/eca-digital-anpd-monitoramento': '/en-us/articles/eca-digital-anpd-monitoring',
   '/politica-de-privacidade': '/en-us/privacy-policy',
   '/faq': '/en-us/faq',
+  '/feedbacks': '/en-us/feedbacks',
 };
 
 // Reverse mapping: English to Portuguese
