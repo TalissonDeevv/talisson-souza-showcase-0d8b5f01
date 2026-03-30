@@ -62,6 +62,7 @@ const AppRoutes = () => (
         <Route path="/artigos/:slug" element={<MarketTrailArticle />} />
         <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/feedbacks" element={<Feedbacks />} />
         
         <Route path="/en-us" element={<Index />} />
         <Route path="/en-us/about" element={<About />} />
