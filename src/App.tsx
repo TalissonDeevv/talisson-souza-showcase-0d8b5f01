@@ -28,6 +28,7 @@ import ChecklistDetail from "./pages/ChecklistDetail";
 import MarketTrailArticle from "./pages/articles/MarketTrailArticle";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import FAQ from "./pages/FAQ";
+import Feedbacks from "./pages/Feedbacks";
 
 const queryClient = new QueryClient();
 
