@@ -189,7 +189,7 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
       text: language === 'pt'
         ? "Talisson entende tanto o lado técnico quanto o de negócios. Sua organização e clareza na comunicação facilitam o trabalho em equipe. Sempre entrega com qualidade e no prazo."
         : "Talisson understands both the technical and business sides. His organization and clear communication make teamwork easier. Always delivers with quality and on time.",
-      image: ""
+      image: "https://i.ibb.co/SwqJmQt0/image.png"
     },
     {
       name: "Diogo Calmon",
@@ -197,7 +197,7 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
       text: language === 'pt'
         ? "Talisson tem domínio técnico sólido, visão de produto e dedicação impressionante. Um desenvolvedor que realmente faz a diferença em qualquer projeto."
         : "Talisson has solid technical skills, product vision and impressive dedication. A developer who truly makes a difference in any project.",
-      image: ""
+      image: "https://i.ibb.co/1tyf3c5V/image.png"
     }
   ];
 
