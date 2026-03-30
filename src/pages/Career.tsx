@@ -157,7 +157,7 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
       text: language === 'pt'
         ? "Recomendo os serviços de Talisson, pois acompanho de perto seu comprometimento, seriedade e dedicação em cada projeto. Seu trabalho é marcado pela qualidade, responsabilidade e foco em entregar sempre os melhores resultados. Sem dúvidas, uma escolha segura para quem busca excelência. :)"
         : "I recommend Talisson's services, as I closely follow his commitment, seriousness and dedication in every project. His work is marked by quality, responsibility and focus on always delivering the best results. Without a doubt, a safe choice for those seeking excellence. :)",
-      image: ""
+      image: "https://i.ibb.co/gFjVRgtr/image.png"
     },
     {
       name: "Rafael Araujo",
@@ -165,7 +165,7 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
       text: language === 'pt'
         ? "Tive a oportunidade de estudar ao lado do Talisson e posso afirmar que ele é uma pessoa extremamente dedicada e comprometida. Sua capacidade de liderança sempre se destacou, conduzindo o grupo de forma organizada e motivadora. Além disso, sua responsabilidade e disposição para colaborar fizeram toda diferença em diversos trabalhos em equipe. Sem dúvidas, é alguém que agrega muito valor em qualquer ambiente de estudo ou trabalho."
         : "I had the opportunity to study alongside Talisson and I can affirm that he is an extremely dedicated and committed person. His leadership ability always stood out, leading the group in an organized and motivating way. His responsibility and willingness to collaborate made all the difference in many team projects. Without a doubt, someone who adds great value in any study or work environment.",
-      image: ""
+      image: "https://i.ibb.co/My7YX5s4/image.png"
     },
     {
       name: "Davi R. Fraustino",
@@ -173,7 +173,7 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
       text: language === 'pt'
         ? "Tive a oportunidade de acompanhar o trabalho do Talisson, ele é um excelente profissional sendo capaz de unir conhecimento técnico em desenvolvimento full stack com visão estratégica de negócios. Ele sempre entrega soluções criativas e eficientes, sempre atento ao impacto real para clientes e equipes. Um profissional comprometido, resiliente e com grande potencial de liderança."
         : "I had the opportunity to follow Talisson's work, he is an excellent professional capable of combining technical knowledge in full stack development with strategic business vision. He always delivers creative and efficient solutions, always attentive to the real impact for clients and teams. A committed, resilient professional with great leadership potential.",
-      image: ""
+      image: "https://i.ibb.co/LDG4sdNM/image.png"
     },
     {
       name: "Anna Ishii",
@@ -181,7 +181,7 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
       text: language === 'pt'
         ? "Trabalhei com o Talisson em projetos estratégicos e posso dizer que ele é um profissional que entrega com excelência. Sua visão técnica aliada ao senso de negócio torna qualquer projeto mais robusto e bem direcionado. É alguém que inspira confiança e compromisso em tudo que faz."
         : "I worked with Talisson on strategic projects and I can say he is a professional who delivers with excellence. His technical vision combined with business sense makes any project more robust and well-directed. He is someone who inspires trust and commitment in everything he does.",
-      image: ""
+      image: "https://i.ibb.co/pjKpnWFq/image.png"
     }
   ];
 
