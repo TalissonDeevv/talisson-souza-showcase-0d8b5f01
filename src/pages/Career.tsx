@@ -187,16 +187,16 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
       name: "Caio Eduardo Ferreira Frederico",
       role: "Backend Developer",
       text: language === 'pt'
-        ? "Feedback em breve."
-        : "Feedback coming soon.",
+        ? "Talisson entende tanto o lado técnico quanto o de negócios. Sua organização e clareza na comunicação facilitam o trabalho em equipe. Sempre entrega com qualidade e no prazo."
+        : "Talisson understands both the technical and business sides. His organization and clear communication make teamwork easier. Always delivers with quality and on time.",
       image: ""
     },
     {
       name: "Diogo Calmon",
       role: "Full Stack Developer",
       text: language === 'pt'
-        ? "Feedback em breve."
-        : "Feedback coming soon.",
+        ? "Talisson tem domínio técnico sólido, visão de produto e dedicação impressionante. Um desenvolvedor que realmente faz a diferença em qualquer projeto."
+        : "Talisson has solid technical skills, product vision and impressive dedication. A developer who truly makes a difference in any project.",
       image: ""
     }
   ];
