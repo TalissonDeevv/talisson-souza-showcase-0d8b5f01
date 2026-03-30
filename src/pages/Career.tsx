@@ -182,6 +182,22 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
         ? "Trabalhei com o Talisson em projetos estratégicos e ele entrega com excelência. Sua visão técnica aliada ao senso de negócio torna qualquer projeto mais robusto. Inspira confiança e compromisso em tudo que faz."
         : "I worked with Talisson on strategic projects and he delivers with excellence. His technical vision combined with business sense makes any project more robust. He inspires trust and commitment in everything he does.",
       image: "https://i.ibb.co/pjKpnWFq/image.png"
+    },
+    {
+      name: "Caio Eduardo Ferreira Frederico",
+      role: "Backend Developer",
+      text: language === 'pt'
+        ? "Feedback em breve."
+        : "Feedback coming soon.",
+      image: ""
+    },
+    {
+      name: "Diogo Calmon",
+      role: "Full Stack Developer",
+      text: language === 'pt'
+        ? "Feedback em breve."
+        : "Feedback coming soon.",
+      image: ""
     }
   ];
 
