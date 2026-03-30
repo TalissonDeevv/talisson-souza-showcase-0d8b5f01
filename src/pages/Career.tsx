@@ -163,8 +163,6 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
   const companies = [
     { name: "Cheetah Solutions Network", description: language === 'pt' ? "Soluções digitais especializadas em desenvolvimento de bots e aplicações web." : "Digital solutions specialized in bot development and web applications.", logo: "https://i.ibb.co/0yQ0mnD6/bannercheetah2.png", role: "CEO & Founder" },
     { name: "Werneck Group", description: language === 'pt' ? "Consultoria estratégica especializada em transformação digital." : "Strategic consulting specialized in digital transformation.", logo: "https://i.ibb.co/YT7LK7Vc/bannerwerneck.jpg", role: getText(language, "Diretor Estratégico", "Strategic Director") },
-    { name: "Splendori", description: language === 'pt' ? "Parceiro estratégico em iniciativas de tecnologia e desenvolvimento de produtos digitais." : "Strategic partner in technology initiatives and digital product development.", logo: "", role: getText(language, "Parceiro Estratégico", "Strategic Partner") },
-    { name: "Noyevel", description: language === 'pt' ? "Organização de processos internos, KPIs e gestão de equipe." : "Internal process organization, KPIs and team management.", logo: "", role: getText(language, "Diretor de Operações", "Operations Director") }
   ];
 
   const discordCommunities = [
