@@ -31,6 +31,7 @@ const Footer = () => {
   { name: "Sobre", path: "/sobre" },
   { name: "Carreira", path: "/carreira" },
   { name: "Livro", path: "/livro" },
+  { name: "Feedbacks", path: "/feedbacks" },
   { name: "FAQ", path: "/faq" },
   { name: "Privacidade", path: "/politica-de-privacidade" }] :
   [
@@ -38,6 +39,7 @@ const Footer = () => {
   { name: "About", path: "/en-us/about" },
   { name: "Career", path: "/en-us/career" },
   { name: "Book", path: "/en-us/book" },
+  { name: "Feedbacks", path: "/en-us/feedbacks" },
   { name: "FAQ", path: "/en-us/faq" },
   { name: "Privacy", path: "/en-us/privacy-policy" }];
 
