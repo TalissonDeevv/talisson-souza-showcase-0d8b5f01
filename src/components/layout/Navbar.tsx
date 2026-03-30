@@ -71,6 +71,7 @@ const Navbar = () => {
         { name: "Princípios", path: "/principios" },
         { name: "Checklists", path: "/checklists" },
         { name: "FAQ", path: "/faq" },
+        { name: "Feedbacks", path: "/feedbacks" },
       ],
     },
   ] : [
