@@ -34,7 +34,8 @@ const Footer = () => {
   { name: "Livro", path: "/livro" },
   { name: "Feedbacks", path: "/feedbacks" },
   { name: "FAQ", path: "/faq" },
-  { name: "Privacidade", path: "/politica-de-privacidade" }] :
+  { name: "Privacidade", path: "/politica-de-privacidade" },
+  { name: "Políticas", path: "/politicas" }] :
   [
   { name: "Home", path: "/en-us" },
   { name: "About", path: "/en-us/about" },
@@ -42,7 +43,8 @@ const Footer = () => {
   { name: "Book", path: "/en-us/book" },
   { name: "Feedbacks", path: "/en-us/feedbacks" },
   { name: "FAQ", path: "/en-us/faq" },
-  { name: "Privacy", path: "/en-us/privacy-policy" }];
+  { name: "Privacy", path: "/en-us/privacy-policy" },
+  { name: "Policies", path: "/en-us/policies" }];
 
 
   const socialLinks = [

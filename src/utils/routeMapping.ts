@@ -91,6 +91,7 @@ export const ptToEnRoutes: Record<string, string> = {
   '/politica-de-privacidade': '/en-us/privacy-policy',
   '/faq': '/en-us/faq',
   '/feedbacks': '/en-us/feedbacks',
+  '/politicas': '/en-us/policies',
 };
 
 // Reverse mapping: English to Portuguese

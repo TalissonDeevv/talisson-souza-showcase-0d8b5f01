@@ -29,6 +29,7 @@ import MarketTrailArticle from "./pages/articles/MarketTrailArticle";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import FAQ from "./pages/FAQ";
 import Feedbacks from "./pages/Feedbacks";
+import Policies from "./pages/Policies";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +64,7 @@ const AppRoutes = () => (
         <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/feedbacks" element={<Feedbacks />} />
+        <Route path="/politicas" element={<Policies />} />
         
         <Route path="/en-us" element={<Index />} />
         <Route path="/en-us/about" element={<About />} />
@@ -87,6 +89,7 @@ const AppRoutes = () => (
         <Route path="/en-us/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/en-us/faq" element={<FAQ />} />
         <Route path="/en-us/feedbacks" element={<Feedbacks />} />
+        <Route path="/en-us/policies" element={<Policies />} />
         
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
