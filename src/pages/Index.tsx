@@ -1167,6 +1167,120 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Feedbacks Section */}
+      <ParallaxSection
+        className="py-16 lg:py-20"
+        speed={0.08}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="max-w-3xl mx-auto text-center mb-10">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+              >
+                Feedbacks
+              </motion.span>
+              <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-4 leading-tight">
+                {getText(language, 'O que dizem sobre mim', 'What people say about me')}
+              </h2>
+              <p className="text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
+                {getText(language,
+                  'Feedbacks reais de colegas e parceiros que já trabalharam comigo.',
+                  'Real feedback from colleagues and partners who have worked with me.'
+                )}
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              {
+                name: "Anna Ishii",
+                role: getText(language, 'Co-fundadora da Splendori', 'Co-founder of Splendori'),
+                text: getText(language,
+                  'Trabalhei com o Talisson em projetos estratégicos e ele entrega com excelência. Sua visão técnica aliada ao senso de negócio torna qualquer projeto mais robusto.',
+                  'I worked with Talisson on strategic projects and he delivers with excellence. His technical vision combined with business sense makes any project more robust.'
+                ),
+                image: "https://i.ibb.co/pjKpnWFq/image.png"
+              },
+              {
+                name: "Matheus Yuri Silva",
+                role: getText(language, 'Desenvolvedor de Software', 'Software Developer'),
+                text: getText(language,
+                  'Talisson demonstra uma combinação rara de expertise técnica e visão estratégica de negócios.',
+                  'Talisson demonstrates a rare combination of technical expertise and strategic business vision.'
+                ),
+                image: "https://i.ibb.co/V0P35B23/Matheus.jpg"
+              },
+              {
+                name: "Rafael Araujo",
+                role: "Web Developer",
+                text: getText(language,
+                  'Estudei ao lado do Talisson e posso afirmar que é extremamente dedicado. Sua liderança sempre se destacou, conduzindo o grupo de forma organizada e motivadora.',
+                  'I studied alongside Talisson and can affirm he is extremely dedicated. His leadership always stood out, leading the group in an organized and motivating way.'
+                ),
+                image: "https://i.ibb.co/My7YX5s4/image.png"
+              },
+              {
+                name: "Davi R. Fraustino",
+                role: getText(language, 'Estudante de Ciência da Computação', 'Computer Science Student'),
+                text: getText(language,
+                  'Talisson é um excelente profissional que une conhecimento técnico full stack com visão estratégica de negócios.',
+                  'Talisson is an excellent professional who combines full stack technical knowledge with strategic business vision.'
+                ),
+                image: "https://i.ibb.co/LDG4sdNM/image.png"
+              }
+            ].map((feedback, index) => (
+              <ScrollReveal key={index} delay={index * 0.08}>
+                <GlassCard className="p-6 h-full flex flex-col group hover:border-foreground/20 transition-all duration-500">
+                  <Quote className="w-4 h-4 text-muted-foreground/30 mb-3 shrink-0" />
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-grow italic">
+                    "{feedback.text}"
+                  </p>
+                  <div className="flex items-center gap-3 pt-4 border-t border-border/30">
+                    <img
+                      src={feedback.image}
+                      alt={feedback.name}
+                      className="w-9 h-9 rounded-full object-cover border border-border/40"
+                      loading="lazy"
+                    />
+                    <div>
+                      <p className="font-medium text-foreground text-sm">{feedback.name}</p>
+                      <p className="text-xs text-muted-foreground/70">{feedback.role}</p>
+                    </div>
+                  </div>
+                </GlassCard>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <ScrollReveal delay={0.3}>
+            <div className="text-center mt-10">
+              <Link
+                to={language === 'en' ? '/en-us/feedbacks' : '/feedbacks'}
+                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"
+              >
+                <span className="relative">
+                  {getText(language, 'Ver todos os feedbacks', 'View all feedbacks')}
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
+                  <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
+                </span>
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+              </Link>
+            </div>
+          </ScrollReveal>
+        </div>
+      </ParallaxSection>
+
       {/* FAQ - Premium */}
       <section className="py-20 lg:py-24 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
