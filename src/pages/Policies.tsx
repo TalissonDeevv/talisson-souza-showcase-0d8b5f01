@@ -1,57 +1,17 @@
-import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Menu, X, ChevronRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import SEO from '@/components/SEO';
+import PolicyLayout from '@/components/PolicyLayout';
 import { useTheme } from '@/contexts/ThemeContext';
 import { getText } from '@/utils/translations';
 import { policySections, policiesPageMeta } from '@/data/policies-content';
-import { cn } from '@/lib/utils';
 
 const Policies = () => {
   const { language } = useTheme();
-  const location = useLocation();
-  const [activeSection, setActiveSection] = useState(policySections[0].id);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
   const lang = language as 'pt' | 'en';
-
-  // Track active section on scroll
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter(e => e.isIntersecting);
-        if (visible.length > 0) {
-          setActiveSection(visible[0].target.id);
-        }
-      },
-      { rootMargin: '-80px 0px -60% 0px', threshold: 0.1 }
-    );
-
-    policySections.forEach(s => {
-      const el = document.getElementById(s.id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  // Handle hash on mount
-  useEffect(() => {
-    if (location.hash) {
-      const id = location.hash.replace('#', '');
-      setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-      }, 300);
-    }
-  }, [location.hash]);
-
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    setSidebarOpen(false);
-    window.history.replaceState(null, '', `#${id}`);
-  };
+  const basePath = lang === 'en' ? '/en-us/policies' : '/politicas';
 
   return (
     <Layout>
@@ -90,91 +50,32 @@ const Policies = () => {
             </div>
           </motion.div>
 
-          <div className="flex gap-8 lg:gap-12 pb-20 relative">
-            {/* Mobile sidebar toggle */}
-            <button
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="lg:hidden fixed bottom-6 right-6 z-50 bg-primary text-primary-foreground p-3 rounded-full shadow-lg"
-              aria-label="Toggle navigation"
-            >
-              {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-
-            {/* Sidebar */}
-            <nav
-              className={cn(
-                'lg:w-56 shrink-0 lg:sticky lg:top-28 lg:self-start lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto',
-                'fixed inset-0 z-40 bg-background/95 backdrop-blur-md lg:bg-transparent lg:backdrop-blur-none lg:relative lg:inset-auto',
-                'transition-transform duration-300 lg:transform-none',
-                sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
-              )}
-            >
-              <div className="p-6 lg:p-0 pt-20 lg:pt-0">
-                <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-4">
-                  {getText(language, 'Nesta página', 'On this page')}
-                </div>
-                <ul className="space-y-0.5">
-                  {policySections.map((section) => (
-                    <li key={section.id}>
-                      <button
-                        onClick={() => scrollTo(section.id)}
-                        className={cn(
-                          'w-full text-left py-2 px-3 rounded-md text-sm transition-all duration-200 block',
-                          activeSection === section.id
-                            ? 'text-foreground bg-secondary font-medium'
-                            : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
-                        )}
-                      >
-                        {section.title[lang]}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </nav>
-
-            {/* Main content */}
-            <main className="flex-1 min-w-0 max-w-3xl">
-              <div className="space-y-16">
-                {policySections.map((section, i) => (
-                  <motion.section
-                    key={section.id}
-                    id={section.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-50px' }}
-                    transition={{ duration: 0.4, delay: i * 0.05 }}
+          <PolicyLayout>
+            <div className="space-y-6">
+              {policySections.map((section, i) => (
+                <motion.div
+                  key={section.id}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-30px' }}
+                  transition={{ duration: 0.35, delay: i * 0.04 }}
+                >
+                  <Link
+                    to={`${basePath}/${section.id}`}
+                    className="block p-5 lg:p-6 rounded-lg border border-border bg-card hover:bg-secondary/40 transition-all duration-200 group"
                   >
-                    {/* Section divider */}
-                    {i > 0 && <div className="border-t border-border mb-10" />}
-
-                    <h2 className="text-xl lg:text-2xl font-semibold tracking-tight mb-6">
+                    <h2 className="text-lg font-semibold tracking-tight mb-2 group-hover:text-primary transition-colors flex items-center justify-between">
                       {section.title[lang]}
+                      <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground group-hover:translate-x-1 transition-all" />
                     </h2>
-
-                    <div className="space-y-4">
-                      {section.paragraphs.map((p, j) => (
-                        <p key={j} className="text-muted-foreground leading-[1.8] text-[15px]">
-                          {p[lang]}
-                        </p>
-                      ))}
-                    </div>
-
-                    {section.items && section.items.length > 0 && (
-                      <ul className="mt-6 space-y-3">
-                        {section.items.map((item, k) => (
-                          <li key={k} className="flex items-start gap-3 text-[15px]">
-                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                            <span className="text-muted-foreground leading-relaxed">{item[lang]}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </motion.section>
-                ))}
-              </div>
-            </main>
-          </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
+                      {section.paragraphs[0][lang]}
+                    </p>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </PolicyLayout>
         </div>
       </div>
     </Layout>

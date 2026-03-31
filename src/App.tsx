@@ -30,6 +30,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import FAQ from "./pages/FAQ";
 import Feedbacks from "./pages/Feedbacks";
 import Policies from "./pages/Policies";
+import PolicyDetail from "./pages/PolicyDetail";
 
 const queryClient = new QueryClient();
 
@@ -65,6 +66,7 @@ const AppRoutes = () => (
         <Route path="/faq" element={<FAQ />} />
         <Route path="/feedbacks" element={<Feedbacks />} />
         <Route path="/politicas" element={<Policies />} />
+        <Route path="/politicas/:sectionId" element={<PolicyDetail />} />
         
         <Route path="/en-us" element={<Index />} />
         <Route path="/en-us/about" element={<About />} />
@@ -90,6 +92,7 @@ const AppRoutes = () => (
         <Route path="/en-us/faq" element={<FAQ />} />
         <Route path="/en-us/feedbacks" element={<Feedbacks />} />
         <Route path="/en-us/policies" element={<Policies />} />
+        <Route path="/en-us/policies/:sectionId" element={<PolicyDetail />} />
         
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
