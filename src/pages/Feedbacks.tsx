@@ -175,37 +175,39 @@ const Feedbacks = () => {
       </section>
 
       {/* Feedbacks Grid */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24" aria-label={getText(language, 'Depoimentos e avaliações', 'Testimonials and reviews')}>
         <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {feedbacks.map((feedback, index) => (
               <ScrollReveal key={index} delay={index * 0.08}>
-                <GlassCard className="p-6 md:p-8 h-full flex flex-col">
-                  <Quote className="w-5 h-5 text-muted-foreground/30 mb-4 shrink-0" />
+                <article aria-label={getText(language, `Depoimento de ${feedback.name}`, `Testimonial from ${feedback.name}`)}>
+                  <GlassCard className="p-6 md:p-8 h-full flex flex-col">
+                    <Quote className="w-5 h-5 text-muted-foreground/30 mb-4 shrink-0" aria-hidden="true" />
 
-                  <p className="text-muted-foreground leading-relaxed mb-6 flex-grow italic text-sm">
-                    "{feedback.text}"
-                  </p>
+                    <blockquote className="text-muted-foreground leading-relaxed mb-6 flex-grow italic text-sm">
+                      "{feedback.text}"
+                    </blockquote>
 
-                  <div className="flex items-center gap-4 pt-4 border-t border-border/30">
-                    {feedback.image ? (
-                      <img
-                        src={feedback.image}
-                        alt={feedback.name}
-                        className="w-10 h-10 rounded-full object-cover border border-border/40"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-10 h-10 rounded-full bg-muted/50 flex items-center justify-center text-muted-foreground font-medium text-sm border border-border/40">
-                        {feedback.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                    <footer className="flex items-center gap-4 pt-4 border-t border-border/30">
+                      {feedback.image ? (
+                        <img
+                          src={feedback.image}
+                          alt={feedback.name}
+                          className="w-10 h-10 rounded-full object-cover border border-border/40"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="w-10 h-10 rounded-full bg-muted/50 flex items-center justify-center text-muted-foreground font-medium text-sm border border-border/40" aria-hidden="true">
+                          {feedback.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                        </div>
+                      )}
+                      <div>
+                        <cite className="font-medium text-foreground text-sm not-italic block">{feedback.name}</cite>
+                        <p className="text-xs text-muted-foreground/70">{feedback.role}</p>
                       </div>
-                    )}
-                    <div>
-                      <p className="font-medium text-foreground text-sm">{feedback.name}</p>
-                      <p className="text-xs text-muted-foreground/70">{feedback.role}</p>
-                    </div>
-                  </div>
-                </GlassCard>
+                    </footer>
+                  </GlassCard>
+                </article>
               </ScrollReveal>
             ))}
           </div>
