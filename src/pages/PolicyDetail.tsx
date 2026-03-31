@@ -59,7 +59,7 @@ const PolicyDetail = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <h1 className="text-3xl lg:text-4xl font-bold tracking-tight mb-8">
+              <h1 className="text-3xl lg:text-4xl font-bold tracking-tight mb-10">
                 {section.title[lang]}
               </h1>
 
@@ -70,17 +70,6 @@ const PolicyDetail = () => {
                   </p>
                 ))}
               </div>
-
-              {section.items && section.items.length > 0 && (
-                <ul className="mt-8 space-y-4">
-                  {section.items.map((item, k) => (
-                    <li key={k} className="flex items-start gap-3 text-base lg:text-[17px]">
-                      <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                      <span className="text-muted-foreground leading-relaxed">{item[lang]}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
 
               {/* Prev / Next navigation */}
               <div className="mt-16 pt-8 border-t border-border flex items-center justify-between gap-4">
