@@ -3,7 +3,7 @@ import { useState, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
-import { Play, Pause, Music, ArrowUp } from "lucide-react";
+import { Play, Pause, Music, ArrowUp, Star } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
