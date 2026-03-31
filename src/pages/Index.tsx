@@ -1267,14 +1267,10 @@ const Index = () => {
             <div className="text-center mt-10">
               <Link
                 to={language === 'en' ? '/en-us/feedbacks' : '/feedbacks'}
-                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"
+                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground px-8 py-3.5 rounded-full border border-foreground/20 bg-foreground/5 backdrop-blur-sm hover:bg-foreground/10 hover:border-foreground/40 hover:shadow-[0_0_30px_hsl(var(--foreground)/0.1)] transition-all duration-300"
               >
-                <span className="relative">
-                  {getText(language, 'Ver todos os feedbacks', 'View all feedbacks')}
-                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
-                  <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
-                </span>
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+                {getText(language, 'Ver todos os feedbacks', 'View all feedbacks')}
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
           </ScrollReveal>
