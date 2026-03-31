@@ -30,6 +30,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import FAQ from "./pages/FAQ";
 import Feedbacks from "./pages/Feedbacks";
 import Policies from "./pages/Policies";
+import PolicyDetail from "./pages/PolicyDetail";
 
 const queryClient = new QueryClient();
 
