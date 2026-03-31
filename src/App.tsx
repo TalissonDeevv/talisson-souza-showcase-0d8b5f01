@@ -29,6 +29,7 @@ import MarketTrailArticle from "./pages/articles/MarketTrailArticle";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import FAQ from "./pages/FAQ";
 import Feedbacks from "./pages/Feedbacks";
+import Policies from "./pages/Policies";
 
 const queryClient = new QueryClient();
 
