@@ -34,7 +34,8 @@ const Footer = () => {
   { name: "Livro", path: "/livro" },
   { name: "Feedbacks", path: "/feedbacks" },
   { name: "FAQ", path: "/faq" },
-  { name: "Privacidade", path: "/politica-de-privacidade" }] :
+  { name: "Privacidade", path: "/politica-de-privacidade" },
+  { name: "Políticas", path: "/politicas" }] :
   [
   { name: "Home", path: "/en-us" },
   { name: "About", path: "/en-us/about" },
