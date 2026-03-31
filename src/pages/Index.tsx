@@ -962,7 +962,7 @@ const Index = () => {
             {
               title: getText(language, 'Como Trabalho', 'How I Work'),
               description: getText(language, 'Meu processo de desenvolvimento, validação de escopo e gestão de riscos.', 'My development process, scope validation and risk management.'),
-              path: language === 'en' ? '/en-us/how-i-work' : '/como-trabalho'
+              path: language === 'en' ? '/en-us/policies/como-trabalho' : '/politicas/como-trabalho'
             },
             {
               title: getText(language, 'Decisões Técnicas', 'Tech Decisions'),
