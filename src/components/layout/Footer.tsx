@@ -146,21 +146,57 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="py-4 border-t border-border/20 flex items-center justify-between">
-          <p className="text-[10px] text-muted-foreground/50">
-            © {currentYear} Talisson Souza
-          </p>
-          <p className="text-[10px] text-muted-foreground/40">
-            {getText(language, 'Automações, arquitetura de sistemas e escalabilidade como base de cada projeto.', 'Automation, systems architecture and scalability as the foundation of every project.')}
-          </p>
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="p-1.5 rounded-full border border-border/30 hover:border-border/60 text-muted-foreground/50 hover:text-foreground transition-all duration-200"
-            aria-label="Back to top">
-            
-            <ArrowUp className="w-3 h-3" />
-          </button>
+        {/* Reputation + Bottom bar */}
+        <div className="py-5 border-t border-border/20 space-y-4">
+          {/* Stars reputation */}
+          <Link
+            to={language === 'en' ? '/en-us/feedbacks' : '/feedbacks'}
+            className="group flex items-center justify-center gap-3 py-2"
+          >
+            <div className="flex items-center gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+              ))}
+            </div>
+            <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors duration-200">
+              5.0 — 8 {getText(language, 'avaliações reais', 'real reviews')}
+            </span>
+            <div className="flex -space-x-1.5">
+              {[
+                "https://i.ibb.co/pjKpnWFq/image.png",
+                "https://i.ibb.co/V0P35B23/Matheus.jpg",
+                "https://i.ibb.co/My7YX5s4/image.png",
+                "https://i.ibb.co/gFjVRgtr/image.png"
+              ].map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt=""
+                  className="w-5 h-5 rounded-full object-cover border border-background"
+                  loading="lazy"
+                />
+              ))}
+              <div className="w-5 h-5 rounded-full bg-muted/60 border border-background flex items-center justify-center">
+                <span className="text-[8px] text-muted-foreground font-medium">+4</span>
+              </div>
+            </div>
+          </Link>
+
+          {/* Bottom row */}
+          <div className="flex items-center justify-between">
+            <p className="text-[10px] text-muted-foreground/50">
+              © {currentYear} Talisson Souza
+            </p>
+            <p className="text-[10px] text-muted-foreground/40">
+              {getText(language, 'Automações, arquitetura de sistemas e escalabilidade como base de cada projeto.', 'Automation, systems architecture and scalability as the foundation of every project.')}
+            </p>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="p-1.5 rounded-full border border-border/30 hover:border-border/60 text-muted-foreground/50 hover:text-foreground transition-all duration-200"
+              aria-label="Back to top">
+              <ArrowUp className="w-3 h-3" />
+            </button>
+          </div>
         </div>
       </div>
     </footer>);
