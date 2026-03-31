@@ -5,6 +5,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import { Play, Pause, Music, ArrowUp, Star } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { feedbacks } from "@/data/feedbacks";
 
 const Footer = () => {
   const { language } = useTheme();
@@ -159,26 +160,23 @@ const Footer = () => {
               ))}
             </div>
             <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors duration-200">
-              5.0 — 8 {getText(language, 'avaliações reais', 'real reviews')}
+              5.0 — {feedbacks.length} {getText(language, 'avaliações reais', 'real reviews')}
             </span>
             <div className="flex -space-x-1.5">
-              {[
-                "https://i.ibb.co/pjKpnWFq/image.png",
-                "https://i.ibb.co/V0P35B23/Matheus.jpg",
-                "https://i.ibb.co/My7YX5s4/image.png",
-                "https://i.ibb.co/gFjVRgtr/image.png"
-              ].map((src, i) => (
+              {feedbacks.slice(0, 4).map((fb, i) => (
                 <img
                   key={i}
-                  src={src}
+                  src={fb.image}
                   alt=""
                   className="w-5 h-5 rounded-full object-cover border border-background"
                   loading="lazy"
                 />
               ))}
-              <div className="w-5 h-5 rounded-full bg-muted/60 border border-background flex items-center justify-center">
-                <span className="text-[8px] text-muted-foreground font-medium">+4</span>
-              </div>
+              {feedbacks.length > 4 && (
+                <div className="w-5 h-5 rounded-full bg-muted/60 border border-background flex items-center justify-center">
+                  <span className="text-[8px] text-muted-foreground font-medium">+{feedbacks.length - 4}</span>
+                </div>
+              )}
             </div>
           </Link>
 
