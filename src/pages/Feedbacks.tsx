@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -79,6 +80,38 @@ const Feedbacks = () => {
     }
   ];
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Talisson Souza",
+    "url": "https://www.talissonsouza.com.br",
+    "jobTitle": language === 'pt' ? "Desenvolvedor Full Stack & CEO" : "Full Stack Developer & CEO",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Cheetah Solutions Network"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "bestRating": "5",
+      "worstRating": "1",
+      "reviewCount": String(feedbacks.length)
+    },
+    "review": feedbacks.map((fb) => ({
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": fb.name
+      },
+      "reviewBody": fb.text,
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      }
+    }))
+  };
+
   return (
     <Layout withPadding={false}>
       <SEO
@@ -88,9 +121,12 @@ const Feedbacks = () => {
           : "See what colleagues, partners and clients say about Talisson Souza's work. Real feedback from people who have worked with me."}
         canonical={language === 'en' ? '/en-us/feedbacks' : '/feedbacks'}
         keywords={language === 'pt'
-          ? ['feedbacks', 'depoimentos', 'recomendações', 'Talisson Souza', 'desenvolvedor']
-          : ['feedbacks', 'testimonials', 'recommendations', 'Talisson Souza', 'developer']}
+          ? ['feedbacks', 'depoimentos', 'recomendações', 'avaliações Talisson Souza', 'reputação Talisson Souza', 'reviews Talisson Souza']
+          : ['feedbacks', 'testimonials', 'recommendations', 'Talisson Souza reviews', 'Talisson Souza reputation']}
       />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
 
       {/* Hero Section */}
       <section className="min-h-[50vh] flex items-center relative overflow-hidden pt-24 pb-16">
@@ -139,37 +175,39 @@ const Feedbacks = () => {
       </section>
 
       {/* Feedbacks Grid */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24" aria-label={getText(language, 'Depoimentos e avaliações', 'Testimonials and reviews')}>
         <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {feedbacks.map((feedback, index) => (
               <ScrollReveal key={index} delay={index * 0.08}>
-                <GlassCard className="p-6 md:p-8 h-full flex flex-col">
-                  <Quote className="w-5 h-5 text-muted-foreground/30 mb-4 shrink-0" />
+                <article aria-label={getText(language, `Depoimento de ${feedback.name}`, `Testimonial from ${feedback.name}`)}>
+                  <GlassCard className="p-6 md:p-8 h-full flex flex-col">
+                    <Quote className="w-5 h-5 text-muted-foreground/30 mb-4 shrink-0" aria-hidden="true" />
 
-                  <p className="text-muted-foreground leading-relaxed mb-6 flex-grow italic text-sm">
-                    "{feedback.text}"
-                  </p>
+                    <blockquote className="text-muted-foreground leading-relaxed mb-6 flex-grow italic text-sm">
+                      "{feedback.text}"
+                    </blockquote>
 
-                  <div className="flex items-center gap-4 pt-4 border-t border-border/30">
-                    {feedback.image ? (
-                      <img
-                        src={feedback.image}
-                        alt={feedback.name}
-                        className="w-10 h-10 rounded-full object-cover border border-border/40"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-10 h-10 rounded-full bg-muted/50 flex items-center justify-center text-muted-foreground font-medium text-sm border border-border/40">
-                        {feedback.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                    <footer className="flex items-center gap-4 pt-4 border-t border-border/30">
+                      {feedback.image ? (
+                        <img
+                          src={feedback.image}
+                          alt={feedback.name}
+                          className="w-10 h-10 rounded-full object-cover border border-border/40"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="w-10 h-10 rounded-full bg-muted/50 flex items-center justify-center text-muted-foreground font-medium text-sm border border-border/40" aria-hidden="true">
+                          {feedback.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                        </div>
+                      )}
+                      <div>
+                        <cite className="font-medium text-foreground text-sm not-italic block">{feedback.name}</cite>
+                        <p className="text-xs text-muted-foreground/70">{feedback.role}</p>
                       </div>
-                    )}
-                    <div>
-                      <p className="font-medium text-foreground text-sm">{feedback.name}</p>
-                      <p className="text-xs text-muted-foreground/70">{feedback.role}</p>
-                    </div>
-                  </div>
-                </GlassCard>
+                    </footer>
+                  </GlassCard>
+                </article>
               </ScrollReveal>
             ))}
           </div>
