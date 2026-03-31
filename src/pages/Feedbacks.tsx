@@ -80,6 +80,38 @@ const Feedbacks = () => {
     }
   ];
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Talisson Souza",
+    "url": "https://www.talissonsouza.com.br",
+    "jobTitle": language === 'pt' ? "Desenvolvedor Full Stack & CEO" : "Full Stack Developer & CEO",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Cheetah Solutions Network"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "bestRating": "5",
+      "worstRating": "1",
+      "reviewCount": String(feedbacks.length)
+    },
+    "review": feedbacks.map((fb) => ({
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": fb.name
+      },
+      "reviewBody": fb.text,
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      }
+    }))
+  };
+
   return (
     <Layout withPadding={false}>
       <SEO
@@ -89,9 +121,12 @@ const Feedbacks = () => {
           : "See what colleagues, partners and clients say about Talisson Souza's work. Real feedback from people who have worked with me."}
         canonical={language === 'en' ? '/en-us/feedbacks' : '/feedbacks'}
         keywords={language === 'pt'
-          ? ['feedbacks', 'depoimentos', 'recomendações', 'Talisson Souza', 'desenvolvedor']
-          : ['feedbacks', 'testimonials', 'recommendations', 'Talisson Souza', 'developer']}
+          ? ['feedbacks', 'depoimentos', 'recomendações', 'avaliações Talisson Souza', 'reputação Talisson Souza', 'reviews Talisson Souza']
+          : ['feedbacks', 'testimonials', 'recommendations', 'Talisson Souza reviews', 'Talisson Souza reputation']}
       />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
 
       {/* Hero Section */}
       <section className="min-h-[50vh] flex items-center relative overflow-hidden pt-24 pb-16">
