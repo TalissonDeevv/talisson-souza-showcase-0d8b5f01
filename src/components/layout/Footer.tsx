@@ -43,7 +43,8 @@ const Footer = () => {
   { name: "Book", path: "/en-us/book" },
   { name: "Feedbacks", path: "/en-us/feedbacks" },
   { name: "FAQ", path: "/en-us/faq" },
-  { name: "Privacy", path: "/en-us/privacy-policy" }];
+  { name: "Privacy", path: "/en-us/privacy-policy" },
+  { name: "Policies", path: "/en-us/policies" }];
 
 
   const socialLinks = [
