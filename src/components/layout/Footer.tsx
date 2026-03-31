@@ -5,6 +5,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import { Play, Pause, Music, ArrowUp, Star } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { feedbacks } from "@/data/feedbacks";
 
 const Footer = () => {
   const { language } = useTheme();

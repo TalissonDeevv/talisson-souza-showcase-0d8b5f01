@@ -9,76 +9,18 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Quote } from "lucide-react";
+import { feedbacks as feedbacksData } from "@/data/feedbacks";
 
 const Feedbacks = () => {
   const { language } = useTheme();
+  const lang = language === 'pt' ? 'pt' : 'en';
 
-  const feedbacks = [
-    {
-      name: "Priscila Suanne",
-      role: language === 'pt' ? "Desenvolvedora Back End" : "Back End Developer",
-      text: language === 'pt'
-        ? "Tive o prazer de trabalhar com Thalisson, um profissional extremamente comprometido, resiliente e dedicado em tudo o que faz."
-        : "I had the pleasure of working with Thalisson, an extremely committed, resilient and dedicated professional in everything he does.",
-      image: "https://i.ibb.co/zWp10rhx/Priscila.jpg"
-    },
-    {
-      name: "Matheus Yuri Silva",
-      role: language === 'pt' ? "Desenvolvedor de Software" : "Software Developer",
-      text: language === 'pt'
-        ? "Talisson demonstra uma combinação rara de expertise técnica e visão estratégica de negócios."
-        : "Talisson demonstrates a rare combination of technical expertise and strategic business vision.",
-      image: "https://i.ibb.co/V0P35B23/Matheus.jpg"
-    },
-    {
-      name: "Camile Vitória Barros",
-      role: language === 'pt' ? "Assistente de Suporte Administrativo" : "Administrative Support Assistant",
-      text: language === 'pt'
-        ? "Acompanho de perto o comprometimento e dedicação do Talisson em cada projeto. Trabalho marcado pela qualidade e foco em entregar os melhores resultados. Uma escolha segura para quem busca excelência. :)"
-        : "I closely follow Talisson's commitment and dedication in every project. Work marked by quality and focus on delivering the best results. A safe choice for those seeking excellence. :)",
-      image: "https://i.ibb.co/gFjVRgtr/image.png"
-    },
-    {
-      name: "Rafael Araujo",
-      role: "Web Developer",
-      text: language === 'pt'
-        ? "Estudei ao lado do Talisson e posso afirmar que é extremamente dedicado. Sua liderança sempre se destacou, conduzindo o grupo de forma organizada e motivadora. Sua disposição para colaborar fez toda diferença nos trabalhos em equipe. Agrega muito valor em qualquer ambiente."
-        : "I studied alongside Talisson and can affirm he is extremely dedicated. His leadership always stood out, leading the group in an organized and motivating way. His willingness to collaborate made all the difference in team projects. Adds great value in any environment.",
-      image: "https://i.ibb.co/My7YX5s4/image.png"
-    },
-    {
-      name: "Davi R. Fraustino",
-      role: language === 'pt' ? "Estudante de Ciência da Computação" : "Computer Science Student",
-      text: language === 'pt'
-        ? "Talisson é um excelente profissional que une conhecimento técnico full stack com visão estratégica de negócios. Entrega soluções criativas e eficientes, sempre atento ao impacto real para clientes e equipes. Comprometido, resiliente e com grande potencial de liderança."
-        : "Talisson is an excellent professional who combines full stack technical knowledge with strategic business vision. He delivers creative and efficient solutions, always attentive to real impact for clients and teams. Committed, resilient, with great leadership potential.",
-      image: "https://i.ibb.co/LDG4sdNM/image.png"
-    },
-    {
-      name: "Anna Ishii",
-      role: language === 'pt' ? "Co-fundadora da Splendori" : "Co-founder of Splendori",
-      text: language === 'pt'
-        ? "Trabalhei com o Talisson em projetos estratégicos e ele entrega com excelência. Sua visão técnica aliada ao senso de negócio torna qualquer projeto mais robusto. Inspira confiança e compromisso em tudo que faz."
-        : "I worked with Talisson on strategic projects and he delivers with excellence. His technical vision combined with business sense makes any project more robust. He inspires trust and commitment in everything he does.",
-      image: "https://i.ibb.co/pjKpnWFq/image.png"
-    },
-    {
-      name: "Caio Eduardo Ferreira Frederico",
-      role: "Backend Developer",
-      text: language === 'pt'
-        ? "Talisson entende tanto o lado técnico quanto o de negócios. Sua organização e clareza na comunicação facilitam o trabalho em equipe. Sempre entrega com qualidade e no prazo."
-        : "Talisson understands both the technical and business sides. His organization and clear communication make teamwork easier. Always delivers with quality and on time.",
-      image: "https://i.ibb.co/SwqJmQt0/image.png"
-    },
-    {
-      name: "Diogo Calmon",
-      role: "Full Stack Developer",
-      text: language === 'pt'
-        ? "Talisson tem domínio técnico sólido, visão de produto e dedicação impressionante. Um desenvolvedor que realmente faz a diferença em qualquer projeto."
-        : "Talisson has solid technical skills, product vision and impressive dedication. A developer who truly makes a difference in any project.",
-      image: "https://i.ibb.co/1tyf3c5V/image.png"
-    }
-  ];
+  const feedbacks = feedbacksData.map(fb => ({
+    name: fb.name,
+    role: fb.role[lang],
+    text: fb.text[lang],
+    image: fb.image
+  }));
 
   const jsonLd = {
     "@context": "https://schema.org",
