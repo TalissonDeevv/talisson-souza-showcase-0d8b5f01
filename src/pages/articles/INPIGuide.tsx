@@ -7,6 +7,7 @@ import ShareButtons from "@/components/ui/ShareButtons";
 import ArticleAuthorHeader from "@/components/ui/ArticleAuthorHeader";
 import ArticleSEOFooter from "@/components/ui/ArticleSEOFooter";
 import RelatedArticles from "@/components/ui/RelatedArticles";
+import DisclaimerBanner from "@/components/ui/DisclaimerBanner";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
