@@ -151,6 +151,10 @@ The professional who understands the intersection between politics and entrepren
         <div className="container mx-auto px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <ScrollReveal>
+              <DisclaimerBanner />
+            </ScrollReveal>
+
+            <ScrollReveal>
               <div className="mb-16 p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm">
                 <p className="text-base text-foreground/90 leading-[1.9]">
                   {getText(language,
