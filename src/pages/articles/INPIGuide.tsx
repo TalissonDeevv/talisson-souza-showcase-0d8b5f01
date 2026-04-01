@@ -7,6 +7,7 @@ import ShareButtons from "@/components/ui/ShareButtons";
 import ArticleAuthorHeader from "@/components/ui/ArticleAuthorHeader";
 import ArticleSEOFooter from "@/components/ui/ArticleSEOFooter";
 import RelatedArticles from "@/components/ui/RelatedArticles";
+import DisclaimerBanner from "@/components/ui/DisclaimerBanner";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -228,6 +229,10 @@ Beyond the loss of the name, all investment in branding, paid traffic, SEO, and 
         <div className="container mx-auto px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             {/* Introduction */}
+            <ScrollReveal>
+              <DisclaimerBanner />
+            </ScrollReveal>
+
             <ScrollReveal>
               <div className="mb-16 p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm">
                 <p className="text-base text-foreground/90 leading-[1.9]">
