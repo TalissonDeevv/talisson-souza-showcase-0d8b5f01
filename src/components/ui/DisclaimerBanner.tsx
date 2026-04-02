@@ -8,15 +8,15 @@ const DisclaimerBanner = () => {
   const disclaimerPath = language === 'en' ? '/en-us/policies/disclaimer' : '/politicas/disclaimer';
 
   return (
-    <div className="my-10 p-6 rounded-xl border-2 border-yellow-500/40 bg-yellow-500/5 backdrop-blur-sm relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-1 h-full bg-yellow-500" />
+    <div className="my-10 p-6 rounded-xl border-2 border-amber-500/40 bg-amber-500/5 backdrop-blur-sm relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-1 h-full bg-amber-500" />
       <div className="flex items-start gap-4">
         <div className="shrink-0 mt-0.5">
-          <AlertTriangle className="w-6 h-6 text-yellow-500" />
+          <AlertTriangle className="w-6 h-6 text-amber-500" />
         </div>
         <div>
-          <h3 className="text-sm font-bold uppercase tracking-wider text-yellow-500 mb-2">
-            Disclaimer
+          <h3 className="text-sm font-bold uppercase tracking-wider text-amber-500 mb-2">
+            ⚠️ Disclaimer
           </h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
             {getText(language,
@@ -26,7 +26,7 @@ const DisclaimerBanner = () => {
           </p>
           <Link
             to={disclaimerPath}
-            className="inline-flex items-center gap-1 mt-3 text-xs font-medium text-yellow-500 hover:text-yellow-400 transition-colors uppercase tracking-wider"
+            className="inline-flex items-center gap-1 mt-3 text-xs font-medium text-amber-500 hover:text-amber-400 transition-colors uppercase tracking-wider"
           >
             {getText(language, 'Ler disclaimer completo →', 'Read full disclaimer →')}
           </Link>
@@ -37,4 +37,3 @@ const DisclaimerBanner = () => {
 };
 
 export default DisclaimerBanner;
-
