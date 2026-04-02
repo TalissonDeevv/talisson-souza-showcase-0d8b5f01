@@ -868,7 +868,7 @@ const Index = () => {
                 logo={agonLogo}
                 banner={agonBanner}
                 link="https://discord.gg/yBy8Vu79J3"
-                role={getText(language, "Moderador", "Moderator")}
+                role={getText(language, "Ex Moderador", "Former Moderator")}
               />
             </ScrollReveal>
             <ScrollReveal delay={0.15}>
