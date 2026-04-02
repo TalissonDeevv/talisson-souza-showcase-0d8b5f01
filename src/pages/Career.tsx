@@ -228,7 +228,7 @@ At that moment, I made a decision: if they wouldn't give me space, I would creat
       logo: agonLogo,
       banner: agonBanner,
       link: "https://discord.gg/yBy8Vu79J3",
-      role: getText(language, "Moderador", "Moderator"),
+      role: getText(language, "Ex Moderador", "Former Moderator"),
     },
     {
       name: "DuneCo Dungeons",
