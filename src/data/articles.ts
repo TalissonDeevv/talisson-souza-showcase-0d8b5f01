@@ -61,7 +61,7 @@ export const trails: TrailData[] = [
     },
     icon: '💼',
     path: { pt: '/trilhas/estrategia-mentalidade', en: '/en-us/trails/strategy-mindset' },
-    articleIds: ['junior-to-strategic', 'what-companies-seek', 'building-portfolio', 'politics-entrepreneurship', 'clt-to-freelancer', 'vision-and-persistence', 'inpi', 'linkedin-profile-tech', 'eca-digital-anpd', 'dev-financial-growth'],
+    articleIds: ['junior-to-strategic', 'what-companies-seek', 'building-portfolio', 'politics-entrepreneurship', 'clt-to-freelancer', 'vision-and-persistence', 'inpi', 'linkedin-profile-tech', 'eca-digital-anpd', 'dev-financial-growth', 'ai-replacing-devs'],
   },
   {
     id: 'market-programming',
