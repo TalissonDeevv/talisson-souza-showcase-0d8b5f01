@@ -1155,12 +1155,24 @@ const Index = () => {
                   </Link>
                 </div>
                 
-                <a href="https://www.amazon.com.br/dp/B0FXV8WP3Y" target="_blank" rel="noopener noreferrer" className="flex justify-center lg:justify-center">
+                <div className="flex flex-col items-center gap-3">
                   <img
                     src={bookMockupImg}
                     alt={getText(language, 'Superando Limites - Da Rejeição ao Sucesso', 'Overcoming Limits - From Rejection to Success')}
-                    className="w-56 lg:w-72 h-auto cursor-pointer animate-float border-8 border-none" />
-                </a>
+                    className="w-56 lg:w-72 h-auto animate-float" />
+                  <div className="flex flex-col sm:flex-row gap-2 mt-2">
+                    <a href="https://www.amazon.com/dp/B0GVS4D8HL/ref=tmm_pap_swatch_0?_encoding=UTF8&dib_tag=se&dib=eyJ2IjoiMSJ9.YwqalvZK7CfKxFD0kPkYgg.3O8srGTxR_gr4EkS_chJa4jDQJm1-0ervY2_COJZNEs&qid=1775137388&sr=8-1" target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-xs font-medium text-primary-foreground bg-foreground rounded-full px-4 py-2 hover:opacity-90 transition-opacity">
+                      <BookOpen className="w-3.5 h-3.5" />
+                      {getText(language, 'Livro Físico', 'Physical Book')}
+                    </a>
+                    <a href="https://www.amazon.com/dp/B0FXV8WP3Y" target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-xs font-medium text-foreground border border-border rounded-full px-4 py-2 hover:bg-muted transition-colors">
+                      <BookOpen className="w-3.5 h-3.5" />
+                      {getText(language, 'Livro Digital', 'Digital Book')}
+                    </a>
+                  </div>
+                </div>
               </div>
             </ScrollReveal>
           </div>

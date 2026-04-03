@@ -647,21 +647,33 @@ const Book = () => {
                 )}
               </p>
 
-              <motion.a
-                href="https://www.amazon.com.br/dp/B0FXV8WP3Y"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="group inline-flex items-center gap-3 text-sm font-medium text-background bg-foreground px-8 py-4 rounded-full transition-all duration-300"
-                style={{
-                  boxShadow: '0 0 30px hsl(var(--foreground) / 0.2)'
-                }}
-              >
-                <BookOpen className="w-4 h-4" />
-                {getText(language, "Conhecer o Livro na Amazon", "Discover the Book on Amazon")}
-                <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </motion.a>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <motion.a
+                  href="https://www.amazon.com/dp/B0GVS4D8HL/ref=tmm_pap_swatch_0?_encoding=UTF8&dib_tag=se&dib=eyJ2IjoiMSJ9.YwqalvZK7CfKxFD0kPkYgg.3O8srGTxR_gr4EkS_chJa4jDQJm1-0ervY2_COJZNEs&qid=1775137388&sr=8-1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group inline-flex items-center gap-3 text-sm font-medium text-background bg-foreground px-8 py-4 rounded-full transition-all duration-300"
+                  style={{ boxShadow: '0 0 30px hsl(var(--foreground) / 0.2)' }}
+                >
+                  <BookOpen className="w-4 h-4" />
+                  {getText(language, "Compre o Livro Físico", "Buy Physical Book")}
+                  <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </motion.a>
+                <motion.a
+                  href="https://www.amazon.com/dp/B0FXV8WP3Y"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group inline-flex items-center gap-3 text-sm font-medium text-foreground border border-border px-8 py-4 rounded-full transition-all duration-300 hover:bg-muted"
+                >
+                  <BookOpen className="w-4 h-4" />
+                  {getText(language, "Compre o Livro Digital", "Buy Digital Book")}
+                  <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </motion.a>
+              </div>
             </div>
           </ScrollReveal>
         </div>
