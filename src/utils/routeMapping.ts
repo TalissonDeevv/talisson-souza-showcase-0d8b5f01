@@ -23,6 +23,7 @@ export const ptToEnRoutes: Record<string, string> = {
   '/trilhas/arquitetura-infraestrutura': '/en-us/trails/architecture-infrastructure',
   '/trilhas/gestao-de-comunidades': '/en-us/trails/community-management',
   '/trilhas/estrategia-mentalidade': '/en-us/trails/strategy-mindset',
+  '/artigos/ia-vai-substituir-desenvolvedores': '/en-us/articles/will-ai-replace-developers',
   '/artigos/bots-discord': '/en-us/articles/discord-bots',
   '/artigos/visao-e-persistencia': '/en-us/articles/vision-and-persistence',
   '/artigos/inpi': '/en-us/articles/inpi',
