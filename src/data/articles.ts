@@ -94,6 +94,22 @@ export function getTrailArticles(trailId: string): ArticleData[] {
 
 export const articles: ArticleData[] = [
   {
+    id: 'ai-replacing-devs',
+    title: {
+      pt: 'A Inteligência Artificial Vai Substituir os Desenvolvedores?',
+      en: 'Will Artificial Intelligence Replace Developers?',
+    },
+    excerpt: {
+      pt: 'Uma reflexão honesta e pessoal sobre o papel da IA no desenvolvimento de software, o que realmente muda na profissão e por que o pânico generalizado não faz sentido para quem entende o que significa construir sistemas de verdade.',
+      en: 'An honest and personal reflection on the role of AI in software development, what really changes in the profession, and why widespread panic makes no sense for those who understand what building real systems actually means.',
+    },
+    date: { pt: '3 de Abril, 2026', en: 'April 3, 2026' },
+    readTime: '26 min',
+    path: { pt: '/artigos/ia-vai-substituir-desenvolvedores', en: '/en-us/articles/will-ai-replace-developers' },
+    tags: { pt: ['Inteligência Artificial', 'Carreira', 'Estratégia', 'Mercado'], en: ['Artificial Intelligence', 'Career', 'Strategy', 'Market'] },
+    publishedDate: '2026-04-03',
+  },
+  {
     id: 'dev-financial-growth',
     title: {
       pt: 'Por Que a Maioria dos Desenvolvedores Não Consegue Crescer Financeiramente',
