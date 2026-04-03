@@ -10,7 +10,7 @@ import PremiumBadge from "@/components/ui/PremiumBadge";
 import ParticlesBackground from "@/components/ui/ParticlesBackground";
 import ParallaxSection from "@/components/ui/ParallaxSection";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, Quote } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Quote } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
 import logoSignature from "@/assets/logo-signature.png";
