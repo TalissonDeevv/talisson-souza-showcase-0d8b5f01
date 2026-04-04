@@ -11,6 +11,7 @@ export interface MarketTrailArticle {
   keywords: { pt: string[]; en: string[] };
   sourceUrl?: string;
   sourceLabel?: { pt: string; en: string };
+  showDisclaimer?: boolean;
   sections: {
     title: { pt: string; en: string };
     content: { pt: string; en: string };

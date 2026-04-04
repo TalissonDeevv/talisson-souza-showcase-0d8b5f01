@@ -5,6 +5,7 @@ export const ecaDigitalArticle: MarketTrailArticle[] = [
     id: 'eca-digital-anpd',
     slugPt: 'eca-digital-anpd-monitoramento',
     slugEn: 'eca-digital-anpd-monitoring',
+    showDisclaimer: true,
     title: {
       pt: 'O Que o Monitoramento de Plataformas Significa para o Ecossistema Tecnológico Brasileiro',
       en: 'What Platform Monitoring Means for the Brazilian Tech Ecosystem',
