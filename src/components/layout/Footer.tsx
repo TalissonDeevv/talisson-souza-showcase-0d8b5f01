@@ -122,8 +122,20 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* 3. Mini Player + Signature */}
+            {/* 3. Mini Player + Newsletter + Signature */}
             <div className="flex flex-col gap-2.5 md:items-end">
+              {/* LinkedIn Newsletter Button */}
+              <a
+                href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7445971461145677824"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-5 py-1.5 text-xs font-medium text-white rounded-full transition-all duration-200 hover:opacity-90"
+                style={{ backgroundColor: '#0A66C2' }}
+                aria-label={getText(language, 'Assinar newsletter no LinkedIn', 'Subscribe to newsletter on LinkedIn')}
+              >
+                {getText(language, 'Assinar no LinkedIn', 'Subscribe on LinkedIn')}
+              </a>
+
               <motion.button
                 onClick={handlePlayPause}
                 whileTap={{ scale: 0.95 }}
