@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
-import { SiDiscord } from "react-icons/si";
+import { X, Mail } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 const escritorioLogo = "/images/discord/escritorio-logo.png";
 const escritorioBanner = "/images/discord/escritorio-banner.png";
 
-const DISCORD_LINK = "https://discord.gg/WXwguHWjxg";
+const NEWSLETTER_LINK = "https://www.linkedin.com/newsletters/arquitetando-neg%C3%B3cios-digitais-7445971461145677824";
 
 function preloadImage(src: string): Promise<void> {
   return new Promise((resolve) => {
@@ -18,12 +17,11 @@ function preloadImage(src: string): Promise<void> {
   });
 }
 
-const DiscordPopup = () => {
+const NewsletterPopup = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { language } = useTheme();
 
   useEffect(() => {
-    // Preload images first, then show after delay
     const timer = setTimeout(async () => {
       await Promise.all([
         preloadImage(escritorioBanner),
@@ -41,10 +39,10 @@ const DiscordPopup = () => {
     setIsVisible(false);
   };
 
-  const handleJoinDiscord = (e: React.MouseEvent | React.TouchEvent) => {
+  const handleSubscribe = (e: React.MouseEvent | React.TouchEvent) => {
     e.stopPropagation();
     e.preventDefault();
-    window.open(DISCORD_LINK, "_blank", "noopener,noreferrer");
+    window.open(NEWSLETTER_LINK, "_blank", "noopener,noreferrer");
     setIsVisible(false);
   };
 
@@ -93,7 +91,7 @@ const DiscordPopup = () => {
               <div className="w-11 h-11 rounded-xl border-2 border-card bg-card overflow-hidden shadow-lg">
                 <img
                   src={escritorioLogo}
-                  alt="Escritório do Talisson"
+                  alt="Arquitetando Negócios Digitais"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -101,29 +99,34 @@ const DiscordPopup = () => {
             
             <div className="relative z-10 pt-7 px-5 pb-5">
               <h3 className="font-serif text-lg text-foreground leading-tight mb-2">
-                {getText(language, 'Escritório do Talisson', "Talisson's Office")}
+                {getText(language, 'Arquitetando Negócios Digitais', 'Architecting Digital Businesses')}
               </h3>
               
-              <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+              <p className="text-sm text-muted-foreground leading-relaxed mb-2">
                 {getText(language, 
-                  'Faça parte do meu servidor e acompanhe meu dia a dia como programador e empreendedor. Projetos, networking e muito mais.',
-                  'Join my server and follow my daily life as a developer and entrepreneur. Projects, networking and much more.'
+                  'Conteúdos semanais sobre programação, tecnologia e estratégia para construir projetos digitais de verdade.',
+                  'Weekly content on programming, technology and strategy to build real digital projects.'
                 )}
+              </p>
+
+              <p className="text-xs text-muted-foreground/70 mb-5">
+                {getText(language, 'Publicado semanalmente no LinkedIn', 'Published weekly on LinkedIn')}
               </p>
               
               <motion.button
-                onClick={handleJoinDiscord}
-                onTouchEnd={handleJoinDiscord}
+                onClick={handleSubscribe}
+                onTouchEnd={handleSubscribe}
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 className="group w-full inline-flex items-center justify-center gap-2.5 text-sm font-medium text-primary-foreground bg-foreground rounded-xl py-3 transition-all duration-300 cursor-pointer"
                 type="button"
+                aria-label={getText(language, 'Inscrever na newsletter Arquitetando Negócios Digitais', 'Subscribe to Architecting Digital Businesses newsletter')}
                 style={{
                   boxShadow: '0 0 20px hsl(var(--foreground) / 0.1)'
                 }}
               >
-                <SiDiscord className="w-4 h-4 pointer-events-none" />
-                {getText(language, 'Entrar no Discord', 'Join Discord')}
+                <Mail className="w-4 h-4 pointer-events-none" />
+                {getText(language, 'Inscrever na Newsletter', 'Subscribe to Newsletter')}
               </motion.button>
             </div>
           </div>
@@ -133,4 +136,4 @@ const DiscordPopup = () => {
   );
 };
 
-export default DiscordPopup;
+export default NewsletterPopup;
