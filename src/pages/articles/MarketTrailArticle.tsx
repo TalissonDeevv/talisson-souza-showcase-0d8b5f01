@@ -7,6 +7,7 @@ import ShareButtons from "@/components/ui/ShareButtons";
 import ArticleSEOFooter from "@/components/ui/ArticleSEOFooter";
 import TrailNavigation from "@/components/ui/TrailNavigation";
 import WhatsAppNewsletter from "@/components/ui/WhatsAppNewsletter";
+import DisclaimerBanner from "@/components/ui/DisclaimerBanner";
 import ArticleAuthorHeader from "@/components/ui/ArticleAuthorHeader";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -82,6 +83,11 @@ const MarketTrailArticle = () => {
       <section className="pb-16 lg:pb-20">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
+            {article.showDisclaimer && (
+              <ScrollReveal>
+                <DisclaimerBanner />
+              </ScrollReveal>
+            )}
             {sections.map((section, index) => (
               <ScrollReveal key={index} delay={0.1 * index}>
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 * index }} className="mb-10">
