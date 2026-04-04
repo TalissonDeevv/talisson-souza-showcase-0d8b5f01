@@ -22,12 +22,9 @@ const NewsletterPopup = () => {
   const { language } = useTheme();
 
   useEffect(() => {
+    // Popup pausado — newsletter promovida no footer
     const timer = setTimeout(async () => {
-      await Promise.all([
-        preloadImage(escritorioBanner),
-        preloadImage(escritorioLogo),
-      ]);
-      setIsVisible(true);
+      // setIsVisible(true);
     }, 3000);
     
     return () => clearTimeout(timer);
