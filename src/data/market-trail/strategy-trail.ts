@@ -516,6 +516,7 @@ export const strategyTrailArticles: MarketTrailArticle[] = [
     readTime: '20 min',
     tags: { pt: ['Registro de Marca', 'INPI', 'Empreendedorismo'], en: ['Trademark', 'INPI', 'Entrepreneurship'] },
     keywords: { pt: ['registro de marca', 'INPI', 'propriedade intelectual', 'empreendedorismo'], en: ['trademark registration', 'INPI', 'intellectual property', 'entrepreneurship'] },
+    showDisclaimer: true,
     sections: [
       {
         title: { pt: 'Por Que Registrar Sua Marca é Uma Decisão Estratégica', en: 'Why Registering Your Brand is a Strategic Decision' },
