@@ -6,7 +6,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import ShareButtons from "@/components/ui/ShareButtons";
 import ArticleSEOFooter from "@/components/ui/ArticleSEOFooter";
 import TrailNavigation from "@/components/ui/TrailNavigation";
-import WhatsAppNewsletter from "@/components/ui/WhatsAppNewsletter";
+
 import DisclaimerBanner from "@/components/ui/DisclaimerBanner";
 import ArticleAuthorHeader from "@/components/ui/ArticleAuthorHeader";
 import { ArrowLeft, ExternalLink } from "lucide-react";
