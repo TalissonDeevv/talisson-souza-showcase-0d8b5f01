@@ -123,11 +123,8 @@ const MarketTrailArticle = () => {
 
             <TrailNavigation currentSlugPt={article.slugPt} currentSlugEn={article.slugEn} />
 
-            <ScrollReveal delay={0.4}>
-              <div className="mt-12">
-                <WhatsAppNewsletter variant="article-footer" />
-              </div>
-            </ScrollReveal>
+
+
 
             <ArticleSEOFooter />
           </div>
