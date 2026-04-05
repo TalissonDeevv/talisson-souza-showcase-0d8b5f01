@@ -3,7 +3,7 @@ import { useState, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
-import { Play, Pause, Music, ArrowUp, Star } from "lucide-react";
+import { Play, Pause, Music, ArrowUp, Star, Linkedin } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { feedbacks } from "@/data/feedbacks";
 
@@ -124,18 +124,6 @@ const Footer = () => {
 
             {/* 3. Mini Player + Newsletter + Signature */}
             <div className="flex flex-col gap-2.5 md:items-end">
-              {/* LinkedIn Newsletter Button */}
-              <a
-                href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7445971461145677824"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-5 py-1.5 text-xs font-medium text-white rounded-full transition-all duration-200 hover:opacity-90"
-                style={{ backgroundColor: '#0A66C2' }}
-                aria-label={getText(language, 'Assinar newsletter no LinkedIn', 'Subscribe to newsletter on LinkedIn')}
-              >
-                {getText(language, 'Assinar no LinkedIn', 'Subscribe on LinkedIn')}
-              </a>
-
               <motion.button
                 onClick={handlePlayPause}
                 whileTap={{ scale: 0.95 }}
@@ -161,36 +149,49 @@ const Footer = () => {
 
         {/* Reputation + Bottom bar */}
         <div className="py-5 border-t border-border/20 space-y-4">
-          {/* Stars reputation */}
-          <Link
-            to={language === 'en' ? '/en-us/feedbacks' : '/feedbacks'}
-            className="group flex items-center justify-center gap-3 py-2"
-          >
-            <div className="flex items-center gap-0.5">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-              ))}
-            </div>
-            <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors duration-200">
-              5.0 — {feedbacks.length} {getText(language, 'avaliações reais', 'real reviews')}
-            </span>
-            <div className="flex -space-x-1.5">
-              {feedbacks.slice(0, 4).map((fb, i) => (
-                <img
-                  key={i}
-                  src={fb.image}
-                  alt=""
-                  className="w-5 h-5 rounded-full object-cover border border-background"
-                  loading="lazy"
-                />
-              ))}
-              {feedbacks.length > 4 && (
-                <div className="w-5 h-5 rounded-full bg-muted/60 border border-background flex items-center justify-center">
-                  <span className="text-[8px] text-muted-foreground font-medium">+{feedbacks.length - 4}</span>
-                </div>
-              )}
-            </div>
-          </Link>
+          {/* Stars reputation + Newsletter */}
+          <div className="flex items-center justify-between py-2">
+            <Link
+              to={language === 'en' ? '/en-us/feedbacks' : '/feedbacks'}
+              className="group flex items-center gap-3"
+            >
+              <div className="flex items-center gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                ))}
+              </div>
+              <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors duration-200">
+                5.0 — {feedbacks.length} {getText(language, 'avaliações reais', 'real reviews')}
+              </span>
+              <div className="flex -space-x-1.5">
+                {feedbacks.slice(0, 4).map((fb, i) => (
+                  <img
+                    key={i}
+                    src={fb.image}
+                    alt=""
+                    className="w-5 h-5 rounded-full object-cover border border-background"
+                    loading="lazy"
+                  />
+                ))}
+                {feedbacks.length > 4 && (
+                  <div className="w-5 h-5 rounded-full bg-muted/60 border border-background flex items-center justify-center">
+                    <span className="text-[8px] text-muted-foreground font-medium">+{feedbacks.length - 4}</span>
+                  </div>
+                )}
+              </div>
+            </Link>
+            <a
+              href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7445971461145677824"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-1.5 text-xs font-medium text-white rounded-full transition-all duration-200 hover:opacity-90"
+              style={{ backgroundColor: '#0A66C2' }}
+              aria-label={getText(language, 'Assinar newsletter no LinkedIn', 'Subscribe to newsletter on LinkedIn')}
+            >
+              <Linkedin className="w-3.5 h-3.5" />
+              {getText(language, 'Assinar no LinkedIn', 'Subscribe on LinkedIn')}
+            </a>
+          </div>
 
           {/* Bottom row */}
           <div className="flex items-center justify-between">
