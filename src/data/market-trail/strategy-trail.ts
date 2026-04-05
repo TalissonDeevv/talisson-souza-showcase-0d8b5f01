@@ -267,7 +267,7 @@ export const strategyTrailArticles: MarketTrailArticle[] = [
     readTime: '17 min',
     tags: { pt: ['Política', 'Empreendedorismo', 'Pensamento Crítico'], en: ['Politics', 'Entrepreneurship', 'Critical Thinking'] },
     keywords: { pt: ['política e tecnologia', 'empreendedorismo', 'pensamento crítico', 'responsabilidade profissional'], en: ['politics and technology', 'entrepreneurship', 'critical thinking', 'professional responsibility'] },
-    showDisclaimer: true,
+    showDisclaimer: false,
     sections: [
       {
         title: { pt: 'A Interseção Ignorada Entre Política e Tecnologia', en: 'The Ignored Intersection Between Politics and Technology' },
