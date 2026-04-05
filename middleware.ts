@@ -83,6 +83,14 @@ const STATIC_PAGES: Record<string, { pt: Omit<PageMeta, 'locale'>; en: Omit<Page
 // This covers ALL articles: regular + market trail + trail expansions
 const ARTICLE_META: Record<string, { pt: { title: string; description: string }; en: { title: string; description: string } }> = {
   // Regular articles
+  'por-que-devs-nao-conseguem-vagas': {
+    pt: { title: 'Por Que Desenvolvedores Com Conhecimento Técnico Não Conseguem Vagas', description: 'O problema quase nunca é técnico. A maioria dos desenvolvedores que não consegue vagas está comunicando habilidades, não valor. Descubra como o posicionamento profissional define quem avança.' },
+    en: { title: 'Why Technically Skilled Developers Still Can\'t Get Jobs', description: 'The problem is almost never technical. Most developers who can\'t land jobs are communicating skills, not value. Discover how professional positioning defines who advances.' },
+  },
+  'why-devs-cant-get-jobs': {
+    pt: { title: 'Por Que Desenvolvedores Com Conhecimento Técnico Não Conseguem Vagas', description: 'O problema quase nunca é técnico. A maioria dos desenvolvedores que não consegue vagas está comunicando habilidades, não valor. Descubra como o posicionamento profissional define quem avança.' },
+    en: { title: 'Why Technically Skilled Developers Still Can\'t Get Jobs', description: 'The problem is almost never technical. Most developers who can\'t land jobs are communicating skills, not value. Discover how professional positioning defines who advances.' },
+  },
   'por-que-devs-nao-crescem-financeiramente': {
     pt: { title: 'Por Que a Maioria dos Desenvolvedores Não Consegue Crescer Financeiramente', description: 'Exploramos o paradoxo de desenvolvedores tecnicamente brilhantes que enfrentam estagnação financeira, focando em mentalidade e escolhas de carreira.' },
     en: { title: 'Why Most Developers Fail to Grow Financially', description: 'We delve into the paradox of technically brilliant developers who face financial stagnation, focusing on mindset and career choices.' },

@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout";
-import WhatsAppNewsletter from "@/components/ui/WhatsAppNewsletter";
+
 import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";

@@ -61,7 +61,7 @@ export const trails: TrailData[] = [
     },
     icon: '💼',
     path: { pt: '/trilhas/estrategia-mentalidade', en: '/en-us/trails/strategy-mindset' },
-    articleIds: ['junior-to-strategic', 'what-companies-seek', 'building-portfolio', 'politics-entrepreneurship', 'clt-to-freelancer', 'vision-and-persistence', 'inpi', 'linkedin-profile-tech', 'eca-digital-anpd', 'dev-financial-growth', 'ai-replacing-devs'],
+    articleIds: ['junior-to-strategic', 'what-companies-seek', 'building-portfolio', 'politics-entrepreneurship', 'clt-to-freelancer', 'vision-and-persistence', 'inpi', 'linkedin-profile-tech', 'eca-digital-anpd', 'dev-financial-growth', 'ai-replacing-devs', 'dev-job-positioning'],
   },
   {
     id: 'market-programming',
@@ -93,6 +93,22 @@ export function getTrailArticles(trailId: string): ArticleData[] {
 }
 
 export const articles: ArticleData[] = [
+  {
+    id: 'dev-job-positioning',
+    title: {
+      pt: 'Por Que Desenvolvedores Com Conhecimento Técnico Não Conseguem Vagas',
+      en: 'Why Technically Skilled Developers Still Can\'t Get Jobs',
+    },
+    excerpt: {
+      pt: 'O problema quase nunca é técnico. A maioria dos desenvolvedores que não consegue vagas está comunicando habilidades, não valor. Este artigo mostra como o posicionamento profissional define quem avança e quem fica para trás.',
+      en: 'The problem is almost never technical. Most developers who can\'t land jobs are communicating skills, not value. This article shows how professional positioning defines who advances and who gets left behind.',
+    },
+    date: { pt: '5 de Abril, 2026', en: 'April 5, 2026' },
+    readTime: '22 min',
+    path: { pt: '/artigos/por-que-devs-nao-conseguem-vagas', en: '/en-us/articles/why-devs-cant-get-jobs' },
+    tags: { pt: ['Carreira', 'Estratégia', 'Mercado', 'Posicionamento'], en: ['Career', 'Strategy', 'Market', 'Positioning'] },
+    publishedDate: '2026-04-05',
+  },
   {
     id: 'ai-replacing-devs',
     title: {

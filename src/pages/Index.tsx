@@ -1,7 +1,7 @@
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import ContactDialog from "@/components/ui/ContactDialog";
-import WhatsAppNewsletter from "@/components/ui/WhatsAppNewsletter";
+
 import SocialIcons from "@/components/ui/SocialIcons";
 import FAQ from "@/components/ui/FAQ";
 import ScrollReveal from "@/components/ui/ScrollReveal";
