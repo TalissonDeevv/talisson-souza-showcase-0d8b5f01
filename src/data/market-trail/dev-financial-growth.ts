@@ -5,7 +5,7 @@ export const devFinancialGrowthArticle: MarketTrailArticle[] = [
     "id": "dev-financial-growth",
     "slugPt": "por-que-devs-nao-crescem-financeiramente",
     "slugEn": "why-devs-dont-grow-financially",
-    "showDisclaimer": true,
+    "showDisclaimer": false,
     "title": {
       "pt": "Por Que a Maioria dos Desenvolvedores Não Consegue Crescer Financeiramente",
       "en": "Why Most Developers Fail to Grow Financially"

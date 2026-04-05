@@ -5,7 +5,7 @@ export const aiReplacingDevsArticle: MarketTrailArticle[] = [
     id: "ai-replacing-devs",
     slugPt: "ia-vai-substituir-desenvolvedores",
     slugEn: "will-ai-replace-developers",
-    showDisclaimer: true,
+    showDisclaimer: false,
     title: {
       pt: "A Inteligência Artificial Vai Substituir os Desenvolvedores?",
       en: "Will Artificial Intelligence Replace Developers?"

@@ -267,7 +267,7 @@ export const strategyTrailArticles: MarketTrailArticle[] = [
     readTime: '17 min',
     tags: { pt: ['Política', 'Empreendedorismo', 'Pensamento Crítico'], en: ['Politics', 'Entrepreneurship', 'Critical Thinking'] },
     keywords: { pt: ['política e tecnologia', 'empreendedorismo', 'pensamento crítico', 'responsabilidade profissional'], en: ['politics and technology', 'entrepreneurship', 'critical thinking', 'professional responsibility'] },
-    showDisclaimer: true,
+    showDisclaimer: false,
     sections: [
       {
         title: { pt: 'A Interseção Ignorada Entre Política e Tecnologia', en: 'The Ignored Intersection Between Politics and Technology' },
@@ -518,6 +518,10 @@ export const strategyTrailArticles: MarketTrailArticle[] = [
     tags: { pt: ['Registro de Marca', 'INPI', 'Empreendedorismo'], en: ['Trademark', 'INPI', 'Entrepreneurship'] },
     keywords: { pt: ['registro de marca', 'INPI', 'propriedade intelectual', 'empreendedorismo'], en: ['trademark registration', 'INPI', 'intellectual property', 'entrepreneurship'] },
     showDisclaimer: true,
+    disclaimerText: {
+      pt: 'Este artigo compartilha uma experiência pessoal com o processo de registro de marca no INPI. O conteúdo é informativo e educacional, não constitui consultoria jurídica em propriedade intelectual. Cada caso possui particularidades que devem ser avaliadas por um profissional qualificado.',
+      en: 'This article shares a personal experience with the trademark registration process at INPI. The content is informational and educational, and does not constitute intellectual property legal advice. Each case has particularities that should be evaluated by a qualified professional.'
+    },
     sections: [
       {
         title: { pt: 'Por Que Registrar Sua Marca é Uma Decisão Estratégica', en: 'Why Registering Your Brand is a Strategic Decision' },

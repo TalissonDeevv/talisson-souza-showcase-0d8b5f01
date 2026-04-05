@@ -3,9 +3,20 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
 import { getText } from '@/utils/translations';
 
-const DisclaimerBanner = () => {
+interface DisclaimerBannerProps {
+  customText?: { pt: string; en: string };
+}
+
+const DisclaimerBanner = ({ customText }: DisclaimerBannerProps) => {
   const { language } = useTheme();
   const disclaimerPath = language === 'en' ? '/en-us/policies/disclaimer' : '/politicas/disclaimer';
+
+  const defaultText = {
+    pt: 'Este artigo expressa opiniões pessoais e tem caráter exclusivamente informativo e educacional. O conteúdo aqui apresentado não constitui assessoria jurídica, consultoria profissional ou recomendação de qualquer natureza. As opiniões são do autor e não representam posicionamento institucional.',
+    en: 'This article expresses personal opinions and is exclusively informational and educational. The content presented here does not constitute legal advice, professional consulting, or recommendations of any kind. The opinions are those of the author and do not represent institutional positioning.'
+  };
+
+  const text = customText || defaultText;
 
   return (
     <div className="my-10 p-6 rounded-xl border-2 border-amber-500/40 bg-amber-500/5 backdrop-blur-sm relative overflow-hidden">
@@ -19,10 +30,7 @@ const DisclaimerBanner = () => {
             ⚠️ Disclaimer
           </h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            {getText(language,
-              'Este artigo expressa opiniões pessoais e tem caráter exclusivamente informativo e educacional. O conteúdo aqui apresentado não constitui assessoria jurídica, consultoria profissional ou recomendação de qualquer natureza. As opiniões são do autor e não representam posicionamento institucional.',
-              'This article expresses personal opinions and is exclusively informational and educational. The content presented here does not constitute legal advice, professional consulting, or recommendations of any kind. The opinions are those of the author and do not represent institutional positioning.'
-            )}
+            {getText(language, text.pt, text.en)}
           </p>
           <Link
             to={disclaimerPath}

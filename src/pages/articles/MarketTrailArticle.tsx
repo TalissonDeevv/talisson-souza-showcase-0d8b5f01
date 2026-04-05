@@ -85,7 +85,7 @@ const MarketTrailArticle = () => {
           <div className="max-w-3xl mx-auto">
             {article.showDisclaimer && (
               <ScrollReveal>
-                <DisclaimerBanner />
+                <DisclaimerBanner customText={article.disclaimerText} />
               </ScrollReveal>
             )}
             {sections.map((section, index) => (

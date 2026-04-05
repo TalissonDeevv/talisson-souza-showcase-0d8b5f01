@@ -6,6 +6,10 @@ export const ecaDigitalArticle: MarketTrailArticle[] = [
     slugPt: 'eca-digital-anpd-monitoramento',
     slugEn: 'eca-digital-anpd-monitoring',
     showDisclaimer: true,
+    disclaimerText: {
+      pt: 'Este artigo expressa opiniões pessoais sobre legislação e políticas públicas. O conteúdo não constitui assessoria jurídica ou parecer legal. As interpretações apresentadas refletem exclusivamente a visão do autor e não substituem a consulta a um profissional especializado.',
+      en: 'This article expresses personal opinions about legislation and public policies. The content does not constitute legal advice or legal opinion. The interpretations presented reflect exclusively the author\'s view and do not replace consultation with a specialized professional.'
+    },
     title: {
       pt: 'O Que o Monitoramento de Plataformas Significa para o Ecossistema Tecnológico Brasileiro',
       en: 'What Platform Monitoring Means for the Brazilian Tech Ecosystem',
