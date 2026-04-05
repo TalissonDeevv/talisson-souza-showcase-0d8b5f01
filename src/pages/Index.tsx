@@ -1323,19 +1323,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="py-20 lg:py-24 relative">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
-        </div>
-        <div className="container mx-auto px-6 lg:px-8 relative">
-          <ScrollReveal>
-            <div className="max-w-xl mx-auto">
-              <WhatsAppNewsletter variant="card" />
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+
+
 
       {/* CTA - Premium */}
       <section className="py-24 lg:py-28 relative overflow-hidden">
