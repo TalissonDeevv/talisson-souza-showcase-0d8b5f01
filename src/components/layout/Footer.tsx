@@ -150,7 +150,7 @@ const Footer = () => {
         {/* Reputation + Bottom bar */}
         <div className="py-5 border-t border-border/20 space-y-4">
           {/* Stars reputation + Newsletter */}
-          <div className="flex items-center justify-between py-2">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 py-2">
             <Link
               to={language === 'en' ? '/en-us/feedbacks' : '/feedbacks'}
               className="group flex items-center gap-3"
@@ -184,7 +184,7 @@ const Footer = () => {
               href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7445971461145677824"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-1.5 text-xs font-medium text-white rounded-full transition-all duration-200 hover:opacity-90"
+              className="inline-flex items-center gap-2 px-4 py-1.5 text-xs font-medium text-white rounded-full transition-all duration-200 hover:opacity-90 shrink-0"
               style={{ backgroundColor: '#0A66C2' }}
               aria-label={getText(language, 'Assinar newsletter no LinkedIn', 'Subscribe to newsletter on LinkedIn')}
             >
@@ -194,16 +194,16 @@ const Footer = () => {
           </div>
 
           {/* Bottom row */}
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
             <p className="text-[10px] text-muted-foreground/50">
               © {currentYear} Talisson Souza
             </p>
-            <p className="text-[10px] text-muted-foreground/40">
+            <p className="text-[10px] text-muted-foreground/40 max-w-[280px] sm:max-w-none">
               {getText(language, 'Automações, arquitetura de sistemas e escalabilidade como base de cada projeto.', 'Automation, systems architecture and scalability as the foundation of every project.')}
             </p>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="p-1.5 rounded-full border border-border/30 hover:border-border/60 text-muted-foreground/50 hover:text-foreground transition-all duration-200"
+              className="p-1.5 rounded-full border border-border/30 hover:border-border/60 text-muted-foreground/50 hover:text-foreground transition-all duration-200 self-end sm:self-auto"
               aria-label="Back to top">
               <ArrowUp className="w-3 h-3" />
             </button>
