@@ -1,3 +1,5 @@
+import nicolasImg from "@/assets/nicolas.png";
+
 export interface Feedback {
   name: string;
   role: { pt: string; en: string };
