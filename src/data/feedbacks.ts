@@ -84,7 +84,7 @@ export const feedbacks: Feedback[] = [
     name: "Nicolas Snaijder",
     role: { pt: "Engenheiro de Software", en: "Software Engineer" },
     text: {
-      pt: "Talisson se destaca pela disciplina, profundidade técnica e visão de produto. Ele não busca soluções superficiais — vai até a raiz dos problemas e entrega com consistência, organização e foco em resultados duradouros. Sua capacidade de transformar conhecimento técnico em soluções reais e bem estruturadas eleva o nível de qualquer projeto ou equipe. É um profissional acima da média, confiável e altamente recomendável.",
+      pt: "Talisson se destaca pela disciplina, profundidade técnica e visão de produto. Ele não busca soluções superficiais vai até a raiz dos problemas e entrega com consistência, organização e foco em resultados duradouros. Sua capacidade de transformar conhecimento técnico em soluções reais e bem estruturadas eleva o nível de qualquer projeto ou equipe. É um profissional acima da média, confiável e altamente recomendável.",
       en: "Talisson stands out for his discipline, technical depth and product vision. He doesn't seek superficial solutions — he gets to the root of problems and delivers with consistency, organization and focus on lasting results. His ability to transform technical knowledge into real, well-structured solutions raises the bar for any project or team. He is an above-average professional, reliable and highly recommended."
     },
     image: nicolasImg
