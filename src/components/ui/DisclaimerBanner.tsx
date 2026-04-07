@@ -27,7 +27,7 @@ const DisclaimerBanner = ({ customText }: DisclaimerBannerProps) => {
         </div>
         <div>
           <h3 className="text-sm font-bold uppercase tracking-wider text-amber-500 mb-2">
-            ⚠️ Disclaimer
+            Disclaimer
           </h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
             {getText(language, text.pt, text.en)}
