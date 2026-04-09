@@ -198,6 +198,12 @@ const Book = () => {
                       "This book is a personal development work, built entirely from real experiences, personal reflections, and learnings accumulated over years of professional and personal journey. The content presented here does not replace psychological, psychiatric, or any form of clinical treatment. It is an original work, written by someone who lived each chapter in practice, with the goal of inspiring, provoking reflection, and sharing an honest perspective on overcoming, discipline, and building results."
                     )}
                   </p>
+                  <Link
+                    to={language === 'en' ? '/en-us/policies/disclaimer-livro' : '/politicas/disclaimer-livro'}
+                    className="inline-flex items-center gap-1 mt-3 text-xs font-medium text-muted-foreground/60 hover:text-foreground transition-colors uppercase tracking-wider"
+                  >
+                    {getText(language, 'Ler disclaimer completo →', 'Read full disclaimer →')}
+                  </Link>
                 </div>
               </div>
             </div>
