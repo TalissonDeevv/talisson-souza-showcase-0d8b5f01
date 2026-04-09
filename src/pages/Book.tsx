@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -197,6 +198,12 @@ const Book = () => {
                       "This book is a personal development work, built entirely from real experiences, personal reflections, and learnings accumulated over years of professional and personal journey. The content presented here does not replace psychological, psychiatric, or any form of clinical treatment. It is an original work, written by someone who lived each chapter in practice, with the goal of inspiring, provoking reflection, and sharing an honest perspective on overcoming, discipline, and building results."
                     )}
                   </p>
+                  <Link
+                    to={language === 'en' ? '/en-us/policies/disclaimer-livro' : '/politicas/disclaimer-livro'}
+                    className="inline-flex items-center gap-1 mt-3 text-xs font-medium text-muted-foreground/60 hover:text-foreground transition-colors uppercase tracking-wider"
+                  >
+                    {getText(language, 'Ler disclaimer completo →', 'Read full disclaimer →')}
+                  </Link>
                 </div>
               </div>
             </div>
@@ -672,8 +679,8 @@ const Book = () => {
               <p className="text-lg text-muted-foreground leading-relaxed mb-10">
                 {getText(
                   language,
-                  "Livro publicado oficialmente. Obra autoral baseada em história real, disponível para leitura em formato digital. Parte central da trajetória do autor.",
-                  "Officially published book. Original work based on a true story, available for reading in digital format. Central part of the author's trajectory."
+                  "Obra autoral de desenvolvimento pessoal, construída a partir de experiências reais de superação. Disponível em formato físico e digital na Amazon. Mais de 120 capítulos com reflexões práticas sobre resiliência, disciplina e construção de resultados.",
+                  "An original personal development work, built from real experiences of overcoming. Available in physical and digital formats on Amazon. Over 120 chapters with practical reflections on resilience, discipline, and building results."
                 )}
               </p>
 

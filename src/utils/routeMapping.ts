@@ -94,6 +94,7 @@ export const ptToEnRoutes: Record<string, string> = {
   '/faq': '/en-us/faq',
   '/feedbacks': '/en-us/feedbacks',
   '/politicas': '/en-us/policies',
+  '/politicas/disclaimer-livro': '/en-us/policies/disclaimer-livro',
 };
 
 // Reverse mapping: English to Portuguese

@@ -451,6 +451,32 @@ export const policySections: PolicySection[] = [
         en: 'I do not copy third-party projects, I do not use pirated code, and I do not make promises of results that depend on factors outside my control. Each delivery is original, ethical, and based on professional standards I keep non-negotiable.'
       }
     ]
+  },
+  {
+    id: 'disclaimer-livro',
+    title: { pt: 'Disclaimer do Livro', en: 'Book Disclaimer' },
+    paragraphs: [
+      {
+        pt: 'O livro "Superando Limites: da Rejeição ao Sucesso" é uma obra de desenvolvimento pessoal, escrita inteiramente a partir de vivências reais, reflexões próprias e aprendizados acumulados ao longo de anos de trajetória profissional e pessoal do autor. Cada capítulo foi construído com base em experiências concretas de superação, disciplina e construção de resultados.',
+        en: 'The book "Overcoming Limits: from Rejection to Success" is a personal development work, written entirely from real experiences, personal reflections, and learnings accumulated over years of the author\'s professional and personal journey. Each chapter was built based on concrete experiences of overcoming, discipline, and building results.'
+      },
+      {
+        pt: 'Esta obra não é um material técnico de psicologia, psiquiatria ou qualquer especialidade clínica. O conteúdo apresentado não substitui, em nenhuma circunstância, acompanhamento profissional de saúde mental, terapia, tratamento médico ou orientação clínica especializada. Se você enfrenta dificuldades emocionais ou psicológicas, procure um profissional habilitado.',
+        en: 'This work is not a technical psychology, psychiatry, or any clinical specialty material. The content presented does not replace, under any circumstances, professional mental health support, therapy, medical treatment, or specialized clinical guidance. If you face emotional or psychological difficulties, seek a qualified professional.'
+      },
+      {
+        pt: 'O objetivo do livro é inspirar, provocar reflexão e compartilhar uma perspectiva honesta e prática sobre temas como resiliência, autoconfiança, liderança e mentalidade de crescimento. As lições apresentadas são fruto da experiência pessoal do autor e devem ser interpretadas como tal, não como prescrições universais ou verdades absolutas.',
+        en: 'The book\'s goal is to inspire, provoke reflection, and share an honest and practical perspective on themes such as resilience, self-confidence, leadership, and growth mindset. The lessons presented are the result of the author\'s personal experience and should be interpreted as such, not as universal prescriptions or absolute truths.'
+      },
+      {
+        pt: 'A autenticidade é o pilar central desta obra. Tudo o que foi escrito foi vivido. Não há teorias emprestadas, fórmulas genéricas ou promessas de transformação instantânea. O livro existe para mostrar que é possível construir resultados mesmo diante de cenários adversos, mas o caminho de cada pessoa é único e depende de fatores individuais que nenhum livro pode controlar.',
+        en: 'Authenticity is the central pillar of this work. Everything that was written was lived. There are no borrowed theories, generic formulas, or promises of instant transformation. The book exists to show that it is possible to build results even in adverse scenarios, but each person\'s path is unique and depends on individual factors that no book can control.'
+      },
+      {
+        pt: 'Ao adquirir e ler esta obra, o leitor reconhece que o conteúdo é de natureza informativa e motivacional, baseado na trajetória pessoal do autor. A aplicação prática de qualquer conceito, reflexão ou aprendizado apresentado é de inteira responsabilidade do leitor.',
+        en: 'By purchasing and reading this work, the reader acknowledges that the content is informational and motivational in nature, based on the author\'s personal trajectory. The practical application of any concept, reflection, or learning presented is entirely the reader\'s responsibility.'
+      }
+    ]
   }
 ];
 
