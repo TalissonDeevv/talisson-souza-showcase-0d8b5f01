@@ -4,7 +4,7 @@ import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
-import { ArrowUpRight, BookOpen, Heart, Lightbulb, Users, Target, Zap, Star, CheckCircle2, Clock, TrendingUp, Sparkles, User, Award, Rocket, Shield, Eye, PenTool } from "lucide-react";
+import { ArrowUpRight, BookOpen, Heart, Lightbulb, Users, Target, Zap, Star, CheckCircle2, Clock, TrendingUp, Sparkles, User, Award, Rocket, Shield, Eye, PenTool, Feather } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import bookMockup from "@/assets/book-mockup-opt.jpg";
