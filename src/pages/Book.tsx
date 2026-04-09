@@ -672,8 +672,8 @@ const Book = () => {
               <p className="text-lg text-muted-foreground leading-relaxed mb-10">
                 {getText(
                   language,
-                  "Livro publicado oficialmente. Obra autoral baseada em história real, disponível para leitura em formato digital. Parte central da trajetória do autor.",
-                  "Officially published book. Original work based on a true story, available for reading in digital format. Central part of the author's trajectory."
+                  "Obra autoral de desenvolvimento pessoal, construída a partir de experiências reais de superação. Disponível em formato físico e digital na Amazon. Mais de 120 capítulos com reflexões práticas sobre resiliência, disciplina e construção de resultados.",
+                  "An original personal development work, built from real experiences of overcoming. Available in physical and digital formats on Amazon. Over 120 chapters with practical reflections on resilience, discipline, and building results."
                 )}
               </p>
 
