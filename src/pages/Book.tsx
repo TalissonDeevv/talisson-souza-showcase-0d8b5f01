@@ -174,6 +174,36 @@ const Book = () => {
         </div>
       </section>
 
+      {/* Author's Note / Disclaimer */}
+      <section className="py-6">
+        <div className="container mx-auto px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="max-w-4xl mx-auto rounded-2xl border border-border/20 bg-card/20 backdrop-blur-sm p-8 lg:p-10 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-1 h-full bg-foreground/10" />
+              <div className="flex items-start gap-5">
+                <div className="shrink-0 mt-1">
+                  <div className="w-10 h-10 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center">
+                    <Feather className="w-5 h-5 text-foreground/60" />
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground/70 mb-3">
+                    {getText(language, "Nota do Autor", "Author's Note")}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-[1.9]">
+                    {getText(
+                      language,
+                      "Este livro é uma obra de desenvolvimento pessoal, construída inteiramente a partir de vivências reais, reflexões próprias e aprendizados acumulados ao longo de anos de trajetória profissional e pessoal. O conteúdo aqui apresentado não substitui acompanhamento psicológico, psiquiátrico ou qualquer forma de tratamento clínico. Trata-se de um material autoral, escrito por quem viveu cada capítulo na prática, com o objetivo de inspirar, provocar reflexão e compartilhar uma perspectiva honesta sobre superação, disciplina e construção de resultados.",
+                      "This book is a personal development work, built entirely from real experiences, personal reflections, and learnings accumulated over years of professional and personal journey. The content presented here does not replace psychological, psychiatric, or any form of clinical treatment. It is an original work, written by someone who lived each chapter in practice, with the goal of inspiring, provoking reflection, and sharing an honest perspective on overcoming, discipline, and building results."
+                    )}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Stats Section - Same pattern as Career */}
       <section className="py-8 relative">
         <div className="container mx-auto px-6 lg:px-8">
