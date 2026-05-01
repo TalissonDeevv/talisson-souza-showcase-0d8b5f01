@@ -1,221 +1,37 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
-import ScrollReveal from "@/components/ui/ScrollReveal";
-import ParallaxSection from "@/components/ui/ParallaxSection";
-import GlassCard from "@/components/ui/GlassCard";
-import AnimatedTitle from "@/components/ui/AnimatedTitle";
-import CaseStudyModal from "@/components/ui/CaseStudyModal";
-import ProjectBehindTheScenes, { getDecisionIcon } from "@/components/ui/ProjectBehindTheScenes";
 import { useTheme } from "@/contexts/ThemeContext";
-import { useTranslation, getText } from "@/utils/translations";
-import { ArrowUpRight, ArrowRight, ExternalLink, Github, Layers, Eye } from "lucide-react";
-import { Link } from "react-router-dom";
+import { getText } from "@/utils/translations";
+import { ArrowLeft, Mail, Lock } from "lucide-react";
+import organizingImage from "@/assets/organizing-projects.png";
 
 const Projects = () => {
   const { language } = useTheme();
-  const t = useTranslation(language);
-  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
-  const projects = [
-    {
-      slug: "werneck-group",
-      title: getText(language, "Site da Werneck Group", "Werneck Group Website"),
-      description: getText(language, "Redesign completo da plataforma corporativa do Werneck Group, incluindo seções institucionais e área de clientes.", "Complete redesign of Werneck Group's corporate platform, including institutional sections and client area."),
-      image: "https://i.ibb.co/rSQjVTs/wallpaper.png",
-      technologies: ["TypeScript", "React", "Node.js", "MongoDB"],
-      link: "https://werneckgroup.com",
-      featured: true,
-      caseStudy: {
-        context: getText(language, 
-          "O Werneck Group precisava de uma presença digital que refletisse seu posicionamento como grupo empresarial de referência no mercado brasileiro.",
-          "Werneck Group needed a digital presence that reflected their positioning as a leading business group in the Brazilian market."
-        ),
-        problem: getText(language,
-          "O site anterior era desatualizado, não refletia a identidade visual da marca e tinha problemas de performance e SEO que prejudicavam a captação de leads.",
-          "The previous site was outdated, didn't reflect the brand's visual identity and had performance and SEO issues that hurt lead generation."
-        ),
-        solution: getText(language,
-          "Redesign completo com foco em storytelling institucional, otimização de performance (Core Web Vitals) e arquitetura de informação orientada à conversão.",
-          "Complete redesign focused on institutional storytelling, performance optimization (Core Web Vitals) and conversion-oriented information architecture."
-        ),
-        results: [
-          getText(language, "Aumento de 150% no tempo de permanência", "150% increase in time on site"),
-          getText(language, "Score de performance no Lighthouse acima de 90", "Lighthouse performance score above 90"),
-          getText(language, "Redução de 60% no bounce rate", "60% reduction in bounce rate"),
-          getText(language, "Design system escalável para futuras expansões", "Scalable design system for future expansions")
-        ]
-      },
-      behindTheScenes: [
-        {
-          icon: getDecisionIcon("architecture"),
-          title: getText(language, "React + Vite vs Next.js", "React + Vite vs Next.js"),
-          description: getText(language, "Escolha de stack para o frontend", "Frontend stack choice"),
-          reasoning: getText(language, 
-            "O site não precisava de SSR ou rotas dinâmicas complexas. React + Vite ofereceu build mais rápido e menor overhead para um site institucional.",
-            "The site didn't need SSR or complex dynamic routes. React + Vite offered faster builds and less overhead for an institutional site."
-          )
-        },
-        {
-          icon: getDecisionIcon("database"),
-          title: getText(language, "MongoDB para CMS", "MongoDB for CMS"),
-          description: getText(language, "Banco de dados flexível para conteúdo", "Flexible database for content"),
-          reasoning: getText(language,
-            "A estrutura do conteúdo institucional é semi-estruturada. MongoDB permitiu iteração rápida sem migrações complexas.",
-            "Institutional content structure is semi-structured. MongoDB allowed rapid iteration without complex migrations."
-          )
-        },
-        {
-          icon: getDecisionIcon("performance"),
-          title: getText(language, "Lazy loading agressivo", "Aggressive lazy loading"),
-          description: getText(language, "Otimização para Core Web Vitals", "Core Web Vitals optimization"),
-          reasoning: getText(language,
-            "Imagens pesadas do portfólio exigiam carregamento inteligente. Implementei intersection observer para garantir LCP abaixo de 2.5s.",
-            "Heavy portfolio images required smart loading. Implemented intersection observer to ensure LCP under 2.5s."
-          )
-        }
-      ]
-    },
-    {
-      slug: "familia-werneck",
-      title: getText(language, "Site da Família Werneck", "Werneck Family Website"),
-      description: getText(language, "Portal personalizado para a Família Werneck com foco em compartilhamento de conteúdo e integração de mídias sociais.", "Customized portal for the Werneck Family focused on content sharing and social media integration."),
-      image: "https://i.ibb.co/20FBr03Q/Chat-GPT-Image-4-05-2025-15-12-34.png",
-      technologies: ["React", "Firebase", "Styled Components"],
-      link: "https://familiawerneck.vercel.app",
-      featured: true,
-      caseStudy: {
-        context: getText(language,
-          "A Família Werneck queria um espaço digital privado para compartilhar memórias, notícias e eventos entre os membros da família.",
-          "The Werneck Family wanted a private digital space to share memories, news and events among family members."
-        ),
-        problem: getText(language,
-          "Grupos de WhatsApp e redes sociais não ofereciam a organização e privacidade necessárias para o conteúdo familiar.",
-          "WhatsApp groups and social networks didn't offer the organization and privacy needed for family content."
-        ),
-        solution: getText(language,
-          "Portal personalizado com autenticação segura, galeria de fotos, linha do tempo de eventos e sistema de notificações por email.",
-          "Customized portal with secure authentication, photo gallery, event timeline and email notification system."
-        ),
-        results: [
-          getText(language, "100% dos membros ativos no primeiro mês", "100% of members active in the first month"),
-          getText(language, "Mais de 500 fotos organizadas na galeria", "Over 500 photos organized in the gallery"),
-          getText(language, "Sistema de backup automático implementado", "Automatic backup system implemented")
-        ]
-      },
-      behindTheScenes: [
-        {
-          icon: getDecisionIcon("security"),
-          title: getText(language, "Firebase Auth vs Auth0", "Firebase Auth vs Auth0"),
-          description: getText(language, "Sistema de autenticação familiar", "Family authentication system"),
-          reasoning: getText(language,
-            "Firebase ofereceu integração mais simples com Firestore e custos previsíveis para o volume esperado de usuários familiares.",
-            "Firebase offered simpler integration with Firestore and predictable costs for the expected volume of family users."
-          )
-        },
-        {
-          icon: getDecisionIcon("database"),
-          title: getText(language, "Firestore vs Realtime Database", "Firestore vs Realtime Database"),
-          description: getText(language, "Estrutura de dados do portal", "Portal data structure"),
-          reasoning: getText(language,
-            "Firestore ofereceu queries mais flexíveis para buscar eventos por data e filtrar fotos por álbum.",
-            "Firestore offered more flexible queries to search events by date and filter photos by album."
-          )
-        },
-        {
-          icon: getDecisionIcon("idea"),
-          title: getText(language, "Styled Components vs Tailwind", "Styled Components vs Tailwind"),
-          description: getText(language, "Estratégia de estilização", "Styling strategy"),
-          reasoning: getText(language,
-            "Styled Components permitiu temas dinâmicos e isolamento de estilos por componente, ideal para um projeto com identidade visual única.",
-            "Styled Components allowed dynamic themes and style isolation per component, ideal for a project with unique visual identity."
-          )
-        }
-      ]
-    },
-    {
-      slug: "sagiri-bot",
-      title: "Sagiri Bot",
-      description: getText(language, "Land page para uma bot de Discord focada em parcerias", "Landing page for a Discord bot focused on partnerships"),
-      image: "https://i.ibb.co/jkPPHWdc/image.png",
-      technologies: ["Next.js", "Tailwind CSS", "Framer Motion"],
-      link: "https://sagiribot.vercel.app",
-      featured: true,
-      caseStudy: {
-        context: getText(language,
-          "Bot de Discord popular precisava de uma presença web profissional para atrair parceiros e patrocinadores.",
-          "Popular Discord bot needed a professional web presence to attract partners and sponsors."
-        ),
-        problem: getText(language,
-          "Sem site próprio, a bot dependia apenas do Discord para comunicação, limitando oportunidades de monetização.",
-          "Without its own website, the bot relied only on Discord for communication, limiting monetization opportunities."
-        ),
-        solution: getText(language,
-          "Landing page moderna com animações fluidas, seção de features, estatísticas em tempo real e formulário de parcerias.",
-          "Modern landing page with fluid animations, features section, real-time statistics and partnership form."
-        ),
-        results: [
-          getText(language, "3x mais solicitações de parceria no primeiro mês", "3x more partnership requests in the first month"),
-          getText(language, "Tempo de carregamento abaixo de 1.5s", "Load time under 1.5s"),
-          getText(language, "Conversão de 12% no formulário de contato", "12% conversion on contact form")
-        ]
-      },
-      behindTheScenes: [
-        {
-          icon: getDecisionIcon("architecture"),
-          title: getText(language, "Next.js para landing page", "Next.js for landing page"),
-          description: getText(language, "Framework com SSG para SEO", "Framework with SSG for SEO"),
-          reasoning: getText(language,
-            "SSG do Next.js garantiu SEO excelente e performance máxima. Ideal para página de conversão onde cada milissegundo conta.",
-            "Next.js SSG ensured excellent SEO and maximum performance. Ideal for conversion page where every millisecond counts."
-          )
-        },
-        {
-          icon: getDecisionIcon("performance"),
-          title: getText(language, "Framer Motion otimizado", "Optimized Framer Motion"),
-          description: getText(language, "Animações sem impacto em performance", "Animations without performance impact"),
-          reasoning: getText(language,
-            "Usei layoutId e AnimatePresence apenas onde necessário, evitando re-renders desnecessários em animações decorativas.",
-            "Used layoutId and AnimatePresence only where needed, avoiding unnecessary re-renders in decorative animations."
-          )
-        },
-        {
-          icon: getDecisionIcon("idea"),
-          title: getText(language, "Stats via API Discord", "Stats via Discord API"),
-          description: getText(language, "Dados em tempo real da bot", "Real-time bot data"),
-          reasoning: getText(language,
-            "Integração com API do Discord para mostrar servidores e usuários ativos, aumentando credibilidade sem manutenção manual.",
-            "Discord API integration to show servers and active users, increasing credibility without manual maintenance."
-          )
-        }
-      ]
-    }
-  ];
-
-  const stats = [
-    { label: getText(language, "Projetos Entregues", "Projects Delivered"), value: "50+" },
-    { label: getText(language, "Clientes Satisfeitos", "Satisfied Clients"), value: "30+" },
-    { label: getText(language, "Países", "Countries"), value: "5+" }
-  ];
+  const homePath = language === 'en' ? '/en-us' : '/';
+  const contactPath = language === 'en' ? '/en-us/contact' : '/contato';
 
   return (
-    <>
-      <Layout withPadding={false}>
-        <SEO 
-        title={getText(language, 'Projetos | Portfólio de Talisson Souza', 'Projects | Talisson Souza Portfolio')}
-        description={getText(language, 'Conheça os projetos desenvolvidos por Talisson Souza. Sites, aplicações web, sistemas empresariais e soluções digitais para empresas de diversos segmentos.', 'Discover the projects developed by Talisson Souza. Websites, web applications, enterprise systems and digital solutions for businesses across various industries.')}
+    <Layout withPadding={false}>
+      <SEO
+        title={getText(language, 'Projetos em Organização | Talisson Souza', 'Projects Being Organized | Talisson Souza')}
+        description={getText(
+          language,
+          'A página de projetos está temporariamente indisponível enquanto solicito autorização dos clientes para divulgação dos trabalhos realizados.',
+          'The projects page is temporarily unavailable while I request client authorization to publish the work delivered.'
+        )}
         canonical={language === 'en' ? '/en-us/projects' : '/projetos'}
-        keywords={language === 'pt' ? ['projetos', 'portfólio', 'sites', 'aplicações web', 'sistemas', 'desenvolvimento'] : ['projects', 'portfolio', 'websites', 'web applications', 'systems', 'development']}
+        noindex
       />
-      
-      {/* Hero Section */}
-      <section className="min-h-[60vh] flex items-center relative overflow-hidden pt-24 pb-16">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background" />
+
+      <section className="min-h-screen flex items-center relative overflow-hidden pt-24 pb-16">
+        {/* Background effects */}
+        <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl hidden md:block" />
-          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl hidden md:block" />
-          <div 
+          <div className="absolute bottom-1/4 right-1/3 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl hidden md:block" />
+          <div
             className="absolute inset-0 opacity-[0.015]"
             style={{
               backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
@@ -224,316 +40,81 @@ const Projects = () => {
           />
         </div>
 
-        <div 
-          className="absolute bottom-0 left-0 right-0 h-32 z-10 pointer-events-none"
-          style={{
-            background: 'linear-gradient(to top, hsl(var(--background)) 0%, transparent 100%)'
-          }}
-        />
+        <div className="container mx-auto px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
 
-        <div className="container mx-auto px-6 lg:px-8 relative z-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
-            <ScrollReveal className="lg:col-span-8">
-              <motion.span 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
-              >
-                Portfolio
-              </motion.span>
-              <AnimatedTitle variant="hero" as="h1" className="mb-6">
-                {t.projects.title}
-              </AnimatedTitle>
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-                {t.projects.subtitle}
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal className="lg:col-span-4" delay={0.2}>
-              <div className="flex gap-8 lg:justify-end">
-                {stats.map((stat, index) => (
-                  <div key={index} className="text-center lg:text-right">
-                    <p className="text-3xl font-serif text-foreground mb-1">{stat.value}</p>
-                    <p className="text-xs text-muted-foreground/70">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Projects */}
-      <ParallaxSection 
-        className="py-20 lg:py-24"
-        speed={0.1}
-        backgroundElement={
-          <>
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
-          </>
-        }
-      >
-        <div className="container mx-auto px-6 lg:px-8 relative">
-          <ScrollReveal>
-            <motion.span 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
-            >
-              {getText(language, 'Destaques', 'Featured')}
-            </motion.span>
-            <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-10 leading-[1.05]">
-              {getText(language, 'Projetos em Destaque', 'Featured Projects')}
-            </h2>
-          </ScrollReveal>
-
-          <div className="space-y-8">
-            {projects.filter(p => p.featured).map((project, index) => (
-              <ScrollReveal key={project.slug} delay={index * 0.15}>
-                <motion.div
-                  whileHover={{ y: -6 }}
-                  transition={{ duration: 0.4 }}
-                  className="block group"
-                >
-                  <div 
-                    className="relative rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm overflow-hidden"
-                    style={{
-                      boxShadow: '0 8px 40px hsl(var(--foreground) / 0.03)'
-                    }}
-                  >
-                    <div className="grid grid-cols-1 lg:grid-cols-2">
-                      {/* Image */}
-                      <div className="relative h-64 lg:h-auto overflow-hidden">
-                        <img 
-                          src={project.image} 
-                          alt={project.title}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-background/80 via-transparent to-transparent" />
-                        
-                        {/* Number overlay */}
-                        <div className="absolute top-6 left-6 text-6xl font-serif text-foreground/[0.08] select-none">
-                          0{index + 1}
-                        </div>
-                      </div>
-
-                      {/* Content */}
-                      <div className="p-8 lg:p-12 flex flex-col justify-center">
-                        <div className="mb-6">
-                          <span className="text-xs px-3 py-1.5 rounded-full border border-border/30 bg-card/50 text-muted-foreground">
-                            {project.technologies[0]}
-                          </span>
-                        </div>
-
-                        <h3 className="font-serif text-2xl lg:text-3xl text-foreground mb-4 leading-tight group-hover:text-gradient transition-all duration-500">
-                          {project.title}
-                        </h3>
-                        
-                        <p className="text-base text-muted-foreground leading-relaxed mb-6">
-                          {project.description}
-                        </p>
-
-                        {/* Technologies */}
-                        <div className="flex flex-wrap gap-2 mb-8">
-                          {project.technologies.map((tech) => (
-                            <span
-                              key={tech}
-                              className="text-xs px-2.5 py-1 rounded-md border border-border/30 bg-background/50 text-muted-foreground/70"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-
-                        {/* Actions */}
-                        <div className="flex flex-wrap items-center gap-4 mb-6">
-                          <button
-                            onClick={() => setSelectedProject(project)}
-                            className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:opacity-70 transition-opacity"
-                          >
-                            <Eye className="w-4 h-4" />
-                            <span>{getText(language, 'Ver estudo de caso', 'View case study')}</span>
-                          </button>
-                          
-                          {project.link && (
-                            <a 
-                              href={project.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                            >
-                              <span>{t.projects.seeProject}</span>
-                              <ArrowUpRight className="w-4 h-4" />
-                            </a>
-                          )}
-                        </div>
-
-                        {/* Behind the Scenes */}
-                        {project.behindTheScenes && (
-                          <ProjectBehindTheScenes decisions={project.behindTheScenes} />
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </ParallaxSection>
-
-      {/* Process Section */}
-      <ParallaxSection 
-        className="py-20 lg:py-24"
-        speed={0.12}
-        backgroundElement={
-          <>
-            <div className="absolute inset-0 bg-gradient-to-b from-card/30 via-background to-card/30" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
-            <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl hidden md:block" />
-          </>
-        }
-      >
-        <div className="container mx-auto px-6 lg:px-8 relative">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <motion.span 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
-              >
-                {getText(language, 'Processo', 'Process')}
-              </motion.span>
-              <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6 leading-tight">
-                {getText(language, 'Como eu trabalho', 'How I work')}
-              </h2>
-              <p className="text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
-                {getText(language, 'Um processo estruturado para entregar projetos de alta qualidade.', 'A structured process to deliver high-quality projects.')}
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {[{
-              number: '01',
-              title: getText(language, 'Descoberta', 'Discovery'),
-              description: getText(language, 'Entendo suas necessidades e objetivos para criar a solução ideal.', 'I understand your needs and goals to create the ideal solution.')
-            }, {
-              number: '02',
-              title: getText(language, 'Desenvolvimento', 'Development'),
-              description: getText(language, 'Construo a solução com as melhores práticas e tecnologias.', 'I build the solution with best practices and technologies.')
-            }, {
-              number: '03',
-              title: getText(language, 'Entrega', 'Delivery'),
-              description: getText(language, 'Entrego o projeto testado e pronto para produção.', 'I deliver the tested project ready for production.')
-            }].map((step, index) => (
-              <ScrollReveal key={step.number} delay={index * 0.1}>
-                <motion.div
-                  whileHover={{ y: -4 }}
-                  transition={{ duration: 0.3 }}
-                  className="h-full"
-                >
-                  <div 
-                    className="relative h-full p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm group overflow-hidden"
-                    style={{
-                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
-                    }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    
-                    <div className="mb-6 flex items-center gap-4">
-                      <span className="text-3xl font-serif text-foreground/[0.1] group-hover:text-foreground/20 transition-colors duration-500">{step.number}</span>
-                      <div className="flex-1 h-px bg-gradient-to-r from-foreground/10 to-transparent" />
-                    </div>
-                    
-                    <h3 className="font-serif text-xl text-foreground mb-3 leading-tight">
-                      {step.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {step.description}
-                    </p>
-                  </div>
-                </motion.div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </ParallaxSection>
-
-      {/* CTA Section */}
-      <section className="py-24 lg:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-card/30 via-background to-background" />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-radial from-foreground/5 to-transparent blur-3xl opacity-50" />
-        </div>
-        
-        <div className="container mx-auto px-6 lg:px-8 relative">
-          <ScrollReveal>
+            {/* Text */}
             <motion.div
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.4 }}
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+              className="order-2 lg:order-1"
             >
-              <GlassCard className="max-w-3xl mx-auto p-10 lg:p-12 text-center hover:border-foreground/20 transition-all duration-500">
-                <div className="w-16 h-16 rounded-2xl border border-border/30 bg-card/50 flex items-center justify-center mx-auto mb-6">
-                  <Layers className="w-8 h-8 text-foreground/60" />
-                </div>
-                
-                <motion.span 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+              <span className="inline-flex items-center gap-2 text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium">
+                <Lock className="w-3 h-3" />
+                {getText(language, 'Acesso Restrito', 'Restricted Access')}
+              </span>
+
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 leading-[1.05]">
+                {getText(language, 'Projetos em Organização', 'Projects Being Organized')}
+              </h1>
+
+              <p className="text-base text-muted-foreground leading-relaxed max-w-md mb-6">
+                {getText(
+                  language,
+                  'Esta página está temporariamente indisponível. Estou organizando o portfólio e solicitando autorização formal de cada cliente antes de divulgar os projetos realizados.',
+                  'This page is temporarily unavailable. I am organizing the portfolio and requesting formal authorization from each client before publishing the projects delivered.'
+                )}
+              </p>
+
+              <p className="text-sm text-muted-foreground/80 leading-relaxed max-w-md mb-10">
+                {getText(
+                  language,
+                  'A confidencialidade e o respeito ao acordo com cada cliente vêm em primeiro lugar. Em breve, novos cases estarão disponíveis aqui.',
+                  'Confidentiality and respect for each client agreement come first. New case studies will soon be available here.'
+                )}
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-start gap-3">
+                <Link
+                  to={homePath}
+                  className="group inline-flex items-center gap-3 px-7 py-3.5 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300"
+                  style={{ boxShadow: '0 0 30px hsl(var(--foreground) / 0.15)' }}
                 >
-                  {getText(language, 'Próximo projeto', 'Next project')}
-                </motion.span>
-                
-                <h2 className="font-serif text-2xl lg:text-4xl text-foreground mb-6 leading-tight">
-                  {getText(language, 'Tem um projeto em mente?', 'Have a project in mind?')}
-                </h2>
-                <p className="text-base text-muted-foreground mb-8 leading-relaxed max-w-xl mx-auto">
-                  {getText(language, 'Vamos conversar sobre como posso ajudar a transformar sua ideia em realidade.', "Let's talk about how I can help turn your idea into reality.")}
-                </p>
-                
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                  <a 
-                    href="https://wa.me/5581993964261" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-3 px-8 py-4 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300"
-                    style={{
-                      boxShadow: '0 0 30px hsl(var(--foreground) / 0.2)'
-                    }}
-                  >
-                    {getText(language, 'Iniciar conversa', 'Start conversation')}
-                    <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </a>
-                  
-                  <Link 
-                    to="/servicos"
-                    className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-all duration-300"
-                  >
-                    <span>{getText(language, 'Ver serviços', 'View services')}</span>
-                    <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
-                  </Link>
-                </div>
-              </GlassCard>
+                  <ArrowLeft className="w-4 h-4" />
+                  {getText(language, 'Voltar para a Home', 'Back to Home')}
+                </Link>
+
+                <Link
+                  to={contactPath}
+                  className="group inline-flex items-center gap-3 px-7 py-3.5 text-sm font-medium text-foreground border border-border/30 bg-card/30 backdrop-blur-sm rounded-full transition-all duration-300 hover:border-foreground/20"
+                >
+                  <Mail className="w-4 h-4" />
+                  {getText(language, 'Solicitar cases', 'Request cases')}
+                </Link>
+              </div>
             </motion.div>
-          </ScrollReveal>
+
+            {/* Illustration */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="order-1 lg:order-2 flex items-center justify-center"
+            >
+              <div className="relative w-full flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-radial from-foreground/[0.04] to-transparent blur-3xl scale-150 hidden md:block" />
+                <img
+                  src={organizingImage}
+                  alt={getText(language, 'Projetos sendo organizados', 'Projects being organized')}
+                  className="relative w-full max-w-lg mx-auto"
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
-      </Layout>
-
-      {/* Case Study Modal */}
-      <CaseStudyModal 
-        isOpen={!!selectedProject}
-        onClose={() => setSelectedProject(null)}
-        project={selectedProject}
-      />
-    </>
+    </Layout>
   );
 };
 
