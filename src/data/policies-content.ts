@@ -477,6 +477,230 @@ export const policySections: PolicySection[] = [
         en: 'By purchasing and reading this work, the reader acknowledges that the content is informational and motivational in nature, based on the author\'s personal trajectory. The practical application of any concept, reflection, or learning presented is entirely the reader\'s responsibility.'
       }
     ]
+  },
+  {
+    id: 'livro-direitos-autorais',
+    title: { pt: 'Livro — Direitos Autorais', en: 'Book — Copyright' },
+    paragraphs: [
+      {
+        pt: 'A obra "Superando Limites: da Rejeição ao Sucesso" é integralmente protegida pela legislação brasileira de direitos autorais, em especial pela Lei nº 9.610/98, e está devidamente registrada na Fundação Biblioteca Nacional. Todos os direitos sobre o conteúdo, estrutura, título, capa, diagramação e identidade visual da obra são reservados ao autor.',
+        en: 'The book "Overcoming Limits: from Rejection to Success" is fully protected by Brazilian copyright law, in particular Law No. 9,610/98, and is duly registered with the National Library Foundation. All rights over the content, structure, title, cover, layout, and visual identity of the work are reserved to the author.'
+      },
+      {
+        pt: 'É expressamente proibida a cópia, reprodução, digitalização, transcrição, tradução, adaptação ou qualquer outra forma de duplicação do conteúdo, total ou parcial, por qualquer meio físico ou digital, sem autorização prévia e por escrito do autor. Essa proibição inclui o compartilhamento de trechos extensos em redes sociais, blogs, comunidades, grupos de mensagem e plataformas de armazenamento em nuvem.',
+        en: 'The copy, reproduction, scanning, transcription, translation, adaptation, or any other form of duplication of the content, in whole or in part, by any physical or digital means, without prior written authorization from the author, is expressly prohibited. This prohibition includes sharing extensive excerpts on social networks, blogs, communities, messaging groups, and cloud storage platforms.'
+      },
+      {
+        pt: 'A distribuição não autorizada da obra, seja gratuita ou onerosa, configura violação de direitos autorais e está sujeita às sanções civis e criminais previstas em lei, incluindo indenização por danos materiais e morais, além das penalidades estabelecidas pelo Código Penal Brasileiro nos artigos 184 e seguintes.',
+        en: 'Unauthorized distribution of the work, whether free or paid, constitutes a copyright violation and is subject to the civil and criminal sanctions provided by law, including compensation for material and moral damages, in addition to the penalties established by the Brazilian Penal Code in articles 184 and following.'
+      },
+      {
+        pt: 'A revenda da obra, em qualquer formato, sem autorização formal do autor, é igualmente proibida. Isso inclui marketplaces, sebos digitais, plataformas de revenda de e-books, grupos de Telegram, fóruns e qualquer canal não oficial. A comercialização legítima ocorre exclusivamente pelos canais autorizados informados na página oficial do livro.',
+        en: 'Resale of the work, in any format, without formal authorization from the author, is equally prohibited. This includes marketplaces, digital used-book stores, e-book resale platforms, Telegram groups, forums, and any unofficial channel. Legitimate commercialization occurs exclusively through the authorized channels listed on the official book page.'
+      },
+      {
+        pt: 'Citações breves para fins críticos, acadêmicos ou jornalísticos são permitidas desde que respeitem o limite razoável previsto em lei, mantenham a integridade do contexto original e atribuam a autoria de forma explícita, com nome do autor e título da obra. Qualquer uso que ultrapasse esse limite exige autorização formal.',
+        en: 'Brief quotations for critical, academic, or journalistic purposes are permitted provided they respect the reasonable limit established by law, preserve the integrity of the original context, and explicitly attribute authorship, including the author\'s name and the title of the work. Any use beyond this limit requires formal authorization.'
+      },
+      {
+        pt: 'Casos identificados de pirataria, distribuição ilegal ou apropriação indevida do conteúdo serão tratados com as medidas legais cabíveis, incluindo notificações extrajudiciais, solicitações de remoção junto a plataformas e provedores, e ações judiciais quando necessário. A proteção da obra é uma responsabilidade ativa, não uma formalidade.',
+        en: 'Identified cases of piracy, illegal distribution, or undue appropriation of content will be addressed with the appropriate legal measures, including extrajudicial notifications, takedown requests to platforms and providers, and judicial actions when necessary. Protecting the work is an active responsibility, not a formality.'
+      }
+    ]
+  },
+  {
+    id: 'livro-licenca-de-uso',
+    title: { pt: 'Livro — Licença de Uso', en: 'Book — Usage License' },
+    paragraphs: [
+      {
+        pt: 'A aquisição da obra "Superando Limites: da Rejeição ao Sucesso" concede ao comprador uma licença pessoal, intransferível e não exclusiva para a leitura e o uso particular do conteúdo. Essa licença autoriza o leitor a utilizar a obra como ferramenta de desenvolvimento pessoal, estudo individual e enriquecimento próprio, dentro dos limites estabelecidos nesta política.',
+        en: 'The acquisition of the book "Overcoming Limits: from Rejection to Success" grants the buyer a personal, non-transferable, and non-exclusive license for reading and private use of the content. This license authorizes the reader to use the work as a tool for personal development, individual study, and self-enrichment, within the limits established in this policy.'
+      },
+      {
+        pt: 'O comprador pode ler a obra integralmente, fazer anotações pessoais em sua cópia, citar trechos curtos com a devida atribuição em conversas, palestras ou produções autorais, e utilizar os aprendizados em sua vida pessoal e profissional. Esse é o uso legítimo e esperado da obra.',
+        en: 'The buyer may read the work in full, make personal notes on their copy, cite short excerpts with proper attribution in conversations, lectures, or original productions, and apply the learnings in personal and professional life. This is the legitimate and expected use of the work.'
+      },
+      {
+        pt: 'Não é permitido revender, alugar, emprestar comercialmente, ceder, doar versões digitais, compartilhar arquivos, postar em grupos de mensagem, anexar em e-mails, hospedar em nuvens públicas, transmitir em lives ou qualquer outra forma de redistribuição do conteúdo. A licença adquirida é estritamente individual.',
+        en: 'It is not permitted to resell, rent, lend commercially, transfer, donate digital versions, share files, post in messaging groups, attach to emails, host on public clouds, broadcast on live streams, or any other form of redistribution of the content. The acquired license is strictly individual.'
+      },
+      {
+        pt: 'Também não é permitido reproduzir partes substanciais da obra em cursos, treinamentos, materiais didáticos, produtos digitais, livros próprios ou qualquer conteúdo de terceiros, ainda que com atribuição. Esse tipo de uso configura aproveitamento comercial indevido e exige licenciamento formal.',
+        en: 'It is also not permitted to reproduce substantial parts of the work in courses, trainings, educational materials, digital products, own books, or any third-party content, even with attribution. This type of use constitutes undue commercial exploitation and requires formal licensing.'
+      },
+      {
+        pt: 'A licença não autoriza traduções não oficiais, adaptações em outros formatos (audiobooks, vídeos, podcasts, resumos comerciais) ou criação de obras derivadas. Qualquer iniciativa nesse sentido depende de contrato específico firmado diretamente com o autor.',
+        en: 'The license does not authorize unofficial translations, adaptations in other formats (audiobooks, videos, podcasts, commercial summaries), or the creation of derivative works. Any initiative in this regard depends on a specific contract signed directly with the author.'
+      },
+      {
+        pt: 'O descumprimento das condições desta licença extingue automaticamente o direito de uso da obra e sujeita o infrator às medidas previstas na seção de direitos autorais, sem prejuízo de outras providências legais cabíveis.',
+        en: 'Failure to comply with the conditions of this license automatically terminates the right to use the work and subjects the infringer to the measures provided in the copyright section, without prejudice to other applicable legal actions.'
+      }
+    ]
+  },
+  {
+    id: 'livro-termos-de-compra',
+    title: { pt: 'Livro — Termos de Compra e Acesso', en: 'Book — Purchase and Access Terms' },
+    paragraphs: [
+      {
+        pt: 'A obra está disponível em duas modalidades oficiais: o livro físico, comercializado pela Amazon, e a versão digital, também distribuída pelos canais autorizados informados na página oficial do livro. Toda compra deve ser realizada exclusivamente nesses canais para garantir autenticidade, qualidade e suporte adequado.',
+        en: 'The work is available in two official modalities: the physical book, sold through Amazon, and the digital version, also distributed by the authorized channels listed on the official book page. All purchases must be made exclusively through these channels to ensure authenticity, quality, and proper support.'
+      },
+      {
+        pt: 'A entrega do livro físico segue as condições de prazo, frete e logística da plataforma de venda escolhida pelo comprador. Eventuais atrasos, extravios ou problemas de transporte devem ser tratados diretamente com a plataforma responsável pela operação logística, conforme as políticas vigentes em cada serviço.',
+        en: 'Delivery of the physical book follows the deadline, shipping, and logistics conditions of the sales platform chosen by the buyer. Any delays, losses, or transport issues must be handled directly with the platform responsible for the logistics operation, according to the policies in force on each service.'
+      },
+      {
+        pt: 'A versão digital é entregue por meio de download seguro ou acesso autenticado, conforme o canal oficial utilizado na compra. O acesso é liberado após a confirmação do pagamento, em prazo geralmente imediato, podendo levar até algumas horas em casos excepcionais relacionados à validação da transação pelo intermediário financeiro.',
+        en: 'The digital version is delivered via secure download or authenticated access, depending on the official channel used at the time of purchase. Access is granted after payment confirmation, usually immediately, and may take up to a few hours in exceptional cases related to transaction validation by the financial intermediary.'
+      },
+      {
+        pt: 'Em caso de problema técnico no acesso à versão digital, como falha de download, link expirado ou erro na plataforma, o comprador deve entrar em contato pelos canais oficiais de atendimento informados no site, apresentando o comprovante de compra. O suporte é prestado em horário comercial e o tempo de resposta varia conforme a complexidade do caso.',
+        en: 'In case of a technical issue accessing the digital version, such as download failure, expired link, or platform error, the buyer should contact the official support channels listed on the site, presenting the proof of purchase. Support is provided during business hours and response time varies according to the complexity of the case.'
+      },
+      {
+        pt: 'É responsabilidade do comprador armazenar adequadamente o arquivo digital adquirido, mantendo cópias de segurança em locais privados e seguros. A reemissão de acesso depende da verificação da compra original e pode estar sujeita à disponibilidade técnica da plataforma utilizada na transação.',
+        en: 'It is the buyer\'s responsibility to properly store the acquired digital file, keeping secure backups in private and safe locations. Reissuing access depends on verifying the original purchase and may be subject to the technical availability of the platform used in the transaction.'
+      },
+      {
+        pt: 'Compras realizadas fora dos canais oficiais não são reconhecidas pelo autor e não geram direito a suporte, atualizações, garantia ou qualquer relacionamento pós-venda. Adquirir a obra apenas pelos canais autorizados é a forma de garantir a experiência completa que ela foi desenhada para oferecer.',
+        en: 'Purchases made outside the official channels are not recognized by the author and do not entitle the buyer to support, updates, warranty, or any post-sale relationship. Acquiring the work only through authorized channels is the way to ensure the complete experience it was designed to deliver.'
+      }
+    ]
+  },
+  {
+    id: 'livro-politica-de-reembolso',
+    title: { pt: 'Livro — Política de Reembolso', en: 'Book — Refund Policy' },
+    paragraphs: [
+      {
+        pt: 'O reembolso da obra "Superando Limites: da Rejeição ao Sucesso" segue as regras estabelecidas pelo Código de Defesa do Consumidor brasileiro e pelas políticas específicas das plataformas oficiais utilizadas na venda. Para o livro físico, vale a política da plataforma de comercialização, que normalmente garante prazo de arrependimento de sete dias corridos a contar da data de recebimento.',
+        en: 'Refunds for the book "Overcoming Limits: from Rejection to Success" follow the rules established by the Brazilian Consumer Protection Code and the specific policies of the official platforms used in the sale. For the physical book, the policy of the sales platform applies, which typically guarantees a withdrawal period of seven calendar days from the date of receipt.'
+      },
+      {
+        pt: 'Para a versão digital, o prazo padrão de solicitação de reembolso é de sete dias corridos contados a partir da liberação do acesso, conforme previsto na legislação brasileira para produtos digitais adquiridos fora do estabelecimento comercial. A solicitação deve ser feita pelo mesmo canal oficial onde a compra foi realizada.',
+        en: 'For the digital version, the standard refund request period is seven calendar days from the release of access, as established by Brazilian law for digital products purchased outside the commercial establishment. The request must be made through the same official channel where the purchase was made.'
+      },
+      {
+        pt: 'O reembolso será processado integralmente quando a solicitação ocorrer dentro do prazo legal e o comprador apresentar o comprovante de aquisição. O valor é devolvido pela mesma forma de pagamento utilizada na compra, podendo levar alguns dias úteis para ser refletido conforme as regras do meio de pagamento e da plataforma.',
+        en: 'The refund will be processed in full when the request occurs within the legal period and the buyer presents proof of purchase. The amount is returned via the same payment method used in the purchase and may take a few business days to be reflected, according to the rules of the payment method and the platform.'
+      },
+      {
+        pt: 'Solicitações fora do prazo legal serão analisadas individualmente, considerando o motivo apresentado, o histórico da compra e a integridade do produto. Não há obrigação legal de reembolso após o período de arrependimento, mas situações excepcionais podem ser avaliadas com bom senso e proporcionalidade.',
+        en: 'Requests outside the legal period will be analyzed individually, considering the reason presented, the purchase history, and the integrity of the product. There is no legal obligation to refund after the withdrawal period, but exceptional situations may be evaluated with reasonableness and proportionality.'
+      },
+      {
+        pt: 'Não serão aceitos pedidos de reembolso baseados em divergência de expectativa subjetiva sobre o conteúdo, uma vez que a página oficial do livro descreve com clareza a proposta da obra, seu propósito como material de desenvolvimento pessoal e seus limites em relação a temas técnicos. Recomenda-se a leitura atenta da apresentação antes da compra.',
+        en: 'Refund requests based on subjective expectation divergence about the content will not be accepted, since the official book page clearly describes the proposal of the work, its purpose as personal development material, and its limits regarding technical subjects. It is recommended to read the presentation carefully before purchasing.'
+      },
+      {
+        pt: 'Compras realizadas fora dos canais oficiais não estão cobertas por esta política e devem ser tratadas diretamente com o vendedor responsável. Mais um motivo para adquirir a obra apenas pelos canais autorizados, garantindo todos os direitos previstos em lei e a transparência completa da relação de consumo.',
+        en: 'Purchases made outside the official channels are not covered by this policy and must be handled directly with the seller responsible. Another reason to acquire the work only through authorized channels, ensuring all rights provided by law and full transparency in the consumer relationship.'
+      }
+    ]
+  },
+  {
+    id: 'livro-limitacao-de-responsabilidade',
+    title: { pt: 'Livro — Limitação de Responsabilidade', en: 'Book — Limitation of Liability' },
+    paragraphs: [
+      {
+        pt: 'O conteúdo da obra "Superando Limites: da Rejeição ao Sucesso" tem natureza estritamente informativa, educacional e motivacional. As reflexões, histórias e aprendizados apresentados são frutos da experiência pessoal do autor e devem ser compreendidos como uma perspectiva, não como prescrição universal, fórmula garantida ou método clínico.',
+        en: 'The content of the book "Overcoming Limits: from Rejection to Success" is strictly informational, educational, and motivational in nature. The reflections, stories, and learnings presented are the result of the author\'s personal experience and should be understood as a perspective, not as a universal prescription, guaranteed formula, or clinical method.'
+      },
+      {
+        pt: 'O autor não se responsabiliza por decisões pessoais, profissionais, financeiras, emocionais ou de qualquer outra natureza tomadas pelo leitor a partir da interpretação do conteúdo. Cada pessoa possui contexto, histórico e circunstâncias únicas, e qualquer aplicação prática das ideias apresentadas é de responsabilidade integral do leitor.',
+        en: 'The author is not responsible for personal, professional, financial, emotional, or any other type of decisions made by the reader based on interpretation of the content. Each person has a unique context, history, and circumstances, and any practical application of the ideas presented is entirely the reader\'s responsibility.'
+      },
+      {
+        pt: 'A obra não substitui acompanhamento profissional especializado em áreas como psicologia, psiquiatria, medicina, direito, finanças ou consultoria de carreira. Quando o leitor identificar necessidade de orientação técnica em qualquer dessas áreas, deve buscar profissionais habilitados, com formação reconhecida e capacidade de avaliar individualmente o caso concreto.',
+        en: 'The work does not replace specialized professional support in areas such as psychology, psychiatry, medicine, law, finance, or career consulting. When the reader identifies a need for technical guidance in any of these areas, they should seek qualified professionals with recognized training and the ability to individually assess the specific case.'
+      },
+      {
+        pt: 'Resultados, transformações ou conquistas relatados na obra refletem a trajetória individual do autor e não constituem promessa, garantia ou expectativa replicável. Fatores externos como contexto socioeconômico, saúde, mercado, oportunidades, esforço pessoal e elementos imprevisíveis influenciam diretamente qualquer resultado real obtido por terceiros.',
+        en: 'Results, transformations, or achievements reported in the work reflect the author\'s individual trajectory and do not constitute a promise, guarantee, or replicable expectation. External factors such as socioeconomic context, health, market, opportunities, personal effort, and unpredictable elements directly influence any real result obtained by third parties.'
+      },
+      {
+        pt: 'Ao adquirir e ler a obra, o leitor reconhece e aceita expressamente que o autor, seus colaboradores e parceiros não respondem por danos diretos, indiretos, incidentais ou consequenciais decorrentes da leitura, interpretação ou aplicação do conteúdo, salvo nos limites estritamente previstos pela legislação consumerista brasileira.',
+        en: 'By purchasing and reading the work, the reader expressly acknowledges and accepts that the author, their collaborators, and partners are not liable for direct, indirect, incidental, or consequential damages arising from the reading, interpretation, or application of the content, except within the limits strictly provided by Brazilian consumer law.'
+      }
+    ]
+  },
+  {
+    id: 'livro-uso-de-marca',
+    title: { pt: 'Livro — Uso de Marca e Nome', en: 'Book — Brand and Name Usage' },
+    paragraphs: [
+      {
+        pt: 'O nome do autor, o título da obra "Superando Limites: da Rejeição ao Sucesso", a identidade visual associada ao livro, capa, tipografia, paleta de cores e demais elementos de marca são protegidos como ativos autorais e de identidade profissional. Sua utilização requer autorização prévia, formal e específica para cada finalidade pretendida.',
+        en: 'The author\'s name, the title of the work "Overcoming Limits: from Rejection to Success", the visual identity associated with the book, cover, typography, color palette, and other brand elements are protected as authorial and professional identity assets. Their use requires prior, formal, and specific authorization for each intended purpose.'
+      },
+      {
+        pt: 'É proibido o uso comercial da marca, do nome do autor ou da obra em produtos, serviços, cursos, mentorias, eventos, materiais publicitários ou qualquer iniciativa que sugira vínculo, parceria, endosso ou recomendação que não tenha sido formalmente estabelecida. Associações indevidas configuram apropriação de marca e podem ser tratadas judicialmente.',
+        en: 'Commercial use of the brand, author\'s name, or the work in products, services, courses, mentorships, events, advertising materials, or any initiative suggesting a link, partnership, endorsement, or recommendation that has not been formally established is prohibited. Improper associations constitute brand appropriation and may be addressed judicially.'
+      },
+      {
+        pt: 'Citações em conteúdos jornalísticos, acadêmicos ou em produções autorais legítimas que mencionem o livro ou o autor são bem-vindas, desde que feitas com precisão, sem distorção do contexto original e com a devida atribuição. Resenhas, recomendações espontâneas e debates honestos sobre a obra são incentivados e fazem parte da vida natural de qualquer livro.',
+        en: 'Quotations in journalistic, academic content, or legitimate authorial productions that mention the book or the author are welcome, provided they are made accurately, without distortion of the original context, and with proper attribution. Reviews, spontaneous recommendations, and honest debates about the work are encouraged and are part of the natural life of any book.'
+      },
+      {
+        pt: 'O uso da imagem, voz ou trechos de entrevistas do autor em conteúdos próprios de terceiros depende de autorização formal, especialmente quando houver finalidade comercial, educacional remunerada ou veiculação em larga escala. Recortes descontextualizados que comprometam a integridade do discurso do autor não são aceitos.',
+        en: 'The use of the author\'s image, voice, or excerpts from interviews in third-party content depends on formal authorization, especially when there is commercial, paid educational, or large-scale broadcasting purposes. Out-of-context clips that compromise the integrity of the author\'s discourse are not accepted.'
+      },
+      {
+        pt: 'Solicitações de uso de marca, nome ou obra para fins comerciais, parcerias institucionais, divulgação em eventos ou publicações profissionais devem ser encaminhadas pelos canais oficiais de contato. Cada pedido é analisado individualmente, considerando o alinhamento com os valores do autor e o contexto específico da iniciativa.',
+        en: 'Requests for brand, name, or work usage for commercial purposes, institutional partnerships, event promotion, or professional publications must be submitted through the official contact channels. Each request is analyzed individually, considering alignment with the author\'s values and the specific context of the initiative.'
+      }
+    ]
+  },
+  {
+    id: 'livro-canais-oficiais',
+    title: { pt: 'Livro — Canais Oficiais e Compra Segura', en: 'Book — Official Channels and Safe Purchase' },
+    paragraphs: [
+      {
+        pt: 'A forma mais segura, completa e correta de adquirir "Superando Limites: da Rejeição ao Sucesso" é pelos canais oficiais informados na página do livro. São eles que garantem o conteúdo na íntegra, na sua versão mais atual, com a qualidade editorial original e com todo o suporte vinculado à experiência de leitura que a obra foi pensada para entregar.',
+        en: 'The safest, most complete, and correct way to acquire "Overcoming Limits: from Rejection to Success" is through the official channels listed on the book page. They guarantee the full content, in its most up-to-date version, with the original editorial quality and all the support linked to the reading experience the work was designed to deliver.'
+      },
+      {
+        pt: 'Comprar pelos canais oficiais significa receber a obra exatamente como ela foi concebida pelo autor, sem cortes, sem versões intermediárias e sem perda de qualidade. Significa também ter acesso a eventuais atualizações, ao atendimento direto em caso de problemas com o material e à garantia de estar dentro de uma relação de consumo legítima e protegida pela legislação brasileira.',
+        en: 'Buying through official channels means receiving the work exactly as conceived by the author, without cuts, without intermediate versions, and without loss of quality. It also means having access to any updates, direct support in case of issues with the material, and the assurance of being within a legitimate consumer relationship protected by Brazilian law.'
+      },
+      {
+        pt: 'Cópias circulando em grupos de Telegram, fóruns, redes sociais e plataformas não autorizadas costumam ser versões incompletas, desatualizadas, com erros de formatação, capítulos ausentes ou trechos editados sem autorização. Além de comprometerem a experiência de leitura, esses arquivos não dão acesso a suporte, atualizações ou qualquer canal direto com o autor.',
+        en: 'Copies circulating in Telegram groups, forums, social networks, and unauthorized platforms are usually incomplete, outdated versions, with formatting errors, missing chapters, or excerpts edited without authorization. In addition to compromising the reading experience, these files do not grant access to support, updates, or any direct channel with the author.'
+      },
+      {
+        pt: 'Quem adquire pelos canais oficiais investe não apenas em um livro, mas no trabalho autoral por trás dele e no compromisso contínuo do autor em produzir conteúdo de valor real. É uma escolha que protege a obra, fortalece o ecossistema de produção independente e assegura que cada nova versão, edição e entrega futura mantenha o mesmo padrão de profissionalismo.',
+        en: 'Those who purchase through official channels invest not only in a book, but in the authorial work behind it and in the author\'s ongoing commitment to producing content of real value. It is a choice that protects the work, strengthens the independent production ecosystem, and ensures that each new version, edition, and future delivery maintains the same standard of professionalism.'
+      },
+      {
+        pt: 'Se você recebeu o livro por outra fonte e gostou do conteúdo, considere apoiar o trabalho adquirindo a versão oficial. Mais do que uma questão de legalidade, é o gesto que sustenta a continuidade da obra e permite que o autor siga produzindo material com a profundidade e o cuidado que esse tipo de leitura exige.',
+        en: 'If you received the book from another source and enjoyed the content, consider supporting the work by acquiring the official version. More than a matter of legality, it is the gesture that sustains the continuity of the work and allows the author to keep producing material with the depth and care this type of reading requires.'
+      }
+    ]
+  },
+  {
+    id: 'livro-jurisdicao',
+    title: { pt: 'Livro — Jurisdição', en: 'Book — Jurisdiction' },
+    paragraphs: [
+      {
+        pt: 'Todas as relações jurídicas decorrentes da aquisição, leitura, distribuição ou qualquer uso da obra "Superando Limites: da Rejeição ao Sucesso" são regidas pelas leis da República Federativa do Brasil, em especial pela Lei nº 9.610/98 (Direitos Autorais), pela Lei nº 8.078/90 (Código de Defesa do Consumidor) e pela Lei nº 13.709/18 (LGPD), no que couber.',
+        en: 'All legal relationships arising from the acquisition, reading, distribution, or any use of the book "Overcoming Limits: from Rejection to Success" are governed by the laws of the Federative Republic of Brazil, in particular Law No. 9,610/98 (Copyright), Law No. 8,078/90 (Consumer Protection Code), and Law No. 13,709/18 (LGPD), where applicable.'
+      },
+      {
+        pt: 'Fica eleito o foro da comarca de Recife, estado de Pernambuco, como competente para dirimir quaisquer controvérsias decorrentes desta política, da obra ou de sua comercialização, com renúncia expressa a qualquer outro, por mais privilegiado que seja, salvo nos casos em que a legislação consumerista determinar foro diverso em favor do consumidor.',
+        en: 'The jurisdiction of the district of Recife, state of Pernambuco, is hereby elected as competent to resolve any disputes arising from this policy, the work, or its commercialization, with express waiver of any other, however privileged, except in cases where consumer legislation determines a different jurisdiction in favor of the consumer.'
+      },
+      {
+        pt: 'A escolha da jurisdição não restringe os direitos do consumidor previstos em lei. Sempre que a legislação aplicável determinar foro mais favorável ao adquirente, especialmente em relações de consumo a distância, prevalecerá o entendimento mais protetivo, conforme orientação dos tribunais brasileiros.',
+        en: 'The choice of jurisdiction does not restrict the consumer rights provided by law. Whenever applicable legislation determines a more favorable jurisdiction to the buyer, especially in distance consumer relations, the most protective understanding shall prevail, in accordance with the guidance of Brazilian courts.'
+      },
+      {
+        pt: 'Notificações extrajudiciais, solicitações formais e comunicações oficiais relacionadas à obra devem ser direcionadas pelos canais de contato indicados no site, em formato escrito, contendo identificação completa do remetente e descrição clara do assunto. O tempo de resposta varia conforme a complexidade da demanda apresentada.',
+        en: 'Extrajudicial notifications, formal requests, and official communications related to the work must be addressed through the contact channels indicated on the site, in written form, containing complete identification of the sender and a clear description of the subject. Response time varies according to the complexity of the demand presented.'
+      },
+      {
+        pt: 'Disputas internacionais envolvendo aquisições realizadas por leitores fora do Brasil são igualmente regidas pela legislação brasileira, sem prejuízo da aplicação de tratados internacionais de proteção de direitos autorais dos quais o Brasil seja signatário, como a Convenção de Berna.',
+        en: 'International disputes involving purchases made by readers outside Brazil are equally governed by Brazilian law, without prejudice to the application of international copyright protection treaties to which Brazil is a signatory, such as the Berne Convention.'
+      }
+    ]
   }
 ];
 

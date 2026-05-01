@@ -187,8 +187,50 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.talissonsouza.com.br/politicas/disclaimer-livro</loc>
-    <lastmod>2025-04-09</lastmod>
+    <loc>https://www.talissonsouza.com.br/politicas/livro-direitos-autorais</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.talissonsouza.com.br/politicas/livro-licenca-de-uso</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.talissonsouza.com.br/politicas/livro-termos-de-compra</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.talissonsouza.com.br/politicas/livro-politica-de-reembolso</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.talissonsouza.com.br/politicas/livro-limitacao-de-responsabilidade</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.talissonsouza.com.br/politicas/livro-uso-de-marca</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.talissonsouza.com.br/politicas/livro-canais-oficiais</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.talissonsouza.com.br/politicas/livro-jurisdicao</loc>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
