@@ -95,6 +95,14 @@ export const ptToEnRoutes: Record<string, string> = {
   '/feedbacks': '/en-us/feedbacks',
   '/politicas': '/en-us/policies',
   '/politicas/disclaimer-livro': '/en-us/policies/disclaimer-livro',
+  '/politicas/livro-direitos-autorais': '/en-us/policies/livro-direitos-autorais',
+  '/politicas/livro-licenca-de-uso': '/en-us/policies/livro-licenca-de-uso',
+  '/politicas/livro-termos-de-compra': '/en-us/policies/livro-termos-de-compra',
+  '/politicas/livro-politica-de-reembolso': '/en-us/policies/livro-politica-de-reembolso',
+  '/politicas/livro-limitacao-de-responsabilidade': '/en-us/policies/livro-limitacao-de-responsabilidade',
+  '/politicas/livro-uso-de-marca': '/en-us/policies/livro-uso-de-marca',
+  '/politicas/livro-canais-oficiais': '/en-us/policies/livro-canais-oficiais',
+  '/politicas/livro-jurisdicao': '/en-us/policies/livro-jurisdicao',
 };
 
 // Reverse mapping: English to Portuguese
