@@ -38,8 +38,8 @@ interface PageMeta {
 // ── Static page metadata ──────────────────────────────────────────────
 const STATIC_PAGES: Record<string, { pt: Omit<PageMeta, 'locale'>; en: Omit<PageMeta, 'locale'> }> = {
   '/': {
-    pt: { title: 'Talisson Souza | Engenheiro de Software e Fundador da Cheetah Solutions', description: 'Engenheiro de software e fundador da Cheetah Solutions Network. Com mais de 8 anos de experiência no desenvolvimento de sistemas e soluções digitais, atuo na criação de tecnologias, automações e arquiteturas que ajudam empresas a transformar software em eficiência, decisões estratégicas e crescimento.', type: 'website' },
-    en: { title: 'Talisson Souza | Software Engineer & Founder of Cheetah Solutions', description: 'Software engineer and founder of Cheetah Solutions Network. With over 8 years of experience in systems development and digital solutions, I create technologies, automations and architectures that help companies transform software into efficiency, strategic decisions and growth.', type: 'website' },
+    pt: { title: 'Talisson Souza | Engenheiro de Software e Empresário de Tecnologia', description: "Engenheiro de Software e fundador da Cheetah Solutions Network. Atuo há mais de 8 anos com desenvolvimento de sistemas, automações e arquiteturas digitais para empresas e projetos próprios. Autor do livro 'Superando Limites da Rejeição ao Sucesso' e criador de conteúdo sobre tecnologia e programação.", type: 'website' },
+    en: { title: 'Talisson Souza | Software Engineer and Technology Entrepreneur', description: "Software Engineer and founder of Cheetah Solutions Network. For over 8 years I have built systems, automations and digital architectures for companies and my own ventures. Author of the book 'Overcoming the Limits from Rejection to Success' and a content creator on technology and programming.", type: 'website' },
   },
   '/sobre': {
     pt: { title: 'Sobre Talisson Souza | Desenvolvedor Full Stack', description: 'Conheça Talisson Souza, desenvolvedor full stack com mais de 8 anos de experiência, CEO da Cheetah Solutions Network e Diretor Estratégico do Werneck Group.', type: 'website' },
