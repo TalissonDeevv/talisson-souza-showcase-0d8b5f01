@@ -123,22 +123,19 @@ const Navbar = () => {
             />
           </Link>
 
-          {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-1">
+          {/* Desktop nav - centered pill */}
+          <div className="hidden lg:flex items-center gap-1 bg-card/40 backdrop-blur-md border border-border/40 rounded-full px-2 py-1 shadow-sm">
             {simpleNavItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className={`px-3 py-2 text-sm transition-colors duration-200 ${
+                className={`px-4 py-1.5 text-sm rounded-full transition-colors duration-200 ${
                   isActive(item.path)
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "text-foreground bg-secondary/60"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/40"
                 }`}
               >
                 {item.name}
-                {isActive(item.path) && (
-                  <span className="block h-px w-full bg-foreground mt-0.5" />
-                )}
               </Link>
             ))}
 
@@ -149,7 +146,7 @@ const Navbar = () => {
                 data-dropdown
               >
                 <button
-                  className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-1"
+                  className="px-4 py-1.5 text-sm rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary/40 transition-colors duration-200 inline-flex items-center gap-1"
                   onClick={(e) => { e.stopPropagation(); toggleDropdown(dropdown.label); }}
                   aria-expanded={openDropdown === dropdown.label}
                   aria-haspopup="true"
@@ -160,7 +157,7 @@ const Navbar = () => {
 
                 {openDropdown === dropdown.label && (
                   <div
-                    className="absolute top-full left-0 mt-1 min-w-[220px] bg-popover border border-border rounded-md shadow-lg py-2 z-[60]"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 min-w-[220px] bg-popover border border-border rounded-xl shadow-lg py-2 z-[60]"
                     data-dropdown
                   >
                     {dropdown.allLink && (
