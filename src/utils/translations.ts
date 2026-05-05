@@ -351,7 +351,7 @@ const translations: Translations = {
         "I build custom systems and lead teams that turn ideas into high-impact digital products.",
       contact: "Discuss your project",
       about: "Learn my story",
-      badge: "Tecnologia. Sistemas. Decisões."
+      badge: "Technology. Systems. Decisions."
     },
     book: {
       newRelease: "New Release",
