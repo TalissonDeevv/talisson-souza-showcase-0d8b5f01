@@ -76,8 +76,8 @@ const Index = () => {
   return (
     <Layout withPadding={false} showDiscordPopup={true}>
       <SEO
-        title={getText(language, 'Talisson Souza | Desenvolvedor Full Stack & CEO', 'Talisson Souza | Full Stack Developer & CEO')}
-        description={getText(language, 'Desenvolvedor Full Stack com mais de 8 anos de experiência. CEO da Cheetah Solutions Network, especialista em sistemas web sob medida, APIs, React, Node.js e soluções digitais para empresas.', 'Full Stack Developer with over 8 years of experience. CEO of Cheetah Solutions Network, specialist in custom web systems, APIs, React, Node.js and digital solutions for businesses.')}
+        title={getText(language, 'Talisson Souza | Engenheiro de Software e Empresário de Tecnologia', 'Talisson Souza | Software Engineer and Technology Entrepreneur')}
+        description={getText(language, "Engenheiro de Software e fundador da Cheetah Solutions Network. Atuo há mais de 8 anos com desenvolvimento de sistemas, automações e arquiteturas digitais para empresas e projetos próprios. Autor do livro 'Superando Limites da Rejeição ao Sucesso' e criador de conteúdo sobre tecnologia e programação.", "Software Engineer and founder of Cheetah Solutions Network. Over 8 years building systems, automations and digital architectures for companies and personal projects. Author of the book 'Overcoming Limits from Rejection to Success' and creator of content about technology and programming.")}
         canonical={language === 'en' ? '/en-us' : '/'}
         keywords={language === 'pt' ? ['desenvolvedor full stack', 'CEO', 'sistemas sob medida', 'desenvolvimento web', 'React', 'Node.js', 'TypeScript', 'Cheetah Solutions Network'] : ['full stack developer', 'CEO', 'custom systems', 'web development', 'React', 'Node.js', 'TypeScript', 'Cheetah Solutions Network']} />
 
