@@ -104,35 +104,31 @@ const Navbar = () => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, [openDropdown]);
 
-  const navBackground = isHome && !isScrolled
-    ? "bg-transparent border-transparent"
-    : "bg-background/90 backdrop-blur-sm border-border/40";
-
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${navBackground}`}>
-      <div className="container mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <Link to={language === 'en' ? '/en-us' : '/'} className="group">
+    <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+      <div className="container mx-auto px-4 lg:px-6 pt-3">
+        <div className="flex items-center justify-between gap-4 h-14 px-3 lg:px-5 rounded-full bg-background/80 backdrop-blur-md border border-border/40 shadow-sm">
+          <Link to={language === 'en' ? '/en-us' : '/'} className="group shrink-0 pl-1">
             <img
               src={logo}
               alt="Talisson Souza - Desenvolvedor Full Stack"
-              className="h-14 w-auto transition-opacity duration-200 group-hover:opacity-80"
+              className="h-10 w-auto transition-opacity duration-200 group-hover:opacity-80"
               loading="eager"
               // @ts-ignore
               fetchpriority="high"
             />
           </Link>
 
-          {/* Desktop nav - centered pill */}
-          <div className="hidden lg:flex items-center gap-1 bg-card/40 backdrop-blur-md border border-border/40 rounded-full px-2 py-1 shadow-sm">
+          {/* Desktop nav - inline links */}
+          <div className="hidden lg:flex items-center gap-1 flex-1 justify-center">
             {simpleNavItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className={`px-4 py-1.5 text-sm rounded-full transition-colors duration-200 ${
+                className={`px-3 py-1.5 text-sm rounded-full transition-colors duration-200 ${
                   isActive(item.path)
-                    ? "text-foreground bg-secondary/60"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/40"
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {item.name}
@@ -146,7 +142,7 @@ const Navbar = () => {
                 data-dropdown
               >
                 <button
-                  className="px-4 py-1.5 text-sm rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary/40 transition-colors duration-200 inline-flex items-center gap-1"
+                  className="px-3 py-1.5 text-sm rounded-full text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-1"
                   onClick={(e) => { e.stopPropagation(); toggleDropdown(dropdown.label); }}
                   aria-expanded={openDropdown === dropdown.label}
                   aria-haspopup="true"
@@ -190,7 +186,7 @@ const Navbar = () => {
             ))}
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 shrink-0">
             <ThemeLanguageToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
