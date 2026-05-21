@@ -63,6 +63,15 @@ export const feedbacks: Feedback[] = [
     image: "https://i.ibb.co/pjKpnWFq/image.png"
   },
   {
+    name: "João Otávio",
+    role: { pt: "CEO e Fundador da Square Cloud", en: "CEO and Founder of Square Cloud" },
+    text: {
+      pt: "Talisson mantém uma parceria construtiva e profissional, sempre com boa comunicação, consistência e comprometimento. Consegue unir visão técnica com senso de comunidade, transmitindo confiança e clareza em tudo que faz.",
+      en: "Talisson maintains a constructive and professional partnership, always with good communication, consistency, and commitment. He manages to combine technical vision with a sense of community, conveying confidence and clarity in everything he does."
+    },
+    image: "https://i.ibb.co/NgGfqVXx/image.png"
+  },
+  {
     name: "Caio Eduardo Ferreira Frederico",
     role: { pt: "Backend Developer", en: "Backend Developer" },
     text: {
