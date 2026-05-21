@@ -72,6 +72,15 @@ export const feedbacks: Feedback[] = [
     image: "https://i.ibb.co/NgGfqVXx/image.png"
   },
   {
+    name: "Vitor Mapeli",
+    role: { pt: "Diretor de operações da Cheetah Solutions Network", en: "Director of Operations at Cheetah Solutions Network" },
+    text: {
+      pt: "Dentro da Cheetah Solutions Network, o Talisson demonstra uma postura de liderança muito forte, sempre buscando organização, evolução e clareza nos projetos. Sua capacidade de estruturar ideias, tomar decisões estratégicas e manter a equipe alinhada faz diferença direta no funcionamento da empresa. Além da visão técnica, transmite comprometimento, responsabilidade e uma mentalidade voltada para crescimento contínuo, algo essencial para construir projetos sólidos e ambientes profissionais mais organizados.",
+      en: "Within the Cheetah Solutions Network, Talisson demonstrates a very strong leadership posture, always seeking organization, evolution, and clarity in projects. His ability to structure ideas, make strategic decisions, and keep the team aligned makes a direct difference in the company's functioning. Beyond his technical vision, he conveys commitment, responsibility, and a mindset geared towards continuous growth, something essential for building solid projects and more organized professional environments."
+    },
+    image: "https://i.ibb.co/M5j4HVV5/image.png"
+  },
+  {
     name: "Caio Eduardo Ferreira Frederico",
     role: { pt: "Backend Developer", en: "Backend Developer" },
     text: {
