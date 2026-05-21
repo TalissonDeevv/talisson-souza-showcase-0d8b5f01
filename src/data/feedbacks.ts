@@ -90,6 +90,24 @@ export const feedbacks: Feedback[] = [
     image: "https://i.ibb.co/1tyf3c5V/image.png"
   },
   {
+    name: "Flavio Sousa",
+    role: { pt: "Amigo", en: "Friend" },
+    text: {
+      pt: "Mesmo sem uma convivência tão próxima, foi possível perceber no Talisson uma postura organizada, consistente e muito comprometida com aquilo que faz. Seu trabalho transmite inteligência, estrutura e uma preocupação real em entregar algo bem pensado.  O principal diferencial que vejo nele é a capacidade de cumprir o que promete, algo raro hoje em dia e que gera confiança naturalmente. Além disso, demonstra potencial técnico na área de programação e uma dedicação constante aos próprios projetos e ideias.",
+      en: "Even without close interaction, it was possible to perceive in Talisson an organized, consistent, and highly committed approach to what he does. His work conveys intelligence, structure, and a genuine concern for delivering well-thought-out results. The main distinguishing factor I see in him is his ability to keep his promises, something rare these days and which naturally generates trust. Furthermore, he demonstrates technical potential in programming and a constant dedication to his own projects and ideas."
+    },
+    image: "https://i.ibb.co/b8fgfRM/IMG-20260520-125927-hdr-Flavio-Sousa.jpg"
+  },
+  {
+    name: "Vinicius Gabriel",
+    role: { pt: "Criador e Mantenedor da Azura.js", en: "Creator and Maintainer of Azura.js" },
+    text: {
+      pt: "Talisson demonstra organização, transparência e comprometimento real nos projetos em que atua. O que mais se destaca é sua autonomia para resolver problemas complexos e sua capacidade de atuar em diferentes áreas da tecnologia com confiança e visão prática.",
+      en: "Talisson demonstrates organization, transparency, and genuine commitment in the projects he works on. What stands out most is his autonomy in solving complex problems and his ability to work in different areas of technology with confidence and a practical vision."
+    },
+    image: "https://i.ibb.co/DHYHQnL3/Mj-Hand-On-Face-Vinicius-Gabriel.jpg"
+  },
+  {
     name: "Nicolas Snaijder",
     role: { pt: "Engenheiro de Software", en: "Software Engineer" },
     text: {
