@@ -100,7 +100,7 @@ const Services = () => {
     <Layout withPadding={false}>
       <SEO 
         title={getText(language, 'Serviços de Desenvolvimento | Talisson Souza', 'Development Services | Talisson Souza')}
-        description={getText(language, 'Serviços de desenvolvimento web, mobile, bots, UI/UX design, soluções cloud e consultoria tecnológica. Soluções digitais sob medida para sua empresa crescer.', 'Web, mobile, bot development, UI/UX design, cloud solutions and technology consulting services. Custom digital solutions to grow your business.')}
+        description={getText(language, 'Desenvolvimento web, mobile, bots, UI/UX, soluções cloud e consultoria tecnológica. Soluções digitais sob medida para sua empresa crescer.', 'Web, mobile, bot development, UI/UX design, cloud solutions and technology consulting. Custom digital solutions to grow your business.')}
         canonical={language === 'en' ? '/en-us/services' : '/servicos'}
         keywords={language === 'pt' ? ['serviços', 'desenvolvimento web', 'desenvolvimento mobile', 'bots', 'UI/UX', 'cloud', 'consultoria'] : ['services', 'web development', 'mobile development', 'bots', 'UI/UX', 'cloud', 'consulting']}
       />
