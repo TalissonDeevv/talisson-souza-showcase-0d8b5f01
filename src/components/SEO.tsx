@@ -28,6 +28,7 @@ const SEO = ({
   author = 'Talisson Souza',
   keywords = [],
   noindex = false,
+  jsonLd,
 }: SEOProps) => {
   const { language } = useTheme();
   
