@@ -149,8 +149,8 @@ Ultimately, my mission is to create solutions that truly make a difference, with
   return (
     <Layout withPadding={false}>
       <SEO 
-        title={getText(language, 'Sobre Talisson Souza | Desenvolvedor Full Stack', 'About Talisson Souza | Full Stack Developer')}
-        description={getText(language, 'Conheça Talisson Souza, desenvolvedor full stack com mais de 8 anos de experiência, CEO da Cheetah Solutions Network e Diretor Estratégico do Werneck Group. Especialista em React, Node.js e soluções digitais.', 'Meet Talisson Souza, full stack developer with over 8 years of experience, CEO of Cheetah Solutions Network and Strategic Director of Werneck Group. Specialist in React, Node.js and digital solutions.')}
+        title={getText(language, 'Sobre Talisson Souza | Engenheiro de Software', 'About Talisson Souza | Software Engineer')}
+        description={getText(language, 'Conheça Talisson Souza, engenheiro de software com mais de 8 anos, CEO da Cheetah Solutions Network e Diretor Estratégico do Werneck Group.', 'Meet Talisson Souza, software engineer with 8+ years, CEO of Cheetah Solutions Network and Strategic Director of Werneck Group.')}
         canonical={language === 'en' ? '/en-us/about' : '/sobre'}
         keywords={language === 'pt' ? ['sobre', 'desenvolvedor', 'full stack', 'experiência', 'Cheetah Solutions Network', 'Werneck Group'] : ['about', 'developer', 'full stack', 'experience', 'Cheetah Solutions Network', 'Werneck Group']}
       />
