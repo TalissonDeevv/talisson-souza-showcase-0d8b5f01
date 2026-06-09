@@ -88,6 +88,25 @@ const SEO = ({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={OG_IMAGE_URL} />
       <meta name="twitter:image:alt" content={fullTitle} />
+
+      {type === 'article' && (
+        <script type="application/ld+json">{JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: title,
+          description,
+          author: { '@type': 'Person', name: author },
+          datePublished: publishedTime,
+          dateModified: modifiedTime || publishedTime,
+          mainEntityOfPage: canonicalUrl,
+          image: OG_IMAGE_URL,
+          publisher: { '@type': 'Organization', name: SITE_NAME, logo: { '@type': 'ImageObject', url: OG_IMAGE_URL } },
+        })}</script>
+      )}
+
+      {jsonLd && (Array.isArray(jsonLd) ? jsonLd : [jsonLd]).map((data, i) => (
+        <script key={i} type="application/ld+json">{JSON.stringify(data)}</script>
+      ))}
     </Helmet>
   );
 };
