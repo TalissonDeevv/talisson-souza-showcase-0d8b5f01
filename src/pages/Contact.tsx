@@ -56,6 +56,26 @@ const Contact = () => {
 
 
 
+  const localBusinessJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Talisson Souza | Cheetah Solutions Network',
+    image: 'https://www.talissonsouza.com.br/og-image.png',
+    email: 'talinhodev@gmail.com',
+    telephone: '+5581993964261',
+    url: 'https://www.talissonsouza.com.br',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Recife',
+      addressRegion: 'PE',
+      addressCountry: 'BR',
+    },
+    openingHoursSpecification: [
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '18:00' },
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '10:00', closes: '14:00' },
+    ],
+  };
+
   return (
     <Layout withPadding={false}>
       <SEO 
@@ -63,6 +83,7 @@ const Contact = () => {
         description={getText(language, 'Entre em contato para discutir seu projeto. Desenvolvimento web, sistemas sob medida, consultoria tecnológica. Resposta rápida via WhatsApp ou email.', 'Get in touch to discuss your project. Web development, custom systems, technology consulting. Quick response via WhatsApp or email.')}
         canonical={language === 'en' ? '/en-us/contact' : '/contato'}
         keywords={language === 'pt' ? ['contato', 'orçamento', 'projeto', 'WhatsApp', 'email'] : ['contact', 'quote', 'project', 'WhatsApp', 'email']}
+        jsonLd={localBusinessJsonLd}
       />
       
       {/* Hero Section */}

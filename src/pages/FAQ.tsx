@@ -313,6 +313,18 @@ const FAQ = () => {
 
   const contactPath = language === 'en' ? '/en-us/contact' : '/contato';
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: categories.flatMap((c) =>
+      c.questions.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      }))
+    ),
+  };
+
   return (
     <Layout withPadding={false}>
       <SEO
@@ -329,6 +341,7 @@ const FAQ = () => {
           ? ['FAQ', 'perguntas frequentes', 'Talisson Souza', 'desenvolvedor', 'serviços', 'contato']
           : ['FAQ', 'frequently asked questions', 'Talisson Souza', 'developer', 'services', 'contact']
         }
+        jsonLd={faqJsonLd}
       />
 
       {/* Hero */}
