@@ -11,6 +11,7 @@ interface SEOProps {
   author?: string;
   keywords?: string[];
   noindex?: boolean;
+  jsonLd?: object | object[];
 }
 
 const BASE_URL = 'https://www.talissonsouza.com.br';
