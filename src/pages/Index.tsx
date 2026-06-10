@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, BookOpen, Quote } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
-import logoSignature from "@/assets/logo-signature.png";
+import AnimatedSignature from "@/components/ui/AnimatedSignature";
 import { motion } from "framer-motion";
 import { SiJavascript, SiTypescript, SiPython, SiReact, SiNodedotjs, SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFirebase } from "react-icons/si";
 import CompanyLogos from "@/components/ui/CompanyLogos";
@@ -126,16 +126,8 @@ const Index = () => {
               {t.hero.badge}
             </motion.p>
             
-            {/* Signature with fast entrance animation */}
-            <motion.img
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.05 }}
-              src={logoSignature}
-              alt="Talisson Souza"
-              className="h-24 sm:h-28 lg:h-36 w-auto mb-10 invert dark:invert-0 border-0 border-none"
-              loading="eager"
-              fetchPriority="high" />
+            {/* Signature drawn as if handwritten on every load */}
+            <AnimatedSignature className="h-24 sm:h-28 lg:h-36 mb-10" />
 
 
             {/* Subtitle with entrance animation */}
