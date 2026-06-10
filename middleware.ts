@@ -501,6 +501,7 @@ function buildOgHtml(meta: PageMeta, url: string): string {
   <title>${meta.title}</title>
   <meta name="description" content="${meta.description}" />
   <meta name="author" content="Talisson Souza" />
+  <meta name="site-sentinel-key" content="sentinel_fW9pUxLhLd9UhvPLEVsr-LkU3cxpjG6_st3XJMN0IkM" />
   <link rel="canonical" href="${url}" />
 
   <meta property="og:type" content="${meta.type}" />
