@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, BookOpen, Quote } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
-import logoSignature from "@/assets/logo-signature.png";
+import AnimatedSignature from "@/components/ui/AnimatedSignature";
 import { motion } from "framer-motion";
 import { SiJavascript, SiTypescript, SiPython, SiReact, SiNodedotjs, SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFirebase } from "react-icons/si";
 import CompanyLogos from "@/components/ui/CompanyLogos";
