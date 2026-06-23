@@ -69,6 +69,25 @@ const AnimatedSignature = ({ className }: AnimatedSignatureProps) => {
             const fillDelay = strokeDelay + sch.duration * STROKE_FILL_OVERLAP;
             return (
               <g key={i}>
+                {/* Outline pen-stroke that "writes" the letter (under fill) */}
+                <motion.path
+                  ref={(el) => (pathRefs.current[i] = el)}
+                  d={d}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={12}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  vectorEffect="non-scaling-stroke"
+                  initial={{ strokeDashoffset: len || 2000 }}
+                  animate={len ? { strokeDashoffset: 0 } : {}}
+                  transition={{
+                    duration: sch.duration,
+                    delay: strokeDelay,
+                    ease: [0.42, 0, 0.58, 1],
+                  }}
+                  style={{ strokeDasharray: len || 2000 }}
+                />
                 {/* Filled letter, fades in right behind the moving pen */}
                 <motion.path
                   d={d}
@@ -82,34 +101,8 @@ const AnimatedSignature = ({ className }: AnimatedSignatureProps) => {
                     ease: "easeOut",
                   }}
                 />
-                {/* Outline pen-stroke that "writes" the letter */}
-                <motion.path
-                  ref={(el) => (pathRefs.current[i] = el)}
-                  d={d}
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={12}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  vectorEffect="non-scaling-stroke"
-                  initial={{ strokeDashoffset: len || 2000, opacity: 1 }}
-                  animate={
-                    len
-                      ? {
-                          strokeDashoffset: 0,
-                          opacity: [1, 1, 0],
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: sch.duration,
-                    delay: strokeDelay,
-                    ease: [0.42, 0, 0.58, 1],
-                    times: [0, 0.85, 1],
-                  }}
-                  style={{ strokeDasharray: len || 2000 }}
-                />
               </g>
+
             );
           })}
         </g>
