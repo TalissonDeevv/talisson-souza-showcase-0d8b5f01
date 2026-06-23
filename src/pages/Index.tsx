@@ -127,7 +127,7 @@ const Index = () => {
             </motion.p>
             
             {/* Signature drawn as if handwritten on every load */}
-            <AnimatedSignature className="h-24 sm:h-28 lg:h-36 mb-10" />
+            <AnimatedSignature className="h-40 sm:h-52 lg:h-64 xl:h-72 mb-10" />
 
 
             {/* Subtitle with entrance animation */}
