@@ -59,7 +59,7 @@ const AnimatedSignature = ({ className }: AnimatedSignatureProps) => {
       className={`relative inline-block text-foreground ${className ?? ""}`}
     >
       <svg
-        viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
+        viewBox={`${VIEW_X} ${VIEW_Y} ${VIEW_W} ${VIEW_H}`}
         xmlns="http://www.w3.org/2000/svg"
         className="h-full w-auto select-none overflow-visible"
         aria-label="Talisson Souza"
