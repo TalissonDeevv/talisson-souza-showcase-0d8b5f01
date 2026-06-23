@@ -17,10 +17,14 @@ interface AnimatedSignatureProps {
  * order, instead of fading or typing in.
  */
 
-// Potrace output viewBox + transform
-const VIEW_W = 1500;
-const VIEW_H = 750;
+// Potrace output viewBox + transform — expanded to include path overflow
+// (bezier control points and strokes extend beyond the raw 1500x750 frame).
+const VIEW_X = -340;
+const VIEW_Y = 220;
+const VIEW_W = 1860;
+const VIEW_H = 810;
 const POTRACE_TRANSFORM = "translate(0,750) scale(0.1,-0.1)";
+
 
 const TOTAL_DURATION = 4.6; // seconds for the full write-on
 const START_DELAY = 0.25;
