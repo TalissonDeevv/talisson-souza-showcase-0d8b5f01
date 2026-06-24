@@ -1,1 +1,0 @@
-DROP POLICY IF EXISTS "Authenticated can read article_comments channel" ON realtime.messages;
