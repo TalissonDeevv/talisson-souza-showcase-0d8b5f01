@@ -94,7 +94,7 @@ const AnimatedSignature = ({ className }: AnimatedSignatureProps) => {
       <svg
         viewBox={SIG_VIEWBOX}
         xmlns="http://www.w3.org/2000/svg"
-        className="h-full w-auto select-none"
+        className="h-auto w-full select-none"
         aria-label="Talisson Souza"
         role="img"
         preserveAspectRatio="xMidYMid meet"
