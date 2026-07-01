@@ -64,7 +64,7 @@ export function useDiscordAuth() {
       .select("id, discord_id, username, global_name, avatar_url, email")
       .eq("id", userId)
       .maybeSingle();
-    setProfile((data as DiscordProfile | null) ?? null);
+    setProfile(((data as unknown) as DiscordProfile | null) ?? null);
   }, []);
 
   const signIn = useCallback(async () => {

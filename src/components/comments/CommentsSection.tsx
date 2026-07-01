@@ -61,7 +61,7 @@ const CommentsSection = ({ articleSlug }: Props) => {
       setLoading(false);
       return;
     }
-    const rows = (data as CommentRow[]) ?? [];
+    const rows = ((data as unknown) as CommentRow[]) ?? [];
     const ids = Array.from(new Set(rows.map((r) => r.user_id)));
     let authors: Record<string, CommentRow["author"]> = {};
     if (ids.length) {
