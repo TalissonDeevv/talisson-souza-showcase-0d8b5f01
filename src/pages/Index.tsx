@@ -126,14 +126,14 @@ const Index = () => {
               {t.hero.badge}
             </motion.p>
             
-            {/* Signature with fast entrance animation */}
+            {/* Signature — protagonist of the hero */}
             <motion.img
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.05 }}
+              transition={{ duration: 0.4, delay: 0.05 }}
               src={logoSignature}
               alt="Talisson Souza"
-              className="h-24 sm:h-28 lg:h-36 w-auto mb-10 invert dark:invert-0 border-0 border-none"
+              className="h-40 sm:h-52 md:h-64 lg:h-80 xl:h-[22rem] w-auto max-w-[92vw] mb-10 invert dark:invert-0 border-0 border-none drop-shadow-[0_8px_40px_hsl(var(--foreground)/0.15)]"
               loading="eager"
               fetchPriority="high" />
 
