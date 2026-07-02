@@ -133,7 +133,7 @@ const Index = () => {
               transition={{ duration: 0.4, delay: 0.05 }}
               src={logoSignature}
               alt="Talisson Souza"
-              className="h-40 sm:h-52 md:h-64 lg:h-80 xl:h-[22rem] w-auto max-w-[92vw] mb-10 invert dark:invert-0 border-0 border-none drop-shadow-[0_8px_40px_hsl(var(--foreground)/0.15)]"
+              className="h-28 sm:h-36 md:h-44 lg:h-52 w-auto max-w-[92vw] mb-10 invert dark:invert-0 border-0 border-none"
               loading="eager"
               fetchPriority="high" />
 
