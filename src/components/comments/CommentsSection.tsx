@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { formatDistanceToNow } from "date-fns";
 import { ptBR, enUS } from "date-fns/locale";
 import { MoreHorizontal, Pencil, Trash2, X, Loader2 } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { supabaseComments as supabase } from "@/integrations/supabase-comments/client";
 import { useDiscordAuth } from "@/hooks/useDiscordAuth";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
