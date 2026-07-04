@@ -5,6 +5,7 @@ import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ShareButtons from "@/components/ui/ShareButtons";
 import ArticleSEOFooter from "@/components/ui/ArticleSEOFooter";
+import CommentsSection from "@/components/comments/CommentsSection";
 import TrailNavigation from "@/components/ui/TrailNavigation";
 
 import DisclaimerBanner from "@/components/ui/DisclaimerBanner";
@@ -127,6 +128,8 @@ const MarketTrailArticle = () => {
 
 
             <ArticleSEOFooter />
+
+            <CommentsSection articleSlug={article.slugPt} />
           </div>
         </div>
       </section>

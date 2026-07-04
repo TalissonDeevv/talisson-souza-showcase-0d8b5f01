@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { supabaseComments as supabase } from "@/integrations/supabase-comments/client";
 import type { Session, User } from "@supabase/supabase-js";
 
 export interface DiscordProfile {
