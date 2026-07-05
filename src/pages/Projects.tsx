@@ -1,17 +1,46 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
-import { ArrowLeft, Mail, Lock } from "lucide-react";
+import { ArrowLeft, Lock, ShieldCheck } from "lucide-react";
 import organizingImage from "@/assets/organizing-projects.png";
+import ClientPortalDialog from "@/components/projects/ClientPortalDialog";
 
 const Projects = () => {
   const { language } = useTheme();
+  const [portalOpen, setPortalOpen] = useState(false);
 
   const homePath = language === 'en' ? '/en-us' : '/';
-  const contactPath = language === 'en' ? '/en-us/contact' : '/contato';
+
+  const faqs = [
+    {
+      q: getText(language, 'Por que o portfólio está indisponível?', 'Why is the portfolio unavailable?'),
+      a: getText(
+        language,
+        'Muitos dos projetos desenvolvidos envolvem sistemas privados e informações confidenciais. Antes de publicar qualquer case, solicito autorização formal do cliente.',
+        'Many of the projects delivered involve private systems and confidential information. Before publishing any case, I request formal authorization from the client.'
+      ),
+    },
+    {
+      q: getText(language, 'Posso solicitar acesso ao portfólio?', 'Can I request access to the portfolio?'),
+      a: getText(
+        language,
+        'No momento não. O portfólio público está sendo reorganizado e será disponibilizado gradualmente conforme recebo autorização dos clientes.',
+        'Not at the moment. The public portfolio is being reorganized and will be released gradually as I receive client authorizations.'
+      ),
+    },
+    {
+      q: getText(language, 'Como posso conhecer seu trabalho?', 'How can I get to know your work?'),
+      a: getText(
+        language,
+        'Durante uma reunião posso apresentar projetos, arquiteturas e soluções que não estejam protegidas por acordos de confidencialidade.',
+        'During a meeting I can present projects, architectures and solutions that are not protected by non-disclosure agreements.'
+      ),
+    },
+  ];
 
   return (
     <Layout withPadding={false}>
@@ -75,23 +104,33 @@ const Projects = () => {
                 )}
               </p>
 
-              <div className="flex flex-col sm:flex-row items-start gap-3">
-                <Link
-                  to={homePath}
-                  className="group inline-flex items-center gap-3 px-7 py-3.5 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300"
-                  style={{ boxShadow: '0 0 30px hsl(var(--foreground) / 0.15)' }}
-                >
-                  <ArrowLeft className="w-4 h-4" />
-                  {getText(language, 'Voltar para a Home', 'Back to Home')}
-                </Link>
+              <div className="flex flex-col items-start gap-4">
+                <div className="flex flex-col sm:flex-row items-start gap-3">
+                  <Link
+                    to={homePath}
+                    className="group inline-flex items-center gap-3 px-7 py-3.5 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300"
+                    style={{ boxShadow: '0 0 30px hsl(var(--foreground) / 0.15)' }}
+                  >
+                    <ArrowLeft className="w-4 h-4" />
+                    {getText(language, 'Voltar para a Home', 'Back to Home')}
+                  </Link>
 
-                <Link
-                  to={contactPath}
-                  className="group inline-flex items-center gap-3 px-7 py-3.5 text-sm font-medium text-foreground border border-border/30 bg-card/30 backdrop-blur-sm rounded-full transition-all duration-300 hover:border-foreground/20"
-                >
-                  <Mail className="w-4 h-4" />
-                  {getText(language, 'Solicitar cases', 'Request cases')}
-                </Link>
+                  <button
+                    type="button"
+                    onClick={() => setPortalOpen(true)}
+                    className="group inline-flex items-center gap-3 px-7 py-3.5 text-sm font-medium text-foreground border border-border/30 bg-card/30 backdrop-blur-sm rounded-full transition-all duration-300 hover:border-foreground/20"
+                  >
+                    <ShieldCheck className="w-4 h-4" />
+                    {getText(language, 'Portal do cliente', 'Client portal')}
+                  </button>
+                </div>
+                <p className="text-xs text-muted-foreground/70 leading-relaxed max-w-sm">
+                  {getText(
+                    language,
+                    'Exclusivo para clientes que desejam autorizar a publicação do seu projeto em meu portfólio.',
+                    'Exclusive to clients who wish to authorize the publication of their project in my portfolio.'
+                  )}
+                </p>
               </div>
             </motion.div>
 
@@ -114,8 +153,48 @@ const Projects = () => {
           </div>
         </div>
       </section>
+
+      {/* FAQ */}
+      <section className="pb-24 pt-4">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+              className="font-serif text-3xl md:text-4xl text-foreground mb-10 leading-tight"
+            >
+              {getText(language, 'Perguntas frequentes', 'Frequently asked questions')}
+            </motion.h2>
+
+            <div className="divide-y divide-border/40 border-t border-b border-border/40">
+              {faqs.map((f, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className="py-6"
+                >
+                  <h3 className="text-base md:text-lg font-medium text-foreground mb-2">
+                    {f.q}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {f.a}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <ClientPortalDialog open={portalOpen} onClose={() => setPortalOpen(false)} />
     </Layout>
   );
 };
 
 export default Projects;
+
