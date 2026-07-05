@@ -226,7 +226,14 @@ const CommentsSection = ({ articleSlug }: Props) => {
                   />
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
-                      <span className="text-sm font-medium text-foreground">{displayName(c)}</span>
+                      <span className="text-sm font-medium text-foreground">
+                        {displayName(c)}
+                        {usernameTag(c) && (
+                          <span className="ml-1 font-normal text-muted-foreground">
+                            {usernameTag(c)} {getText(language, "no discord", "on discord")}
+                          </span>
+                        )}
+                      </span>
                       <span className="text-xs text-muted-foreground">
                         {formatDistanceToNow(new Date(c.created_at), { addSuffix: true, locale })}
                         {edited && ` · ${getText(language, "editado", "edited")}`}
