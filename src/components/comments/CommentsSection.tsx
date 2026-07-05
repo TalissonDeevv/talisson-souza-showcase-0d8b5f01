@@ -141,6 +141,7 @@ const CommentsSection = ({ articleSlug }: Props) => {
 
   const total = comments.length;
   const displayName = (c: CommentRow) => c.author?.global_name || c.author?.username || getText(language, "leitor", "reader");
+  const usernameTag = (c: CommentRow) => c.author?.username ? `@${c.author.username}` : null;
 
   return (
     <section className="mt-16 pt-10 border-t border-border/40" aria-label={getText(language, "Comentários", "Comments")}>
