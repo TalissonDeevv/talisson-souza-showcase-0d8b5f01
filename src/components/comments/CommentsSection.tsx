@@ -140,8 +140,14 @@ const CommentsSection = ({ articleSlug }: Props) => {
   };
 
   const total = comments.length;
-  const displayName = (c: CommentRow) => c.author?.global_name || c.author?.username || getText(language, "leitor", "reader");
-  const usernameTag = (c: CommentRow) => c.author?.username ? `@${c.author.username}` : null;
+  const cleanHandle = (u?: string | null) => (u ?? "").replace(/#0$/, "");
+  const displayName = (c: CommentRow) => c.author?.global_name || cleanHandle(c.author?.username) || getText(language, "leitor", "reader");
+  const usernameTag = (c: CommentRow) => {
+    const handle = cleanHandle(c.author?.username);
+    if (!handle) return null;
+    if (handle === displayName(c)) return null;
+    return `@${handle}`;
+  };
 
   return (
     <section className="mt-16 pt-10 border-t border-border/40" aria-label={getText(language, "Comentários", "Comments")}>
