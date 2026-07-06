@@ -1,5 +1,8 @@
 -- =====================================================================
 -- Incremental migration — adiciona threading (respostas) aos comentários
+-- SUPERSEDED: use 04_sync_comments_schema.sql.
+-- O arquivo 04 também corrige grants, RLS, integridade entre artigos,
+-- sanitização, concorrência do rate limit, Realtime e cache do PostgREST.
 -- Rode no SQL Editor do seu projeto Supabase BYO (o mesmo que roda o
 -- schema 01_schema.sql). Idempotente: pode rodar mais de uma vez.
 -- =====================================================================

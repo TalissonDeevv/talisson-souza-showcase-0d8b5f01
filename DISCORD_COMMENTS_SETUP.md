@@ -1,5 +1,12 @@
 # Discord Comments System — Setup & Migration Guide
 
+> Atualização 2026-07-06: depois de `01_schema.sql`, execute
+> `docs/discord-comments/04_sync_comments_schema.sql`. O arquivo sincroniza
+> replies (`parent_id`), constraints, índices, triggers, grants, RLS, Realtime
+> e o cache do PostgREST. `03_add_replies.sql` foi substituído pelo arquivo 04.
+> A auditoria completa está em
+> `docs/discord-comments/SCHEMA_AUDIT_REPORT.md`.
+
 Sistema de comentários com autenticação Discord OAuth2, `guilds.join` automático
 e atribuição do cargo **📖 Leitor dos Artigos**. Este documento cobre a migração
 do Lovable Cloud para um Supabase próprio (BYO) e a instalação completa.

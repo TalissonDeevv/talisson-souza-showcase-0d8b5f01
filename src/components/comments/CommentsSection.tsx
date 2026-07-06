@@ -31,10 +31,6 @@ interface Props {
   articleSlug: string;
 }
 
-// --- text sanitization (XSS defense at the presentation layer) ------
-const escapeHtml = (s: string) =>
-  s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]!));
-
 const cleanHandle = (u?: string | null) => (u ?? "").replace(/#0+$/, "");
 
 const CommentsSection = ({ articleSlug }: Props) => {
@@ -58,7 +54,7 @@ const CommentsSection = ({ articleSlug }: Props) => {
   const load = useCallback(async () => {
     setLoading(true);
     const { data, error } = await supabase
-      .from("comments" as any)
+      .from("comments")
       .select("id, article_slug, user_id, parent_id, content, created_at, updated_at")
       .eq("article_slug", articleSlug)
       .order("created_at", { ascending: true })
@@ -72,10 +68,10 @@ const CommentsSection = ({ articleSlug }: Props) => {
     const authors: Record<string, CommentRow["author"]> = {};
     if (ids.length) {
       const { data: profs } = await supabase
-        .from("discord_profiles" as any)
+        .from("discord_profiles")
         .select("id, username, global_name, avatar_url")
         .in("id", ids);
-      for (const p of (profs as any[]) ?? []) {
+      for (const p of profs ?? []) {
         authors[p.id] = { username: p.username, global_name: p.global_name, avatar_url: p.avatar_url };
       }
     }
@@ -100,6 +96,13 @@ const CommentsSection = ({ articleSlug }: Props) => {
     if (/rate_limit_short/.test(msg)) return getText(language, "Aguarde alguns segundos antes de comentar novamente.", "Please wait a few seconds before commenting again.");
     if (/rate_limit_hour/.test(msg)) return getText(language, "Limite de comentários por hora atingido.", "Hourly comment limit reached.");
     if (/reply_depth_exceeded/.test(msg)) return getText(language, "Respostas de resposta não são permitidas.", "Nested replies are not allowed.");
+    if (/reply_article_mismatch|reply_parent_not_found|reply_parent_deleted/.test(msg)) {
+      return getText(
+        language,
+        "Este comentário não pode mais receber respostas. Atualize a página.",
+        "This comment can no longer receive replies. Refresh the page.",
+      );
+    }
     return getText(language, "Não foi possível publicar o comentário.", "Could not publish your comment.");
   };
 
@@ -111,7 +114,7 @@ const CommentsSection = ({ articleSlug }: Props) => {
     if (!content || content.length > MAX) return;
     setSubmitting(true);
     const { error } = await supabase
-      .from("comments" as any)
+      .from("comments")
       .insert({ article_slug: articleSlug, user_id: user.id, content, parent_id: null });
     setSubmitting(false);
     if (error) {
@@ -129,7 +132,7 @@ const CommentsSection = ({ articleSlug }: Props) => {
     if (!content || content.length > MAX) return;
     setReplySubmitting(true);
     const { error } = await supabase
-      .from("comments" as any)
+      .from("comments")
       .insert({ article_slug: articleSlug, user_id: user.id, content, parent_id: parentId });
     setReplySubmitting(false);
     if (error) {
@@ -145,8 +148,8 @@ const CommentsSection = ({ articleSlug }: Props) => {
   const startEdit = (c: CommentRow) => { setEditingId(c.id); setEditDraft(c.content); setMenuOpenId(null); };
   const saveEdit  = async (id: string) => {
     const content = editDraft.trim();
-    if (!content) return;
-    const { error } = await supabase.from("comments" as any).update({ content }).eq("id", id);
+    if (!content || content.length > MAX) return;
+    const { error } = await supabase.from("comments").update({ content }).eq("id", id);
     if (error) {
       toast({ title: getText(language, "Erro ao editar", "Edit failed"), variant: "destructive" });
       return;
@@ -158,7 +161,7 @@ const CommentsSection = ({ articleSlug }: Props) => {
   // -- delete --
   const del = async (id: string) => {
     setMenuOpenId(null);
-    const { error } = await supabase.from("comments" as any).delete().eq("id", id);
+    const { error } = await supabase.from("comments").delete().eq("id", id);
     if (error) {
       toast({ title: getText(language, "Erro ao excluir", "Delete failed"), variant: "destructive" });
       return;
@@ -273,10 +276,9 @@ const CommentsSection = ({ articleSlug }: Props) => {
               </div>
             </div>
           ) : (
-            <p
-              className="text-sm text-foreground/90 leading-relaxed whitespace-pre-wrap break-words"
-              dangerouslySetInnerHTML={{ __html: escapeHtml(c.content).replace(/\n/g, "<br/>") }}
-            />
+            <p className="text-sm text-foreground/90 leading-relaxed whitespace-pre-wrap break-words">
+              {c.content}
+            </p>
           )}
 
           {/* Reply action — apenas em comentários raiz (1 nível de profundidade) */}

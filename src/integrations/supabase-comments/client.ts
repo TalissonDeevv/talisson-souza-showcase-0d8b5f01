@@ -8,17 +8,22 @@
 // equivalent; all access is gated by RLS on the BYO project).
 
 import { createClient } from "@supabase/supabase-js";
+import type { CommentsDatabase } from "./types";
 
 const COMMENTS_URL = "https://rfzjtmleojkojopftkfo.supabase.co";
 const COMMENTS_PUBLISHABLE_KEY = "sb_publishable_SlpEAHJFZLDQzKwwf01cPg_OrHnKXj7";
 
 // Storage key MUST differ from the Cloud client's default so sessions do not collide.
-export const supabaseComments = createClient(COMMENTS_URL, COMMENTS_PUBLISHABLE_KEY, {
-  auth: {
-    storage: typeof window !== "undefined" ? window.localStorage : undefined,
-    storageKey: "sb-comments-auth-token",
-    persistSession: true,
-    autoRefreshToken: true,
-    detectSessionInUrl: true,
+export const supabaseComments = createClient<CommentsDatabase>(
+  COMMENTS_URL,
+  COMMENTS_PUBLISHABLE_KEY,
+  {
+    auth: {
+      storage: typeof window !== "undefined" ? window.localStorage : undefined,
+      storageKey: "sb-comments-auth-token",
+      persistSession: true,
+      autoRefreshToken: true,
+      detectSessionInUrl: true,
+    },
   },
-});
+);

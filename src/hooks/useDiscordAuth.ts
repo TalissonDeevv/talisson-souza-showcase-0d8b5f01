@@ -1,87 +1,147 @@
 import { useCallback, useEffect, useState } from "react";
+import type { Session } from "@supabase/supabase-js";
 import { supabaseComments as supabase } from "@/integrations/supabase-comments/client";
-import type { Session, User } from "@supabase/supabase-js";
 
 export interface DiscordProfile {
   id: string;
-  discord_id: string;
   username: string;
   global_name: string | null;
   avatar_url: string | null;
-  email: string | null;
 }
 
 const DISCORD_SCOPES = "identify email guilds.join";
+const POST_LOGIN_KEY_PREFIX = "atlas_discord_post_login";
 
-/**
- * Central auth hook for Discord-based commenting.
- * NOTE: requires Discord to be enabled as a Supabase Auth Provider
- * (works after migrating to a BYO Supabase project — Lovable Cloud
- * does not expose Discord as a native provider).
- */
 export function useDiscordAuth() {
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<DiscordProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // 1. Session listener — synchronous state, async profile fetch.
-  useEffect(() => {
-    const { data: sub } = supabase.auth.onAuthStateChange((_ev, s) => {
-      setSession(s);
-      if (s?.user) queueMicrotask(() => fetchProfile(s.user.id));
-      else setProfile(null);
-    });
-    supabase.auth.getSession().then(({ data }) => {
-      setSession(data.session);
-      if (data.session?.user) fetchProfile(data.session.user.id);
-      setLoading(false);
-    });
-    return () => sub.subscription.unsubscribe();
-  }, []);
-
-  // 2. Fire-and-forget: after a fresh Discord login, ask the edge
-  //    function to add the user to the guild and grant the role.
-  useEffect(() => {
-    if (!session?.provider_token || !session.user) return;
-    const discordId =
-      (session.user.user_metadata as any)?.provider_id ??
-      (session.user.user_metadata as any)?.sub;
-    if (!discordId) return;
-    const key = `discord_post_login_${session.user.id}`;
-    if (sessionStorage.getItem(key)) return;
-    sessionStorage.setItem(key, "1");
-    supabase.functions
-      .invoke("discord-post-login", {
-        body: { provider_token: session.provider_token, discord_id: String(discordId) },
-      })
-      .catch(() => { /* silent — bot infra may be pending */ });
-  }, [session]);
-
   const fetchProfile = useCallback(async (userId: string) => {
-    const { data } = await supabase
-      .from("discord_profiles" as any)
-      .select("id, discord_id, username, global_name, avatar_url, email")
+    const { data, error: profileError } = await supabase
+      .from("discord_profiles")
+      .select("id, username, global_name, avatar_url")
       .eq("id", userId)
       .maybeSingle();
-    setProfile(((data as unknown) as DiscordProfile | null) ?? null);
+
+    if (profileError) {
+      setProfile(null);
+      return;
+    }
+
+    setProfile(data);
   }, []);
+
+  useEffect(() => {
+    let active = true;
+
+    const { data: subscription } = supabase.auth.onAuthStateChange(
+      (_event, nextSession) => {
+        if (!active) return;
+
+        setSession(nextSession);
+        if (nextSession?.user) {
+          queueMicrotask(() => {
+            if (active) void fetchProfile(nextSession.user.id);
+          });
+        } else {
+          setProfile(null);
+        }
+      },
+    );
+
+    void supabase.auth.getSession().then(({ data, error: sessionError }) => {
+      if (!active) return;
+
+      if (sessionError) setError(sessionError.message);
+      setSession(data.session);
+
+      if (data.session?.user) {
+        void fetchProfile(data.session.user.id);
+      }
+
+      setLoading(false);
+    });
+
+    return () => {
+      active = false;
+      subscription.subscription.unsubscribe();
+    };
+  }, [fetchProfile]);
+
+  useEffect(() => {
+    const providerToken = session?.provider_token;
+    const user = session?.user;
+    if (!providerToken || !user) return;
+
+    const rawDiscordId =
+      user.user_metadata?.provider_id ?? user.user_metadata?.sub;
+    if (typeof rawDiscordId !== "string" && typeof rawDiscordId !== "number") {
+      return;
+    }
+
+    const storageKey = `${POST_LOGIN_KEY_PREFIX}_${user.id}`;
+    if (sessionStorage.getItem(storageKey)) return;
+    sessionStorage.setItem(storageKey, "pending");
+
+    void (async () => {
+      const { data, error: functionError } = await supabase.functions.invoke(
+        "discord-post-login",
+        {
+          body: {
+            provider_token: providerToken,
+            discord_id: String(rawDiscordId),
+          },
+        },
+      );
+
+      if (functionError || data?.ok !== true) {
+        sessionStorage.removeItem(storageKey);
+        setError(
+          "Seu login foi concluído, mas não foi possível sincronizar o servidor do Discord.",
+        );
+        return;
+      }
+
+      sessionStorage.setItem(storageKey, "done");
+      setError(null);
+      await fetchProfile(user.id);
+    })();
+  }, [fetchProfile, session]);
 
   const signIn = useCallback(async () => {
     setError(null);
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: "discord" as any,
+
+    const redirectTo = `${window.location.origin}${window.location.pathname}`;
+    const { error: signInError } = await supabase.auth.signInWithOAuth({
+      provider: "discord",
       options: {
         scopes: DISCORD_SCOPES,
-        redirectTo: window.location.href,
+        redirectTo,
       },
     });
-    if (error) setError(error.message);
+
+    if (signInError) setError(signInError.message);
   }, []);
 
   const signOut = useCallback(async () => {
-    await supabase.auth.signOut();
-  }, []);
+    if (session?.user.id) {
+      sessionStorage.removeItem(
+        `${POST_LOGIN_KEY_PREFIX}_${session.user.id}`,
+      );
+    }
 
-  return { session, user: session?.user as User | undefined, profile, loading, error, signIn, signOut };
+    await supabase.auth.signOut();
+  }, [session?.user.id]);
+
+  return {
+    session,
+    user: session?.user,
+    profile,
+    loading,
+    error,
+    signIn,
+    signOut,
+  };
 }
