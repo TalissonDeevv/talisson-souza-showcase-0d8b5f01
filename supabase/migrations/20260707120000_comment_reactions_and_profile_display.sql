@@ -120,7 +120,9 @@ GRANT SELECT (comment_id, user_id, reaction)
   ON TABLE public.comment_reactions TO authenticated;
 GRANT INSERT (comment_id, user_id, reaction)
   ON TABLE public.comment_reactions TO authenticated;
-GRANT UPDATE (reaction)
+-- PostgREST upsert requires table-level UPDATE even when the payload only
+-- changes reaction. RLS below still restricts updates to the row owner.
+GRANT UPDATE
   ON TABLE public.comment_reactions TO authenticated;
 GRANT DELETE
   ON TABLE public.comment_reactions TO authenticated;
