@@ -83,7 +83,8 @@ const MarketTrailArticle = () => {
 
       <section className="pb-16 lg:pb-20">
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto">
+          <div className="mx-auto max-w-[820px]">
+          <article className="min-w-0">
             {article.showDisclaimer && (
               <ScrollReveal>
                 <DisclaimerBanner customText={article.disclaimerText} />
@@ -128,8 +129,9 @@ const MarketTrailArticle = () => {
 
 
             <ArticleSEOFooter />
+          </article>
 
-            <CommentsSection articleSlug={article.slugPt} />
+          <CommentsSection articleSlug={article.slugPt} variant="inline" />
           </div>
         </div>
       </section>

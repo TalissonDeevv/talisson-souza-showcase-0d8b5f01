@@ -309,3 +309,10 @@
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--muted-foreground) / 0.5);
 }
+.animated-signature-wrapper {
+  filter: drop-shadow(0 0 14px hsl(var(--foreground) / 0.16));
+}
+
+.animated-signature__static {
+  shape-rendering: geometricPrecision;
+}

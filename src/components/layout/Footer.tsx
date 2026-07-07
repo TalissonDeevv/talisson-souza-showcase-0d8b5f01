@@ -6,6 +6,7 @@ import { getText } from "@/utils/translations";
 import { Play, Pause, Music, ArrowUp, Star, Linkedin } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { feedbacks } from "@/data/feedbacks";
+import FooterWeather from "@/components/ui/FooterWeather";
 
 const Footer = () => {
   const { language } = useTheme();
@@ -201,12 +202,15 @@ const Footer = () => {
             <p className="text-[10px] text-muted-foreground/40 max-w-[280px] sm:max-w-none">
               {getText(language, 'Automações, arquitetura de sistemas e escalabilidade como base de cada projeto.', 'Automation, systems architecture and scalability as the foundation of every project.')}
             </p>
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="p-1.5 rounded-full border border-border/30 hover:border-border/60 text-muted-foreground/50 hover:text-foreground transition-all duration-200 self-end sm:self-auto"
-              aria-label="Back to top">
-              <ArrowUp className="w-3 h-3" />
-            </button>
+            <div className="flex items-center gap-3 self-end sm:self-auto">
+              <FooterWeather />
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="p-1.5 rounded-full border border-border/30 hover:border-border/60 text-muted-foreground/50 hover:text-foreground transition-all duration-200"
+                aria-label="Back to top">
+                <ArrowUp className="w-3 h-3" />
+              </button>
+            </div>
           </div>
         </div>
       </div>

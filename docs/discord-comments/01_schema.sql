@@ -3,7 +3,10 @@
 -- Run this AFTER creating your new Supabase project and enabling
 -- Discord as an Auth Provider in Authentication → Providers.
 --
--- Scopes to configure in Supabase Discord provider: identify email guilds.join
+-- OAuth scopes: identify guilds.join
+-- Use the custom:discord-minimal provider described in
+-- DISCORD_COMMENTS_SETUP.md. The built-in Supabase Discord provider adds the
+-- e-mail scope internally and does not satisfy the project's LGPD policy.
 -- =====================================================================
 
 -- 1. ENUMS ------------------------------------------------------------
@@ -45,7 +48,6 @@ CREATE TABLE public.discord_profiles (
   username     text        NOT NULL,
   global_name  text,
   avatar_url   text,
-  email        text,
   guild_joined boolean     NOT NULL DEFAULT false,
   role_granted boolean     NOT NULL DEFAULT false,
   created_at   timestamptz NOT NULL DEFAULT now(),
@@ -76,21 +78,25 @@ BEGIN
   IF did IS NULL THEN RETURN NEW; END IF;
 
   INSERT INTO public.discord_profiles
-    (id, discord_id, username, global_name, avatar_url, email, last_login_at, updated_at)
+    (id, discord_id, username, global_name, avatar_url, last_login_at, updated_at)
   VALUES (
     NEW.id,
     did,
     COALESCE(meta->>'user_name', meta->>'preferred_username', meta->>'name', 'user'),
-    NULLIF(meta->>'global_name', ''),
-    NULLIF(meta->>'avatar_url', ''),
-    NEW.email,
+    COALESCE(
+      NULLIF(meta->>'global_name', ''),
+      NULLIF(meta->'custom_claims'->>'global_name', '')
+    ),
+    COALESCE(
+      NULLIF(meta->>'avatar_url', ''),
+      NULLIF(meta->>'picture', '')
+    ),
     now(), now()
   )
   ON CONFLICT (id) DO UPDATE
     SET username    = EXCLUDED.username,
         global_name = EXCLUDED.global_name,
         avatar_url  = EXCLUDED.avatar_url,
-        email       = EXCLUDED.email,
         last_login_at = now(),
         updated_at    = now();
   RETURN NEW;
@@ -101,7 +107,7 @@ CREATE TRIGGER on_auth_user_created_discord
   FOR EACH ROW EXECUTE FUNCTION public.handle_discord_user();
 
 CREATE TRIGGER on_auth_user_updated_discord
-  AFTER UPDATE OF raw_user_meta_data, email ON auth.users
+  AFTER UPDATE OF raw_user_meta_data ON auth.users
   FOR EACH ROW EXECUTE FUNCTION public.handle_discord_user();
 
 -- 5. COMMENTS ---------------------------------------------------------

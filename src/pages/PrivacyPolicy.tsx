@@ -8,7 +8,7 @@ import { getText } from "@/utils/translations";
 const PrivacyPolicy = () => {
   const { language } = useTheme();
 
-  const lastUpdated = getText(language, "25 de março de 2026", "March 25, 2026");
+  const lastUpdated = getText(language, "6 de julho de 2026", "July 6, 2026");
 
   return (
     <Layout>
@@ -88,8 +88,8 @@ const PrivacyPolicy = () => {
                         {getText(language, "Comentários:", "Comments:")}
                       </strong>{" "}
                       {getText(language,
-                        "Dados de autenticação e conteúdo do comentário, para participação em discussões nos artigos.",
-                        "Authentication data and comment content, for participation in article discussions."
+                        "UID do Supabase, ID do Discord, username, nome de exibição, avatar e conteúdo do comentário. O login Discord não solicita nem armazena o endereço de e-mail.",
+                        "Supabase UID, Discord ID, username, display name, avatar, and comment content. Discord login neither requests nor stores an email address."
                       )}
                     </li>
                     <li>

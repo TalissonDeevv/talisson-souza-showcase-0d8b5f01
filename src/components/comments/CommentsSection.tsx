@@ -8,6 +8,7 @@ import { useDiscordAuth } from "@/hooks/useDiscordAuth";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
 import DiscordLoginPrompt from "./DiscordLoginPrompt";
 
 const MAX = 2000;
@@ -29,14 +30,15 @@ interface CommentRow {
 
 interface Props {
   articleSlug: string;
+  variant?: "inline" | "sidebar";
 }
 
 const cleanHandle = (u?: string | null) => (u ?? "").replace(/#0+$/, "");
 
-const CommentsSection = ({ articleSlug }: Props) => {
+const CommentsSection = ({ articleSlug, variant = "inline" }: Props) => {
   const { language } = useTheme();
   const { toast } = useToast();
-  const { user, profile, signIn, signOut, loading: authLoading } = useDiscordAuth();
+  const { userId, profile, signIn, signOut, loading: authLoading } = useDiscordAuth();
   const locale = language === "en" ? enUS : ptBR;
 
   const [comments, setComments] = useState<CommentRow[]>([]);
@@ -109,13 +111,13 @@ const CommentsSection = ({ articleSlug }: Props) => {
   // -- create top-level --
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!user) return;
+    if (!userId) return;
     const content = draft.trim();
     if (!content || content.length > MAX) return;
     setSubmitting(true);
     const { error } = await supabase
       .from("comments")
-      .insert({ article_slug: articleSlug, user_id: user.id, content, parent_id: null });
+      .insert({ article_slug: articleSlug, user_id: userId, content, parent_id: null });
     setSubmitting(false);
     if (error) {
       toast({ title: rateLimitToast(error.message), variant: "destructive" });
@@ -127,13 +129,13 @@ const CommentsSection = ({ articleSlug }: Props) => {
 
   // -- create reply --
   const submitReply = async (parentId: string) => {
-    if (!user) return;
+    if (!userId) return;
     const content = replyDraft.trim();
     if (!content || content.length > MAX) return;
     setReplySubmitting(true);
     const { error } = await supabase
       .from("comments")
-      .insert({ article_slug: articleSlug, user_id: user.id, content, parent_id: parentId });
+      .insert({ article_slug: articleSlug, user_id: userId, content, parent_id: parentId });
     setReplySubmitting(false);
     if (error) {
       toast({ title: rateLimitToast(error.message), variant: "destructive" });
@@ -205,7 +207,7 @@ const CommentsSection = ({ articleSlug }: Props) => {
   };
 
   const renderComment = (c: CommentRow, isReply = false) => {
-    const mine = user?.id === c.user_id;
+    const mine = userId === c.user_id;
     const edited = c.updated_at !== c.created_at;
     return (
       <motion.li
@@ -215,12 +217,15 @@ const CommentsSection = ({ articleSlug }: Props) => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -8 }}
         transition={{ duration: 0.25 }}
-        className="flex items-start gap-3"
+        className={cn(
+          "group flex items-start gap-4 rounded-2xl border border-border/35 bg-card/25 p-4 shadow-[0_14px_45px_hsl(var(--background)/0.18)] backdrop-blur-sm transition-colors hover:border-border/55 md:p-5",
+          isReply && "rounded-xl bg-background/25 p-3 shadow-none md:p-4",
+        )}
       >
         <img
           src={c.author?.avatar_url ?? `https://cdn.discordapp.com/embed/avatars/0.png`}
           alt=""
-          className={`${isReply ? "w-8 h-8" : "w-10 h-10"} rounded-full border border-border/40 object-cover flex-shrink-0`}
+          className={`${isReply ? "w-8 h-8" : "w-11 h-11"} rounded-full border border-border/50 object-cover flex-shrink-0 shadow-[0_0_0_3px_hsl(var(--background)/0.55)]`}
         />
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1 flex-wrap">
@@ -282,7 +287,7 @@ const CommentsSection = ({ articleSlug }: Props) => {
           )}
 
           {/* Reply action — apenas em comentários raiz (1 nível de profundidade) */}
-          {!isReply && user && editingId !== c.id && (
+          {!isReply && userId && editingId !== c.id && (
             <div className="mt-2">
               {replyToId === c.id ? (
                 <div className="mt-2">
@@ -340,9 +345,21 @@ const CommentsSection = ({ articleSlug }: Props) => {
   };
 
   return (
-    <section className="mt-16 pt-10 border-t border-border/40" aria-label={getText(language, "Comentários", "Comments")}>
-      <div className="flex items-baseline justify-between mb-6">
-        <h2 className="font-serif text-2xl md:text-3xl text-foreground">
+    <section
+      className={cn(
+        variant === "inline"
+          ? "mt-20 border-t border-border/50 pt-12"
+          : "rounded-2xl border border-border/40 bg-card/30 p-5 shadow-[0_18px_60px_hsl(var(--background)/0.35)] backdrop-blur-md md:p-6",
+      )}
+      aria-label={getText(language, "Comentários", "Comments")}
+    >
+      <div className="flex items-baseline justify-between mb-8">
+        <h2
+          className={cn(
+            "font-serif text-foreground",
+            variant === "sidebar" ? "text-xl md:text-2xl" : "text-2xl md:text-3xl",
+          )}
+        >
           {getText(language, "Comentários", "Comments")}
         </h2>
         <span className="text-sm text-muted-foreground tabular-nums">
@@ -350,12 +367,14 @@ const CommentsSection = ({ articleSlug }: Props) => {
         </span>
       </div>
 
-      {!user && !authLoading && (
-        <DiscordLoginPrompt onSignIn={signIn} loading={authLoading} />
+      {!userId && !authLoading && (
+        <div className="mb-12 md:mb-14">
+          <DiscordLoginPrompt onSignIn={signIn} loading={authLoading} />
+        </div>
       )}
 
-      {user && (
-        <form onSubmit={handleSubmit} className="mb-8">
+      {userId && (
+        <form onSubmit={handleSubmit} className="mb-10">
           <div className="flex items-start gap-3">
             <img
               src={profile?.avatar_url ?? `https://cdn.discordapp.com/embed/avatars/0.png`}
@@ -393,19 +412,21 @@ const CommentsSection = ({ articleSlug }: Props) => {
         </form>
       )}
 
+      <div className={cn(!userId && !authLoading && "border-t border-border/30 pt-10")}>
       {loading ? (
         <div className="py-10 flex justify-center"><Loader2 className="w-5 h-5 animate-spin text-muted-foreground" /></div>
       ) : roots.length === 0 ? (
-        <p className="text-sm text-muted-foreground py-6">
+        <p className="rounded-2xl border border-dashed border-border/35 bg-card/20 px-5 py-6 text-sm text-muted-foreground">
           {getText(language, "Ainda não há comentários. Seja o primeiro.", "No comments yet. Be the first.")}
         </p>
       ) : (
-        <ul className="space-y-6">
+        <ul className="space-y-5 md:space-y-6">
           <AnimatePresence initial={false}>
             {roots.map((c) => renderComment(c, false))}
           </AnimatePresence>
         </ul>
       )}
+      </div>
     </section>
   );
 };

@@ -12,6 +12,7 @@ import type { CommentsDatabase } from "./types";
 
 const COMMENTS_URL = "https://rfzjtmleojkojopftkfo.supabase.co";
 const COMMENTS_PUBLISHABLE_KEY = "sb_publishable_SlpEAHJFZLDQzKwwf01cPg_OrHnKXj7";
+export const COMMENTS_AUTH_STORAGE_KEY = "sb-comments-auth-token";
 
 // Storage key MUST differ from the Cloud client's default so sessions do not collide.
 export const supabaseComments = createClient<CommentsDatabase>(
@@ -20,7 +21,7 @@ export const supabaseComments = createClient<CommentsDatabase>(
   {
     auth: {
       storage: typeof window !== "undefined" ? window.localStorage : undefined,
-      storageKey: "sb-comments-auth-token",
+      storageKey: COMMENTS_AUTH_STORAGE_KEY,
       persistSession: true,
       autoRefreshToken: true,
       detectSessionInUrl: true,

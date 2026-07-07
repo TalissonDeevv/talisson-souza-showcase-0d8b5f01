@@ -121,6 +121,10 @@ export const policySections: PolicySection[] = [
         en: 'I do not use email newsletters. My communication with the community happens exclusively through WhatsApp and Discord. This means I do not store email addresses for marketing purposes or mass communications. When you send a message through the contact form, your email is used only to respond to that specific conversation.'
       },
       {
+        pt: 'Para autenticar comentários com o Discord, o site solicita somente os escopos identify e guilds.join. São tratados o UID do Supabase, ID do Discord, username, nome de exibição e avatar. O endereço de e-mail não é solicitado ao Discord nem armazenado no perfil do leitor.',
+        en: 'To authenticate article comments with Discord, the site requests only the identify and guilds.join scopes. The Supabase UID, Discord ID, username, display name, and avatar are processed. The user’s email address is neither requested from Discord nor stored in the reader profile.'
+      },
+      {
         pt: 'O site pode utilizar cookies técnicos necessários para o funcionamento correto da navegação, como preferências de tema (claro/escuro) e idioma selecionado. Esses cookies não coletam informações pessoais identificáveis e são armazenados localmente no seu navegador. Você pode desativá-los nas configurações do navegador, mas isso pode afetar funcionalidades do site.',
         en: 'The site may use technical cookies necessary for proper navigation, such as theme preferences (light/dark) and selected language. These cookies do not collect personally identifiable information and are stored locally in your browser. You can disable them in your browser settings, but this may affect site functionality.'
       },
@@ -129,8 +133,8 @@ export const policySections: PolicySection[] = [
         en: 'Traffic analysis tools may be used to understand aggregate visitor behavior, such as most visited pages, time spent, and traffic source. This data is completely anonymized and does not allow individual identification of any visitor.'
       },
       {
-        pt: 'Caso o site venha a integrar serviços de terceiros no futuro, como processadores de pagamento ou plataformas de autenticação, esta política será atualizada para refletir quais dados serão compartilhados, com quem e com qual finalidade específica. Nenhuma integração será implementada sem comunicação prévia e atualização deste documento.',
-        en: 'Should the site integrate third-party services in the future, such as payment processors or authentication platforms, this policy will be updated to reflect which data will be shared, with whom, and for what specific purpose. No integration will be implemented without prior communication and update of this document.'
+        pt: 'O Discord e o Supabase são utilizados como operadores essenciais do fluxo de autenticação e comentários. Tokens de sessão permanecem protegidos no navegador apenas pelo período necessário para manter a sessão; o token OAuth do Discord é removido do armazenamento local após a sincronização com a comunidade.',
+        en: 'Discord and Supabase act as essential processors for authentication and comments. Session tokens remain protected in the browser only as needed to maintain the session; the Discord OAuth token is removed from local storage after community synchronization.'
       },
       {
         pt: 'Você tem o direito de solicitar acesso, correção ou exclusão dos seus dados pessoais a qualquer momento, conforme previsto pela Lei Geral de Proteção de Dados (LGPD). Para exercer esses direitos, basta entrar em contato através dos canais disponíveis no site. O prazo de resposta é de até 15 dias úteis.',
@@ -480,7 +484,7 @@ export const policySections: PolicySection[] = [
   },
   {
     id: 'livro-direitos-autorais',
-    title: { pt: 'Livro — Direitos Autorais', en: 'Book — Copyright' },
+    title: { pt: 'Livro Direitos Autorais', en: 'Book Copyright' },
     paragraphs: [
       {
         pt: 'A obra "Superando Limites: da Rejeição ao Sucesso" é integralmente protegida pela legislação brasileira de direitos autorais, em especial pela Lei nº 9.610/98, e está devidamente registrada na Fundação Biblioteca Nacional. Todos os direitos sobre o conteúdo, estrutura, título, capa, diagramação e identidade visual da obra são reservados ao autor.',
@@ -510,7 +514,7 @@ export const policySections: PolicySection[] = [
   },
   {
     id: 'livro-licenca-de-uso',
-    title: { pt: 'Livro — Licença de Uso', en: 'Book — Usage License' },
+    title: { pt: 'Livro Licença de Uso', en: 'Book Usage License' },
     paragraphs: [
       {
         pt: 'A aquisição da obra "Superando Limites: da Rejeição ao Sucesso" concede ao comprador uma licença pessoal, intransferível e não exclusiva para a leitura e o uso particular do conteúdo. Essa licença autoriza o leitor a utilizar a obra como ferramenta de desenvolvimento pessoal, estudo individual e enriquecimento próprio, dentro dos limites estabelecidos nesta política.',
@@ -540,7 +544,7 @@ export const policySections: PolicySection[] = [
   },
   {
     id: 'livro-termos-de-compra',
-    title: { pt: 'Livro — Termos de Compra e Acesso', en: 'Book — Purchase and Access Terms' },
+    title: { pt: 'Livro Termos de Compra e Acesso', en: 'Book Purchase and Access Terms' },
     paragraphs: [
       {
         pt: 'A obra está disponível em duas modalidades oficiais: o livro físico, comercializado pela Amazon, e a versão digital, também distribuída pelos canais autorizados informados na página oficial do livro. Toda compra deve ser realizada exclusivamente nesses canais para garantir autenticidade, qualidade e suporte adequado.',
@@ -570,7 +574,7 @@ export const policySections: PolicySection[] = [
   },
   {
     id: 'livro-politica-de-reembolso',
-    title: { pt: 'Livro — Política de Reembolso', en: 'Book — Refund Policy' },
+    title: { pt: 'Livro Política de Reembolso', en: 'Book Refund Policy' },
     paragraphs: [
       {
         pt: 'O reembolso da obra "Superando Limites: da Rejeição ao Sucesso" segue as regras estabelecidas pelo Código de Defesa do Consumidor brasileiro e pelas políticas específicas das plataformas oficiais utilizadas na venda. Para o livro físico, vale a política da plataforma de comercialização, que normalmente garante prazo de arrependimento de sete dias corridos a contar da data de recebimento.',
@@ -600,7 +604,7 @@ export const policySections: PolicySection[] = [
   },
   {
     id: 'livro-limitacao-de-responsabilidade',
-    title: { pt: 'Livro — Limitação de Responsabilidade', en: 'Book — Limitation of Liability' },
+    title: { pt: 'Livro Limitação de Responsabilidade', en: 'Book Limitation of Liability' },
     paragraphs: [
       {
         pt: 'O conteúdo da obra "Superando Limites: da Rejeição ao Sucesso" tem natureza estritamente informativa, educacional e motivacional. As reflexões, histórias e aprendizados apresentados são frutos da experiência pessoal do autor e devem ser compreendidos como uma perspectiva, não como prescrição universal, fórmula garantida ou método clínico.',
@@ -626,7 +630,7 @@ export const policySections: PolicySection[] = [
   },
   {
     id: 'livro-uso-de-marca',
-    title: { pt: 'Livro — Uso de Marca e Nome', en: 'Book — Brand and Name Usage' },
+    title: { pt: 'Livro Uso de Marca e Nome', en: 'Book Brand and Name Usage' },
     paragraphs: [
       {
         pt: 'O nome do autor, o título da obra "Superando Limites: da Rejeição ao Sucesso", a identidade visual associada ao livro, capa, tipografia, paleta de cores e demais elementos de marca são protegidos como ativos autorais e de identidade profissional. Sua utilização requer autorização prévia, formal e específica para cada finalidade pretendida.',
@@ -652,7 +656,7 @@ export const policySections: PolicySection[] = [
   },
   {
     id: 'livro-canais-oficiais',
-    title: { pt: 'Livro — Canais Oficiais e Compra Segura', en: 'Book — Official Channels and Safe Purchase' },
+    title: { pt: 'Livro Canais Oficiais e Compra Segura', en: 'Book Official Channels and Safe Purchase' },
     paragraphs: [
       {
         pt: 'A forma mais segura, completa e correta de adquirir "Superando Limites: da Rejeição ao Sucesso" é pelos canais oficiais informados na página do livro. São eles que garantem o conteúdo na íntegra, na sua versão mais atual, com a qualidade editorial original e com todo o suporte vinculado à experiência de leitura que a obra foi pensada para entregar.',
@@ -678,7 +682,7 @@ export const policySections: PolicySection[] = [
   },
   {
     id: 'livro-jurisdicao',
-    title: { pt: 'Livro — Jurisdição', en: 'Book — Jurisdiction' },
+    title: { pt: 'Livro Jurisdição', en: 'Book Jurisdiction' },
     paragraphs: [
       {
         pt: 'Todas as relações jurídicas decorrentes da aquisição, leitura, distribuição ou qualquer uso da obra "Superando Limites: da Rejeição ao Sucesso" são regidas pelas leis da República Federativa do Brasil, em especial pela Lei nº 9.610/98 (Direitos Autorais), pela Lei nº 8.078/90 (Código de Defesa do Consumidor) e pela Lei nº 13.709/18 (LGPD), no que couber.',

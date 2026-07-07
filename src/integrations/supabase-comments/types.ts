@@ -41,7 +41,6 @@ export type CommentsDatabase = {
           username: string;
           global_name: string | null;
           avatar_url: string | null;
-          email: string | null;
           guild_joined: boolean;
           role_granted: boolean;
           created_at: string;
@@ -54,7 +53,6 @@ export type CommentsDatabase = {
           username: string;
           global_name?: string | null;
           avatar_url?: string | null;
-          email?: string | null;
           guild_joined?: boolean;
           role_granted?: boolean;
           created_at?: string;
@@ -67,7 +65,6 @@ export type CommentsDatabase = {
           username?: string;
           global_name?: string | null;
           avatar_url?: string | null;
-          email?: string | null;
           guild_joined?: boolean;
           role_granted?: boolean;
           created_at?: string;

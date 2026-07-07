@@ -13,8 +13,8 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, BookOpen, Quote } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
-import logoSignature from "@/assets/logo-signature.png";
 import { motion } from "framer-motion";
+import AnimatedSignature from "@/components/ui/AnimatedSignature";
 import { SiJavascript, SiTypescript, SiPython, SiReact, SiNodedotjs, SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFirebase } from "react-icons/si";
 import CompanyLogos from "@/components/ui/CompanyLogos";
 import DiscordCommunityCard from "@/components/ui/DiscordCommunityCard";
@@ -127,15 +127,14 @@ const Index = () => {
             </motion.p>
             
             {/* Signature — protagonist of the hero */}
-            <motion.img
+            <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.05 }}
-              src={logoSignature}
-              alt="Talisson Souza"
-              className="h-28 sm:h-36 md:h-44 lg:h-52 w-auto max-w-[92vw] mb-10 invert dark:invert-0 border-0 border-none"
-              loading="eager"
-              fetchPriority="high" />
+              className="mb-10 flex w-full max-w-[92vw] justify-center"
+            >
+              <AnimatedSignature />
+            </motion.div>
 
 
             {/* Subtitle with entrance animation */}

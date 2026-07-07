@@ -6,6 +6,9 @@
 > e o cache do PostgREST. `03_add_replies.sql` foi substituído pelo arquivo 04.
 > A auditoria completa está em
 > `docs/discord-comments/SCHEMA_AUDIT_REPORT.md`.
+> Em seguida, execute `docs/discord-comments/07_minimize_discord_personal_data.sql`
+> para remover o e-mail duplicado dos perfis e preparar a transição para o
+> OAuth Discord mínimo.
 
 Sistema de comentários com autenticação Discord OAuth2, `guilds.join` automático
 e atribuição do cargo **📖 Leitor dos Artigos**. Este documento cobre a migração
@@ -19,6 +22,10 @@ do Lovable Cloud para um Supabase próprio (BYO) e a instalação completa.
 | --- | --- |
 | `docs/discord-comments/01_schema.sql` | Schema completo (tabelas, RLS, triggers, funções de estatística) para o novo Supabase |
 | `docs/discord-comments/02_export_from_cloud.sql` | Queries de backup para rodar no Cloud atual antes de desconectar |
+| `docs/discord-comments/07_minimize_discord_personal_data.sql` | Remove o e-mail do perfil público e prepara a migração automática da identidade |
+| `docs/discord-comments/08_validate_discord_identity_migration.sql` | Validação transacional da preservação de comentários e cargos |
+| `docs/discord-comments/09_audit_email_minimization.sql` | Auditoria por contagem, sem retornar endereços de e-mail |
+| `supabase/functions/discord-userinfo/index.ts` | UserInfo mínimo para o provider OAuth2 customizado |
 | `supabase/functions/discord-post-login/index.ts` | Edge function que faz `PUT /guilds/{id}/members/{id}` e aplica o cargo |
 | `src/hooks/useDiscordAuth.ts` | Hook central de autenticação Discord |
 | `src/components/comments/DiscordLoginPrompt.tsx` | CTA de login com Discord |
@@ -61,14 +68,26 @@ do Lovable Cloud para um Supabase próprio (BYO) e a instalação completa.
    - **Importante:** arraste o cargo do bot para **acima** do cargo Leitor,
      senão o bot não consegue atribuí-lo.
 
-## 5. Configurar Discord como provider no Supabase
+## 5. Configurar o provider Discord mínimo no Supabase
 
-Supabase Dashboard → **Authentication → Providers → Discord**:
+O provider Discord nativo do Supabase solicita `email` internamente. Para
+minimização de dados, use **Authentication → Providers → New Provider →
+Manual configuration (OAuth2)**:
 
-- Enable: **On**
-- Client ID: cole do passo 4
-- Client Secret: cole do passo 4
-- Salve.
+- Identifier: `custom:discord-minimal`
+- Name: `Discord (mínimo)`
+- Client ID e Client Secret: os mesmos da aplicação Discord
+- Authorization URL: `https://discord.com/oauth2/authorize`
+- Token URL: `https://discord.com/api/oauth2/token`
+- UserInfo URL:
+  `https://rfzjtmleojkojopftkfo.supabase.co/functions/v1/discord-userinfo`
+- Scopes: `identify`, `guilds.join`
+- Allow users without e-mail: **On**
+- PKCE: **Off** para este cliente web confidencial
+
+Faça o deploy da função `discord-userinfo` com verificação de JWT desabilitada.
+Ela recebe somente o token OAuth do Discord, valida-o em `/users/@me` e devolve
+ID, username, display name e avatar.
 
 Ainda em Authentication → **URL Configuration**:
 
@@ -128,7 +147,7 @@ todos os "endpoints" pedidos são operações CRUD via `supabase-js`:
 
 | Ação | Chamada |
 | --- | --- |
-| Login | `supabase.auth.signInWithOAuth({ provider: 'discord', options: { scopes: 'identify email guilds.join' } })` |
+| Login | `supabase.auth.signInWithOAuth({ provider: 'custom:discord-minimal', options: { scopes: 'identify guilds.join' } })` |
 | Callback | Automático (Supabase) → dispara trigger `handle_discord_user` |
 | Post-login (bot) | `supabase.functions.invoke('discord-post-login', { body: {...} })` |
 | Criar comentário | `supabase.from('comments').insert({...})` |
@@ -164,12 +183,26 @@ futuras seguindo o mesmo padrão).
 
 ## 13. Escopos OAuth utilizados
 
-- `identify` — perfil básico (id, username, avatar).
-- `email` — e-mail verificado.
+- `identify` — perfil básico (ID, username, display name e avatar).
 - `guilds.join` — permite ao bot adicionar o usuário ao servidor.
 
-Configure exatamente esses três nas **Default Authorization Link** do Discord
-Developer Portal e no campo de scopes do Supabase Discord Provider.
+O e-mail não é solicitado. Não use o provider Discord nativo do Supabase para
+este fluxo: a implementação nativa acrescenta o escopo `email` internamente.
+Crie um provider OAuth2 customizado com:
+
+- Identifier: `custom:discord-minimal`
+- Authorization URL: `https://discord.com/oauth2/authorize`
+- Token URL: `https://discord.com/api/oauth2/token`
+- UserInfo URL:
+  `https://rfzjtmleojkojopftkfo.supabase.co/functions/v1/discord-userinfo`
+- Scopes: `identify`, `guilds.join`
+- E-mail opcional: habilitado
+- PKCE do provider: desabilitado para o fluxo web confidencial do Discord
+
+A Edge Function `discord-userinfo` adapta somente os campos visuais necessários
+e nunca retorna e-mail. Depois que a versão do frontend com
+`custom:discord-minimal` estiver em produção, desabilite o provider Discord
+nativo no Dashboard.
 
 ## 14. Redirect URIs no Discord
 

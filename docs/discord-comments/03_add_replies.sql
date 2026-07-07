@@ -53,17 +53,16 @@ DECLARE
 BEGIN
   IF did IS NULL THEN RETURN NEW; END IF;
   INSERT INTO public.discord_profiles
-    (id, discord_id, username, global_name, avatar_url, email, last_login_at, updated_at)
+    (id, discord_id, username, global_name, avatar_url, last_login_at, updated_at)
   VALUES (
     NEW.id, did, uname, gname,
-    NULLIF(meta->>'avatar_url', ''),
-    NEW.email, now(), now()
+    COALESCE(NULLIF(meta->>'avatar_url', ''), NULLIF(meta->>'picture', '')),
+    now(), now()
   )
   ON CONFLICT (id) DO UPDATE
     SET username    = EXCLUDED.username,
         global_name = COALESCE(EXCLUDED.global_name, public.discord_profiles.global_name),
         avatar_url  = EXCLUDED.avatar_url,
-        email       = EXCLUDED.email,
         last_login_at = now(),
         updated_at    = now();
   RETURN NEW;
