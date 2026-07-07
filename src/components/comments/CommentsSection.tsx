@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { formatDistanceToNow } from "date-fns";
 import { ptBR, enUS } from "date-fns/locale";
-import { MoreHorizontal, Pencil, Trash2, X, Loader2, MessageSquare } from "lucide-react";
+import { MoreHorizontal, Pencil, Trash2, X, Loader2, MessageSquare, ThumbsDown, ThumbsUp } from "lucide-react";
 import { supabaseComments as supabase } from "@/integrations/supabase-comments/client";
 import { useDiscordAuth } from "@/hooks/useDiscordAuth";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -10,8 +10,19 @@ import { getText } from "@/utils/translations";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import DiscordLoginPrompt from "./DiscordLoginPrompt";
+import verifiedBadge from "@/assets/icons/verified.png";
 
 const MAX = 2000;
+const OFFICIAL_DISCORD_ID = "933780111742877777";
+const OFFICIAL_DISPLAY_NAME = "Talisson S.";
+const OFFICIAL_USERNAME = "talissondev";
+type ReactionKind = "like" | "dislike";
+
+interface CommentReactions {
+  likes: number;
+  dislikes: number;
+  mine: ReactionKind | null;
+}
 
 interface CommentRow {
   id: string;
@@ -25,7 +36,9 @@ interface CommentRow {
     username: string;
     global_name: string | null;
     avatar_url: string | null;
+    is_verified: boolean;
   } | null;
+  reactions?: CommentReactions;
 }
 
 interface Props {
@@ -33,12 +46,33 @@ interface Props {
   variant?: "inline" | "sidebar";
 }
 
-const cleanHandle = (u?: string | null) => (u ?? "").replace(/#0+$/, "");
+const EMPTY_REACTIONS: CommentReactions = { likes: 0, dislikes: 0, mine: null };
+
+const cleanHandle = (u?: string | null) => (u ?? "").trim().replace(/^@+/, "").replace(/#0+$/, "");
+
+const extractDiscordIdFromAvatarUrl = (avatarUrl?: string | null) => {
+  if (!avatarUrl) return null;
+
+  try {
+    const parsed = new URL(avatarUrl);
+    const match = parsed.pathname.match(/\/avatars\/([0-9]+)\//);
+    return match?.[1] ?? null;
+  } catch {
+    const match = avatarUrl.match(/\/avatars\/([0-9]+)\//);
+    return match?.[1] ?? null;
+  }
+};
+
+const isOfficialAuthor = (author?: CommentRow["author"] | null) =>
+  Boolean(
+    author?.is_verified ||
+    extractDiscordIdFromAvatarUrl(author?.avatar_url) === OFFICIAL_DISCORD_ID,
+  );
 
 const CommentsSection = ({ articleSlug, variant = "inline" }: Props) => {
   const { language } = useTheme();
   const { toast } = useToast();
-  const { userId, profile, signIn, signOut, loading: authLoading } = useDiscordAuth();
+  const { userId, profile, signIn, signOut, refreshProfile, loading: authLoading } = useDiscordAuth();
   const locale = language === "en" ? enUS : ptBR;
 
   const [comments, setComments] = useState<CommentRow[]>([]);
@@ -67,19 +101,73 @@ const CommentsSection = ({ articleSlug, variant = "inline" }: Props) => {
     }
     const rows = ((data as unknown) as CommentRow[]) ?? [];
     const ids = Array.from(new Set(rows.map((r) => r.user_id)));
+    const commentIds = rows.map((r) => r.id);
     const authors: Record<string, CommentRow["author"]> = {};
+    const reactionsByComment: Record<string, CommentReactions> = Object.fromEntries(
+      commentIds.map((id) => [id, { ...EMPTY_REACTIONS }]),
+    );
+
     if (ids.length) {
-      const { data: profs } = await supabase
+      const { data: profs, error: profilesError } = await supabase
         .from("discord_profiles")
-        .select("id, username, global_name, avatar_url")
+        .select("id, username, global_name, avatar_url, is_verified")
         .in("id", ids);
-      for (const p of profs ?? []) {
-        authors[p.id] = { username: p.username, global_name: p.global_name, avatar_url: p.avatar_url };
+
+      const profileRows = profilesError
+        ? (
+            await supabase
+              .from("discord_profiles")
+              .select("id, username, global_name, avatar_url")
+              .in("id", ids)
+          ).data
+        : profs;
+
+      for (const p of profileRows ?? []) {
+        const official = extractDiscordIdFromAvatarUrl(p.avatar_url) === OFFICIAL_DISCORD_ID;
+        authors[p.id] = {
+          username: official ? OFFICIAL_USERNAME : p.username,
+          global_name: official ? p.global_name ?? OFFICIAL_DISPLAY_NAME : p.global_name,
+          avatar_url: p.avatar_url,
+          is_verified: official || ("is_verified" in p ? p.is_verified ?? false : false),
+        };
       }
     }
-    setComments(rows.map((r) => ({ ...r, author: authors[r.user_id] ?? null })));
+
+    if (commentIds.length) {
+      const { data: reactionRows } = await supabase
+        .from("comment_reactions")
+        .select("comment_id, reaction")
+        .in("comment_id", commentIds);
+
+      for (const reactionRow of (reactionRows ?? []) as Array<{ comment_id: string; reaction: ReactionKind }>) {
+        const stats = reactionsByComment[reactionRow.comment_id];
+        if (!stats) continue;
+
+        if (reactionRow.reaction === "like") stats.likes += 1;
+        if (reactionRow.reaction === "dislike") stats.dislikes += 1;
+      }
+
+      if (userId) {
+        const { data: myReactionRows } = await supabase
+          .from("comment_reactions")
+          .select("comment_id, reaction")
+          .in("comment_id", commentIds)
+          .eq("user_id", userId);
+
+        for (const reactionRow of (myReactionRows ?? []) as Array<{ comment_id: string; reaction: ReactionKind }>) {
+          const stats = reactionsByComment[reactionRow.comment_id];
+          if (stats) stats.mine = reactionRow.reaction;
+        }
+      }
+    }
+
+    setComments(rows.map((r) => ({
+      ...r,
+      author: authors[r.user_id] ?? null,
+      reactions: reactionsByComment[r.id] ?? { ...EMPTY_REACTIONS },
+    })));
     setLoading(false);
-  }, [articleSlug]);
+  }, [articleSlug, userId]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -89,9 +177,33 @@ const CommentsSection = ({ articleSlug, variant = "inline" }: Props) => {
       .channel(`comments:${articleSlug}`)
       .on("postgres_changes", { event: "*", schema: "public", table: "comments", filter: `article_slug=eq.${articleSlug}` },
         () => load())
+      .on("postgres_changes", { event: "*", schema: "public", table: "comment_reactions" },
+        () => load())
       .subscribe();
     return () => { supabase.removeChannel(ch); };
   }, [articleSlug, load]);
+
+  useEffect(() => {
+    if (!profile?.id) return;
+
+    setComments((current) =>
+      current.map((comment) =>
+        comment.user_id === profile.id
+          ? {
+              ...comment,
+              author: {
+                username: isOfficialAuthor(profile) ? OFFICIAL_USERNAME : profile.username,
+                global_name: isOfficialAuthor(profile)
+                  ? profile.global_name ?? OFFICIAL_DISPLAY_NAME
+                  : profile.global_name,
+                avatar_url: profile.avatar_url,
+                is_verified: profile.is_verified || isOfficialAuthor(profile),
+              },
+            }
+          : comment,
+      ),
+    );
+  }, [profile]);
 
   // -- helpers --
   const rateLimitToast = (msg: string) => {
@@ -115,6 +227,7 @@ const CommentsSection = ({ articleSlug, variant = "inline" }: Props) => {
     const content = draft.trim();
     if (!content || content.length > MAX) return;
     setSubmitting(true);
+    await refreshProfile({ force: true });
     const { error } = await supabase
       .from("comments")
       .insert({ article_slug: articleSlug, user_id: userId, content, parent_id: null });
@@ -133,6 +246,7 @@ const CommentsSection = ({ articleSlug, variant = "inline" }: Props) => {
     const content = replyDraft.trim();
     if (!content || content.length > MAX) return;
     setReplySubmitting(true);
+    await refreshProfile({ force: true });
     const { error } = await supabase
       .from("comments")
       .insert({ article_slug: articleSlug, user_id: userId, content, parent_id: parentId });
@@ -151,6 +265,7 @@ const CommentsSection = ({ articleSlug, variant = "inline" }: Props) => {
   const saveEdit  = async (id: string) => {
     const content = editDraft.trim();
     if (!content || content.length > MAX) return;
+    await refreshProfile({ force: true });
     const { error } = await supabase.from("comments").update({ content }).eq("id", id);
     if (error) {
       toast({ title: getText(language, "Erro ao editar", "Edit failed"), variant: "destructive" });
@@ -169,6 +284,56 @@ const CommentsSection = ({ articleSlug, variant = "inline" }: Props) => {
       return;
     }
     load();
+  };
+
+  const startReply = (commentId: string) => {
+    if (!userId) {
+      toast({
+        title: getText(language, "Entre com Discord para responder.", "Sign in with Discord to reply."),
+      });
+      void signIn();
+      return;
+    }
+
+    setReplyToId(commentId);
+    setReplyDraft("");
+    void refreshProfile({ force: true });
+  };
+
+  const handleReaction = async (commentId: string, reaction: ReactionKind) => {
+    if (!userId) {
+      toast({
+        title: getText(language, "Entre com Discord para reagir.", "Sign in with Discord to react."),
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const current = comments.find((comment) => comment.id === commentId)?.reactions?.mine ?? null;
+    const request =
+      current === reaction
+        ? supabase
+            .from("comment_reactions")
+            .delete()
+            .eq("comment_id", commentId)
+            .eq("user_id", userId)
+        : supabase
+            .from("comment_reactions")
+            .upsert(
+              { comment_id: commentId, user_id: userId, reaction },
+              { onConflict: "comment_id,user_id" },
+            );
+
+    const { error } = await request;
+    if (error) {
+      toast({
+        title: getText(language, "Não foi possível registrar sua reação.", "Could not save your reaction."),
+        variant: "destructive",
+      });
+      return;
+    }
+
+    await load();
   };
 
   // -- tree structure (1 level deep) --
@@ -195,20 +360,52 @@ const CommentsSection = ({ articleSlug, variant = "inline" }: Props) => {
     const handle = cleanHandle(c.author?.username);
     const display = c.author?.global_name?.trim() || handle || getText(language, "leitor", "reader");
     return (
-      <span className="text-sm font-medium text-foreground">
-        {display}
+      <span className="flex min-w-0 flex-col gap-0.5">
+        <span className="inline-flex min-h-[18px] min-w-0 items-center gap-1.5 leading-[18px]">
+          <span className="font-semibold leading-[18px] text-foreground">{display}</span>
+          {c.author?.is_verified && (
+            <img
+              src={verifiedBadge}
+              alt={getText(language, "Conta verificada de Talisson Souza", "Verified Talisson Souza account")}
+              title={getText(language, "Conta verificada de Talisson Souza", "Verified Talisson Souza account")}
+              className="h-3.5 w-3.5 shrink-0 self-center object-contain drop-shadow-[0_0_8px_rgba(34,197,94,0.35)]"
+              loading="lazy"
+            />
+          )}
+        </span>
         {handle && (
-          <span className="ml-1 font-normal text-muted-foreground">
-            @{handle} {getText(language, "no discord", "on discord")}
-          </span>
+          <span className="text-xs font-normal leading-4 text-muted-foreground">@{handle}</span>
         )}
+      </span>
+    );
+  };
+
+  const renderTimestamp = (c: CommentRow) => {
+    const createdAt = new Date(c.created_at);
+    const absolute = new Intl.DateTimeFormat(language === "en" ? "en-US" : "pt-BR", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    }).format(createdAt);
+    const relative = formatDistanceToNow(createdAt, { addSuffix: true, locale });
+    const edited = c.updated_at !== c.created_at;
+
+    return (
+      <span className="inline-flex min-h-[18px] items-center text-xs leading-[18px] text-muted-foreground">
+        <time dateTime={c.created_at} title={absolute}>
+          {absolute}
+          <span className="hidden sm:inline"> · {relative}</span>
+        </time>
+        {edited && ` · ${getText(language, "editado", "edited")}`}
       </span>
     );
   };
 
   const renderComment = (c: CommentRow, isReply = false) => {
     const mine = userId === c.user_id;
-    const edited = c.updated_at !== c.created_at;
+    const reactions = c.reactions ?? EMPTY_REACTIONS;
     return (
       <motion.li
         key={c.id}
@@ -228,12 +425,9 @@ const CommentsSection = ({ articleSlug, variant = "inline" }: Props) => {
           className={`${isReply ? "w-8 h-8" : "w-11 h-11"} rounded-full border border-border/50 object-cover flex-shrink-0 shadow-[0_0_0_3px_hsl(var(--background)/0.55)]`}
         />
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 mb-1 flex-wrap">
+          <div className="mb-2 flex items-start gap-x-2 gap-y-1 flex-wrap">
             {renderAuthorLabel(c)}
-            <span className="text-xs text-muted-foreground">
-              {formatDistanceToNow(new Date(c.created_at), { addSuffix: true, locale })}
-              {edited && ` · ${getText(language, "editado", "edited")}`}
-            </span>
+            {renderTimestamp(c)}
             {mine && (
               <div className="relative ml-auto">
                 <button
@@ -286,48 +480,78 @@ const CommentsSection = ({ articleSlug, variant = "inline" }: Props) => {
             </p>
           )}
 
-          {/* Reply action — apenas em comentários raiz (1 nível de profundidade) */}
-          {!isReply && userId && editingId !== c.id && (
-            <div className="mt-2">
-              {replyToId === c.id ? (
-                <div className="mt-2">
-                  <textarea
-                    value={replyDraft}
-                    onChange={(e) => setReplyDraft(e.target.value.slice(0, MAX))}
-                    rows={2}
-                    placeholder={getText(language, "Escreva sua resposta…", "Write your reply…")}
-                    className="w-full rounded-lg border border-border/40 bg-card/40 px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-foreground/30 resize-y"
-                    maxLength={MAX}
-                  />
-                  <div className="flex items-center gap-2 mt-2">
-                    <button
-                      type="button"
-                      onClick={() => submitReply(c.id)}
-                      disabled={replySubmitting || !replyDraft.trim()}
-                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-medium bg-foreground text-background hover:opacity-90 disabled:opacity-50"
-                    >
-                      {replySubmitting && <Loader2 className="w-3 h-3 animate-spin" />}
-                      {getText(language, "Responder", "Reply")}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => { setReplyToId(null); setReplyDraft(""); }}
-                      className="px-3 py-1.5 rounded-md text-xs text-muted-foreground hover:text-foreground"
-                    >
-                      {getText(language, "Cancelar", "Cancel")}
-                    </button>
-                  </div>
-                </div>
-              ) : (
+          {editingId !== c.id && (
+            <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
+              <button
+                type="button"
+                onClick={() => handleReaction(c.id, "like")}
+                aria-pressed={reactions.mine === "like"}
+                className={cn(
+                  "inline-flex items-center gap-1.5 rounded-full border border-border/35 bg-background/25 px-2.5 py-1 text-muted-foreground transition hover:border-foreground/30 hover:text-foreground",
+                  reactions.mine === "like" && "border-emerald-400/45 bg-emerald-400/10 text-foreground",
+                )}
+              >
+                <ThumbsUp className="h-3.5 w-3.5" />
+                <span>{getText(language, "Curtir", "Like")}</span>
+                <span className="tabular-nums">{reactions.likes}</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleReaction(c.id, "dislike")}
+                aria-pressed={reactions.mine === "dislike"}
+                className={cn(
+                  "inline-flex items-center gap-1.5 rounded-full border border-border/35 bg-background/25 px-2.5 py-1 text-muted-foreground transition hover:border-foreground/30 hover:text-foreground",
+                  reactions.mine === "dislike" && "border-amber-400/45 bg-amber-400/10 text-foreground",
+                )}
+              >
+                <ThumbsDown className="h-3.5 w-3.5" />
+                <span>{getText(language, "Não gostei", "Dislike")}</span>
+                <span className="tabular-nums">{reactions.dislikes}</span>
+              </button>
+              {!isReply && (
                 <button
                   type="button"
-                  onClick={() => { setReplyToId(c.id); setReplyDraft(""); }}
-                  className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition"
+                  onClick={() => startReply(c.id)}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border/35 bg-background/25 px-2.5 py-1 text-muted-foreground transition hover:border-foreground/30 hover:text-foreground"
                 >
-                  <MessageSquare className="w-3.5 h-3.5" />
-                  {getText(language, "Responder", "Reply")}
+                  <MessageSquare className="h-3.5 w-3.5" />
+                  <span>{getText(language, "Responder", "Reply")}</span>
                 </button>
               )}
+            </div>
+          )}
+
+          {/* Reply action — apenas em comentários raiz (1 nível de profundidade) */}
+          {!isReply && userId && editingId !== c.id && replyToId === c.id && (
+            <div className="mt-2">
+              <div className="mt-2">
+                <textarea
+                  value={replyDraft}
+                  onChange={(e) => setReplyDraft(e.target.value.slice(0, MAX))}
+                  rows={2}
+                  placeholder={getText(language, "Escreva sua resposta…", "Write your reply…")}
+                  className="w-full rounded-lg border border-border/40 bg-card/40 px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-foreground/30 resize-y"
+                  maxLength={MAX}
+                />
+                <div className="flex items-center gap-2 mt-2">
+                  <button
+                    type="button"
+                    onClick={() => submitReply(c.id)}
+                    disabled={replySubmitting || !replyDraft.trim()}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-medium bg-foreground text-background hover:opacity-90 disabled:opacity-50"
+                  >
+                    {replySubmitting && <Loader2 className="w-3 h-3 animate-spin" />}
+                    {getText(language, "Responder", "Reply")}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { setReplyToId(null); setReplyDraft(""); }}
+                    className="px-3 py-1.5 rounded-md text-xs text-muted-foreground hover:text-foreground"
+                  >
+                    {getText(language, "Cancelar", "Cancel")}
+                  </button>
+                </div>
+              </div>
             </div>
           )}
 

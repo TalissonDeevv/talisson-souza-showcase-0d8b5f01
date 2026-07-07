@@ -10,11 +10,14 @@ export interface DiscordProfile {
   username: string;
   global_name: string | null;
   avatar_url: string | null;
+  is_verified: boolean;
 }
 
 const DISCORD_PROVIDER = "custom:discord-minimal" satisfies Provider;
 const DISCORD_SCOPES = "identify guilds.join";
 const POST_LOGIN_KEY_PREFIX = "atlas_discord_post_login";
+const PROFILE_REFRESH_KEY_PREFIX = "atlas_discord_profile_refresh";
+const PROFILE_REFRESH_TTL_MS = 5 * 60 * 1000;
 
 function clearStoredDiscordProviderCredentials(): void {
   if (typeof window === "undefined") return;
@@ -63,17 +66,58 @@ export function useDiscordAuth() {
   const fetchProfile = useCallback(async (userId: string) => {
     const { data, error: profileError } = await supabase
       .from("discord_profiles")
-      .select("id, username, global_name, avatar_url")
+      .select("id, username, global_name, avatar_url, is_verified")
       .eq("id", userId)
       .maybeSingle();
 
     if (profileError) {
-      setProfile(null);
+      const { data: fallbackData, error: fallbackError } = await supabase
+        .from("discord_profiles")
+        .select("id, username, global_name, avatar_url")
+        .eq("id", userId)
+        .maybeSingle();
+
+      setProfile(
+        fallbackError || !fallbackData
+          ? null
+          : { ...fallbackData, is_verified: false },
+      );
       return;
     }
 
-    setProfile(data);
+    setProfile(data ? { ...data, is_verified: data.is_verified ?? false } : null);
   }, []);
+
+  const refreshProfile = useCallback(async (
+    options: { force?: boolean } = {},
+  ): Promise<boolean> => {
+    const userId = session?.user.id;
+    if (!userId) return false;
+
+    const storageKey = `${PROFILE_REFRESH_KEY_PREFIX}_${userId}`;
+    if (!options.force && typeof window !== "undefined") {
+      const lastRefresh = Number(window.localStorage.getItem(storageKey) ?? 0);
+      if (Number.isFinite(lastRefresh) && Date.now() - lastRefresh < PROFILE_REFRESH_TTL_MS) {
+        return false;
+      }
+    }
+
+    const { data, error: functionError } = await supabase.functions.invoke(
+      "discord-refresh-profile",
+      { body: {} },
+    );
+
+    if (functionError || data?.ok !== true) {
+      return false;
+    }
+
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(storageKey, String(Date.now()));
+    }
+
+    await fetchProfile(userId);
+    return true;
+  }, [fetchProfile, session?.user.id]);
 
   useEffect(() => {
     let active = true;
@@ -155,6 +199,11 @@ export function useDiscordAuth() {
     })();
   }, [fetchProfile, session]);
 
+  useEffect(() => {
+    if (!session?.user.id || session.provider_token) return;
+    void refreshProfile();
+  }, [refreshProfile, session?.provider_token, session?.user.id]);
+
   const signIn = useCallback(async () => {
     setError(null);
 
@@ -187,5 +236,6 @@ export function useDiscordAuth() {
     error,
     signIn,
     signOut,
+    refreshProfile,
   };
 }

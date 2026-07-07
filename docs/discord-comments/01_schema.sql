@@ -48,6 +48,7 @@ CREATE TABLE public.discord_profiles (
   username     text        NOT NULL,
   global_name  text,
   avatar_url   text,
+  is_verified  boolean     NOT NULL DEFAULT false,
   guild_joined boolean     NOT NULL DEFAULT false,
   role_granted boolean     NOT NULL DEFAULT false,
   created_at   timestamptz NOT NULL DEFAULT now(),
@@ -85,7 +86,10 @@ BEGIN
     COALESCE(meta->>'user_name', meta->>'preferred_username', meta->>'name', 'user'),
     COALESCE(
       NULLIF(meta->>'global_name', ''),
-      NULLIF(meta->'custom_claims'->>'global_name', '')
+      NULLIF(meta->'custom_claims'->>'global_name', ''),
+      NULLIF(meta->>'name', ''),
+      NULLIF(meta->>'user_name', ''),
+      NULLIF(meta->>'preferred_username', '')
     ),
     COALESCE(
       NULLIF(meta->>'avatar_url', ''),

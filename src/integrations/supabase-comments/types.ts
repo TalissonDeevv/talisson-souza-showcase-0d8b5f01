@@ -1,6 +1,30 @@
 export type CommentsDatabase = {
   public: {
     Tables: {
+      comment_reactions: {
+        Row: {
+          comment_id: string;
+          user_id: string;
+          reaction: "like" | "dislike";
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          comment_id: string;
+          user_id: string;
+          reaction: "like" | "dislike";
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          comment_id?: string;
+          user_id?: string;
+          reaction?: "like" | "dislike";
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
       comments: {
         Row: {
           id: string;
@@ -41,6 +65,7 @@ export type CommentsDatabase = {
           username: string;
           global_name: string | null;
           avatar_url: string | null;
+          is_verified: boolean;
           guild_joined: boolean;
           role_granted: boolean;
           created_at: string;
@@ -53,6 +78,7 @@ export type CommentsDatabase = {
           username: string;
           global_name?: string | null;
           avatar_url?: string | null;
+          is_verified?: boolean;
           guild_joined?: boolean;
           role_granted?: boolean;
           created_at?: string;
@@ -65,6 +91,7 @@ export type CommentsDatabase = {
           username?: string;
           global_name?: string | null;
           avatar_url?: string | null;
+          is_verified?: boolean;
           guild_joined?: boolean;
           role_granted?: boolean;
           created_at?: string;

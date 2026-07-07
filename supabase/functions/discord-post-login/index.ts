@@ -4,6 +4,9 @@ const DEFAULT_ALLOWED_ORIGINS = [
   "https://talissonsouza.com.br",
   "https://www.talissonsouza.com.br",
   "http://localhost:8080",
+  "http://localhost:8081",
+  "http://127.0.0.1:8080",
+  "http://127.0.0.1:8081",
 ];
 
 const allowedOrigins = new Set(
@@ -147,7 +150,7 @@ Deno.serve(async (req) => {
           id: userId,
           discord_id: discordUser.id,
           username: discordUser.username || "Leitor",
-          global_name: discordUser.global_name,
+          global_name: discordUser.global_name || discordUser.username || "Leitor",
           avatar_url: discordAvatarUrl(discordUser),
           last_login_at: now,
           updated_at: now,

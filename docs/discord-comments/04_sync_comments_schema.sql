@@ -360,7 +360,7 @@ GRANT ALL PRIVILEGES
   ON TABLE public.user_roles TO service_role;
 
 REVOKE ALL PRIVILEGES ON TABLE public.discord_profiles FROM anon, authenticated;
-GRANT SELECT (id, username, global_name, avatar_url, created_at, updated_at)
+GRANT SELECT (id, username, global_name, avatar_url, is_verified, created_at, updated_at)
   ON TABLE public.discord_profiles TO anon;
 -- The currently deployed auth hook still requests the complete owner profile.
 -- Keep authenticated reads compatible while removing all write/TRUNCATE grants.

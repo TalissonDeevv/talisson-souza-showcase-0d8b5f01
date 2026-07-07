@@ -1,4 +1,5 @@
 import { useEffect, useId, useState } from "react";
+import { CloudSun } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 
 const WEATHER_URL =
@@ -28,6 +29,8 @@ interface WeatherCache {
   snapshot: WeatherSnapshot;
 }
 
+type WeatherStatus = "loading" | "live" | "unavailable";
+
 let pendingWeatherRequest: Promise<WeatherSnapshot | null> | null = null;
 
 function isSnapshot(value: unknown): value is WeatherSnapshot {
@@ -43,9 +46,12 @@ function isSnapshot(value: unknown): value is WeatherSnapshot {
 }
 
 function readCache(): WeatherSnapshot | null {
+  if (typeof window === "undefined") return null;
+
   try {
     const raw = window.localStorage.getItem(CACHE_KEY);
     if (!raw) return null;
+
     const cached = JSON.parse(raw) as Partial<WeatherCache>;
     if (
       !Number.isFinite(cached.expiresAt) ||
@@ -55,6 +61,7 @@ function readCache(): WeatherSnapshot | null {
       window.localStorage.removeItem(CACHE_KEY);
       return null;
     }
+
     return cached.snapshot;
   } catch {
     return null;
@@ -62,6 +69,8 @@ function readCache(): WeatherSnapshot | null {
 }
 
 function writeCache(snapshot: WeatherSnapshot): void {
+  if (typeof window === "undefined") return;
+
   try {
     const cache: WeatherCache = {
       expiresAt: Date.now() + CACHE_TTL_MS,
@@ -69,7 +78,7 @@ function writeCache(snapshot: WeatherSnapshot): void {
     };
     window.localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
   } catch {
-    // Storage may be unavailable in private browsing; the widget still works.
+    // Storage may be unavailable in private browsing; the widget still renders.
   }
 }
 
@@ -122,15 +131,12 @@ function weatherCondition(
   language: "pt" | "en",
 ): string {
   const pt = language === "pt";
+
   if (code === 0) {
-    return pt
-      ? isDay
-        ? "Céu limpo"
-        : "Noite limpa"
-      : isDay
-        ? "Clear sky"
-        : "Clear night";
+    if (pt) return isDay ? "Céu limpo" : "Noite limpa";
+    return isDay ? "Clear sky" : "Clear night";
   }
+
   if ([1, 2].includes(code)) return pt ? "Parcialmente nublado" : "Partly cloudy";
   if (code === 3) return pt ? "Céu nublado" : "Overcast";
   if ([45, 48].includes(code)) return pt ? "Neblina" : "Fog";
@@ -145,7 +151,9 @@ function weatherCondition(
 
 const FooterWeather = () => {
   const { language } = useTheme();
-  const [weather, setWeather] = useState<WeatherSnapshot | null>(null);
+  const initialWeather = readCache();
+  const [weather, setWeather] = useState<WeatherSnapshot | null>(initialWeather);
+  const [status, setStatus] = useState<WeatherStatus>(initialWeather ? "live" : "loading");
   const tooltipId = useId();
 
   useEffect(() => {
@@ -153,7 +161,10 @@ const FooterWeather = () => {
 
     const refresh = async () => {
       const snapshot = await loadWeather();
-      if (active) setWeather(snapshot);
+      if (!active) return;
+
+      setWeather(snapshot);
+      setStatus(snapshot ? "live" : "unavailable");
     };
 
     void refresh();
@@ -165,44 +176,66 @@ const FooterWeather = () => {
     };
   }, []);
 
-  if (!weather) return null;
+  const condition = weather
+    ? weatherCondition(weather.weatherCode, weather.isDay, language)
+    : language === "pt"
+      ? "Clima de Recife"
+      : "Recife weather";
 
-  const condition = weatherCondition(
-    weather.weatherCode,
-    weather.isDay,
-    language,
-  );
-  const updatedAt = new Intl.DateTimeFormat(
-    language === "pt" ? "pt-BR" : "en-US",
-    {
-      hour: "2-digit",
-      minute: "2-digit",
-      timeZone: "America/Recife",
-    },
-  ).format(weather.fetchedAt);
+  const updatedAt = weather
+    ? new Intl.DateTimeFormat(language === "pt" ? "pt-BR" : "en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        timeZone: "America/Recife",
+      }).format(weather.fetchedAt)
+    : null;
+
+  const label = weather
+    ? `Recife, PE — ${Math.round(weather.temperature)}°C`
+    : language === "pt"
+      ? "Recife, PE — clima"
+      : "Recife, PE — weather";
 
   return (
     <div className="group relative">
       <button
         type="button"
         aria-describedby={tooltipId}
-        className="text-[10px] tracking-[0.04em] text-muted-foreground/50 transition-colors duration-200 hover:text-muted-foreground focus-visible:outline-none focus-visible:text-foreground"
+        className="inline-flex items-center gap-1.5 rounded-full border border-border/35 bg-card/35 px-2.5 py-1 text-[10px] tracking-[0.03em] text-muted-foreground transition-all duration-200 hover:border-border/60 hover:bg-card/55 hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/30"
       >
-        Recife, PE — {Math.round(weather.temperature)}°C
+        <CloudSun className="h-3 w-3 text-amber-300/80" />
+        <span>{label}</span>
+        {status === "loading" && (
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-amber-300/70" />
+        )}
       </button>
       <div
         id={tooltipId}
         role="tooltip"
-        className="pointer-events-none absolute bottom-full right-0 z-20 mb-3 w-max max-w-[240px] translate-y-1 rounded-lg border border-border/40 bg-popover/95 px-3 py-2.5 text-left opacity-0 shadow-xl backdrop-blur-md transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100"
+        className="pointer-events-none absolute bottom-full right-0 z-20 mb-3 w-max max-w-[250px] translate-y-1 rounded-lg border border-border/40 bg-popover/95 px-3 py-2.5 text-left opacity-0 shadow-xl backdrop-blur-md transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100"
       >
         <p className="text-[11px] font-medium text-foreground">{condition}</p>
-        <p className="mt-1 text-[10px] text-muted-foreground">
-          {language === "pt" ? "Sensação térmica" : "Feels like"}:{" "}
-          {Math.round(weather.apparentTemperature)}°C
-        </p>
-        <p className="text-[10px] text-muted-foreground/70">
-          {language === "pt" ? "Atualizado às" : "Updated at"} {updatedAt}
-        </p>
+        {weather ? (
+          <>
+            <p className="mt-1 text-[10px] text-muted-foreground">
+              {language === "pt" ? "Sensação térmica" : "Feels like"}:{" "}
+              {Math.round(weather.apparentTemperature)}°C
+            </p>
+            <p className="text-[10px] text-muted-foreground/70">
+              {language === "pt" ? "Atualizado às" : "Updated at"} {updatedAt}
+            </p>
+          </>
+        ) : (
+          <p className="mt-1 text-[10px] text-muted-foreground">
+            {status === "loading"
+              ? language === "pt"
+                ? "Buscando previsão em tempo real..."
+                : "Fetching live forecast..."
+              : language === "pt"
+                ? "Previsão indisponível agora; o widget permanece visível."
+                : "Forecast unavailable now; the widget stays visible."}
+          </p>
+        )}
       </div>
     </div>
   );
