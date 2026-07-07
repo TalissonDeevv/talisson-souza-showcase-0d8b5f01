@@ -67,6 +67,109 @@ function discordAvatarUrl(user: DiscordUser): string | null {
   return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=256`;
 }
 
+async function sendWelcomeDm(
+  botToken: string,
+  discordUser: DiscordUser,
+): Promise<boolean> {
+  try {
+    const channelResponse = await fetch(
+      "https://discord.com/api/v10/users/@me/channels",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bot ${botToken}`,
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ recipient_id: discordUser.id }),
+      },
+    );
+
+    if (!channelResponse.ok) {
+      console.error("discord_dm_channel_failed", channelResponse.status);
+      return false;
+    }
+
+    const channel = await channelResponse.json() as { id?: unknown };
+    if (typeof channel.id !== "string") {
+      console.error("discord_dm_channel_invalid");
+      return false;
+    }
+
+    const displayName =
+      discordUser.global_name?.trim() || discordUser.username || "leitor";
+
+    const messageResponse = await fetch(
+      `https://discord.com/api/v10/channels/${channel.id}/messages`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bot ${botToken}`,
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          content: `Olá, ${displayName}.`,
+          embeds: [
+            {
+              title: "Atlas, o Leitor",
+              description:
+                "Sua conta foi conectada ao ecossistema do Talisson com sucesso.",
+              color: 0xD6B25E,
+              fields: [
+                {
+                  name: "Acesso liberado",
+                  value:
+                    "Você entrou na comunidade oficial e recebeu o cargo **Leitor dos Artigos**.",
+                },
+                {
+                  name: "Próximo passo",
+                  value:
+                    "Agora você pode comentar artigos, acompanhar discussões e participar da biblioteca da comunidade.",
+                },
+              ],
+              footer: {
+                text: "Guardião da biblioteca da comunidade.",
+              },
+            },
+          ],
+          components: [
+            {
+              type: 1,
+              components: [
+                {
+                  type: 2,
+                  style: 5,
+                  label: "Abrir artigos",
+                  url: "https://www.talissonsouza.com.br/artigos",
+                },
+                {
+                  type: 2,
+                  style: 5,
+                  label: "Conhecer o site",
+                  url: "https://www.talissonsouza.com.br/",
+                },
+              ],
+            },
+          ],
+          allowed_mentions: { parse: [] },
+        }),
+      },
+    );
+
+    if (!messageResponse.ok) {
+      console.error("discord_dm_send_failed", messageResponse.status);
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    console.error(
+      "discord_dm_error",
+      error instanceof Error ? error.message : "unknown_error",
+    );
+    return false;
+  }
+}
+
 Deno.serve(async (req) => {
   if (!isOriginAllowed(req)) {
     return json(req, { error: "origin_not_allowed" }, 403);
@@ -267,7 +370,14 @@ Deno.serve(async (req) => {
       );
     }
 
-    return json(req, { ok: true, joined: true, roleGranted: true });
+    const welcomeDmSent = await sendWelcomeDm(botToken, discordUser);
+
+    return json(req, {
+      ok: true,
+      joined: true,
+      roleGranted: true,
+      welcomeDmSent,
+    });
   } catch (error) {
     console.error(
       "discord_post_login_error",

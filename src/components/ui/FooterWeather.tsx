@@ -6,6 +6,7 @@ const WEATHER_URL =
   "https://api.open-meteo.com/v1/forecast?latitude=-8.0476&longitude=-34.8770&current=temperature_2m,apparent_temperature,weather_code,is_day";
 const CACHE_KEY = "talisson:weather:recife:v1";
 const CACHE_TTL_MS = 10 * 60 * 1000;
+const STALE_CACHE_TTL_MS = 6 * 60 * 60 * 1000;
 
 interface OpenMeteoResponse {
   current?: {
@@ -29,7 +30,7 @@ interface WeatherCache {
   snapshot: WeatherSnapshot;
 }
 
-type WeatherStatus = "loading" | "live" | "unavailable";
+type WeatherStatus = "loading" | "live" | "stale" | "unavailable";
 
 let pendingWeatherRequest: Promise<WeatherSnapshot | null> | null = null;
 
@@ -45,7 +46,7 @@ function isSnapshot(value: unknown): value is WeatherSnapshot {
   );
 }
 
-function readCache(): WeatherSnapshot | null {
+function readCache(options: { allowStale?: boolean } = {}): WeatherSnapshot | null {
   if (typeof window === "undefined") return null;
 
   try {
@@ -53,9 +54,13 @@ function readCache(): WeatherSnapshot | null {
     if (!raw) return null;
 
     const cached = JSON.parse(raw) as Partial<WeatherCache>;
+    const expiresAt = Number(cached.expiresAt);
+    const staleUntil = expiresAt + STALE_CACHE_TTL_MS;
+
     if (
-      !Number.isFinite(cached.expiresAt) ||
-      Number(cached.expiresAt) <= Date.now() ||
+      !Number.isFinite(expiresAt) ||
+      (!options.allowStale && expiresAt <= Date.now()) ||
+      (options.allowStale && staleUntil <= Date.now()) ||
       !isSnapshot(cached.snapshot)
     ) {
       window.localStorage.removeItem(CACHE_KEY);
@@ -91,8 +96,10 @@ async function loadWeather(): Promise<WeatherSnapshot | null> {
     try {
       const response = await fetch(WEATHER_URL, {
         headers: { Accept: "application/json" },
+        cache: "no-store",
+        credentials: "omit",
       });
-      if (!response.ok) return null;
+      if (!response.ok) return readCache({ allowStale: true });
 
       const payload = (await response.json()) as OpenMeteoResponse;
       const current = payload.current;
@@ -116,7 +123,7 @@ async function loadWeather(): Promise<WeatherSnapshot | null> {
       writeCache(snapshot);
       return snapshot;
     } catch {
-      return null;
+      return readCache({ allowStale: true });
     } finally {
       pendingWeatherRequest = null;
     }
@@ -164,7 +171,13 @@ const FooterWeather = () => {
       if (!active) return;
 
       setWeather(snapshot);
-      setStatus(snapshot ? "live" : "unavailable");
+      setStatus(
+        snapshot
+          ? Date.now() - snapshot.fetchedAt <= CACHE_TTL_MS
+            ? "live"
+            : "stale"
+          : "unavailable",
+      );
     };
 
     void refresh();
@@ -201,12 +214,15 @@ const FooterWeather = () => {
       <button
         type="button"
         aria-describedby={tooltipId}
-        className="inline-flex items-center gap-1.5 rounded-full border border-border/35 bg-card/35 px-2.5 py-1 text-[10px] tracking-[0.03em] text-muted-foreground transition-all duration-200 hover:border-border/60 hover:bg-card/55 hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/30"
+        className="inline-flex min-h-7 items-center gap-1.5 rounded-full border border-border/35 bg-card/35 px-2.5 py-1 text-[10px] tracking-[0.03em] text-muted-foreground shadow-[0_10px_30px_hsl(var(--background)/0.18)] transition-all duration-200 hover:border-border/60 hover:bg-card/55 hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/30"
       >
         <CloudSun className="h-3 w-3 text-amber-300/80" />
         <span>{label}</span>
         {status === "loading" && (
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-amber-300/70" />
+        )}
+        {status === "stale" && (
+          <span className="h-1.5 w-1.5 rounded-full bg-amber-300/55" />
         )}
       </button>
       <div
@@ -222,7 +238,14 @@ const FooterWeather = () => {
               {Math.round(weather.apparentTemperature)}°C
             </p>
             <p className="text-[10px] text-muted-foreground/70">
-              {language === "pt" ? "Atualizado às" : "Updated at"} {updatedAt}
+              {status === "stale"
+                ? language === "pt"
+                  ? "Última leitura às"
+                  : "Last reading at"
+                : language === "pt"
+                  ? "Atualizado às"
+                  : "Updated at"}{" "}
+              {updatedAt}
             </p>
           </>
         ) : (
@@ -232,8 +255,8 @@ const FooterWeather = () => {
                 ? "Buscando previsão em tempo real..."
                 : "Fetching live forecast..."
               : language === "pt"
-                ? "Previsão indisponível agora; o widget permanece visível."
-                : "Forecast unavailable now; the widget stays visible."}
+                ? "Clima decorativo ativo. A previsão ao vivo será exibida assim que o navegador liberar a conexão."
+                : "Decorative weather is active. Live forecast appears as soon as the browser allows the connection."}
           </p>
         )}
       </div>

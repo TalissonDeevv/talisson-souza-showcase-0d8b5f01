@@ -72,7 +72,15 @@ const isOfficialAuthor = (author?: CommentRow["author"] | null) =>
 const CommentsSection = ({ articleSlug, variant = "inline" }: Props) => {
   const { language } = useTheme();
   const { toast } = useToast();
-  const { userId, profile, signIn, signOut, refreshProfile, loading: authLoading } = useDiscordAuth();
+  const {
+    userId,
+    profile,
+    signIn,
+    signOut,
+    refreshProfile,
+    loading: authLoading,
+    error: authError,
+  } = useDiscordAuth();
   const locale = language === "en" ? enUS : ptBR;
 
   const [comments, setComments] = useState<CommentRow[]>([]);
@@ -220,6 +228,24 @@ const CommentsSection = ({ articleSlug, variant = "inline" }: Props) => {
     return getText(language, "Não foi possível publicar o comentário.", "Could not publish your comment.");
   };
 
+  const reactionToast = (msg: string) => {
+    if (/comment_reactions|PGRST20[45]|schema cache/i.test(msg)) {
+      return {
+        title: getText(language, "Reações ainda não estão ativadas.", "Reactions are not active yet."),
+        description: getText(
+          language,
+          "O banco de comentários precisa receber a migration de reações para salvar curtidas e não gostei.",
+          "The comments database needs the reactions migration before likes and dislikes can be saved.",
+        ),
+      };
+    }
+
+    return {
+      title: getText(language, "Não foi possível registrar sua reação.", "Could not save your reaction."),
+      description: getText(language, "Tente novamente em alguns segundos.", "Try again in a few seconds."),
+    };
+  };
+
   // -- create top-level --
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -326,8 +352,10 @@ const CommentsSection = ({ articleSlug, variant = "inline" }: Props) => {
 
     const { error } = await request;
     if (error) {
+      const reactionError = reactionToast(error.message);
       toast({
-        title: getText(language, "Não foi possível registrar sua reação.", "Could not save your reaction."),
+        title: reactionError.title,
+        description: reactionError.description,
         variant: "destructive",
       });
       return;
@@ -593,12 +621,17 @@ const CommentsSection = ({ articleSlug, variant = "inline" }: Props) => {
 
       {!userId && !authLoading && (
         <div className="mb-12 md:mb-14">
-          <DiscordLoginPrompt onSignIn={signIn} loading={authLoading} />
+          <DiscordLoginPrompt onSignIn={signIn} loading={authLoading} error={authError} />
         </div>
       )}
 
       {userId && (
         <form onSubmit={handleSubmit} className="mb-10">
+          {authError && (
+            <div className="mb-5 rounded-2xl border border-amber-300/20 bg-amber-400/[0.07] p-4 text-sm text-amber-50/80 shadow-[0_18px_50px_rgba(120,53,15,0.16)]">
+              {authError}
+            </div>
+          )}
           <div className="flex items-start gap-3">
             <img
               src={profile?.avatar_url ?? `https://cdn.discordapp.com/embed/avatars/0.png`}

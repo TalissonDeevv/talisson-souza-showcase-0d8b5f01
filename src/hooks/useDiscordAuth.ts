@@ -19,6 +19,64 @@ const POST_LOGIN_KEY_PREFIX = "atlas_discord_post_login";
 const PROFILE_REFRESH_KEY_PREFIX = "atlas_discord_profile_refresh";
 const PROFILE_REFRESH_TTL_MS = 5 * 60 * 1000;
 
+const OAUTH_ERROR_PARAMS = [
+  "error",
+  "error_code",
+  "error_description",
+  "sb",
+];
+
+function readOAuthErrorFromUrl(): string | null {
+  if (typeof window === "undefined") return null;
+
+  const searchParams = new URLSearchParams(window.location.search);
+  const hashParams = new URLSearchParams(
+    window.location.hash.startsWith("#")
+      ? window.location.hash.slice(1)
+      : window.location.hash,
+  );
+
+  const error = searchParams.get("error") ?? hashParams.get("error");
+  const errorCode =
+    searchParams.get("error_code") ?? hashParams.get("error_code");
+  const errorDescription =
+    searchParams.get("error_description") ??
+    hashParams.get("error_description");
+
+  if (!error && !errorCode && !errorDescription) return null;
+
+  const decodedDescription = errorDescription?.replace(/\+/g, " ") ?? "";
+
+  if (
+    errorCode === "unexpected_failure" &&
+    decodedDescription.includes("Unable to exchange external code")
+  ) {
+    return "Não foi possível concluir o login pelo Discord. Revise o provider custom:discord-minimal no Supabase: Client ID, Client Secret, callback e scopes identify guilds.join.";
+  }
+
+  return "Não foi possível concluir o login pelo Discord. Tente novamente; se persistir, revise as configurações OAuth no Supabase e no Discord Developer Portal.";
+}
+
+function removeOAuthErrorFromUrl(): void {
+  if (typeof window === "undefined") return;
+
+  const url = new URL(window.location.href);
+  for (const param of OAUTH_ERROR_PARAMS) {
+    url.searchParams.delete(param);
+  }
+
+  const hashParams = new URLSearchParams(
+    url.hash.startsWith("#") ? url.hash.slice(1) : url.hash,
+  );
+  for (const param of OAUTH_ERROR_PARAMS) {
+    hashParams.delete(param);
+  }
+
+  const nextHash = hashParams.toString();
+  url.hash = nextHash ? `#${nextHash}` : "";
+  window.history.replaceState({}, document.title, url.toString());
+}
+
 function clearStoredDiscordProviderCredentials(): void {
   if (typeof window === "undefined") return;
 
@@ -62,6 +120,14 @@ export function useDiscordAuth() {
   const [profile, setProfile] = useState<DiscordProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const oauthError = readOAuthErrorFromUrl();
+    if (!oauthError) return;
+
+    setError(oauthError);
+    removeOAuthErrorFromUrl();
+  }, []);
 
   const fetchProfile = useCallback(async (userId: string) => {
     const { data, error: profileError } = await supabase

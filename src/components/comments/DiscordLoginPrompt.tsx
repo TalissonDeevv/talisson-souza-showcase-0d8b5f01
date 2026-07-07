@@ -5,6 +5,7 @@ import { getText } from "@/utils/translations";
 interface Props {
   onSignIn: () => void;
   loading?: boolean;
+  error?: string | null;
 }
 
 const DiscordIcon = ({ className = "" }: { className?: string }) => (
@@ -13,7 +14,7 @@ const DiscordIcon = ({ className = "" }: { className?: string }) => (
   </svg>
 );
 
-const DiscordLoginPrompt = ({ onSignIn, loading }: Props) => {
+const DiscordLoginPrompt = ({ onSignIn, loading, error }: Props) => {
   const { language } = useTheme();
   return (
     <motion.div
@@ -33,6 +34,16 @@ const DiscordLoginPrompt = ({ onSignIn, loading }: Props) => {
           "Sign in with your Discord account to comment on articles. By continuing, you also automatically join Talisson's official community and receive the Article Reader role.",
         )}
       </p>
+      {error && (
+        <div className="mb-5 rounded-2xl border border-red-400/20 bg-red-500/[0.07] p-4 shadow-[0_18px_50px_rgba(127,29,29,0.18)]">
+          <p className="text-sm font-medium text-red-100">
+            {getText(language, "Login Discord não concluído", "Discord login was not completed")}
+          </p>
+          <p className="mt-1 text-xs leading-relaxed text-red-100/70">
+            {error}
+          </p>
+        </div>
+      )}
       <button
         type="button"
         onClick={onSignIn}
