@@ -1,5 +1,25 @@
 # Changelog
 
+## Sprint 4
+
+- Criada a fundacao tecnica do TS Studio em `src/studio`.
+- Adicionado registry modular para Dashboard, Conteudo, Artigos, SEO, Midia, Usuarios, Discord, Forms, Newsletter, Analytics, Monitoramento, Seguranca, Integracoes e Sistema.
+- Criado RBAC tipado com papeis `owner`, `admin`, `editor`, `moderator`, `analyst` e `viewer`.
+- Criados contratos de API, rotas internas, provider, contexto, hooks, layouts e paginas base.
+- Criados servicos base de auditoria, redacao de metadados sensiveis, logs e store de sessao.
+- Criada migration local `20260708205740_ts_studio_foundation.sql` para o schema privado `studio`.
+- Criado auditor `npm run audit:ts-studio` e integrado ao `npm run audit`.
+- Criados relatorio e rollback da Sprint 4.
+
+## Sprint 3
+
+- Criado o blueprint completo do TS Studio em `docs/ts-studio-blueprint.md`.
+- Documentada a arquitetura completa do CMS em `docs/ts-studio-architecture.md`.
+- Documentados modulos, APIs, RBAC, banco, eventos, permissoes, seguranca, configuracao, roadmap e estrutura de pastas.
+- Mapeadas capacidades administrativas para conteudo, SEO, Open Graph, sitemap, robots, uploads, comentarios, Discord, formularios, newsletter, analytics, monitoramento, seguranca e integracoes.
+- Confirmado que Supabase Principal e Supabase Comentarios permanecem separados.
+- Criados relatorio e rollback da Sprint 3.
+
 ## Sprint 2
 
 - Preparada a infraestrutura Supabase para Development, Preview, Staging e Production.
