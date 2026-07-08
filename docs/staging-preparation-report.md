@@ -13,32 +13,33 @@ No Cloudflare or Hostinger configuration was changed.
 
 ## Automated Changes Applied Safely
 
-### `supabase/functions/send-contact-email/index.ts`
+### `supabase/projects/main/functions/send-contact-email/index.ts`
 
 Changed the contact Edge Function to read `ALLOWED_ORIGINS` from Supabase secrets, with the current production domains as fallback.
 
 Reason: staging/previews need their own allowed origin. A hardcoded production-only CORS allowlist would block contact form validation in staging.
 
-### `supabase/migrations/20260708100000_security_hardening.sql`
+### Split hardening migrations
 
-Made hardening blocks conditional for split Supabase environments:
+Made hardening blocks conditional and then split them by Supabase environment:
 
-- `newsletter_subscribers` is only hardened if the table exists.
-- Stats RPC grants are only changed if each RPC exists.
-- Legacy `SECURITY DEFINER` functions `handle_discord_user()` and `rls_auto_enable()` are revoked from public/authenticated roles if present.
+- Main project migration: `supabase/projects/main/migrations/20260708100000_security_hardening.sql`
+- Comments project migration: `supabase/projects/comments/migrations/20260708100000_security_hardening.sql`
+- Legacy mixed copy kept only for historical review: `supabase/legacy-mixed/migrations/20260708100000_security_hardening.sql`
 
 Reason: the repository currently uses a split Supabase architecture. The main app points to one project, while comments/Discord use a BYO Supabase project. A hardening migration that assumes every table/RPC exists in the same database could fail during staging.
 
 ### `src/integrations/supabase-comments/client.ts`
 
-Added optional Vite overrides:
+Added required Vite environment variables:
 
 - `VITE_COMMENTS_SUPABASE_URL`
 - `VITE_COMMENTS_SUPABASE_PUBLISHABLE_KEY`
+- `VITE_COMMENTS_SUPABASE_PROJECT_ID`
 
-The existing BYO comments Supabase URL/key remain as fallback.
+The existing BYO comments Supabase URL/key no longer remain as fallback.
 
-Reason: Vercel Preview/staging must be able to point comments and Discord auth to a staging Supabase project instead of the current BYO production project.
+Reason: Vercel Preview/staging must never point comments and Discord auth to a production Supabase project by accident.
 
 ### `.env.example`
 
@@ -52,7 +53,7 @@ Passed:
   - Result: 0 errors, 15 existing warnings.
 - `npx tsc --noEmit -p tsconfig.app.json`
   - Result: passed.
-- `npx -y deno check supabase/functions/send-contact-email/index.ts supabase/functions/discord-post-login/index.ts supabase/functions/discord-refresh-profile/index.ts supabase/functions/discord-userinfo/index.ts`
+- `npx -y deno check supabase/projects/main/functions/send-contact-email/index.ts supabase/projects/comments/functions/discord-post-login/index.ts supabase/projects/comments/functions/discord-refresh-profile/index.ts supabase/projects/comments/functions/discord-userinfo/index.ts`
   - Result: passed.
 - `npm audit --omit=dev`
   - Result: 0 vulnerabilities.
@@ -84,7 +85,7 @@ The accessible active project is:
 The code also confirms the split:
 
 - Main app client uses `VITE_SUPABASE_URL`.
-- Comments client previously hardcoded `https://rfzjtmleojkojopftkfo.supabase.co`.
+- Comments client previously hardcoded the BYO comments Supabase project URL.
 
 ### Vercel Project
 
@@ -253,6 +254,7 @@ Configure in Vercel Preview/staging:
 - `VITE_SUPABASE_PROJECT_ID`
 - `VITE_COMMENTS_SUPABASE_URL`
 - `VITE_COMMENTS_SUPABASE_PUBLISHABLE_KEY`
+- `VITE_COMMENTS_SUPABASE_PROJECT_ID`
 
 Do not expose service role keys or private provider tokens as Vite variables.
 
@@ -374,4 +376,3 @@ Required before staging can function:
 - Configure Vercel Preview environment variables.
 - Link local Vercel project if CLI validation is desired.
 - Run full manual staging checklist after Preview deploy.
-

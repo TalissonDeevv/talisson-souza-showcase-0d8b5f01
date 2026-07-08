@@ -33,16 +33,35 @@ Este documento registra as correcoes aplicadas a partir da auditoria de seguranc
 - Realtime foi restringido para canais autenticados `comments:%`.
 - RPCs de estatisticas de comentarios deixaram de ser executaveis por `anon`.
 
+### Sprint 2 - Infraestrutura Supabase
+
+- Projeto Principal recebeu migration de grants explicitos para Data API e endurecimento final de policies `UPDATE` com `WITH CHECK`.
+- Projeto Comentarios recebeu migration de otimizacao de policies RLS usando `(select auth.uid())`, alinhada aos Advisors de performance do Supabase.
+- `verify_jwt` das Edge Functions foi declarado explicitamente nos `config.toml` de cada projeto.
+- Scripts `audit:supabase:*` foram adicionados para validar migrations, Functions, RLS, policies, Storage, Realtime, env vars e secrets.
+- Helper `.supabase-workdir` foi adicionado para materializar workdirs temporarios compativeis com Supabase CLI sem misturar a arvore fonte.
+
+## Organizacao Supabase Atual
+
+Na Sprint 1 a arvore Supabase foi separada por projeto:
+
+- Projeto principal: `supabase/projects/main`
+- Projeto de comentarios/Discord: `supabase/projects/comments`
+- Historico misto/legado: `supabase/legacy-mixed`
+
+Nao use mais `supabase/config.toml`, `supabase/functions` ou `supabase/migrations` na raiz. Esses caminhos foram removidos para impedir mistura acidental entre ambientes e projetos.
+
 ## Configuracao Externa Necessaria
 
 ### Supabase
 
-1. Aplicar as migrations em `supabase/migrations` no projeto de producao.
+1. Aplicar as migrations de cada projeto no respectivo Supabase:
+   - Principal: `supabase/projects/main/migrations`
+   - Comentarios/Discord: `supabase/projects/comments/migrations`
    - A migracao `20260609230000_atlas_comments_base_schema.sql` foi inserida com timestamp anterior a migrations ja existentes para restaurar replay limpo em projetos novos. Se o projeto Supabase de producao ja marcou migrations posteriores como aplicadas, aplicar este SQL em staging/producao com cuidado e, se necessario, reparar o historico de migrations pelo Supabase CLI.
 2. Deploy das Edge Functions alteradas:
-   - `send-contact-email`
-   - `discord-post-login`
-   - `discord-refresh-profile`
+   - Principal: `send-contact-email`
+   - Comentarios/Discord: `discord-post-login`, `discord-refresh-profile`, `discord-userinfo`
 3. Configurar secrets das Edge Functions:
    - `SUPABASE_URL`
    - `SUPABASE_ANON_KEY`

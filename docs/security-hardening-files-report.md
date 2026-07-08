@@ -106,10 +106,10 @@ Este relatorio cobre todos os arquivos alterados, removidos ou criados na branch
 
 ## src/integrations/supabase/client.ts
 
-- O que foi alterado: storage de Auth trocado de `localStorage` para `sessionStorage`, com guarda para ambiente sem `window`.
+- O que foi alterado: storage de Auth trocado de `localStorage` para `sessionStorage`, com guarda para ambiente sem `window`; URL, publishable key e project ref agora passam por validacao obrigatoria em `src/integrations/supabase/env.ts`.
 - Vulnerabilidade motivadora: persistencia longa de tokens Supabase em storage duravel do browser.
-- Comportamento anterior: sessao persistia em `localStorage` mesmo apos fechar o navegador.
-- Comportamento agora: sessao fica limitada ao ciclo da aba/sessao do browser.
+- Comportamento anterior: sessao persistia em `localStorage` mesmo apos fechar o navegador; ambiente era consumido sem checagem central de project ref.
+- Comportamento agora: sessao fica limitada ao ciclo da aba/sessao do browser; ambiente invalido ou ausente falha explicitamente na inicializacao do cliente.
 - Risco de regressao: medio. Usuarios podem precisar autenticar novamente com mais frequencia.
 - Impacto em performance: nenhum.
 - Impacto em SEO: nenhum.
@@ -117,10 +117,10 @@ Este relatorio cobre todos os arquivos alterados, removidos ou criados na branch
 
 ## src/integrations/supabase-comments/client.ts
 
-- O que foi alterado: storage de Auth dos comentarios trocado de `localStorage` para `sessionStorage`.
-- Vulnerabilidade motivadora: mesmo risco de persistencia longa de tokens do fluxo Discord/comentarios.
-- Comportamento anterior: sessao dos comentarios sobrevivia ao fechamento do browser.
-- Comportamento agora: sessao dos comentarios fica restrita a `sessionStorage`.
+- O que foi alterado: storage de Auth dos comentarios trocado de `localStorage` para `sessionStorage`; fallback hardcoded para o projeto BYO de comentarios foi removido; URL, publishable key e project ref agora sao obrigatorios.
+- Vulnerabilidade motivadora: mesmo risco de persistencia longa de tokens do fluxo Discord/comentarios e risco de Preview/Staging usar producao automaticamente.
+- Comportamento anterior: sessao dos comentarios sobrevivia ao fechamento do browser; se variaveis de comentarios nao existissem, o frontend apontava para o projeto BYO conhecido.
+- Comportamento agora: sessao dos comentarios fica restrita a `sessionStorage`; ambiente ausente ou inconsistente falha explicitamente.
 - Risco de regressao: medio. Usuario pode precisar logar novamente para comentar.
 - Impacto em performance: nenhum.
 - Impacto em SEO: nenhum.
@@ -148,7 +148,7 @@ Este relatorio cobre todos os arquivos alterados, removidos ou criados na branch
 - Impacto em SEO: nenhum.
 - Impacto em UX: medio. Usuario ve estado de carregamento e precisa resolver verificacao server-side; melhora confiabilidade contra spam.
 
-## supabase/functions/send-contact-email/index.ts
+## supabase/projects/main/functions/send-contact-email/index.ts
 
 - O que foi alterado: reescrita com GET para gerar CAPTCHA assinado, POST com validacao HMAC/TTL, honeypot, rate limit por IP/e-mail com hash, validacao de campos, logs minimizados e resposta sem dados internos do Resend.
 - Vulnerabilidade motivadora: abuso/spam do formulario, falta de rate limit confirmado, CAPTCHA client-side burlavel, possivel vazamento de resposta/logs.
@@ -159,7 +159,7 @@ Este relatorio cobre todos os arquivos alterados, removidos ou criados na branch
 - Impacto em SEO: nenhum.
 - Impacto em UX: medio. Pode bloquear envios abusivos e retorna erro de CAPTCHA/rate limit quando necessario.
 
-## supabase/functions/discord-post-login/index.ts
+## supabase/projects/comments/functions/discord-post-login/index.ts
 
 - O que foi alterado: atualizado Supabase JS; adicionado rate limit por usuario/IP; validacao de que o token Discord pertence ao usuario Supabase autenticado; headers `no-store`; tipagem Deno ajustada.
 - Vulnerabilidade motivadora: abuso da API de post-login, possivel uso indevido de provider token e falta de vinculacao forte entre identidades.
@@ -170,7 +170,7 @@ Este relatorio cobre todos os arquivos alterados, removidos ou criados na branch
 - Impacto em SEO: nenhum.
 - Impacto em UX: medio. Falhas de configuracao OAuth podem virar erro 403 em vez de sincronizacao permissiva.
 
-## supabase/functions/discord-refresh-profile/index.ts
+## supabase/projects/comments/functions/discord-refresh-profile/index.ts
 
 - O que foi alterado: atualizado Supabase JS; adicionado rate limit por usuario/IP; tipagem Deno ajustada.
 - Vulnerabilidade motivadora: abuso da Edge Function e do token de bot Discord.
@@ -181,7 +181,7 @@ Este relatorio cobre todos os arquivos alterados, removidos ou criados na branch
 - Impacto em SEO: nenhum.
 - Impacto em UX: baixo. Refresh excessivo pode ser bloqueado temporariamente.
 
-## supabase/migrations/20260609230000_atlas_comments_base_schema.sql
+## supabase/projects/comments/migrations/20260609230000_atlas_comments_base_schema.sql
 
 - O que foi alterado: migration nova criando schema base de comentarios Discord, roles, perfis, funcoes, triggers, RLS, estatisticas e tabela interna de migracao de identidade.
 - Vulnerabilidade motivadora: parte do schema critico existia apenas em SQL documental; migrations posteriores referenciavam objetos que nao eram criados no fluxo versionado.
@@ -192,16 +192,27 @@ Este relatorio cobre todos os arquivos alterados, removidos ou criados na branch
 - Impacto em SEO: nenhum.
 - Impacto em UX: positivo indireto. Comentarios/reacoes dependem de schema mais previsivel.
 
-## supabase/migrations/20260708100000_security_hardening.sql
+## supabase/projects/main/migrations/20260708100000_security_hardening.sql
 
-- O que foi alterado: migration nova para rate limit, policy de newsletter, hardening de storage `blog-images`, Realtime restrito e revogacao de RPCs anonimas.
-- Vulnerabilidade motivadora: insercao publica em newsletter, ausencia de rate limit persistente, upload/storage permissivo e realtime/RPCs mais amplos que o necessario.
-- Comportamento anterior: alguns controles dependiam de configuracao manual ou estavam permissivos.
-- Comportamento agora: regras ficam versionadas em SQL.
+- O que foi alterado: migration de hardening do projeto principal isolada do schema de comentarios.
+- Vulnerabilidade motivadora: mistura de objetos de banco entre projetos e risco de aplicar controles no Supabase errado.
+- Comportamento anterior: a migration de hardening combinava newsletter, storage, rate limit, Realtime e RPCs de comentarios em um unico arquivo.
+- Comportamento agora: o projeto principal contem somente controles de newsletter, contato e `blog-images`.
+- Risco de regressao: baixo/medio. Depende de aplicar no projeto correto.
+- Impacto em performance: baixo. Rate limit adiciona escrita/lock por chamada de contato.
+- Impacto em SEO: nenhum.
+- Impacto em UX: medio para formulario se secrets/migration nao estiverem configurados.
+
+## supabase/projects/comments/migrations/20260708100000_security_hardening.sql
+
+- O que foi alterado: migration de hardening do projeto de comentarios isolada do Supabase principal.
+- Vulnerabilidade motivadora: Realtime/RPCs de comentarios mais amplos que o necessario e necessidade de rate limit server-side para Functions Discord.
+- Comportamento anterior: controles de comentarios estavam misturados com objetos do projeto principal.
+- Comportamento agora: o projeto de comentarios contem somente rate limit Discord, Realtime `comments:%` e restricoes de RPC/funcoes de comentarios.
 - Risco de regressao: medio. Realtime restrito a `comments:%` precisa ser validado no Supabase real; uploads fora dos MIME/extensoes permitidos serao bloqueados.
 - Impacto em performance: baixo. Rate limit adiciona escrita/lock por chamada; indices/policies ajudam previsibilidade.
 - Impacto em SEO: nenhum.
-- Impacto em UX: medio. Uploads invalidos e excesso de chamadas passam a ser bloqueados.
+- Impacto em UX: medio. Excesso de chamadas Discord/comentarios pode ser bloqueado temporariamente.
 
 ## vercel.json
 

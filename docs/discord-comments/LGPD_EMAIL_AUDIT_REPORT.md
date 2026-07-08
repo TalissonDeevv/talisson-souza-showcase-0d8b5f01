@@ -108,7 +108,7 @@ login Discord e foram preservados:
 - Redirect OAuth: HTTP 302 para `discord.com/oauth2/authorize`.
 - Escopos observados no redirect: `identify`, `guilds.join`.
 - Escopo `email`: ausente.
-- Callback: `https://rfzjtmleojkojopftkfo.supabase.co/auth/v1/callback`.
+- Callback: `https://<comments-project-ref>.supabase.co/auth/v1/callback`.
 - `discord-userinfo`: 401 sem token, 405 para método inválido, `no-store`.
 - Migration 07 validada em transação antes de ser aplicada.
 - Coluna pública de e-mail: ausente após a migration.
