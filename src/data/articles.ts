@@ -52,7 +52,7 @@ export const trails: TrailData[] = [
     },
     icon: '🌐',
     path: { pt: '/trilhas/gestao-de-comunidades', en: '/en-us/trails/community-management' },
-    articleIds: ['discord-moderation', 'discord-promotion', 'professional-discord-bot', 'discord-bot-niche', 'monetizing-bots', 'discord-bot-rental'],
+    articleIds: ['discord-community-engagement', 'discord-community-monetization', 'discord-moderation', 'discord-promotion', 'professional-discord-bot', 'discord-bot-niche', 'monetizing-bots', 'discord-bot-rental'],
   },
   {
     id: 'strategy-mindset',
@@ -95,6 +95,38 @@ export function getTrailArticles(trailId: string): ArticleData[] {
 }
 
 export const articles: ArticleData[] = [
+  {
+    id: 'discord-community-engagement',
+    title: {
+      pt: 'Por que comunidades no Discord morrem tão rápido (e como evitar isso)',
+      en: 'Why Discord Communities Die So Fast and How to Avoid It',
+    },
+    excerpt: {
+      pt: 'Um guia profundo sobre engajamento, cultura, liderança, organização e estratégia para construir comunidades no Discord que continuam vivas depois do entusiasmo inicial.',
+      en: 'A deep guide on engagement, culture, leadership, organization, and strategy for building Discord communities that remain active after the initial excitement.',
+    },
+    date: { pt: '8 de Julho, 2026', en: 'July 8, 2026' },
+    readTime: '38 min',
+    path: { pt: '/artigos/comunidades-discord-morrem-rapido', en: '/en-us/articles/why-discord-communities-die-fast' },
+    tags: { pt: ['Discord', 'Comunidade', 'Gestão', 'Engajamento', 'Branding'], en: ['Discord', 'Community', 'Management', 'Engagement', 'Branding'] },
+    publishedDate: '2026-07-08',
+  },
+  {
+    id: 'discord-community-monetization',
+    title: {
+      pt: 'Como monetizar uma comunidade no Discord sem depender apenas de anúncios',
+      en: 'How to Monetize a Discord Community Without Depending Only on Ads',
+    },
+    excerpt: {
+      pt: 'Um guia completo sobre monetização ética de comunidades no Discord, com modelos sustentáveis baseados em confiança, valor diário, posicionamento e relacionamento.',
+      en: 'A complete guide to ethical Discord community monetization, with sustainable models based on trust, daily value, positioning, and relationships.',
+    },
+    date: { pt: '8 de Julho, 2026', en: 'July 8, 2026' },
+    readTime: '36 min',
+    path: { pt: '/artigos/monetizar-comunidade-discord-sem-anuncios', en: '/en-us/articles/monetize-discord-community-without-ads' },
+    tags: { pt: ['Discord', 'Comunidade', 'Monetização', 'Empreendedorismo', 'Gestão'], en: ['Discord', 'Community', 'Monetization', 'Entrepreneurship', 'Management'] },
+    publishedDate: '2026-07-08',
+  },
   {
     id: 'dev-job-positioning',
     title: {
