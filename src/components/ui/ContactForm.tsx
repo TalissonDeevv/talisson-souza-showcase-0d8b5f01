@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
@@ -13,21 +13,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-function generateCaptcha() {
-  const ops = ['+', '-', '×'] as const;
-  const op = ops[Math.floor(Math.random() * ops.length)];
-  let a: number, b: number;
-  if (op === '-') {
-    a = Math.floor(Math.random() * 20) + 5;
-    b = Math.floor(Math.random() * a);
-  } else {
-    a = Math.floor(Math.random() * 15) + 1;
-    b = Math.floor(Math.random() * 15) + 1;
-  }
-  const answer = op === '+' ? a + b : op === '-' ? a - b : a * b;
-  return { question: `${a} ${op} ${b}`, answer };
-}
-
 interface FormData {
   name: string;
   email: string;
@@ -40,6 +25,13 @@ interface FormData {
   preferredContact: string;
   howFound: string;
   message: string;
+}
+
+interface CaptchaChallenge {
+  nonce: string;
+  question: string;
+  expiresAt: string;
+  signature: string;
 }
 
 const initialFormData: FormData = {
@@ -62,7 +54,9 @@ const ContactForm = () => {
 
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [captchaInput, setCaptchaInput] = useState("");
-  const [captcha, setCaptcha] = useState(generateCaptcha);
+  const [captcha, setCaptcha] = useState<CaptchaChallenge | null>(null);
+  const [captchaLoading, setCaptchaLoading] = useState(true);
+  const [formStartedAt] = useState(() => Date.now());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<Partial<Record<keyof FormData | 'captcha', string>>>({});
@@ -90,6 +84,41 @@ const ContactForm = () => {
   const subjectOptions = language === 'pt'
     ? ['Novo projeto', 'Consultoria técnica', 'Parceria', 'Freelance', 'Dúvida geral', 'Outro']
     : ['New project', 'Technical consulting', 'Partnership', 'Freelance', 'General question', 'Other'];
+
+  const loadCaptcha = useCallback(async () => {
+    setCaptchaLoading(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke(
+        "send-contact-email",
+        { method: "GET" },
+      );
+
+      if (error || !data?.captcha) {
+        throw new Error(error?.message || "captcha_unavailable");
+      }
+
+      setCaptcha(data.captcha as CaptchaChallenge);
+      setCaptchaInput("");
+      setErrors((prev) => ({ ...prev, captcha: undefined }));
+    } catch {
+      setCaptcha(null);
+      setErrors((prev) => ({
+        ...prev,
+        captcha: getText(
+          language,
+          "Não foi possível carregar a verificação.",
+          "Could not load verification.",
+        ),
+      }));
+    } finally {
+      setCaptchaLoading(false);
+    }
+  }, [language]);
+
+  useEffect(() => {
+    void loadCaptcha();
+  }, [loadCaptcha]);
 
   const validateForm = () => {
     const newErrors: Partial<Record<keyof FormData | 'captcha', string>> = {};
@@ -123,12 +152,10 @@ const ContactForm = () => {
       newErrors.message = getText(language, 'Mensagem muito longa (máx. 5000)', 'Message too long (max. 5000)');
     }
 
-    if (!captchaInput.trim()) {
+    if (!captcha) {
+      newErrors.captcha = getText(language, 'Carregando verificação', 'Loading verification');
+    } else if (!captchaInput.trim()) {
       newErrors.captcha = getText(language, 'Resolva o captcha', 'Solve the captcha');
-    } else if (parseInt(captchaInput.trim()) !== captcha.answer) {
-      newErrors.captcha = getText(language, 'Resposta incorreta', 'Incorrect answer');
-      setCaptcha(generateCaptcha());
-      setCaptchaInput("");
     }
 
     setErrors(newErrors);
@@ -170,6 +197,14 @@ const ContactForm = () => {
           preferredContact: formData.preferredContact || null,
           howFound: formData.howFound || null,
           message: formData.message.trim(),
+          website: "",
+          startedAt: formStartedAt,
+          captcha: captcha
+            ? {
+                ...captcha,
+                answer: captchaInput.trim(),
+              }
+            : null,
         },
       });
 
@@ -178,7 +213,7 @@ const ContactForm = () => {
       setIsSubmitted(true);
       setFormData(initialFormData);
       setCaptchaInput("");
-      setCaptcha(generateCaptcha());
+      void loadCaptcha();
 
       toast({
         title: getText(language, "Mensagem enviada!", "Message sent!"),
@@ -186,8 +221,9 @@ const ContactForm = () => {
       });
 
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error sending contact form:', error);
+      void loadCaptcha();
       toast({
         title: getText(language, "Erro ao enviar", "Error sending"),
         description: getText(language,
@@ -368,7 +404,9 @@ const ContactForm = () => {
         </label>
         <div className="flex items-center gap-3">
           <span className="text-sm font-mono text-foreground bg-card/60 border border-border/30 rounded-lg px-4 py-3 select-none whitespace-nowrap">
-            {captcha.question} = ?
+            {captchaLoading
+              ? getText(language, "Carregando...", "Loading...")
+              : captcha?.question ?? getText(language, "Indisponível", "Unavailable")}
           </span>
           <input
             type="text" id="captcha" inputMode="numeric" value={captchaInput}
@@ -378,6 +416,7 @@ const ContactForm = () => {
             }}
             className={`w-24 px-4 py-3 border bg-background/50 text-foreground rounded-xl focus:outline-none focus:ring-2 focus:ring-foreground/10 focus:border-foreground/30 transition-all duration-300 placeholder:text-muted-foreground/50 text-center ${errors.captcha ? 'border-red-500/50' : 'border-border/30'}`}
             placeholder="?"
+            disabled={captchaLoading || !captcha}
           />
         </div>
         <ErrorMsg field="captcha" />
@@ -385,7 +424,7 @@ const ContactForm = () => {
 
       {/* Submit */}
       <motion.button
-        type="submit" disabled={isSubmitting}
+        type="submit" disabled={isSubmitting || captchaLoading || !captcha}
         whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
         className={`w-full inline-flex items-center justify-center gap-2 bg-foreground hover:opacity-90 text-primary-foreground font-medium py-3.5 px-6 rounded-xl transition-all duration-300 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
         style={{ boxShadow: '0 0 20px hsl(var(--foreground) / 0.15)' }}

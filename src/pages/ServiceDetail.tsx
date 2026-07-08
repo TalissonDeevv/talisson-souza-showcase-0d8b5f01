@@ -893,7 +893,7 @@ const ServiceDetail = () => {
                     <motion.button 
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      onClick={() => window.open('https://wa.me/5581993964261', '_blank')}
+                      onClick={() => window.open('https://wa.me/5581993964261', '_blank', 'noopener,noreferrer')}
                       className="w-full group inline-flex items-center justify-center gap-2 text-sm font-medium text-primary-foreground bg-foreground rounded-xl py-3.5 transition-all duration-300 hover:opacity-90 mb-3"
                       style={{
                         boxShadow: '0 0 20px hsl(var(--foreground) / 0.15)'

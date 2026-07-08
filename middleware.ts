@@ -490,46 +490,64 @@ function getMetaForPath(pathname: string): PageMeta {
     : { title: 'Talisson Souza | Desenvolvedor Full Stack & CEO', description: 'Desenvolvedor Full Stack com mais de 8 anos de experiência. CEO da Cheetah Solutions Network.', locale: 'pt_BR', type: 'website' };
 }
 
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 function buildOgHtml(meta: PageMeta, url: string): string {
   const lang = meta.locale === 'en_US' ? 'en-US' : 'pt-BR';
+  const title = escapeHtml(meta.title);
+  const description = escapeHtml(meta.description);
+  const type = escapeHtml(meta.type);
+  const safeUrl = escapeHtml(url);
+  const safeOgImage = escapeHtml(OG_IMAGE);
+  const safeSiteName = escapeHtml(SITE_NAME);
+  const safeLocale = escapeHtml(meta.locale);
+  const alternateLocale = escapeHtml(meta.locale === 'pt_BR' ? 'en_US' : 'pt_BR');
+  const redirectUrl = JSON.stringify(url).replace(/</g, '\\u003c');
   
   return `<!DOCTYPE html>
 <html lang="${lang}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${meta.title}</title>
-  <meta name="description" content="${meta.description}" />
+  <title>${title}</title>
+  <meta name="description" content="${description}" />
   <meta name="author" content="Talisson Souza" />
   <meta name="site-sentinel-key" content="sentinel_fW9pUxLhLd9UhvPLEVsr-LkU3cxpjG6_st3XJMN0IkM" />
-  <link rel="canonical" href="${url}" />
+  <link rel="canonical" href="${safeUrl}" />
 
-  <meta property="og:type" content="${meta.type}" />
-  <meta property="og:title" content="${meta.title}" />
-  <meta property="og:description" content="${meta.description}" />
-  <meta property="og:url" content="${url}" />
-  <meta property="og:image" content="${OG_IMAGE}" />
-  <meta property="og:image:secure_url" content="${OG_IMAGE}" />
+  <meta property="og:type" content="${type}" />
+  <meta property="og:title" content="${title}" />
+  <meta property="og:description" content="${description}" />
+  <meta property="og:url" content="${safeUrl}" />
+  <meta property="og:image" content="${safeOgImage}" />
+  <meta property="og:image:secure_url" content="${safeOgImage}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:alt" content="${meta.title}" />
-  <meta property="og:site_name" content="${SITE_NAME}" />
-  <meta property="og:locale" content="${meta.locale}" />
-  <meta property="og:locale:alternate" content="${meta.locale === 'pt_BR' ? 'en_US' : 'pt_BR'}" />
+  <meta property="og:image:alt" content="${title}" />
+  <meta property="og:site_name" content="${safeSiteName}" />
+  <meta property="og:locale" content="${safeLocale}" />
+  <meta property="og:locale:alternate" content="${alternateLocale}" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@talinhozx" />
   <meta name="twitter:creator" content="@talinhozx" />
-  <meta name="twitter:title" content="${meta.title}" />
-  <meta name="twitter:description" content="${meta.description}" />
-  <meta name="twitter:image" content="${OG_IMAGE}" />
-  <meta name="twitter:image:alt" content="${meta.title}" />
+  <meta name="twitter:title" content="${title}" />
+  <meta name="twitter:description" content="${description}" />
+  <meta name="twitter:image" content="${safeOgImage}" />
+  <meta name="twitter:image:alt" content="${title}" />
 </head>
 <body>
-  <h1>${meta.title}</h1>
-  <p>${meta.description}</p>
-  <script>window.location.href="${url}";</script>
+  <h1>${title}</h1>
+  <p>${description}</p>
+  <script>window.location.href=${redirectUrl};</script>
 </body>
 </html>`;
 }

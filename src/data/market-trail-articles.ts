@@ -17,6 +17,7 @@ import { ecaDigitalArticle } from './market-trail/eca-digital-article';
 import { devFinancialGrowthArticle } from './market-trail/dev-financial-growth';
 import { aiReplacingDevsArticle } from './market-trail/ai-replacing-devs';
 import { devJobPositioningArticle } from './market-trail/dev-job-positioning';
+import { discordCommunityStrategyArticles } from './market-trail/discord-community-strategy';
 
 export const marketTrailArticles: MarketTrailArticle[] = [
   ...block1Articles,
@@ -29,6 +30,7 @@ export const marketTrailArticles: MarketTrailArticle[] = [
   ...securityTrailArticles,
   ...architectureTrailArticles,
   ...communityTrailArticles,
+  ...discordCommunityStrategyArticles,
   ...strategyTrailArticles,
   ...ecaDigitalArticle,
   ...devFinancialGrowthArticle,

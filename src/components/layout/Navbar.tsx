@@ -114,8 +114,7 @@ const Navbar = () => {
               alt="Talisson Souza - Desenvolvedor Full Stack"
               className="h-10 w-auto transition-opacity duration-200 group-hover:opacity-80"
               loading="eager"
-              // @ts-ignore
-              fetchpriority="high"
+              fetchPriority="high"
             />
           </Link>
 

@@ -41,7 +41,9 @@ const ChecklistDetail = () => {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length === totalItems) return parsed;
       }
-    } catch {}
+    } catch {
+      return Array.from({ length: totalItems }, () => false);
+    }
     return Array.from({ length: totalItems }, () => false);
   });
 
@@ -53,7 +55,11 @@ const ChecklistDetail = () => {
     const storageKey = STORAGE_KEY_PREFIX + checklist.id;
     try {
       localStorage.setItem(storageKey, JSON.stringify(checked));
-    } catch {}
+    } catch (error) {
+      if (import.meta.env.DEV) {
+        console.warn("Could not persist checklist progress", error);
+      }
+    }
   }, [checked, checklist]);
 
   const toggle = useCallback((globalIndex: number) => {

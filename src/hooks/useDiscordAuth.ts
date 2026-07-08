@@ -80,38 +80,40 @@ function removeOAuthErrorFromUrl(): void {
 function clearStoredDiscordProviderCredentials(): void {
   if (typeof window === "undefined") return;
 
-  const raw = window.localStorage.getItem(COMMENTS_AUTH_STORAGE_KEY);
-  if (!raw) return;
+  for (const storage of [window.sessionStorage, window.localStorage]) {
+    const raw = storage.getItem(COMMENTS_AUTH_STORAGE_KEY);
+    if (!raw) continue;
 
-  try {
-    const stored = JSON.parse(raw) as Record<string, unknown>;
-    const candidates = [
-      stored,
-      stored.currentSession,
-      stored.session,
-    ].filter(
-      (value): value is Record<string, unknown> =>
-        typeof value === "object" && value !== null,
-    );
+    try {
+      const stored = JSON.parse(raw) as Record<string, unknown>;
+      const candidates = [
+        stored,
+        stored.currentSession,
+        stored.session,
+      ].filter(
+        (value): value is Record<string, unknown> =>
+          typeof value === "object" && value !== null,
+      );
 
-    let changed = false;
-    for (const candidate of candidates) {
-      for (const key of ["provider_token", "provider_refresh_token"]) {
-        if (key in candidate) {
-          delete candidate[key];
-          changed = true;
+      let changed = false;
+      for (const candidate of candidates) {
+        for (const key of ["provider_token", "provider_refresh_token"]) {
+          if (key in candidate) {
+            delete candidate[key];
+            changed = true;
+          }
         }
       }
-    }
 
-    if (changed) {
-      window.localStorage.setItem(
-        COMMENTS_AUTH_STORAGE_KEY,
-        JSON.stringify(stored),
-      );
+      if (changed) {
+        storage.setItem(
+          COMMENTS_AUTH_STORAGE_KEY,
+          JSON.stringify(stored),
+        );
+      }
+    } catch {
+      // Auth remains valid even if a future storage format cannot be minimized.
     }
-  } catch {
-    // Auth remains valid even if a future storage format cannot be minimized.
   }
 }
 
@@ -162,7 +164,7 @@ export function useDiscordAuth() {
 
     const storageKey = `${PROFILE_REFRESH_KEY_PREFIX}_${userId}`;
     if (!options.force && typeof window !== "undefined") {
-      const lastRefresh = Number(window.localStorage.getItem(storageKey) ?? 0);
+      const lastRefresh = Number(window.sessionStorage.getItem(storageKey) ?? 0);
       if (Number.isFinite(lastRefresh) && Date.now() - lastRefresh < PROFILE_REFRESH_TTL_MS) {
         return false;
       }
@@ -178,7 +180,7 @@ export function useDiscordAuth() {
     }
 
     if (typeof window !== "undefined") {
-      window.localStorage.setItem(storageKey, String(Date.now()));
+      window.sessionStorage.setItem(storageKey, String(Date.now()));
     }
 
     await fetchProfile(userId);

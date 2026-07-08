@@ -7,13 +7,28 @@ import { Link, useParams } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation } from "@/utils/translations";
 
+interface ProjectDetailData {
+  title: string;
+  description: string;
+  image: string;
+  technologies: string[];
+  link: string;
+  deliveryDate: string;
+  duration: string;
+  team: string;
+  challenge: string;
+  solution: string;
+  features: string[];
+  results: string[];
+}
+
 const ProjectDetail = () => {
   const { language } = useTheme();
   const t = useTranslation(language);
   const { slug } = useParams();
 
   // Dados dos projetos com detalhes expandidos
-  const projectsData: Record<string, any> = {
+  const projectsData: Record<string, ProjectDetailData> = {
     "site-global-mode": {
       title: "Site Global Mode",
       description: language === 'pt' 

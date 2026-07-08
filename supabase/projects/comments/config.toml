@@ -1,0 +1,10 @@
+project_id = "rfzjtmleojkojopftkfo"
+
+[functions.discord-post-login]
+verify_jwt = true
+
+[functions.discord-refresh-profile]
+verify_jwt = true
+
+[functions.discord-userinfo]
+verify_jwt = false

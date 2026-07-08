@@ -1,4 +1,4 @@
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2.58.0";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.110.0";
 
 const DEFAULT_ALLOWED_ORIGINS = [
   "https://talissonsouza.com.br",
@@ -16,11 +16,27 @@ const allowedOrigins = new Set(
     .filter(Boolean),
 );
 
+const RATE_LIMIT_WINDOW_SECONDS = 10 * 60;
+const RATE_LIMIT_MAX = 10;
+const encoder = new TextEncoder();
+
 interface DiscordUser {
   id: string;
   username: string;
   global_name: string | null;
   avatar: string | null;
+}
+
+interface SupabaseFunctionError {
+  code?: string;
+  message?: string;
+}
+
+interface RateLimitClient {
+  rpc(
+    fn: "check_contact_rate_limit",
+    args: Record<string, unknown>,
+  ): Promise<{ data: unknown; error: SupabaseFunctionError | null }>;
 }
 
 function isOriginAllowed(req: Request): boolean {
@@ -64,6 +80,63 @@ function discordAvatarUrl(user: DiscordUser): string | null {
 
   const extension = user.avatar.startsWith("a_") ? "gif" : "png";
   return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${extension}?size=256`;
+}
+
+function getClientIp(req: Request): string {
+  return (
+    req.headers.get("cf-connecting-ip")?.trim() ||
+    req.headers.get("x-real-ip")?.trim() ||
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    "unknown"
+  );
+}
+
+async function sha256Hex(value: string): Promise<string> {
+  const hash = await crypto.subtle.digest("SHA-256", encoder.encode(value));
+  return [...new Uint8Array(hash)]
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+async function checkRefreshRateLimit(
+  adminClient: unknown,
+  req: Request,
+  userId: string,
+): Promise<boolean> {
+  const salt =
+    Deno.env.get("DISCORD_RATE_LIMIT_SALT")?.trim() ||
+    Deno.env.get("CONTACT_RATE_LIMIT_SALT")?.trim() ||
+    Deno.env.get("CONTACT_CAPTCHA_SECRET")?.trim();
+
+  if (!salt) {
+    console.error("discord_refresh_rate_limit_environment_missing");
+    throw new Error("service_not_configured");
+  }
+
+  const scopes = [
+    `discord-refresh:user:${userId}`,
+    `discord-refresh:ip:${getClientIp(req)}`,
+  ];
+
+  const rateLimitClient = adminClient as RateLimitClient;
+
+  for (const scope of scopes) {
+    const keyHash = await sha256Hex(`${salt}:${scope}`);
+    const { data, error } = await rateLimitClient.rpc("check_contact_rate_limit", {
+      p_key_hash: keyHash,
+      p_max_requests: RATE_LIMIT_MAX,
+      p_window_seconds: RATE_LIMIT_WINDOW_SECONDS,
+    });
+
+    if (error) {
+      console.error("discord_refresh_rate_limit_failed", error.code);
+      throw new Error("rate_limit_unavailable");
+    }
+
+    if (data !== true) return false;
+  }
+
+  return true;
 }
 
 Deno.serve(async (req) => {
@@ -110,6 +183,10 @@ Deno.serve(async (req) => {
 
     if (claimsError || typeof userId !== "string") {
       return json(req, { error: "unauthorized" }, 401);
+    }
+
+    if (!(await checkRefreshRateLimit(adminClient, req, userId))) {
+      return json(req, { error: "rate_limited" }, 429);
     }
 
     const { data: profile, error: profileError } = await adminClient
