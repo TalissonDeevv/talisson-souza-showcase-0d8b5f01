@@ -1,3 +1,5 @@
+import type { MarketTrailArticle } from "./market-trail/types";
+
 export interface ArticleData {
   id: string;
   title: { pt: string; en: string };
@@ -559,7 +561,7 @@ export function getArticlesByTag(tag: string, lang: 'pt' | 'en'): ArticleData[] 
 /**
  * Search across all articles (regular + market trail) by title, excerpt, tags, keywords and content.
  */
-export function searchArticles(query: string, lang: 'pt' | 'en', trailArticles?: any[]): ArticleData[] {
+export function searchArticles(query: string, lang: 'pt' | 'en', trailArticles?: MarketTrailArticle[]): ArticleData[] {
   const q = query.toLowerCase().trim();
   if (!q) return [];
 
@@ -578,7 +580,7 @@ export function searchArticles(query: string, lang: 'pt' | 'en', trailArticles?:
   });
 
   // Score market trail articles if provided
-  const trailResults = (trailArticles || []).map((a: any) => {
+  const trailResults = (trailArticles || []).map((a) => {
     let score = 0;
     const title = (a.title[lang] || '').toLowerCase();
     const excerpt = (a.excerpt[lang] || '').toLowerCase();
@@ -591,7 +593,7 @@ export function searchArticles(query: string, lang: 'pt' | 'en', trailArticles?:
     if (excerpt.includes(q)) score += 3;
 
     // Search inside section content
-    const contentMatch = (a.sections || []).some((s: any) =>
+    const contentMatch = (a.sections || []).some((s) =>
       (s.content[lang] || '').toLowerCase().includes(q) || (s.title[lang] || '').toLowerCase().includes(q)
     );
     if (contentMatch) score += 2;

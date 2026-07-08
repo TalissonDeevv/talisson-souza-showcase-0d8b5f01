@@ -221,7 +221,7 @@ Ultimately, my mission is to create solutions that truly make a difference, with
                   <motion.button
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    onClick={() => window.open('https://drive.google.com/file/d/1JBmXK4aCAPfeY4kuEc5QpO-ehlA2rfWO/view?usp=sharing', '_blank')}
+                    onClick={() => window.open('https://drive.google.com/file/d/1JBmXK4aCAPfeY4kuEc5QpO-ehlA2rfWO/view?usp=sharing', '_blank', 'noopener,noreferrer')}
                     className="group w-full max-w-[200px] inline-flex items-center justify-center gap-2 text-sm font-medium text-primary-foreground bg-foreground rounded-full py-3 transition-all duration-300"
                     style={{
                       boxShadow: '0 0 20px hsl(var(--foreground) / 0.15)'

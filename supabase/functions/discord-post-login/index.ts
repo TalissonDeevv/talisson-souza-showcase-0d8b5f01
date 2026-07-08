@@ -1,4 +1,4 @@
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2.58.0";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.110.0";
 
 const DEFAULT_ALLOWED_ORIGINS = [
   "https://talissonsouza.com.br",
@@ -16,6 +16,10 @@ const allowedOrigins = new Set(
     .filter(Boolean),
 );
 
+const RATE_LIMIT_WINDOW_SECONDS = 10 * 60;
+const RATE_LIMIT_MAX = 5;
+const encoder = new TextEncoder();
+
 interface DiscordUser {
   id: string;
   username: string;
@@ -25,6 +29,41 @@ interface DiscordUser {
 
 interface RequestBody {
   provider_token?: unknown;
+}
+
+interface SupabaseFunctionError {
+  code?: string;
+  message?: string;
+}
+
+interface RateLimitClient {
+  rpc(
+    fn: "check_contact_rate_limit",
+    args: Record<string, unknown>,
+  ): Promise<{ data: unknown; error: SupabaseFunctionError | null }>;
+}
+
+interface AuthIdentity {
+  provider?: string;
+  identity_data?: unknown;
+}
+
+interface AuthUser {
+  user_metadata?: unknown;
+  identities?: AuthIdentity[] | null;
+}
+
+interface AuthAdminClient {
+  auth: {
+    admin: {
+      getUserById(
+        userId: string,
+      ): Promise<{
+        data: { user: AuthUser | null };
+        error: SupabaseFunctionError | null;
+      }>;
+    };
+  };
 }
 
 function isOriginAllowed(req: Request): boolean {
@@ -57,7 +96,8 @@ function json(
     status,
     headers: {
       ...corsHeaders(req),
-      "content-type": "application/json; charset=utf-8",
+        "content-type": "application/json; charset=utf-8",
+        "cache-control": "no-store",
     },
   });
 }
@@ -65,6 +105,105 @@ function json(
 function discordAvatarUrl(user: DiscordUser): string | null {
   if (!user.avatar) return null;
   return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=256`;
+}
+
+function getClientIp(req: Request): string {
+  return (
+    req.headers.get("cf-connecting-ip")?.trim() ||
+    req.headers.get("x-real-ip")?.trim() ||
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    "unknown"
+  );
+}
+
+async function sha256Hex(value: string): Promise<string> {
+  const hash = await crypto.subtle.digest("SHA-256", encoder.encode(value));
+  return [...new Uint8Array(hash)]
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+async function checkPostLoginRateLimit(
+  adminClient: unknown,
+  req: Request,
+  userId: string,
+): Promise<boolean> {
+  const salt =
+    Deno.env.get("DISCORD_RATE_LIMIT_SALT")?.trim() ||
+    Deno.env.get("CONTACT_RATE_LIMIT_SALT")?.trim() ||
+    Deno.env.get("CONTACT_CAPTCHA_SECRET")?.trim();
+
+  if (!salt) {
+    console.error("discord_rate_limit_environment_missing");
+    throw new Error("service_not_configured");
+  }
+
+  const scopes = [
+    `discord-post-login:user:${userId}`,
+    `discord-post-login:ip:${getClientIp(req)}`,
+  ];
+
+  const rateLimitClient = adminClient as RateLimitClient;
+
+  for (const scope of scopes) {
+    const keyHash = await sha256Hex(`${salt}:${scope}`);
+    const { data, error } = await rateLimitClient.rpc("check_contact_rate_limit", {
+      p_key_hash: keyHash,
+      p_max_requests: RATE_LIMIT_MAX,
+      p_window_seconds: RATE_LIMIT_WINDOW_SECONDS,
+    });
+
+    if (error) {
+      console.error("discord_rate_limit_failed", error.code);
+      throw new Error("rate_limit_unavailable");
+    }
+
+    if (data !== true) return false;
+  }
+
+  return true;
+}
+
+function addDiscordIdsFromMetadata(
+  metadata: unknown,
+  candidates: Set<string>,
+): void {
+  if (!metadata || typeof metadata !== "object") return;
+
+  const record = metadata as Record<string, unknown>;
+  for (const key of ["provider_id", "sub"]) {
+    const value = record[key];
+    if (typeof value === "string" && /^[0-9]+$/.test(value)) {
+      candidates.add(value);
+    }
+  }
+
+  addDiscordIdsFromMetadata(record.custom_claims, candidates);
+}
+
+async function isDiscordIdentityBoundToUser(
+  adminClient: unknown,
+  userId: string,
+  discordId: string,
+): Promise<boolean> {
+  const authClient = adminClient as AuthAdminClient;
+  const { data, error } = await authClient.auth.admin.getUserById(userId);
+
+  if (error || !data.user) {
+    console.error("discord_user_lookup_failed", error?.code ?? "not_found");
+    return false;
+  }
+
+  const candidates = new Set<string>();
+  addDiscordIdsFromMetadata(data.user.user_metadata, candidates);
+
+  for (const identity of data.user.identities ?? []) {
+    const provider = typeof identity.provider === "string" ? identity.provider : "";
+    if (provider !== "custom:discord-minimal" && provider !== "discord") continue;
+    addDiscordIdsFromMetadata(identity.identity_data, candidates);
+  }
+
+  return candidates.has(discordId);
 }
 
 async function sendWelcomeDm(
@@ -215,6 +354,10 @@ Deno.serve(async (req) => {
       return json(req, { error: "unauthorized" }, 401);
     }
 
+    if (!(await checkPostLoginRateLimit(adminClient, req, userId))) {
+      return json(req, { error: "rate_limited" }, 429);
+    }
+
     let body: RequestBody;
     try {
       body = await req.json() as RequestBody;
@@ -243,6 +386,11 @@ Deno.serve(async (req) => {
     const discordUser = await discordUserResponse.json() as DiscordUser;
     if (!/^[0-9]+$/.test(discordUser.id)) {
       return json(req, { error: "invalid_discord_identity" }, 502);
+    }
+
+    if (!(await isDiscordIdentityBoundToUser(adminClient, userId, discordUser.id))) {
+      console.error("discord_identity_mismatch");
+      return json(req, { error: "discord_identity_mismatch" }, 403);
     }
 
     const now = new Date().toISOString();

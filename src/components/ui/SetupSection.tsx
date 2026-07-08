@@ -8,10 +8,11 @@ import {
   CircuitBoard, Zap, ArrowUpRight, Headphones,
   Box, ChevronRight, TrendingUp, Target, Shield
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import setupImage from "@/assets/setup-pc.jpeg";
 
 interface SetupComponent {
-  icon: any;
+  icon: LucideIcon;
   name: string;
   spec: string;
   reason: string;

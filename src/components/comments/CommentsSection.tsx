@@ -132,11 +132,15 @@ const CommentsSection = ({ articleSlug, variant = "inline" }: Props) => {
 
       for (const p of profileRows ?? []) {
         const official = extractDiscordIdFromAvatarUrl(p.avatar_url) === OFFICIAL_DISCORD_ID;
+        const isVerified =
+          "is_verified" in p && typeof p.is_verified === "boolean"
+            ? p.is_verified
+            : false;
         authors[p.id] = {
           username: official ? OFFICIAL_USERNAME : p.username,
           global_name: official ? p.global_name ?? OFFICIAL_DISPLAY_NAME : p.global_name,
           avatar_url: p.avatar_url,
-          is_verified: official || ("is_verified" in p ? p.is_verified ?? false : false),
+          is_verified: official || isVerified,
         };
       }
     }
