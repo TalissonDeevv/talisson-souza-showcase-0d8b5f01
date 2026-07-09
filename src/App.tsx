@@ -6,33 +6,40 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import ScrollToTop from "@/components/ScrollToTop";
-import Index from "./pages/Index";
-import About from "./pages/About";
-import Projects from "./pages/Projects";
-import Services from "./pages/Services";
-import ServiceDetail from "./pages/ServiceDetail";
-import Career from "./pages/Career";
-import Contact from "./pages/Contact";
-import HowIWork from "./pages/HowIWork";
-import TechDecisions from "./pages/TechDecisions";
-import Accessibility from "./pages/Accessibility";
-import ProjectDetail from "./pages/ProjectDetail";
-import Book from "./pages/Book";
-import NotFound from "./pages/NotFound";
-import Articles from "./pages/Articles";
-import TagPage from "./pages/TagPage";
-import TrailPage from "./pages/TrailPage";
-import Principles from "./pages/Principles";
-import Checklists from "./pages/Checklists";
-import ChecklistDetail from "./pages/ChecklistDetail";
-import MarketTrailArticle from "./pages/articles/MarketTrailArticle";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import FAQ from "./pages/FAQ";
-import Feedbacks from "./pages/Feedbacks";
-import Policies from "./pages/Policies";
-import PolicyDetail from "./pages/PolicyDetail";
+import { lazy, Suspense } from "react";
+import { StudioRouter } from "./studio/routes/StudioRouter";
 
 const queryClient = new QueryClient();
+
+const Index = lazy(() => import("./pages/Index"));
+const About = lazy(() => import("./pages/About"));
+const Projects = lazy(() => import("./pages/Projects"));
+const Services = lazy(() => import("./pages/Services"));
+const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
+const Career = lazy(() => import("./pages/Career"));
+const Contact = lazy(() => import("./pages/Contact"));
+const HowIWork = lazy(() => import("./pages/HowIWork"));
+const TechDecisions = lazy(() => import("./pages/TechDecisions"));
+const Accessibility = lazy(() => import("./pages/Accessibility"));
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
+const Book = lazy(() => import("./pages/Book"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Articles = lazy(() => import("./pages/Articles"));
+const TagPage = lazy(() => import("./pages/TagPage"));
+const TrailPage = lazy(() => import("./pages/TrailPage"));
+const Principles = lazy(() => import("./pages/Principles"));
+const Checklists = lazy(() => import("./pages/Checklists"));
+const ChecklistDetail = lazy(() => import("./pages/ChecklistDetail"));
+const MarketTrailArticle = lazy(() => import("./pages/articles/MarketTrailArticle"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const FAQ = lazy(() => import("./pages/FAQ"));
+const Feedbacks = lazy(() => import("./pages/Feedbacks"));
+const Policies = lazy(() => import("./pages/Policies"));
+const PolicyDetail = lazy(() => import("./pages/PolicyDetail"));
+
+const RouteFallback = () => (
+  <div className="min-h-screen bg-background text-foreground" />
+);
 
 const AppRoutes = () => (
   <ThemeProvider>
@@ -40,70 +47,73 @@ const AppRoutes = () => (
       <Toaster />
       <Sonner />
       <ScrollToTop />
-      <Routes>
-        {/* ===== PT-BR Routes (root) ===== */}
-        <Route path="/" element={<Index />} />
-        <Route path="/sobre" element={<About />} />
-        <Route path="/projetos" element={<Projects />} />
-        <Route path="/projetos/:id" element={<ProjectDetail />} />
-        <Route path="/servicos" element={<Services />} />
-        <Route path="/servicos/:serviceId" element={<ServiceDetail />} />
-        <Route path="/carreira" element={<Career />} />
-        <Route path="/contato" element={<Contact />} />
-        <Route path="/como-trabalho" element={<HowIWork />} />
-        <Route path="/decisoes-tecnicas" element={<TechDecisions />} />
-        <Route path="/acessibilidade" element={<Accessibility />} />
-        <Route path="/livro" element={<Book />} />
-        <Route path="/principios" element={<Principles />} />
-        <Route path="/checklists" element={<Checklists />} />
-        <Route path="/checklists/:checklistId" element={<ChecklistDetail />} />
-        
-        <Route path="/artigos" element={<Articles />} />
-        <Route path="/artigos/tag/:tag" element={<TagPage />} />
-        <Route path="/trilhas/:trailId" element={<TrailPage />} />
-        <Route path="/artigos/:slug" element={<MarketTrailArticle />} />
-        <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
-        <Route path="/faq" element={<FAQ />} />
-        <Route path="/feedbacks" element={<Feedbacks />} />
-        <Route path="/politicas" element={<Policies />} />
-        <Route path="/politicas/:sectionId" element={<PolicyDetail />} />
-        
-        <Route path="/en-us" element={<Index />} />
-        <Route path="/en-us/about" element={<About />} />
-        <Route path="/en-us/projects" element={<Projects />} />
-        <Route path="/en-us/projects/:id" element={<ProjectDetail />} />
-        <Route path="/en-us/services" element={<Services />} />
-        <Route path="/en-us/services/:serviceId" element={<ServiceDetail />} />
-        <Route path="/en-us/career" element={<Career />} />
-        <Route path="/en-us/contact" element={<Contact />} />
-        <Route path="/en-us/how-i-work" element={<HowIWork />} />
-        <Route path="/en-us/tech-decisions" element={<TechDecisions />} />
-        <Route path="/en-us/accessibility" element={<Accessibility />} />
-        <Route path="/en-us/book" element={<Book />} />
-        <Route path="/en-us/principles" element={<Principles />} />
-        <Route path="/en-us/checklists" element={<Checklists />} />
-        <Route path="/en-us/checklists/:checklistId" element={<ChecklistDetail />} />
-        
-        <Route path="/en-us/articles" element={<Articles />} />
-        <Route path="/en-us/articles/tag/:tag" element={<TagPage />} />
-        <Route path="/en-us/trails/:trailId" element={<TrailPage />} />
-        <Route path="/en-us/articles/:slug" element={<MarketTrailArticle />} />
-        <Route path="/en-us/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/en-us/faq" element={<FAQ />} />
-        <Route path="/en-us/feedbacks" element={<Feedbacks />} />
-        <Route path="/en-us/policies" element={<Policies />} />
-        <Route path="/en-us/policies/:sectionId" element={<PolicyDetail />} />
-        
-        <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/projects/:id" element={<ProjectDetail />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/services/:serviceId" element={<ServiceDetail />} />
-        <Route path="/career" element={<Career />} />
-        <Route path="/contact" element={<Contact />} />
-        {/* 404 */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Suspense fallback={<RouteFallback />}>
+        <Routes>
+          {/* ===== PT-BR Routes (root) ===== */}
+          <Route path="/" element={<Index />} />
+          <Route path="/sobre" element={<About />} />
+          <Route path="/projetos" element={<Projects />} />
+          <Route path="/projetos/:id" element={<ProjectDetail />} />
+          <Route path="/servicos" element={<Services />} />
+          <Route path="/servicos/:serviceId" element={<ServiceDetail />} />
+          <Route path="/carreira" element={<Career />} />
+          <Route path="/contato" element={<Contact />} />
+          <Route path="/como-trabalho" element={<HowIWork />} />
+          <Route path="/decisoes-tecnicas" element={<TechDecisions />} />
+          <Route path="/acessibilidade" element={<Accessibility />} />
+          <Route path="/livro" element={<Book />} />
+          <Route path="/principios" element={<Principles />} />
+          <Route path="/checklists" element={<Checklists />} />
+          <Route path="/checklists/:checklistId" element={<ChecklistDetail />} />
+
+          <Route path="/artigos" element={<Articles />} />
+          <Route path="/artigos/tag/:tag" element={<TagPage />} />
+          <Route path="/trilhas/:trailId" element={<TrailPage />} />
+          <Route path="/artigos/:slug" element={<MarketTrailArticle />} />
+          <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/feedbacks" element={<Feedbacks />} />
+          <Route path="/politicas" element={<Policies />} />
+          <Route path="/politicas/:sectionId" element={<PolicyDetail />} />
+          <Route path="/studio/*" element={<StudioRouter />} />
+
+          <Route path="/en-us" element={<Index />} />
+          <Route path="/en-us/about" element={<About />} />
+          <Route path="/en-us/projects" element={<Projects />} />
+          <Route path="/en-us/projects/:id" element={<ProjectDetail />} />
+          <Route path="/en-us/services" element={<Services />} />
+          <Route path="/en-us/services/:serviceId" element={<ServiceDetail />} />
+          <Route path="/en-us/career" element={<Career />} />
+          <Route path="/en-us/contact" element={<Contact />} />
+          <Route path="/en-us/how-i-work" element={<HowIWork />} />
+          <Route path="/en-us/tech-decisions" element={<TechDecisions />} />
+          <Route path="/en-us/accessibility" element={<Accessibility />} />
+          <Route path="/en-us/book" element={<Book />} />
+          <Route path="/en-us/principles" element={<Principles />} />
+          <Route path="/en-us/checklists" element={<Checklists />} />
+          <Route path="/en-us/checklists/:checklistId" element={<ChecklistDetail />} />
+
+          <Route path="/en-us/articles" element={<Articles />} />
+          <Route path="/en-us/articles/tag/:tag" element={<TagPage />} />
+          <Route path="/en-us/trails/:trailId" element={<TrailPage />} />
+          <Route path="/en-us/articles/:slug" element={<MarketTrailArticle />} />
+          <Route path="/en-us/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/en-us/faq" element={<FAQ />} />
+          <Route path="/en-us/feedbacks" element={<Feedbacks />} />
+          <Route path="/en-us/policies" element={<Policies />} />
+          <Route path="/en-us/policies/:sectionId" element={<PolicyDetail />} />
+
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:id" element={<ProjectDetail />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/services/:serviceId" element={<ServiceDetail />} />
+          <Route path="/career" element={<Career />} />
+          <Route path="/contact" element={<Contact />} />
+          {/* 404 */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </TooltipProvider>
   </ThemeProvider>
 );
@@ -111,11 +121,10 @@ const AppRoutes = () => (
 const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
+      <BrowserRouter future={{ v7_relativeSplatPath: true, v7_startTransition: true }}>
         <AppRoutes />
       </BrowserRouter>
     </QueryClientProvider>
   </HelmetProvider>
 );
-
 export default App;

@@ -115,8 +115,8 @@ for (const file of coreFiles) {
   }
 }
 
-if (existsSync(abs("src/App.tsx")) && /studio/i.test(read("src/App.tsx"))) {
-  fail("Public App.tsx references Studio code. Milestone 2 must not mount public routes.");
+if (existsSync(abs("src/App.tsx")) && /StudioCore|studio\/core/i.test(read("src/App.tsx"))) {
+  fail("Public App.tsx references Studio Core API directly.");
 }
 
 const routes = read("src/studio/core/router/routes.ts");

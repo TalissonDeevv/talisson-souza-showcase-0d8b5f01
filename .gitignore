@@ -15,6 +15,7 @@ node_modules
 dist
 dist-ssr
 *.local
+studio-vite*.log
 supabase/.temp/
 .supabase-workdir/
 

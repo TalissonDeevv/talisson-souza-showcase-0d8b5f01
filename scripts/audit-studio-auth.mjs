@@ -80,8 +80,8 @@ for (const file of requiredFiles) {
 }
 
 const app = read("src/App.tsx");
-if (/studio/i.test(app)) {
-  fail("Public App.tsx imports or references Studio routes.");
+if (/studio\/(auth|services|providers|core)|StudioCore|studio-auth-client/i.test(app)) {
+  fail("Public App.tsx imports Studio auth/core/backend internals.");
 }
 
 const packageJson = read("package.json");
