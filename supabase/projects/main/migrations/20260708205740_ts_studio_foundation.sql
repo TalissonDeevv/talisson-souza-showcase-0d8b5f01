@@ -275,17 +275,20 @@ INSERT INTO studio.modules (key, name, description, area, status, owner_role, or
 VALUES
   ('dashboard', 'Dashboard', 'Operational overview for content, community, performance and security.', 'core', 'foundation', 'admin', 10),
   ('content', 'Content', 'Shared content model for articles, pages, blocks, checklists and trails.', 'content', 'foundation', 'editor', 20),
-  ('seo', 'SEO', 'Metadata, canonical URLs, Open Graph, Twitter Cards and Schema.org governance.', 'growth', 'foundation', 'editor', 30),
-  ('media', 'Media Library', 'Images, PDFs, videos and downloadable assets managed with review metadata.', 'content', 'foundation', 'editor', 40),
-  ('users', 'Users and RBAC', 'Internal users, roles, permissions, sessions and administrative access.', 'security', 'foundation', 'owner', 50),
-  ('discord', 'Discord and Comments', 'Discord OAuth, comments, reactions, moderation and Realtime channels.', 'community', 'foundation', 'moderator', 60),
-  ('forms', 'Forms and Contact', 'Contact forms, CAPTCHA, lead routing, email delivery and abuse controls.', 'operations', 'foundation', 'admin', 70),
-  ('newsletter', 'Newsletter', 'Subscriber lifecycle, consent, segmentation and campaign readiness.', 'growth', 'planned', 'admin', 80),
-  ('analytics', 'Analytics', 'Content, traffic, conversion and community engagement measurement.', 'growth', 'foundation', 'analyst', 90),
-  ('monitoring', 'Monitoring', 'Logs, uptime, runtime errors, alerts and post-deploy health checks.', 'operations', 'foundation', 'admin', 100),
-  ('security', 'Security', 'Audit trails, hardening checks, secrets inventory and policy governance.', 'security', 'foundation', 'owner', 110),
-  ('integrations', 'Integrations', 'Supabase, Vercel, Discord, Resend, GitHub, Cloudflare and future providers.', 'platform', 'foundation', 'admin', 120),
-  ('system', 'System Settings', 'Global configuration, feature flags, menus, theme, layout and operational toggles.', 'core', 'foundation', 'owner', 130)
+  ('articles', 'Articles', 'Editorial workflow for long-form articles, source references, tags, authors and related reading.', 'content', 'planned', 'editor', 30),
+  ('taxonomy', 'Categories and Tags', 'Controlled vocabulary for trails, tags, categories, filters and content discovery.', 'content', 'planned', 'editor', 40),
+  ('authors', 'Authors', 'Author profiles, bios, social links, byline policy and editorial ownership.', 'content', 'planned', 'editor', 50),
+  ('seo', 'SEO', 'Metadata, canonical URLs, Open Graph, Twitter Cards and Schema.org governance.', 'growth', 'foundation', 'editor', 60),
+  ('media', 'Media Library', 'Images, PDFs, videos and downloadable assets managed with review metadata.', 'content', 'foundation', 'editor', 70),
+  ('users', 'Users and RBAC', 'Internal users, roles, permissions, sessions and administrative access.', 'security', 'foundation', 'owner', 80),
+  ('discord', 'Discord and Comments', 'Discord OAuth, comments, reactions, moderation and Realtime channels.', 'community', 'foundation', 'moderator', 90),
+  ('forms', 'Forms and Contact', 'Contact forms, CAPTCHA, lead routing, email delivery and abuse controls.', 'operations', 'foundation', 'admin', 100),
+  ('newsletter', 'Newsletter', 'Subscriber lifecycle, consent, segmentation and campaign readiness.', 'growth', 'planned', 'admin', 110),
+  ('analytics', 'Analytics', 'Content, traffic, conversion and community engagement measurement.', 'growth', 'foundation', 'analyst', 120),
+  ('monitoring', 'Monitoring', 'Logs, uptime, runtime errors, alerts and post-deploy health checks.', 'operations', 'foundation', 'admin', 130),
+  ('security', 'Security', 'Audit trails, hardening checks, secrets inventory and policy governance.', 'security', 'foundation', 'owner', 140),
+  ('integrations', 'Integrations', 'Supabase, Vercel, Discord, Resend, GitHub, Cloudflare and future providers.', 'platform', 'foundation', 'admin', 150),
+  ('system', 'System Settings', 'Global configuration, feature flags, menus, theme, layout and operational toggles.', 'core', 'foundation', 'owner', 160)
 ON CONFLICT (key) DO UPDATE SET
   name = EXCLUDED.name,
   description = EXCLUDED.description,
@@ -295,6 +298,54 @@ ON CONFLICT (key) DO UPDATE SET
   order_index = EXCLUDED.order_index,
   updated_at = now();
 
+DELETE FROM studio.module_dependencies;
+
+INSERT INTO studio.module_dependencies (module_key, depends_on_module_key, reason)
+VALUES
+  ('dashboard', 'monitoring', 'Dashboard consumes operational health summaries.'),
+  ('dashboard', 'analytics', 'Dashboard consumes engagement and content metrics.'),
+  ('dashboard', 'integrations', 'Dashboard surfaces provider status.'),
+  ('dashboard', 'security', 'Dashboard includes audit and security posture signals.'),
+  ('content', 'media', 'Content references managed assets.'),
+  ('content', 'security', 'Content writes must be audited.'),
+  ('content', 'users', 'Content workflow references authors and reviewers.'),
+  ('articles', 'content', 'Article records use the generic content model.'),
+  ('articles', 'seo', 'Articles require metadata governance.'),
+  ('articles', 'taxonomy', 'Articles require controlled tags and categories.'),
+  ('articles', 'authors', 'Articles require editorial attribution.'),
+  ('articles', 'media', 'Articles reference cover and body assets.'),
+  ('taxonomy', 'content', 'Taxonomy is applied to content items.'),
+  ('taxonomy', 'seo', 'Taxonomy slugs can affect canonical URLs and indexable tag pages.'),
+  ('authors', 'users', 'Authors can be linked to internal users.'),
+  ('authors', 'media', 'Author avatars are managed assets.'),
+  ('authors', 'seo', 'Authors feed Article schema attribution.'),
+  ('seo', 'content', 'Metadata belongs to content and route entities.'),
+  ('seo', 'media', 'Open Graph images must reference managed assets.'),
+  ('seo', 'system', 'SEO validation depends on environment domains and global settings.'),
+  ('media', 'security', 'Uploads require audit and abuse controls.'),
+  ('media', 'system', 'Media limits are configured by environment.'),
+  ('users', 'security', 'Access changes must be audited.'),
+  ('discord', 'users', 'Moderator actions need internal identity.'),
+  ('discord', 'security', 'OAuth and moderation events are audited.'),
+  ('discord', 'integrations', 'Discord and comments require provider configuration.'),
+  ('discord', 'monitoring', 'Realtime and Edge Function health should be observable.'),
+  ('forms', 'integrations', 'Email delivery depends on Resend.'),
+  ('forms', 'security', 'Rate limit and abuse signals feed audit.'),
+  ('newsletter', 'forms', 'Newsletter can share consent and contact channels.'),
+  ('newsletter', 'integrations', 'Newsletter delivery depends on email providers.'),
+  ('newsletter', 'security', 'Subscriber operations handle personal data.'),
+  ('analytics', 'content', 'Content inventory defines report dimensions.'),
+  ('analytics', 'discord', 'Community engagement uses comments and reactions.'),
+  ('analytics', 'forms', 'Conversion analytics use contact and newsletter signals.'),
+  ('analytics', 'monitoring', 'Analytics need source health context.'),
+  ('monitoring', 'integrations', 'Monitoring depends on provider APIs.'),
+  ('monitoring', 'security', 'Monitoring logs must redact sensitive data.'),
+  ('integrations', 'security', 'Integration changes require audit.'),
+  ('system', 'security', 'System settings can affect public behavior.'),
+  ('system', 'integrations', 'System settings must respect provider environment boundaries.')
+ON CONFLICT (module_key, depends_on_module_key) DO UPDATE SET
+  reason = EXCLUDED.reason;
+
 INSERT INTO studio.permissions (key, module_key, action, description)
 SELECT permission_key, module_key, action, description
 FROM (
@@ -303,28 +354,50 @@ FROM (
     ('content.read', 'content', 'read', 'Read content inventory and revisions.'),
     ('content.write', 'content', 'write', 'Create and edit content drafts.'),
     ('content.publish', 'content', 'publish', 'Publish or unpublish content.'),
+    ('articles.read', 'articles', 'read', 'Read article inventory and editorial state.'),
+    ('articles.write', 'articles', 'write', 'Create and edit article drafts.'),
+    ('articles.publish', 'articles', 'publish', 'Publish or unpublish articles.'),
+    ('taxonomy.read', 'taxonomy', 'read', 'Read categories, tags and trail taxonomy.'),
+    ('taxonomy.write', 'taxonomy', 'write', 'Create, edit, merge or archive taxonomy entries.'),
+    ('authors.read', 'authors', 'read', 'Read author profiles and bylines.'),
+    ('authors.write', 'authors', 'write', 'Create and edit author profiles.'),
+    ('seo.read', 'seo', 'read', 'Read SEO, Open Graph and Schema.org metadata.'),
+    ('seo.write', 'seo', 'write', 'Create and edit SEO, Open Graph and Schema.org metadata.'),
     ('seo.manage', 'seo', 'manage', 'Manage SEO, Open Graph and Schema.org metadata.'),
     ('media.read', 'media', 'read', 'Read media library metadata.'),
     ('media.write', 'media', 'write', 'Upload, edit and archive media assets.'),
+    ('media.manage', 'media', 'manage', 'Manage media library policy, ownership and archived assets.'),
     ('users.read', 'users', 'read', 'Read internal users and role assignments.'),
     ('users.manage', 'users', 'manage', 'Manage roles, permissions and user access.'),
+    ('users.audit', 'users', 'audit', 'Audit user access and role assignment history.'),
     ('discord.read', 'discord', 'read', 'Read comments and Discord community state.'),
     ('discord.moderate', 'discord', 'moderate', 'Moderate comments and Discord-linked content.'),
+    ('discord.manage', 'discord', 'manage', 'Manage Discord and comments administrative settings.'),
     ('forms.read', 'forms', 'read', 'Read contact submissions and operational form metrics.'),
     ('forms.manage', 'forms', 'manage', 'Manage form routing, CAPTCHA and abuse settings.'),
+    ('newsletter.read', 'newsletter', 'read', 'Read newsletter subscribers and consent state.'),
+    ('newsletter.write', 'newsletter', 'write', 'Create and edit newsletter subscriber records and segments.'),
     ('newsletter.manage', 'newsletter', 'manage', 'Manage subscribers, consent and campaign settings.'),
     ('analytics.read', 'analytics', 'read', 'Read analytics reports and engagement metrics.'),
     ('monitoring.read', 'monitoring', 'read', 'Read runtime logs, alerts and health checks.'),
+    ('monitoring.manage', 'monitoring', 'manage', 'Manage incidents, health checks and operational alerts.'),
     ('security.read', 'security', 'read', 'Read security posture and audit trails.'),
     ('security.manage', 'security', 'manage', 'Manage security settings and incident workflows.'),
+    ('security.audit', 'security', 'audit', 'Audit security-sensitive operations and access decisions.'),
     ('integrations.read', 'integrations', 'read', 'Read integration status and configuration metadata.'),
     ('integrations.manage', 'integrations', 'manage', 'Manage integration configuration metadata.'),
+    ('system.read', 'system', 'read', 'Read global TS Studio configuration.'),
     ('system.manage', 'system', 'manage', 'Manage global TS Studio configuration.')
 ) AS seed(permission_key, module_key, action, description)
 ON CONFLICT (key) DO UPDATE SET
   module_key = EXCLUDED.module_key,
   action = EXCLUDED.action,
   description = EXCLUDED.description;
+
+DELETE FROM studio.role_permissions
+USING studio.roles
+WHERE studio.role_permissions.role_id = studio.roles.id
+  AND studio.roles.is_system = true;
 
 INSERT INTO studio.role_permissions (role_id, permission_id)
 SELECT r.id, p.id
@@ -341,19 +414,34 @@ JOIN studio.permissions p ON p.key IN (
   'content.read',
   'content.write',
   'content.publish',
+  'articles.read',
+  'articles.write',
+  'articles.publish',
+  'taxonomy.read',
+  'taxonomy.write',
+  'authors.read',
+  'authors.write',
+  'seo.read',
+  'seo.write',
   'seo.manage',
   'media.read',
   'media.write',
+  'media.manage',
+  'users.read',
   'discord.read',
   'discord.moderate',
   'forms.read',
   'forms.manage',
+  'newsletter.read',
+  'newsletter.write',
   'newsletter.manage',
   'analytics.read',
   'monitoring.read',
+  'monitoring.manage',
   'security.read',
   'integrations.read',
-  'system.manage'
+  'integrations.manage',
+  'system.read'
 )
 WHERE r.key = 'admin'
 ON CONFLICT DO NOTHING;
@@ -366,7 +454,15 @@ JOIN studio.permissions p ON p.key IN (
   'content.read',
   'content.write',
   'content.publish',
-  'seo.manage',
+  'articles.read',
+  'articles.write',
+  'articles.publish',
+  'taxonomy.read',
+  'taxonomy.write',
+  'authors.read',
+  'authors.write',
+  'seo.read',
+  'seo.write',
   'media.read',
   'media.write',
   'analytics.read'
@@ -381,7 +477,8 @@ JOIN studio.permissions p ON p.key IN (
   'dashboard.read',
   'discord.read',
   'discord.moderate',
-  'content.read'
+  'content.read',
+  'articles.read'
 )
 WHERE r.key = 'moderator'
 ON CONFLICT DO NOTHING;
@@ -392,11 +489,19 @@ FROM studio.roles r
 JOIN studio.permissions p ON p.key IN (
   'dashboard.read',
   'content.read',
+  'articles.read',
+  'taxonomy.read',
+  'authors.read',
+  'seo.read',
   'media.read',
+  'discord.read',
+  'forms.read',
+  'newsletter.read',
   'analytics.read',
   'monitoring.read',
   'security.read',
-  'integrations.read'
+  'integrations.read',
+  'system.read'
 )
 WHERE r.key = 'analyst'
 ON CONFLICT DO NOTHING;
@@ -407,6 +512,8 @@ FROM studio.roles r
 JOIN studio.permissions p ON p.key IN (
   'dashboard.read',
   'content.read',
+  'articles.read',
+  'seo.read',
   'media.read',
   'analytics.read'
 )

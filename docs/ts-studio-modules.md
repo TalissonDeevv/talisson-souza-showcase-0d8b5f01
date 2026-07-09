@@ -80,16 +80,30 @@ Experience: reservado para layout, tema, widgets e editores visuais.
 
 ## Dependencias Importantes
 
-Conteudo depende de Midia e SEO.
+Dashboard depende de Monitoring, Analytics, Integrations e Security.
 
-Artigos dependem de Conteudo, SEO, Taxonomia e Autores.
+Conteudo depende de Midia, Security e Users.
 
-Discord depende de Usuarios, Seguranca e Monitoramento.
+Artigos dependem de Conteudo, SEO, Taxonomia, Autores e Midia.
+
+Taxonomia depende de Conteudo e SEO.
+
+Autores dependem de Usuarios, Midia e SEO.
+
+SEO depende de Conteudo, Midia e Sistema.
+
+Midia depende de Security e Sistema.
+
+Discord depende de Usuarios, Seguranca, Integracoes e Monitoramento.
 
 Forms depende de Seguranca e Integracoes.
 
-Analytics depende de Conteudo, Discord e Forms.
+Newsletter depende de Forms, Integracoes e Seguranca.
+
+Analytics depende de Conteudo, Discord, Forms e Monitoring.
+
+Monitoring depende de Integracoes e Seguranca.
 
 Integracoes depende de Seguranca.
 
-Sistema depende de Seguranca e Conteudo.
+Sistema depende de Seguranca e Integracoes.

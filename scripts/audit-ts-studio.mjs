@@ -38,6 +38,8 @@ const requiredDocs = [
   "docs/ts-studio-permissions.md",
   "docs/ts-studio-security.md",
   "docs/ts-studio-config.md",
+  "docs/ts-studio-official-architecture.md",
+  "docs/ts-studio-implementation-plan.md",
   "docs/sprint-3-report.md",
   "docs/sprint-4-report.md",
   "docs/rollback-sprint-3.md",
@@ -104,10 +106,20 @@ for (const file of studioFiles) {
 }
 
 const registry = readFileSync(abs("src/studio/modules/registry.ts"), "utf8");
+const registryModuleKeys = [...registry.matchAll(/key: "([a-z-]+)"/g)].map((match) => match[1]);
+const registryPermissionKeys = [
+  ...registry.matchAll(/key: "([a-z-]+)",[\s\S]*?permissions: \[([^\]]*)\]/g),
+].flatMap((match) => {
+  const moduleKey = match[1];
+  return [...match[2].matchAll(/"([a-z]+)"/g)].map((actionMatch) => `${moduleKey}.${actionMatch[1]}`);
+});
+
 for (const moduleKey of [
   "dashboard",
   "content",
   "articles",
+  "taxonomy",
+  "authors",
   "seo",
   "media",
   "users",
@@ -130,6 +142,13 @@ for (const roleKey of ["owner", "admin", "editor", "moderator", "analyst", "view
   if (!rbac.includes(`${roleKey}:`)) fail(`TS Studio RBAC missing role: ${roleKey}`);
 }
 
+const rbacPermissionKeys = [...rbac.matchAll(/"([a-z-]+\.[a-z]+)"/g)].map((match) => match[1]);
+for (const permissionKey of rbacPermissionKeys) {
+  if (!registryPermissionKeys.includes(permissionKey)) {
+    fail(`TS Studio RBAC references permission not declared by registry: ${permissionKey}`);
+  }
+}
+
 const migration = abs("supabase/projects/main/migrations/20260708205740_ts_studio_foundation.sql");
 if (!existsSync(migration)) {
   fail("Missing TS Studio foundation migration.");
@@ -143,6 +162,65 @@ if (!existsSync(migration)) {
   }
   if (!/ALTER TABLE studio\.audit_events ENABLE ROW LEVEL SECURITY/i.test(sql)) {
     fail("TS Studio migration does not enable RLS on audit events.");
+  }
+
+  const sqlModuleKeys = [
+    ...sql.matchAll(/\('([^']+)', '[^']+', '[^']+', '[^']+', '(?:foundation|planned|active|deprecated)'/g),
+  ].map((match) => match[1]);
+  const sqlPermissionKeys = [
+    ...sql.matchAll(/\('([a-z-]+\.[a-z]+)', '[a-z-]+', '[a-z]+',/g),
+  ].map((match) => match[1]);
+
+  for (const moduleKey of registryModuleKeys) {
+    if (!sqlModuleKeys.includes(moduleKey)) {
+      fail(`TS Studio migration missing module seed: ${moduleKey}`);
+    }
+  }
+
+  for (const moduleKey of sqlModuleKeys) {
+    if (!registryModuleKeys.includes(moduleKey)) {
+      fail(`TS Studio migration seeds module not declared by registry: ${moduleKey}`);
+    }
+  }
+
+  for (const permissionKey of registryPermissionKeys) {
+    if (!sqlPermissionKeys.includes(permissionKey)) {
+      fail(`TS Studio migration missing permission seed: ${permissionKey}`);
+    }
+  }
+
+  for (const permissionKey of sqlPermissionKeys) {
+    if (!registryPermissionKeys.includes(permissionKey)) {
+      fail(`TS Studio migration seeds permission not declared by registry: ${permissionKey}`);
+    }
+  }
+
+  const roleBlocks = new Map(
+    [...rbac.matchAll(/^\s{2}([a-z]+): \[(.*?)\],/gms)].map((match) => [
+      match[1],
+      [...match[2].matchAll(/"([a-z-*]+(?:\.[a-z]+)?)"/g)].map((permissionMatch) => permissionMatch[1]).sort(),
+    ]),
+  );
+  const sqlRoleBlocks = new Map(
+    [...sql.matchAll(/p\.key IN \(([\s\S]*?)\)\s*WHERE r\.key = '([^']+)'/g)].map((match) => [
+      match[2],
+      [...match[1].matchAll(/'([a-z-]+\.[a-z]+)'/g)].map((permissionMatch) => permissionMatch[1]).sort(),
+    ]),
+  );
+
+  for (const roleKey of ["admin", "editor", "moderator", "analyst", "viewer"]) {
+    const tsPermissions = roleBlocks.get(roleKey) ?? [];
+    const sqlPermissions = sqlRoleBlocks.get(roleKey) ?? [];
+    const missingInSql = tsPermissions.filter((permissionKey) => !sqlPermissions.includes(permissionKey));
+    const extraInSql = sqlPermissions.filter((permissionKey) => !tsPermissions.includes(permissionKey));
+
+    for (const permissionKey of missingInSql) {
+      fail(`TS Studio migration role ${roleKey} missing permission from RBAC: ${permissionKey}`);
+    }
+
+    for (const permissionKey of extraInSql) {
+      fail(`TS Studio migration role ${roleKey} grants permission not present in RBAC: ${permissionKey}`);
+    }
   }
 }
 

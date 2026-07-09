@@ -21,6 +21,7 @@ const rolePermissionMap: Record<StudioRoleKey, readonly string[]> = {
     "media.read",
     "media.write",
     "media.manage",
+    "users.read",
     "discord.read",
     "discord.moderate",
     "forms.read",
@@ -30,8 +31,10 @@ const rolePermissionMap: Record<StudioRoleKey, readonly string[]> = {
     "newsletter.manage",
     "analytics.read",
     "monitoring.read",
+    "monitoring.manage",
     "security.read",
     "integrations.read",
+    "integrations.manage",
     "system.read",
   ],
   editor: [
@@ -74,6 +77,7 @@ const rolePermissionMap: Record<StudioRoleKey, readonly string[]> = {
     "monitoring.read",
     "security.read",
     "integrations.read",
+    "system.read",
   ],
   viewer: [
     "dashboard.read",

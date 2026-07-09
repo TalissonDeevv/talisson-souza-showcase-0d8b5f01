@@ -53,10 +53,13 @@ Nao foram criadas policies para usuarios finais. Isso e intencional. O acesso de
 A migration semeia:
 
 - papeis base;
-- modulos base;
-- permissoes base;
-- matriz de permissoes;
+- 16 modulos oficiais;
+- dependencias entre modulos;
+- permissoes oficiais declaradas no registry;
+- matriz de permissoes alinhada com `src/studio/permissions/rbac.ts`;
 - integracoes conhecidas.
+
+O auditor `npm run audit:ts-studio` compara o registry TypeScript, o RBAC TypeScript e esta migration para impedir novo desalinhamento.
 
 ## Relacao com Data API Supabase
 

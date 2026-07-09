@@ -1,5 +1,15 @@
 # Changelog
 
+## TS Studio Milestone 0
+
+- Alinhada a fundacao do TS Studio entre registry TypeScript, RBAC TypeScript e migration SQL.
+- Adicionados `articles`, `taxonomy` e `authors` ao seed oficial de `studio.modules`.
+- Adicionado seed de `studio.module_dependencies` em paridade com o registry.
+- Adicionadas permissoes ausentes para Articles, Taxonomy, Authors, SEO, Media, Users, Discord, Newsletter, Monitoring, Security e System.
+- Realinhados grants de `studio.role_permissions` para `admin`, `editor`, `moderator`, `analyst` e `viewer`.
+- Expandido `npm run audit:ts-studio` para detectar divergencias entre registry, RBAC, SQL, modulos, permissoes e grants por role.
+- Atualizada a documentacao oficial para marcar a paridade de fundacao como concluida.
+
 ## Sprint 4
 
 - Criada a fundacao tecnica do TS Studio em `src/studio`.

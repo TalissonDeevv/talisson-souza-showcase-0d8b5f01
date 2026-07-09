@@ -1,5 +1,24 @@
 # TS Studio Roadmap
 
+Plano tecnico detalhado por dependencia: `docs/ts-studio-implementation-plan.md`.
+
+O roadmap abaixo registra os marcos originais das Sprints 3 e 4. A ordem operacional para as proximas sprints deve seguir o plano de implementacao detalhado, que reordena os modulos por dependencia real e por capacidade de teste independente.
+
+## Milestone 0
+
+Status: concluida em branch de feature.
+
+Objetivo: alinhar a fundacao tecnica antes de qualquer API real do Studio.
+
+Entregas:
+
+- registry TypeScript alinhado com dependencias oficiais;
+- RBAC TypeScript alinhado com as permissoes oficiais;
+- migration de fundacao com os 16 modulos oficiais;
+- seed de `studio.module_dependencies`;
+- seed de permissoes e grants por role em paridade com o codigo;
+- auditor `audit:ts-studio` validando registry, RBAC e SQL.
+
 ## Sprint 3
 
 Objetivo: transformar a engenharia reversa do site em blueprint de CMS profissional.

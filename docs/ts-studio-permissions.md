@@ -42,15 +42,16 @@ Exemplos:
 | analyst | leitura de analytics, monitoramento e relatorios |
 | viewer | leitura basica |
 
-## Regras de Segurança
+## Regras de Seguranca
 
 - `publish` nao e incluido automaticamente em `write`.
 - `manage` nao deve ser usado para leitura simples.
 - `audit` deve ser separado de `security.read`.
 - alteracoes de RBAC exigem `users.manage` e auditoria.
 - qualquer permissao nova deve entrar no banco e no registry TypeScript.
+- `npm run audit:ts-studio` valida que registry, RBAC e SQL continuam em paridade.
 
-## Validacao Futuras
+## Validacoes Futuras
 
 Testes devem cobrir:
 
