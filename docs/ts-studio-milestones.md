@@ -8,6 +8,8 @@ Este documento organiza a implementacao do TS Studio em milestones independentes
 
 Nenhuma milestone autoriza deploy, merge, publicacao de Edge Functions, aplicacao remota de migrations ou alteracao em producao.
 
+Nota operacional: a Milestone 2 executada em 2026-07-09 foi definida como fundacao Core API backend. O bloco antigo de Users and RBAC permanece valido como modulo futuro consumidor dessa fundacao, mas nao foi implementado nesta entrega.
+
 ## Milestone 0 - Foundation Parity
 
 Status: concluida nesta branch.
@@ -123,48 +125,70 @@ Entregas realizadas nesta milestone:
 - auditor `npm run audit:auth`;
 - documentacao de auth, sessao, RBAC e relatorio tecnico.
 
-## Milestone 2 - Users and RBAC
+## Milestone 2 - Core API Backend
 
-Objetivo: administrar acesso interno com roles, expiracao e revisao de acesso.
+Status: implementada localmente.
 
-Modulos envolvidos: Users and RBAC, Security and Audit.
+Objetivo: criar a infraestrutura backend compartilhada para todos os modulos administrativos futuros.
 
-Arquivos previstos: services de usuarios, APIs de roles, hooks de usuarios, componentes de matriz de permissoes e documentacao de acesso.
+Modulos envolvidos: Core API, Security and Audit, System, Users and RBAC como consumidor futuro.
 
-APIs envolvidas:
+Arquivos entregues:
 
-- `GET /api/studio/users`
-- `GET /api/studio/users/:id`
-- `POST /api/studio/users/:id/roles`
-- `DELETE /api/studio/users/:id/roles/:roleKey`
-- `GET /api/studio/rbac/matrix`
+- `src/studio/core/api/*`
+- `src/studio/core/router/*`
+- `src/studio/core/middleware/*`
+- `src/studio/core/contracts/*`
+- `src/studio/core/events/*`
+- `src/studio/core/services/*`
+- `src/studio/core/repositories/*`
+- `src/studio/core/cache/*`
+- `src/studio/core/jobs/*`
+- `src/studio/core/storage/*`
+- `src/studio/core/feature-flags/*`
+- `src/studio/core/plugins/*`
+- `scripts/audit-studio-core.mjs`
+- documentacao `docs/ts-studio-core-api.md` e correlatas.
 
-Tabelas: `auth.users`, `studio.user_roles`, `studio.roles`, `studio.permissions`, `studio.role_permissions`, `studio.audit_events`.
+APIs envolvidas: contratos para `/api/studio/auth`, users, modules, dashboard, articles, authors, categories, taxonomy, media, files, settings, seo, forms, newsletter, comments, discord, analytics, monitoring, plugins, system, logs e audit.
 
-Migrations: possivel indice ou constraint para impedir duplicidade de role ativa.
+Tabelas: nenhuma migration nova nesta milestone.
 
-Componentes React: `UserAccessTable`, `RoleMatrix`, `RoleAssignmentDialog`, `AccessExpirationField`.
+Componentes React: nenhum componente publico ou visual novo.
 
-Hooks: `useStudioUsers`, `useRoleMatrix`, `useRoleAssignments`.
+Hooks: nenhum hook novo.
 
-Stores: nenhum store global alem da sessao.
+Stores: nenhum store novo.
 
-Providers: Studio provider com usuario administrativo resolvido.
+Providers: nenhum provider novo.
 
-Servicos: user access service, role assignment service.
+Servicos: services internos de auth, session, permissions, roles, users, modules, settings, storage, media, audit, logs, analytics, monitoring, notifications, events, jobs, plugins, feature flags, config, cache, Discord, SEO, newsletter e forms.
 
 Edge Functions: nenhuma.
 
-Permissoes: `users.read`, `users.manage`, `users.audit`, `security.read`.
+Permissoes: consumidas por contrato via RBAC existente, sem alterar grants.
 
-Testes: assign, remove, expire, ultimo owner protegido, usuario sem permissao.
+Testes: teste estrutural compilavel `src/studio/core/__tests__/core-contracts.ts`.
 
 Criterios de aceite:
 
-- roles so mudam com auditoria;
-- ultimo owner nao pode ser removido;
-- role expirada nao concede acesso;
-- UI nunca substitui autorizacao server-side.
+- Core API isolada;
+- nenhuma rota publica alterada;
+- nenhum acesso direto a Supabase no Core;
+- endpoints planejados registrados;
+- middlewares obrigatorios presentes;
+- services e repositories existentes;
+- auditor `audit:core` aprovado.
+
+## Milestone futura - Users and RBAC
+
+Objetivo: administrar acesso interno com roles, expiracao e revisao de acesso usando a Core API.
+
+APIs previstas: `GET /api/studio/users`, `GET /api/studio/users/:id`, `POST /api/studio/users/:id/roles`, `DELETE /api/studio/users/:id/roles/:roleKey` e `GET /api/studio/rbac/matrix`.
+
+Tabelas previstas: `auth.users`, `studio.user_roles`, `studio.roles`, `studio.permissions`, `studio.role_permissions`, `studio.audit_events`.
+
+Criterios futuros: roles so mudam com auditoria, ultimo owner nao pode ser removido, role expirada nao concede acesso e UI nunca substitui autorizacao server-side.
 
 ## Milestone 3 - Integrations and System
 

@@ -36,6 +36,23 @@ Entregas:
 - auditor `audit:auth`;
 - documentacao de auth, sessao, RBAC e relatorio tecnico.
 
+## Milestone 2
+
+Status: implementada localmente.
+
+Objetivo: criar a fundacao Core API backend do TS Studio antes de implementar modulos de negocio.
+
+Entregas:
+
+- `src/studio/core` com router, contratos, middleware, services, repositories, eventos, cache, jobs, storage, plugins, feature flags e config;
+- endpoints administrativos registrados como contrato;
+- respostas padronizadas com `success`, `data`, `error`, `requestId`, `timestamp` e `version`;
+- middlewares de auth, sessao, RBAC, permissao, modulo, CSRF, origem, rate limit, idempotencia, request id, validacao, auditoria, erro e security headers;
+- services desacoplados de Supabase direto;
+- repositories em memoria para testes estruturais;
+- auditor `audit:core`;
+- documentacao de Core API, backend, cache, storage, plugins e feature flags.
+
 ## Sprint 3
 
 Objetivo: transformar a engenharia reversa do site em blueprint de CMS profissional.

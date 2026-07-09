@@ -9,7 +9,7 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
-    "audit": "npm run audit:architecture && npm run audit:supabase && npm run audit:edge-functions && npm run audit:ts-studio && npm run audit:auth",
+    "audit": "npm run audit:architecture && npm run audit:supabase && npm run audit:edge-functions && npm run audit:ts-studio && npm run audit:auth && npm run audit:core",
     "audit:imports": "node scripts/audit-architecture.mjs imports",
     "audit:references": "node scripts/audit-architecture.mjs references",
     "audit:env": "node scripts/audit-architecture.mjs env",
@@ -25,6 +25,7 @@
     "audit:supabase:secrets": "node scripts/audit-supabase.mjs secrets",
     "audit:ts-studio": "node scripts/audit-ts-studio.mjs",
     "audit:auth": "node scripts/audit-studio-auth.mjs",
+    "audit:core": "node scripts/audit-studio-core.mjs",
     "supabase:workdir:main": "node scripts/prepare-supabase-workdir.mjs main",
     "supabase:workdir:comments": "node scripts/prepare-supabase-workdir.mjs comments",
     "preview": "vite preview"

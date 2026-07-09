@@ -1,5 +1,17 @@
 # Changelog
 
+## TS Studio Milestone 2
+
+- Criada a fundacao `src/studio/core` para a Core API administrativa.
+- Registrados contratos de endpoints para auth, users, modules, dashboard, articles, authors, taxonomy, media, settings, SEO, forms, newsletter, comments, Discord, analytics, monitoring, plugins, system, logs e audit.
+- Criado router com resposta padronizada, `requestId`, erro normalizado, `404` e `501` controlados.
+- Criada cadeia de middlewares para auth, sessao, RBAC, permissao, modulo, CSRF, origem, rate limit, idempotencia, request id, validacao, auditoria, erro e security headers.
+- Criados services e repositories internos sem acesso direto ao Supabase.
+- Criados event bus, cache, jobs, storage engine, feature flags, plugin registry, integration registry e config service.
+- Criado teste estrutural compilavel da Core API.
+- Criado auditor `npm run audit:core` e integrado ao `npm run audit`.
+- Documentada a arquitetura de Core API, backend, eventos, cache, storage, plugins, feature flags e relatorio tecnico.
+
 ## TS Studio Milestone 1
 
 - Criada a fundacao de autenticacao administrativa do TS Studio com Supabase Auth no projeto Principal.

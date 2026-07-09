@@ -78,6 +78,34 @@ Eventos devem conter:
 - `metadata`;
 - `created_at`.
 
+## Eventos Core da Milestone 2
+
+A Core API adiciona um event bus interno em `src/studio/core/events/event-bus.ts`.
+
+Eventos registrados:
+
+- `user.created`
+- `user.updated`
+- `user.deleted`
+- `role.created`
+- `role.updated`
+- `permission.updated`
+- `article.created`
+- `article.updated`
+- `article.deleted`
+- `media.uploaded`
+- `media.deleted`
+- `settings.changed`
+- `plugin.installed`
+- `plugin.removed`
+- `newsletter.sent`
+- `login.success`
+- `login.failed`
+- `logout`
+- `audit.created`
+
+O event bus atual e em memoria e serve para contratos, testes estruturais e desacoplamento. Persistencia continua sendo responsabilidade futura de repositories e services server-side.
+
 ## Privacidade
 
 Nunca registrar:

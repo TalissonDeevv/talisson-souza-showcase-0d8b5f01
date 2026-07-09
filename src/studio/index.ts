@@ -9,6 +9,7 @@ export * from "./contexts/StudioAuthContext";
 export * from "./contexts/StudioContext";
 export * from "./contexts/StudioPermissionContext";
 export * from "./contexts/StudioSessionContext";
+export * as StudioCore from "./core";
 export * from "./guards";
 export * from "./hooks/useRequirePermission";
 export * from "./hooks/useRequireRole";
