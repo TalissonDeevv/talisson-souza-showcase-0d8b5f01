@@ -4,6 +4,10 @@ Esta Sprint cria uma migration local, nao aplicada remotamente:
 
 `supabase/projects/main/migrations/20260708205740_ts_studio_foundation.sql`
 
+Milestone 1 adiciona uma migration local de autenticacao administrativa, tambem nao aplicada remotamente:
+
+`supabase/projects/main/migrations/20260709150000_ts_studio_auth_foundation.sql`
+
 ## Decisao Arquitetural
 
 O TS Studio usa o Supabase Principal para o schema administrativo `studio`. O projeto Supabase Comentarios continua separado e deve ser acessado apenas por APIs especificas quando o modulo de moderacao for implementado.
@@ -39,6 +43,15 @@ O schema e privado:
 | `studio.notifications` | notificacoes internas futuras |
 | `studio.feature_flags` | rollout e flags |
 
+## Tabelas de Autenticacao Administrativa
+
+| Tabela | Objetivo |
+| --- | --- |
+| `studio.admin_sessions` | inventario server-side de sessoes administrativas |
+| `studio.admin_login_attempts` | trilha de tentativas de login e bloqueios |
+| `studio.admin_session_nonces` | protecao contra replay, CSRF e nonces de comandos |
+| `studio.admin_auth_rate_limits` | estado persistente futuro de rate limit |
+
 ## RLS
 
 Todas as tabelas recebem:
@@ -47,6 +60,8 @@ Todas as tabelas recebem:
 - `FORCE ROW LEVEL SECURITY`
 
 Nao foram criadas policies para usuarios finais. Isso e intencional. O acesso deve passar por APIs administrativas futuras usando service role, validacao de sessao e RBAC.
+
+As tabelas de autenticacao administrativa possuem policies apenas para `service_role`. Isso preserva o contrato de que o browser nao acessa o schema `studio` diretamente.
 
 ## Seeds
 

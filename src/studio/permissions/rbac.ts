@@ -143,10 +143,33 @@ export const STUDIO_PERMISSIONS: readonly StudioPermission[] = STUDIO_MODULES.fl
   })),
 );
 
+const STUDIO_PERMISSION_KEYS = new Set(STUDIO_PERMISSIONS.map((permission) => permission.key));
+const STUDIO_ROLE_KEYS = new Set(Object.keys(STUDIO_ROLES));
+
+export function isStudioRoleKey(value: string): value is StudioRoleKey {
+  return STUDIO_ROLE_KEYS.has(value);
+}
+
+export function isStudioPermissionKey(value: string): boolean {
+  return STUDIO_PERMISSION_KEYS.has(value);
+}
+
+export function listStudioPermissions() {
+  return STUDIO_PERMISSIONS;
+}
+
+export function getStudioRolePermissionKeys(roleKey: StudioRoleKey) {
+  return STUDIO_ROLES[roleKey].permissions.filter((permissionKey) => (
+    permissionKey === "*" || isStudioPermissionKey(permissionKey)
+  ));
+}
+
 export function hasStudioPermission(
   roleKeys: readonly StudioRoleKey[],
   permissionKey: string,
 ): boolean {
+  if (!isStudioPermissionKey(permissionKey)) return false;
+
   return roleKeys.some((roleKey) => {
     const role = STUDIO_ROLES[roleKey];
     return role.permissions.includes("*") || role.permissions.includes(permissionKey);

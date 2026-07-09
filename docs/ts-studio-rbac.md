@@ -54,6 +54,28 @@ Tabelas:
 
 O schema e privado. Nenhum acesso direto por `anon` ou `authenticated` foi concedido.
 
+## Milestone 1
+
+A autenticacao administrativa usa `PermissionService` para validar acesso contra o registry oficial. Components e hooks nao acessam Supabase diretamente.
+
+Guards criados:
+
+- `AuthGuard`
+- `RoleGuard`
+- `PermissionGuard`
+- `ModuleGuard`
+
+Hooks criados:
+
+- `useStudioAuth`
+- `useStudioSession`
+- `useStudioPermissions`
+- `useRequirePermission`
+- `useRequireRole`
+- `useStudioUser`
+
+Eventos de negacao de permissao sao enviados ao `AuditService` como `permission_denied`.
+
 ## Guard
 
 Fonte: `src/studio/middleware/guard.ts`

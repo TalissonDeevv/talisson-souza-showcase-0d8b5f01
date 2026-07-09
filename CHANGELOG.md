@@ -1,5 +1,17 @@
 # Changelog
 
+## TS Studio Milestone 1
+
+- Criada a fundacao de autenticacao administrativa do TS Studio com Supabase Auth no projeto Principal.
+- Criados `StudioAuthProvider`, `StudioPermissionProvider` e `StudioSessionProvider`.
+- Criados hooks administrativos para auth, sessao, usuario, roles e permissoes.
+- Criados guards `AuthGuard`, `RoleGuard`, `PermissionGuard` e `ModuleGuard`.
+- Criados services para auth, sessao, permissao e auditoria.
+- Separados contratos internos de API em queries, commands e mutations.
+- Criada migration local para `studio.admin_sessions`, `studio.admin_login_attempts`, `studio.admin_session_nonces` e `studio.admin_auth_rate_limits`.
+- Criado auditor `npm run audit:auth`.
+- Documentada a arquitetura de auth, sessao e RBAC da Milestone 1.
+
 ## TS Studio Milestone 0
 
 - Alinhada a fundacao do TS Studio entre registry TypeScript, RBAC TypeScript e migration SQL.

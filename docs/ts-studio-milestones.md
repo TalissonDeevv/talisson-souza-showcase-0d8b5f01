@@ -64,6 +64,8 @@ Criterios de aceite:
 
 ## Milestone 1 - Security and Audit
 
+Status: concluida localmente na Milestone 1 de autenticacao administrativa.
+
 Objetivo: criar a base server-side para sessao administrativa, RBAC real, auditoria e rastreabilidade.
 
 Modulos envolvidos: Security and Audit, Users and RBAC como consumidor parcial.
@@ -110,6 +112,16 @@ Criterios de aceite:
 - permission denied retorna erro padronizado;
 - escritas sensiveis geram audit event;
 - nenhum secret aparece no browser ou em logs.
+
+Entregas realizadas nesta milestone:
+
+- `AuthService`, `PermissionService`, `SessionService` e `AuditService`;
+- providers de auth, permissao e sessao;
+- hooks reutilizaveis;
+- guards por auth, role, permission e module;
+- migration local de auth foundation;
+- auditor `npm run audit:auth`;
+- documentacao de auth, sessao, RBAC e relatorio tecnico.
 
 ## Milestone 2 - Users and RBAC
 

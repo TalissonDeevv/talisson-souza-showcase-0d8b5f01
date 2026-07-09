@@ -1,4 +1,7 @@
 import type { StudioApiEndpoint } from "../types/core";
+import { STUDIO_API_COMMANDS } from "./commands";
+import { STUDIO_API_MUTATIONS } from "./mutations";
+import { STUDIO_API_QUERIES } from "./queries";
 
 export const STUDIO_API_BASE_PATH = "/api/studio";
 
@@ -64,6 +67,12 @@ export const STUDIO_API_ENDPOINTS = [
     description: "Reads filtered administrative audit events.",
   },
 ] as const satisfies readonly StudioApiEndpoint[];
+
+export const STUDIO_API_OPERATIONS = [
+  ...STUDIO_API_QUERIES,
+  ...STUDIO_API_COMMANDS,
+  ...STUDIO_API_MUTATIONS,
+] as const;
 
 export interface StudioApiRequest<TBody = Record<string, unknown>> {
   endpointKey: string;

@@ -1322,6 +1322,18 @@ Deploy nao e funcao inicial do TS Studio. O Studio pode exibir status de Vercel 
 | Dependencias sem seed | `studio.module_dependencies` agora recebe seed coerente com o registry TypeScript. |
 | Auditoria insuficiente | `npm run audit:ts-studio` agora compara registry, RBAC, SQL, modulos, permissoes e grants por role. |
 
+## Fundacao entregue na Milestone 1
+
+| Area | Entrega |
+| --- | --- |
+| Auth | Login administrativo exclusivo via Supabase Principal. |
+| Session | Recover, refresh, expiracao, invalidacao e multiplas abas preparados. |
+| RBAC | Verificacao por registry oficial, roles, permissoes e modulos. |
+| Guards | `AuthGuard`, `RoleGuard`, `PermissionGuard` e `ModuleGuard`. |
+| Auditoria | Eventos de auth e permission denied passam pelo `AuditService`. |
+| Banco | Migration local para sessoes, tentativas, nonces e rate limit administrativos. |
+| Restricao | `/studio/*` ainda nao foi conectado ao `App.tsx`; nenhuma rota publica foi alterada. |
+
 ## Fluxograma das APIs
 
 ```mermaid

@@ -72,12 +72,16 @@ export interface StudioRouteDefinition {
 }
 
 export interface StudioUserSession {
+  sessionId?: string;
   userId: string;
   email?: string;
   displayName?: string;
   roles: readonly StudioRoleKey[];
+  permissions?: readonly string[];
   environment: StudioEnvironment;
   issuedAt: string;
+  expiresAt?: string;
+  lastSeenAt?: string;
 }
 
 export interface StudioAuditEvent {

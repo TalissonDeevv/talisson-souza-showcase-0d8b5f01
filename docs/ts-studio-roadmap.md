@@ -19,6 +19,23 @@ Entregas:
 - seed de permissoes e grants por role em paridade com o codigo;
 - auditor `audit:ts-studio` validando registry, RBAC e SQL.
 
+## Milestone 1
+
+Status: concluida localmente.
+
+Objetivo: criar a fundacao de autenticacao administrativa, sessao, RBAC, guards e auditoria.
+
+Entregas:
+
+- `AuthService`, `SessionService`, `PermissionService` e `AuditService`;
+- `StudioAuthProvider`, `StudioPermissionProvider` e `StudioSessionProvider`;
+- hooks de auth, sessao, usuario, role e permissao;
+- guards para `/studio/*`;
+- contratos internos de API separados em queries, commands e mutations;
+- migration local de auth foundation;
+- auditor `audit:auth`;
+- documentacao de auth, sessao, RBAC e relatorio tecnico.
+
 ## Sprint 3
 
 Objetivo: transformar a engenharia reversa do site em blueprint de CMS profissional.

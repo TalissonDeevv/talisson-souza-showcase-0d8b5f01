@@ -85,3 +85,24 @@ Eventos criticos:
 - moderation action;
 - migration action;
 - deploy approval.
+## Milestone 1
+
+A Milestone 1 criou a fundacao de autenticacao administrativa sem ativar rotas publicas.
+
+Controles implementados:
+
+- Supabase Auth exclusivo no Supabase Principal;
+- isolamento completo do fluxo Discord dos comentarios;
+- CSRF token em memoria;
+- replay protection por request id;
+- validacao de origem;
+- rate limit local preparado;
+- timeout de sessao;
+- refresh automatico;
+- invalidacao global em logout;
+- BroadcastChannel para multiplas abas;
+- guards por autenticacao, role, permissao e modulo;
+- auditoria de login, logout, falha de login, permission denied e expiracao;
+- migration local com RLS, FORCE RLS, policies e indices.
+
+O schema `studio` continua privado. Qualquer persistencia real de sessao e auditoria deve passar por API server-side com service role.
