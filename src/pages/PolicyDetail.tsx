@@ -1,21 +1,21 @@
-import { useParams, Navigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { ChevronRight, ArrowLeft, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import Layout from '@/components/layout/Layout';
-import SEO from '@/components/SEO';
-import PolicyLayout from '@/components/PolicyLayout';
-import { useTheme } from '@/contexts/ThemeContext';
-import { getText } from '@/utils/translations';
-import { policySections } from '@/data/policies-content';
+import { useParams, Navigate, Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { ArrowLeft, ArrowRight, ChevronRight, FileText } from "lucide-react";
+import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import { MotionRail, PageHero } from "@/components/ui/PageIdentity";
+import { useTheme } from "@/contexts/ThemeContext";
+import { getText } from "@/utils/translations";
+import { policySections } from "@/data/policies-content";
 
 const PolicyDetail = () => {
   const { language } = useTheme();
   const { sectionId } = useParams<{ sectionId: string }>();
-  const lang = language as 'pt' | 'en';
-  const basePath = lang === 'en' ? '/en-us/policies' : '/politicas';
+  const lang = language as "pt" | "en";
+  const basePath = lang === "en" ? "/en-us/policies" : "/politicas";
 
-  const sectionIndex = policySections.findIndex(s => s.id === sectionId);
+  const sectionIndex = policySections.findIndex((item) => item.id === sectionId);
   const section = policySections[sectionIndex];
 
   if (!section) {
@@ -26,86 +26,139 @@ const PolicyDetail = () => {
   const next = sectionIndex < policySections.length - 1 ? policySections[sectionIndex + 1] : null;
 
   return (
-    <Layout>
+    <Layout withPadding={false}>
       <SEO
-        title={`${section.title[lang]} | ${getText(language, 'Políticas', 'Policies')}`}
+        title={`${section.title[lang]} | ${getText(language, "Políticas", "Policies")}`}
         description={section.paragraphs[0][lang].slice(0, 155)}
-        canonical={`${lang === 'en' ? '/en-us/policies' : '/politicas'}/${section.id}`}
-        keywords={lang === 'pt'
-          ? ['políticas', 'termos de uso', 'desenvolvimento de software', section.title.pt.toLowerCase()]
-          : ['policies', 'terms of use', 'software development', section.title.en.toLowerCase()]
+        canonical={`${basePath}/${section.id}`}
+        keywords={lang === "pt" ? ["políticas", "termos de uso", section.title.pt.toLowerCase()] : ["policies", "terms of use", section.title.en.toLowerCase()]}
+      />
+
+      <PageHero
+        compact
+        eyebrow={getText(language, "Políticas", "Policies")}
+        title={section.title[lang]}
+        subtitle={section.paragraphs[0][lang]}
+        meta={
+          <MotionRail
+            className="max-w-2xl"
+            items={[
+              { value: String(sectionIndex + 1).padStart(2, "0"), label: getText(language, "documento", "document") },
+              { value: policySections.length, label: getText(language, "total", "total") },
+              { value: "2026", label: getText(language, "revisão", "review") },
+            ]}
+          />
+        }
+        actions={
+          <Link
+            to={basePath}
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            {getText(language, "Voltar à central", "Back to hub")}
+          </Link>
         }
       />
 
-      <div className="pt-20 lg:pt-24 min-h-screen">
-        <div className="container mx-auto px-4 lg:px-8">
-          {/* Breadcrumb */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-            className="flex items-center gap-2 text-xs text-muted-foreground mb-8 font-mono tracking-wider uppercase"
-          >
-            <Link to={basePath} className="hover:text-foreground transition-colors">
-              {getText(language, 'Políticas', 'Policies')}
-            </Link>
-            <ChevronRight className="w-3 h-3" />
-            <span className="text-foreground">{section.title[lang]}</span>
-          </motion.div>
 
-          <PolicyLayout activeSectionId={section.id}>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <h1 className="text-3xl lg:text-4xl font-bold tracking-tight mb-10">
-                {section.title[lang]}
-              </h1>
+      <section id="documento" className="relative scroll-mt-28 overflow-hidden py-12 lg:py-16">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-8 flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.16em] text-muted-foreground/60">
+              <Link to={basePath} className="transition-colors hover:text-foreground">
+                {getText(language, "Políticas", "Policies")}
+              </Link>
+              <ChevronRight className="h-3 w-3" />
+              <span className="text-foreground">{section.title[lang]}</span>
+            </div>
 
-              <div className="space-y-6">
-                {section.paragraphs.map((p, j) => (
-                  <p key={j} className="text-muted-foreground leading-[1.9] text-base lg:text-[17px]">
-                    {p[lang]}
+            <div className="grid gap-10 lg:grid-cols-[0.62fr_1.38fr] lg:items-start">
+              <ScrollReveal>
+                <aside className="sticky top-28">
+                  <span className="mb-5 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                    {getText(language, "Leitura", "Reading")}
+                  </span>
+                  <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
+                    {getText(language, "Um documento, sem ruído.", "One document, no noise.")}
+                  </h2>
+                  <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                    {getText(
+                      language,
+                      "A intenção aqui é deixar responsabilidades visíveis antes de qualquer contratação, compra ou uso de conteúdo.",
+                      "The goal here is to make responsibilities visible before any engagement, purchase or use of content."
+                    )}
                   </p>
-                ))}
-              </div>
+                  <div className="mt-8 h-1.5 overflow-hidden rounded-full bg-border/35">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${((sectionIndex + 1) / policySections.length) * 100}%` }}
+                      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                      className="h-full rounded-full bg-foreground/60"
+                    />
+                  </div>
+                </aside>
+              </ScrollReveal>
 
-              {/* Prev / Next navigation */}
-              <div className="mt-16 pt-8 border-t border-border flex items-center justify-between gap-4">
-                {prev ? (
-                  <Link
-                    to={`${basePath}/${prev.id}`}
-                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
-                  >
-                    <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                    <div className="text-left">
-                      <div className="text-[10px] font-mono uppercase tracking-widest mb-0.5">
-                        {getText(language, 'Anterior', 'Previous')}
-                      </div>
-                      <div className="font-medium text-foreground">{prev.title[lang]}</div>
-                    </div>
-                  </Link>
-                ) : <div />}
-                {next ? (
-                  <Link
-                    to={`${basePath}/${next.id}`}
-                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group text-right"
-                  >
-                    <div>
-                      <div className="text-[10px] font-mono uppercase tracking-widest mb-0.5">
-                        {getText(language, 'Próximo', 'Next')}
-                      </div>
-                      <div className="font-medium text-foreground">{next.title[lang]}</div>
-                    </div>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                ) : <div />}
-              </div>
-            </motion.div>
-          </PolicyLayout>
+              <article className="relative">
+                <div className="absolute left-0 top-0 hidden h-full w-px bg-gradient-to-b from-transparent via-border/30 to-transparent lg:block" />
+                <div className="space-y-7 lg:pl-10">
+                  {section.paragraphs.map((paragraph, index) => (
+                    <ScrollReveal key={index} delay={Math.min(index * 0.025, 0.18)}>
+                      <motion.p
+                        initial={{ opacity: 0, y: 14 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-70px" }}
+                        transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                        className={index === 0 ? "border-l border-foreground/25 pl-5 font-serif text-2xl leading-[1.45] text-foreground" : "text-[16px] leading-[1.92] text-muted-foreground"}
+                      >
+                        {paragraph[lang]}
+                      </motion.p>
+                    </ScrollReveal>
+                  ))}
+                </div>
+              </article>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section className="pb-20">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl border-y border-border/20 py-6">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-stretch sm:justify-between">
+              {prev ? (
+                <Link to={`${basePath}/${prev.id}`} className="group flex flex-1 items-center gap-3 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground">
+                  <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+                  <span>
+                    <span className="block text-[10px] uppercase tracking-[0.22em] text-muted-foreground/50">{getText(language, "Anterior", "Previous")}</span>
+                    <span className="mt-1 block font-medium text-foreground">{prev.title[lang]}</span>
+                  </span>
+                </Link>
+              ) : (
+                <span className="hidden flex-1 sm:block" />
+              )}
+
+              <Link to={basePath} className="inline-flex items-center justify-center gap-2 rounded-full border border-border/30 bg-background/30 px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-foreground/10">
+                <FileText className="h-4 w-4" />
+                {getText(language, "Central", "Hub")}
+              </Link>
+
+              {next ? (
+                <Link to={`${basePath}/${next.id}`} className="group flex flex-1 items-center justify-end gap-3 py-3 text-right text-sm text-muted-foreground transition-colors hover:text-foreground">
+                  <span>
+                    <span className="block text-[10px] uppercase tracking-[0.22em] text-muted-foreground/50">{getText(language, "Próximo", "Next")}</span>
+                    <span className="mt-1 block font-medium text-foreground">{next.title[lang]}</span>
+                  </span>
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              ) : (
+                <span className="hidden flex-1 sm:block" />
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 };

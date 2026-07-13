@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import ScrollToTop from "@/components/ScrollToTop";
+import SmoothScroll from "@/components/SmoothScroll";
 import { lazy, Suspense } from "react";
 import { StudioRouter } from "./studio/routes/StudioRouter";
 
@@ -44,76 +45,78 @@ const RouteFallback = () => (
 const AppRoutes = () => (
   <ThemeProvider>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <ScrollToTop />
-      <Suspense fallback={<RouteFallback />}>
-        <Routes>
-          {/* ===== PT-BR Routes (root) ===== */}
-          <Route path="/" element={<Index />} />
-          <Route path="/sobre" element={<About />} />
-          <Route path="/projetos" element={<Projects />} />
-          <Route path="/projetos/:id" element={<ProjectDetail />} />
-          <Route path="/servicos" element={<Services />} />
-          <Route path="/servicos/:serviceId" element={<ServiceDetail />} />
-          <Route path="/carreira" element={<Career />} />
-          <Route path="/contato" element={<Contact />} />
-          <Route path="/como-trabalho" element={<HowIWork />} />
-          <Route path="/decisoes-tecnicas" element={<TechDecisions />} />
-          <Route path="/acessibilidade" element={<Accessibility />} />
-          <Route path="/livro" element={<Book />} />
-          <Route path="/principios" element={<Principles />} />
-          <Route path="/checklists" element={<Checklists />} />
-          <Route path="/checklists/:checklistId" element={<ChecklistDetail />} />
+      <SmoothScroll>
+        <Toaster />
+        <Sonner />
+        <ScrollToTop />
+        <Suspense fallback={<RouteFallback />}>
+          <Routes>
+            {/* ===== PT-BR Routes (root) ===== */}
+            <Route path="/" element={<Index />} />
+            <Route path="/sobre" element={<About />} />
+            <Route path="/projetos" element={<Projects />} />
+            <Route path="/projetos/:id" element={<ProjectDetail />} />
+            <Route path="/servicos" element={<Services />} />
+            <Route path="/servicos/:serviceId" element={<ServiceDetail />} />
+            <Route path="/carreira" element={<Career />} />
+            <Route path="/contato" element={<Contact />} />
+            <Route path="/como-trabalho" element={<HowIWork />} />
+            <Route path="/decisoes-tecnicas" element={<TechDecisions />} />
+            <Route path="/acessibilidade" element={<Accessibility />} />
+            <Route path="/livro" element={<Book />} />
+            <Route path="/principios" element={<Principles />} />
+            <Route path="/checklists" element={<Checklists />} />
+            <Route path="/checklists/:checklistId" element={<ChecklistDetail />} />
 
-          <Route path="/artigos" element={<Articles />} />
-          <Route path="/artigos/tag/:tag" element={<TagPage />} />
-          <Route path="/trilhas/:trailId" element={<TrailPage />} />
-          <Route path="/artigos/:slug" element={<MarketTrailArticle />} />
-          <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/feedbacks" element={<Feedbacks />} />
-          <Route path="/politicas" element={<Policies />} />
-          <Route path="/politicas/:sectionId" element={<PolicyDetail />} />
-          <Route path="/studio/*" element={<StudioRouter />} />
+            <Route path="/artigos" element={<Articles />} />
+            <Route path="/artigos/tag/:tag" element={<TagPage />} />
+            <Route path="/trilhas/:trailId" element={<TrailPage />} />
+            <Route path="/artigos/:slug" element={<MarketTrailArticle />} />
+            <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/feedbacks" element={<Feedbacks />} />
+            <Route path="/politicas" element={<Policies />} />
+            <Route path="/politicas/:sectionId" element={<PolicyDetail />} />
+            <Route path="/studio/*" element={<StudioRouter />} />
 
-          <Route path="/en-us" element={<Index />} />
-          <Route path="/en-us/about" element={<About />} />
-          <Route path="/en-us/projects" element={<Projects />} />
-          <Route path="/en-us/projects/:id" element={<ProjectDetail />} />
-          <Route path="/en-us/services" element={<Services />} />
-          <Route path="/en-us/services/:serviceId" element={<ServiceDetail />} />
-          <Route path="/en-us/career" element={<Career />} />
-          <Route path="/en-us/contact" element={<Contact />} />
-          <Route path="/en-us/how-i-work" element={<HowIWork />} />
-          <Route path="/en-us/tech-decisions" element={<TechDecisions />} />
-          <Route path="/en-us/accessibility" element={<Accessibility />} />
-          <Route path="/en-us/book" element={<Book />} />
-          <Route path="/en-us/principles" element={<Principles />} />
-          <Route path="/en-us/checklists" element={<Checklists />} />
-          <Route path="/en-us/checklists/:checklistId" element={<ChecklistDetail />} />
+            <Route path="/en-us" element={<Index />} />
+            <Route path="/en-us/about" element={<About />} />
+            <Route path="/en-us/projects" element={<Projects />} />
+            <Route path="/en-us/projects/:id" element={<ProjectDetail />} />
+            <Route path="/en-us/services" element={<Services />} />
+            <Route path="/en-us/services/:serviceId" element={<ServiceDetail />} />
+            <Route path="/en-us/career" element={<Career />} />
+            <Route path="/en-us/contact" element={<Contact />} />
+            <Route path="/en-us/how-i-work" element={<HowIWork />} />
+            <Route path="/en-us/tech-decisions" element={<TechDecisions />} />
+            <Route path="/en-us/accessibility" element={<Accessibility />} />
+            <Route path="/en-us/book" element={<Book />} />
+            <Route path="/en-us/principles" element={<Principles />} />
+            <Route path="/en-us/checklists" element={<Checklists />} />
+            <Route path="/en-us/checklists/:checklistId" element={<ChecklistDetail />} />
 
-          <Route path="/en-us/articles" element={<Articles />} />
-          <Route path="/en-us/articles/tag/:tag" element={<TagPage />} />
-          <Route path="/en-us/trails/:trailId" element={<TrailPage />} />
-          <Route path="/en-us/articles/:slug" element={<MarketTrailArticle />} />
-          <Route path="/en-us/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/en-us/faq" element={<FAQ />} />
-          <Route path="/en-us/feedbacks" element={<Feedbacks />} />
-          <Route path="/en-us/policies" element={<Policies />} />
-          <Route path="/en-us/policies/:sectionId" element={<PolicyDetail />} />
+            <Route path="/en-us/articles" element={<Articles />} />
+            <Route path="/en-us/articles/tag/:tag" element={<TagPage />} />
+            <Route path="/en-us/trails/:trailId" element={<TrailPage />} />
+            <Route path="/en-us/articles/:slug" element={<MarketTrailArticle />} />
+            <Route path="/en-us/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/en-us/faq" element={<FAQ />} />
+            <Route path="/en-us/feedbacks" element={<Feedbacks />} />
+            <Route path="/en-us/policies" element={<Policies />} />
+            <Route path="/en-us/policies/:sectionId" element={<PolicyDetail />} />
 
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/:id" element={<ProjectDetail />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/services/:serviceId" element={<ServiceDetail />} />
-          <Route path="/career" element={<Career />} />
-          <Route path="/contact" element={<Contact />} />
-          {/* 404 */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Suspense>
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/:id" element={<ProjectDetail />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/services/:serviceId" element={<ServiceDetail />} />
+            <Route path="/career" element={<Career />} />
+            <Route path="/contact" element={<Contact />} />
+            {/* 404 */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </SmoothScroll>
     </TooltipProvider>
   </ThemeProvider>
 );

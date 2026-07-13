@@ -8,6 +8,8 @@ import {
 
 interface SocialIconsProps {
   className?: string;
+  centered?: boolean;
+  showLabels?: boolean;
 }
 
 interface SocialLink {
@@ -16,7 +18,7 @@ interface SocialLink {
   Icon: IconType;
 }
 
-const SocialIcons = ({ className = "" }: SocialIconsProps) => {
+const SocialIcons = ({ className = "", centered = false, showLabels = true }: SocialIconsProps) => {
   const socialLinks: SocialLink[] = [
     { name: "GitHub", href: "https://github.com/TalinhoDev", Icon: FaGithub },
     {
@@ -38,7 +40,7 @@ const SocialIcons = ({ className = "" }: SocialIconsProps) => {
 
   return (
     <div
-      className={`flex flex-wrap items-center justify-center gap-2.5 ${className}`}
+      className={`flex flex-wrap items-center gap-2.5 ${centered ? "justify-center" : "justify-start"} ${className}`}
     >
       {socialLinks.map(({ href, Icon, name }) => (
         <a
@@ -46,14 +48,19 @@ const SocialIcons = ({ className = "" }: SocialIconsProps) => {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex h-9 items-center gap-2 rounded-full border border-foreground/10 bg-foreground/[0.03] px-3.5 text-sm text-muted-foreground backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/25 hover:bg-foreground/[0.07] hover:text-foreground hover:shadow-[0_10px_30px_hsl(var(--foreground)/0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/25"
+          title={name}
+          className={
+            showLabels
+              ? "group inline-flex h-9 items-center justify-center gap-2 rounded-full border border-foreground/10 bg-foreground/[0.03] px-3.5 text-sm text-muted-foreground backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/25 hover:bg-foreground/[0.07] hover:text-foreground hover:shadow-[0_10px_30px_hsl(var(--foreground)/0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/25"
+              : "group inline-flex h-11 w-11 items-center justify-center rounded-full border border-foreground/12 bg-foreground/[0.035] text-muted-foreground backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/25 hover:bg-foreground/[0.08] hover:text-foreground hover:shadow-[0_14px_36px_hsl(var(--foreground)/0.09)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/25"
+          }
           aria-label={name}
         >
           <Icon
             className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:scale-110"
             aria-hidden="true"
           />
-          <span>{name}</span>
+          {showLabels && <span>{name}</span>}
         </a>
       ))}
     </div>

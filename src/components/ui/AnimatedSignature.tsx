@@ -5,7 +5,7 @@ import {
 
 const AnimatedSignature = () => (
   <div
-    className="animated-signature-wrapper relative w-full max-w-[980px] select-none"
+    className="animated-signature-wrapper relative w-full max-w-[1360px] select-none"
     role="img"
     aria-label="Assinatura Talisson Souza"
   >

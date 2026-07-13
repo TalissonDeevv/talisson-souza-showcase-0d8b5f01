@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import { Check, Send, AlertCircle, ShieldCheck } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import {
   Select,
@@ -20,7 +19,6 @@ interface FormData {
   company: string;
   subject: string;
   projectType: string;
-  budget: string;
   timeline: string;
   preferredContact: string;
   howFound: string;
@@ -41,11 +39,20 @@ const initialFormData: FormData = {
   company: "",
   subject: "",
   projectType: "",
-  budget: "",
   timeline: "",
   preferredContact: "",
   howFound: "",
   message: "",
+};
+
+const getSupabaseClient = async () => {
+  try {
+    const { supabase } = await import("@/integrations/supabase/client");
+    return supabase;
+  } catch (error) {
+    console.warn("Supabase is not configured for the contact form.", error);
+    return null;
+  }
 };
 
 const ContactForm = () => {
@@ -56,6 +63,7 @@ const ContactForm = () => {
   const [captchaInput, setCaptchaInput] = useState("");
   const [captcha, setCaptcha] = useState<CaptchaChallenge | null>(null);
   const [captchaLoading, setCaptchaLoading] = useState(true);
+  const [isSupabaseAvailable, setIsSupabaseAvailable] = useState(true);
   const [formStartedAt] = useState(() => Date.now());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -65,17 +73,13 @@ const ContactForm = () => {
     ? ['Site institucional', 'Landing page', 'E-commerce', 'Sistema web', 'Aplicativo', 'API / Backend', 'Bot / Automação', 'Consultoria', 'Outro']
     : ['Institutional website', 'Landing page', 'E-commerce', 'Web system', 'Application', 'API / Backend', 'Bot / Automation', 'Consulting', 'Other'];
 
-  const budgetRanges = language === 'pt'
-    ? ['Até R$ 3.000', 'R$ 3.000 - R$ 8.000', 'R$ 8.000 - R$ 15.000', 'R$ 15.000 - R$ 30.000', 'Acima de R$ 30.000', 'A definir']
-    : ['Up to $600', '$600 - $1,500', '$1,500 - $3,000', '$3,000 - $6,000', 'Above $6,000', 'To be defined'];
-
   const timelines = language === 'pt'
     ? ['Urgente (menos de 2 semanas)', '1 a 2 meses', '2 a 4 meses', '4 a 6 meses', 'Sem prazo definido']
     : ['Urgent (less than 2 weeks)', '1 to 2 months', '2 to 4 months', '4 to 6 months', 'No defined deadline'];
 
   const contactMethods = language === 'pt'
-    ? ['Email', 'WhatsApp', 'Ligação', 'Sem preferência']
-    : ['Email', 'WhatsApp', 'Phone call', 'No preference'];
+    ? ['Email', 'WhatsApp', 'Sem preferência']
+    : ['Email', 'WhatsApp', 'No preference'];
 
   const howFoundOptions = language === 'pt'
     ? ['Google', 'LinkedIn', 'GitHub', 'YouTube', 'Indicação', 'Redes sociais', 'Outro']
@@ -89,6 +93,17 @@ const ContactForm = () => {
     setCaptchaLoading(true);
 
     try {
+      const supabase = await getSupabaseClient();
+
+      if (!supabase) {
+        setIsSupabaseAvailable(false);
+        setCaptcha(null);
+        setCaptchaInput("");
+        setErrors((prev) => ({ ...prev, captcha: undefined }));
+        return;
+      }
+
+      setIsSupabaseAvailable(true);
       const { data, error } = await supabase.functions.invoke(
         "send-contact-email",
         { method: "GET" },
@@ -152,9 +167,9 @@ const ContactForm = () => {
       newErrors.message = getText(language, 'Mensagem muito longa (máx. 5000)', 'Message too long (max. 5000)');
     }
 
-    if (!captcha) {
+    if (isSupabaseAvailable && !captcha) {
       newErrors.captcha = getText(language, 'Carregando verificação', 'Loading verification');
-    } else if (!captchaInput.trim()) {
+    } else if (isSupabaseAvailable && !captchaInput.trim()) {
       newErrors.captcha = getText(language, 'Resolva o captcha', 'Solve the captcha');
     }
 
@@ -184,6 +199,32 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
+      const supabase = await getSupabaseClient();
+
+      if (!supabase) {
+        const lines = [
+          `Nome: ${formData.name.trim()}`,
+          `Email: ${formData.email.trim()}`,
+          formData.phone.trim() ? `WhatsApp: ${formData.phone.trim()}` : null,
+          formData.company.trim() ? `Empresa: ${formData.company.trim()}` : null,
+          `Assunto: ${formData.subject}`,
+          formData.projectType ? `Tipo de projeto: ${formData.projectType}` : null,
+          formData.timeline ? `Prazo: ${formData.timeline}` : null,
+          "",
+          formData.message.trim(),
+        ].filter(Boolean);
+
+        window.location.href = `mailto:talinhodev@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+        setIsSubmitted(true);
+        setFormData(initialFormData);
+        setCaptchaInput("");
+        toast({
+          title: getText(language, "Mensagem preparada", "Message prepared"),
+          description: getText(language, "Seu app de email foi aberto com os dados preenchidos.", "Your email app opened with the details filled in."),
+        });
+        return;
+      }
+
       const { error } = await supabase.functions.invoke('send-contact-email', {
         body: {
           name: formData.name.trim(),
@@ -192,7 +233,6 @@ const ContactForm = () => {
           company: formData.company.trim() || null,
           subject: formData.subject,
           projectType: formData.projectType || null,
-          budget: formData.budget || null,
           timeline: formData.timeline || null,
           preferredContact: formData.preferredContact || null,
           howFound: formData.howFound || null,
@@ -346,20 +386,12 @@ const ContactForm = () => {
         </div>
       </div>
 
-      {/* Row 4: Budget + Timeline */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div>
-          <label className="block text-foreground text-sm font-medium mb-2">
-            {getText(language, 'Orçamento estimado', 'Estimated budget')}
-          </label>
-          <CustomSelect field="budget" placeholder={getText(language, 'Selecione a faixa', 'Select range')} options={budgetRanges} />
-        </div>
-        <div>
-          <label className="block text-foreground text-sm font-medium mb-2">
-            {getText(language, 'Prazo desejado', 'Desired timeline')}
-          </label>
-          <CustomSelect field="timeline" placeholder={getText(language, 'Selecione o prazo', 'Select timeline')} options={timelines} />
-        </div>
+      {/* Row 4: Timeline */}
+      <div>
+        <label className="block text-foreground text-sm font-medium mb-2">
+          {getText(language, 'Prazo desejado', 'Desired timeline')}
+        </label>
+        <CustomSelect field="timeline" placeholder={getText(language, 'Selecione o prazo', 'Select timeline')} options={timelines} />
       </div>
 
       {/* Row 5: Preferred Contact + How Found */}
@@ -395,7 +427,7 @@ const ContactForm = () => {
       </div>
 
       {/* Captcha */}
-      <div>
+      <div className={isSupabaseAvailable ? "" : "hidden"}>
         <label className="block text-foreground text-sm font-medium mb-2" htmlFor="captcha">
           <span className="flex items-center gap-1.5">
             <ShieldCheck className="w-4 h-4 text-muted-foreground" />
@@ -422,9 +454,19 @@ const ContactForm = () => {
         <ErrorMsg field="captcha" />
       </div>
 
+      {!isSupabaseAvailable && (
+        <div className="rounded-xl border border-border/30 bg-card/35 px-4 py-3 text-sm leading-relaxed text-muted-foreground">
+          {getText(
+            language,
+            "Preview local sem Supabase: o envio abrira seu aplicativo de email com a mensagem preenchida.",
+            "Local preview without Supabase: submit will open your email app with the message filled in.",
+          )}
+        </div>
+      )}
+
       {/* Submit */}
       <motion.button
-        type="submit" disabled={isSubmitting || captchaLoading || !captcha}
+        type="submit" disabled={isSubmitting || (isSupabaseAvailable && (captchaLoading || !captcha))}
         whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
         className={`w-full inline-flex items-center justify-center gap-2 bg-foreground hover:opacity-90 text-primary-foreground font-medium py-3.5 px-6 rounded-xl transition-all duration-300 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
         style={{ boxShadow: '0 0 20px hsl(var(--foreground) / 0.15)' }}

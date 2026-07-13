@@ -40,18 +40,27 @@ const FAQ = () => {
 
   return (
     <div>
-      <Accordion type="single" collapsible className="w-full">
+      <Accordion type="single" collapsible className="w-full border-y border-border/25">
         {faqData.map((item, index) => (
           <AccordionItem 
             key={index} 
             value={`item-${index}`}
-            className="border-b border-border/40 last:border-b-0"
+            className="border-b border-border/25 last:border-b-0"
           >
-            <AccordionTrigger className="text-left py-6 text-foreground hover:no-underline hover:opacity-70 transition-opacity duration-200 text-base font-medium">
-              {item.question}
+            <AccordionTrigger className="group py-6 text-left text-foreground hover:no-underline">
+              <span className="flex items-center gap-4 pr-4">
+                <span className="font-serif text-xl leading-none text-foreground/[0.16] transition-colors duration-300 group-hover:text-foreground/35">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="text-base font-medium leading-snug">
+                  {item.question}
+                </span>
+              </span>
             </AccordionTrigger>
-            <AccordionContent className="pb-6 text-sm text-muted-foreground leading-relaxed">
-              {item.answer}
+            <AccordionContent className="pb-6 pl-12 text-sm leading-relaxed text-muted-foreground sm:pl-16">
+              <span className="block max-w-2xl">
+                {item.answer}
+              </span>
             </AccordionContent>
           </AccordionItem>
         ))}

@@ -18,6 +18,14 @@ import AnimatedSignature from "@/components/ui/AnimatedSignature";
 import { SiJavascript, SiTypescript, SiPython, SiReact, SiNodedotjs, SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFirebase } from "react-icons/si";
 import CompanyLogos from "@/components/ui/CompanyLogos";
 import DiscordCommunityCard from "@/components/ui/DiscordCommunityCard";
+import TestimonialsMarquee from "@/components/ui/TestimonialsMarquee";
+import StoryHighlight from "@/components/ui/StoryHighlight";
+import SectionSignatureHeader from "@/components/ui/SectionSignatureHeader";
+import signatureTrajetoria from "@/assets/signature-trajetoria.png";
+import signatureFeedbacks from "@/assets/signature-feedbacks.png";
+import signatureProjetos from "@/assets/signature-projetos.png";
+import signatureServicos from "@/assets/signature-servicos.png";
+import signatureDiscord from "@/assets/signature-discord.png";
 const agonLogo = "/images/discord/agon-logo.png";
 const agonBanner = "/images/discord/agon-banner.png";
 const hytaleLogo = "/images/discord/hytale-logo.gif";
@@ -72,6 +80,26 @@ const Index = () => {
   { name: 'Git', icon: SiGit },
   { name: 'Docker', icon: SiDocker },
   { name: 'Firebase', icon: SiFirebase }];
+  const stackLayers = [
+    {
+      number: "01",
+      title: getText(language, "Interface", "Interface"),
+      description: getText(language, "Experi\u00eancias r\u00e1pidas, responsivas e f\u00e1ceis de manter.", "Fast, responsive and maintainable experiences."),
+      tools: techStack.filter((tech) => ["React", "Tailwind", "JavaScript", "TypeScript"].includes(tech.name)),
+    },
+    {
+      number: "02",
+      title: getText(language, "Aplica\u00e7\u00e3o", "Application"),
+      description: getText(language, "Regras, integra\u00e7\u00f5es e fluxos organizados para crescer sem ru\u00eddo.", "Rules, integrations and flows organized to grow without noise."),
+      tools: techStack.filter((tech) => ["Node.js", "Next.js", "Python", "Firebase"].includes(tech.name)),
+    },
+    {
+      number: "03",
+      title: getText(language, "Dados & opera\u00e7\u00e3o", "Data & operations"),
+      description: getText(language, "Persist\u00eancia, versionamento e deploy com base previs\u00edvel.", "Persistence, versioning and deploy with a predictable base."),
+      tools: techStack.filter((tech) => ["PostgreSQL", "MongoDB", "Docker", "Git"].includes(tech.name)),
+    },
+  ];
 
   return (
     <Layout withPadding={false} showDiscordPopup={true}>
@@ -81,7 +109,7 @@ const Index = () => {
         canonical={language === 'en' ? '/en-us' : '/'}
         keywords={language === 'pt' ? ['desenvolvedor full stack', 'CEO', 'sistemas sob medida', 'desenvolvimento web', 'React', 'Node.js', 'TypeScript', 'Cheetah Solutions Network'] : ['full stack developer', 'CEO', 'custom systems', 'web development', 'React', 'Node.js', 'TypeScript', 'Cheetah Solutions Network']} />
 
-      <section className="min-h-[100vh] flex items-center justify-center relative overflow-hidden">
+      <section className="min-h-[115vh] flex items-center justify-center relative overflow-hidden">
         {/* Sophisticated Background Effect */}
         <div className="absolute inset-0 z-0">
           {/* Base gradient */}
@@ -114,14 +142,14 @@ const Index = () => {
 
 
         {/* Content */}
-        <div className="container mx-auto px-6 lg:px-8 relative z-20 pt-24">
-          <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
+        <div className="container mx-auto px-6 lg:px-8 relative z-20 pt-24 pb-24">
+          <div className="flex min-h-[calc(100vh-8rem)] translate-y-[3vh] flex-col items-center justify-center text-center max-w-7xl mx-auto">
             {/* Badge with entrance animation */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-xs sm:text-sm tracking-[0.3em] uppercase text-muted-foreground mb-10">
+              className="text-xs sm:text-sm tracking-[0.3em] uppercase text-muted-foreground mb-8">
 
               {t.hero.badge}
             </motion.p>
@@ -131,7 +159,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.05 }}
-              className="mb-10 flex w-full max-w-[92vw] justify-center"
+              className="mb-8 flex w-full max-w-[98vw] justify-center"
             >
               <AnimatedSignature />
             </motion.div>
@@ -142,22 +170,28 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
-              className="text-lg sm:text-xl text-muted-foreground max-w-2xl mb-14 leading-relaxed">
+              className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mb-0 leading-relaxed">
 
               {t.hero.subtitle}
             </motion.p>
+          </div>
 
+          <div className="flex flex-col items-center text-center">
             {/* CTAs with entrance animation */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.6 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
+              className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
 
               <Link
                 to={language === 'en' ? '/en-us/contact' : '/contato'}
-                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground px-8 py-3.5 rounded-full border border-foreground/20 bg-foreground/5 backdrop-blur-sm hover:bg-foreground/10 hover:border-foreground/40 hover:shadow-[0_0_30px_hsl(var(--foreground)/0.1)] transition-all duration-300">
-                {t.hero.contact}
+                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground transition-all duration-300">
+                <span className="relative">
+                  {t.hero.contact}
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
+                  <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
+                </span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
               
@@ -174,7 +208,8 @@ const Index = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}>
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="mt-2">
 
               <SocialIcons />
             </motion.div>
@@ -182,9 +217,72 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Tech Stack - Premium Interactive Cards */}
+      {/* Tech Stack - Technical Hub */}
       <ParallaxSection
-        className="py-20 lg:py-24"
+        className="py-16 lg:py-20"
+        speed={0.1}
+        backgroundElement={
+        <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+            <div className="absolute left-1/2 top-1/2 hidden h-[560px] w-[760px] -translate-x-1/2 -translate-y-1/2 bg-gradient-radial from-foreground/[0.025] via-transparent to-transparent blur-3xl md:block" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
+          </>
+        }>
+
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12">
+              <div className="lg:col-span-4 lg:pt-6">
+                <motion.span
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium">
+
+                  {getText(language, 'Tecnologias', 'Technologies')}
+                </motion.span>
+                <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
+                  {getText(language, 'Stack T\u00e9cnica', 'Tech Stack')}
+                </h2>
+                <p className="text-base text-muted-foreground leading-relaxed max-w-md mb-7">
+                  {getText(language, 'Ferramentas e tecnologias que domino para construir sistemas robustos e escal\u00e1veis.', 'Tools and technologies I master to build robust and scalable systems.')}
+                </p>
+              </div>
+
+              <div className="lg:col-span-8">
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                  {techStack.map((tech, index) => {
+                    const IconComponent = tech.icon;
+                    return (
+                      <motion.div
+                        key={tech.name}
+                        initial={{ opacity: 0, y: 16, filter: "blur(5px)" }}
+                        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.45, delay: index * 0.025, ease: [0.16, 1, 0.3, 1] }}
+                        whileHover={{ y: -3 }}
+                        className="group flex min-h-[92px] items-center gap-3 rounded-lg border border-border/20 bg-card/25 px-4 py-4 transition-colors duration-300 hover:border-foreground/20 hover:bg-foreground/[0.035]"
+                      >
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-border/25 bg-background/45 text-foreground/65 transition-colors duration-300 group-hover:text-foreground">
+                          <IconComponent className="h-5 w-5" />
+                        </span>
+                        <span className="text-sm font-medium text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
+                          {tech.name}
+                        </span>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </ParallaxSection>
+
+      {/* Tech Stack - Legacy Hidden */}
+      <ParallaxSection
+        className="hidden"
         speed={0.1}
         backgroundElement={
         <>
@@ -281,8 +379,27 @@ const Index = () => {
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+            <SectionSignatureHeader
+              eyebrow={getText(language, 'Experi\u00eancia', 'Experience')}
+              title={getText(language, 'Trajet\u00f3ria', 'Journey')}
+              subtitle={getText(language, 'Posi\u00e7\u00f5es de lideran\u00e7a e contribui\u00e7\u00f5es que moldaram minha carreira em tecnologia.', 'Leadership positions and contributions that shaped my career in technology.')}
+              signature={signatureTrajetoria}
+              className="lg:col-span-12"
+              action={
+                <Link
+                  to={language === 'en' ? '/en-us/career' : '/carreira'}
+                  className="group inline-flex items-center gap-3 text-sm font-medium text-foreground">
+                  <span className="relative">
+                    {getText(language, 'Ver trajet\u00f3ria completa', 'View full career')}
+                    <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
+                    <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
+                  </span>
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+                </Link>
+              }
+            />
             {/* Header */}
-            <ScrollReveal className="lg:col-span-5">
+            <ScrollReveal className="hidden">
               <motion.span
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -302,7 +419,7 @@ const Index = () => {
                 className="group inline-flex items-center gap-3 text-sm font-medium text-foreground">
 
                 <span className="relative">
-                  {getText(language, 'Ver trajetória completa', 'View full career')}
+                    {getText(language, 'Ver trajet\u00f3ria completa', 'View full career')}
                   <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
                   <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
                 </span>
@@ -311,7 +428,7 @@ const Index = () => {
             </ScrollReveal>
             
             {/* Timeline Cards */}
-            <div className="lg:col-span-7 space-y-6 relative">
+            <div className="lg:col-span-10 lg:col-start-2 space-y-6 relative">
               {/* Animated Timeline Line with gradient */}
               <motion.div
                 initial={{ scaleY: 0 }}
@@ -376,21 +493,15 @@ const Index = () => {
 
       {/* Company Logos - Social Proof */}
       <ParallaxSection
-        className="py-16 lg:py-20"
+        className="py-0"
         speed={0.08}
         backgroundElement={
         <>
-            <div className="absolute inset-0 bg-gradient-to-b from-card/20 via-background to-card/20" />
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/10 to-background" />
           </>
         }>
 
-        <div className="container mx-auto px-6 lg:px-8 relative">
-          <ScrollReveal>
-            <CompanyLogos />
-          </ScrollReveal>
-        </div>
+        <CompanyLogos />
       </ParallaxSection>
 
 
@@ -406,7 +517,27 @@ const Index = () => {
 
         
         <div className="container mx-auto px-6 lg:px-8 relative">
-          <ScrollReveal>
+          <SectionSignatureHeader
+            eyebrow={getText(language, 'Portf\u00f3lio', 'Portfolio')}
+            title={t.projects.title}
+            subtitle={t.projects.subtitle}
+            signature={signatureProjetos}
+            className="mb-14"
+            action={
+              <Link
+                to={language === 'en' ? '/en-us/projects' : '/projetos'}
+                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground">
+                <span className="relative">
+                  {t.projects.viewAll}
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
+                  <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
+                </span>
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+              </Link>
+            }
+          />
+
+          <div className="hidden">
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
               <div className="max-w-xl">
                 <motion.span
@@ -436,18 +567,108 @@ const Index = () => {
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
               </Link>
             </div>
-          </ScrollReveal>
+          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="hidden">
+            <ScrollReveal delay={0.05} className="lg:col-span-4">
+              <div className="relative h-full overflow-hidden rounded-lg border border-border/20 bg-card/25 p-7 backdrop-blur-sm">
+                <div className="pointer-events-none absolute inset-x-7 top-0 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
+                <span className="mb-8 block text-[11px] font-medium uppercase tracking-[0.28em] text-muted-foreground/70">
+                  {getText(language, 'Modo de atuação', 'Operating mode')}
+                </span>
+                <h3 className="max-w-xs font-serif text-2xl leading-tight text-foreground lg:text-3xl">
+                  {getText(language, 'Clareza antes do código.', 'Clarity before code.')}
+                </h3>
+                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                  {getText(
+                    language,
+                    'Cada entrega começa com recorte de problema, prioridade técnica e uma rota simples para transformar intenção em produto confiável.',
+                    'Every delivery starts with problem framing, technical priority and a simple path from intent to a reliable product.'
+                  )}
+                </p>
+
+                <div className="mt-8 space-y-3">
+                  {[
+                    getText(language, 'Escopo legível', 'Readable scope'),
+                    getText(language, 'Execução rastreável', 'Traceable execution'),
+                    getText(language, 'Base preparada para evoluir', 'A base ready to evolve'),
+                  ].map((item) => (
+                    <div key={item} className="flex items-center gap-3 text-xs text-muted-foreground/80">
+                      <span className="h-px w-8 bg-foreground/20" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <div className="lg:col-span-8">
+              <div className="overflow-hidden rounded-lg border border-border/20 bg-card/20 backdrop-blur-sm">
+                {[{
+                  number: '01',
+                  title: getText(language, 'Presença digital sob medida', 'Tailored digital presence'),
+                  description: getText(language, 'Sites e aplicações web com acabamento premium, performance e uma estrutura pronta para crescer.', 'Websites and web applications with premium polish, performance and a structure ready to grow.'),
+                  detail: getText(language, 'Interface, front-end e deploy', 'Interface, frontend and deploy')
+                }, {
+                  number: '02',
+                  title: getText(language, 'Operações internas', 'Internal operations'),
+                  description: getText(language, 'Sistemas para organizar fluxos, reduzir retrabalho e dar mais previsibilidade ao dia a dia da equipe.', 'Systems that organize workflows, reduce rework and make day-to-day operations more predictable.'),
+                  detail: getText(language, 'Painéis, automações e integrações', 'Dashboards, automations and integrations')
+                }, {
+                  number: '03',
+                  title: getText(language, 'Direção técnica', 'Technical direction'),
+                  description: getText(language, 'Apoio estratégico para decidir arquitetura, prioridades e próximos passos sem desperdiçar energia.', 'Strategic support for architecture, priorities and next steps without wasting energy.'),
+                  detail: getText(language, 'Diagnóstico, roadmap e revisão', 'Diagnosis, roadmap and review')
+                }].map((service, index) =>
+                <ScrollReveal key={service.number} delay={index * 0.1}>
+                    <motion.div
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.3 }}
+                    className="group grid gap-4 border-t border-border/20 px-5 py-6 first:border-t-0 sm:grid-cols-[84px_1fr] lg:grid-cols-[90px_1.1fr_1fr] lg:items-center lg:px-7">
+
+                      <div className="flex items-center gap-4 sm:block">
+                        <span className="font-serif text-4xl leading-none text-foreground/[0.12] transition-colors duration-500 group-hover:text-foreground/25">
+                          {service.number}
+                        </span>
+                        <div className="h-px flex-1 bg-gradient-to-r from-foreground/15 to-transparent sm:mt-5 sm:w-12" />
+                      </div>
+
+                      <div>
+                        <h3 className="font-serif text-xl leading-tight text-foreground transition-colors duration-500 group-hover:text-foreground/90">
+                          {service.title}
+                        </h3>
+                        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                          {service.description}
+                        </p>
+                      </div>
+
+                      <div className="flex items-center justify-between gap-4 border-t border-border/20 pt-4 sm:col-start-2 lg:col-start-auto lg:border-t-0 lg:pt-0">
+                        <span className="max-w-[220px] text-xs uppercase tracking-[0.18em] text-muted-foreground/65">
+                          {service.detail}
+                        </span>
+                        <ArrowRight className="h-4 w-4 shrink-0 text-foreground/35 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-foreground/70" />
+                      </div>
+                    </motion.div>
+                  </ScrollReveal>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
             {featuredProjects.map((project, index) =>
-            <ScrollReveal key={project.title} delay={index * 0.1}>
+            <ScrollReveal
+              key={project.title}
+              delay={index * 0.1}
+              className={`h-full ${index === 0 ? 'lg:col-span-5' : index === 1 ? 'lg:col-span-4' : 'lg:col-span-3'}`}
+            >
                 <motion.div
                 whileHover={{ y: -6 }}
                 transition={{ duration: 0.3 }}
                 className="h-full">
 
                   <div
-                  className="relative h-full p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm group overflow-hidden"
+                  className="relative h-full min-h-[310px] overflow-hidden rounded-lg border border-border/20 bg-card/30 p-8 backdrop-blur-sm group"
                   style={{
                     boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
                   }}>
@@ -519,7 +740,8 @@ const Index = () => {
         }>
 
         
-        <div className="container mx-auto px-6 lg:px-8 relative">
+        <StoryHighlight />
+        {false && (
           <ScrollReveal>
             <motion.div
               whileHover={{ y: -4 }}
@@ -540,7 +762,7 @@ const Index = () => {
                 <div className="text-6xl font-serif text-foreground/[0.04] mb-2 select-none leading-none" style={{ letterSpacing: '-0.1em' }}>"</div>
                 
                 <h2 className="font-serif text-xl lg:text-2xl xl:text-3xl text-foreground mb-6 leading-[1.2]">
-                  {language === 'pt' ? 'Por que fundei minha empresa aos 17?' : 'Why I started my company at 17?'}
+                  {language === 'pt' ? 'Reflexão' : 'Reflection'}
                 </h2>
                 
                 <p className="text-sm text-muted-foreground leading-[1.8] mb-4 max-w-2xl mx-auto">
@@ -555,7 +777,7 @@ const Index = () => {
                   className="group inline-flex items-center gap-3 text-sm font-medium text-foreground">
 
                   <span className="relative">
-                    {language === 'pt' ? 'Ler história completa' : 'Read full story'}
+                    {language === 'pt' ? 'Abrir carreira' : 'Open career'}
                     <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
                     <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
                   </span>
@@ -564,7 +786,7 @@ const Index = () => {
               </div>
             </motion.div>
           </ScrollReveal>
-        </div>
+        )}
       </ParallaxSection>
 
       {/* Testimonials - Premium Cards */}
@@ -577,7 +799,15 @@ const Index = () => {
 
         
         <div className="container mx-auto px-6 lg:px-8 relative">
-          <ScrollReveal>
+          <SectionSignatureHeader
+            eyebrow={getText(language, 'Depoimentos', 'Testimonials')}
+            title={language === 'pt' ? 'O que dizem' : 'What they say'}
+            subtitle={language === 'pt' ? 'Feedbacks reais de colegas, parceiros e clientes em movimento cont\u00ednuo.' : 'Real feedback from colleagues, partners and clients in continuous motion.'}
+            signature={signatureFeedbacks}
+            className="mb-12"
+          />
+
+          <div className="hidden">
             <div className="mb-10">
               <motion.span
                 initial={{ opacity: 0, x: -20 }}
@@ -591,12 +821,30 @@ const Index = () => {
                 {language === 'pt' ? 'O que dizem' : 'What they say'}
               </h2>
               <p className="text-base text-muted-foreground max-w-md leading-relaxed">
-                {language === 'pt' ? 'Feedback de colegas e clientes.' : 'Feedback from colleagues and clients.'}
+                {language === 'pt' ? 'Feedbacks reais de colegas, parceiros e clientes em movimento contínuo.' : 'Real feedback from colleagues, partners and clients in continuous motion.'}
               </p>
+            </div>
+          </div>
+
+          <TestimonialsMarquee />
+
+          <ScrollReveal delay={0.2}>
+            <div className="mt-10">
+              <Link
+                to={language === 'en' ? '/en-us/feedbacks' : '/feedbacks'}
+                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"
+              >
+                <span className="relative">
+                  {getText(language, 'Ver todos os feedbacks', 'View all feedbacks')}
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
+                  <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
+                </span>
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+              </Link>
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="hidden">
             {[{
               initials: "PS",
               name: "Priscila Suanne",
@@ -663,7 +911,27 @@ const Index = () => {
 
         
         <div className="container mx-auto px-6 lg:px-8 relative">
-          <ScrollReveal>
+          <SectionSignatureHeader
+            eyebrow={getText(language, 'Servi\u00e7os', 'Services')}
+            title={t.services.title}
+            subtitle={t.services.subtitle}
+            signature={signatureServicos}
+            className="mb-14"
+            action={
+              <Link
+                to={language === 'en' ? '/en-us/services' : '/servicos'}
+                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground">
+                <span className="relative">
+                  {language === 'pt' ? 'Ver todos' : 'View all'}
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
+                  <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
+                </span>
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+              </Link>
+            }
+          />
+
+          <div className="hidden">
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
               <div className="max-w-xl">
                 <motion.span
@@ -693,9 +961,95 @@ const Index = () => {
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
               </Link>
             </div>
-          </ScrollReveal>
+          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+            <ScrollReveal delay={0.05} className="lg:col-span-4">
+              <div className="relative h-full overflow-hidden rounded-lg border border-border/20 bg-card/25 p-7 backdrop-blur-sm">
+                <div className="pointer-events-none absolute inset-x-7 top-0 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
+                <span className="mb-8 block text-[11px] font-medium uppercase tracking-[0.28em] text-muted-foreground/70">
+                  {getText(language, 'Modo de atuação', 'Operating mode')}
+                </span>
+                <h3 className="max-w-xs font-serif text-2xl leading-tight text-foreground lg:text-3xl">
+                  {getText(language, 'Clareza antes do código.', 'Clarity before code.')}
+                </h3>
+                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                  {getText(
+                    language,
+                    'Cada entrega começa com recorte de problema, prioridade técnica e uma rota simples para transformar intenção em produto confiável.',
+                    'Every delivery starts with problem framing, technical priority and a simple path from intent to a reliable product.'
+                  )}
+                </p>
+
+                <div className="mt-8 space-y-3">
+                  {[
+                    getText(language, 'Escopo legível', 'Readable scope'),
+                    getText(language, 'Execução rastreável', 'Traceable execution'),
+                    getText(language, 'Base preparada para evoluir', 'A base ready to evolve'),
+                  ].map((item) => (
+                    <div key={item} className="flex items-center gap-3 text-xs text-muted-foreground/80">
+                      <span className="h-px w-8 bg-foreground/20" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <div className="lg:col-span-8">
+              <div className="overflow-hidden rounded-lg border border-border/20 bg-card/20 backdrop-blur-sm">
+                {[{
+                  number: '01',
+                  title: getText(language, 'Presença digital sob medida', 'Tailored digital presence'),
+                  description: getText(language, 'Sites e aplicações web com acabamento premium, performance e uma estrutura pronta para crescer.', 'Websites and web applications with premium polish, performance and a structure ready to grow.'),
+                  detail: getText(language, 'Interface, front-end e deploy', 'Interface, frontend and deploy')
+                }, {
+                  number: '02',
+                  title: getText(language, 'Operações internas', 'Internal operations'),
+                  description: getText(language, 'Sistemas para organizar fluxos, reduzir retrabalho e dar mais previsibilidade ao dia a dia da equipe.', 'Systems that organize workflows, reduce rework and make day-to-day operations more predictable.'),
+                  detail: getText(language, 'Painéis, automações e integrações', 'Dashboards, automations and integrations')
+                }, {
+                  number: '03',
+                  title: getText(language, 'Direção técnica', 'Technical direction'),
+                  description: getText(language, 'Apoio estratégico para decidir arquitetura, prioridades e próximos passos sem desperdiçar energia.', 'Strategic support for architecture, priorities and next steps without wasting energy.'),
+                  detail: getText(language, 'Diagnóstico, roadmap e revisão', 'Diagnosis, roadmap and review')
+                }].map((service, index) =>
+                <ScrollReveal key={service.number} delay={index * 0.1}>
+                    <motion.div
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.3 }}
+                    className="group grid gap-4 border-t border-border/20 px-5 py-6 first:border-t-0 sm:grid-cols-[84px_1fr] lg:grid-cols-[90px_1.1fr_1fr] lg:items-center lg:px-7">
+
+                      <div className="flex items-center gap-4 sm:block">
+                        <span className="font-serif text-4xl leading-none text-foreground/[0.12] transition-colors duration-500 group-hover:text-foreground/25">
+                          {service.number}
+                        </span>
+                        <div className="h-px flex-1 bg-gradient-to-r from-foreground/15 to-transparent sm:mt-5 sm:w-12" />
+                      </div>
+
+                      <div>
+                        <h3 className="font-serif text-xl leading-tight text-foreground transition-colors duration-500 group-hover:text-foreground/90">
+                          {service.title}
+                        </h3>
+                        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                          {service.description}
+                        </p>
+                      </div>
+
+                      <div className="flex items-center justify-between gap-4 border-t border-border/20 pt-4 sm:col-start-2 lg:col-start-auto lg:border-t-0 lg:pt-0">
+                        <span className="max-w-[220px] text-xs uppercase tracking-[0.18em] text-muted-foreground/65">
+                          {service.detail}
+                        </span>
+                        <ArrowRight className="h-4 w-4 shrink-0 text-foreground/35 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-foreground/70" />
+                      </div>
+                    </motion.div>
+                  </ScrollReveal>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div className="hidden">
             {[{
               number: '01',
               title: getText(language, 'Desenvolvimento Web', 'Web Development'),
@@ -745,7 +1099,76 @@ const Index = () => {
       </ParallaxSection>
 
 
-      <section className="py-16 lg:py-20 relative overflow-hidden">
+      <section className="relative overflow-hidden py-20 lg:py-24">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-card/10 to-background" />
+          <div className="absolute left-[8%] top-1/3 h-px w-[36%] bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
+          <div className="absolute right-[12%] top-20 h-[420px] w-[420px] bg-gradient-radial from-foreground/[0.025] to-transparent blur-3xl" />
+        </div>
+
+        <div className="container relative mx-auto px-6 lg:px-8">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 lg:grid-cols-12 lg:items-start">
+            <ScrollReveal className="lg:col-span-5">
+              <span className="mb-6 block text-[11px] font-medium uppercase tracking-[0.3em] text-muted-foreground/70">
+                {getText(language, 'Filosofia', 'Philosophy')}
+              </span>
+              <h2 className="max-w-md font-serif text-3xl leading-tight text-foreground lg:text-5xl">
+                {getText(language, 'Trabalho melhor quando o caminho fica visível.', 'I work best when the path is visible.')}
+              </h2>
+              <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground">
+                {getText(
+                  language,
+                  'Antes de escrever código, eu reduzo ruído: entendo o objetivo, separo o essencial do acessório e transformo decisão em plano de execução.',
+                  'Before writing code, I reduce noise: understand the goal, separate what matters from what distracts, and turn decisions into an execution plan.'
+                )}
+              </p>
+            </ScrollReveal>
+
+            <div className="relative lg:col-span-7">
+              <div className="absolute bottom-0 left-[31px] top-0 hidden w-px bg-gradient-to-b from-transparent via-border/70 to-transparent sm:block" />
+              {[
+                {
+                  number: '01',
+                  title: getText(language, 'Recorte', 'Frame'),
+                  text: getText(language, 'Definir o problema certo, o impacto esperado e o que não precisa entrar na primeira entrega.', 'Define the right problem, expected impact and what does not belong in the first delivery.'),
+                },
+                {
+                  number: '02',
+                  title: getText(language, 'Construção', 'Build'),
+                  text: getText(language, 'Escolher a solução mais estável para o contexto, com arquitetura clara e manutenção possível.', 'Choose the most stable solution for the context, with clear architecture and practical maintenance.'),
+                },
+                {
+                  number: '03',
+                  title: getText(language, 'Entrega', 'Ship'),
+                  text: getText(language, 'Validar comportamento, registrar decisões e deixar base pronta para o próximo ciclo.', 'Validate behavior, record decisions and leave the base ready for the next cycle.'),
+                },
+              ].map((item, index) => (
+                <ScrollReveal key={item.number} delay={index * 0.08}>
+                  <motion.div
+                    whileHover={{ x: 6 }}
+                    transition={{ duration: 0.3 }}
+                    className="group relative grid gap-4 py-5 sm:grid-cols-[64px_1fr]"
+                  >
+                    <div className="relative z-10 flex h-16 w-16 items-center justify-center border border-border/30 bg-background text-sm font-medium text-muted-foreground transition-colors duration-300 group-hover:border-foreground/25 group-hover:text-foreground">
+                      {item.number}
+                    </div>
+                    <div className="border-b border-border/20 pb-5">
+                      <h3 className="font-serif text-2xl leading-tight text-foreground">
+                        {item.title}
+                      </h3>
+                      <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                        {item.text}
+                      </p>
+                    </div>
+                  </motion.div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-b from-background via-card/10 to-background" />
@@ -828,7 +1251,15 @@ const Index = () => {
         }
       >
         <div className="container mx-auto px-6 lg:px-8">
-          <ScrollReveal>
+          <SectionSignatureHeader
+            eyebrow={getText(language, 'Comunidades', 'Communities')}
+            title={getText(language, 'Discord', 'Discord')}
+            subtitle={getText(language, 'Comunidades onde possuo ou possu\u00ed cargo, contribuindo com modera\u00e7\u00e3o, desenvolvimento e gest\u00e3o comunit\u00e1ria.', 'Communities where I hold or held a role, contributing with moderation, development and community management.')}
+            signature={signatureDiscord}
+            className="mb-12"
+          />
+
+          <div className="hidden">
             <motion.span
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -847,7 +1278,7 @@ const Index = () => {
                 'Communities where I hold or held a role, contributing with moderation, development and community management.'
               )}
             </p>
-          </ScrollReveal>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <ScrollReveal delay={0.05}>
@@ -910,9 +1341,90 @@ const Index = () => {
         </div>
       </ParallaxSection>
 
+      <section className="relative overflow-hidden py-20 lg:py-24">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-card/15 to-background" />
+          <div className="absolute left-1/2 top-0 h-px w-[85%] -translate-x-1/2 bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+        </div>
+
+        <div className="container relative mx-auto px-6 lg:px-8">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 lg:grid-cols-12">
+            <ScrollReveal className="lg:col-span-4">
+              <span className="mb-6 block text-[11px] font-medium uppercase tracking-[0.3em] text-muted-foreground/70">
+                {getText(language, 'Insights', 'Insights')}
+              </span>
+              <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
+                {getText(language, 'Além do código', 'Beyond the code')}
+              </h2>
+              <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
+                {getText(
+                  language,
+                  'Um índice vivo do que guia minhas decisões: produto, operação, qualidade e inclusão.',
+                  'A living index of what guides my decisions: product, operations, quality and inclusion.'
+                )}
+              </p>
+            </ScrollReveal>
+
+            <div className="lg:col-span-8">
+              <div className="divide-y divide-border/20 border-y border-border/25">
+                {[
+                  {
+                    label: '01',
+                    title: getText(language, 'Princípios', 'Principles'),
+                    description: getText(language, 'O que eu não negocio quando projeto, escrevo e publico.', 'What I do not negotiate when designing, writing and publishing.'),
+                    path: language === 'en' ? '/en-us/principles' : '/principios',
+                  },
+                  {
+                    label: '02',
+                    title: getText(language, 'Trilhas de Conteúdo', 'Content Trails'),
+                    description: getText(language, 'Caminhos para estudar com sequência, sem empilhar assunto solto.', 'Paths for studying in sequence, without stacking disconnected topics.'),
+                    path: language === 'en' ? '/en-us/articles' : '/artigos',
+                  },
+                  {
+                    label: '03',
+                    title: 'Checklists',
+                    description: getText(language, 'Listas curtas para revisar decisões antes de publicar ou entregar.', 'Short lists for reviewing decisions before publishing or shipping.'),
+                    path: language === 'en' ? '/en-us/checklists' : '/checklists',
+                  },
+                  {
+                    label: '04',
+                    title: getText(language, 'Decisões Técnicas', 'Tech Decisions'),
+                    description: getText(language, 'Trade-offs reais, escolhas de stack e sinais de alerta que observo.', 'Real trade-offs, stack choices and warning signs I watch.'),
+                    path: language === 'en' ? '/en-us/tech-decisions' : '/decisoes-tecnicas',
+                  },
+                  {
+                    label: '05',
+                    title: getText(language, 'Acessibilidade', 'Accessibility'),
+                    description: getText(language, 'Inclusão digital tratada como critério de qualidade, não como detalhe.', 'Digital inclusion treated as a quality criterion, not a detail.'),
+                    path: language === 'en' ? '/en-us/accessibility' : '/acessibilidade',
+                  },
+                ].map((item, index) => (
+                  <ScrollReveal key={item.path} delay={index * 0.05}>
+                    <Link to={item.path} className="group grid gap-4 py-5 sm:grid-cols-[72px_1fr_auto] sm:items-center">
+                      <span className="font-serif text-3xl leading-none text-foreground/[0.12] transition-colors duration-300 group-hover:text-foreground/30">
+                        {item.label}
+                      </span>
+                      <span>
+                        <span className="block font-serif text-xl text-foreground">
+                          {item.title}
+                        </span>
+                        <span className="mt-1 block text-sm leading-relaxed text-muted-foreground">
+                          {item.description}
+                        </span>
+                      </span>
+                      <ArrowRight className="h-4 w-4 text-foreground/35 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-foreground/70" />
+                    </Link>
+                  </ScrollReveal>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Insights Section */}
       <ParallaxSection
-        className="py-16 lg:py-20"
+        className="hidden"
         speed={0.08}
         backgroundElement={
         <>
@@ -999,9 +1511,77 @@ const Index = () => {
         </div>
       </ParallaxSection>
 
+      <section className="relative overflow-hidden py-20 lg:py-24">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-card/10" />
+          <div className="absolute left-1/2 top-0 h-px w-[85%] -translate-x-1/2 bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+        </div>
+
+        <div className="container relative mx-auto px-6 lg:px-8">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 lg:grid-cols-12">
+            <ScrollReveal className="lg:col-span-4">
+              <span className="mb-6 block text-[11px] font-medium uppercase tracking-[0.3em] text-muted-foreground/70">
+                {getText(language, 'Publicações', 'Publications')}
+              </span>
+              <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
+                {getText(language, 'Artigos e guias técnicos', 'Articles and technical guides')}
+              </h2>
+              <div className="mt-8 flex items-end gap-4 border-t border-border/25 pt-6">
+                <span className="font-serif text-6xl leading-none text-foreground/[0.16]">02</span>
+                <span className="pb-2 text-xs uppercase tracking-[0.22em] text-muted-foreground/70">
+                  {getText(language, 'leituras selecionadas', 'selected reads')}
+                </span>
+              </div>
+            </ScrollReveal>
+
+            <div className="lg:col-span-8">
+              {[
+                {
+                  path: language === 'en' ? '/en-us/articles/vision-and-persistence' : '/artigos/visao-e-persistencia',
+                  date: getText(language, '10 de Fevereiro, 2025', 'February 10, 2025'),
+                  time: '8 min',
+                  title: getText(language, 'Se a Gente Consegue Imaginar, É Porque É Possível', "If We Can Imagine It, It's Because It's Possible"),
+                  description: getText(language, 'Reflexão sobre visão, persistência e empreendedorismo.', 'A reflection on vision, persistence and entrepreneurship.'),
+                },
+                {
+                  path: language === 'en' ? '/en-us/articles/discord-bots' : '/artigos/bots-discord',
+                  date: getText(language, '7 de Fevereiro, 2025', 'February 7, 2025'),
+                  time: '25 min',
+                  title: getText(language, 'Guia de Maturidade, Gestão e Segurança para Projetos de Bots no Discord', 'Maturity, Management & Security Guide for Discord Bot Projects'),
+                  description: getText(language, 'Um guia longo sobre decisões, riscos e manutenção em bots de comunidade.', 'A long guide on decisions, risks and maintenance in community bots.'),
+                },
+              ].map((article, index) => (
+                <ScrollReveal key={article.path} delay={index * 0.08}>
+                  <Link to={article.path} className="group block border-t border-border/25 py-8 first:border-t-0 lg:py-10">
+                    <div className="grid gap-5 lg:grid-cols-[140px_1fr_auto] lg:items-start">
+                      <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground/65">
+                        <span className="block">{article.date}</span>
+                        <span className="mt-2 block">{article.time} {getText(language, 'de leitura', 'read')}</span>
+                      </div>
+                      <div>
+                        <h3 className="max-w-2xl font-serif text-2xl leading-tight text-foreground lg:text-3xl">
+                          {article.title}
+                        </h3>
+                        <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                          {article.description}
+                        </p>
+                      </div>
+                      <span className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
+                        {getText(language, 'Ler', 'Read')}
+                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      </span>
+                    </div>
+                  </Link>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Articles Section */}
       <ParallaxSection
-        className="py-16 lg:py-20"
+        className="hidden"
         speed={0.08}
         backgroundElement={
         <>
@@ -1109,8 +1689,88 @@ const Index = () => {
         </div>
       </ParallaxSection>
 
+      <section className="relative overflow-hidden py-20 lg:py-24">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-card/10 via-background to-background" />
+          <div className="absolute right-[18%] top-1/2 h-[520px] w-[520px] -translate-y-1/2 bg-gradient-radial from-foreground/[0.04] to-transparent blur-3xl" />
+        </div>
+
+        <div className="container relative mx-auto px-6 lg:px-8">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center">
+            <ScrollReveal className="lg:col-span-5">
+              <span className="mb-6 block text-[11px] font-medium uppercase tracking-[0.3em] text-muted-foreground/70">
+                {getText(language, 'Obra autoral', 'Original work')}
+              </span>
+              <h2 className="font-serif text-4xl leading-tight text-foreground lg:text-6xl">
+                {getText(language, 'Superando Limites', 'Overcoming Limits')}
+              </h2>
+              <p className="mt-3 text-sm text-muted-foreground/80">
+                {getText(language, 'Da Rejeição ao Sucesso', 'From Rejection to Success')}
+              </p>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
+                {getText(
+                  language,
+                  'Um livro nascido de experiência real: rejeição, adaptação, liderança e a decisão de construir espaço onde antes havia barreira.',
+                  'A book born from real experience: rejection, adaptation, leadership and the decision to build space where there was once a barrier.'
+                )}
+              </p>
+
+              <div className="mt-8 grid grid-cols-3 border-y border-border/25 py-5">
+                {[
+                  ['120+', getText(language, 'capítulos', 'chapters')],
+                  ['02', getText(language, 'formatos', 'formats')],
+                  ['01', getText(language, 'história real', 'real story')],
+                ].map(([value, label]) => (
+                  <div key={label}>
+                    <span className="block font-serif text-3xl text-foreground/80">{value}</span>
+                    <span className="mt-1 block text-[10px] uppercase tracking-[0.18em] text-muted-foreground/65">{label}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Link
+                to={language === 'en' ? '/en-us/book' : '/livro'}
+                className="group mt-8 inline-flex items-center gap-3 text-sm font-medium text-foreground"
+              >
+                <span className="relative">
+                  {getText(language, 'Conhecer o livro', 'Discover the book')}
+                  <span className="absolute bottom-0 left-0 h-px w-full bg-foreground/20" />
+                  <span className="absolute bottom-0 left-0 h-px w-0 bg-foreground transition-all duration-500 group-hover:w-full" />
+                </span>
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+              </Link>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.12} className="lg:col-span-7">
+              <div className="relative min-h-[440px]">
+                <div className="absolute left-0 top-1/2 h-px w-full bg-gradient-to-r from-transparent via-border/50 to-transparent" />
+                <img
+                  src={bookMockupImg}
+                  alt={getText(language, 'Superando Limites - Da Rejeição ao Sucesso', 'Overcoming Limits - From Rejection to Success')}
+                  loading="lazy"
+                  decoding="async"
+                  className="relative z-10 mx-auto h-auto w-64 animate-float drop-shadow-[0_32px_70px_hsl(0_0%_0%/0.55)] lg:w-80"
+                />
+                <div className="relative z-10 mx-auto mt-5 flex max-w-md flex-col justify-center gap-3 sm:flex-row">
+                  <a href="https://www.amazon.com/dp/B0GVS4D8HL/ref=tmm_pap_swatch_0?_encoding=UTF8&dib_tag=se&dib=eyJ2IjoiMSJ9.YwqalvZK7CfKxFD0kPkYgg.3O8srGTxR_gr4EkS_chJa4jDQJm1-0ervY2_COJZNEs&qid=1775137388&sr=8-1" target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 border border-foreground/20 bg-foreground px-4 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90">
+                    <BookOpen className="h-3.5 w-3.5" />
+                    {getText(language, 'Livro Físico', 'Physical Book')}
+                  </a>
+                  <a href="https://www.amazon.com/dp/B0FXV8WP3Y" target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 border border-border/50 px-4 py-2 text-xs font-medium text-foreground transition-colors hover:bg-muted/40">
+                    <BookOpen className="h-3.5 w-3.5" />
+                    {getText(language, 'Livro Digital', 'Digital Book')}
+                  </a>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
       {/* Book Section */}
-      <section className="py-16 lg:py-20 relative overflow-hidden">
+      <section className="hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-b from-background via-card/10 to-background" />
@@ -1180,7 +1840,7 @@ const Index = () => {
 
       {/* Feedbacks Section */}
       <ParallaxSection
-        className="py-16 lg:py-20"
+        className="hidden"
         speed={0.08}
         backgroundElement={
           <>
@@ -1288,8 +1948,37 @@ const Index = () => {
         </div>
       </ParallaxSection>
 
+      <section className="relative overflow-hidden py-20 lg:py-24">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-card/10 to-background" />
+          <div className="absolute left-1/2 top-0 h-px w-[85%] -translate-x-1/2 bg-gradient-to-r from-transparent via-border/50 to-transparent" />
+        </div>
+
+        <div className="container relative mx-auto px-6 lg:px-8">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 lg:grid-cols-12">
+            <ScrollReveal className="lg:col-span-4">
+              <span className="mb-6 block text-[11px] font-medium uppercase tracking-[0.3em] text-muted-foreground/70">
+                FAQ
+              </span>
+              <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
+                {language === 'pt' ? 'Perguntas frequentes' : 'Frequently asked questions'}
+              </h2>
+              <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
+                {language === 'pt'
+                  ? 'Respostas diretas para alinhar expectativa antes de uma conversa.'
+                  : 'Direct answers to align expectations before a conversation.'}
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.1} className="lg:col-span-8">
+              <FAQ />
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ - Premium */}
-      <section className="py-20 lg:py-24 relative overflow-hidden">
+      <section className="hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />
         </div>
@@ -1325,8 +2014,72 @@ const Index = () => {
 
 
 
+      <section className="relative overflow-hidden py-24 lg:py-32">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-t from-card/25 via-background to-background" />
+          <div className="absolute bottom-0 left-1/2 h-[420px] w-[760px] -translate-x-1/2 bg-gradient-radial from-foreground/[0.05] to-transparent blur-3xl" />
+        </div>
+
+        <div className="container relative mx-auto px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 border-y border-border/25 py-12 lg:grid-cols-12 lg:items-center lg:py-16">
+              <div className="lg:col-span-7">
+                <span className="mb-6 block text-[11px] font-medium uppercase tracking-[0.3em] text-muted-foreground/70">
+                  {getText(language, 'Vamos conversar', 'Let\'s talk')}
+                </span>
+                <h2 className="max-w-3xl font-serif text-4xl leading-tight text-foreground lg:text-6xl">
+                  {t.cta.title}
+                </h2>
+                <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
+                  {t.cta.subtitle}
+                </p>
+                <div className="mt-9 flex flex-col gap-5 sm:flex-row sm:items-center">
+                  <Link
+                    to={language === 'en' ? '/en-us/contact' : '/contato'}
+                    className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"
+                  >
+                    <span className="relative">
+                      {t.cta.button}
+                      <span className="absolute bottom-0 left-0 h-px w-full bg-foreground/20" />
+                      <span className="absolute bottom-0 left-0 h-px w-0 bg-foreground transition-all duration-500 group-hover:w-full" />
+                    </span>
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+                  </Link>
+                  <Link
+                    to={language === 'en' ? '/en-us/projects' : '/projetos'}
+                    className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    <span>{t.projects.viewAll}</span>
+                    <ArrowRight className="h-3 w-3 opacity-0 -translate-x-2 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" />
+                  </Link>
+                </div>
+              </div>
+
+              <div className="lg:col-span-5">
+                <div className="divide-y divide-border/20 border-y border-border/20">
+                  {[
+                    getText(language, 'Escopo claro', 'Clear scope'),
+                    getText(language, 'Execução técnica', 'Technical execution'),
+                    getText(language, 'Entrega acompanhada', 'Guided delivery'),
+                  ].map((item, index) => (
+                    <div key={item} className="flex items-center justify-between py-5">
+                      <span className="font-serif text-3xl text-foreground/[0.14]">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <span className="text-sm font-medium text-foreground">
+                        {item}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* CTA - Premium */}
-      <section className="py-24 lg:py-28 relative overflow-hidden">
+      <section className="hidden">
         {/* Background with ambient glow */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />

@@ -11,6 +11,8 @@ interface ArticleSearchProps {
   variant?: 'hero' | 'compact';
 }
 
+const displayArticleTitle = (title: string) => title.replace(/\s*:\s*/g, ". ");
+
 const ArticleSearch = ({ variant = 'compact' }: ArticleSearchProps) => {
   const { language } = useTheme();
   const [query, setQuery] = useState("");
@@ -124,7 +126,7 @@ const ArticleSearch = ({ variant = 'compact' }: ArticleSearchProps) => {
                     >
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-foreground leading-snug truncate">
-                          {article.title[language]}
+                          {displayArticleTitle(article.title[language])}
                         </p>
                         <div className="flex items-center gap-2 mt-1">
                           <span className="text-[11px] text-muted-foreground/50">{article.readTime} {getText(language, 'de leitura', 'read')}</span>
@@ -186,7 +188,7 @@ const ArticleSearch = ({ variant = 'compact' }: ArticleSearchProps) => {
                     className="block px-4 py-3 hover:bg-foreground/5 transition-colors duration-150"
                   >
                     <p className="text-sm font-medium text-foreground leading-snug mb-1">
-                      {article.title[language]}
+                      {displayArticleTitle(article.title[language])}
                     </p>
                     <p className="text-xs text-muted-foreground line-clamp-2">
                       {article.excerpt[language]}
