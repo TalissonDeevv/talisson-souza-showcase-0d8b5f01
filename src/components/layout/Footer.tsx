@@ -125,10 +125,9 @@ const Footer = () => {
             href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7445971461145677824"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border/35 bg-background/35 px-4 py-2.5 text-xs text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-foreground md:justify-end"
+            className="inline-flex h-8 w-full items-center justify-center rounded-full bg-[#0A66C2] px-[7px] text-center text-sm font-semibold text-[#fff] transition-colors hover:bg-[#0958a8] sm:w-[200px] md:ml-auto"
           >
-            Newsletter
-            <ExternalLink className="h-3 w-3" />
+            {getText(language, "Assinar no LinkedIn", "Subscribe on LinkedIn")}
           </a>
         </div>
 

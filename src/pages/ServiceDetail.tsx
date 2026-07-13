@@ -1685,7 +1685,7 @@ const ServiceDetail = () => {
       <SEO 
         title={`${service.title} | Serviços - Talisson Souza`}
         description={service.description}
-        canonical={`/servicos/${serviceId}`}
+        canonical={language === "en" ? `/en-us/services/${serviceId}` : `/servicos/${serviceId}`}
         keywords={[service.title, 'serviço', 'desenvolvimento', ...service.technologies]}
       />
       

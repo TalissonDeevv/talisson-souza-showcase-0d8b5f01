@@ -43,7 +43,7 @@ const Contact = () => {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Talisson Souza | Cheetah Solutions Network",
-    image: "https://www.talissonsouza.com.br/og-image.png",
+    image: "https://www.talissonsouza.com.br/og/contato.png",
     email: "talinhodev@gmail.com",
     telephone: "+5581993964261",
     url: "https://www.talissonsouza.com.br",

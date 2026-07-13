@@ -1,0 +1,950 @@
+[
+  {
+    "route": "/",
+    "image": "/og/home.png"
+  },
+  {
+    "route": "/sobre",
+    "image": "/og/sobre.png"
+  },
+  {
+    "route": "/projetos",
+    "image": "/og/projetos.png"
+  },
+  {
+    "route": "/servicos",
+    "image": "/og/servicos.png"
+  },
+  {
+    "route": "/carreira",
+    "image": "/og/carreira.png"
+  },
+  {
+    "route": "/contato",
+    "image": "/og/contato.png"
+  },
+  {
+    "route": "/como-trabalho",
+    "image": "/og/como-trabalho.png"
+  },
+  {
+    "route": "/decisoes-tecnicas",
+    "image": "/og/decisoes-tecnicas.png"
+  },
+  {
+    "route": "/acessibilidade",
+    "image": "/og/acessibilidade.png"
+  },
+  {
+    "route": "/livro",
+    "image": "/og/livro.png"
+  },
+  {
+    "route": "/principios",
+    "image": "/og/principios.png"
+  },
+  {
+    "route": "/checklists",
+    "image": "/og/checklists.png"
+  },
+  {
+    "route": "/artigos",
+    "image": "/og/artigos.png"
+  },
+  {
+    "route": "/politica-de-privacidade",
+    "image": "/og/politica-de-privacidade.png"
+  },
+  {
+    "route": "/faq",
+    "image": "/og/faq.png"
+  },
+  {
+    "route": "/feedbacks",
+    "image": "/og/feedbacks.png"
+  },
+  {
+    "route": "/politicas",
+    "image": "/og/politicas.png"
+  },
+  {
+    "route": "/en-us",
+    "image": "/og/en-us.png"
+  },
+  {
+    "route": "/en-us/about",
+    "image": "/og/en-us-about.png"
+  },
+  {
+    "route": "/en-us/projects",
+    "image": "/og/en-us-projects.png"
+  },
+  {
+    "route": "/en-us/services",
+    "image": "/og/en-us-services.png"
+  },
+  {
+    "route": "/en-us/career",
+    "image": "/og/en-us-career.png"
+  },
+  {
+    "route": "/en-us/contact",
+    "image": "/og/en-us-contact.png"
+  },
+  {
+    "route": "/en-us/how-i-work",
+    "image": "/og/en-us-how-i-work.png"
+  },
+  {
+    "route": "/en-us/tech-decisions",
+    "image": "/og/en-us-tech-decisions.png"
+  },
+  {
+    "route": "/en-us/accessibility",
+    "image": "/og/en-us-accessibility.png"
+  },
+  {
+    "route": "/en-us/book",
+    "image": "/og/en-us-book.png"
+  },
+  {
+    "route": "/en-us/principles",
+    "image": "/og/en-us-principles.png"
+  },
+  {
+    "route": "/en-us/checklists",
+    "image": "/og/en-us-checklists.png"
+  },
+  {
+    "route": "/en-us/articles",
+    "image": "/og/en-us-articles.png"
+  },
+  {
+    "route": "/en-us/privacy-policy",
+    "image": "/og/en-us-privacy-policy.png"
+  },
+  {
+    "route": "/en-us/faq",
+    "image": "/og/en-us-faq.png"
+  },
+  {
+    "route": "/en-us/feedbacks",
+    "image": "/og/en-us-feedbacks.png"
+  },
+  {
+    "route": "/en-us/policies",
+    "image": "/og/en-us-policies.png"
+  },
+  {
+    "route": "/servicos/web-development",
+    "image": "/og/servicos-web-development.png"
+  },
+  {
+    "route": "/en-us/services/web-development",
+    "image": "/og/en-us-services-web-development.png"
+  },
+  {
+    "route": "/servicos/mobile-development",
+    "image": "/og/servicos-mobile-development.png"
+  },
+  {
+    "route": "/en-us/services/mobile-development",
+    "image": "/og/en-us-services-mobile-development.png"
+  },
+  {
+    "route": "/servicos/bot-development",
+    "image": "/og/servicos-bot-development.png"
+  },
+  {
+    "route": "/en-us/services/bot-development",
+    "image": "/og/en-us-services-bot-development.png"
+  },
+  {
+    "route": "/servicos/uiux-design",
+    "image": "/og/servicos-uiux-design.png"
+  },
+  {
+    "route": "/en-us/services/uiux-design",
+    "image": "/og/en-us-services-uiux-design.png"
+  },
+  {
+    "route": "/servicos/cloud-solutions",
+    "image": "/og/servicos-cloud-solutions.png"
+  },
+  {
+    "route": "/en-us/services/cloud-solutions",
+    "image": "/og/en-us-services-cloud-solutions.png"
+  },
+  {
+    "route": "/servicos/consulting",
+    "image": "/og/servicos-consulting.png"
+  },
+  {
+    "route": "/en-us/services/consulting",
+    "image": "/og/en-us-services-consulting.png"
+  },
+  {
+    "route": "/artigos/comunidades-discord-morrem-rapido",
+    "image": "/og/artigos-comunidades-discord-morrem-rapido.png"
+  },
+  {
+    "route": "/en-us/articles/why-discord-communities-die-fast",
+    "image": "/og/en-us-articles-why-discord-communities-die-fast.png"
+  },
+  {
+    "route": "/artigos/monetizar-comunidade-discord-sem-anuncios",
+    "image": "/og/artigos-monetizar-comunidade-discord-sem-anuncios.png"
+  },
+  {
+    "route": "/en-us/articles/monetize-discord-community-without-ads",
+    "image": "/og/en-us-articles-monetize-discord-community-without-ads.png"
+  },
+  {
+    "route": "/artigos/por-que-devs-nao-conseguem-vagas",
+    "image": "/og/artigos-por-que-devs-nao-conseguem-vagas.png"
+  },
+  {
+    "route": "/en-us/articles/why-devs-cant-get-jobs",
+    "image": "/og/en-us-articles-why-devs-cant-get-jobs.png"
+  },
+  {
+    "route": "/artigos/ia-vai-substituir-desenvolvedores",
+    "image": "/og/artigos-ia-vai-substituir-desenvolvedores.png"
+  },
+  {
+    "route": "/en-us/articles/will-ai-replace-developers",
+    "image": "/og/en-us-articles-will-ai-replace-developers.png"
+  },
+  {
+    "route": "/artigos/por-que-devs-nao-crescem-financeiramente",
+    "image": "/og/artigos-por-que-devs-nao-crescem-financeiramente.png"
+  },
+  {
+    "route": "/en-us/articles/why-devs-dont-grow-financially",
+    "image": "/og/en-us-articles-why-devs-dont-grow-financially.png"
+  },
+  {
+    "route": "/artigos/eca-digital-anpd-monitoramento",
+    "image": "/og/artigos-eca-digital-anpd-monitoramento.png"
+  },
+  {
+    "route": "/en-us/articles/eca-digital-anpd-monitoring",
+    "image": "/og/en-us-articles-eca-digital-anpd-monitoring.png"
+  },
+  {
+    "route": "/artigos/seguranca-contas-discord",
+    "image": "/og/artigos-seguranca-contas-discord.png"
+  },
+  {
+    "route": "/en-us/articles/discord-account-security",
+    "image": "/og/en-us-articles-discord-account-security.png"
+  },
+  {
+    "route": "/artigos/infraestrutura-hospedagem",
+    "image": "/og/artigos-infraestrutura-hospedagem.png"
+  },
+  {
+    "route": "/en-us/articles/infrastructure-hosting",
+    "image": "/og/en-us-articles-infrastructure-hosting.png"
+  },
+  {
+    "route": "/artigos/junior-para-estrategico",
+    "image": "/og/artigos-junior-para-estrategico.png"
+  },
+  {
+    "route": "/en-us/articles/junior-to-strategic",
+    "image": "/og/en-us-articles-junior-to-strategic.png"
+  },
+  {
+    "route": "/artigos/o-que-empresas-procuram",
+    "image": "/og/artigos-o-que-empresas-procuram.png"
+  },
+  {
+    "route": "/en-us/articles/what-companies-seek",
+    "image": "/og/en-us-articles-what-companies-seek.png"
+  },
+  {
+    "route": "/artigos/construir-portfolio",
+    "image": "/og/artigos-construir-portfolio.png"
+  },
+  {
+    "route": "/en-us/articles/building-portfolio",
+    "image": "/og/en-us-articles-building-portfolio.png"
+  },
+  {
+    "route": "/artigos/vulnerabilidade-dependencias",
+    "image": "/og/artigos-vulnerabilidade-dependencias.png"
+  },
+  {
+    "route": "/en-us/articles/dependency-vulnerabilities",
+    "image": "/og/en-us-articles-dependency-vulnerabilities.png"
+  },
+  {
+    "route": "/artigos/politica-empreendedorismo",
+    "image": "/og/artigos-politica-empreendedorismo.png"
+  },
+  {
+    "route": "/en-us/articles/politics-entrepreneurship",
+    "image": "/og/en-us-articles-politics-entrepreneurship.png"
+  },
+  {
+    "route": "/artigos/fundamentos-tecnologia",
+    "image": "/og/artigos-fundamentos-tecnologia.png"
+  },
+  {
+    "route": "/en-us/articles/tech-fundamentals",
+    "image": "/og/en-us-articles-tech-fundamentals.png"
+  },
+  {
+    "route": "/artigos/divulgacao-discord",
+    "image": "/og/artigos-divulgacao-discord.png"
+  },
+  {
+    "route": "/en-us/articles/discord-promotion",
+    "image": "/og/en-us-articles-discord-promotion.png"
+  },
+  {
+    "route": "/artigos/moderacao-discord",
+    "image": "/og/artigos-moderacao-discord.png"
+  },
+  {
+    "route": "/en-us/articles/discord-moderation",
+    "image": "/og/en-us-articles-discord-moderation.png"
+  },
+  {
+    "route": "/artigos/clt-para-freelancer",
+    "image": "/og/artigos-clt-para-freelancer.png"
+  },
+  {
+    "route": "/en-us/articles/clt-to-freelancer",
+    "image": "/og/en-us-articles-clt-to-freelancer.png"
+  },
+  {
+    "route": "/artigos/inpi",
+    "image": "/og/artigos-inpi.png"
+  },
+  {
+    "route": "/en-us/articles/inpi",
+    "image": "/og/en-us-articles-inpi.png"
+  },
+  {
+    "route": "/artigos/bot-profissional-discord",
+    "image": "/og/artigos-bot-profissional-discord.png"
+  },
+  {
+    "route": "/en-us/articles/professional-discord-bot",
+    "image": "/og/en-us-articles-professional-discord-bot.png"
+  },
+  {
+    "route": "/artigos/aluguel-bots-discord",
+    "image": "/og/artigos-aluguel-bots-discord.png"
+  },
+  {
+    "route": "/en-us/articles/discord-bot-rental",
+    "image": "/og/en-us-articles-discord-bot-rental.png"
+  },
+  {
+    "route": "/artigos/monetizar-bots",
+    "image": "/og/artigos-monetizar-bots.png"
+  },
+  {
+    "route": "/en-us/articles/monetizing-bots",
+    "image": "/og/en-us-articles-monetizing-bots.png"
+  },
+  {
+    "route": "/artigos/nicho-bot-discord",
+    "image": "/og/artigos-nicho-bot-discord.png"
+  },
+  {
+    "route": "/en-us/articles/discord-bot-niche",
+    "image": "/og/en-us-articles-discord-bot-niche.png"
+  },
+  {
+    "route": "/artigos/desenvolvimento-full-stack",
+    "image": "/og/artigos-desenvolvimento-full-stack.png"
+  },
+  {
+    "route": "/en-us/articles/full-stack-development",
+    "image": "/og/en-us-articles-full-stack-development.png"
+  },
+  {
+    "route": "/artigos/custo-desenvolvimento-sistema",
+    "image": "/og/artigos-custo-desenvolvimento-sistema.png"
+  },
+  {
+    "route": "/en-us/articles/system-development-cost",
+    "image": "/og/en-us-articles-system-development-cost.png"
+  },
+  {
+    "route": "/artigos/visao-e-persistencia",
+    "image": "/og/artigos-visao-e-persistencia.png"
+  },
+  {
+    "route": "/en-us/articles/vision-and-persistence",
+    "image": "/og/en-us-articles-vision-and-persistence.png"
+  },
+  {
+    "route": "/artigos/bots-discord",
+    "image": "/og/artigos-bots-discord.png"
+  },
+  {
+    "route": "/en-us/articles/discord-bots",
+    "image": "/og/en-us-articles-discord-bots.png"
+  },
+  {
+    "route": "/artigos/perfil-linkedin-tecnologia",
+    "image": "/og/artigos-perfil-linkedin-tecnologia.png"
+  },
+  {
+    "route": "/en-us/articles/linkedin-profile-tech",
+    "image": "/og/en-us-articles-linkedin-profile-tech.png"
+  },
+  {
+    "route": "/artigos/o-que-significa-saber-programar",
+    "image": "/og/artigos-o-que-significa-saber-programar.png"
+  },
+  {
+    "route": "/en-us/articles/what-programming-really-means",
+    "image": "/og/en-us-articles-what-programming-really-means.png"
+  },
+  {
+    "route": "/artigos/programar-nao-e-decorar-sintaxe",
+    "image": "/og/artigos-programar-nao-e-decorar-sintaxe.png"
+  },
+  {
+    "route": "/en-us/articles/programming-is-not-memorizing-syntax",
+    "image": "/og/en-us-articles-programming-is-not-memorizing-syntax.png"
+  },
+  {
+    "route": "/artigos/logica-mais-importante-que-linguagem",
+    "image": "/og/artigos-logica-mais-importante-que-linguagem.png"
+  },
+  {
+    "route": "/en-us/articles/logic-more-important-than-language",
+    "image": "/og/en-us-articles-logic-more-important-than-language.png"
+  },
+  {
+    "route": "/artigos/como-internet-funciona",
+    "image": "/og/artigos-como-internet-funciona.png"
+  },
+  {
+    "route": "/en-us/articles/how-the-internet-really-works",
+    "image": "/og/en-us-articles-how-the-internet-really-works.png"
+  },
+  {
+    "route": "/artigos/frontend-backend-infraestrutura",
+    "image": "/og/artigos-frontend-backend-infraestrutura.png"
+  },
+  {
+    "route": "/en-us/articles/frontend-backend-infrastructure",
+    "image": "/og/en-us-articles-frontend-backend-infrastructure.png"
+  },
+  {
+    "route": "/artigos/aprender-codigo-vs-entender-sistemas",
+    "image": "/og/artigos-aprender-codigo-vs-entender-sistemas.png"
+  },
+  {
+    "route": "/en-us/articles/learning-code-vs-understanding-systems",
+    "image": "/og/en-us-articles-learning-code-vs-understanding-systems.png"
+  },
+  {
+    "route": "/artigos/como-estudar-programacao",
+    "image": "/og/artigos-como-estudar-programacao.png"
+  },
+  {
+    "route": "/en-us/articles/how-to-study-programming",
+    "image": "/og/en-us-articles-how-to-study-programming.png"
+  },
+  {
+    "route": "/artigos/curso-faculdade-ou-autodidata",
+    "image": "/og/artigos-curso-faculdade-ou-autodidata.png"
+  },
+  {
+    "route": "/en-us/articles/course-college-or-self-taught",
+    "image": "/og/en-us-articles-course-college-or-self-taught.png"
+  },
+  {
+    "route": "/artigos/plano-de-estudo-realista",
+    "image": "/og/artigos-plano-de-estudo-realista.png"
+  },
+  {
+    "route": "/en-us/articles/realistic-study-plan",
+    "image": "/og/en-us-articles-realistic-study-plan.png"
+  },
+  {
+    "route": "/artigos/copiar-tutorial-nao-transforma",
+    "image": "/og/artigos-copiar-tutorial-nao-transforma.png"
+  },
+  {
+    "route": "/en-us/articles/copying-tutorials-wont-transform-you",
+    "image": "/og/en-us-articles-copying-tutorials-wont-transform-you.png"
+  },
+  {
+    "route": "/artigos/aprender-ler-documentacao",
+    "image": "/og/artigos-aprender-ler-documentacao.png"
+  },
+  {
+    "route": "/en-us/articles/learning-to-read-documentation",
+    "image": "/og/en-us-articles-learning-to-read-documentation.png"
+  },
+  {
+    "route": "/artigos/aprender-a-pesquisar",
+    "image": "/og/artigos-aprender-a-pesquisar.png"
+  },
+  {
+    "route": "/en-us/articles/learning-to-search",
+    "image": "/og/en-us-articles-learning-to-search.png"
+  },
+  {
+    "route": "/artigos/basico-que-iniciante-ignora",
+    "image": "/og/artigos-basico-que-iniciante-ignora.png"
+  },
+  {
+    "route": "/en-us/articles/basics-beginners-ignore",
+    "image": "/og/en-us-articles-basics-beginners-ignore.png"
+  },
+  {
+    "route": "/artigos/git-versionamento",
+    "image": "/og/artigos-git-versionamento.png"
+  },
+  {
+    "route": "/en-us/articles/git-and-versioning",
+    "image": "/og/en-us-articles-git-and-versioning.png"
+  },
+  {
+    "route": "/artigos/banco-de-dados-pratico",
+    "image": "/og/artigos-banco-de-dados-pratico.png"
+  },
+  {
+    "route": "/en-us/articles/databases-explained-practically",
+    "image": "/og/en-us-articles-databases-explained-practically.png"
+  },
+  {
+    "route": "/artigos/o-que-e-http",
+    "image": "/og/artigos-o-que-e-http.png"
+  },
+  {
+    "route": "/en-us/articles/what-is-http",
+    "image": "/og/en-us-articles-what-is-http.png"
+  },
+  {
+    "route": "/artigos/o-que-sao-apis",
+    "image": "/og/artigos-o-que-sao-apis.png"
+  },
+  {
+    "route": "/en-us/articles/what-are-apis",
+    "image": "/og/en-us-articles-what-are-apis.png"
+  },
+  {
+    "route": "/artigos/arquitetura-software-iniciantes",
+    "image": "/og/artigos-arquitetura-software-iniciantes.png"
+  },
+  {
+    "route": "/en-us/articles/software-architecture-for-beginners",
+    "image": "/og/en-us-articles-software-architecture-for-beginners.png"
+  },
+  {
+    "route": "/artigos/estudante-vs-desenvolvedor",
+    "image": "/og/artigos-estudante-vs-desenvolvedor.png"
+  },
+  {
+    "route": "/en-us/articles/student-vs-developer",
+    "image": "/og/en-us-articles-student-vs-developer.png"
+  },
+  {
+    "route": "/artigos/pensar-como-programador-profissional",
+    "image": "/og/artigos-pensar-como-programador-profissional.png"
+  },
+  {
+    "route": "/en-us/articles/think-like-a-professional-programmer",
+    "image": "/og/en-us-articles-think-like-a-professional-programmer.png"
+  },
+  {
+    "route": "/artigos/responsabilidade-tecnica",
+    "image": "/og/artigos-responsabilidade-tecnica.png"
+  },
+  {
+    "route": "/en-us/articles/technical-responsibility",
+    "image": "/og/en-us-articles-technical-responsibility.png"
+  },
+  {
+    "route": "/artigos/debugar-mais-importante-que-framework",
+    "image": "/og/artigos-debugar-mais-importante-que-framework.png"
+  },
+  {
+    "route": "/en-us/articles/debugging-more-important-than-framework",
+    "image": "/og/en-us-articles-debugging-more-important-than-framework.png"
+  },
+  {
+    "route": "/artigos/organizacao-codigo-maturidade",
+    "image": "/og/artigos-organizacao-codigo-maturidade.png"
+  },
+  {
+    "route": "/en-us/articles/code-organization-is-maturity",
+    "image": "/og/en-us-articles-code-organization-is-maturity.png"
+  },
+  {
+    "route": "/artigos/seguranca-basica-iniciante",
+    "image": "/og/artigos-seguranca-basica-iniciante.png"
+  },
+  {
+    "route": "/en-us/articles/basic-security-for-beginners",
+    "image": "/og/en-us-articles-basic-security-for-beginners.png"
+  },
+  {
+    "route": "/artigos/portfolio-que-impressiona",
+    "image": "/og/artigos-portfolio-que-impressiona.png"
+  },
+  {
+    "route": "/en-us/articles/portfolio-that-actually-impresses",
+    "image": "/og/en-us-articles-portfolio-that-actually-impresses.png"
+  },
+  {
+    "route": "/artigos/projetos-para-iniciantes",
+    "image": "/og/artigos-projetos-para-iniciantes.png"
+  },
+  {
+    "route": "/en-us/articles/projects-that-make-sense-for-beginners",
+    "image": "/og/en-us-articles-projects-that-make-sense-for-beginners.png"
+  },
+  {
+    "route": "/artigos/o-que-nao-colocar-no-github",
+    "image": "/og/artigos-o-que-nao-colocar-no-github.png"
+  },
+  {
+    "route": "/en-us/articles/what-not-to-put-on-github",
+    "image": "/og/en-us-articles-what-not-to-put-on-github.png"
+  },
+  {
+    "route": "/artigos/readme-profissional",
+    "image": "/og/artigos-readme-profissional.png"
+  },
+  {
+    "route": "/en-us/articles/professional-readme",
+    "image": "/og/en-us-articles-professional-readme.png"
+  },
+  {
+    "route": "/artigos/preparacao-entrevistas-tecnicas",
+    "image": "/og/artigos-preparacao-entrevistas-tecnicas.png"
+  },
+  {
+    "route": "/en-us/articles/preparing-for-technical-interviews",
+    "image": "/og/en-us-articles-preparing-for-technical-interviews.png"
+  },
+  {
+    "route": "/artigos/o-que-empresas-avaliam-iniciantes",
+    "image": "/og/artigos-o-que-empresas-avaliam-iniciantes.png"
+  },
+  {
+    "route": "/en-us/articles/what-companies-evaluate-in-beginners",
+    "image": "/og/en-us-articles-what-companies-evaluate-in-beginners.png"
+  },
+  {
+    "route": "/artigos/perigo-stack-da-moda",
+    "image": "/og/artigos-perigo-stack-da-moda.png"
+  },
+  {
+    "route": "/en-us/articles/danger-of-trend-stack",
+    "image": "/og/en-us-articles-danger-of-trend-stack.png"
+  },
+  {
+    "route": "/artigos/especializar-cedo-limita",
+    "image": "/og/artigos-especializar-cedo-limita.png"
+  },
+  {
+    "route": "/en-us/articles/early-specialization-limits",
+    "image": "/og/en-us-articles-early-specialization-limits.png"
+  },
+  {
+    "route": "/artigos/ilusao-curso-garante-emprego",
+    "image": "/og/artigos-ilusao-curso-garante-emprego.png"
+  },
+  {
+    "route": "/en-us/articles/course-guarantees-job-illusion",
+    "image": "/og/en-us-articles-course-guarantees-job-illusion.png"
+  },
+  {
+    "route": "/artigos/trocar-linguagem-atrasa",
+    "image": "/og/artigos-trocar-linguagem-atrasa.png"
+  },
+  {
+    "route": "/en-us/articles/switching-languages-slows-progress",
+    "image": "/og/en-us-articles-switching-languages-slows-progress.png"
+  },
+  {
+    "route": "/artigos/comparacao-excessiva-devs",
+    "image": "/og/artigos-comparacao-excessiva-devs.png"
+  },
+  {
+    "route": "/en-us/articles/excessive-comparison-with-developers",
+    "image": "/og/en-us-articles-excessive-comparison-with-developers.png"
+  },
+  {
+    "route": "/artigos/atalhos-profissao-tecnica",
+    "image": "/og/artigos-atalhos-profissao-tecnica.png"
+  },
+  {
+    "route": "/en-us/articles/shortcuts-in-technical-profession",
+    "image": "/og/en-us-articles-shortcuts-in-technical-profession.png"
+  },
+  {
+    "route": "/artigos/quando-comecar-especializar",
+    "image": "/og/artigos-quando-comecar-especializar.png"
+  },
+  {
+    "route": "/en-us/articles/when-to-start-specializing",
+    "image": "/og/en-us-articles-when-to-start-specializing.png"
+  },
+  {
+    "route": "/artigos/backend-frontend-como-decidir",
+    "image": "/og/artigos-backend-frontend-como-decidir.png"
+  },
+  {
+    "route": "/en-us/articles/backend-frontend-how-to-decide",
+    "image": "/og/en-us-articles-backend-frontend-how-to-decide.png"
+  },
+  {
+    "route": "/artigos/junior-para-pleno",
+    "image": "/og/artigos-junior-para-pleno.png"
+  },
+  {
+    "route": "/en-us/articles/junior-to-mid-level",
+    "image": "/og/en-us-articles-junior-to-mid-level.png"
+  },
+  {
+    "route": "/artigos/entender-negocios-nao-so-codigo",
+    "image": "/og/artigos-entender-negocios-nao-so-codigo.png"
+  },
+  {
+    "route": "/en-us/articles/understanding-business-not-just-code",
+    "image": "/og/en-us-articles-understanding-business-not-just-code.png"
+  },
+  {
+    "route": "/artigos/construir-reputacao-mercado",
+    "image": "/og/artigos-construir-reputacao-mercado.png"
+  },
+  {
+    "route": "/en-us/articles/building-market-reputation",
+    "image": "/og/en-us-articles-building-market-reputation.png"
+  },
+  {
+    "route": "/artigos/trabalho-remoto-preparacao",
+    "image": "/og/artigos-trabalho-remoto-preparacao.png"
+  },
+  {
+    "route": "/en-us/articles/remote-work-preparation",
+    "image": "/og/en-us-articles-remote-work-preparation.png"
+  },
+  {
+    "route": "/artigos/o-que-o-monitoramento-da-discord-pelo-stf-significa-para-quem-cria-comunidades",
+    "image": "/og/artigos-o-que-o-monitoramento-da-discord-pelo-stf-significa-para-quem-cria-comunidades.png"
+  },
+  {
+    "route": "/trilhas/seguranca-digital",
+    "image": "/og/trilhas-seguranca-digital.png"
+  },
+  {
+    "route": "/en-us/trails/digital-security",
+    "image": "/og/en-us-trails-digital-security.png"
+  },
+  {
+    "route": "/trilhas/arquitetura-infraestrutura",
+    "image": "/og/trilhas-arquitetura-infraestrutura.png"
+  },
+  {
+    "route": "/en-us/trails/architecture-infrastructure",
+    "image": "/og/en-us-trails-architecture-infrastructure.png"
+  },
+  {
+    "route": "/trilhas/gestao-de-comunidades",
+    "image": "/og/trilhas-gestao-de-comunidades.png"
+  },
+  {
+    "route": "/en-us/trails/community-management",
+    "image": "/og/en-us-trails-community-management.png"
+  },
+  {
+    "route": "/trilhas/estrategia-mentalidade",
+    "image": "/og/trilhas-estrategia-mentalidade.png"
+  },
+  {
+    "route": "/en-us/trails/strategy-mindset",
+    "image": "/og/en-us-trails-strategy-mindset.png"
+  },
+  {
+    "route": "/trilhas/mercado-programacao",
+    "image": "/og/trilhas-mercado-programacao.png"
+  },
+  {
+    "route": "/en-us/trails/market-programming",
+    "image": "/og/en-us-trails-market-programming.png"
+  },
+  {
+    "route": "/checklists/seguranca-conta-discord",
+    "image": "/og/checklists-seguranca-conta-discord.png"
+  },
+  {
+    "route": "/en-us/checklists/discord-account-security",
+    "image": "/og/en-us-checklists-discord-account-security.png"
+  },
+  {
+    "route": "/checklists/bot-em-producao",
+    "image": "/og/checklists-bot-em-producao.png"
+  },
+  {
+    "route": "/en-us/checklists/bot-in-production",
+    "image": "/og/en-us-checklists-bot-in-production.png"
+  },
+  {
+    "route": "/checklists/abrir-servidor-publico",
+    "image": "/og/checklists-abrir-servidor-publico.png"
+  },
+  {
+    "route": "/en-us/checklists/opening-public-server",
+    "image": "/og/en-us-checklists-opening-public-server.png"
+  },
+  {
+    "route": "/checklists/infraestrutura-minima",
+    "image": "/og/checklists-infraestrutura-minima.png"
+  },
+  {
+    "route": "/en-us/checklists/minimum-infrastructure",
+    "image": "/og/en-us-checklists-minimum-infrastructure.png"
+  },
+  {
+    "route": "/politicas/visao-geral",
+    "image": "/og/politicas-visao-geral.png"
+  },
+  {
+    "route": "/en-us/policies/visao-geral",
+    "image": "/og/en-us-policies-visao-geral.png"
+  },
+  {
+    "route": "/politicas/termos-de-uso",
+    "image": "/og/politicas-termos-de-uso.png"
+  },
+  {
+    "route": "/en-us/policies/termos-de-uso",
+    "image": "/og/en-us-policies-termos-de-uso.png"
+  },
+  {
+    "route": "/politicas/politica-de-privacidade",
+    "image": "/og/politicas-politica-de-privacidade.png"
+  },
+  {
+    "route": "/en-us/policies/politica-de-privacidade",
+    "image": "/og/en-us-policies-politica-de-privacidade.png"
+  },
+  {
+    "route": "/politicas/disclaimer",
+    "image": "/og/politicas-disclaimer.png"
+  },
+  {
+    "route": "/en-us/policies/disclaimer",
+    "image": "/og/en-us-policies-disclaimer.png"
+  },
+  {
+    "route": "/politicas/diretrizes-comunidade",
+    "image": "/og/politicas-diretrizes-comunidade.png"
+  },
+  {
+    "route": "/en-us/policies/diretrizes-comunidade",
+    "image": "/og/en-us-policies-diretrizes-comunidade.png"
+  },
+  {
+    "route": "/politicas/como-trabalho",
+    "image": "/og/politicas-como-trabalho.png"
+  },
+  {
+    "route": "/en-us/policies/como-trabalho",
+    "image": "/og/en-us-policies-como-trabalho.png"
+  },
+  {
+    "route": "/politicas/o-que-faco",
+    "image": "/og/politicas-o-que-faco.png"
+  },
+  {
+    "route": "/en-us/policies/o-que-faco",
+    "image": "/og/en-us-policies-o-que-faco.png"
+  },
+  {
+    "route": "/politicas/o-que-nao-faco",
+    "image": "/og/politicas-o-que-nao-faco.png"
+  },
+  {
+    "route": "/en-us/policies/o-que-nao-faco",
+    "image": "/og/en-us-policies-o-que-nao-faco.png"
+  },
+  {
+    "route": "/politicas/disclaimer-livro",
+    "image": "/og/politicas-disclaimer-livro.png"
+  },
+  {
+    "route": "/en-us/policies/disclaimer-livro",
+    "image": "/og/en-us-policies-disclaimer-livro.png"
+  },
+  {
+    "route": "/politicas/livro-direitos-autorais",
+    "image": "/og/politicas-livro-direitos-autorais.png"
+  },
+  {
+    "route": "/en-us/policies/livro-direitos-autorais",
+    "image": "/og/en-us-policies-livro-direitos-autorais.png"
+  },
+  {
+    "route": "/politicas/livro-licenca-de-uso",
+    "image": "/og/politicas-livro-licenca-de-uso.png"
+  },
+  {
+    "route": "/en-us/policies/livro-licenca-de-uso",
+    "image": "/og/en-us-policies-livro-licenca-de-uso.png"
+  },
+  {
+    "route": "/politicas/livro-termos-de-compra",
+    "image": "/og/politicas-livro-termos-de-compra.png"
+  },
+  {
+    "route": "/en-us/policies/livro-termos-de-compra",
+    "image": "/og/en-us-policies-livro-termos-de-compra.png"
+  },
+  {
+    "route": "/politicas/livro-politica-de-reembolso",
+    "image": "/og/politicas-livro-politica-de-reembolso.png"
+  },
+  {
+    "route": "/en-us/policies/livro-politica-de-reembolso",
+    "image": "/og/en-us-policies-livro-politica-de-reembolso.png"
+  },
+  {
+    "route": "/politicas/livro-limitacao-de-responsabilidade",
+    "image": "/og/politicas-livro-limitacao-de-responsabilidade.png"
+  },
+  {
+    "route": "/en-us/policies/livro-limitacao-de-responsabilidade",
+    "image": "/og/en-us-policies-livro-limitacao-de-responsabilidade.png"
+  },
+  {
+    "route": "/politicas/livro-uso-de-marca",
+    "image": "/og/politicas-livro-uso-de-marca.png"
+  },
+  {
+    "route": "/en-us/policies/livro-uso-de-marca",
+    "image": "/og/en-us-policies-livro-uso-de-marca.png"
+  },
+  {
+    "route": "/politicas/livro-canais-oficiais",
+    "image": "/og/politicas-livro-canais-oficiais.png"
+  },
+  {
+    "route": "/en-us/policies/livro-canais-oficiais",
+    "image": "/og/en-us-policies-livro-canais-oficiais.png"
+  },
+  {
+    "route": "/politicas/livro-jurisdicao",
+    "image": "/og/politicas-livro-jurisdicao.png"
+  },
+  {
+    "route": "/en-us/policies/livro-jurisdicao",
+    "image": "/og/en-us-policies-livro-jurisdicao.png"
+  }
+]
