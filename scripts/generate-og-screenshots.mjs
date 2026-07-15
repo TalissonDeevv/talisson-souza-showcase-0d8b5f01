@@ -1,5 +1,6 @@
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { createRequire } from 'node:module';
 
@@ -8,7 +9,11 @@ const ts = require('typescript');
 const Module = require('node:module');
 
 const root = process.cwd();
-const baseUrl = process.argv[2] ?? 'http://127.0.0.1:4177';
+const cliArgs = process.argv.slice(2);
+const manifestOnly = cliArgs.includes('--manifest-only');
+const captureArgs = cliArgs.filter((arg) => arg !== '--manifest-only');
+const baseUrl = captureArgs[0] ?? 'http://127.0.0.1:4177';
+const requestedRoutes = captureArgs.slice(1);
 const outputDir = path.join(root, 'public', 'og');
 
 function loadTsModule(relativePath) {
@@ -63,31 +68,158 @@ function chromePath() {
   return candidates.find((candidate) => candidate && (candidate.includes('\\') ? fs.existsSync(candidate) : true));
 }
 
-function capture(chrome, route, file) {
+function wait(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function waitForJson(url, attempts = 80) {
+  for (let i = 0; i < attempts; i += 1) {
+    try {
+      const response = await fetch(url);
+      if (response.ok) return response.json();
+    } catch {
+      // Chrome is still booting.
+    }
+    await wait(100);
+  }
+
+  throw new Error(`Timed out waiting for ${url}`);
+}
+
+function createCdpClient(wsUrl) {
+  let id = 0;
+  const pending = new Map();
+  const socket = new WebSocket(wsUrl);
+
+  socket.addEventListener('message', (event) => {
+    const message = JSON.parse(event.data);
+    if (!message.id || !pending.has(message.id)) return;
+
+    const { resolve, reject } = pending.get(message.id);
+    pending.delete(message.id);
+
+    if (message.error) {
+      reject(new Error(message.error.message || 'Chrome DevTools command failed'));
+      return;
+    }
+
+    resolve(message.result);
+  });
+
+  const opened = new Promise((resolve, reject) => {
+    socket.addEventListener('open', resolve, { once: true });
+    socket.addEventListener('error', reject, { once: true });
+  });
+
+  return {
+    async send(method, params = {}) {
+      await opened;
+      id += 1;
+      socket.send(JSON.stringify({ id, method, params }));
+      return new Promise((resolve, reject) => {
+        pending.set(id, { resolve, reject });
+      });
+    },
+    close() {
+      socket.close();
+    },
+  };
+}
+
+async function terminateChrome(child, userDataDir) {
+  if (!child.killed) {
+    child.kill('SIGKILL');
+  }
+
+  await Promise.race([
+    new Promise((resolve) => child.once('exit', resolve)),
+    wait(1500),
+  ]);
+
+  for (let attempt = 0; attempt < 8; attempt += 1) {
+    try {
+      fs.rmSync(userDataDir, { recursive: true, force: true });
+      return;
+    } catch {
+      await wait(250);
+    }
+  }
+}
+
+async function waitForPageTarget(port) {
+  for (let i = 0; i < 80; i += 1) {
+    const targets = await waitForJson(`http://127.0.0.1:${port}/json/list`, 1).catch(() => []);
+    const page = targets.find((target) => target.type === 'page' && target.webSocketDebuggerUrl);
+    if (page) return page.webSocketDebuggerUrl;
+    await wait(100);
+  }
+
+  throw new Error('Timed out waiting for page target');
+}
+
+async function capture(chrome, route, file) {
   const url = `${baseUrl}${route === '/' ? '/' : route}`;
+  const port = 9222 + Math.floor(Math.random() * 1000);
+  const userDataDir = fs.mkdtempSync(path.join(os.tmpdir(), 'talisson-og-'));
   const args = [
     '--headless=new',
     '--disable-gpu',
     '--disable-extensions',
     '--hide-scrollbars',
+    '--no-first-run',
+    '--disable-dev-shm-usage',
     '--force-device-scale-factor=1',
     '--window-size=1200,630',
-    '--virtual-time-budget=4500',
-    `--screenshot=${file}`,
+    `--remote-debugging-port=${port}`,
+    `--user-data-dir=${userDataDir}`,
     url,
   ];
 
-  return new Promise((resolve, reject) => {
-    const child = spawn(chrome, args, { stdio: 'ignore' });
-    child.on('error', reject);
-    child.on('exit', (code) => {
-      if (code === 0 && fs.existsSync(file)) {
-        resolve();
-        return;
-      }
-      reject(new Error(`Failed to capture ${route} with code ${code}`));
+  const child = spawn(chrome, args, { stdio: 'ignore' });
+  let client;
+
+  try {
+    const wsUrl = await waitForPageTarget(port);
+    client = createCdpClient(wsUrl);
+    await client.send('Page.enable');
+    await client.send('Runtime.enable');
+    await wait(2800);
+    await client.send('Runtime.evaluate', {
+      awaitPromise: true,
+      expression: `
+        (async () => {
+          await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+          const route = ${JSON.stringify(route)};
+          const target =
+            document.querySelector('[data-og-focus]') ||
+            document.querySelector('h1') ||
+            document.querySelector('main [class*="font-serif"]') ||
+            document.querySelector('main section');
+          if (target && route !== '/' && route !== '/en-us') {
+            const rect = target.getBoundingClientRect();
+            const y = Math.max(0, window.scrollY + rect.top - 135);
+            window.scrollTo({ top: y, left: 0, behavior: 'instant' });
+            await new Promise((resolve) => setTimeout(resolve, 450));
+          }
+          document.body.style.caretColor = 'transparent';
+          return true;
+        })()
+      `,
     });
-  });
+    const screenshot = await client.send('Page.captureScreenshot', {
+      format: 'png',
+      fromSurface: true,
+      captureBeyondViewport: false,
+    });
+    fs.writeFileSync(file, Buffer.from(screenshot.data, 'base64'));
+  } finally {
+    client?.close();
+    await terminateChrome(child, userDataDir);
+  }
+
+  if (!fs.existsSync(file)) {
+    throw new Error(`Failed to capture ${route}`);
+  }
 }
 
 function uniqueRoutes(routes) {
@@ -143,7 +275,7 @@ const staticRoutes = [
   '/en-us/policies',
 ];
 
-const routes = uniqueRoutes([
+const routes = requestedRoutes.length > 0 ? uniqueRoutes(requestedRoutes) : uniqueRoutes([
   ...staticRoutes,
   ...serviceIds.flatMap((id) => [`/servicos/${id}`, `/en-us/services/${id}`]),
   ...articles.flatMap((article) => [article.path.pt, article.path.en]),
@@ -155,12 +287,40 @@ const routes = uniqueRoutes([
 
 fs.mkdirSync(outputDir, { recursive: true });
 
+const manifestFile = path.join(outputDir, 'manifest.json');
+
+function manifestEntry(route) {
+  const key = routeImageKey(route);
+  return { route, image: `/og/${key}.png` };
+}
+
+function readExistingManifest() {
+  if (!fs.existsSync(manifestFile)) return [];
+
+  try {
+    const content = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
+    return Array.isArray(content) ? content : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeManifest(entries) {
+  fs.writeFileSync(manifestFile, JSON.stringify(entries, null, 2));
+}
+
+if (manifestOnly) {
+  writeManifest(routes.map(manifestEntry));
+  console.log(`Manifest updated with ${routes.length} routes.`);
+  process.exit(0);
+}
+
 const chrome = chromePath();
 if (!chrome) {
   throw new Error('Chrome or Edge was not found for OG screenshot capture.');
 }
 
-const manifest = [];
+const capturedManifest = [];
 let index = 0;
 
 for (const route of routes) {
@@ -168,8 +328,19 @@ for (const route of routes) {
   const key = routeImageKey(route);
   const file = path.join(outputDir, `${key}.png`);
   await capture(chrome, route, file);
-  manifest.push({ route, image: `/og/${key}.png` });
+  capturedManifest.push({ route, image: `/og/${key}.png` });
   console.log(`[${index}/${routes.length}] ${route} -> /og/${key}.png`);
 }
 
-fs.writeFileSync(path.join(outputDir, 'manifest.json'), JSON.stringify(manifest, null, 2));
+if (requestedRoutes.length > 0) {
+  const existingManifest = readExistingManifest();
+  const mergedManifest = new Map(existingManifest.map((entry) => [entry.route, entry]));
+
+  for (const entry of capturedManifest) {
+    mergedManifest.set(entry.route, entry);
+  }
+
+  writeManifest([...mergedManifest.values()]);
+} else {
+  writeManifest(capturedManifest);
+}

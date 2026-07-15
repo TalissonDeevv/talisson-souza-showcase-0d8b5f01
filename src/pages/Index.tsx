@@ -211,7 +211,7 @@ const Index = () => {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="mt-2">
 
-              <SocialIcons />
+              <SocialIcons centered className="mx-auto max-w-[92vw] justify-center" />
             </motion.div>
           </div>
         </div>

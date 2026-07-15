@@ -94,6 +94,7 @@ export const ptToEnRoutes: Record<string, string> = {
   '/faq': '/en-us/faq',
   '/feedbacks': '/en-us/feedbacks',
   '/politicas': '/en-us/policies',
+  '/politicas/canais-oficiais-comunicacao-institucional': '/en-us/policies/canais-oficiais-comunicacao-institucional',
   '/politicas/disclaimer-livro': '/en-us/policies/disclaimer-livro',
   '/politicas/livro-direitos-autorais': '/en-us/policies/livro-direitos-autorais',
   '/politicas/livro-licenca-de-uso': '/en-us/policies/livro-licenca-de-uso',

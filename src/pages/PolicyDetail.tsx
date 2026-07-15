@@ -105,15 +105,22 @@ const PolicyDetail = () => {
                 <div className="space-y-7 lg:pl-10">
                   {section.paragraphs.map((paragraph, index) => (
                     <ScrollReveal key={index} delay={Math.min(index * 0.025, 0.18)}>
-                      <motion.p
+                      <motion.div
                         initial={{ opacity: 0, y: 14 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-70px" }}
                         transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                        className={index === 0 ? "border-l border-foreground/25 pl-5 font-serif text-2xl leading-[1.45] text-foreground" : "text-[16px] leading-[1.92] text-muted-foreground"}
+                        className={index === 0 && !paragraph.heading ? "border-l border-foreground/25 pl-5 font-serif text-2xl leading-[1.45] text-foreground" : ""}
                       >
-                        {paragraph[lang]}
-                      </motion.p>
+                        {paragraph.heading && (
+                          <h2 className="mb-4 font-serif text-2xl leading-tight text-foreground lg:text-3xl">
+                            {paragraph.heading[lang]}
+                          </h2>
+                        )}
+                        <p className={paragraph.heading ? "text-[16px] leading-[1.92] text-muted-foreground" : ""}>
+                          {paragraph[lang]}
+                        </p>
+                      </motion.div>
                     </ScrollReveal>
                   ))}
                 </div>

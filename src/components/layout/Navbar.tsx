@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Compass } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
 import ThemeLanguageToggle from "@/components/ui/ThemeLanguageToggle";
@@ -22,7 +22,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [openMobileAccordion, setOpenMobileAccordion] = useState<string | null>(null);
+  const [isExploreSheetOpen, setIsExploreSheetOpen] = useState(false);
   
   const location = useLocation();
   const { language } = useTheme();
@@ -39,7 +39,7 @@ const Navbar = () => {
   useEffect(() => {
     setIsOpen(false);
     setOpenDropdown(null);
-    setOpenMobileAccordion(null);
+    setIsExploreSheetOpen(false);
   }, [location.pathname]);
 
   const isActive = (path: string) => {
@@ -199,7 +199,7 @@ const Navbar = () => {
 
         {/* Mobile menu */}
         {isOpen && (
-          <div className="lg:hidden py-6 border-t border-border/40">
+          <div className="mt-2 overflow-hidden rounded-3xl border border-border/35 bg-background/95 py-4 shadow-[0_24px_80px_hsl(0_0%_0%/0.45)] backdrop-blur-xl lg:hidden">
             <div className="flex flex-col gap-1">
               {simpleNavItems.map((item) => (
                 <Link
@@ -216,47 +216,68 @@ const Navbar = () => {
                 </Link>
               ))}
 
-              {dropdowns.map((dropdown) => (
-                <div key={dropdown.label}>
-                  <button
-                    onClick={() => setOpenMobileAccordion(openMobileAccordion === dropdown.label ? null : dropdown.label)}
-                    className="w-full flex items-center justify-between px-4 py-3 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    aria-expanded={openMobileAccordion === dropdown.label}
-                  >
-                    {dropdown.label}
-                    <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${openMobileAccordion === dropdown.label ? 'rotate-180' : ''}`} />
-                  </button>
-                  {openMobileAccordion === dropdown.label && (
-                    <div className="pl-4 border-l border-border/40 ml-4 mb-2">
-                      {dropdown.allLink && (
-                        <Link
-                          to={dropdown.allLink.path}
-                          onClick={() => setIsOpen(false)}
-                          className="block px-4 py-2 text-sm text-foreground"
-                        >
-                          {dropdown.allLink.name}
-                        </Link>
-                      )}
-                      {dropdown.items.map((item) => (
-                        <Link
-                          key={item.path}
-                          to={item.path}
-                          onClick={() => setIsOpen(false)}
-                          className={`block px-4 py-2 text-sm transition-colors ${
-                            isActive(item.path) ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-                          }`}
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  setIsExploreSheetOpen(true);
+                }}
+                className="mx-2 mt-2 flex items-center justify-between rounded-2xl border border-border/35 bg-foreground/[0.04] px-4 py-3 text-sm text-foreground transition-colors hover:bg-foreground/[0.08]"
+              >
+                {dropdowns[0]?.label}
+                <Compass className="h-4 w-4" />
+              </button>
             </div>
           </div>
         )}
       </div>
+
+      <button
+        onClick={() => setIsExploreSheetOpen(true)}
+        className="fixed bottom-4 right-4 z-[65] inline-flex items-center gap-2 rounded-full border border-border/40 bg-background/95 px-4 py-3 text-sm font-medium text-foreground shadow-[0_18px_60px_hsl(0_0%_0%/0.45)] backdrop-blur-xl transition-colors hover:bg-foreground/10 lg:hidden"
+        aria-label={dropdowns[0]?.label}
+      >
+        <Compass className="h-4 w-4" />
+        {dropdowns[0]?.label}
+      </button>
+
+      {isExploreSheetOpen && (
+        <div className="fixed inset-0 z-[80] lg:hidden">
+          <button
+            className="absolute inset-0 bg-background/75 backdrop-blur-sm"
+            aria-label={getText(language, "Fechar explorar", "Close explore")}
+            onClick={() => setIsExploreSheetOpen(false)}
+          />
+          <div className="absolute inset-x-3 bottom-3 overflow-hidden rounded-[28px] border border-border/35 bg-background/95 shadow-[0_28px_90px_hsl(0_0%_0%/0.55)]">
+            <div className="flex items-center justify-between border-b border-border/25 px-5 py-4">
+              <span className="text-xs uppercase tracking-[0.28em] text-muted-foreground/70">{dropdowns[0]?.label}</span>
+              <button
+                onClick={() => setIsExploreSheetOpen(false)}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border/35 text-muted-foreground transition-colors hover:text-foreground"
+                aria-label={getText(language, "Fechar", "Close")}
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+            <div className="grid max-h-[62vh] gap-1 overflow-y-auto p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))]">
+              {dropdowns[0]?.items.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setIsExploreSheetOpen(false)}
+                  className={`flex items-center justify-between rounded-2xl px-4 py-3 text-sm transition-colors ${
+                    isActive(item.path)
+                      ? "bg-foreground/[0.08] text-foreground"
+                      : "text-muted-foreground hover:bg-foreground/[0.05] hover:text-foreground"
+                  }`}
+                >
+                  {item.name}
+                  <ChevronDown className="-rotate-90 h-4 w-4" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

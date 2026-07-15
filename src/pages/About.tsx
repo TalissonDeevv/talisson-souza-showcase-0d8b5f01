@@ -88,6 +88,42 @@ const About = () => {
         "Discipline builds more than motivation.",
       ];
 
+  const policyHighlights = language === "pt"
+    ? [
+        {
+          title: "Como eu trabalho",
+          text: "Começo pelo contexto, organizo o problema e só então transformo decisão em execução técnica.",
+          path: "/politicas/como-trabalho",
+        },
+        {
+          title: "O que eu faço",
+          text: "Desenvolvo sistemas, automações, integrações, arquitetura e soluções digitais sob medida.",
+          path: "/politicas/o-que-faco",
+        },
+        {
+          title: "O que eu não faço",
+          text: "Não vendo promessa vazia, atalho milagroso, gambiarra sem critério ou entrega sem responsabilidade.",
+          path: "/politicas/o-que-nao-faco",
+        },
+      ]
+    : [
+        {
+          title: "How I work",
+          text: "I start from context, organize the problem and only then turn decisions into technical execution.",
+          path: "/en-us/policies/como-trabalho",
+        },
+        {
+          title: "What I do",
+          text: "I build systems, automations, integrations, architecture and custom digital solutions.",
+          path: "/en-us/policies/o-que-faco",
+        },
+        {
+          title: "What I do not do",
+          text: "I do not sell empty promises, miraculous shortcuts, careless patches or work without responsibility.",
+          path: "/en-us/policies/o-que-nao-faco",
+        },
+      ];
+
   return (
     <Layout withPadding={false}>
       <SEO
@@ -220,6 +256,49 @@ const About = () => {
                 </ScrollReveal>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="criterios" className="relative scroll-mt-28 overflow-hidden py-12 lg:py-16">
+        <div className="container mx-auto px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="mb-8 max-w-3xl">
+              <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                {getText(language, "Critérios", "Criteria")}
+              </span>
+              <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
+                {getText(language, "Clareza antes de qualquer acordo.", "Clarity before any agreement.")}
+              </h2>
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                {getText(
+                  language,
+                  "Parte do meu trabalho é deixar explícito o modo como conduzo projetos, o tipo de entrega que assumo e os limites que protegem a relação profissional.",
+                  "Part of my work is making clear how I lead projects, what kind of delivery I take on and which limits protect the professional relationship."
+                )}
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid gap-px overflow-hidden border border-border/20 bg-border/20 lg:grid-cols-3">
+            {policyHighlights.map((item, index) => (
+              <ScrollReveal key={item.path} delay={index * 0.05}>
+                <Link
+                  to={item.path}
+                  className="group block h-full bg-background/92 p-6 transition-colors hover:bg-foreground/[0.035] lg:p-8"
+                >
+                  <span className="mb-8 block font-serif text-4xl text-foreground/14">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-serif text-2xl text-foreground">{item.title}</h3>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+                  <span className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground">
+                    {getText(language, "Ler política", "Read policy")}
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </span>
+                </Link>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>

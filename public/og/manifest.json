@@ -852,6 +852,14 @@
     "image": "/og/en-us-policies-diretrizes-comunidade.png"
   },
   {
+    "route": "/politicas/canais-oficiais-comunicacao-institucional",
+    "image": "/og/politicas-canais-oficiais-comunicacao-institucional.png"
+  },
+  {
+    "route": "/en-us/policies/canais-oficiais-comunicacao-institucional",
+    "image": "/og/en-us-policies-canais-oficiais-comunicacao-institucional.png"
+  },
+  {
     "route": "/politicas/como-trabalho",
     "image": "/og/politicas-como-trabalho.png"
   },
