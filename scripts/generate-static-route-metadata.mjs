@@ -24,6 +24,11 @@ const pageMeta = new Map([
   ['/faq', ['FAQ | Talisson Souza', 'Respostas diretas sobre serviços, processos, limites, prazos e forma de trabalho.']],
   ['/feedbacks', ['Feedbacks | Talisson Souza', 'Depoimentos reais de clientes, parceiros e profissionais que já acompanharam meu trabalho.']],
   ['/artigos', ['Artigos | Talisson Souza', 'Conteúdos técnicos e reflexões sobre tecnologia, carreira, segurança, comunidades e mercado.']],
+  ['/trilhas/seguranca-digital', ['Segurança Digital | Talisson Souza', 'Artigos sobre proteção de contas, engenharia social, vulnerabilidades, segurança de servidores e práticas técnicas.']],
+  ['/trilhas/arquitetura-infraestrutura', ['Arquitetura e Infraestrutura | Talisson Souza', 'Artigos sobre hospedagem, deploy, escalabilidade, banco de dados, estrutura de sistemas e decisões arquiteturais.']],
+  ['/trilhas/gestao-de-comunidades', ['Gestão de Comunidades | Talisson Souza', 'Artigos sobre moderação, administração de servidores, cultura interna, equipe e crescimento estruturado.']],
+  ['/trilhas/estrategia-mentalidade', ['Estratégia e Mentalidade | Talisson Souza', 'Artigos sobre pensamento crítico, empreendedorismo digital, responsabilidade técnica e tomada de decisão.']],
+  ['/trilhas/mercado-programacao', ['Entrando no Mercado de Programação e Crescimento na Carreira | Talisson Souza', 'Biblioteca com 100 artigos para quem começa a estudar programação, entra no mercado, amadurece tecnicamente e constrói carreira com critério.']],
   ['/politicas', ['Políticas | Talisson Souza', 'Central de políticas, termos e diretrizes que orientam minha atuação profissional.']],
   ['/como-trabalho', ['Como Eu Trabalho | Talisson Souza', 'Meu processo de trabalho, tomada de decisão, validação de escopo e condução técnica.']],
   ['/decisoes-tecnicas', ['Decisões Técnicas | Talisson Souza', 'Reflexões sobre stack, arquitetura, trade-offs e escolhas técnicas em projetos reais.']],
@@ -41,6 +46,11 @@ const pageMeta = new Map([
   ['/en-us/faq', ['FAQ | Talisson Souza', 'Direct answers about services, processes, limits, timelines and work style.']],
   ['/en-us/feedbacks', ['Feedbacks | Talisson Souza', 'Real testimonials from clients, partners and professionals who have followed my work.']],
   ['/en-us/articles', ['Articles | Talisson Souza', 'Technical content and reflections on technology, career, security, communities and the market.']],
+  ['/en-us/trails/digital-security', ['Digital Security | Talisson Souza', 'Articles about account protection, social engineering, vulnerabilities, server security and technical practices.']],
+  ['/en-us/trails/architecture-infrastructure', ['Architecture and Infrastructure | Talisson Souza', 'Articles about hosting, deployment, scalability, databases, system structure and architectural decisions.']],
+  ['/en-us/trails/community-management', ['Community Management | Talisson Souza', 'Articles about moderation, server administration, internal culture, teams and structured growth.']],
+  ['/en-us/trails/strategy-mindset', ['Strategy and Mindset | Talisson Souza', 'Articles about critical thinking, digital entrepreneurship, technical responsibility and decision making.']],
+  ['/en-us/trails/market-programming', ['Entering the Programming Market and Growing Your Career | Talisson Souza', 'A 100 article library for people starting in programming, entering the market, maturing technically and building a career with judgment.']],
   ['/en-us/policies', ['Policies | Talisson Souza', 'Policy, terms and guideline hub for my professional work.']],
 ]);
 
@@ -202,12 +212,23 @@ const replaceMeta = (source, route, imagePath) => {
   return output;
 };
 
-let generated = 0;
+const routeImages = new Map();
 for (const entry of manifest) {
   if (!entry.route || !entry.image || entry.route === '/') continue;
-  const routeDir = path.join(distDir, entry.route.replace(/^\/+/, ''));
+  routeImages.set(entry.route, entry.image);
+}
+
+for (const route of articleMetaByPath.keys()) {
+  if (!routeImages.has(route)) {
+    routeImages.set(route, '/og/artigos.png');
+  }
+}
+
+let generated = 0;
+for (const [route, image] of routeImages) {
+  const routeDir = path.join(distDir, route.replace(/^\/+/, ''));
   fs.mkdirSync(routeDir, { recursive: true });
-  fs.writeFileSync(path.join(routeDir, 'index.html'), replaceMeta(html, entry.route, entry.image), 'utf8');
+  fs.writeFileSync(path.join(routeDir, 'index.html'), replaceMeta(html, route, image), 'utf8');
   generated += 1;
 }
 

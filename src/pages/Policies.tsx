@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, BookOpen, FileText, Scale, ShieldCheck } from "lucide-react";
@@ -8,9 +9,10 @@ import { MotionRail, PageHero } from "@/components/ui/PageIdentity";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import { policySections, policiesPageMeta } from "@/data/policies-content";
+import { cn } from "@/lib/utils";
 
 const groupIds = {
-  base: ["visao-geral", "termos-de-uso", "politica-de-privacidade", "disclaimer", "diretrizes-comunidade"],
+  base: ["visao-geral", "termos-de-uso", "politica-de-privacidade", "disclaimer", "diretrizes-comunidade", "canais-oficiais-comunicacao-institucional"],
   work: ["como-trabalho", "o-que-faco", "o-que-nao-faco"],
   book: [
     "disclaimer-livro",
@@ -29,8 +31,9 @@ const Policies = () => {
   const { language } = useTheme();
   const lang = language as "pt" | "en";
   const basePath = lang === "en" ? "/en-us/policies" : "/politicas";
+  const [activeGroup, setActiveGroup] = useState("base");
 
-  const groups = [
+  const groups = useMemo(() => [
     {
       id: "base",
       icon: Scale,
@@ -52,7 +55,43 @@ const Policies = () => {
       description: getText(language, "Compra, uso, direitos, reembolso, marca, canais oficiais e jurisdição.", "Purchase, use, rights, refund, brand, official channels and jurisdiction."),
       sections: policySections.filter((section) => groupIds.book.includes(section.id)),
     },
-  ];
+  ], [language]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const elements = groups
+      .map((group) => document.getElementById(group.id))
+      .filter((element): element is HTMLElement => Boolean(element));
+
+    const syncHash = (id: string) => {
+      setActiveGroup(id);
+      const nextUrl = `${window.location.pathname}#${id}`;
+      if (window.location.hash !== `#${id}`) {
+        window.history.replaceState(null, "", nextUrl);
+      }
+    };
+
+    if (!window.location.hash) {
+      syncHash("base");
+    } else {
+      const hashId = window.location.hash.replace("#", "");
+      if (groups.some((group) => group.id === hashId)) setActiveGroup(hashId);
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        if (visible?.target.id) syncHash(visible.target.id);
+      },
+      { rootMargin: "-35% 0px -50% 0px", threshold: [0, 0.25, 0.6] }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, [groups]);
 
   return (
     <Layout withPadding={false}>
@@ -106,12 +145,25 @@ const Policies = () => {
                 </p>
                 <div className="mt-8 divide-y divide-border/20 border-y border-border/20">
                   {groups.map((group, index) => (
-                    <a key={group.id} href={`#${group.id}`} className="group grid grid-cols-[48px_1fr] gap-4 py-4">
-                      <span className="font-serif text-2xl leading-none text-foreground/18 transition-colors group-hover:text-foreground/35">
+                    <a
+                      key={group.id}
+                      href={`#${group.id}`}
+                      className={cn(
+                        "group grid grid-cols-[48px_1fr] gap-4 py-4 transition-colors",
+                        activeGroup === group.id && "text-foreground"
+                      )}
+                    >
+                      <span className={cn(
+                        "font-serif text-2xl leading-none text-foreground/18 transition-colors group-hover:text-foreground/35",
+                        activeGroup === group.id && "text-foreground/60"
+                      )}>
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <span>
-                        <span className="block text-sm font-medium text-foreground">{group.title}</span>
+                        <span className={cn(
+                          "block text-sm font-medium text-foreground/80 transition-colors group-hover:text-foreground",
+                          activeGroup === group.id && "text-foreground"
+                        )}>{group.title}</span>
                         <span className="mt-1 block text-xs text-muted-foreground/55">{group.sections.length} {getText(language, "documentos", "documents")}</span>
                       </span>
                     </a>

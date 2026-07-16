@@ -54,7 +54,7 @@ const Articles = () => {
     ? articles.filter((article) => article.tags[language].some((tag) => tag === selectedCategory))
     : articles;
 
-  const featured = articles.find((article) => article.id === "eca-digital-anpd") ?? articles[0];
+  const featuredTrail = trails.find((trail) => trail.id === "market-programming") ?? trails[0];
 
   return (
     <Layout withPadding={false}>
@@ -119,30 +119,38 @@ const Articles = () => {
       <section className="pb-12">
         <div className="container mx-auto px-6 lg:px-8">
           <ScrollReveal>
-            <Link to={featured.path[language]} className="group block">
+            <Link to={featuredTrail.path[language]} className="group block">
               <IdentityPanel className="p-6 lg:p-8">
                 <div className="grid gap-8 lg:grid-cols-[1fr_0.38fr]">
                   <div>
                     <div className="mb-6 flex flex-wrap items-center gap-3">
                       <span className="rounded-full border border-border/25 bg-background/35 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-muted-foreground/60">
-                        {getText(language, "destaque", "featured")}
+                        {getText(language, "trilha em destaque", "featured trail")}
                       </span>
-                      <span className="text-xs text-muted-foreground/50">{featured.date[language]}</span>
+                      <span className="text-xs text-muted-foreground/50">
+                        {featuredTrail.articleIds.length} {getText(language, "artigos", "articles")}
+                      </span>
                       <span className="h-1 w-1 rounded-full bg-muted-foreground/35" />
                       <span className="text-xs text-muted-foreground/50">
-                        {featured.readTime} {getText(language, "de leitura", "read")}
+                        {getText(language, "programação e carreira", "programming and career")}
                       </span>
                     </div>
                     <h2 className="max-w-4xl font-serif text-2xl leading-tight text-foreground lg:text-4xl">
-                      {displayArticleTitle(featured.title[language])}
+                      {featuredTrail.title[language]}
                     </h2>
                     <p className="mt-5 max-w-3xl text-sm leading-relaxed text-muted-foreground lg:text-base">
-                      {featured.excerpt[language]}
+                      {featuredTrail.description[language]}
                     </p>
                   </div>
                   <div className="flex flex-col justify-between gap-8 border-t border-border/20 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
                     <div className="flex flex-wrap gap-2">
-                      {featured.tags[language].slice(0, 5).map((tag) => (
+                      {[
+                        getText(language, "Fundamentos", "Fundamentals"),
+                        getText(language, "Engenharia", "Engineering"),
+                        getText(language, "Carreira", "Career"),
+                        getText(language, "Mercado", "Market"),
+                        getText(language, "Negócios", "Business"),
+                      ].map((tag) => (
                         <span key={tag} className="rounded-full border border-border/20 px-3 py-1 text-[10px] uppercase tracking-[0.16em] text-muted-foreground/55">
                           {tag}
                         </span>
@@ -150,7 +158,7 @@ const Articles = () => {
                     </div>
                     <span className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
                       <span className="relative">
-                        {getText(language, "Ler artigo", "Read article")}
+                        {getText(language, "Explorar trilha", "Explore trail")}
                         <span className="absolute bottom-0 left-0 h-px w-full bg-foreground/20" />
                         <span className="absolute bottom-0 left-0 h-px w-0 bg-foreground transition-all duration-500 group-hover:w-full" />
                       </span>
