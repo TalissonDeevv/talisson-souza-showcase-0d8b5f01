@@ -43,77 +43,86 @@ const TrailReadingPrompt = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.aside
-          initial={{ opacity: 0, y: 18, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 12, scale: 0.98 }}
-          transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
           className={cn(
             "fixed bottom-5 left-4 z-50 w-[calc(100%-2rem)] max-w-[380px]",
             "sm:bottom-6 sm:left-6"
           )}
           aria-live="polite"
         >
-          <div className="relative overflow-hidden rounded-2xl border border-border/25 bg-background/88 p-4 shadow-[0_22px_70px_hsl(var(--background)/0.55)] backdrop-blur-xl">
+          <div className="relative isolate overflow-hidden rounded-2xl shadow-[0_22px_70px_hsl(var(--background)/0.55)]">
+            <div className="pointer-events-none absolute inset-0 z-0 rounded-2xl border border-border/25 bg-background/88 backdrop-blur-xl [-webkit-backdrop-filter:blur(24px)]" />
             <div
-              className="pointer-events-none absolute inset-0 opacity-[0.018]"
+              className="pointer-events-none absolute inset-0 z-0 opacity-[0.018]"
               style={{
                 backgroundImage:
                   "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
                 backgroundSize: "30px 30px",
               }}
             />
-            <button
-              type="button"
-              onClick={() => setIsVisible(false)}
-              className="absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-border/20 bg-background/45 text-muted-foreground transition-colors hover:text-foreground"
-              aria-label={getText(language, "Fechar convite", "Close invitation")}
+            <motion.div
+              initial={{ opacity: 0, y: 18, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 12, scale: 0.98 }}
+              transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+              className="relative z-10 p-4"
             >
-              <X className="h-4 w-4" />
-            </button>
+              <button
+                type="button"
+                onClick={() => setIsVisible(false)}
+                className="absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-border/20 bg-background/45 text-muted-foreground transition-colors hover:text-foreground"
+                aria-label={getText(language, "Fechar convite", "Close invitation")}
+              >
+                <X className="h-4 w-4" />
+              </button>
 
-            <div className="relative pr-8">
-              <div className="mb-4 flex items-center gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border/25 bg-foreground/[0.035]">
-                  <BookOpen className="h-4 w-4 text-foreground/75" />
-                </span>
-                <span className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground/65">
-                  {getText(language, "Leitura guiada", "Guided reading")}
-                </span>
+              <div className="relative pr-8">
+                <div className="mb-4 flex items-center gap-3">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border/25 bg-foreground/[0.035]">
+                    <BookOpen className="h-4 w-4 text-foreground/75" />
+                  </span>
+                  <span className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground/65">
+                    {getText(language, "Leitura guiada", "Guided reading")}
+                  </span>
+                </div>
+
+                <h2 className="font-serif text-xl leading-tight text-foreground">
+                  {getText(
+                    language,
+                    "Antes de trocar de linguagem pela quinta vez, leia isso com calma.",
+                    "Before switching languages for the fifth time, read this calmly."
+                  )}
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {getText(
+                    language,
+                    "Uma trilha com 140 artigos para estudar programa\u00e7\u00e3o, entender o mercado e crescer sem depender de atalhos bonitos.",
+                    "A 140 article trail to study programming, understand the market and grow without depending on pretty shortcuts."
+                  )}
+                </p>
+
+                <div className="mt-5 flex flex-wrap items-center gap-3">
+                  <Link
+                    to={trailPath}
+                    onClick={() => setIsVisible(false)}
+                    className="group inline-flex items-center justify-center gap-2 rounded-full border border-border/35 bg-foreground px-4 py-2.5 text-sm font-medium text-background transition-transform duration-300 hover:-translate-y-0.5"
+                  >
+                    {getText(language, "Abrir trilha", "Open trail")}
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => setIsVisible(false)}
+                    className="inline-flex items-center justify-center rounded-full border border-border/25 bg-background/35 px-4 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {getText(language, "Agora n\u00e3o", "Not now")}
+                  </button>
+                </div>
               </div>
-
-              <h2 className="font-serif text-xl leading-tight text-foreground">
-                {getText(
-                  language,
-                  "Antes de trocar de linguagem pela quinta vez, leia isso com calma.",
-                  "Before switching languages for the fifth time, read this calmly."
-                )}
-              </h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                {getText(
-                  language,
-                  "Uma trilha com 140 artigos para estudar programa\u00e7\u00e3o, entender o mercado e crescer sem depender de atalhos bonitos.",
-                  "A 140 article trail to study programming, understand the market and grow without depending on pretty shortcuts."
-                )}
-              </p>
-
-              <div className="mt-5 flex flex-wrap items-center gap-3">
-                <Link
-                  to={trailPath}
-                  onClick={() => setIsVisible(false)}
-                  className="group inline-flex items-center justify-center gap-2 rounded-full border border-border/35 bg-foreground px-4 py-2.5 text-sm font-medium text-background transition-transform duration-300 hover:-translate-y-0.5"
-                >
-                  {getText(language, "Abrir trilha", "Open trail")}
-                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </Link>
-                <button
-                  type="button"
-                  onClick={() => setIsVisible(false)}
-                  className="inline-flex items-center justify-center rounded-full border border-border/25 bg-background/35 px-4 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  {getText(language, "Agora n\u00e3o", "Not now")}
-                </button>
-              </div>
-            </div>
+            </motion.div>
           </div>
         </motion.aside>
       )}
