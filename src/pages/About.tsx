@@ -481,42 +481,40 @@ const About = () => {
         <div className="container mx-auto px-6 lg:px-8">
           <ScrollReveal>
             <div className="mx-auto max-w-6xl border-y border-border/20 py-10 lg:py-14">
-              <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
-                <div>
-                  <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                    {getText(language, "ReflexÃ£o", "Reflection")}
-                  </span>
-                  <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
-                    {getText(
-                      language,
-                      "Construir tambÃ©m Ã© escolher o que permanece.",
-                      "Building also means choosing what remains."
-                    )}
-                  </h2>
-                </div>
+              <div className="mx-auto max-w-4xl text-center">
+                <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                  {getText(language, "Reflex\u00e3o", "Reflection")}
+                </span>
+                <h2 className="mx-auto max-w-3xl font-serif text-3xl leading-tight text-foreground lg:text-5xl">
+                  {getText(
+                    language,
+                    "Construir tamb\u00e9m \u00e9 escolher o que permanece.",
+                    "Building also means choosing what remains."
+                  )}
+                </h2>
 
                 <motion.div
                   initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.64, ease }}
-                  className="space-y-5"
+                  className="mx-auto mt-8 space-y-5"
                 >
-                  <p className="max-w-3xl text-[16px] leading-[1.88] text-muted-foreground">
+                  <p className="mx-auto max-w-3xl text-[16px] leading-[1.88] text-muted-foreground">
                     {getText(
                       language,
-                      "Olhar para minha trajetÃ³ria me ensinou que nem toda construÃ§Ã£o precisa ser barulhenta. Algumas decisÃµes importantes acontecem no silÃªncio, quando escolho estudar mais um pouco, revisar uma ideia, recomeÃ§ar um projeto ou aceitar que uma soluÃ§Ã£o ainda nÃ£o estÃ¡ madura.",
+                      "Olhar para minha trajet\u00f3ria me ensinou que nem toda constru\u00e7\u00e3o precisa ser barulhenta. Algumas decis\u00f5es importantes acontecem no sil\u00eancio, quando escolho estudar mais um pouco, revisar uma ideia, recome\u00e7ar um projeto ou aceitar que uma solu\u00e7\u00e3o ainda n\u00e3o est\u00e1 madura.",
                       "Looking at my path taught me that not every construction needs to be loud. Some important decisions happen quietly, while choosing to study a little more, review an idea, restart a project or accept that a solution is not mature yet."
                     )}
                   </p>
-                  <p className="max-w-3xl text-[16px] leading-[1.88] text-muted-foreground">
+                  <p className="mx-auto max-w-3xl text-[16px] leading-[1.88] text-muted-foreground">
                     {getText(
                       language,
-                      "NÃ£o quero que minha histÃ³ria seja lida como uma linha reta. Ela tem pausas, recusas, reconstruÃ§Ãµes e escolhas que sÃ³ fizeram sentido depois. Talvez por isso eu valorize tanto o que permanece. Trabalho bem feito, palavra honrada, conhecimento compartilhado e responsabilidade com quem confia em mim.",
+                      "N\u00e3o quero que minha hist\u00f3ria seja lida como uma linha reta. Ela tem pausas, recusas, reconstru\u00e7\u00f5es e escolhas que s\u00f3 fizeram sentido depois. Talvez por isso eu valorize tanto o que permanece. Trabalho bem feito, palavra honrada, conhecimento compartilhado e responsabilidade com quem confia em mim.",
                       "I do not want my story to be read as a straight line. It has pauses, rejections, rebuilds and choices that only made sense later. Maybe that is why I value what remains. Careful work, kept word, shared knowledge and responsibility toward those who trust me."
                     )}
                   </p>
-                  <div className="mt-8 w-full max-w-[360px] opacity-85">
+                  <div className="mx-auto mt-8 w-full max-w-[360px] opacity-85">
                     <AnimatedSignature />
                   </div>
                 </motion.div>
