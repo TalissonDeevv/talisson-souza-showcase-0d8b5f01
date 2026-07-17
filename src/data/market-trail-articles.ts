@@ -22,6 +22,46 @@ import { aiReplacingDevsArticle } from './market-trail/ai-replacing-devs';
 import { devJobPositioningArticle } from './market-trail/dev-job-positioning';
 import { discordCommunityStrategyArticles } from './market-trail/discord-community-strategy';
 
+type LocalizedText = { pt: string; en: string };
+
+const withoutEditorialColons = (value: string) => {
+  const urls: string[] = [];
+  const protectedText = value.replace(/https?:\/\/[^\s)]+/g, (match) => {
+    const token = `__MARKET_TRAIL_URL_${urls.length}__`;
+    urls.push(match);
+    return token;
+  });
+
+  const cleaned = protectedText.replace(/\s*:\s*/g, ". ");
+
+  return urls.reduce((text, url, index) => text.replace(`__MARKET_TRAIL_URL_${index}__`, url), cleaned);
+};
+
+const sanitizeLocalized = (text: LocalizedText): LocalizedText => ({
+  pt: withoutEditorialColons(text.pt),
+  en: withoutEditorialColons(text.en),
+});
+
+const sanitizeArticleText = (article: MarketTrailArticle): MarketTrailArticle => ({
+  ...article,
+  title: sanitizeLocalized(article.title),
+  excerpt: sanitizeLocalized(article.excerpt),
+  tags: {
+    pt: article.tags.pt.map(withoutEditorialColons),
+    en: article.tags.en.map(withoutEditorialColons),
+  },
+  keywords: {
+    pt: article.keywords.pt.map(withoutEditorialColons),
+    en: article.keywords.en.map(withoutEditorialColons),
+  },
+  sourceLabel: article.sourceLabel ? sanitizeLocalized(article.sourceLabel) : article.sourceLabel,
+  disclaimerText: article.disclaimerText ? sanitizeLocalized(article.disclaimerText) : article.disclaimerText,
+  sections: article.sections.map((section) => ({
+    title: sanitizeLocalized(section.title),
+    content: sanitizeLocalized(section.content),
+  })),
+});
+
 const rawMarketTrailArticles: MarketTrailArticle[] = [
   ...block1Articles,
   ...block2Articles,
@@ -43,4 +83,6 @@ const rawMarketTrailArticles: MarketTrailArticle[] = [
   ...devJobPositioningArticle,
 ];
 
-export const marketTrailArticles: MarketTrailArticle[] = rawMarketTrailArticles.map(enhanceManualArticle);
+export const marketTrailArticles: MarketTrailArticle[] = rawMarketTrailArticles
+  .map(enhanceManualArticle)
+  .map(sanitizeArticleText);

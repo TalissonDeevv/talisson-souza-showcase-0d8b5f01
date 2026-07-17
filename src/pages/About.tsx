@@ -124,6 +124,147 @@ const About = () => {
         },
       ];
 
+  const addedNarrativeSections = language === "pt"
+    ? [
+        {
+          eyebrow: "Motivação",
+          title: "O que me move",
+          text: [
+            "O que me move não é a ideia abstrata de tecnologia. É perceber um problema que atrapalha uma pessoa, uma empresa ou uma comunidade e conseguir transformar aquilo em algo mais claro, mais estável e mais útil.",
+            "Gosto quando uma solução deixa de chamar atenção porque funciona bem o suficiente para virar parte natural da rotina. Esse tipo de resultado quase nunca nasce de pressa. Ele aparece quando existe escuta, estudo, critério e respeito pelo impacto que uma decisão técnica pode causar.",
+            "Também me move compartilhar conhecimento. Não como vitrine, mas como retorno. Muito do que aprendi veio de documentação, comunidades, conversas e pessoas que explicaram algo com paciência. Quando escrevo, gravo, respondo ou organizo uma ideia, tento devolver um pouco disso.",
+          ],
+        },
+        {
+          eyebrow: "Além do software",
+          title: "A tecnologia não é o único centro da minha história",
+          text: [
+            "A escrita se tornou uma forma de organizar pensamento. Antes de publicar qualquer coisa, normalmente existe uma fase de pesquisa, rascunho, revisão e tentativa de transformar uma ideia complexa em algo que outra pessoa consiga usar de verdade.",
+            "O livro Superando Limites nasceu desse mesmo lugar. Ele não existe para transformar minha trajetória em espetáculo. Existe porque algumas experiências precisavam ser registradas com mais calma, sem depender do ritmo rápido das redes sociais.",
+            "Comunidades, estudo constante, produção de conteúdo e novos projetos fazem parte da mesma linha. São maneiras diferentes de construir repertório, testar ideias, conversar com pessoas e amadurecer decisões antes de colocá-las no mundo.",
+          ],
+        },
+        {
+          eyebrow: "2021",
+          title: "Uma experiência que fortaleceu minha decisão de empreender",
+          text: [
+            "Em 2021, candidatei-me a três oportunidades profissionais. Em algumas conversas, tive a percepção de que o tom mudava quando minha condição como pessoa com deficiência se tornava conhecida. Em certos casos, o retorno simplesmente não veio.",
+            "Não transformo essa percepção em acusação contra pessoas ou empresas específicas. O que posso dizer, com honestidade, é que aquele período me fez olhar para o meu caminho com mais seriedade. Se eu dependesse apenas da autorização de alguém para provar minha capacidade, talvez demorasse muito mais para construir o que eu queria construir.",
+            "A resposta foi estudar mais, organizar melhor meu portfólio, assumir projetos com responsabilidade e desenvolver minha empresa com consistência. O empreendedorismo, para mim, não apareceu como frase bonita. Apareceu como uma forma concreta de continuar avançando.",
+          ],
+        },
+        {
+          eyebrow: "Impacto",
+          title: "O que eu quero deixar em construção",
+          text: [
+            "Quero que meu trabalho ajude empresas a funcionarem melhor, mas também quero que ajude pessoas a pensarem melhor sobre tecnologia. Um sistema útil resolve uma parte do problema. Conhecimento compartilhado pode mudar a forma como alguém enxerga o próprio caminho.",
+            "Quando alguém que também enfrenta barreiras olha para minha trajetória, eu não quero que veja uma história perfeita. Quero que veja uma pessoa construindo com responsabilidade, errando, corrigindo, insistindo e tentando abrir espaço para que outras pessoas também se levem a sério.",
+            "Legado, para mim, não é aparecer mais. É construir algo que continue ajudando quando a atenção passa.",
+          ],
+        },
+        {
+          eyebrow: "Fora do código",
+          title: "Onde as ideias amadurecem",
+          text: [
+            "Boa parte do meu trabalho acontece antes do editor de código abrir. Estudo, pesquiso, comparo caminhos, escrevo anotações, organizo prioridades e tento entender se a solução que parece boa hoje ainda fará sentido depois.",
+            "Também mantenho projetos pessoais porque eles me dão liberdade para experimentar sem transformar cada tentativa em uma entrega pública. Algumas ideias amadurecem rápido. Outras precisam de silêncio, revisão e tempo.",
+          ],
+        },
+      ]
+    : [
+        {
+          eyebrow: "Motivation",
+          title: "What moves me",
+          text: [
+            "What moves me is not technology as an abstract idea. It is seeing a problem that affects a person, a company or a community and turning it into something clearer, more stable and more useful.",
+            "I like when a solution stops calling attention because it works well enough to become part of the routine. That kind of result rarely comes from haste. It comes from listening, studying, judgment and respect for the impact of technical decisions.",
+          ],
+        },
+        {
+          eyebrow: "Beyond software",
+          title: "Technology is not the only center of my story",
+          text: [
+            "Writing became a way to organize thought. Before publishing anything, there is usually research, drafting, revision and an attempt to turn a complex idea into something someone else can actually use.",
+            "My book Superando Limites came from that same place. It exists because some experiences needed to be registered with more calm than social media allows.",
+          ],
+        },
+        {
+          eyebrow: "2021",
+          title: "An experience that strengthened my decision to build",
+          text: [
+            "In 2021, I applied to three professional opportunities. In some conversations, I had the perception that the tone changed when my condition as a disabled person became known. In certain cases, the follow-up simply never came.",
+            "I do not turn that perception into an accusation against specific people or companies. What I can say honestly is that the period made me take my path more seriously. I studied more, organized my portfolio, took projects responsibly and kept building my company with consistency.",
+          ],
+        },
+        {
+          eyebrow: "Impact",
+          title: "What I want to keep building",
+          text: [
+            "I want my work to help companies operate better, but I also want it to help people think better about technology. A useful system solves part of the problem. Shared knowledge can change how someone sees their own path.",
+            "Legacy, to me, is not about appearing more. It is about building something that keeps helping when attention moves on.",
+          ],
+        },
+        {
+          eyebrow: "Outside code",
+          title: "Where ideas mature",
+          text: [
+            "Much of my work happens before the code editor opens. I study, research, compare paths, write notes, organize priorities and try to understand whether the solution that looks good today will still make sense later.",
+          ],
+        },
+      ];
+
+  const curiosities = language === "pt"
+    ? [
+        { value: "Recife", label: "Nasci e cresci em Pernambuco, uma origem que continua presente na forma como enxergo trabalho e responsabilidade." },
+        { value: "2018", label: "Comecei com bots e automações simples, aprendendo na prática o peso de cada decisão mal pensada." },
+        { value: "2020", label: "A Cheetah Solutions Network nasceu como uma resposta concreta à vontade de construir com mais autonomia." },
+        { value: "Livro", label: "Superando Limites registra parte da minha história fora do formato rápido das redes sociais." },
+      ]
+    : [
+        { value: "Recife", label: "I was born and raised in Pernambuco, an origin that still shapes how I see work and responsibility." },
+        { value: "2018", label: "I started with simple bots and automations, learning in practice the weight of poorly made decisions." },
+        { value: "2020", label: "Cheetah Solutions Network was born as a concrete answer to the will to build with more autonomy." },
+        { value: "Book", label: "Superando Limites records part of my story outside the fast rhythm of social media." },
+      ];
+
+  const trajectoryFaq = language === "pt"
+    ? [
+        {
+          question: "Por que a página Sobre fala tanto de construção?",
+          answer: "Porque essa palavra atravessa minha história de formas diferentes. Construir conhecimento, empresa, confiança, conteúdo, sistemas e oportunidades. A tecnologia aparece como parte desse processo, não como ponto isolado.",
+        },
+        {
+          question: "O que a Cheetah representa na sua trajetória?",
+          answer: "Ela representa autonomia e responsabilidade. Não nasceu apenas como empresa, mas como uma forma de provar trabalho por meio de entrega, organização e visão de longo prazo.",
+        },
+        {
+          question: "O livro tem relação com sua carreira?",
+          answer: "Tem relação com a pessoa por trás da carreira. O livro registra experiências que ajudaram a formar minha visão sobre persistência, rejeição, responsabilidade e construção de futuro.",
+        },
+        {
+          question: "Como sua experiência como PCD aparece no seu trabalho?",
+          answer: "Ela aparece na forma como levo responsabilidade a sério. Aprendi que capacidade nem sempre é reconhecida de imediato, então passei a valorizar evidência, consistência e entrega bem feita.",
+        },
+        {
+          question: "O que você espera construir nos próximos anos?",
+          answer: "Quero continuar desenvolvendo soluções úteis, fortalecendo a Cheetah, escrevendo conteúdos melhores, criando projetos próprios e ajudando outras pessoas a enxergarem caminhos possíveis com mais clareza.",
+        },
+      ]
+    : [
+        {
+          question: "Why does this page talk so much about building?",
+          answer: "Because that word runs through my story in different ways. Building knowledge, company, trust, content, systems and opportunities. Technology is part of that process, not an isolated point.",
+        },
+        {
+          question: "What does Cheetah represent in your journey?",
+          answer: "It represents autonomy and responsibility. It was not created only as a company, but as a way to prove work through delivery, organization and long-term vision.",
+        },
+        {
+          question: "Is the book connected to your career?",
+          answer: "It is connected to the person behind the career. The book records experiences that helped shape how I see persistence, rejection, responsibility and future building.",
+        },
+      ];
+
   return (
     <Layout withPadding={false}>
       <SEO
@@ -218,6 +359,119 @@ const About = () => {
                 })}
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="historia-expandida" className="relative scroll-mt-28 overflow-hidden pb-14 lg:pb-20">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="mx-auto max-w-6xl border-y border-border/20 py-10 lg:py-14">
+            <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+              <ScrollReveal>
+                <div className="lg:sticky lg:top-28">
+                  <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                    {getText(language, "Camadas", "Layers")}
+                  </span>
+                  <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
+                    {getText(language, "A pessoa por trás da entrega.", "The person behind the work.")}
+                  </h2>
+                  <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
+                    {getText(
+                      language,
+                      "Algumas partes da trajetória não cabem em cargos, tecnologias ou datas. Elas aparecem nas decisões que continuam moldando minha forma de construir.",
+                      "Some parts of a journey do not fit into roles, technologies or dates. They appear in decisions that keep shaping how I build."
+                    )}
+                  </p>
+                </div>
+              </ScrollReveal>
+
+              <div className="space-y-10">
+                {addedNarrativeSections.map((section, index) => (
+                  <ScrollReveal key={section.title} delay={index * 0.04}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 18 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-80px" }}
+                      transition={{ duration: 0.58, ease }}
+                      className="border-b border-border/15 pb-10 last:border-b-0 last:pb-0"
+                    >
+                      <span className="mb-4 block text-[11px] uppercase tracking-[0.28em] text-muted-foreground/55">
+                        {section.eyebrow}
+                      </span>
+                      <h3 className="font-serif text-2xl leading-tight text-foreground lg:text-4xl">
+                        {section.title}
+                      </h3>
+                      <div className="mt-5 space-y-5">
+                        {section.text.map((paragraph) => (
+                          <p key={paragraph} className="max-w-3xl text-[16px] leading-[1.88] text-muted-foreground">
+                            {paragraph}
+                          </p>
+                        ))}
+                      </div>
+                    </motion.div>
+                  </ScrollReveal>
+                ))}
+
+                <ScrollReveal>
+                  <div className="border-y border-border/20 py-10">
+                    <span className="mb-4 block text-[11px] uppercase tracking-[0.28em] text-muted-foreground/55">
+                      {getText(language, "Curiosidades", "Notes")}
+                    </span>
+                    <div className="grid gap-px overflow-hidden border border-border/20 bg-border/20 sm:grid-cols-2">
+                      {curiosities.map((item, index) => (
+                        <motion.div
+                          key={item.value}
+                          initial={{ opacity: 0, y: 14 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true, margin: "-80px" }}
+                          transition={{ duration: 0.5, delay: index * 0.04, ease }}
+                          className="bg-background/92 p-5 lg:p-6"
+                        >
+                          <span className="font-serif text-3xl text-foreground">{item.value}</span>
+                          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{item.label}</p>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                </ScrollReveal>
+
+                <ScrollReveal>
+                  <div className="border-b border-border/20 pb-10">
+                    <span className="mb-4 block text-[11px] uppercase tracking-[0.28em] text-muted-foreground/55">
+                      FAQ
+                    </span>
+                    <div className="divide-y divide-border/15 border-y border-border/15">
+                      {trajectoryFaq.map((item) => (
+                        <details key={item.question} className="group py-5">
+                          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-xl text-foreground">
+                            <span>{item.question}</span>
+                            <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300 group-open:rotate-90" />
+                          </summary>
+                          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+                            {item.answer}
+                          </p>
+                        </details>
+                      ))}
+                    </div>
+                  </div>
+                </ScrollReveal>
+
+                <ScrollReveal>
+                  <div>
+                    <span className="mb-4 block text-[11px] uppercase tracking-[0.28em] text-muted-foreground/55">
+                      {getText(language, "Continuidade", "Continuity")}
+                    </span>
+                    <p className="max-w-4xl font-serif text-2xl leading-[1.45] text-foreground lg:text-3xl">
+                      {getText(
+                        language,
+                        "Essa história continua sendo construída com responsabilidade, propósito e visão de longo prazo. Sem pressa de parecer pronta antes da hora.",
+                        "This story is still being built with responsibility, purpose and long-term vision. Without rushing to look finished before its time."
+                      )}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              </div>
+            </div>
           </div>
         </div>
       </section>
