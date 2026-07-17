@@ -124,11 +124,11 @@ const Policies = () => {
       />
 
 
-      <section className="relative overflow-hidden py-12 lg:py-16">
+      <section className="relative overflow-visible py-12 lg:py-16">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
         <div className="container mx-auto px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[0.68fr_1.32fr] lg:items-start">
-            <aside className="lg:sticky lg:top-28 lg:self-start">
+            <aside className="lg:sticky lg:top-24 lg:self-start">
               <ScrollReveal>
                 <span className="mb-5 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
                   {getText(language, "Leitura guiada", "Guided reading")}
@@ -144,7 +144,7 @@ const Policies = () => {
                   )}
                 </p>
               </ScrollReveal>
-                <div className="mt-8 max-h-[232px] divide-y divide-border/20 overflow-y-auto border-y border-border/20 pr-2 [scrollbar-width:thin]">
+                <div className="mt-8 max-h-[204px] divide-y divide-border/20 overflow-y-auto border-y border-border/20 pr-2 [scrollbar-width:thin]">
                   {groups.map((group, index) => (
                     <a
                       key={group.id}

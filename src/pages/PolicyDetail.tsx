@@ -13,9 +13,9 @@ import { cn } from "@/lib/utils";
 
 const chapterId = (index: number) => `capitulo-${index + 1}`;
 
-const getChapterNumber = (heading: string, fallback: number) => {
+const getChapterNumber = (heading: string) => {
   const match = heading.match(/^(\d+)\./);
-  return match?.[1].padStart(2, "0") ?? String(fallback).padStart(2, "0");
+  return match?.[1].padStart(2, "0") ?? "";
 };
 
 const cleanChapterTitle = (heading: string) => heading.replace(/^\d+\.\s*/, "");
@@ -42,6 +42,53 @@ const renderPolicyText = (text: string) => {
   });
 };
 
+const renderPolicyParagraph = (text: string, heading?: string) => {
+  const lines = text.split("\n").filter((line) => line.trim().length > 0);
+  const shouldRenderAsOfficialList = Boolean(heading?.toLowerCase().includes("canais") && lines.length > 2);
+
+  if (shouldRenderAsOfficialList) {
+    const [intro, ...items] = lines;
+
+    return (
+      <span className="block">
+        <span className="block">{renderPolicyText(intro)}</span>
+        <span className="mt-6 grid gap-3">
+          {items.map((line) => {
+            const [label, ...valueParts] = line.split(" - ");
+            const value = valueParts.join(" - ");
+
+            if (!value) {
+              return (
+                <span key={line} className="block rounded-xl border border-border/20 bg-background/25 px-4 py-3">
+                  {renderPolicyText(line)}
+                </span>
+              );
+            }
+
+            return (
+              <span
+                key={line}
+                className="grid gap-1 rounded-xl border border-border/20 bg-background/25 px-4 py-3 sm:grid-cols-[220px_1fr] sm:gap-5"
+              >
+                <span className="text-sm font-medium text-foreground">{label}</span>
+                <span className="min-w-0 break-words text-muted-foreground [overflow-wrap:anywhere]">
+                  {renderPolicyText(value)}
+                </span>
+              </span>
+            );
+          })}
+        </span>
+      </span>
+    );
+  }
+
+  return lines.map((line, index) => (
+    <span key={`${line}-${index}`} className={index > 0 ? "mt-4 block" : "block"}>
+      {renderPolicyText(line)}
+    </span>
+  ));
+};
+
 const PolicyDetail = () => {
   const { language } = useTheme();
   const { sectionId } = useParams<{ sectionId: string }>();
@@ -61,9 +108,11 @@ const PolicyDetail = () => {
         .map((paragraph, index) => {
           const heading = paragraph.heading?.[lang];
           if (!heading) return null;
+          const number = getChapterNumber(heading);
+          if (!number) return null;
           return {
             id: chapterId(index),
-            number: getChapterNumber(heading, index + 1),
+            number,
             title: cleanChapterTitle(heading),
           };
         })
@@ -134,7 +183,7 @@ const PolicyDetail = () => {
       />
 
 
-      <section id="documento" className="relative scroll-mt-28 overflow-hidden py-12 lg:py-16">
+      <section id="documento" className="relative scroll-mt-28 overflow-visible py-12 lg:py-16">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
         <div className="container mx-auto px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
@@ -147,7 +196,7 @@ const PolicyDetail = () => {
             </div>
 
             <div className="grid gap-10 lg:grid-cols-[0.62fr_1.38fr] lg:items-start">
-              <aside className="lg:sticky lg:top-28 lg:self-start">
+              <aside className="lg:sticky lg:top-24 lg:self-start">
                 <ScrollReveal>
                   <span className="mb-5 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
                     {getText(language, "Leitura", "Reading")}
@@ -172,13 +221,13 @@ const PolicyDetail = () => {
                   </div>
                 </ScrollReveal>
                   {chapterItems.length > 0 && (
-                    <nav className="mt-8 hidden max-h-[232px] space-y-1 overflow-y-auto pr-2 [scrollbar-width:thin] lg:block">
+                    <nav className="mt-8 hidden max-h-[154px] space-y-1 overflow-y-auto pr-2 [scrollbar-width:thin] lg:block">
                       {chapterItems.map((item) => (
                         <a
                           key={item.id}
                           href={`#${item.id}`}
                           className={cn(
-                            "group grid grid-cols-[42px_1fr] gap-3 rounded-lg px-1 py-2 text-left transition-colors hover:bg-foreground/[0.03]",
+                            "group grid min-h-12 grid-cols-[42px_1fr] gap-3 rounded-lg px-1 py-2 text-left transition-colors hover:bg-foreground/[0.03]",
                             activeChapter === item.id && "bg-foreground/[0.04]"
                           )}
                         >
@@ -186,7 +235,7 @@ const PolicyDetail = () => {
                             "font-serif text-lg leading-none text-foreground/20 transition-colors group-hover:text-foreground/45",
                             activeChapter === item.id && "text-foreground/70"
                           )}>
-                            {item.number}
+                            {item.number || "•"}
                           </span>
                           <span className={cn(
                             "line-clamp-2 text-xs leading-relaxed text-muted-foreground/60 transition-colors group-hover:text-foreground/80",
@@ -222,7 +271,7 @@ const PolicyDetail = () => {
                           </h2>
                         )}
                         <p className={paragraph.heading ? "text-[16px] leading-[1.92] text-muted-foreground" : ""}>
-                          {renderPolicyText(paragraph[lang])}
+                          {renderPolicyParagraph(paragraph[lang], paragraph.heading?.[lang])}
                         </p>
                       </motion.div>
                     </ScrollReveal>
