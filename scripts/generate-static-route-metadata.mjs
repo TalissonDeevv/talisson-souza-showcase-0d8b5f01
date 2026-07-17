@@ -112,9 +112,23 @@ const marketTrailPattern = new RegExp(
   String.raw`slugPt:\s*'([^']+)'[\s\S]*?slugEn:\s*'([^']+)'[\s\S]*?title:\s*\{\s*pt:\s*'${quoted}',\s*en:\s*'${quoted}'[\s\S]*?excerpt:\s*\{\s*pt:\s*'${quoted}',\s*en:\s*'${quoted}'`,
   'g',
 );
+const marketTrailFactoryPattern = new RegExp(
+  String.raw`slugPt:\s*'([^']+)'[\s\S]*?slugEn:\s*'([^']+)'[\s\S]*?titlePt:\s*'${quoted}'[\s\S]*?titleEn:\s*'${quoted}'[\s\S]*?excerptPt:\s*'${quoted}'[\s\S]*?excerptEn:\s*'${quoted}'`,
+  'g',
+);
 for (const file of fs.readdirSync(marketTrailDir).filter((name) => name.endsWith('.ts'))) {
   const source = fs.readFileSync(path.join(marketTrailDir, file), 'utf8');
   for (const match of source.matchAll(marketTrailPattern)) {
+    addArticleMeta({
+      pathPt: `/artigos/${match[1]}`,
+      pathEn: `/en-us/articles/${match[2]}`,
+      titlePt: match[3],
+      titleEn: match[4],
+      excerptPt: match[5],
+      excerptEn: match[6],
+    });
+  }
+  for (const match of source.matchAll(marketTrailFactoryPattern)) {
     addArticleMeta({
       pathPt: `/artigos/${match[1]}`,
       pathEn: `/en-us/articles/${match[2]}`,
