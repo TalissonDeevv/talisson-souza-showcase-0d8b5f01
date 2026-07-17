@@ -3,6 +3,7 @@ import { ArrowRight, ArrowUpRight, BookOpen, Briefcase, Code2, Download, MapPin,
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
+import AnimatedSignature from "@/components/ui/AnimatedSignature";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import SocialIcons from "@/components/ui/SocialIcons";
 import { MotionRail, PageHero } from "@/components/ui/PageIdentity";
@@ -473,6 +474,55 @@ const About = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="reflexao" className="relative scroll-mt-28 overflow-hidden pb-14 lg:pb-20">
+        <div className="container mx-auto px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="mx-auto max-w-6xl border-y border-border/20 py-10 lg:py-14">
+              <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+                <div>
+                  <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                    {getText(language, "ReflexÃ£o", "Reflection")}
+                  </span>
+                  <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
+                    {getText(
+                      language,
+                      "Construir tambÃ©m Ã© escolher o que permanece.",
+                      "Building also means choosing what remains."
+                    )}
+                  </h2>
+                </div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.64, ease }}
+                  className="space-y-5"
+                >
+                  <p className="max-w-3xl text-[16px] leading-[1.88] text-muted-foreground">
+                    {getText(
+                      language,
+                      "Olhar para minha trajetÃ³ria me ensinou que nem toda construÃ§Ã£o precisa ser barulhenta. Algumas decisÃµes importantes acontecem no silÃªncio, quando escolho estudar mais um pouco, revisar uma ideia, recomeÃ§ar um projeto ou aceitar que uma soluÃ§Ã£o ainda nÃ£o estÃ¡ madura.",
+                      "Looking at my path taught me that not every construction needs to be loud. Some important decisions happen quietly, while choosing to study a little more, review an idea, restart a project or accept that a solution is not mature yet."
+                    )}
+                  </p>
+                  <p className="max-w-3xl text-[16px] leading-[1.88] text-muted-foreground">
+                    {getText(
+                      language,
+                      "NÃ£o quero que minha histÃ³ria seja lida como uma linha reta. Ela tem pausas, recusas, reconstruÃ§Ãµes e escolhas que sÃ³ fizeram sentido depois. Talvez por isso eu valorize tanto o que permanece. Trabalho bem feito, palavra honrada, conhecimento compartilhado e responsabilidade com quem confia em mim.",
+                      "I do not want my story to be read as a straight line. It has pauses, rejections, rebuilds and choices that only made sense later. Maybe that is why I value what remains. Careful work, kept word, shared knowledge and responsibility toward those who trust me."
+                    )}
+                  </p>
+                  <div className="mt-8 w-full max-w-[360px] opacity-85">
+                    <AnimatedSignature />
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

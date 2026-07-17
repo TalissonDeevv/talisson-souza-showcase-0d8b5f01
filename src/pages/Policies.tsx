@@ -144,7 +144,12 @@ const Policies = () => {
                   )}
                 </p>
               </ScrollReveal>
-                <div className="mt-8 max-h-[204px] divide-y divide-border/20 overflow-y-auto border-y border-border/20 pr-2 [scrollbar-width:thin]">
+                <div
+                  data-lenis-prevent=""
+                  data-lenis-prevent-wheel=""
+                  data-lenis-prevent-vertical=""
+                  className="policy-reading-scrollbar mt-8 max-h-[204px] divide-y divide-border/20 overflow-y-auto border-y border-border/20 pr-2"
+                >
                   {groups.map((group, index) => (
                     <a
                       key={group.id}

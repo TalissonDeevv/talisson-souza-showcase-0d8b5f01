@@ -221,7 +221,12 @@ const PolicyDetail = () => {
                   </div>
                 </ScrollReveal>
                   {chapterItems.length > 0 && (
-                    <nav className="mt-8 hidden max-h-[154px] space-y-1 overflow-y-auto pr-2 [scrollbar-width:thin] lg:block">
+                    <nav
+                      data-lenis-prevent=""
+                      data-lenis-prevent-wheel=""
+                      data-lenis-prevent-vertical=""
+                      className="policy-reading-scrollbar mt-8 hidden max-h-[154px] space-y-1 overflow-y-auto pr-2 lg:block"
+                    >
                       {chapterItems.map((item) => (
                         <a
                           key={item.id}
