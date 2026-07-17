@@ -1753,7 +1753,7 @@ const Index = () => {
                   className="relative z-10 mx-auto h-auto w-64 animate-float drop-shadow-[0_32px_70px_hsl(0_0%_0%/0.55)] lg:w-80"
                 />
                 <div className="relative z-10 mx-auto mt-5 flex max-w-md flex-col justify-center gap-3 sm:flex-row">
-                  <a href="https://www.amazon.com/dp/B0GVS4D8HL/ref=tmm_pap_swatch_0?_encoding=UTF8&dib_tag=se&dib=eyJ2IjoiMSJ9.YwqalvZK7CfKxFD0kPkYgg.3O8srGTxR_gr4EkS_chJa4jDQJm1-0ervY2_COJZNEs&qid=1775137388&sr=8-1" target="_blank" rel="noopener noreferrer"
+                  <a href="https://www.amazon.com/dp/B0GVS4D8HL" target="_blank" rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 border border-foreground/20 bg-foreground px-4 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90">
                     <BookOpen className="h-3.5 w-3.5" />
                     {getText(language, 'Livro Físico', 'Physical Book')}
@@ -1821,7 +1821,7 @@ const Index = () => {
                     alt={getText(language, 'Superando Limites - Da Rejeição ao Sucesso', 'Overcoming Limits - From Rejection to Success')}
                     className="w-56 lg:w-72 h-auto animate-float" />
                   <div className="flex flex-col sm:flex-row gap-2 mt-2">
-                    <a href="https://www.amazon.com/dp/B0GVS4D8HL/ref=tmm_pap_swatch_0?_encoding=UTF8&dib_tag=se&dib=eyJ2IjoiMSJ9.YwqalvZK7CfKxFD0kPkYgg.3O8srGTxR_gr4EkS_chJa4jDQJm1-0ervY2_COJZNEs&qid=1775137388&sr=8-1" target="_blank" rel="noopener noreferrer"
+                    <a href="https://www.amazon.com/dp/B0GVS4D8HL" target="_blank" rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-xs font-medium text-primary-foreground bg-foreground rounded-full px-4 py-2 hover:opacity-90 transition-opacity">
                       <BookOpen className="w-3.5 h-3.5" />
                       {getText(language, 'Livro Físico', 'Physical Book')}

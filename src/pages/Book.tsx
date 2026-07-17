@@ -9,7 +9,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import bookMockup from "@/assets/book-mockup-opt.jpg";
 
-const physicalBookUrl = "https://www.amazon.com/dp/B0GVS4D8HL/ref=tmm_pap_swatch_0?_encoding=UTF8&dib_tag=se&dib=eyJ2IjoiMSJ9.YwqalvZK7CfKxFD0kPkYgg.3O8srGTxR_gr4EkS_chJa4jDQJm1-0ervY2_COJZNEs&qid=1775137388&sr=8-1";
+const physicalBookUrl = "https://www.amazon.com/dp/B0GVS4D8HL";
 const digitalBookUrl = "https://www.amazon.com/dp/B0FXV8WP3Y";
 
 const ease = [0.16, 1, 0.3, 1] as const;
