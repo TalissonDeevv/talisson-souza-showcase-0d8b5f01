@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import ScrollToTop from "@/components/ScrollToTop";
 import SmoothScroll from "@/components/SmoothScroll";
+import TrailReadingPrompt from "@/components/ui/TrailReadingPrompt";
 import { lazy, Suspense } from "react";
 import { StudioRouter } from "./studio/routes/StudioRouter";
 
@@ -116,6 +117,7 @@ const AppRoutes = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
+        <TrailReadingPrompt />
       </SmoothScroll>
     </TooltipProvider>
   </ThemeProvider>
