@@ -12,7 +12,6 @@ import {
 import { FaDiscord, FaInstagram, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
-import AnimatedSignature from "@/components/ui/AnimatedSignature";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
@@ -192,12 +191,6 @@ const Bio = () => {
               transition={{ duration: 0.7, ease }}
               className="mx-auto max-w-2xl text-center lg:mx-0 lg:text-left"
             >
-              <div className="mb-8 flex justify-center lg:justify-start">
-                <div className="w-[210px] opacity-90 sm:w-[260px]">
-                  <AnimatedSignature />
-                </div>
-              </div>
-
               <p className="mb-5 text-[11px] uppercase tracking-[0.34em] text-muted-foreground/75">
                 {getText(language, "Bio oficial", "Official bio")}
               </p>

@@ -9,7 +9,6 @@ import ScrollToTop from "@/components/ScrollToTop";
 import SmoothScroll from "@/components/SmoothScroll";
 import TrailReadingPrompt from "@/components/ui/TrailReadingPrompt";
 import { lazy, Suspense } from "react";
-import { StudioRouter } from "./studio/routes/StudioRouter";
 
 const queryClient = new QueryClient();
 
@@ -80,8 +79,6 @@ const AppRoutes = () => (
             <Route path="/feedbacks" element={<Feedbacks />} />
             <Route path="/politicas" element={<Policies />} />
             <Route path="/politicas/:sectionId" element={<PolicyDetail />} />
-            <Route path="/studio/*" element={<StudioRouter />} />
-
             <Route path="/en-us" element={<Index />} />
             <Route path="/en-us/bio" element={<Bio />} />
             <Route path="/en-us/about" element={<About />} />
