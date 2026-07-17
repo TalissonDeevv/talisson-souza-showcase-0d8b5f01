@@ -18,7 +18,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import portrait from "@/assets/talisson-portrait.png";
 import cheetahLogo from "@/assets/logos/cheetah-solutions.png";
-import logo from "@/assets/logo.png";
+import squareCloudLogo from "@/assets/logos/square-cloud.png";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -86,19 +86,21 @@ const Bio = () => {
       ),
     },
     {
-      title: "TS Studio",
+      title: "Square Cloud",
       description: getText(
         language,
-        "CMS moderno para organizar conteúdo, publicações e gestão editorial com mais controle.",
-        "A modern CMS for content, publishing and editorial management with more control."
+        "Infraestrutura para hospedar aplicações, bots e APIs com deploy simples e operação contínua.",
+        "Infrastructure to host applications, bots and APIs with simple deploys and continuous operation."
       ),
-      href: "/studio",
-      external: false,
+      href: "https://squarecloud.app",
+      external: true,
       visual: (
-        <div className="flex items-center gap-3">
-          <img src={logo} alt="" className="h-10 w-auto opacity-90" loading="lazy" />
-          <span className="text-xs uppercase tracking-[0.28em] text-muted-foreground">Studio</span>
-        </div>
+        <img
+          src={squareCloudLogo}
+          alt=""
+          className="h-10 w-auto max-w-[160px] object-contain opacity-85"
+          loading="lazy"
+        />
       ),
     },
     {
@@ -154,7 +156,7 @@ const Bio = () => {
         )}
         canonical="https://bio.talissonsouza.com.br"
         image="/og/home.png"
-        keywords={["bio Talisson Souza", "Talisson Souza links", "Cheetah Solutions Network", "TS Studio"]}
+        keywords={["bio Talisson Souza", "Talisson Souza links", "Cheetah Solutions Network", "Square Cloud"]}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "ProfilePage",
