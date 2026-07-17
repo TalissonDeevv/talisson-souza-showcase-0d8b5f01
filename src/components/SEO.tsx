@@ -58,9 +58,14 @@ const SEO = ({
   
   const fullTitle = title.includes('Talisson') ? title : `${title} | Talisson Souza`;
   
-  const canonicalPath = canonical?.startsWith('/') ? canonical : `/${canonical || ''}`;
+  const isAbsoluteCanonical = canonical?.startsWith('http://') || canonical?.startsWith('https://');
+  const canonicalPath = isAbsoluteCanonical
+    ? new URL(canonical).pathname || '/'
+    : canonical?.startsWith('/')
+      ? canonical
+      : `/${canonical || ''}`;
   const cleanPath = canonicalPath === '/' ? '' : canonicalPath;
-  const canonicalUrl = `${BASE_URL}${cleanPath}`;
+  const canonicalUrl = isAbsoluteCanonical ? canonical : `${BASE_URL}${cleanPath}`;
   const socialImageUrl = getSocialImageUrl(canonicalPath, image);
   
   const locale = language === 'pt' ? 'pt_BR' : 'en_US';

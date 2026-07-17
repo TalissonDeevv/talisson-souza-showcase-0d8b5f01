@@ -13,6 +13,7 @@ const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 
 const pageMeta = new Map([
   ['/', ['Talisson Souza | Engenheiro de Software e Empresário', 'Engenheiro de Software e fundador da Cheetah Solutions Network. Mais de 8 anos criando sistemas, automações e arquiteturas digitais.']],
+  ['/bio', ['Bio Oficial | Talisson Souza', 'Página oficial de bio de Talisson Souza com links, projetos, redes sociais e canais profissionais.']],
   ['/sobre', ['Sobre Talisson Souza', 'A história, os princípios e a forma como Talisson Souza constrói software, empresas e relações profissionais.']],
   ['/carreira', ['Carreira | Talisson Souza', 'Trajetória profissional de Talisson Souza em tecnologia, liderança, arquitetura de software e construção de produtos digitais.']],
   ['/contato', ['Contato | Talisson Souza', 'Canal para iniciar conversas profissionais com contexto, clareza e responsabilidade.']],
@@ -52,6 +53,10 @@ const pageMeta = new Map([
   ['/en-us/trails/strategy-mindset', ['Strategy and Mindset | Talisson Souza', 'Articles about critical thinking, digital entrepreneurship, technical responsibility and decision making.']],
   ['/en-us/trails/market-programming', ['Entering the Programming Market and Growing Your Career | Talisson Souza', 'A free 140 article manual for people starting in programming, entering the market, maturing technically and building a career with judgment.']],
   ['/en-us/policies', ['Policies | Talisson Souza', 'Policy, terms and guideline hub for my professional work.']],
+]);
+
+const canonicalOverrides = new Map([
+  ['/bio', 'https://bio.talissonsouza.com.br'],
 ]);
 
 const serviceTitles = new Map([
@@ -186,7 +191,7 @@ const getMeta = (route) => {
 const replaceMeta = (source, route, imagePath) => {
   const [title, description] = getMeta(route);
   const cleanRoute = route === '/' ? '' : route;
-  const url = `${baseUrl}${cleanRoute}`;
+  const url = canonicalOverrides.get(route) || `${baseUrl}${cleanRoute}`;
   const image = `${baseUrl}${imagePath}`;
   const locale = route.startsWith('/en-us') ? 'en_US' : 'pt_BR';
   const alternateLocale = locale === 'pt_BR' ? 'en_US' : 'pt_BR';

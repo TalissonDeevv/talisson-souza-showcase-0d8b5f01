@@ -12,6 +12,18 @@
       "permanent": true
     }
   ],
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "bio.talissonsouza.com.br"
+        }
+      ],
+      "destination": "/bio"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

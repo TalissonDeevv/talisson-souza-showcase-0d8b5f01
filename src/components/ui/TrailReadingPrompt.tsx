@@ -14,7 +14,9 @@ const TrailReadingPrompt = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [shouldPrompt] = useState(() => (
     location.pathname !== "/trilhas/mercado-programacao" &&
-    location.pathname !== "/en-us/trails/market-programming"
+    location.pathname !== "/en-us/trails/market-programming" &&
+    location.pathname !== "/bio" &&
+    location.pathname !== "/en-us/bio"
   ));
 
   const trailPath = language === "en" ? "/en-us/trails/market-programming" : "/trilhas/mercado-programacao";

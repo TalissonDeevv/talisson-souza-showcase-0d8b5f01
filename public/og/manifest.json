@@ -4,6 +4,10 @@
     "image": "/og/home.png"
   },
   {
+    "route": "/bio",
+    "image": "/og/home.png"
+  },
+  {
     "route": "/sobre",
     "image": "/og/sobre.png"
   },

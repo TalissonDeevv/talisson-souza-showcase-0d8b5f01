@@ -3,6 +3,7 @@
 
 export const ptToEnRoutes: Record<string, string> = {
   '/': '/en-us',
+  '/bio': '/en-us/bio',
   '/sobre': '/en-us/about',
   '/projetos': '/en-us/projects',
   '/servicos': '/en-us/services',

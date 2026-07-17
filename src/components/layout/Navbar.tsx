@@ -29,6 +29,7 @@ const Navbar = () => {
   const t = useTranslation(language);
 
   const isHome = location.pathname === "/" || location.pathname === "/en-us";
+  const isBioPage = location.pathname === "/bio" || location.pathname === "/en-us/bio";
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -231,14 +232,16 @@ const Navbar = () => {
         )}
       </div>
 
-      <button
-        onClick={() => setIsExploreSheetOpen(true)}
-        className="fixed bottom-4 right-4 z-[65] inline-flex items-center gap-2 rounded-full border border-border/40 bg-background/95 px-4 py-3 text-sm font-medium text-foreground shadow-[0_18px_60px_hsl(0_0%_0%/0.45)] backdrop-blur-xl transition-colors hover:bg-foreground/10 lg:hidden"
-        aria-label={dropdowns[0]?.label}
-      >
-        <Compass className="h-4 w-4" />
-        {dropdowns[0]?.label}
-      </button>
+      {!isBioPage && (
+        <button
+          onClick={() => setIsExploreSheetOpen(true)}
+          className="fixed bottom-4 right-4 z-[65] inline-flex items-center gap-2 rounded-full border border-border/40 bg-background/95 px-4 py-3 text-sm font-medium text-foreground shadow-[0_18px_60px_hsl(0_0%_0%/0.45)] backdrop-blur-xl transition-colors hover:bg-foreground/10 lg:hidden"
+          aria-label={dropdowns[0]?.label}
+        >
+          <Compass className="h-4 w-4" />
+          {dropdowns[0]?.label}
+        </button>
+      )}
 
       {isExploreSheetOpen && (
         <div className="fixed inset-0 z-[80] lg:hidden">

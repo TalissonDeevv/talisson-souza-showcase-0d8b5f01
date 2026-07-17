@@ -14,6 +14,7 @@ import { StudioRouter } from "./studio/routes/StudioRouter";
 const queryClient = new QueryClient();
 
 const Index = lazy(() => import("./pages/Index"));
+const Bio = lazy(() => import("./pages/Bio"));
 const About = lazy(() => import("./pages/About"));
 const Projects = lazy(() => import("./pages/Projects"));
 const Services = lazy(() => import("./pages/Services"));
@@ -54,6 +55,7 @@ const AppRoutes = () => (
           <Routes>
             {/* ===== PT-BR Routes (root) ===== */}
             <Route path="/" element={<Index />} />
+            <Route path="/bio" element={<Bio />} />
             <Route path="/sobre" element={<About />} />
             <Route path="/projetos" element={<Projects />} />
             <Route path="/projetos/:id" element={<ProjectDetail />} />
@@ -81,6 +83,7 @@ const AppRoutes = () => (
             <Route path="/studio/*" element={<StudioRouter />} />
 
             <Route path="/en-us" element={<Index />} />
+            <Route path="/en-us/bio" element={<Bio />} />
             <Route path="/en-us/about" element={<About />} />
             <Route path="/en-us/projects" element={<Projects />} />
             <Route path="/en-us/projects/:id" element={<ProjectDetail />} />
