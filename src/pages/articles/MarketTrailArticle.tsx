@@ -205,7 +205,7 @@ const MarketTrailArticle = () => {
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                className="max-w-4xl text-balance font-serif text-4xl font-semibold leading-[0.98] tracking-[-0.02em] text-foreground sm:text-5xl lg:text-6xl"
+                className="max-w-4xl text-balance break-words font-serif text-[clamp(2.35rem,11vw,3.75rem)] font-semibold leading-[0.98] tracking-normal text-foreground [overflow-wrap:anywhere] sm:text-5xl sm:tracking-[-0.02em] lg:text-6xl"
               >
                 {articleTitle}
               </motion.h1>
@@ -255,7 +255,7 @@ const MarketTrailArticle = () => {
                     className="group"
                   >
                     <div className="mb-6">
-                      <h2 className="font-serif text-2xl leading-tight text-foreground sm:text-3xl">
+                      <h2 className="break-words font-serif text-2xl leading-tight text-foreground [overflow-wrap:anywhere] sm:text-3xl">
                         {section.title[language]}
                       </h2>
                     </div>

@@ -147,12 +147,12 @@ const PolicyDetail = () => {
             </div>
 
             <div className="grid gap-10 lg:grid-cols-[0.62fr_1.38fr] lg:items-start">
-              <ScrollReveal>
-                <aside className="sticky top-28">
+              <aside className="lg:sticky lg:top-28 lg:self-start">
+                <ScrollReveal>
                   <span className="mb-5 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
                     {getText(language, "Leitura", "Reading")}
                   </span>
-                  <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
+                  <h2 className="break-words font-serif text-3xl leading-tight text-foreground [overflow-wrap:anywhere] lg:text-5xl">
                     {getText(language, "Um documento, sem ruído.", "One document, no noise.")}
                   </h2>
                   <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
@@ -170,8 +170,9 @@ const PolicyDetail = () => {
                       className="h-full rounded-full bg-foreground/60"
                     />
                   </div>
+                </ScrollReveal>
                   {chapterItems.length > 0 && (
-                    <nav className="mt-8 hidden max-h-[48vh] space-y-1 overflow-y-auto pr-2 lg:block">
+                    <nav className="mt-8 hidden max-h-[232px] space-y-1 overflow-y-auto pr-2 [scrollbar-width:thin] lg:block">
                       {chapterItems.map((item) => (
                         <a
                           key={item.id}
@@ -197,8 +198,7 @@ const PolicyDetail = () => {
                       ))}
                     </nav>
                   )}
-                </aside>
-              </ScrollReveal>
+              </aside>
 
               <article className="relative">
                 <div className="absolute left-0 top-0 hidden h-full w-px bg-gradient-to-b from-transparent via-border/30 to-transparent lg:block" />
@@ -217,7 +217,7 @@ const PolicyDetail = () => {
                         )}
                       >
                         {paragraph.heading && (
-                          <h2 className="mb-4 font-serif text-2xl leading-tight text-foreground lg:text-3xl">
+                          <h2 className="mb-4 break-words font-serif text-2xl leading-tight text-foreground [overflow-wrap:anywhere] lg:text-3xl">
                             {paragraph.heading[lang]}
                           </h2>
                         )}

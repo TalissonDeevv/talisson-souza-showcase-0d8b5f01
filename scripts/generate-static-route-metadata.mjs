@@ -28,7 +28,7 @@ const pageMeta = new Map([
   ['/trilhas/arquitetura-infraestrutura', ['Arquitetura e Infraestrutura | Talisson Souza', 'Artigos sobre hospedagem, deploy, escalabilidade, banco de dados, estrutura de sistemas e decisões arquiteturais.']],
   ['/trilhas/gestao-de-comunidades', ['Gestão de Comunidades | Talisson Souza', 'Artigos sobre moderação, administração de servidores, cultura interna, equipe e crescimento estruturado.']],
   ['/trilhas/estrategia-mentalidade', ['Estratégia e Mentalidade | Talisson Souza', 'Artigos sobre pensamento crítico, empreendedorismo digital, responsabilidade técnica e tomada de decisão.']],
-  ['/trilhas/mercado-programacao', ['Entrando no Mercado de Programação e Crescimento na Carreira | Talisson Souza', 'Biblioteca com 100 artigos para quem começa a estudar programação, entra no mercado, amadurece tecnicamente e constrói carreira com critério.']],
+  ['/trilhas/mercado-programacao', ['Entrando no Mercado de Programação e Crescimento na Carreira | Talisson Souza', 'Manual gratuito com 140 artigos para quem começa a estudar programação, entra no mercado, amadurece tecnicamente e constrói carreira com critério.']],
   ['/politicas', ['Políticas | Talisson Souza', 'Central de políticas, termos e diretrizes que orientam minha atuação profissional.']],
   ['/como-trabalho', ['Como Eu Trabalho | Talisson Souza', 'Meu processo de trabalho, tomada de decisão, validação de escopo e condução técnica.']],
   ['/decisoes-tecnicas', ['Decisões Técnicas | Talisson Souza', 'Reflexões sobre stack, arquitetura, trade-offs e escolhas técnicas em projetos reais.']],
@@ -50,7 +50,7 @@ const pageMeta = new Map([
   ['/en-us/trails/architecture-infrastructure', ['Architecture and Infrastructure | Talisson Souza', 'Articles about hosting, deployment, scalability, databases, system structure and architectural decisions.']],
   ['/en-us/trails/community-management', ['Community Management | Talisson Souza', 'Articles about moderation, server administration, internal culture, teams and structured growth.']],
   ['/en-us/trails/strategy-mindset', ['Strategy and Mindset | Talisson Souza', 'Articles about critical thinking, digital entrepreneurship, technical responsibility and decision making.']],
-  ['/en-us/trails/market-programming', ['Entering the Programming Market and Growing Your Career | Talisson Souza', 'A 100 article library for people starting in programming, entering the market, maturing technically and building a career with judgment.']],
+  ['/en-us/trails/market-programming', ['Entering the Programming Market and Growing Your Career | Talisson Souza', 'A free 140 article manual for people starting in programming, entering the market, maturing technically and building a career with judgment.']],
   ['/en-us/policies', ['Policies | Talisson Souza', 'Policy, terms and guideline hub for my professional work.']],
 ]);
 

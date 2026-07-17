@@ -119,7 +119,7 @@ const TrailPage = () => {
                             <span className="h-1 w-1 rounded-full bg-muted-foreground/30" />
                             <span>{article.readTime} {getText(language, 'de leitura', 'read')}</span>
                           </div>
-                          <h3 className="font-serif text-xl leading-tight text-foreground transition-colors duration-300 group-hover:text-foreground/85">
+                          <h3 className="break-words font-serif text-xl leading-tight text-foreground transition-colors duration-300 [overflow-wrap:anywhere] group-hover:text-foreground/85">
                             {article.title[language]}
                           </h3>
                           <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">

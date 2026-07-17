@@ -10,6 +10,8 @@ import { block5Articles } from './market-trail/block-5';
 import { block6Articles } from './market-trail/block-6';
 import { block7Articles } from './market-trail/block-7';
 import { careerGrowthExpansionArticles } from './market-trail/career-growth-expansion';
+import { careerMasteryExpansionArticles } from './market-trail/career-mastery-expansion';
+import { enhanceManualArticle } from './market-trail/manual-enhancements';
 import { securityTrailArticles } from './market-trail/security-trail';
 import { architectureTrailArticles } from './market-trail/architecture-trail';
 import { communityTrailArticles } from './market-trail/community-trail';
@@ -20,7 +22,7 @@ import { aiReplacingDevsArticle } from './market-trail/ai-replacing-devs';
 import { devJobPositioningArticle } from './market-trail/dev-job-positioning';
 import { discordCommunityStrategyArticles } from './market-trail/discord-community-strategy';
 
-export const marketTrailArticles: MarketTrailArticle[] = [
+const rawMarketTrailArticles: MarketTrailArticle[] = [
   ...block1Articles,
   ...block2Articles,
   ...block3Articles,
@@ -29,6 +31,7 @@ export const marketTrailArticles: MarketTrailArticle[] = [
   ...block6Articles,
   ...block7Articles,
   ...careerGrowthExpansionArticles,
+  ...careerMasteryExpansionArticles,
   ...securityTrailArticles,
   ...architectureTrailArticles,
   ...communityTrailArticles,
@@ -39,3 +42,5 @@ export const marketTrailArticles: MarketTrailArticle[] = [
   ...aiReplacingDevsArticle,
   ...devJobPositioningArticle,
 ];
+
+export const marketTrailArticles: MarketTrailArticle[] = rawMarketTrailArticles.map(enhanceManualArticle);

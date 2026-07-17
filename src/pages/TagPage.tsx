@@ -62,7 +62,7 @@ const TagPage = () => {
                   <Tag className="h-4 w-4" />
                   {getText(language, "Tema", "Topic")}
                 </div>
-                <h1 className="max-w-4xl text-balance font-serif text-4xl font-semibold leading-[0.98] tracking-normal text-foreground sm:text-5xl lg:text-6xl">
+                <h1 className="max-w-4xl text-balance break-words font-serif text-[clamp(2.35rem,11vw,3.75rem)] font-semibold leading-[0.98] tracking-normal text-foreground [overflow-wrap:anywhere] sm:text-5xl lg:text-6xl">
                   {tag || getText(language, "Tema não encontrado", "Topic not found")}
                 </h1>
                 <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
@@ -124,7 +124,7 @@ const TagPage = () => {
                           <span className="h-1 w-1 rounded-full bg-muted-foreground/30" />
                           <span>{article.readTime} {getText(language, "de leitura", "read")}</span>
                         </div>
-                        <h2 className="font-serif text-2xl leading-tight text-foreground sm:text-3xl">
+                        <h2 className="break-words font-serif text-2xl leading-tight text-foreground [overflow-wrap:anywhere] sm:text-3xl">
                           {displayArticleTitle(article.title[language])}
                         </h2>
                         <p className="mt-3 line-clamp-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">

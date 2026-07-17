@@ -131,7 +131,7 @@ export const PageHero = ({
 
           <h1
             className={cn(
-              "max-w-5xl font-serif font-semibold leading-[0.92] tracking-normal text-foreground",
+              "max-w-5xl break-words font-serif font-semibold leading-[0.92] tracking-normal text-foreground [overflow-wrap:anywhere]",
               compact ? "text-[clamp(2.7rem,7.4vw,5.2rem)]" : "text-[clamp(3rem,9vw,6.4rem)]",
               uppercase && "uppercase",
               titleClassName

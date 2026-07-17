@@ -82,7 +82,7 @@ const Contact = () => {
                 <span className="text-[11px] font-medium uppercase tracking-[0.34em] text-muted-foreground/65">
                   {getText(language, "Contato", "Contact")}
                 </span>
-                <h1 className="mt-7 max-w-full text-balance font-serif text-4xl font-semibold leading-[0.98] tracking-[-0.02em] text-foreground sm:text-6xl lg:text-7xl">
+                <h1 className="mt-7 max-w-full text-balance break-words font-serif text-[clamp(2.5rem,12vw,4rem)] font-semibold leading-[0.98] tracking-normal text-foreground [overflow-wrap:anywhere] sm:text-6xl sm:tracking-[-0.02em] lg:text-7xl">
                   {getText(language, "Vamos conversar com contexto.", "Let's talk with context.")}
                 </h1>
                 <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">

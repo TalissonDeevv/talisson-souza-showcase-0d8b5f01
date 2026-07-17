@@ -1,5 +1,6 @@
 import type { MarketTrailArticle } from "./market-trail/types";
 import { careerGrowthExpansionArticleIds, careerGrowthExpansionArticles } from "./market-trail/career-growth-expansion";
+import { careerMasteryExpansionArticleIds, careerMasteryExpansionArticles } from "./market-trail/career-mastery-expansion";
 
 export interface ArticleData {
   id: string;
@@ -70,8 +71,8 @@ export const trails: TrailData[] = [
     id: 'market-programming',
     title: { pt: 'Entrando no Mercado de Programação e Crescimento na Carreira', en: 'Entering the Programming Market and Growing Your Career' },
     description: {
-      pt: 'Biblioteca com 100 artigos para acompanhar quem começa a estudar programação, entra no mercado, amadurece tecnicamente e aprende a construir uma carreira com critério.',
-      en: 'A library with 100 articles for people starting in programming, entering the market, maturing technically and building a career with judgment.',
+      pt: 'Manual gratuito com 140 artigos para acompanhar quem começa a estudar programação, entra no mercado, amadurece tecnicamente e constrói uma carreira com critério.',
+      en: 'A free 140 article manual for people starting in programming, entering the market, maturing technically and building a career with judgment.',
     },
     icon: '📐',
     path: { pt: '/trilhas/mercado-programacao', en: '/en-us/trails/market-programming' },
@@ -84,6 +85,7 @@ export const trails: TrailData[] = [
       'mt-trend-stack-danger', 'mt-early-specialization', 'mt-course-job-illusion', 'mt-switching-languages', 'mt-excessive-comparison', 'mt-wanting-shortcuts',
       'mt-when-to-specialize', 'mt-choosing-backend-frontend', 'mt-junior-to-mid', 'mt-understanding-business', 'mt-building-reputation', 'mt-remote-work-preparation',
       ...careerGrowthExpansionArticleIds,
+      ...careerMasteryExpansionArticleIds,
     ],
   },
 ];
@@ -573,6 +575,16 @@ export const articles: ArticleData[] = [
   { id: 'mt-building-reputation', title: { pt: 'Como Construir Reputação no Mercado', en: 'How to Build Market Reputation' }, excerpt: { pt: 'Estratégias para construir uma reputação profissional sólida baseada em competência demonstrada e posicionamento consistente.', en: 'Strategies for building a solid professional reputation based on demonstrated competence and consistent positioning.' }, date: { pt: '19 de Fevereiro, 2026', en: 'February 19, 2026' }, readTime: '13 min', path: { pt: '/artigos/construir-reputacao-mercado', en: '/en-us/articles/building-market-reputation' }, tags: { pt: ['Reputação', 'Posicionamento', 'Carreira'], en: ['Reputation', 'Positioning', 'Career'] }, publishedDate: '2026-02-19' },
   { id: 'mt-remote-work-preparation', title: { pt: 'Preparação Técnica e Comportamental Para Trabalhar Remoto', en: 'Technical and Behavioral Preparation For Remote Work' }, excerpt: { pt: 'O que é necessário técnica e comportamentalmente para trabalhar de forma remota com eficiência e profissionalismo.', en: 'What is technically and behaviorally necessary to work remotely with efficiency and professionalism.' }, date: { pt: '19 de Fevereiro, 2026', en: 'February 19, 2026' }, readTime: '13 min', path: { pt: '/artigos/trabalho-remoto-preparacao', en: '/en-us/articles/remote-work-preparation' }, tags: { pt: ['Trabalho Remoto', 'Carreira', 'Profissionalismo'], en: ['Remote Work', 'Career', 'Professionalism'] }, publishedDate: '2026-02-19' },
   ...careerGrowthExpansionArticles.map((article) => ({
+    id: article.id,
+    title: article.title,
+    excerpt: article.excerpt,
+    date: article.date,
+    readTime: article.readTime,
+    path: { pt: `/artigos/${article.slugPt}`, en: `/en-us/articles/${article.slugEn}` },
+    tags: article.tags,
+    publishedDate: article.publishedDate,
+  })),
+  ...careerMasteryExpansionArticles.map((article) => ({
     id: article.id,
     title: article.title,
     excerpt: article.excerpt,

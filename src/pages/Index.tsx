@@ -40,6 +40,7 @@ const Index = () => {
     language
   } = useTheme();
   const t = useTranslation(language);
+  const showLegacyStoryPreview = import.meta.env.DEV && import.meta.env.VITE_SHOW_LEGACY_STORY === "true";
   const featuredProjects = [{
     title: "Land page Sagiri Bot",
     description: getText(language, "Uma land page pra uma bot de discord de parcerias.", "A landing page for a Discord bot for partnerships."),
@@ -741,7 +742,7 @@ const Index = () => {
 
         
         <StoryHighlight />
-        {false && (
+        {showLegacyStoryPreview && (
           <ScrollReveal>
             <motion.div
               whileHover={{ y: -4 }}
