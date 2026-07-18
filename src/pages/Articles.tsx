@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, ChevronDown, ExternalLink, FileText, FolderOpen, Route } from "lucide-react";
+import { ArrowRight, ChevronDown, FileText, FolderOpen, Route } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
@@ -11,7 +11,7 @@ import { articles, getAllTags, trails } from "@/data/articles";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 
-const SUGGEST_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdUM_KRTJfGm8zw7Z4VWBA0845PBQZomFypiJhNOEaWd5ORGw/viewform?usp=dialog";
+const SUGGEST_PATH = { pt: "/sugestoes-artigos", en: "/en-us/article-suggestions" };
 const displayArticleTitle = (title: string) => title.replace(/\s*:\s*/g, ". ");
 
 const PRIMARY_CATEGORIES: Record<string, { pt: string; en: string }> = {
@@ -377,15 +377,13 @@ const Articles = () => {
                   "Articles come from real community problems. If a topic deserves clarity, it can become an agenda."
                 )}
               </p>
-              <a
-                href={SUGGEST_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to={SUGGEST_PATH[language]}
                 className="mt-8 inline-flex items-center gap-2 rounded-full border border-border/30 bg-background/30 px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-foreground/10"
               >
                 {getText(language, "Sugerir um artigo", "Suggest an article")}
-                <ExternalLink className="h-4 w-4" />
-              </a>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </IdentityPanel>
           </ScrollReveal>
         </div>

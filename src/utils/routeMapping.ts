@@ -20,6 +20,7 @@ export const ptToEnRoutes: Record<string, string> = {
   '/checklists/abrir-servidor-publico': '/en-us/checklists/opening-public-server',
   '/checklists/infraestrutura-minima': '/en-us/checklists/minimum-infrastructure',
   '/artigos': '/en-us/articles',
+  '/sugestoes-artigos': '/en-us/article-suggestions',
   '/trilhas/seguranca-digital': '/en-us/trails/digital-security',
   '/trilhas/arquitetura-infraestrutura': '/en-us/trails/architecture-infrastructure',
   '/trilhas/gestao-de-comunidades': '/en-us/trails/community-management',

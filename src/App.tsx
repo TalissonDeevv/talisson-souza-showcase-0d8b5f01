@@ -27,6 +27,7 @@ const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 const Book = lazy(() => import("./pages/Book"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Articles = lazy(() => import("./pages/Articles"));
+const ArticleSuggestions = lazy(() => import("./pages/ArticleSuggestions"));
 const TagPage = lazy(() => import("./pages/TagPage"));
 const TrailPage = lazy(() => import("./pages/TrailPage"));
 const Principles = lazy(() => import("./pages/Principles"));
@@ -71,6 +72,7 @@ const AppRoutes = () => (
             <Route path="/checklists/:checklistId" element={<ChecklistDetail />} />
 
             <Route path="/artigos" element={<Articles />} />
+            <Route path="/sugestoes-artigos" element={<ArticleSuggestions />} />
             <Route path="/artigos/tag/:tag" element={<TagPage />} />
             <Route path="/trilhas/:trailId" element={<TrailPage />} />
             <Route path="/artigos/:slug" element={<MarketTrailArticle />} />
@@ -98,6 +100,7 @@ const AppRoutes = () => (
             <Route path="/en-us/checklists/:checklistId" element={<ChecklistDetail />} />
 
             <Route path="/en-us/articles" element={<Articles />} />
+            <Route path="/en-us/article-suggestions" element={<ArticleSuggestions />} />
             <Route path="/en-us/articles/tag/:tag" element={<TagPage />} />
             <Route path="/en-us/trails/:trailId" element={<TrailPage />} />
             <Route path="/en-us/articles/:slug" element={<MarketTrailArticle />} />
