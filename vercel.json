@@ -36,6 +36,10 @@
         }
       ],
       "destination": "/bio"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
