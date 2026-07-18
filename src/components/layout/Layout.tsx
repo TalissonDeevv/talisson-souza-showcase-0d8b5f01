@@ -7,9 +7,10 @@ interface LayoutProps {
   children: ReactNode;
   withPadding?: boolean;
   showDiscordPopup?: boolean;
+  showChrome?: boolean;
 }
 
-const Layout = ({ children, withPadding = true, showDiscordPopup = false }: LayoutProps) => {
+const Layout = ({ children, withPadding = true, showDiscordPopup = false, showChrome = true }: LayoutProps) => {
   const preventImageSave = (event: MouseEvent<HTMLDivElement> | DragEvent<HTMLDivElement>) => {
     const target = event.target;
 
@@ -24,13 +25,13 @@ const Layout = ({ children, withPadding = true, showDiscordPopup = false }: Layo
       onContextMenu={preventImageSave}
       onDragStart={preventImageSave}
     >
-      <Navbar />
+      {showChrome && <Navbar />}
       
       <main className={`flex-grow ${withPadding ? 'pt-20' : ''}`}>
         {children}
       </main>
       
-      <Footer />
+      {showChrome && <Footer />}
       
       {showDiscordPopup && <DiscordPopup />}
     </div>

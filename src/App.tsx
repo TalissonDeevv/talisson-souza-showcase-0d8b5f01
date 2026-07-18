@@ -79,6 +79,7 @@ const AppRoutes = () => (
             <Route path="/feedbacks" element={<Feedbacks />} />
             <Route path="/politicas" element={<Policies />} />
             <Route path="/politicas/:sectionId" element={<PolicyDetail />} />
+            <Route path="/404" element={<NotFound />} />
             <Route path="/en-us" element={<Index />} />
             <Route path="/en-us/bio" element={<Bio />} />
             <Route path="/en-us/about" element={<About />} />
@@ -105,6 +106,7 @@ const AppRoutes = () => (
             <Route path="/en-us/feedbacks" element={<Feedbacks />} />
             <Route path="/en-us/policies" element={<Policies />} />
             <Route path="/en-us/policies/:sectionId" element={<PolicyDetail />} />
+            <Route path="/en-us/404" element={<NotFound />} />
 
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />

@@ -145,7 +145,7 @@ const Bio = () => {
   };
 
   return (
-    <Layout withPadding={false}>
+    <Layout withPadding={false} showChrome={false}>
       <SEO
         title="Bio Oficial | Talisson Souza"
         description={getText(
@@ -232,11 +232,12 @@ const Bio = () => {
               initial={{ opacity: 0, y: 28, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.12, ease }}
-              className="relative mx-auto w-full max-w-[420px] lg:max-w-[500px]"
+              className="relative mx-auto w-full max-w-[360px] lg:max-w-[430px]"
             >
               <div className="absolute -inset-8 rounded-full border border-border/10" />
-              <div className="absolute -inset-2 rounded-[2rem] bg-gradient-to-b from-foreground/[0.08] via-transparent to-transparent opacity-60 blur-2xl" />
-              <div className="relative overflow-hidden rounded-[2rem] border border-border/35 bg-card/45 shadow-[0_30px_90px_hsl(0_0%_0%/0.45)]">
+              <div className="absolute -inset-3 rounded-full border border-border/20" />
+              <div className="absolute -inset-4 rounded-full bg-gradient-to-b from-foreground/[0.08] via-transparent to-transparent opacity-70 blur-2xl" />
+              <div className="relative aspect-square overflow-hidden rounded-full border border-border/35 bg-card/45 shadow-[0_30px_90px_hsl(0_0%_0%/0.45)]">
                 <div
                   className="absolute inset-0 opacity-[0.035]"
                   style={{
@@ -248,11 +249,11 @@ const Bio = () => {
                 <img
                   src={portrait}
                   alt="Talisson Souza"
-                  className="relative h-[520px] w-full object-cover object-[50%_28%] grayscale sm:h-[620px]"
+                  className="relative h-full w-full object-cover object-[50%_20%] grayscale"
                   loading="eager"
                   fetchPriority="high"
                 />
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/60 to-transparent" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background/70 via-background/25 to-transparent" />
               </div>
             </motion.div>
           </div>
