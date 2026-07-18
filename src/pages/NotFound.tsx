@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Home, MessageSquare, SearchX } from "lucide-react";
+import { ArrowLeft, Home, MessageSquare } from "lucide-react";
+import { SiDiscord } from "react-icons/si";
 import SEO from "@/components/SEO";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
-import logo from "@/assets/logo.png";
+import illustration from "@/assets/404-illustration.svg";
 
+const DISCORD_LINK = "https://discord.talissonsouza.com.br";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const NotFound = () => {
@@ -13,7 +15,6 @@ const NotFound = () => {
 
   const homePath = language === "en" ? "/en-us" : "/";
   const contactPath = language === "en" ? "/en-us/contact" : "/contato";
-  const articlesPath = language === "en" ? "/en-us/articles" : "/artigos";
 
   return (
     <main className="relative flex min-h-screen items-center overflow-hidden bg-background text-foreground">
@@ -21,97 +22,108 @@ const NotFound = () => {
         title={getText(language, "Pagina nao encontrada | Talisson Souza", "Page not found | Talisson Souza")}
         description={getText(
           language,
-          "Essa pagina nao existe mais ou foi movida. Continue pelo site oficial de Talisson Souza.",
-          "This page no longer exists or has moved. Continue through Talisson Souza's official website."
+          "O conteudo que voce procura nao existe ou foi movido. Continue navegando pelo site oficial de Talisson Souza.",
+          "The content you are looking for does not exist or has moved. Continue through Talisson Souza's official website."
         )}
         canonical="https://www.talissonsouza.com.br/404"
         image="/og/home.png"
       />
 
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
         <div
-          className="absolute inset-0 opacity-[0.026]"
+          className="absolute inset-0 opacity-[0.018]"
           style={{
             backgroundImage:
               "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
-            backgroundSize: "56px 56px",
+            backgroundSize: "60px 60px",
           }}
         />
-        <div className="absolute left-1/2 top-20 h-[460px] w-[760px] -translate-x-1/2 rounded-full bg-foreground/[0.04] blur-3xl" />
+        <div className="absolute left-[14%] top-[24%] hidden h-[620px] w-[620px] rounded-full bg-foreground/[0.025] blur-3xl md:block" />
+        <div className="absolute bottom-[12%] right-[10%] hidden h-[460px] w-[460px] rounded-full bg-foreground/[0.018] blur-3xl md:block" />
+        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background via-background/80 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/80 to-transparent" />
       </div>
 
       <div className="container relative z-10 mx-auto px-6 py-16 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease }}
-          className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16"
-        >
-          <section className="relative mx-auto flex aspect-square w-full max-w-[360px] items-center justify-center rounded-full border border-border/30 bg-card/35 shadow-[0_32px_90px_hsl(0_0%_0%/0.45)] lg:max-w-[440px]">
-            <div className="absolute -inset-6 rounded-full border border-border/10" />
-            <div className="absolute inset-8 rounded-full border border-border/20" />
-            <div className="absolute inset-0 rounded-full bg-gradient-to-b from-foreground/[0.08] via-transparent to-background/55" />
-            <img src={logo} alt="Talisson Souza" className="relative z-10 h-16 w-auto opacity-95 sm:h-20" />
-            <span className="absolute bottom-16 text-[11px] uppercase tracking-[0.34em] text-muted-foreground/60">
-              404
+        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:gap-20">
+          <motion.section
+            initial={{ opacity: 0, x: -26 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75, ease }}
+            className="order-2 text-center lg:order-1 lg:text-left"
+          >
+            <span className="mb-6 inline-block text-[11px] font-medium uppercase tracking-[0.34em] text-muted-foreground/70">
+              {getText(language, "Erro 404", "404 Error")}
             </span>
-          </section>
 
-          <section className="text-center lg:text-left">
-            <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-border/35 bg-foreground/[0.035] px-4 py-2 text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
-              <SearchX className="h-4 w-4" />
-              {getText(language, "Caminho nao encontrado", "Path not found")}
-            </div>
-
-            <h1 className="text-balance font-serif text-5xl leading-[0.98] text-foreground sm:text-6xl lg:text-7xl">
-              {getText(language, "Essa pagina saiu do ar.", "This page is not here.")}
+            <h1 className="mx-auto max-w-2xl text-balance font-serif text-4xl leading-[1.04] text-foreground sm:text-5xl lg:mx-0 lg:text-6xl">
+              {getText(language, "Pagina nao encontrada", "Page not found")}
             </h1>
 
-            <p className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:mx-0">
+            <p className="mx-auto mt-6 max-w-md text-base leading-relaxed text-muted-foreground lg:mx-0">
               {getText(
                 language,
-                "O link pode ter mudado, expirado ou simplesmente nao existir. Em vez de cair numa tela fria, te deixei alguns caminhos seguros para continuar.",
-                "The link may have changed, expired or never existed. Instead of a cold error screen, here are safe paths to keep going."
+                "O conteudo que voce procura nao existe ou foi movido. Use os caminhos abaixo para continuar navegando sem perder o fio.",
+                "The content you are looking for does not exist or has been moved. Use the links below to keep browsing."
               )}
             </p>
 
-            <div className="mt-10 grid gap-3 sm:grid-cols-2">
+            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start">
               <Link
                 to={homePath}
-                className="group inline-flex h-14 items-center justify-center gap-3 rounded-full border border-border/35 bg-foreground px-5 text-sm font-medium text-background transition-all duration-300 hover:-translate-y-0.5 hover:opacity-90"
+                className="group inline-flex h-12 items-center justify-center gap-3 rounded-full bg-foreground px-6 text-sm font-medium text-background shadow-[0_0_30px_hsl(var(--foreground)/0.14)] transition-all duration-300 hover:-translate-y-0.5 hover:opacity-90"
               >
                 <Home className="h-4 w-4" />
                 {getText(language, "Voltar para a Home", "Back to Home")}
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
 
               <Link
                 to={contactPath}
-                className="group inline-flex h-14 items-center justify-center gap-3 rounded-full border border-border/35 bg-background/45 px-5 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/25 hover:bg-foreground/[0.06]"
+                className="group inline-flex h-12 items-center justify-center gap-3 rounded-full border border-border/35 bg-card/30 px-6 text-sm font-medium text-foreground backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/25 hover:bg-foreground/[0.06]"
               >
                 <MessageSquare className="h-4 w-4" />
-                {getText(language, "Falar comigo", "Contact me")}
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                {getText(language, "Relatar erro", "Report error")}
               </Link>
+
+              <a
+                href={DISCORD_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex h-12 items-center justify-center gap-3 rounded-full border border-border/35 bg-card/30 px-6 text-sm font-medium text-foreground backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/25 hover:bg-foreground/[0.06]"
+              >
+                <SiDiscord className="h-4 w-4" />
+                Discord
+              </a>
             </div>
 
-            <div className="mt-6 flex flex-col items-center gap-3 text-sm sm:flex-row lg:justify-start">
-              <button
-                type="button"
-                onClick={() => window.history.back()}
-                className="inline-flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <ArrowLeft className="h-4 w-4" />
-                {getText(language, "Voltar uma pagina", "Go back")}
-              </button>
-              <span className="hidden h-1 w-1 rounded-full bg-muted-foreground/35 sm:block" />
-              <Link to={articlesPath} className="text-muted-foreground transition-colors hover:text-foreground">
-                {getText(language, "Explorar artigos", "Explore articles")}
-              </Link>
+            <button
+              type="button"
+              onClick={() => window.history.back()}
+              className="mt-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              {getText(language, "Voltar a pagina anterior", "Go back to previous page")}
+            </button>
+          </motion.section>
+
+          <motion.section
+            initial={{ opacity: 0, x: 26 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75, delay: 0.12, ease }}
+            className="order-1 flex items-center justify-center lg:order-2"
+          >
+            <div className="relative w-full max-w-[520px] select-none sm:max-w-[620px] lg:max-w-[680px]">
+              <div className="absolute inset-6 rounded-[2rem] border border-border/15 bg-card/[0.03]" />
+              <div className="absolute inset-0 rounded-full bg-foreground/[0.035] blur-3xl" />
+              <img
+                src={illustration}
+                alt={getText(language, "Ilustracao de pagina nao encontrada", "Page not found illustration")}
+                draggable={false}
+                className="relative z-10 mx-auto w-full max-w-full opacity-95 [user-select:none]"
+              />
             </div>
-          </section>
-        </motion.div>
+          </motion.section>
+        </div>
       </div>
     </main>
   );
