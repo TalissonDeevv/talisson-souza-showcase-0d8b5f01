@@ -1,6 +1,21 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, Compass } from "lucide-react";
+import {
+  ArrowUpRight,
+  BookOpen,
+  BriefcaseBusiness,
+  ChevronDown,
+  CircleHelp,
+  Compass,
+  FileText,
+  Layers,
+  Lightbulb,
+  ListChecks,
+  Menu,
+  MessageSquareQuote,
+  X,
+  type LucideIcon,
+} from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
 import ThemeLanguageToggle from "@/components/ui/ThemeLanguageToggle";
@@ -10,6 +25,8 @@ import logo from "@/assets/logo.png";
 interface DropdownItem {
   name: string;
   path: string;
+  description: string;
+  icon: LucideIcon;
 }
 
 interface NavDropdown {
@@ -66,28 +83,28 @@ const Navbar = () => {
     {
       label: "Explorar",
       items: [
-        { name: t.nav.projects, path: "/projetos" },
-        { name: t.nav.services, path: "/servicos" },
-        { name: "Livro", path: "/livro" },
-        { name: "Sugestões de artigos", path: "/sugestoes-artigos" },
-        { name: "Princípios", path: "/principios" },
-        { name: "Checklists", path: "/checklists" },
-        { name: "FAQ", path: "/faq" },
-        { name: "Feedbacks", path: "/feedbacks" },
+        { name: t.nav.projects, path: "/projetos", description: "Portfólio com curadoria e acesso orientado.", icon: BriefcaseBusiness },
+        { name: t.nav.services, path: "/servicos", description: "Soluções técnicas para empresas e produtos.", icon: Layers },
+        { name: "Livro", path: "/livro", description: "Superando Limites e materiais oficiais.", icon: BookOpen },
+        { name: "Sugestões de artigos", path: "/sugestoes-artigos", description: "Envie temas que merecem virar leitura.", icon: Lightbulb },
+        { name: "Princípios", path: "/principios", description: "Ideias que guiam decisões e trabalho.", icon: FileText },
+        { name: "Checklists", path: "/checklists", description: "Guias práticos para revisar com clareza.", icon: ListChecks },
+        { name: "FAQ", path: "/faq", description: "Respostas diretas antes de conversar.", icon: CircleHelp },
+        { name: "Feedbacks", path: "/feedbacks", description: "Depoimentos e percepções reais.", icon: MessageSquareQuote },
       ],
     },
   ] : [
     {
       label: "Explore",
       items: [
-        { name: t.nav.projects, path: "/en-us/projects" },
-        { name: t.nav.services, path: "/en-us/services" },
-        { name: "Book", path: "/en-us/book" },
-        { name: "Article suggestions", path: "/en-us/article-suggestions" },
-        { name: "Principles", path: "/en-us/principles" },
-        { name: "Checklists", path: "/en-us/checklists" },
-        { name: "FAQ", path: "/en-us/faq" },
-        { name: "Feedbacks", path: "/en-us/feedbacks" },
+        { name: t.nav.projects, path: "/en-us/projects", description: "Curated portfolio and guided access.", icon: BriefcaseBusiness },
+        { name: t.nav.services, path: "/en-us/services", description: "Technical solutions for companies and products.", icon: Layers },
+        { name: "Book", path: "/en-us/book", description: "Superando Limites and official materials.", icon: BookOpen },
+        { name: "Article suggestions", path: "/en-us/article-suggestions", description: "Send topics worth turning into reading.", icon: Lightbulb },
+        { name: "Principles", path: "/en-us/principles", description: "Ideas that guide decisions and work.", icon: FileText },
+        { name: "Checklists", path: "/en-us/checklists", description: "Practical guides to review with clarity.", icon: ListChecks },
+        { name: "FAQ", path: "/en-us/faq", description: "Direct answers before a conversation.", icon: CircleHelp },
+        { name: "Feedbacks", path: "/en-us/feedbacks", description: "Testimonials and real perceptions.", icon: MessageSquareQuote },
       ],
     },
   ];
@@ -155,7 +172,7 @@ const Navbar = () => {
 
                 {openDropdown === dropdown.label && (
                   <div
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 min-w-[220px] bg-popover border border-border rounded-xl shadow-lg py-2 z-[60]"
+                    className="absolute left-1/2 top-full z-[60] mt-3 w-[min(920px,calc(100vw-3rem))] -translate-x-1/2 overflow-hidden rounded-[28px] border border-border/35 bg-background/95 p-4 shadow-[0_28px_90px_hsl(0_0%_0%/0.48)] backdrop-blur-xl"
                     data-dropdown
                   >
                     {dropdown.allLink && (
@@ -169,19 +186,47 @@ const Navbar = () => {
                         <div className="border-t border-border my-1" />
                       </>
                     )}
-                    {dropdown.items.map((item) => (
-                      <Link
-                        key={item.path}
-                        to={item.path}
-                        className={`block px-4 py-2 text-sm transition-colors ${
-                          isActive(item.path)
-                            ? "text-foreground bg-secondary/30"
-                            : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
-                        }`}
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
+                    <div className="border-b border-border/20 px-2 pb-4">
+                      <span className="text-[10px] font-medium uppercase tracking-[0.28em] text-muted-foreground/65">
+                        {getText(language, "para navegar", "navigation")}
+                      </span>
+                      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                        {getText(
+                          language,
+                          "Páginas principais para conhecer meu trabalho, meus conteúdos e os caminhos oficiais do site.",
+                          "Main pages to understand my work, content and the official paths inside the site."
+                        )}
+                      </p>
+                    </div>
+                    <div className="grid gap-2 pt-4 md:grid-cols-2 xl:grid-cols-4">
+                      {dropdown.items.map((item) => {
+                        const Icon = item.icon;
+                        return (
+                          <Link
+                            key={item.path}
+                            to={item.path}
+                            className={`group relative min-h-[112px] rounded-2xl border p-4 transition-all duration-300 ${
+                              isActive(item.path)
+                                ? "border-foreground/25 bg-foreground/[0.08] text-foreground"
+                                : "border-border/20 bg-foreground/[0.035] text-muted-foreground hover:border-foreground/20 hover:bg-foreground/[0.07] hover:text-foreground"
+                            }`}
+                          >
+                            <div className="flex items-start justify-between gap-3">
+                              <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-border/25 bg-background/55 text-foreground/75 transition-colors duration-300 group-hover:border-foreground/20">
+                                <Icon className="h-4 w-4" />
+                              </span>
+                              <ArrowUpRight className="h-3.5 w-3.5 opacity-45 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-90" />
+                            </div>
+                            <div className="mt-4">
+                              <p className="text-sm font-semibold text-foreground">{item.name}</p>
+                              <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
+                                {item.description}
+                              </p>
+                            </div>
+                          </Link>
+                        );
+                      })}
+                    </div>
                   </div>
                 )}
               </div>
