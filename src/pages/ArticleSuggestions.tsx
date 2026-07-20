@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
+  Check,
   FileText,
   Lightbulb,
   MessageSquare,
@@ -13,12 +15,14 @@ import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { MotionRail, PageBackdrop } from "@/components/ui/PageIdentity";
+import { toast } from "@/components/ui/sonner";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 
-const FORM_EMBED_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSdUM_KRTJfGm8zw7Z4VWBA0845PBQZomFypiJhNOEaWd5ORGw/viewform?embedded=true";
+const FORM_ACTION_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdUM_KRTJfGm8zw7Z4VWBA0845PBQZomFypiJhNOEaWd5ORGw/formResponse";
 const FORM_SECTION_ID = "formulario-sugestoes";
+const FORM_TARGET = "articleSuggestionsSubmitFrame";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const topicSignals = [
@@ -128,6 +132,18 @@ const sendGuidelines = [
 
 const ArticleSuggestions = () => {
   const { language } = useTheme();
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const handleSuggestionSubmit = () => {
+    setFormSubmitted(true);
+    toast(getText(language, "Sugestão enviada", "Suggestion sent"), {
+      description: getText(
+        language,
+        "Recebi o envio pelo formulário oficial. Obrigado por contribuir com a pauta.",
+        "The official form received your submission. Thank you for contributing to the editorial agenda."
+      ),
+    });
+  };
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -484,35 +500,215 @@ const ArticleSuggestions = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={0.08}>
-              <div className="mt-12 overflow-hidden rounded-[28px] border border-border/25 bg-background/70 shadow-[0_28px_90px_hsl(var(--background)/0.55)] backdrop-blur">
-                <div className="flex flex-col gap-4 border-b border-border/20 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-7">
-                  <div>
-                    <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground/60">
-                      {getText(language, "formulário oficial", "official form")}
-                    </span>
-                    <h3 className="mt-2 text-lg font-semibold text-foreground">
-                      {getText(language, "Sugestões de Artigos - Talisson Souza", "Article Suggestions - Talisson Souza")}
-                    </h3>
-                  </div>
-                  <span className="inline-flex w-fit items-center rounded-full border border-border/30 px-4 py-2 text-xs font-medium text-muted-foreground">
-                    {getText(language, "resposta pelo site", "on-site response")}
+              <div className="mt-12 grid gap-10 lg:grid-cols-[0.55fr_1.45fr] lg:items-start">
+                <div className="border-y border-border/20 py-8 lg:sticky lg:top-28">
+                  <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground/60">
+                    {getText(language, "formulário oficial", "official form")}
                   </span>
-                </div>
-                <div className="relative bg-[#f1f3f4]">
-                  <iframe
-                    src={FORM_EMBED_URL}
-                    title={getText(
+                  <h3 className="mt-5 max-w-sm font-serif text-3xl leading-tight text-foreground">
+                    {getText(language, "Envie uma pauta com contexto.", "Send an idea with context.")}
+                  </h3>
+                  <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
+                    {getText(
                       language,
-                      "Formulário de sugestões de artigos de Talisson Souza",
-                      "Talisson Souza article suggestions form"
+                      "A sugestão vai para o mesmo formulário oficial, mas a experiência fica dentro do site. Escreva com calma e não envie dados sensíveis.",
+                      "The suggestion goes to the same official form, but the experience stays inside the site. Write calmly and do not send sensitive data."
                     )}
-                    className="block h-[1280px] w-full border-0 bg-[#f1f3f4] sm:h-[1240px]"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  >
-                    {getText(language, "Carregando formulário...", "Loading form...")}
-                  </iframe>
+                  </p>
+                  {formSubmitted && (
+                    <div className="mt-7 flex items-start gap-3 border-t border-border/20 pt-5 text-sm text-foreground">
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-foreground/20 bg-foreground text-background">
+                        <Check className="h-3.5 w-3.5" />
+                      </span>
+                      <span>
+                        {getText(
+                          language,
+                          "Envio registrado. Se quiser mandar outro tema, atualize a página e preencha novamente.",
+                          "Submission registered. To send another topic, refresh the page and fill it again."
+                        )}
+                      </span>
+                    </div>
+                  )}
                 </div>
+
+                <form
+                  action={FORM_ACTION_URL}
+                  method="POST"
+                  target={FORM_TARGET}
+                  onSubmit={handleSuggestionSubmit}
+                  className="relative overflow-hidden rounded-[32px] border border-border/20 bg-background/55 p-5 shadow-[0_30px_110px_hsl(var(--background)/0.48)] backdrop-blur sm:p-7 lg:p-10"
+                >
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,hsl(var(--foreground)/0.08),transparent_30%),linear-gradient(180deg,hsl(var(--foreground)/0.035),transparent_38%)]" />
+                  <div className="pointer-events-none absolute inset-0 opacity-[0.015] [background-image:linear-gradient(hsl(var(--foreground))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground))_1px,transparent_1px)] [background-size:36px_36px]" />
+
+                  <input type="hidden" name="fvv" value="1" />
+                  <input type="hidden" name="pageHistory" value="0,1" />
+                  <input type="hidden" name="entry.877086558_sentinel" value="" />
+                  <iframe
+                    title={getText(language, "Confirmação do envio da sugestão", "Suggestion submission confirmation")}
+                    name={FORM_TARGET}
+                    className="hidden"
+                  />
+
+                  <div className="relative z-10">
+                    <div className="flex flex-col gap-4 border-b border-border/20 pb-6 sm:flex-row sm:items-center sm:justify-between">
+                      <div>
+                        <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground/60">
+                          {getText(language, "sugestão editorial", "editorial suggestion")}
+                        </span>
+                        <h4 className="mt-2 text-xl font-semibold text-foreground">
+                          {getText(language, "Sugestões de Artigos - Talisson Souza", "Article Suggestions - Talisson Souza")}
+                        </h4>
+                      </div>
+                      <span className="inline-flex w-fit items-center rounded-full border border-border/30 px-4 py-2 text-xs font-medium text-muted-foreground">
+                        {getText(language, "envio seguro", "safe submission")}
+                      </span>
+                    </div>
+
+                    <div className="mt-7 rounded-3xl border border-border/20 bg-foreground/[0.025] p-5 sm:p-6">
+                      <p className="text-sm font-semibold text-foreground">
+                        {getText(language, "Termos de envio de sugestões", "Suggestion submission terms")}
+                      </p>
+                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                        {getText(
+                          language,
+                          "Ao enviar, você declara que a sugestão é voluntária e autoriza que a ideia seja usada como referência, inspiração ou base conceitual para conteúdos futuros. O envio não gera remuneração, crédito obrigatório, vínculo contratual ou garantia de publicação.",
+                          "By submitting, you declare the suggestion is voluntary and authorize the idea to be used as reference, inspiration or conceptual base for future content. Submission does not create payment, mandatory credit, contract relationship or publication guarantee."
+                        )}
+                      </p>
+                      <label className="mt-5 flex cursor-pointer items-start gap-3 text-sm text-foreground">
+                        <input
+                          type="checkbox"
+                          name="entry.877086558"
+                          value="Li e concordo com o termo acima."
+                          required
+                          className="mt-1 h-4 w-4 shrink-0 rounded border-border/40 bg-background accent-foreground"
+                        />
+                        <span>{getText(language, "Li e concordo com o termo acima.", "I have read and agree with the terms above.")}</span>
+                      </label>
+                    </div>
+
+                    <div className="mt-7 divide-y divide-border/15 border-y border-border/15">
+                      <label className="grid gap-4 py-6 lg:grid-cols-[0.34fr_0.66fr]">
+                        <span>
+                          <span className="block text-sm font-semibold text-foreground">
+                            {getText(language, "Qual é o seu nome no Discord?", "What is your Discord name?")}
+                          </span>
+                          <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
+                            {getText(
+                              language,
+                              "Informe exatamente como aparece no Discord, por exemplo usuario#0000 ou @usuario.",
+                              "Enter it exactly as it appears on Discord, for example user#0000 or @user."
+                            )}
+                          </span>
+                        </span>
+                        <input
+                          type="text"
+                          name="entry.1936824947"
+                          required
+                          autoComplete="nickname"
+                          placeholder={getText(language, "@talissondev", "@talissondev")}
+                          className="h-12 w-full rounded-2xl border border-border/25 bg-background/55 px-4 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/45 focus:border-foreground/35"
+                        />
+                      </label>
+
+                      <label className="grid gap-4 py-6 lg:grid-cols-[0.34fr_0.66fr]">
+                        <span>
+                          <span className="block text-sm font-semibold text-foreground">
+                            {getText(language, "Qual tema você sugere para o próximo artigo?", "What topic do you suggest for the next article?")}
+                          </span>
+                          <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
+                            {getText(language, "Escreva de forma objetiva o assunto que gostaria que fosse abordado.", "Write the subject you would like to see covered objectively.")}
+                          </span>
+                        </span>
+                        <textarea
+                          name="entry.1726231765"
+                          required
+                          rows={3}
+                          placeholder={getText(language, "Exemplo: como organizar estudos para backend sem se perder.", "Example: how to organize backend studies without getting lost.")}
+                          className="min-h-28 w-full resize-y rounded-2xl border border-border/25 bg-background/55 px-4 py-3 text-sm leading-relaxed text-foreground outline-none transition-colors placeholder:text-muted-foreground/45 focus:border-foreground/35"
+                        />
+                      </label>
+
+                      <label className="grid gap-4 py-6 lg:grid-cols-[0.34fr_0.66fr]">
+                        <span>
+                          <span className="block text-sm font-semibold text-foreground">
+                            {getText(language, "Descreva sua sugestão com mais detalhes", "Describe your suggestion in more detail")}
+                          </span>
+                          <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
+                            {getText(
+                              language,
+                              "Explique o contexto, a dúvida ou o problema que você enfrenta. Quanto mais claro for o cenário, melhor será a análise editorial.",
+                              "Explain the context, question or problem you are facing. The clearer the scenario, the better the editorial review."
+                            )}
+                          </span>
+                        </span>
+                        <textarea
+                          name="entry.1502365297"
+                          required
+                          rows={6}
+                          placeholder={getText(
+                            language,
+                            "Conte onde essa dúvida apareceu, o que você já tentou entender e por que esse tema ajudaria outras pessoas.",
+                            "Tell where this question appeared, what you already tried to understand and why this topic would help other people."
+                          )}
+                          className="min-h-40 w-full resize-y rounded-2xl border border-border/25 bg-background/55 px-4 py-3 text-sm leading-relaxed text-foreground outline-none transition-colors placeholder:text-muted-foreground/45 focus:border-foreground/35"
+                        />
+                      </label>
+
+                      <fieldset className="grid gap-4 py-6 lg:grid-cols-[0.34fr_0.66fr]">
+                        <legend className="contents">
+                          <span>
+                            <span className="block text-sm font-semibold text-foreground">
+                              {getText(language, "Qual é o seu nível nesse assunto?", "What is your level on this subject?")}
+                            </span>
+                            <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
+                              {getText(language, "Isso ajuda a definir a profundidade do conteúdo.", "This helps define the depth of the content.")}
+                            </span>
+                          </span>
+                        </legend>
+                        <div className="grid gap-3 sm:grid-cols-3">
+                          {[
+                            { value: "Iniciante", labelPt: "Iniciante", labelEn: "Beginner" },
+                            { value: "Intermediário", labelPt: "Intermediário", labelEn: "Intermediate" },
+                            { value: "Avançado", labelPt: "Avançado", labelEn: "Advanced" },
+                          ].map((option) => (
+                            <label
+                              key={option.value}
+                              className="group flex cursor-pointer items-center gap-3 rounded-2xl border border-border/25 bg-background/35 px-4 py-3 text-sm text-muted-foreground transition-colors hover:border-foreground/25 hover:text-foreground"
+                            >
+                              <input
+                                type="radio"
+                                name="entry.1888235109"
+                                value={option.value}
+                                required
+                                className="h-4 w-4 shrink-0 border-border/40 bg-background accent-foreground"
+                              />
+                              <span>{getText(language, option.labelPt, option.labelEn)}</span>
+                            </label>
+                          ))}
+                        </div>
+                      </fieldset>
+                    </div>
+
+                    <div className="mt-8 flex flex-col gap-4 border-t border-border/20 pt-6 sm:flex-row sm:items-center sm:justify-between">
+                      <p className="max-w-md text-xs leading-relaxed text-muted-foreground">
+                        {getText(
+                          language,
+                          "Nunca envie senhas, dados internos de empresas ou informações pessoais sensíveis por este formulário.",
+                          "Never send passwords, internal company data or sensitive personal information through this form."
+                        )}
+                      </p>
+                      <button
+                        type="submit"
+                        className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-foreground/20 bg-foreground px-7 py-3 text-sm font-semibold text-background transition-all duration-300 hover:bg-foreground/90 sm:w-auto"
+                      >
+                        {getText(language, "Enviar sugestão", "Send suggestion")}
+                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      </button>
+                    </div>
+                  </div>
+                </form>
               </div>
             </ScrollReveal>
           </div>
