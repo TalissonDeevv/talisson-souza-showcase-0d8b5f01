@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  ArrowUpRight,
   FileText,
   Lightbulb,
   MessageSquare,
@@ -17,7 +16,9 @@ import { MotionRail, PageBackdrop } from "@/components/ui/PageIdentity";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 
-const FORM_URL = "https://forms.gle/uRrhhtfXFcoNFU1F6";
+const FORM_EMBED_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdUM_KRTJfGm8zw7Z4VWBA0845PBQZomFypiJhNOEaWd5ORGw/viewform?embedded=true";
+const FORM_SECTION_ID = "formulario-sugestoes";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const topicSignals = [
@@ -224,13 +225,11 @@ const ArticleSuggestions = () => {
                   className="mt-9 flex flex-col gap-3 sm:flex-row"
                 >
                   <a
-                    href={FORM_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={`#${FORM_SECTION_ID}`}
                     className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-foreground/20 bg-foreground px-6 py-3 text-sm font-semibold text-background transition-all duration-300 hover:bg-foreground/90 sm:w-auto"
                   >
                     {getText(language, "Enviar sugestão", "Send suggestion")}
-                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
                   <a
                     href={language === "en" ? "/en-us/articles" : "/artigos"}
@@ -249,27 +248,28 @@ const ArticleSuggestions = () => {
                 className="min-w-0 w-full lg:max-w-none"
                 style={{ width: "min(100%, calc(100vw - 3rem))" }}
               >
-                <div className="relative overflow-hidden border-y border-border/25 py-8 lg:py-10">
-                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,transparent,hsl(var(--foreground)/0.045),transparent)] opacity-70" />
-                  <div className="relative z-10 flex items-start gap-5">
-                    <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border/30 bg-foreground text-background">
-                      <Send className="h-5 w-5" />
-                    </div>
-                    <div>
+                <div className="relative overflow-hidden border-y border-border/25 py-8 sm:px-8 lg:ml-auto lg:max-w-[560px] lg:px-0 lg:py-10">
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
+                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,transparent,hsl(var(--foreground)/0.045),transparent_64%)] opacity-70" />
+                  <div className="relative z-10">
+                    <div className="mb-6 flex items-center gap-4">
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border/35 bg-background/45 text-foreground/75 shadow-[0_0_34px_hsl(var(--foreground)/0.08)]">
+                        <Send className="h-4 w-4" />
+                      </span>
                       <span className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground/55">
                         {getText(language, "mensagem editorial", "editorial note")}
                       </span>
-                      <h2 className="mt-4 font-serif text-3xl leading-tight text-foreground lg:text-4xl">
-                        {getText(language, "Uma pauta boa começa com contexto.", "A good agenda starts with context.")}
-                      </h2>
-                      <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                        {getText(
-                          language,
-                          "Não preciso apenas de um tema solto. Preciso entender qual dúvida existe por trás dele, onde ela aparece e por que valeria a pena transformar isso em leitura pública.",
-                          "I do not only need a loose topic. I need to understand what question exists behind it, where it appears and why it would be worth turning into public reading."
-                        )}
-                      </p>
                     </div>
+                    <h2 className="max-w-[12ch] font-serif text-3xl leading-tight text-foreground sm:max-w-none lg:text-4xl">
+                      {getText(language, "Uma pauta boa começa com contexto.", "A good agenda starts with context.")}
+                    </h2>
+                    <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                      {getText(
+                        language,
+                        "Não preciso apenas de um tema solto. Preciso entender qual dúvida existe por trás dele, onde ela aparece e por que valeria a pena transformar isso em leitura pública.",
+                        "I do not only need a loose topic. I need to understand what question exists behind it, where it appears and why it would be worth turning into public reading."
+                      )}
+                    </p>
                   </div>
                 </div>
               </motion.div>
@@ -411,20 +411,28 @@ const ArticleSuggestions = () => {
           <div className="mx-auto w-full max-w-[1200px] px-6 lg:px-8">
             <div className="grid gap-10 lg:grid-cols-[1fr_0.78fr] lg:items-start">
               <ScrollReveal>
-                <div className="relative overflow-hidden border-y border-border/25 py-10">
-                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,hsl(var(--foreground)/0.06),transparent_36%)]" />
-                  <div className="relative z-10 max-w-3xl">
-                    <FileText className="mb-6 h-5 w-5 text-foreground/70" />
-                    <h2 className="font-serif text-3xl leading-tight text-foreground sm:text-4xl">
-                      {getText(language, "O foco é valor real, não volume.", "The focus is real value, not volume.")}
-                    </h2>
-                    <p className="mt-5 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                      {getText(
-                        language,
-                        "As sugestões ajudam a aproximar o conteúdo publicado das demandas reais do público, sem transformar o site em uma lista de respostas rápidas. A prioridade continua sendo clareza, profundidade e responsabilidade.",
-                        "Suggestions help bring published content closer to real audience demands, without turning the site into a list of quick answers. The priority remains clarity, depth and responsibility."
-                      )}
-                    </p>
+                <div className="relative overflow-hidden border-y border-border/25 py-9 sm:px-8 lg:px-0 lg:py-12">
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,hsl(var(--foreground)/0.055),transparent_34%)]" />
+                  <div className="relative z-10 grid gap-7 md:grid-cols-[110px_1fr] md:items-start">
+                    <div className="flex items-center gap-3 text-muted-foreground md:block">
+                      <FileText className="h-5 w-5 text-foreground/70" />
+                      <span className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground/55 md:mt-5 md:block">
+                        {getText(language, "critério", "criteria")}
+                      </span>
+                    </div>
+                    <div className="max-w-3xl">
+                      <h2 className="font-serif text-3xl leading-tight text-foreground sm:text-4xl">
+                        {getText(language, "O foco é valor real, não volume.", "The focus is real value, not volume.")}
+                      </h2>
+                      <p className="mt-5 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                        {getText(
+                          language,
+                          "As sugestões ajudam a aproximar o conteúdo publicado das demandas reais do público, sem transformar o site em uma lista de respostas rápidas. A prioridade continua sendo clareza, profundidade e responsabilidade.",
+                          "Suggestions help bring published content closer to real audience demands, without turning the site into a list of quick answers. The priority remains clarity, depth and responsibility."
+                        )}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>
@@ -453,33 +461,57 @@ const ArticleSuggestions = () => {
           </div>
         </section>
 
-        <section className="border-t border-border/20 py-16 lg:py-24">
+        <section id={FORM_SECTION_ID} className="scroll-mt-24 border-t border-border/20 py-16 lg:py-24">
           <div className="mx-auto w-full max-w-[1200px] px-6 lg:px-8">
             <ScrollReveal>
-              <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
                 <div>
                   <Route className="mb-6 h-6 w-6 text-foreground/70" />
                   <h2 className="max-w-2xl font-serif text-3xl leading-tight text-foreground sm:text-4xl">
-                    {getText(language, "Se a sua dúvida pode virar direção para outras pessoas, envie.", "If your question can become direction for other people, send it.")}
+                    {getText(language, "Agora você pode enviar por aqui.", "Now you can submit it here.")}
                   </h2>
                 </div>
                 <div>
                   <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
                     {getText(
                       language,
-                      "O formulário é o caminho adequado para encaminhar contribuições com organização. As sugestões aprovadas poderão orientar artigos, guias práticos, análises técnicas ou materiais informativos publicados nos canais oficiais.",
-                      "The form is the proper path to send contributions with organization. Approved suggestions may guide articles, practical guides, technical analyses or informative materials published through official channels."
+                      "O formulário continua sendo analisado com o mesmo critério editorial, mas agora a pessoa não precisa sair do site para contribuir. Preencha com calma, descreva o contexto e evite qualquer informação sigilosa.",
+                      "The form is still reviewed with the same editorial criteria, but now people do not need to leave the site to contribute. Fill it in calmly, describe the context and avoid any confidential information."
                     )}
                   </p>
-                  <a
-                    href={FORM_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group mt-8 inline-flex items-center justify-center gap-2 rounded-full border border-foreground/20 bg-foreground px-7 py-3 text-sm font-semibold text-background transition-all duration-300 hover:bg-foreground/90"
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.08}>
+              <div className="mt-12 overflow-hidden rounded-[28px] border border-border/25 bg-background/70 shadow-[0_28px_90px_hsl(var(--background)/0.55)] backdrop-blur">
+                <div className="flex flex-col gap-4 border-b border-border/20 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-7">
+                  <div>
+                    <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground/60">
+                      {getText(language, "formulário oficial", "official form")}
+                    </span>
+                    <h3 className="mt-2 text-lg font-semibold text-foreground">
+                      {getText(language, "Sugestões de Artigos - Talisson Souza", "Article Suggestions - Talisson Souza")}
+                    </h3>
+                  </div>
+                  <span className="inline-flex w-fit items-center rounded-full border border-border/30 px-4 py-2 text-xs font-medium text-muted-foreground">
+                    {getText(language, "resposta pelo site", "on-site response")}
+                  </span>
+                </div>
+                <div className="relative bg-[#f1f3f4]">
+                  <iframe
+                    src={FORM_EMBED_URL}
+                    title={getText(
+                      language,
+                      "Formulário de sugestões de artigos de Talisson Souza",
+                      "Talisson Souza article suggestions form"
+                    )}
+                    className="block h-[1280px] w-full border-0 bg-[#f1f3f4] sm:h-[1240px]"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
                   >
-                    {getText(language, "Mandar sugestão pelo formulário", "Send suggestion through the form")}
-                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </a>
+                    {getText(language, "Carregando formulário...", "Loading form...")}
+                  </iframe>
                 </div>
               </div>
             </ScrollReveal>
