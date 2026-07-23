@@ -15,6 +15,7 @@ const queryClient = new QueryClient();
 const Index = lazy(() => import("./pages/Index"));
 const Bio = lazy(() => import("./pages/Bio"));
 const About = lazy(() => import("./pages/About"));
+const Affiliate = lazy(() => import("./pages/Affiliate"));
 const Projects = lazy(() => import("./pages/Projects"));
 const Services = lazy(() => import("./pages/Services"));
 const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
@@ -57,6 +58,7 @@ const AppRoutes = () => (
             <Route path="/" element={<Index />} />
             <Route path="/bio" element={<Bio />} />
             <Route path="/sobre" element={<About />} />
+            <Route path="/seja-afiliado" element={<Affiliate />} />
             <Route path="/projetos" element={<Projects />} />
             <Route path="/projetos/:id" element={<ProjectDetail />} />
             <Route path="/servicos" element={<Services />} />
