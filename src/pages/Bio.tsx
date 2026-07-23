@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import {
   ArrowRight,
   ArrowUpRight,
+  BadgeCheck,
   BriefcaseBusiness,
   Github,
   Globe2,
@@ -297,6 +298,61 @@ const Bio = () => {
                   "Building companies, software and technology content with clarity, responsibility and long-term thinking."
                 )}
               </p>
+
+              <motion.article
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.62, delay: 0.16, ease }}
+                className="relative mx-auto mt-8 max-w-xl overflow-hidden rounded-2xl border border-border/35 bg-card/45 text-left shadow-[0_18px_70px_hsl(0_0%_0%/0.22)] backdrop-blur-sm lg:mx-0"
+              >
+                <div
+                  className="pointer-events-none absolute inset-0 opacity-[0.018]"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
+                    backgroundSize: "28px 28px",
+                  }}
+                />
+                <div className="relative p-5 sm:p-6">
+                  <div className="flex items-center gap-3">
+                    <div className="h-10 w-10 overflow-hidden rounded-full border border-border/35 bg-background">
+                      <img
+                        src={portrait}
+                        alt=""
+                        className="h-full w-full object-cover object-[50%_24%] grayscale"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5">
+                        <p className="text-sm font-semibold text-foreground">Talisson Souza</p>
+                        <BadgeCheck className="h-4 w-4 text-foreground/70" />
+                      </div>
+                      <p className="text-xs text-muted-foreground">@talisson.dev</p>
+                    </div>
+                    <span className="ml-auto rounded-full border border-border/30 bg-background/45 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                      {getText(language, "fixado", "pinned")}
+                    </span>
+                  </div>
+
+                  <div className="mt-5 space-y-4 text-[15px] leading-relaxed text-muted-foreground">
+                    <p>
+                      {getText(
+                        language,
+                        "Eu gosto de construir coisas que continuam fazendo sentido depois da empolgação inicial.",
+                        "I like building things that still make sense after the first wave of excitement fades."
+                      )}
+                    </p>
+                    <p>
+                      {getText(
+                        language,
+                        "Software, empresas, conteúdo e comunidades acabam passando pelo mesmo filtro: entender o problema, organizar as decisões e cuidar do que permanece.",
+                        "Software, companies, content and communities end up going through the same filter: understand the problem, organize decisions and care about what remains."
+                      )}
+                    </p>
+                  </div>
+                </div>
+              </motion.article>
 
               <div className="mt-10 grid gap-3 sm:grid-cols-2">
                 {primaryLinks.map((link) =>
