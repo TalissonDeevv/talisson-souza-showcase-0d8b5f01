@@ -1,12 +1,10 @@
-import { motion } from "framer-motion";
 import { ArrowRight, Check, MessageCircle, Route, ShieldCheck } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { MotionRail, PageHero } from "@/components/ui/PageIdentity";
+import { IdentityPanel, MotionRail, PageHero } from "@/components/ui/PageIdentity";
 
 const DISCORD_URL = "https://discord.talissonsouza.com.br";
-const ease = [0.16, 1, 0.3, 1] as const;
 
 const flowSteps = [
   {
@@ -170,13 +168,11 @@ const Affiliate = () => {
                     { label: "Comissão", value: "10%" },
                     { label: "Você recebe", value: "R$ 500" },
                   ].map((item, index) => (
-                    <motion.div
+                    <IdentityPanel
                       key={item.label}
-                      initial={{ opacity: 0, y: 14 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-80px" }}
-                      transition={{ duration: 0.55, delay: index * 0.06, ease }}
-                      className="bg-background/92 px-6 py-7"
+                      hover={false}
+                      delay={index * 0.06}
+                      className="rounded-none border-0 bg-background/92 px-6 py-7 shadow-none"
                     >
                       <span className="text-[10px] uppercase tracking-[0.26em] text-muted-foreground/55">
                         {item.label}
@@ -184,7 +180,7 @@ const Affiliate = () => {
                       <strong className="mt-4 block font-serif text-4xl font-semibold leading-none text-foreground sm:text-5xl">
                         {item.value}
                       </strong>
-                    </motion.div>
+                    </IdentityPanel>
                   ))}
                 </div>
               </div>
@@ -228,7 +224,7 @@ const Affiliate = () => {
 
         <section className="py-16 lg:py-24">
           <div className="container mx-auto px-6 lg:px-8">
-            <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+            <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
               <ScrollReveal>
                 <div className="border-y border-border/25 py-9">
                   <MessageCircle className="mb-6 h-5 w-5 text-foreground/70" />
@@ -242,17 +238,24 @@ const Affiliate = () => {
                 </div>
               </ScrollReveal>
 
-              <ScrollReveal delay={0.08}>
+              <ScrollReveal delay={0.08} className="w-full">
                 <div className="grid gap-px overflow-hidden border border-border/20 bg-border/20 sm:grid-cols-3">
                   {[
                     "Sem obrigação de vender",
                     "Sem participar da negociação",
                     "Sem responsabilidade técnica pela entrega",
-                  ].map((item) => (
-                    <div key={item} className="flex min-h-32 flex-col justify-between bg-background/92 p-6">
-                      <Check className="h-4 w-4 text-foreground/55" />
-                      <p className="mt-8 text-sm font-medium leading-relaxed text-foreground">{item}</p>
-                    </div>
+                  ].map((item, index) => (
+                    <IdentityPanel
+                      key={item}
+                      hover={false}
+                      delay={index * 0.06}
+                      className="rounded-none border-0 bg-background/92 shadow-none"
+                    >
+                      <div className="flex min-h-36 flex-col items-center justify-center gap-5 p-6 text-center">
+                        <Check className="h-4 w-4 text-foreground/55" />
+                        <p className="max-w-[180px] text-sm font-medium leading-relaxed text-foreground">{item}</p>
+                      </div>
+                    </IdentityPanel>
                   ))}
                 </div>
               </ScrollReveal>

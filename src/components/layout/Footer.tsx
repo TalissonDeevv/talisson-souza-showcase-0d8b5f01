@@ -20,6 +20,7 @@ const Footer = () => {
     { name: getText(language, "Sobre", "About"), path: `${root}/sobre`.replace("/en-us/sobre", "/en-us/about") },
     { name: getText(language, "Carreira", "Career"), path: `${root}/carreira`.replace("/en-us/carreira", "/en-us/career") },
     { name: getText(language, "Serviços", "Services"), path: `${root}/servicos`.replace("/en-us/servicos", "/en-us/services") },
+    { name: getText(language, "Parceiros", "Partners"), path: "/seja-afiliado" },
     { name: getText(language, "Livro", "Book"), path: `${root}/livro`.replace("/en-us/livro", "/en-us/book") },
     { name: getText(language, "Políticas", "Policies"), path: `${root}/politicas`.replace("/en-us/politicas", "/en-us/policies") },
   ];

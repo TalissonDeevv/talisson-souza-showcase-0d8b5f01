@@ -185,14 +185,15 @@ type IdentityPanelProps = {
   children: ReactNode;
   className?: string;
   hover?: boolean;
+  delay?: number;
 };
 
-export const IdentityPanel = ({ children, className, hover = true }: IdentityPanelProps) => (
+export const IdentityPanel = ({ children, className, hover = true, delay = 0 }: IdentityPanelProps) => (
   <motion.div
     initial={{ opacity: 0, y: 22 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-70px" }}
-    transition={{ duration: 0.65, ease }}
+    transition={{ duration: 0.65, delay, ease }}
     whileHover={hover ? { y: -4 } : undefined}
     className={cn(
       "group relative overflow-hidden rounded-2xl border border-border/25 bg-card/35 backdrop-blur-sm",
