@@ -8,6 +8,8 @@ import {
   Globe2,
   Mail,
   Newspaper,
+  ShieldCheck,
+  Users,
 } from "lucide-react";
 import { FaDiscord, FaInstagram, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 import Layout from "@/components/layout/Layout";
@@ -61,6 +63,15 @@ const socialLinks = [
   { label: "Discord", href: "https://discord.talissonsouza.com.br", icon: FaDiscord },
   { label: "X", href: "https://x.com/talissondev", icon: FaXTwitter },
 ];
+
+const communityAssets = {
+  escritorioLogo: "/images/discord/escritorio-logo.png",
+  agonLogo: "/images/discord/agon-logo.png",
+  dunecoLogo: "/images/discord/duneco-logo.png",
+  hytaleLogo: "/images/discord/hytale-logo.gif",
+  modsclubLogo: "/images/discord/modsclub-logo.png",
+  elixirLogo: "/images/discord/elixir-lab-logo.png",
+};
 
 const Bio = () => {
   const { language } = useTheme();
@@ -116,6 +127,75 @@ const Bio = () => {
           <Newspaper className="h-5 w-5 text-foreground/75" />
         </div>
       ),
+    },
+  ];
+
+  const communities = [
+    {
+      name: "Escritório do Talisson",
+      role: getText(language, "Proprietário", "Owner"),
+      description: getText(
+        language,
+        "Espaço oficial onde concentro comunidade, projetos e conteúdo sobre tecnologia e negócios.",
+        "Official space for my community, projects and content about technology and business."
+      ),
+      logo: communityAssets.escritorioLogo,
+      href: "https://discord.gg/DzZN6tUJKq",
+    },
+    {
+      name: "AGON by AOC",
+      role: getText(language, "Ex Moderador", "Former Moderator"),
+      description: getText(
+        language,
+        "Servidor oficial da AGON by AOC no Discord Brasil, com foco em performance e comunidade gamer.",
+        "Official AGON by AOC server on Discord Brazil, focused on performance and gamer community."
+      ),
+      logo: communityAssets.agonLogo,
+      href: "https://discord.gg/yBy8Vu79J3",
+    },
+    {
+      name: "DuneCo Dungeons",
+      role: getText(language, "Criador Independente Verificado", "Verified Independent Creator"),
+      description: getText(
+        language,
+        "Ecossistema para marcas, criadores e projetos que querem explorar comunidades no Discord.",
+        "Ecosystem for brands, creators and projects exploring Discord communities."
+      ),
+      logo: communityAssets.dunecoLogo,
+      href: "https://discord.gg/SyEnrAknqA",
+    },
+    {
+      name: "Hytale Brasil",
+      role: getText(language, "Desenvolvedor Interno", "Internal Developer"),
+      description: getText(
+        language,
+        "Comunidade brasileira dedicada a Hytale, reunindo jogadores, notícias e estrutura interna.",
+        "Brazilian Hytale community bringing players, news and internal structure together."
+      ),
+      logo: communityAssets.hytaleLogo,
+      href: "https://discord.gg/x2SvJd2NsZ",
+    },
+    {
+      name: "ModsClub",
+      role: getText(language, "Especialista em Comunidades", "Community Specialist"),
+      description: getText(
+        language,
+        "Comunidade para moderadores, administradores e proprietários de comunidades brasileiras.",
+        "Community for moderators, administrators and owners of Brazilian communities."
+      ),
+      logo: communityAssets.modsclubLogo,
+      href: "https://discord.gg/uuHdJUNYQs",
+    },
+    {
+      name: "Elixir Lab",
+      role: getText(language, "Ex Moderador", "Former Moderator"),
+      description: getText(
+        language,
+        "Comunidade de entrada para Discord, bots, jogos e suporte no ecossistema brasileiro.",
+        "Gateway community for Discord, bots, games and support in the Brazilian ecosystem."
+      ),
+      logo: communityAssets.elixirLogo,
+      href: "https://discord.gg/elixirlab",
     },
   ];
 
@@ -332,6 +412,94 @@ const Bio = () => {
                 </Link>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-background py-16 lg:py-24">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.018]"
+          style={{
+            backgroundImage:
+              "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
+            backgroundSize: "44px 44px",
+          }}
+        />
+        <div className="container relative z-10 mx-auto px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
+              <div>
+                <p className="mb-4 text-[11px] uppercase tracking-[0.34em] text-muted-foreground/70">
+                  Trust & Safety
+                </p>
+                <h2 className="max-w-2xl font-serif text-4xl leading-tight text-foreground sm:text-5xl">
+                  {getText(
+                    language,
+                    "Comunidades também fazem parte do meu trabalho.",
+                    "Communities are also part of my work."
+                  )}
+                </h2>
+              </div>
+              <div className="rounded-2xl border border-border/25 bg-card/35 p-6">
+                <div className="mb-5 flex flex-wrap gap-2">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-border/35 bg-foreground/[0.035] px-3 py-2 text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+                    <ShieldCheck className="h-3.5 w-3.5" />
+                    {getText(language, "Especialista em Trust & Safety", "Trust & Safety Specialist")}
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-border/35 bg-foreground/[0.035] px-3 py-2 text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+                    <Users className="h-3.5 w-3.5" />
+                    {getText(language, "Gerente de Comunidade no Discord", "Discord Community Manager")}
+                  </span>
+                </div>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {getText(
+                    language,
+                    "Além de software, atuo com segurança, moderação, processos e organização de comunidades digitais. Essa experiência aparece em servidores, equipes de moderação, automações, prevenção de abuso, resposta a incidentes e construção de ambientes mais saudáveis.",
+                    "Beyond software, I work with safety, moderation, processes and digital community organization. This experience appears in servers, moderation teams, automations, abuse prevention, incident response and healthier community environments."
+                  )}
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {communities.map((community, index) => (
+              <motion.a
+                key={community.name}
+                href={community.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.52, delay: index * 0.05, ease }}
+                whileHover={{ y: -4 }}
+                className="group relative overflow-hidden rounded-2xl border border-border/30 bg-card/45 p-5 transition-colors duration-300 hover:border-foreground/20"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-border/25 bg-background/45">
+                    <img
+                      src={community.logo}
+                      alt=""
+                      className="h-9 w-9 object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-start justify-between gap-3">
+                      <h3 className="text-lg leading-tight text-foreground">{community.name}</h3>
+                      <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
+                    </div>
+                    <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground/70">
+                      {community.role}
+                    </p>
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                      {community.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.a>
+            ))}
           </div>
         </div>
       </section>
