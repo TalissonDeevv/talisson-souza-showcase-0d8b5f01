@@ -239,7 +239,7 @@ const Bio = () => {
         <div className="pointer-events-none absolute left-1/2 top-24 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-foreground/[0.035] blur-3xl" />
 
         <div className="container relative z-10 mx-auto flex min-h-screen items-center px-6 pb-20 pt-24 lg:px-8">
-          <div className="grid w-full items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
+          <div className="grid w-full items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
@@ -250,11 +250,11 @@ const Bio = () => {
                 {getText(language, "Bio oficial", "Official bio")}
               </p>
 
-              <h1 className="text-balance font-serif text-6xl leading-[0.9] text-foreground sm:text-7xl lg:text-[6.8rem]">
+              <h1 className="whitespace-nowrap font-serif text-[clamp(3.25rem,7.2vw,5.4rem)] leading-[0.9] text-foreground">
                 Talisson Souza
               </h1>
 
-              <p className="mt-6 font-mono text-sm uppercase tracking-[0.26em] text-muted-foreground sm:text-base">
+              <p className="mt-6 whitespace-nowrap font-mono text-[clamp(0.68rem,1.25vw,0.98rem)] uppercase tracking-[clamp(0.12em,0.8vw,0.26em)] text-muted-foreground">
                 Software Engineer · Founder · Entrepreneur
               </p>
 
