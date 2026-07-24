@@ -53,60 +53,69 @@ const partnerBenefits = [
   "Oportunidade de construir uma parceria de longo prazo, indicando clientes de forma recorrente.",
 ];
 
-const partnerRequirementGroups = [
+const partnerRequirements = [
   {
-    items: [
-      {
-        label: "01",
-        title: "Ter capacidade para participar do Programa de Parceiros conforme a legislação brasileira.",
-        text: "A participação precisa respeitar as condições legais aplicáveis a cada pessoa, inclusive capacidade civil, responsabilidade pelas informações enviadas e possibilidade de receber comissões.",
-      },
-      {
-        label: "02",
-        title: "Participantes maiores de 18 anos podem participar normalmente.",
-        text: "A participação depende da aceitação do Regulamento do Programa, dos Termos de Uso e da Política de Privacidade.",
-      },
-    ],
+    label: "01",
+    title: "Ter capacidade para participar do Programa de Parceiros conforme a legislação brasileira.",
+    text: "A participação precisa respeitar as condições legais aplicáveis a cada pessoa, inclusive capacidade civil, responsabilidade pelas informações enviadas e possibilidade de receber comissões.",
   },
   {
-    heading: "Participação de menores de idade",
-    text: "A participação de pessoas com 16 ou 17 anos exige cuidado adicional. O objetivo é proteger o participante, o responsável legal, o cliente indicado e a organização do programa.",
-    items: [
-      {
-        label: "03",
-        title: "Participantes com 16 ou 17 anos somente poderão participar mediante autorização expressa do responsável legal.",
-        text: "Essa autorização será tratada conforme a legislação brasileira aplicável e as regras internas do Programa de Parceiros.",
-      },
-      {
-        label: "04",
-        title: "Quando houver participação de menor de idade, a organização poderá solicitar documentação.",
-        text: "A documentação poderá comprovar idade do participante, identidade do responsável legal, autorização do responsável e vínculo entre ambos.",
-      },
-      {
-        label: "05",
-        title: "O pagamento de comissões de participantes menores de idade poderá ser feito ao responsável legal.",
-        text: "O repasse também poderá seguir outra forma permitida pela legislação brasileira e pelas regras do Programa, desde que a situação esteja regularizada.",
-      },
-      {
-        label: "06",
-        title: "Se a documentação não for apresentada ou estiver inconsistente, a participação poderá ser recusada ou suspensa.",
-        text: "A regularização poderá ser exigida antes da validação de novas indicações ou da liberação de qualquer comissão.",
-      },
-    ],
+    label: "02",
+    title: "Participantes maiores de 18 anos podem participar normalmente.",
+    text: "A participação depende da aceitação do Regulamento do Programa, dos Termos de Uso e da Política de Privacidade.",
   },
   {
-    items: [
-      {
-        label: "07",
-        title: "As informações fornecidas precisam ser verdadeiras.",
-        text: "Ao participar do programa, o participante declara que os dados enviados são corretos e autoriza as validações necessárias para cumprimento das obrigações legais.",
-      },
-      {
-        label: "08",
-        title: "A participação não cria vínculo além do previsto no regulamento.",
-        text: "O programa não gera vínculo empregatício, representação comercial, sociedade, franquia, exclusividade ou qualquer outra relação não prevista expressamente no Regulamento.",
-      },
-    ],
+    label: "03",
+    title: "Fazer parte do servidor oficial do Discord.",
+    text: "O servidor será o canal oficial de comunicação do programa, acompanhamento das indicações, avisos e suporte aos parceiros.",
+  },
+  {
+    label: "04",
+    title: "Concordar com as regras oficiais.",
+    text: "A participação depende da concordância integral com o Regulamento do Programa de Parceiros, os Termos de Uso e a Política de Privacidade.",
+  },
+  {
+    label: "05",
+    title: "Realizar apenas indicações legítimas, espontâneas e de boa-fé.",
+    text: "Não são permitidas práticas de spam, abordagens enganosas, compra de leads, uso de informações obtidas ilegalmente ou qualquer conduta que prejudique terceiros ou a reputação do programa.",
+  },
+  {
+    label: "06",
+    title: "Respeitar a legislação brasileira aplicável.",
+    text: "As indicações devem observar as normas de proteção de dados, incluindo a LGPD, direitos do consumidor e demais leis pertinentes.",
+  },
+  {
+    label: "07",
+    title: "As informações fornecidas precisam ser verdadeiras.",
+    text: "Ao participar do programa, o participante declara que os dados enviados são corretos e autoriza as validações necessárias para cumprimento das obrigações legais.",
+  },
+  {
+    label: "08",
+    title: "A participação não cria vínculo além do previsto no regulamento.",
+    text: "O programa não gera vínculo empregatício, representação comercial, sociedade, franquia, exclusividade ou qualquer outra relação não prevista expressamente no Regulamento.",
+  },
+];
+
+const minorParticipationItems = [
+  {
+    label: "01",
+    title: "Participantes com 16 ou 17 anos somente poderão participar mediante autorização expressa do responsável legal.",
+    text: "Essa autorização será tratada conforme a legislação brasileira aplicável e as regras internas do Programa de Parceiros.",
+  },
+  {
+    label: "02",
+    title: "A organização poderá solicitar documentação para validar a participação.",
+    text: "A documentação poderá comprovar idade do participante, identidade do responsável legal, autorização do responsável e vínculo entre ambos.",
+  },
+  {
+    label: "03",
+    title: "O pagamento de comissões poderá ser feito ao responsável legal.",
+    text: "O repasse também poderá seguir outra forma permitida pela legislação brasileira e pelas regras do Programa, desde que a situação esteja regularizada.",
+  },
+  {
+    label: "04",
+    title: "A participação poderá ser recusada ou suspensa caso a documentação não esteja regular.",
+    text: "Isso vale quando os documentos não forem apresentados, forem inconsistentes ou não atenderem aos requisitos legais do programa.",
   },
 ];
 
@@ -409,66 +418,22 @@ const Affiliate = () => {
               </ScrollReveal>
 
               <div className="divide-y divide-border/20 border-y border-border/20">
-                {partnerRequirementGroups.map((group, groupIndex) => (
-                  <div key={group.heading ?? `requirements-${groupIndex}`} className="divide-y divide-border/20">
-                    {group.heading && (
-                      <ScrollReveal delay={0.04}>
-                        <div className="grid gap-5 py-7 lg:grid-cols-[150px_1fr] lg:items-start">
-                          <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-muted-foreground/55">
-                            Subseção
-                          </span>
-                          <div>
-                            <h3 className="max-w-2xl font-serif text-2xl leading-tight text-foreground sm:text-3xl">
-                              {group.heading}.
-                            </h3>
-                            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                              {group.text}
-                            </p>
-                          </div>
-                        </div>
-                      </ScrollReveal>
-                    )}
-
-                    {group.heading ? (
-                      <div className="grid gap-px overflow-hidden border border-border/20 bg-border/20 sm:grid-cols-2">
-                        {group.items.map((requirement, index) => (
-                          <ScrollReveal key={requirement.title} delay={Math.min((groupIndex + index) * 0.035, 0.18)}>
-                            <div className="h-full bg-background/92 p-5 sm:p-6">
-                              <span className="font-serif text-2xl leading-none text-foreground/20">
-                                {requirement.label}
-                              </span>
-                              <div className="mt-5 max-w-xl">
-                                <h4 className="text-sm font-medium leading-relaxed text-foreground sm:text-base">
-                                  {requirement.title}
-                                </h4>
-                                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                                  {requirement.text}
-                                </p>
-                              </div>
-                            </div>
-                          </ScrollReveal>
-                        ))}
+                {partnerRequirements.map((requirement, index) => (
+                  <ScrollReveal key={requirement.title} delay={Math.min(index * 0.035, 0.18)}>
+                    <div className="grid gap-4 py-5 sm:grid-cols-[64px_1fr] sm:items-start">
+                      <span className="font-serif text-3xl leading-none text-foreground/20">
+                        {requirement.label}
+                      </span>
+                      <div className="max-w-2xl">
+                        <h4 className="text-base font-medium leading-relaxed text-foreground">
+                          {requirement.title}
+                        </h4>
+                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                          {requirement.text}
+                        </p>
                       </div>
-                    ) : (
-                      group.items.map((requirement, index) => (
-                        <ScrollReveal key={requirement.title} delay={Math.min((groupIndex + index) * 0.035, 0.18)}>
-                          <div className="grid gap-4 py-5 sm:grid-cols-[64px_1fr] sm:items-start">
-                            <span className="font-serif text-3xl leading-none text-foreground/20">
-                              {requirement.label}
-                            </span>
-                            <div className="max-w-2xl">
-                              <h4 className="text-base font-medium leading-relaxed text-foreground">
-                                {requirement.title}
-                              </h4>
-                              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                                {requirement.text}
-                              </p>
-                            </div>
-                          </div>
-                        </ScrollReveal>
-                      ))
-                    )}
-                  </div>
+                    </div>
+                  </ScrollReveal>
                 ))}
 
                 <ScrollReveal delay={0.16}>
@@ -495,6 +460,43 @@ const Affiliate = () => {
                     </div>
                   </div>
                 </ScrollReveal>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-border/20 py-16 lg:py-24">
+          <div className="container mx-auto px-6 lg:px-8">
+            <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+              <ScrollReveal>
+                <div className="lg:sticky lg:top-28">
+                  <span className="text-[11px] font-medium uppercase tracking-[0.32em] text-muted-foreground/65">
+                    Menores de idade
+                  </span>
+                  <h2 className="mt-5 max-w-xl font-serif text-3xl leading-tight text-foreground sm:text-4xl lg:text-5xl">
+                    Participação de menores de idade.
+                  </h2>
+                  <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                    A participação de pessoas com 16 ou 17 anos exige cuidado adicional. O objetivo é proteger o
+                    participante, o responsável legal, o cliente indicado e a organização do programa.
+                  </p>
+                </div>
+              </ScrollReveal>
+
+              <div className="grid gap-px overflow-hidden border border-border/20 bg-border/20 sm:grid-cols-2">
+                {minorParticipationItems.map((item, index) => (
+                  <ScrollReveal key={item.title} delay={Math.min(index * 0.04, 0.16)}>
+                    <div className="h-full bg-background/92 p-5 sm:p-6">
+                      <span className="font-serif text-2xl leading-none text-foreground/20">{item.label}</span>
+                      <div className="mt-5 max-w-xl">
+                        <h3 className="text-sm font-medium leading-relaxed text-foreground sm:text-base">
+                          {item.title}
+                        </h3>
+                        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+                      </div>
+                    </div>
+                  </ScrollReveal>
+                ))}
               </div>
             </div>
           </div>
