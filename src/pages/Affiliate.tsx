@@ -363,7 +363,7 @@ const Affiliate = () => {
 
         <section className="border-b border-border/20 py-16 lg:py-24">
           <div className="container mx-auto px-6 lg:px-8">
-            <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+            <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
               <ScrollReveal>
                 <div className="lg:sticky lg:top-28">
                   <span className="text-[11px] font-medium uppercase tracking-[0.32em] text-muted-foreground/65">
@@ -380,12 +380,12 @@ const Affiliate = () => {
               </ScrollReveal>
 
               <div className="overflow-hidden border border-border/20 bg-border/20">
-                <div className="policy-reading-scrollbar flex overflow-x-auto">
+                <div className="grid gap-px sm:grid-cols-2 xl:grid-cols-3">
                   {partnerBenefits.map((benefit, index) => (
                     <ScrollReveal
                       key={benefit}
                       delay={Math.min(index * 0.03, 0.16)}
-                      className="flex min-w-[260px] shrink-0 border-r border-border/20 last:border-r-0 sm:min-w-[300px] lg:min-w-[320px]"
+                      className="h-full"
                     >
                       <div className="h-full w-full bg-background/92 p-5 sm:p-6">
                         <span className="font-serif text-2xl leading-none text-foreground/20">
@@ -460,7 +460,7 @@ const Affiliate = () => {
 
         <section className="border-b border-border/20 py-16 lg:py-24">
           <div className="container mx-auto px-6 lg:px-8">
-            <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+            <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
               <ScrollReveal>
                 <div className="lg:sticky lg:top-28">
                   <span className="text-[11px] font-medium uppercase tracking-[0.32em] text-muted-foreground/65">
@@ -477,12 +477,12 @@ const Affiliate = () => {
               </ScrollReveal>
 
               <div className="overflow-hidden border border-border/20 bg-border/20">
-                <div className="policy-reading-scrollbar flex overflow-x-auto">
+                <div className="grid gap-px sm:grid-cols-2 xl:grid-cols-3">
                   {partnerRequirements.map((requirement, index) => (
                     <ScrollReveal
                       key={requirement.title}
                       delay={Math.min(index * 0.03, 0.16)}
-                      className="flex min-w-[280px] shrink-0 border-r border-border/20 last:border-r-0 sm:min-w-[320px] lg:min-w-[340px]"
+                      className="h-full"
                     >
                       <div className="h-full w-full bg-background/92 p-5 sm:p-6">
                         <span className="font-serif text-2xl leading-none text-foreground/20">
