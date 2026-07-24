@@ -379,29 +379,33 @@ const Affiliate = () => {
                 </div>
               </ScrollReveal>
 
-              <div className="divide-y divide-border/20 border-y border-border/20">
-                {partnerBenefits.map((benefit, index) => (
-                  <ScrollReveal key={benefit} delay={Math.min(index * 0.035, 0.18)}>
-                    <div className="grid gap-4 py-5 sm:grid-cols-[64px_1fr] sm:items-start">
-                      <span className="font-serif text-3xl leading-none text-foreground/20">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                        {benefit}
-                      </p>
-                    </div>
-                  </ScrollReveal>
-                ))}
+              <div className="overflow-hidden border border-border/20 bg-border/20">
+                <div className="grid gap-px sm:grid-cols-2">
+                  {partnerBenefits.map((benefit, index) => (
+                    <ScrollReveal key={benefit} delay={Math.min(index * 0.03, 0.16)}>
+                      <div className="h-full bg-background/92 p-5 sm:p-6">
+                        <span className="font-serif text-2xl leading-none text-foreground/20">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                          {benefit}
+                        </p>
+                      </div>
+                    </ScrollReveal>
+                  ))}
+                </div>
 
                 <ScrollReveal delay={0.16}>
-                  <div className="grid gap-4 py-6 sm:grid-cols-[64px_1fr] sm:items-start">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-border/30 text-foreground/55">
-                      <Check className="h-4 w-4" />
-                    </span>
-                    <p className="max-w-2xl text-sm font-medium leading-relaxed text-foreground">
-                      O programa continuará recebendo novos benefícios ao longo do tempo, conforme a operação amadurecer e
-                      novas oportunidades fizerem sentido para os parceiros.
-                    </p>
+                  <div className="border-t border-border/20 bg-background/95 p-5 sm:p-6">
+                    <div className="grid gap-5 sm:grid-cols-[40px_1fr] sm:items-start">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-full border border-border/30 text-foreground/55">
+                        <Check className="h-4 w-4" />
+                      </span>
+                      <p className="max-w-3xl text-sm font-medium leading-relaxed text-foreground">
+                        O programa continuará recebendo novos benefícios ao longo do tempo, conforme a operação amadurecer
+                        e novas oportunidades fizerem sentido para os parceiros.
+                      </p>
+                    </div>
                   </div>
                 </ScrollReveal>
               </div>
