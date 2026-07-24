@@ -118,7 +118,7 @@ const staticPages: Record<string, { pt: { title: string; description: string }; 
   '/bio': {
     pt: {
       title: 'Bio Oficial | Talisson Souza',
-      description: 'Pagina oficial de bio de Talisson Souza com links, projetos, redes sociais e canais profissionais.',
+      description: 'Página oficial de bio de Talisson Souza com links, projetos, redes sociais e canais profissionais.',
     },
     en: {
       title: 'Official Bio | Talisson Souza',
@@ -238,7 +238,7 @@ const staticPages: Record<string, { pt: { title: string; description: string }; 
   '/seja-afiliado': {
     pt: {
       title: 'Programa de Parceiros | Talisson Souza',
-      description: 'Indique clientes para os meus servicos e receba comissao por cada projeto fechado pelo Programa de Parceiros.',
+      description: 'Indique clientes para os meus serviços e receba comissão por cada projeto fechado pelo Programa de Parceiros.',
     },
     en: {
       title: 'Partner Program | Talisson Souza',
@@ -247,8 +247,8 @@ const staticPages: Record<string, { pt: { title: string; description: string }; 
   },
   '/sugestoes-artigos': {
     pt: {
-      title: 'Sugestoes de Artigos | Talisson Souza',
-      description: 'Envie sugestoes de temas para novos artigos e ajude a orientar conteudos uteis para tecnologia, carreira e desenvolvimento profissional.',
+      title: 'Sugestões de Artigos | Talisson Souza',
+      description: 'Envie sugestões de temas para novos artigos e ajude a orientar conteúdos úteis para tecnologia, carreira e desenvolvimento profissional.',
     },
     en: {
       title: 'Article Suggestions | Talisson Souza',
