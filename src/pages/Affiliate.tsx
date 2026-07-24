@@ -468,46 +468,50 @@ const Affiliate = () => {
                 </div>
               </ScrollReveal>
 
-              <div className="divide-y divide-border/20 border-y border-border/20">
-                {partnerRequirements.map((requirement, index) => (
-                  <ScrollReveal key={requirement.title} delay={Math.min(index * 0.035, 0.18)}>
-                    <div className="grid gap-4 py-5 sm:grid-cols-[64px_1fr] sm:items-start">
-                      <span className="font-serif text-3xl leading-none text-foreground/20">
-                        {requirement.label}
-                      </span>
-                      <div className="max-w-2xl">
-                        <h4 className="text-base font-medium leading-relaxed text-foreground">
-                          {requirement.title}
-                        </h4>
-                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                          {requirement.text}
-                        </p>
+              <div className="overflow-hidden border border-border/20 bg-border/20">
+                <div className="grid gap-px sm:grid-cols-2">
+                  {partnerRequirements.map((requirement, index) => (
+                    <ScrollReveal key={requirement.title} delay={Math.min(index * 0.03, 0.16)}>
+                      <div className="h-full bg-background/92 p-5 sm:p-6">
+                        <span className="font-serif text-2xl leading-none text-foreground/20">
+                          {requirement.label}
+                        </span>
+                        <div className="mt-5 max-w-xl">
+                          <h4 className="text-sm font-medium leading-relaxed text-foreground sm:text-base">
+                            {requirement.title}
+                          </h4>
+                          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                            {requirement.text}
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  </ScrollReveal>
-                ))}
+                    </ScrollReveal>
+                  ))}
+                </div>
 
                 <ScrollReveal delay={0.16}>
-                  <div className="grid gap-4 py-7 sm:grid-cols-[64px_1fr] sm:items-start">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-border/30 text-foreground/55">
-                      <ShieldCheck className="h-4 w-4" />
-                    </span>
-                    <div className="max-w-2xl space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                      <p>
-                        Todas as indicações passam por um processo de validação antes da liberação da comissão. O
-                        objetivo é garantir transparência, segurança e uma relação de confiança entre o parceiro, o
-                        cliente e a organização do programa. As regras completas estão disponíveis no Regulamento do
-                        Programa de Parceiros.
-                      </p>
-                      <p>
-                        A participação no programa não gera vínculo empregatício, societário, representação comercial,
-                        franquia, agência ou exclusividade. Trata-se apenas de um programa de indicação de clientes,
-                        sujeito às regras do regulamento.
-                      </p>
-                      <p>
-                        Os requisitos para participação poderão ser alterados para atender mudanças na legislação ou
-                        aperfeiçoamentos do Programa de Parceiros.
-                      </p>
+                  <div className="border-t border-border/20 bg-background/95 p-5 sm:p-6">
+                    <div className="grid gap-5 sm:grid-cols-[40px_1fr] sm:items-start">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-full border border-border/30 text-foreground/55">
+                        <ShieldCheck className="h-4 w-4" />
+                      </span>
+                      <div className="max-w-3xl space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                        <p>
+                          Todas as indicações passam por um processo de validação antes da liberação da comissão. O
+                          objetivo é garantir transparência, segurança e uma relação de confiança entre o parceiro, o
+                          cliente e a organização do programa. As regras completas estão disponíveis no Regulamento do
+                          Programa de Parceiros.
+                        </p>
+                        <p>
+                          A participação no programa não gera vínculo empregatício, societário, representação comercial,
+                          franquia, agência ou exclusividade. Trata-se apenas de um programa de indicação de clientes,
+                          sujeito às regras do regulamento.
+                        </p>
+                        <p className="text-foreground/85">
+                          Os requisitos para participação poderão ser alterados para atender mudanças na legislação ou
+                          aperfeiçoamentos do Programa de Parceiros.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </ScrollReveal>
