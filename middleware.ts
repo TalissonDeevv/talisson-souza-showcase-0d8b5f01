@@ -19,6 +19,8 @@ const CRAWLER_USER_AGENTS = [
   'vkShare',
   'W3C_Validator',
   'redditbot',
+  'Instagram',
+  'Threads',
   'Applebot',
   'Baiduspider',
   'bingbot',
@@ -111,6 +113,16 @@ const staticPages: Record<string, { pt: { title: string; description: string }; 
     en: {
       title: 'Talisson Souza | Software Engineer and Technology Entrepreneur',
       description: 'Software Engineer and Architect, founder of Cheetah Solutions Network. Systems, automations and digital solutions for companies that need structured growth.',
+    },
+  },
+  '/bio': {
+    pt: {
+      title: 'Bio Oficial | Talisson Souza',
+      description: 'Pagina oficial de bio de Talisson Souza com links, projetos, redes sociais e canais profissionais.',
+    },
+    en: {
+      title: 'Official Bio | Talisson Souza',
+      description: 'Official bio page for Talisson Souza with links, projects, social networks and professional channels.',
     },
   },
   '/sobre': {
@@ -223,6 +235,26 @@ const staticPages: Record<string, { pt: { title: string; description: string }; 
       description: 'Real testimonials from colleagues, partners and clients about work, discipline, delivery, collaboration and technical quality.',
     },
   },
+  '/seja-afiliado': {
+    pt: {
+      title: 'Programa de Parceiros | Talisson Souza',
+      description: 'Indique clientes para os meus servicos e receba comissao por cada projeto fechado pelo Programa de Parceiros.',
+    },
+    en: {
+      title: 'Partner Program | Talisson Souza',
+      description: 'Refer clients to my services and receive commission for each project closed through the Partner Program.',
+    },
+  },
+  '/sugestoes-artigos': {
+    pt: {
+      title: 'Sugestoes de Artigos | Talisson Souza',
+      description: 'Envie sugestoes de temas para novos artigos e ajude a orientar conteudos uteis para tecnologia, carreira e desenvolvimento profissional.',
+    },
+    en: {
+      title: 'Article Suggestions | Talisson Souza',
+      description: 'Send topic suggestions for new articles and help guide useful content about technology, career and professional development.',
+    },
+  },
   '/politicas': {
     pt: {
       title: policiesPageMeta.title.pt,
@@ -277,6 +309,7 @@ const staticPages: Record<string, { pt: { title: string; description: string }; 
 
 const englishPathMap: Record<string, string> = {
   '/en-us': '/',
+  '/en-us/bio': '/bio',
   '/en-us/about': '/sobre',
   '/en-us/career': '/carreira',
   '/en-us/projects': '/projetos',
@@ -288,6 +321,8 @@ const englishPathMap: Record<string, string> = {
   '/en-us/checklists': '/checklists',
   '/en-us/faq': '/faq',
   '/en-us/feedbacks': '/feedbacks',
+  '/en-us/affiliate-program': '/seja-afiliado',
+  '/en-us/article-suggestions': '/sugestoes-artigos',
   '/en-us/policies': '/politicas',
   '/en-us/privacy-policy': '/politica-de-privacidade',
   '/en-us/how-i-work': '/como-trabalho',
@@ -496,8 +531,8 @@ function buildOgHtml(meta: PageMeta, url: string): string {
   <meta property="og:locale:alternate" content="${alternateLocale}" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@talinhozx" />
-  <meta name="twitter:creator" content="@talinhozx" />
+  <meta name="twitter:site" content="@talissondev" />
+  <meta name="twitter:creator" content="@talissondev" />
   <meta name="twitter:title" content="${title}" />
   <meta name="twitter:description" content="${description}" />
   <meta name="twitter:image" content="${safeOgImage}" />

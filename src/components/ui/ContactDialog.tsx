@@ -13,7 +13,7 @@ const ContactDialog = ({ children }: ContactDialogProps) => {
     { name: "GitHub", href: "https://github.com/TalinhoDev" },
     { name: "LinkedIn", href: "https://www.linkedin.com/in/talinho" },
     { name: "Instagram", href: "https://instagram.com/talissondev" },
-    { name: "Twitter/X", href: "https://x.com/talinhozx" },
+    { name: "Twitter/X", href: "https://x.com/talissondev" },
   ];
 
   return (

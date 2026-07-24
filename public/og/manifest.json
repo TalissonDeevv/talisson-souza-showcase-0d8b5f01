@@ -962,5 +962,21 @@
   {
     "route": "/seja-afiliado",
     "image": "/og/seja-afiliado.png"
+  },
+  {
+    "route": "/en-us/affiliate-program",
+    "image": "/og/en-us-affiliate-program.png"
+  },
+  {
+    "route": "/en-us/bio",
+    "image": "/og/en-us-bio.png"
+  },
+  {
+    "route": "/sugestoes-artigos",
+    "image": "/og/sugestoes-artigos.png"
+  },
+  {
+    "route": "/en-us/article-suggestions",
+    "image": "/og/en-us-article-suggestions.png"
   }
 ]
