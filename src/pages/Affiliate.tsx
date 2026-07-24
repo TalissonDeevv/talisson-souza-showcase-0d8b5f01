@@ -394,12 +394,32 @@ const Affiliate = () => {
                 ))}
 
                 <ScrollReveal delay={0.16}>
-                  <div className="grid gap-4 py-7 sm:grid-cols-[64px_1fr] sm:items-start">
-                    <span className="font-serif text-3xl leading-none text-foreground/20">11</span>
-                    <div className="max-w-2xl space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                      <h3 className="text-base font-medium leading-relaxed text-foreground">
+                  <div className="grid gap-4 py-6 sm:grid-cols-[64px_1fr] sm:items-start">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-border/30 text-foreground/55">
+                      <Check className="h-4 w-4" />
+                    </span>
+                    <p className="max-w-2xl text-sm font-medium leading-relaxed text-foreground">
+                      O programa continuará recebendo novos benefícios ao longo do tempo, conforme a operação amadurecer e
+                      novas oportunidades fizerem sentido para os parceiros.
+                    </p>
+                  </div>
+                </ScrollReveal>
+              </div>
+
+              <ScrollReveal delay={0.18} className="lg:col-span-2">
+                <div className="relative overflow-hidden border-y border-border/20 py-8 sm:py-10">
+                  <div className="pointer-events-none absolute inset-0 opacity-[0.018] [background-image:linear-gradient(hsl(var(--foreground))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground))_1px,transparent_1px)] [background-size:44px_44px]" />
+                  <div className="relative grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+                    <div>
+                      <span className="text-[11px] font-medium uppercase tracking-[0.32em] text-muted-foreground/60">
+                        Aprendizado
+                      </span>
+                      <h3 className="mt-5 max-w-md font-serif text-3xl leading-tight text-foreground sm:text-4xl">
                         Conhecimento para além das indicações.
                       </h3>
+                    </div>
+
+                    <div className="max-w-3xl space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
                       <p>
                         Outro objetivo do programa é compartilhar conhecimento. Além de criar uma forma de gerar renda
                         através das indicações, quero construir um ambiente onde os parceiros também possam aprender e
@@ -416,7 +436,7 @@ const Affiliate = () => {
                         mensagens para WhatsApp e e-mail, scripts de abordagem, apresentações, banners, respostas para
                         objeções e outros recursos que possam ajudar no dia a dia de quem faz indicações.
                       </p>
-                      <p>
+                      <p className="border-t border-border/20 pt-5 text-foreground/85">
                         A ideia é que esse conhecimento vá além do Programa de Parceiros. Quem tem negócio próprio,
                         trabalha como freelancer, oferece serviços, cria conteúdo ou pretende empreender no futuro pode
                         aplicar esses aprendizados para encontrar clientes, construir relacionamentos profissionais e
@@ -424,20 +444,8 @@ const Affiliate = () => {
                       </p>
                     </div>
                   </div>
-                </ScrollReveal>
-
-                <ScrollReveal delay={0.16}>
-                  <div className="grid gap-4 py-6 sm:grid-cols-[64px_1fr] sm:items-start">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-border/30 text-foreground/55">
-                      <Check className="h-4 w-4" />
-                    </span>
-                    <p className="max-w-2xl text-sm font-medium leading-relaxed text-foreground">
-                      O programa continuará recebendo novos benefícios ao longo do tempo, conforme a operação amadurecer e
-                      novas oportunidades fizerem sentido para os parceiros.
-                    </p>
-                  </div>
-                </ScrollReveal>
-              </div>
+                </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>
