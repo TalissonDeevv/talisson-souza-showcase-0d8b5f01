@@ -39,6 +39,18 @@ const participantProfiles = [
   "Pessoas com uma boa rede de contatos",
 ];
 
+const partnerBenefits = [
+  "Comissão sobre cada projeto fechado através das suas indicações.",
+  'Cargo exclusivo "Parceiro" no servidor oficial do Discord.',
+  "Acesso a um canal exclusivo para parceiros, onde serão compartilhadas oportunidades, novidades e materiais.",
+  "Materiais de divulgação prontos para facilitar a prospecção, como mensagens, abordagens, banners e conteúdos.",
+  "Suporte direto para esclarecer dúvidas sobre o programa e acompanhar suas indicações.",
+  "Reconhecimento dentro da comunidade pelos resultados obtidos.",
+  "Possibilidade de participar do ranking de parceiros com maior volume de comissões, de forma opcional e mediante autorização.",
+  "Acompanhamento transparente do status de cada indicação enviada.",
+  "Oportunidade de construir uma parceria de longo prazo, indicando clientes de forma recorrente.",
+];
+
 const Affiliate = () => {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -217,6 +229,54 @@ const Affiliate = () => {
                     </div>
                   </ScrollReveal>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-border/20 py-16 lg:py-24">
+          <div className="container mx-auto px-6 lg:px-8">
+            <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+              <ScrollReveal>
+                <div className="lg:sticky lg:top-28">
+                  <span className="text-[11px] font-medium uppercase tracking-[0.32em] text-muted-foreground/65">
+                    Benefícios
+                  </span>
+                  <h2 className="mt-5 max-w-xl font-serif text-3xl leading-tight text-foreground sm:text-4xl lg:text-5xl">
+                    Benefícios de ser um parceiro.
+                  </h2>
+                  <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                    A ideia é manter um programa simples, mas com vantagens reais para quem indica com responsabilidade e
+                    acompanha o relacionamento com clareza.
+                  </p>
+                </div>
+              </ScrollReveal>
+
+              <div className="divide-y divide-border/20 border-y border-border/20">
+                {partnerBenefits.map((benefit, index) => (
+                  <ScrollReveal key={benefit} delay={Math.min(index * 0.035, 0.18)}>
+                    <div className="grid gap-4 py-5 sm:grid-cols-[64px_1fr] sm:items-start">
+                      <span className="font-serif text-3xl leading-none text-foreground/20">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                        {benefit}
+                      </p>
+                    </div>
+                  </ScrollReveal>
+                ))}
+
+                <ScrollReveal delay={0.16}>
+                  <div className="grid gap-4 py-6 sm:grid-cols-[64px_1fr] sm:items-start">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-border/30 text-foreground/55">
+                      <Check className="h-4 w-4" />
+                    </span>
+                    <p className="max-w-2xl text-sm font-medium leading-relaxed text-foreground">
+                      O programa continuará recebendo novos benefícios ao longo do tempo, conforme a operação amadurecer e
+                      novas oportunidades fizerem sentido para os parceiros.
+                    </p>
+                  </div>
+                </ScrollReveal>
               </div>
             </div>
           </div>
