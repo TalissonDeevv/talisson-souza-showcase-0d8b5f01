@@ -4,6 +4,7 @@ import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { IdentityPanel, MotionRail, PageHero } from "@/components/ui/PageIdentity";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 
@@ -333,6 +334,381 @@ const minorParticipationItemsEn = [
   },
 ];
 
+type AffiliateFaq = {
+  question: string;
+  answer: string[];
+};
+
+const affiliateFaqs: AffiliateFaq[] = [
+  {
+    question: "Quem pode participar?",
+    answer: [
+      "Qualquer pessoa que atenda aos requisitos do programa pode participar. Não é necessário ser desenvolvedor ou trabalhar com tecnologia.",
+      "Se você conhece pessoas ou empresas que possam precisar dos meus serviços, já pode fazer parte.",
+    ],
+  },
+  {
+    question: "Preciso trabalhar com tecnologia?",
+    answer: [
+      "Não. O programa é aberto para qualquer pessoa que tenha uma boa rede de contatos ou conheça alguém que precise de soluções tecnológicas.",
+    ],
+  },
+  {
+    question: "Por que você decidiu criar esse programa?",
+    answer: [
+      "Ao longo do tempo, muitas pessoas passaram a indicar meus serviços espontaneamente ou perguntavam se existia alguma forma de serem recompensadas por isso.",
+      "O Programa de Parceiros surgiu para organizar esse processo, reconhecer essas indicações e criar uma relação mais transparente, profissional e benéfica para todos os envolvidos.",
+    ],
+  },
+  {
+    question: "Por que criar um Programa de Parceiros se você também faz prospecção?",
+    answer: [
+      "A prospecção continua fazendo parte do meu trabalho e continuará sendo uma das formas de conquistar novos clientes.",
+      "O Programa de Parceiros não substitui esse processo. Ele foi criado para reconhecer pessoas que geram oportunidades através da própria rede de contatos, comunidades, empresas ou relacionamentos profissionais.",
+    ],
+  },
+  {
+    question: "O Programa de Parceiros significa que você está sem clientes?",
+    answer: [
+      "Não. O objetivo do programa não é suprir uma falta de clientes, mas criar uma rede de parceiros que possa gerar oportunidades para ambos.",
+      "Indicações sempre foram uma das formas mais eficientes de conquistar novos clientes e esse programa apenas formaliza esse processo.",
+    ],
+  },
+  {
+    question: "Por que pagar comissão se você pode conseguir clientes sozinho?",
+    answer: [
+      "Porque boas indicações têm muito valor.",
+      "Uma recomendação feita por alguém de confiança costuma abrir portas que muitas vezes não seriam alcançadas apenas pela prospecção tradicional. O programa existe justamente para reconhecer quem contribui para essas oportunidades.",
+    ],
+  },
+  {
+    question: "Sou desenvolvedor. Vale a pena participar?",
+    answer: [
+      "Depende do seu objetivo.",
+      "Se você prefere desenvolver, negociar e atender seus próprios clientes, provavelmente faz mais sentido continuar trabalhando dessa forma.",
+      "O programa foi pensado principalmente para quem recebe oportunidades que não pretende atender, conhece pessoas procurando esse tipo de serviço ou prefere fazer a conexão e deixar o restante comigo.",
+    ],
+  },
+  {
+    question: "Preciso vender o projeto?",
+    answer: [
+      "Não. Você apenas realiza a indicação pelos canais oficiais do programa.",
+      "Toda a negociação, definição do escopo, reuniões, contrato, desenvolvimento, entrega e suporte ficam sob minha responsabilidade.",
+    ],
+  },
+  {
+    question: "Como faço uma indicação?",
+    answer: [
+      "Depois de se tornar parceiro, basta enviar a indicação pelos canais oficiais do programa, informando os dados necessários para que eu possa entrar em contato com o potencial cliente.",
+    ],
+  },
+  {
+    question: "Como sei se minha indicação foi aceita?",
+    answer: [
+      "Todas as indicações passam por um processo de validação.",
+      "Você poderá acompanhar o andamento pelos canais disponibilizados aos parceiros.",
+    ],
+  },
+  {
+    question: "Quando recebo minha comissão?",
+    answer: [
+      "A comissão é liberada após a validação da indicação, o fechamento do projeto e a confirmação do pagamento realizado pelo cliente, conforme previsto no Contrato de Parceria e no Regulamento.",
+    ],
+  },
+  {
+    question: "Posso indicar mais de um cliente?",
+    answer: ["Sim. Não existe limite de indicações."],
+  },
+  {
+    question: "Existe limite de parceiros?",
+    answer: [
+      "Não existe um limite definido.",
+      "Entretanto, caso seja necessário manter a qualidade do programa, novas inscrições poderão ser pausadas temporariamente.",
+    ],
+  },
+  {
+    question: "Posso divulgar meus links nas redes sociais?",
+    answer: [
+      "Sim, desde que a divulgação respeite a legislação, as boas práticas de marketing e não utilize informações falsas, promessas enganosas ou qualquer conteúdo que possa prejudicar minha imagem ou a do programa.",
+    ],
+  },
+  {
+    question: "Posso usar meu próprio material de divulgação?",
+    answer: [
+      "Sim. Entretanto, também serão disponibilizados materiais oficiais para manter uma comunicação mais consistente e evitar informações incorretas.",
+    ],
+  },
+  {
+    question: "Posso usar Inteligência Artificial para criar conteúdos?",
+    answer: [
+      "Sim. A IA pode ser utilizada como ferramenta de apoio, desde que o conteúdo seja verdadeiro, respeite as regras do programa e não gere falsas promessas.",
+    ],
+  },
+  {
+    question: "Existe comissão para qualquer projeto?",
+    answer: [
+      "Não. A comissão será aplicada apenas às indicações válidas, aprovadas e que resultarem em projetos efetivamente contratados e pagos.",
+    ],
+  },
+  {
+    question: "O cliente precisa informar que fui eu quem indicou?",
+    answer: [
+      "O ideal é que você registre a indicação antes do início das negociações.",
+      "Isso evita conflitos caso mais de uma pessoa informe o mesmo cliente.",
+    ],
+  },
+  {
+    question: "E se duas pessoas indicarem o mesmo cliente?",
+    answer: [
+      "Será considerada a primeira indicação válida registrada pelos canais oficiais, observadas as regras previstas no Regulamento e no Contrato de Parceria.",
+    ],
+  },
+  {
+    question: "Posso indicar empresas onde trabalho?",
+    answer: [
+      "Sim, desde que isso não viole contratos, políticas internas da empresa ou qualquer obrigação legal.",
+    ],
+  },
+  {
+    question: "Como funciona o ranking de parceiros?",
+    answer: [
+      "O ranking é opcional.",
+      "Somente parceiros que autorizarem a divulgação aparecerão na classificação pública.",
+    ],
+  },
+  {
+    question: "Além da comissão, quais benefícios eu recebo?",
+    answer: [
+      "Os parceiros recebem acesso a um canal exclusivo no Discord, conteúdos sobre prospecção, geração de leads, networking, marketing, negociação, comunicação, materiais de divulgação, suporte e outros benefícios que continuarão sendo adicionados ao longo do tempo.",
+    ],
+  },
+  {
+    question: "Preciso cumprir metas?",
+    answer: [
+      "Não. Não existem horários obrigatórios, metas, quantidade mínima de indicações, exclusividade ou obrigação de atuação contínua.",
+      "Você participa quando quiser.",
+    ],
+  },
+  {
+    question: "Existe vínculo empregatício?",
+    answer: [
+      "Não. O Programa de Parceiros é exclusivamente um programa de indicação de clientes.",
+      "A participação não cria vínculo empregatício, representação comercial, sociedade, franquia, agência, exclusividade ou qualquer outra relação além daquela prevista no Contrato de Parceria.",
+    ],
+  },
+  {
+    question: "Posso sair do programa quando quiser?",
+    answer: [
+      "Sim. A participação pode ser encerrada a qualquer momento, observando as regras previstas no Contrato de Parceria.",
+    ],
+  },
+  {
+    question: "O contrato é obrigatório?",
+    answer: [
+      "Sim. A participação no Programa de Parceiros é formalizada por meio de um Contrato de Parceria para Indicação de Clientes.",
+      "Esse contrato estabelece direitos e deveres, regras sobre comissões, pagamentos, validação das indicações, confidencialidade, proteção de dados e demais condições aplicáveis ao programa.",
+    ],
+  },
+  {
+    question: "Por quais canais posso entrar em contato?",
+    answer: [
+      "Todo contato relacionado ao Programa de Parceiros deverá ser realizado exclusivamente pelos canais oficiais do programa.",
+      "Discord, WhatsApp e e-mail são os canais usados para registrar e acompanhar indicações. Solicitações enviadas apenas por Instagram, TikTok, LinkedIn, Facebook, X ou outras redes sociais não serão consideradas canais oficiais do programa.",
+    ],
+  },
+  {
+    question: "O que pode fazer uma indicação ser recusada?",
+    answer: [
+      "Uma indicação poderá ser recusada quando não atender às regras do programa, quando o cliente já estiver em negociação, quando não for registrada pelos canais oficiais, quando houver informações insuficientes ou em outras situações previstas no Regulamento e no Contrato de Parceria.",
+    ],
+  },
+];
+
+const affiliateFaqsEn: AffiliateFaq[] = [
+  {
+    question: "Who can participate?",
+    answer: [
+      "Anyone who meets the program requirements can participate. You do not need to be a developer or work in technology.",
+      "If you know people or companies that may need my services, you can already be part of it.",
+    ],
+  },
+  {
+    question: "Do I need to work in technology?",
+    answer: [
+      "No. The program is open to anyone with a good contact network or who knows someone who needs technology solutions.",
+    ],
+  },
+  {
+    question: "Why did you create this program?",
+    answer: [
+      "Over time, many people started referring my services spontaneously or asking if there was a way to be rewarded for it.",
+      "The Partner Program was created to organize that process, recognize referrals and make the relationship clearer, more professional and useful for everyone involved.",
+    ],
+  },
+  {
+    question: "Why create a Partner Program if you also prospect clients?",
+    answer: [
+      "Prospecting remains part of my work and will continue to be one of the ways I get new clients.",
+      "The Partner Program does not replace that process. It recognizes people who generate opportunities through their own network, communities, companies or professional relationships.",
+    ],
+  },
+  {
+    question: "Does the Partner Program mean you do not have clients?",
+    answer: [
+      "No. The goal is not to cover a lack of clients, but to create a partner network that can generate opportunities for both sides.",
+      "Referrals have always been one of the most effective ways to get new clients, and this program only formalizes that process.",
+    ],
+  },
+  {
+    question: "Why pay commission if you can get clients yourself?",
+    answer: [
+      "Because good referrals have real value.",
+      "A recommendation from someone trusted often opens doors that traditional prospecting would not reach. The program exists to recognize that contribution.",
+    ],
+  },
+  {
+    question: "I am a developer. Is it worth participating?",
+    answer: [
+      "It depends on your goal.",
+      "If you prefer to develop, negotiate and serve your own clients, it probably makes more sense to keep doing that.",
+      "The program is mainly for people who receive opportunities they do not want to take, know people looking for this type of service or prefer to make the connection and leave the rest with me.",
+    ],
+  },
+  {
+    question: "Do I need to sell the project?",
+    answer: [
+      "No. You only make the referral through the official program channels.",
+      "Negotiation, scope definition, meetings, contract, development, delivery and support stay under my responsibility.",
+    ],
+  },
+  {
+    question: "How do I make a referral?",
+    answer: [
+      "After becoming a partner, send the referral through the official program channels with the information needed for me to contact the potential client.",
+    ],
+  },
+  {
+    question: "How do I know if my referral was accepted?",
+    answer: [
+      "All referrals go through validation.",
+      "You will be able to follow the status through the channels made available to partners.",
+    ],
+  },
+  {
+    question: "When do I receive my commission?",
+    answer: [
+      "Commission is released after referral validation, project closing and confirmation of the client's payment, according to the Partnership Agreement and Program Rules.",
+    ],
+  },
+  {
+    question: "Can I refer more than one client?",
+    answer: ["Yes. There is no referral limit."],
+  },
+  {
+    question: "Is there a limit of partners?",
+    answer: [
+      "There is no fixed limit.",
+      "However, if needed to preserve program quality, new applications may be temporarily paused.",
+    ],
+  },
+  {
+    question: "Can I share my links on social media?",
+    answer: [
+      "Yes, as long as the promotion follows the law, good marketing practices and does not use false information, misleading promises or anything that could harm my image or the program.",
+    ],
+  },
+  {
+    question: "Can I use my own promotional material?",
+    answer: [
+      "Yes. Official materials will also be provided to keep communication consistent and avoid incorrect information.",
+    ],
+  },
+  {
+    question: "Can I use Artificial Intelligence to create content?",
+    answer: [
+      "Yes. AI can be used as a support tool, as long as the content is truthful, follows the program rules and does not create false promises.",
+    ],
+  },
+  {
+    question: "Is there commission for any project?",
+    answer: [
+      "No. Commission applies only to valid and approved referrals that result in contracted and paid projects.",
+    ],
+  },
+  {
+    question: "Does the client need to say I referred them?",
+    answer: [
+      "The ideal path is for you to register the referral before negotiations begin.",
+      "This avoids conflicts if more than one person mentions the same client.",
+    ],
+  },
+  {
+    question: "What if two people refer the same client?",
+    answer: [
+      "The first valid referral registered through the official channels will be considered, following the Program Rules and Partnership Agreement.",
+    ],
+  },
+  {
+    question: "Can I refer companies where I work?",
+    answer: [
+      "Yes, as long as this does not violate contracts, internal policies or any legal obligation.",
+    ],
+  },
+  {
+    question: "How does the partner ranking work?",
+    answer: [
+      "The ranking is optional.",
+      "Only partners who authorize public visibility will appear in the ranking.",
+    ],
+  },
+  {
+    question: "Besides commission, what benefits do I receive?",
+    answer: [
+      "Partners receive access to an exclusive Discord channel, content about prospecting, lead generation, networking, marketing, negotiation, communication, promotional materials, support and other benefits that will continue to be added over time.",
+    ],
+  },
+  {
+    question: "Do I need to meet targets?",
+    answer: [
+      "No. There are no mandatory schedules, targets, minimum number of referrals, exclusivity or continuous activity obligation.",
+      "You participate when you want.",
+    ],
+  },
+  {
+    question: "Does this create employment?",
+    answer: [
+      "No. The Partner Program is exclusively a client referral program.",
+      "Participation does not create employment, commercial representation, partnership, franchise, agency, exclusivity or any other relationship beyond what is provided in the Partnership Agreement.",
+    ],
+  },
+  {
+    question: "Can I leave the program whenever I want?",
+    answer: [
+      "Yes. Participation can be ended at any time, following the rules in the Partnership Agreement.",
+    ],
+  },
+  {
+    question: "Is the contract required?",
+    answer: [
+      "Yes. Participation in the Partner Program is formalized through a Client Referral Partnership Agreement.",
+      "The agreement sets rights and duties, commission rules, payments, referral validation, confidentiality, data protection and other conditions that apply to the program.",
+    ],
+  },
+  {
+    question: "Which channels can I use to contact you?",
+    answer: [
+      "All contact related to the Partner Program must happen exclusively through the official program channels.",
+      "Discord, WhatsApp and e-mail are used to register and follow referrals. Requests sent only through Instagram, TikTok, LinkedIn, Facebook, X or other social networks are not considered official program channels.",
+    ],
+  },
+  {
+    question: "What can make a referral be refused?",
+    answer: [
+      "A referral may be refused when it does not follow the program rules, when the client is already in negotiation, when it is not registered through official channels, when information is insufficient or in other situations provided in the Program Rules and Partnership Agreement.",
+    ],
+  },
+];
+
 const parseCurrencyValue = (value: string) => {
   const normalized = value
     .replace(/[^\d,.-]/g, "")
@@ -354,6 +730,7 @@ const formatCurrency = (value: number) =>
 const Affiliate = () => {
   const { language } = useTheme();
   const [projectAmount, setProjectAmount] = useState("5000");
+  const [openFaq, setOpenFaq] = useState<string | undefined>("faq-0");
   const amount = parseCurrencyValue(projectAmount);
   const commission = amount * 0.1;
   const isPt = language === "pt";
@@ -363,6 +740,7 @@ const Affiliate = () => {
   const localizedPartnerBenefits = isPt ? partnerBenefits : partnerBenefitsEn;
   const localizedPartnerRequirements = isPt ? partnerRequirements : partnerRequirementsEn;
   const localizedMinorParticipationItems = isPt ? minorParticipationItems : minorParticipationItemsEn;
+  const localizedAffiliateFaqs = isPt ? affiliateFaqs : affiliateFaqsEn;
   const seoTitle = getText(language, "Programa de Parceiros | Talisson Souza", "Partner Program | Talisson Souza");
   const seoDescription = getText(
     language,
@@ -381,6 +759,10 @@ const Affiliate = () => {
       name: "Talisson Souza",
     },
   };
+  const faqColumns = [
+    localizedAffiliateFaqs.filter((_, index) => index % 2 === 0),
+    localizedAffiliateFaqs.filter((_, index) => index % 2 !== 0),
+  ];
 
   return (
     <Layout withPadding={false}>
@@ -905,6 +1287,97 @@ const Affiliate = () => {
                       </div>
                     </IdentityPanel>
                   ))}
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-border/20 py-16 lg:py-24">
+          <div className="container mx-auto px-6 lg:px-8">
+            <div className="mx-auto max-w-6xl">
+              <ScrollReveal>
+                <div className="grid gap-8 border-y border-border/20 py-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+                  <div>
+                    <span className="text-[11px] font-medium uppercase tracking-[0.32em] text-muted-foreground/65">
+                      {getText(language, "Perguntas frequentes", "Frequently asked questions")}
+                    </span>
+                    <h2 className="mt-5 max-w-xl font-serif text-3xl leading-tight text-foreground sm:text-4xl lg:text-5xl">
+                      {getText(language, "Dúvidas comuns antes de participar.", "Common questions before joining.")}
+                    </h2>
+                  </div>
+                  <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base lg:justify-self-end">
+                    {getText(
+                      language,
+                      "Separei as perguntas que mais fazem sentido antes de alguém entrar no programa. A intenção é deixar o processo claro, sem promessa exagerada e sem depender de conversa para entender o básico.",
+                      "I gathered the questions that matter most before someone joins the program. The intention is to keep the process clear, without exaggerated promises and without needing a conversation to understand the basics."
+                    )}
+                  </p>
+                </div>
+              </ScrollReveal>
+
+              <div className="mt-10 grid gap-8 lg:grid-cols-2">
+                {faqColumns.map((column, columnIndex) => (
+                  <ScrollReveal key={columnIndex} delay={columnIndex * 0.08}>
+                    <Accordion
+                      type="single"
+                      collapsible
+                      value={openFaq}
+                      onValueChange={(value) => setOpenFaq(value || undefined)}
+                      className="border-y border-border/20"
+                    >
+                      {column.map((item, itemIndex) => {
+                        const originalIndex = columnIndex === 0 ? itemIndex * 2 : itemIndex * 2 + 1;
+
+                        return (
+                          <AccordionItem
+                            key={item.question}
+                            value={`faq-${originalIndex}`}
+                            className="border-border/20"
+                          >
+                            <AccordionTrigger className="py-6 text-left text-base font-semibold leading-snug text-foreground transition-opacity duration-200 hover:no-underline hover:opacity-75">
+                              <span className="pr-6">{item.question}</span>
+                            </AccordionTrigger>
+                            <AccordionContent className="pb-6">
+                              <div className="space-y-3 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
+                                {item.answer.map((paragraph) => (
+                                  <p key={paragraph}>{paragraph}</p>
+                                ))}
+                              </div>
+                            </AccordionContent>
+                          </AccordionItem>
+                        );
+                      })}
+                    </Accordion>
+                  </ScrollReveal>
+                ))}
+              </div>
+
+              <ScrollReveal delay={0.16}>
+                <div className="mt-10 border-y border-border/20 py-8">
+                  <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
+                    <div>
+                      <h3 className="font-serif text-2xl leading-tight text-foreground sm:text-3xl">
+                        {getText(language, "Ainda ficou com alguma dúvida?", "Still have a question?")}
+                      </h3>
+                      <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                        {getText(
+                          language,
+                          "Caso sua pergunta não tenha sido respondida, entre em contato por um dos canais oficiais. Ficarei feliz em esclarecer qualquer dúvida sobre o Programa de Parceiros e explicar como funciona o processo de participação.",
+                          "If your question was not answered, contact me through one of the official channels. I will gladly clarify any questions about the Partner Program and explain how participation works."
+                        )}
+                      </p>
+                    </div>
+                    <a
+                      href={DISCORD_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex w-full items-center justify-center gap-3 rounded-full border border-foreground/20 bg-foreground px-7 py-3 text-sm font-semibold text-background transition-all duration-300 hover:bg-foreground/90 sm:w-auto"
+                    >
+                      {getText(language, "Entrar no servidor", "Join the server")}
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </a>
+                  </div>
                 </div>
               </ScrollReveal>
             </div>
