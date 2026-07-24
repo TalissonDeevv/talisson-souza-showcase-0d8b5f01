@@ -380,10 +380,14 @@ const Affiliate = () => {
               </ScrollReveal>
 
               <div className="overflow-hidden border border-border/20 bg-border/20">
-                <div className="grid gap-px sm:grid-cols-2">
+                <div className="policy-reading-scrollbar flex overflow-x-auto">
                   {partnerBenefits.map((benefit, index) => (
-                    <ScrollReveal key={benefit} delay={Math.min(index * 0.03, 0.16)}>
-                      <div className="h-full bg-background/92 p-5 sm:p-6">
+                    <ScrollReveal
+                      key={benefit}
+                      delay={Math.min(index * 0.03, 0.16)}
+                      className="flex min-w-[260px] shrink-0 border-r border-border/20 last:border-r-0 sm:min-w-[300px] lg:min-w-[320px]"
+                    >
+                      <div className="h-full w-full bg-background/92 p-5 sm:p-6">
                         <span className="font-serif text-2xl leading-none text-foreground/20">
                           {String(index + 1).padStart(2, "0")}
                         </span>
@@ -473,10 +477,14 @@ const Affiliate = () => {
               </ScrollReveal>
 
               <div className="overflow-hidden border border-border/20 bg-border/20">
-                <div className="grid gap-px sm:grid-cols-2">
+                <div className="policy-reading-scrollbar flex overflow-x-auto">
                   {partnerRequirements.map((requirement, index) => (
-                    <ScrollReveal key={requirement.title} delay={Math.min(index * 0.03, 0.16)}>
-                      <div className="h-full bg-background/92 p-5 sm:p-6">
+                    <ScrollReveal
+                      key={requirement.title}
+                      delay={Math.min(index * 0.03, 0.16)}
+                      className="flex min-w-[280px] shrink-0 border-r border-border/20 last:border-r-0 sm:min-w-[320px] lg:min-w-[340px]"
+                    >
+                      <div className="h-full w-full bg-background/92 p-5 sm:p-6">
                         <span className="font-serif text-2xl leading-none text-foreground/20">
                           {requirement.label}
                         </span>
