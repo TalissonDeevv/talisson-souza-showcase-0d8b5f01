@@ -363,9 +363,9 @@ const Affiliate = () => {
 
         <section className="border-b border-border/20 py-16 lg:py-24">
           <div className="container mx-auto px-6 lg:px-8">
-            <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+            <div className="mx-auto max-w-7xl space-y-10">
               <ScrollReveal>
-                <div className="lg:sticky lg:top-28">
+                <div className="max-w-2xl">
                   <span className="text-[11px] font-medium uppercase tracking-[0.32em] text-muted-foreground/65">
                     Benefícios
                   </span>
@@ -380,14 +380,14 @@ const Affiliate = () => {
               </ScrollReveal>
 
               <div className="overflow-hidden border border-border/20 bg-border/20">
-                <div className="grid gap-px sm:grid-cols-2 xl:grid-cols-3">
+                <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
                   {partnerBenefits.map((benefit, index) => (
                     <ScrollReveal
                       key={benefit}
                       delay={Math.min(index * 0.03, 0.16)}
                       className="h-full"
                     >
-                      <div className="h-full w-full bg-background/92 p-5 sm:p-6">
+                      <div className="h-full w-full bg-background/92 p-5 xl:p-5">
                         <span className="font-serif text-2xl leading-none text-foreground/20">
                           {String(index + 1).padStart(2, "0")}
                         </span>
@@ -414,7 +414,7 @@ const Affiliate = () => {
                 </ScrollReveal>
               </div>
 
-              <ScrollReveal delay={0.18} className="lg:col-span-2">
+              <ScrollReveal delay={0.18}>
                 <div className="relative overflow-hidden border-y border-border/20 py-8 sm:py-10">
                   <div className="pointer-events-none absolute inset-0 opacity-[0.018] [background-image:linear-gradient(hsl(var(--foreground))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground))_1px,transparent_1px)] [background-size:44px_44px]" />
                   <div className="relative grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
@@ -460,9 +460,9 @@ const Affiliate = () => {
 
         <section className="border-b border-border/20 py-16 lg:py-24">
           <div className="container mx-auto px-6 lg:px-8">
-            <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+            <div className="mx-auto max-w-7xl space-y-10">
               <ScrollReveal>
-                <div className="lg:sticky lg:top-28">
+                <div className="max-w-2xl">
                   <span className="text-[11px] font-medium uppercase tracking-[0.32em] text-muted-foreground/65">
                     Requisitos
                   </span>
@@ -477,14 +477,14 @@ const Affiliate = () => {
               </ScrollReveal>
 
               <div className="overflow-hidden border border-border/20 bg-border/20">
-                <div className="grid gap-px sm:grid-cols-2 xl:grid-cols-3">
+                <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
                   {partnerRequirements.map((requirement, index) => (
                     <ScrollReveal
                       key={requirement.title}
                       delay={Math.min(index * 0.03, 0.16)}
                       className="h-full"
                     >
-                      <div className="h-full w-full bg-background/92 p-5 sm:p-6">
+                      <div className="h-full w-full bg-background/92 p-5 xl:p-5">
                         <span className="font-serif text-2xl leading-none text-foreground/20">
                           {requirement.label}
                         </span>
