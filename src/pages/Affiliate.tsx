@@ -53,30 +53,60 @@ const partnerBenefits = [
   "Oportunidade de construir uma parceria de longo prazo, indicando clientes de forma recorrente.",
 ];
 
-const partnerRequirements = [
+const partnerRequirementGroups = [
   {
-    title: "Ter 18 (dezoito) anos completos na data da inscrição no Programa de Parceiros.",
-    text: "Por motivos legais e operacionais, o Programa de Parceiros é destinado exclusivamente a pessoas maiores de 18 anos. Não são aceitas inscrições de menores de idade.",
+    items: [
+      {
+        label: "01",
+        title: "Ter capacidade para participar do Programa de Parceiros conforme a legislação brasileira.",
+        text: "A participação precisa respeitar as condições legais aplicáveis a cada pessoa, inclusive capacidade civil, responsabilidade pelas informações enviadas e possibilidade de receber comissões.",
+      },
+      {
+        label: "02",
+        title: "Participantes maiores de 18 anos podem participar normalmente.",
+        text: "A participação depende da aceitação do Regulamento do Programa, dos Termos de Uso e da Política de Privacidade.",
+      },
+    ],
   },
   {
-    title: "Possuir capacidade civil para participar do programa e receber comissões, conforme a legislação brasileira.",
-    text: "Ao participar, o parceiro declara, sob sua responsabilidade, que possui 18 (dezoito) anos ou mais e capacidade civil para aderir ao programa e receber comissões.",
+    heading: "Participação de menores de idade",
+    text: "A participação de pessoas com 16 ou 17 anos exige cuidado adicional. O objetivo é proteger o participante, o responsável legal, o cliente indicado e a organização do programa.",
+    items: [
+      {
+        label: "03",
+        title: "Participantes com 16 ou 17 anos somente poderão participar mediante autorização expressa do responsável legal.",
+        text: "Essa autorização será tratada conforme a legislação brasileira aplicável e as regras internas do Programa de Parceiros.",
+      },
+      {
+        label: "04",
+        title: "Quando houver participação de menor de idade, a organização poderá solicitar documentação.",
+        text: "A documentação poderá comprovar idade do participante, identidade do responsável legal, autorização do responsável e vínculo entre ambos.",
+      },
+      {
+        label: "05",
+        title: "O pagamento de comissões de participantes menores de idade poderá ser feito ao responsável legal.",
+        text: "O repasse também poderá seguir outra forma permitida pela legislação brasileira e pelas regras do Programa, desde que a situação esteja regularizada.",
+      },
+      {
+        label: "06",
+        title: "Se a documentação não for apresentada ou estiver inconsistente, a participação poderá ser recusada ou suspensa.",
+        text: "A regularização poderá ser exigida antes da validação de novas indicações ou da liberação de qualquer comissão.",
+      },
+    ],
   },
   {
-    title: "Fazer parte do servidor oficial do Discord.",
-    text: "O servidor será o canal oficial de comunicação do programa, acompanhamento das indicações, avisos e suporte aos parceiros.",
-  },
-  {
-    title: "Concordar com as regras oficiais.",
-    text: "A participação depende da concordância integral com o Regulamento do Programa de Parceiros, os Termos de Uso e a Política de Privacidade.",
-  },
-  {
-    title: "Realizar apenas indicações legítimas, espontâneas e de boa-fé.",
-    text: "Não são permitidas práticas de spam, abordagens enganosas, compra de leads, uso de informações obtidas ilegalmente ou qualquer conduta que prejudique terceiros ou a reputação do programa.",
-  },
-  {
-    title: "Respeitar a legislação brasileira aplicável.",
-    text: "As indicações devem observar as normas de proteção de dados, incluindo a LGPD, direitos do consumidor e demais leis pertinentes.",
+    items: [
+      {
+        label: "07",
+        title: "As informações fornecidas precisam ser verdadeiras.",
+        text: "Ao participar do programa, o participante declara que os dados enviados são corretos e autoriza as validações necessárias para cumprimento das obrigações legais.",
+      },
+      {
+        label: "08",
+        title: "A participação não cria vínculo além do previsto no regulamento.",
+        text: "O programa não gera vínculo empregatício, representação comercial, sociedade, franquia, exclusividade ou qualquer outra relação não prevista expressamente no Regulamento.",
+      },
+    ],
   },
 ];
 
@@ -221,24 +251,34 @@ const Affiliate = () => {
                       O cálculo sem mistério.
                     </h2>
                   </div>
-                  <div className="max-w-2xl space-y-5">
+                  <div className="max-w-2xl space-y-6">
                     <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-                      Um projeto de R$ 5.000 com comissão de 10% gera R$ 500 para quem fez a indicação validada. Simples,
-                      transparente e sem transformar a página em promessa exagerada.
+                      Um projeto de R$ 5.000 com comissão de 10% gera R$ 500 para quem fez a indicação validada. Se quiser
+                      simular outro valor, basta digitar abaixo.
                     </p>
-                    <label className="block">
-                      <span className="text-[10px] uppercase tracking-[0.26em] text-muted-foreground/55">
-                        Simular valor do projeto
-                      </span>
-                      <input
-                        value={projectAmount}
-                        onChange={(event) => setProjectAmount(event.target.value)}
-                        inputMode="decimal"
-                        aria-label="Valor do projeto para calcular comissão"
-                        placeholder="Exemplo: 5000"
-                        className="mt-3 h-12 w-full rounded-full border border-border/25 bg-background/80 px-5 text-base font-medium text-foreground outline-none transition-colors duration-300 placeholder:text-muted-foreground/35 focus:border-foreground/45"
-                      />
-                    </label>
+                    <div className="grid gap-4 sm:grid-cols-[1fr_220px] sm:items-end">
+                      <label className="block">
+                        <span className="text-[10px] uppercase tracking-[0.26em] text-muted-foreground/55">
+                          Valor do projeto
+                        </span>
+                        <input
+                          value={projectAmount}
+                          onChange={(event) => setProjectAmount(event.target.value)}
+                          inputMode="decimal"
+                          aria-label="Valor do projeto para calcular comissão"
+                          placeholder="Exemplo: 5000"
+                          className="mt-3 h-12 w-full rounded-full border border-border/25 bg-background/90 px-5 text-base font-medium text-foreground outline-none transition-colors duration-300 placeholder:text-muted-foreground/35 focus:border-foreground/45"
+                        />
+                      </label>
+                      <div className="rounded-[2rem] border border-border/20 bg-foreground px-5 py-4 text-background">
+                        <span className="text-[10px] uppercase tracking-[0.22em] opacity-65">
+                          Você receberia
+                        </span>
+                        <strong className="mt-2 block font-serif text-3xl leading-none">
+                          {formatCurrency(commission)}
+                        </strong>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -369,22 +409,42 @@ const Affiliate = () => {
               </ScrollReveal>
 
               <div className="divide-y divide-border/20 border-y border-border/20">
-                {partnerRequirements.map((requirement, index) => (
-                  <ScrollReveal key={requirement.title} delay={Math.min(index * 0.035, 0.18)}>
-                    <div className="grid gap-4 py-5 sm:grid-cols-[64px_1fr] sm:items-start">
-                      <span className="font-serif text-3xl leading-none text-foreground/20">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <div className="max-w-2xl">
-                        <h3 className="text-base font-medium leading-relaxed text-foreground">
-                          {requirement.title}
-                        </h3>
-                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                          {requirement.text}
-                        </p>
-                      </div>
-                    </div>
-                  </ScrollReveal>
+                {partnerRequirementGroups.map((group, groupIndex) => (
+                  <div key={group.heading ?? `requirements-${groupIndex}`} className="divide-y divide-border/20">
+                    {group.heading && (
+                      <ScrollReveal delay={0.04}>
+                        <div className="py-7">
+                          <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-muted-foreground/55">
+                            Subseção
+                          </span>
+                          <h3 className="mt-4 max-w-2xl font-serif text-2xl leading-tight text-foreground sm:text-3xl">
+                            {group.heading}.
+                          </h3>
+                          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                            {group.text}
+                          </p>
+                        </div>
+                      </ScrollReveal>
+                    )}
+
+                    {group.items.map((requirement, index) => (
+                      <ScrollReveal key={requirement.title} delay={Math.min((groupIndex + index) * 0.035, 0.18)}>
+                        <div className="grid gap-4 py-5 sm:grid-cols-[64px_1fr] sm:items-start">
+                          <span className="font-serif text-3xl leading-none text-foreground/20">
+                            {requirement.label}
+                          </span>
+                          <div className="max-w-2xl">
+                            <h4 className="text-base font-medium leading-relaxed text-foreground">
+                              {requirement.title}
+                            </h4>
+                            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                              {requirement.text}
+                            </p>
+                          </div>
+                        </div>
+                      </ScrollReveal>
+                    ))}
+                  </div>
                 ))}
 
                 <ScrollReveal delay={0.16}>
@@ -405,9 +465,8 @@ const Affiliate = () => {
                         sujeito às regras do regulamento.
                       </p>
                       <p>
-                        Caso seja identificada informação falsa sobre a idade do participante, a organização poderá
-                        cancelar a participação no programa, invalidar indicações pendentes e impedir novos cadastros,
-                        sem prejuízo das demais medidas cabíveis previstas no regulamento.
+                        Os requisitos para participação poderão ser alterados para atender mudanças na legislação ou
+                        aperfeiçoamentos do Programa de Parceiros.
                       </p>
                     </div>
                   </div>
