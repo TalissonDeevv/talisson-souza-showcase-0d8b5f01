@@ -101,7 +101,7 @@ const Navbar = () => {
       items: [
         { name: t.nav.projects, path: "/en-us/projects", description: "Curated portfolio and guided access.", icon: BriefcaseBusiness },
         { name: t.nav.services, path: "/en-us/services", description: "Technical solutions for companies and products.", icon: Layers },
-        { name: "Partners", path: "/seja-afiliado", description: "Refer clients through the official program.", icon: Route },
+        { name: "Partners", path: "/en-us/affiliate-program", description: "Refer clients through the official program.", icon: Route },
         { name: "Book", path: "/en-us/book", description: "Superando Limites and official materials.", icon: BookOpen },
         { name: "Article suggestions", path: "/en-us/article-suggestions", description: "Send topics worth turning into reading.", icon: Lightbulb },
         { name: "Principles", path: "/en-us/principles", description: "Ideas that guide decisions and work.", icon: FileText },
