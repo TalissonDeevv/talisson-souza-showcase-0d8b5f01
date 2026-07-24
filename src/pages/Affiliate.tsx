@@ -515,15 +515,20 @@ const Affiliate = () => {
                     A indicação precisa ser feita com contexto e pelo canal certo. Depois disso, o relacionamento com o
                     cliente, a proposta, o contrato, o escopo e a entrega continuam sob minha responsabilidade.
                   </p>
+                  <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                    Também não existe horário para cumprir prospecção. A indicação pode acontecer quando surgir uma
+                    oportunidade real, sem escala, rotina fixa ou obrigação de abordagem diária.
+                  </p>
                 </div>
               </ScrollReveal>
 
               <ScrollReveal delay={0.08} className="w-full">
-                <div className="grid gap-px overflow-hidden border border-border/20 bg-border/20 sm:grid-cols-3">
+                <div className="grid gap-px overflow-hidden border border-border/20 bg-border/20 sm:grid-cols-2 lg:grid-cols-4">
                   {[
                     "Sem obrigação de vender",
                     "Sem participar da negociação",
                     "Sem responsabilidade técnica pela entrega",
+                    "Sem horário fixo de prospecção",
                   ].map((item, index) => (
                     <IdentityPanel
                       key={item}
