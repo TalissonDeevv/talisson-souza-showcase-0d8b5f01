@@ -43,6 +43,7 @@ const participantProfiles = [
 const partnerBenefits = [
   "Comissão sobre cada projeto fechado através das suas indicações.",
   'Cargo exclusivo "Parceiro" no servidor oficial do Discord.',
+  "Link individual de convite do servidor, vinculado ao cargo de indicação e à identificação do parceiro, para registrar quando alguém chegar através da sua indicação.",
   "Acesso a um canal exclusivo para parceiros, onde serão compartilhadas oportunidades, novidades e materiais.",
   "Materiais de divulgação prontos para facilitar a prospecção, como mensagens, abordagens, banners e conteúdos.",
   "Suporte direto para esclarecer dúvidas sobre o programa e acompanhar suas indicações.",
@@ -50,6 +51,33 @@ const partnerBenefits = [
   "Possibilidade de participar do ranking de parceiros com maior volume de comissões, de forma opcional e mediante autorização.",
   "Acompanhamento transparente do status de cada indicação enviada.",
   "Oportunidade de construir uma parceria de longo prazo, indicando clientes de forma recorrente.",
+];
+
+const partnerRequirements = [
+  {
+    title: "Ter 18 (dezoito) anos completos na data da inscrição no Programa de Parceiros.",
+    text: "Por motivos legais e operacionais, o Programa de Parceiros é destinado exclusivamente a pessoas maiores de 18 anos. Não são aceitas inscrições de menores de idade.",
+  },
+  {
+    title: "Possuir capacidade civil para participar do programa e receber comissões, conforme a legislação brasileira.",
+    text: "Ao participar, o parceiro declara, sob sua responsabilidade, que possui 18 (dezoito) anos ou mais e capacidade civil para aderir ao programa e receber comissões.",
+  },
+  {
+    title: "Fazer parte do servidor oficial do Discord.",
+    text: "O servidor será o canal oficial de comunicação do programa, acompanhamento das indicações, avisos e suporte aos parceiros.",
+  },
+  {
+    title: "Concordar com as regras oficiais.",
+    text: "A participação depende da concordância integral com o Regulamento do Programa de Parceiros, os Termos de Uso e a Política de Privacidade.",
+  },
+  {
+    title: "Realizar apenas indicações legítimas, espontâneas e de boa-fé.",
+    text: "Não são permitidas práticas de spam, abordagens enganosas, compra de leads, uso de informações obtidas ilegalmente ou qualquer conduta que prejudique terceiros ou a reputação do programa.",
+  },
+  {
+    title: "Respeitar a legislação brasileira aplicável.",
+    text: "As indicações devem observar as normas de proteção de dados, incluindo a LGPD, direitos do consumidor e demais leis pertinentes.",
+  },
 ];
 
 const parseCurrencyValue = (value: string) => {
@@ -315,6 +343,73 @@ const Affiliate = () => {
                       O programa continuará recebendo novos benefícios ao longo do tempo, conforme a operação amadurecer e
                       novas oportunidades fizerem sentido para os parceiros.
                     </p>
+                  </div>
+                </ScrollReveal>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-border/20 py-16 lg:py-24">
+          <div className="container mx-auto px-6 lg:px-8">
+            <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+              <ScrollReveal>
+                <div className="lg:sticky lg:top-28">
+                  <span className="text-[11px] font-medium uppercase tracking-[0.32em] text-muted-foreground/65">
+                    Requisitos
+                  </span>
+                  <h2 className="mt-5 max-w-xl font-serif text-3xl leading-tight text-foreground sm:text-4xl lg:text-5xl">
+                    Requisitos para participar.
+                  </h2>
+                  <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                    O programa precisa ser simples para participar, mas seguro para todos os envolvidos. Por isso,
+                    algumas regras básicas existem antes de qualquer indicação ser validada.
+                  </p>
+                </div>
+              </ScrollReveal>
+
+              <div className="divide-y divide-border/20 border-y border-border/20">
+                {partnerRequirements.map((requirement, index) => (
+                  <ScrollReveal key={requirement.title} delay={Math.min(index * 0.035, 0.18)}>
+                    <div className="grid gap-4 py-5 sm:grid-cols-[64px_1fr] sm:items-start">
+                      <span className="font-serif text-3xl leading-none text-foreground/20">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <div className="max-w-2xl">
+                        <h3 className="text-base font-medium leading-relaxed text-foreground">
+                          {requirement.title}
+                        </h3>
+                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                          {requirement.text}
+                        </p>
+                      </div>
+                    </div>
+                  </ScrollReveal>
+                ))}
+
+                <ScrollReveal delay={0.16}>
+                  <div className="grid gap-4 py-7 sm:grid-cols-[64px_1fr] sm:items-start">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-border/30 text-foreground/55">
+                      <ShieldCheck className="h-4 w-4" />
+                    </span>
+                    <div className="max-w-2xl space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                      <p>
+                        Todas as indicações passam por um processo de validação antes da liberação da comissão. O
+                        objetivo é garantir transparência, segurança e uma relação de confiança entre o parceiro, o
+                        cliente e a organização do programa. As regras completas estão disponíveis no Regulamento do
+                        Programa de Parceiros.
+                      </p>
+                      <p>
+                        A participação no programa não gera vínculo empregatício, societário, representação comercial,
+                        franquia, agência ou exclusividade. Trata-se apenas de um programa de indicação de clientes,
+                        sujeito às regras do regulamento.
+                      </p>
+                      <p>
+                        Caso seja identificada informação falsa sobre a idade do participante, a organização poderá
+                        cancelar a participação no programa, invalidar indicações pendentes e impedir novos cadastros,
+                        sem prejuízo das demais medidas cabíveis previstas no regulamento.
+                      </p>
+                    </div>
                   </div>
                 </ScrollReveal>
               </div>
