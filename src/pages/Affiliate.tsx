@@ -413,37 +413,61 @@ const Affiliate = () => {
                   <div key={group.heading ?? `requirements-${groupIndex}`} className="divide-y divide-border/20">
                     {group.heading && (
                       <ScrollReveal delay={0.04}>
-                        <div className="py-7">
+                        <div className="grid gap-5 py-7 lg:grid-cols-[150px_1fr] lg:items-start">
                           <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-muted-foreground/55">
                             Subseção
                           </span>
-                          <h3 className="mt-4 max-w-2xl font-serif text-2xl leading-tight text-foreground sm:text-3xl">
-                            {group.heading}.
-                          </h3>
-                          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                            {group.text}
-                          </p>
-                        </div>
-                      </ScrollReveal>
-                    )}
-
-                    {group.items.map((requirement, index) => (
-                      <ScrollReveal key={requirement.title} delay={Math.min((groupIndex + index) * 0.035, 0.18)}>
-                        <div className="grid gap-4 py-5 sm:grid-cols-[64px_1fr] sm:items-start">
-                          <span className="font-serif text-3xl leading-none text-foreground/20">
-                            {requirement.label}
-                          </span>
-                          <div className="max-w-2xl">
-                            <h4 className="text-base font-medium leading-relaxed text-foreground">
-                              {requirement.title}
-                            </h4>
-                            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                              {requirement.text}
+                          <div>
+                            <h3 className="max-w-2xl font-serif text-2xl leading-tight text-foreground sm:text-3xl">
+                              {group.heading}.
+                            </h3>
+                            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                              {group.text}
                             </p>
                           </div>
                         </div>
                       </ScrollReveal>
-                    ))}
+                    )}
+
+                    {group.heading ? (
+                      <div className="grid gap-px overflow-hidden border border-border/20 bg-border/20 sm:grid-cols-2">
+                        {group.items.map((requirement, index) => (
+                          <ScrollReveal key={requirement.title} delay={Math.min((groupIndex + index) * 0.035, 0.18)}>
+                            <div className="h-full bg-background/92 p-5 sm:p-6">
+                              <span className="font-serif text-2xl leading-none text-foreground/20">
+                                {requirement.label}
+                              </span>
+                              <div className="mt-5 max-w-xl">
+                                <h4 className="text-sm font-medium leading-relaxed text-foreground sm:text-base">
+                                  {requirement.title}
+                                </h4>
+                                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                                  {requirement.text}
+                                </p>
+                              </div>
+                            </div>
+                          </ScrollReveal>
+                        ))}
+                      </div>
+                    ) : (
+                      group.items.map((requirement, index) => (
+                        <ScrollReveal key={requirement.title} delay={Math.min((groupIndex + index) * 0.035, 0.18)}>
+                          <div className="grid gap-4 py-5 sm:grid-cols-[64px_1fr] sm:items-start">
+                            <span className="font-serif text-3xl leading-none text-foreground/20">
+                              {requirement.label}
+                            </span>
+                            <div className="max-w-2xl">
+                              <h4 className="text-base font-medium leading-relaxed text-foreground">
+                                {requirement.title}
+                              </h4>
+                              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                                {requirement.text}
+                              </p>
+                            </div>
+                          </div>
+                        </ScrollReveal>
+                      ))
+                    )}
                   </div>
                 ))}
 
