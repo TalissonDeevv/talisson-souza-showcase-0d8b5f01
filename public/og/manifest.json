@@ -958,5 +958,9 @@
   {
     "route": "/en-us/policies/livro-jurisdicao",
     "image": "/og/en-us-policies-livro-jurisdicao.png"
+  },
+  {
+    "route": "/seja-afiliado",
+    "image": "/og/seja-afiliado.png"
   }
 ]

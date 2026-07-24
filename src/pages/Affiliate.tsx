@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ArrowRight, Check, MessageCircle, Route, ShieldCheck } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
@@ -51,7 +52,29 @@ const partnerBenefits = [
   "Oportunidade de construir uma parceria de longo prazo, indicando clientes de forma recorrente.",
 ];
 
+const parseCurrencyValue = (value: string) => {
+  const normalized = value
+    .replace(/[^\d,.-]/g, "")
+    .replace(/\./g, "")
+    .replace(",", ".");
+
+  const amount = Number(normalized);
+  return Number.isFinite(amount) ? amount : 0;
+};
+
+const formatCurrency = (value: number) =>
+  new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    minimumFractionDigits: Number.isInteger(value) ? 0 : 2,
+    maximumFractionDigits: 2,
+  }).format(value);
+
 const Affiliate = () => {
+  const [projectAmount, setProjectAmount] = useState("5000");
+  const amount = parseCurrencyValue(projectAmount);
+  const commission = amount * 0.1;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -71,7 +94,7 @@ const Affiliate = () => {
         title="Programa de Parceiros | Talisson Souza"
         description="Indique clientes para os meus serviços e receba comissão por cada projeto fechado. Conheça o Programa de Parceiros da Talisson Souza."
         canonical="/seja-afiliado"
-        image="/og/servicos.png"
+        image="/og/seja-afiliado.png"
         keywords={[
           "programa de parceiros",
           "afiliados",
@@ -136,17 +159,19 @@ const Affiliate = () => {
                 </div>
               </ScrollReveal>
 
-              <div className="relative border-l border-border/25 pl-7 md:pl-10">
+              <div className="divide-y divide-border/20 border-y border-border/20">
                 {flowSteps.map((step, index) => (
                   <ScrollReveal key={step.title} delay={index * 0.06}>
-                    <div className="relative pb-10 last:pb-0">
-                      <span className="absolute -left-[2.45rem] top-1 flex h-8 w-8 items-center justify-center rounded-full border border-border/30 bg-background font-serif text-sm text-foreground/60 md:-left-[3.05rem]">
+                    <div className="grid gap-5 py-7 sm:grid-cols-[64px_1fr] sm:items-start lg:py-8">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-full border border-border/30 bg-background font-serif text-sm text-foreground/60">
                         {step.label}
                       </span>
-                      <h3 className="max-w-2xl text-2xl font-semibold leading-tight text-foreground">{step.title}</h3>
-                      <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                        {step.text}
-                      </p>
+                      <div>
+                        <h3 className="max-w-2xl text-2xl font-semibold leading-tight text-foreground">{step.title}</h3>
+                        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                          {step.text}
+                        </p>
+                      </div>
                     </div>
                   </ScrollReveal>
                 ))}
@@ -159,7 +184,7 @@ const Affiliate = () => {
           <div className="container mx-auto px-6 lg:px-8">
             <ScrollReveal>
               <div className="mx-auto max-w-5xl border-y border-border/25 py-10 lg:py-14">
-                <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+                <div className="grid gap-8 lg:grid-cols-[0.68fr_1.32fr] lg:items-start">
                   <div>
                     <span className="text-[11px] font-medium uppercase tracking-[0.32em] text-muted-foreground/65">
                       Exemplo
@@ -168,17 +193,32 @@ const Affiliate = () => {
                       O cálculo sem mistério.
                     </h2>
                   </div>
-                  <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                    Um projeto de R$ 5.000 com comissão de 10% gera R$ 500 para quem fez a indicação validada. Simples,
-                    transparente e sem transformar a página em promessa exagerada.
-                  </p>
+                  <div className="max-w-2xl space-y-5">
+                    <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+                      Um projeto de R$ 5.000 com comissão de 10% gera R$ 500 para quem fez a indicação validada. Simples,
+                      transparente e sem transformar a página em promessa exagerada.
+                    </p>
+                    <label className="block">
+                      <span className="text-[10px] uppercase tracking-[0.26em] text-muted-foreground/55">
+                        Simular valor do projeto
+                      </span>
+                      <input
+                        value={projectAmount}
+                        onChange={(event) => setProjectAmount(event.target.value)}
+                        inputMode="decimal"
+                        aria-label="Valor do projeto para calcular comissão"
+                        placeholder="Exemplo: 5000"
+                        className="mt-3 h-12 w-full rounded-full border border-border/25 bg-background/80 px-5 text-base font-medium text-foreground outline-none transition-colors duration-300 placeholder:text-muted-foreground/35 focus:border-foreground/45"
+                      />
+                    </label>
+                  </div>
                 </div>
 
                 <div className="mt-10 grid gap-px overflow-hidden border border-border/20 bg-border/20 sm:grid-cols-3">
                   {[
-                    { label: "Projeto", value: "R$ 5.000" },
+                    { label: "Projeto", value: formatCurrency(amount) },
                     { label: "Comissão", value: "10%" },
-                    { label: "Você recebe", value: "R$ 500" },
+                    { label: "Você recebe", value: formatCurrency(commission) },
                   ].map((item, index) => (
                     <IdentityPanel
                       key={item.label}

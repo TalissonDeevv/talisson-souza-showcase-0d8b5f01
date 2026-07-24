@@ -24,6 +24,7 @@ const pageMeta = new Map([
   ['/checklists', ['Checklists | Talisson Souza', 'Guias práticos para segurança, produção, comunidades e infraestrutura digital.']],
   ['/faq', ['FAQ | Talisson Souza', 'Respostas diretas sobre serviços, processos, limites, prazos e forma de trabalho.']],
   ['/feedbacks', ['Feedbacks | Talisson Souza', 'Depoimentos reais de clientes, parceiros e profissionais que já acompanharam meu trabalho.']],
+  ['/seja-afiliado', ['Programa de Parceiros | Talisson Souza', 'Indique clientes para meus serviços e receba comissão por cada projeto fechado pelo Programa de Parceiros.']],
   ['/artigos', ['Artigos | Talisson Souza', 'Conteúdos técnicos e reflexões sobre tecnologia, carreira, segurança, comunidades e mercado.']],
   ['/trilhas/seguranca-digital', ['Segurança Digital | Talisson Souza', 'Artigos sobre proteção de contas, engenharia social, vulnerabilidades, segurança de servidores e práticas técnicas.']],
   ['/trilhas/arquitetura-infraestrutura', ['Arquitetura e Infraestrutura | Talisson Souza', 'Artigos sobre hospedagem, deploy, escalabilidade, banco de dados, estrutura de sistemas e decisões arquiteturais.']],

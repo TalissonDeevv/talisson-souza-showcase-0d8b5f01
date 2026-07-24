@@ -189,6 +189,7 @@ async function capture(chrome, route, file) {
       expression: `
         (async () => {
           await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+          document.querySelectorAll('[aria-live="polite"]').forEach((element) => element.remove());
           const route = ${JSON.stringify(route)};
           const target =
             document.querySelector('[data-og-focus]') ||
@@ -232,10 +233,6 @@ function uniqueRoutes(routes) {
   });
 }
 
-const { articles, trails } = loadTsModule('src/data/articles.ts');
-const { checklists } = loadTsModule('src/data/checklists.ts');
-const { policySections } = loadTsModule('src/data/policies-content.ts');
-
 const serviceIds = ['web-development', 'mobile-development', 'bot-development', 'uiux-design', 'cloud-solutions', 'consulting'];
 
 const staticRoutes = [
@@ -255,6 +252,7 @@ const staticRoutes = [
   '/politica-de-privacidade',
   '/faq',
   '/feedbacks',
+  '/seja-afiliado',
   '/politicas',
   '/en-us',
   '/en-us/about',
@@ -275,15 +273,23 @@ const staticRoutes = [
   '/en-us/policies',
 ];
 
-const routes = requestedRoutes.length > 0 ? uniqueRoutes(requestedRoutes) : uniqueRoutes([
-  ...staticRoutes,
-  ...serviceIds.flatMap((id) => [`/servicos/${id}`, `/en-us/services/${id}`]),
-  ...articles.flatMap((article) => [article.path.pt, article.path.en]),
-  '/artigos/o-que-o-monitoramento-da-discord-pelo-stf-significa-para-quem-cria-comunidades',
-  ...trails.flatMap((trail) => [trail.path.pt, trail.path.en]),
-  ...checklists.flatMap((checklist) => [checklist.path.pt, checklist.path.en]),
-  ...policySections.flatMap((section) => [`/politicas/${section.id}`, `/en-us/policies/${section.id}`]),
-]);
+const routes = requestedRoutes.length > 0
+  ? uniqueRoutes(requestedRoutes)
+  : (() => {
+      const { articles, trails } = loadTsModule('src/data/articles.ts');
+      const { checklists } = loadTsModule('src/data/checklists.ts');
+      const { policySections } = loadTsModule('src/data/policies-content.ts');
+
+      return uniqueRoutes([
+        ...staticRoutes,
+        ...serviceIds.flatMap((id) => [`/servicos/${id}`, `/en-us/services/${id}`]),
+        ...articles.flatMap((article) => [article.path.pt, article.path.en]),
+        '/artigos/o-que-o-monitoramento-da-discord-pelo-stf-significa-para-quem-cria-comunidades',
+        ...trails.flatMap((trail) => [trail.path.pt, trail.path.en]),
+        ...checklists.flatMap((checklist) => [checklist.path.pt, checklist.path.en]),
+        ...policySections.flatMap((section) => [`/politicas/${section.id}`, `/en-us/policies/${section.id}`]),
+      ]);
+    })();
 
 fs.mkdirSync(outputDir, { recursive: true });
 
