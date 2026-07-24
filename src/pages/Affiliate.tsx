@@ -94,6 +94,16 @@ const partnerRequirements = [
     title: "A participação não cria vínculo além do previsto no regulamento.",
     text: "O programa não gera vínculo empregatício, representação comercial, sociedade, franquia, exclusividade ou qualquer outra relação não prevista expressamente no Regulamento.",
   },
+  {
+    label: "09",
+    title: "Formalização da participação.",
+    text: "A participação no Programa de Parceiros não é automática. Depois de entrar no servidor oficial do Discord e demonstrar interesse, o candidato poderá passar por uma análise inicial. Caso seja aprovado, a entrada será formalizada por meio de um Contrato de Parceria para Indicação de Clientes, com regras sobre comissões, pagamentos, validação das indicações, confidencialidade, proteção de dados, encerramento da parceria e demais condições do programa.",
+  },
+  {
+    label: "10",
+    title: "Canais oficiais de contato.",
+    text: "Toda comunicação sobre o programa deve acontecer exclusivamente por e-mail, WhatsApp ou servidor oficial do Discord. Indicações feitas apenas por Instagram, TikTok, LinkedIn, Facebook, X ou plataformas semelhantes não serão consideradas válidas para fins de validação ou pagamento de comissão. Essa centralização mantém histórico, organização, segurança e transparência para todos os envolvidos.",
+  },
 ];
 
 const minorParticipationItems = [
@@ -382,6 +392,39 @@ const Affiliate = () => {
                     </div>
                   </ScrollReveal>
                 ))}
+
+                <ScrollReveal delay={0.16}>
+                  <div className="grid gap-4 py-7 sm:grid-cols-[64px_1fr] sm:items-start">
+                    <span className="font-serif text-3xl leading-none text-foreground/20">11</span>
+                    <div className="max-w-2xl space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                      <h3 className="text-base font-medium leading-relaxed text-foreground">
+                        Conhecimento para além das indicações.
+                      </h3>
+                      <p>
+                        Outro objetivo do programa é compartilhar conhecimento. Além de criar uma forma de gerar renda
+                        através das indicações, quero construir um ambiente onde os parceiros também possam aprender e
+                        evoluir profissionalmente.
+                      </p>
+                      <p>
+                        No canal exclusivo dos parceiros, vou compartilhar conteúdos sobre prospecção de clientes,
+                        geração e qualificação de leads, networking, abordagem comercial, comunicação, posicionamento
+                        profissional, marketing, negociação, construção de relacionamentos, atendimento e boas práticas
+                        na captação de oportunidades.
+                      </p>
+                      <p>
+                        Também pretendo disponibilizar materiais prontos para facilitar a prospecção, como modelos de
+                        mensagens para WhatsApp e e-mail, scripts de abordagem, apresentações, banners, respostas para
+                        objeções e outros recursos que possam ajudar no dia a dia de quem faz indicações.
+                      </p>
+                      <p>
+                        A ideia é que esse conhecimento vá além do Programa de Parceiros. Quem tem negócio próprio,
+                        trabalha como freelancer, oferece serviços, cria conteúdo ou pretende empreender no futuro pode
+                        aplicar esses aprendizados para encontrar clientes, construir relacionamentos profissionais e
+                        desenvolver suas próprias estratégias de crescimento.
+                      </p>
+                    </div>
+                  </div>
+                </ScrollReveal>
 
                 <ScrollReveal delay={0.16}>
                   <div className="grid gap-4 py-6 sm:grid-cols-[64px_1fr] sm:items-start">
