@@ -76,134 +76,214 @@ const participantProfilesEn = [
 ];
 
 const partnerBenefits = [
-  "Comissão sobre cada projeto fechado através das suas indicações.",
-  'Cargo exclusivo "Parceiro" no servidor oficial do Discord.',
-  "Link individual de convite do servidor, vinculado ao cargo de indicação e à identificação do parceiro, para registrar quando alguém chegar através da sua indicação.",
-  "Acesso a um canal exclusivo para parceiros, onde serão compartilhadas oportunidades, novidades e materiais.",
-  "Materiais de divulgação prontos para facilitar a prospecção, como mensagens, abordagens, banners e conteúdos.",
-  "Suporte direto para esclarecer dúvidas sobre o programa e acompanhar suas indicações.",
-  "Reconhecimento dentro da comunidade pelos resultados obtidos.",
-  "Possibilidade de participar do ranking de parceiros com maior volume de comissões, de forma opcional e mediante autorização.",
-  "Acompanhamento transparente do status de cada indicação enviada.",
-  "Oportunidade de construir uma parceria de longo prazo, indicando clientes de forma recorrente.",
+  {
+    label: "01",
+    title: "Comissão por projeto",
+    text: "A indicação validada gera comissão quando o projeto é fechado e o pagamento é confirmado.",
+  },
+  {
+    label: "02",
+    title: "Cargo de parceiro",
+    text: 'Você recebe o cargo exclusivo "Parceiro" dentro do servidor oficial do Discord.',
+  },
+  {
+    label: "03",
+    title: "Link identificável",
+    text: "Cada parceiro terá um convite próprio para registrar quem chegou através da sua indicação.",
+  },
+  {
+    label: "04",
+    title: "Canal exclusivo",
+    text: "O canal dos parceiros concentra oportunidades, novidades, alinhamentos e materiais.",
+  },
+  {
+    label: "05",
+    title: "Materiais prontos",
+    text: "Mensagens, abordagens, banners e conteúdos ajudam a facilitar a prospecção.",
+  },
+  {
+    label: "06",
+    title: "Suporte direto",
+    text: "Dúvidas sobre o programa e acompanhamento das indicações ficam centralizados.",
+  },
+  {
+    label: "07",
+    title: "Reconhecimento",
+    text: "Resultados relevantes podem receber destaque dentro da comunidade.",
+  },
+  {
+    label: "08",
+    title: "Ranking opcional",
+    text: "Parceiros com maior volume de comissões podem aparecer em ranking mediante autorização.",
+  },
+  {
+    label: "09",
+    title: "Status transparente",
+    text: "Cada indicação enviada pode ser acompanhada com clareza durante o processo.",
+  },
+  {
+    label: "10",
+    title: "Relação recorrente",
+    text: "A parceria pode continuar no longo prazo, sempre que surgirem boas oportunidades.",
+  },
 ];
 
 const partnerBenefitsEn = [
-  "Commission on every project closed through your referrals.",
-  'Exclusive "Partner" role in the official Discord server.',
-  "Individual server invite link tied to your referral role and partner identification, so referrals can be tracked properly.",
-  "Access to an exclusive partner channel where opportunities, updates and materials will be shared.",
-  "Ready-to-use outreach materials, including messages, approaches, banners and content.",
-  "Direct support to clarify doubts about the program and follow your referrals.",
-  "Recognition inside the community for the results achieved.",
-  "Optional participation in the ranking of partners with the highest commission volume, with prior authorization.",
-  "Transparent tracking of each submitted referral status.",
-  "Opportunity to build a long-term partnership by referring clients recurrently.",
+  {
+    label: "01",
+    title: "Project commission",
+    text: "A validated referral generates commission when the project is closed and payment is confirmed.",
+  },
+  {
+    label: "02",
+    title: "Partner role",
+    text: 'You receive the exclusive "Partner" role inside the official Discord server.',
+  },
+  {
+    label: "03",
+    title: "Trackable link",
+    text: "Each partner gets a personal invite to register who arrived through their referral.",
+  },
+  {
+    label: "04",
+    title: "Exclusive channel",
+    text: "The partner channel concentrates opportunities, updates, alignment and materials.",
+  },
+  {
+    label: "05",
+    title: "Ready materials",
+    text: "Messages, outreach approaches, banners and content help make prospecting easier.",
+  },
+  {
+    label: "06",
+    title: "Direct support",
+    text: "Questions about the program and referral follow-up stay centralized.",
+  },
+  {
+    label: "07",
+    title: "Recognition",
+    text: "Relevant results can receive visibility inside the community.",
+  },
+  {
+    label: "08",
+    title: "Optional ranking",
+    text: "Partners with higher commission volume may appear in a ranking with authorization.",
+  },
+  {
+    label: "09",
+    title: "Clear status",
+    text: "Each submitted referral can be followed with clarity throughout the process.",
+  },
+  {
+    label: "10",
+    title: "Recurring relationship",
+    text: "The partnership can continue long-term whenever good opportunities appear.",
+  },
 ];
 
 const partnerRequirements = [
   {
     label: "01",
-    title: "Ter capacidade para participar do Programa de Parceiros conforme a legislação brasileira.",
-    text: "A participação precisa respeitar as condições legais aplicáveis a cada pessoa, inclusive capacidade civil, responsabilidade pelas informações enviadas e possibilidade de receber comissões.",
+    title: "Capacidade legal",
+    text: "A participação precisa respeitar as condições legais aplicáveis a cada pessoa.",
   },
   {
     label: "02",
-    title: "Participantes maiores de 18 anos podem participar normalmente.",
-    text: "A participação depende da aceitação do Regulamento do Programa, dos Termos de Uso e da Política de Privacidade.",
+    title: "Maioridade",
+    text: "Participantes maiores de 18 anos podem participar normalmente após aceitar as regras.",
   },
   {
     label: "03",
-    title: "Fazer parte do servidor oficial do Discord.",
-    text: "O servidor será o canal oficial de comunicação do programa, acompanhamento das indicações, avisos e suporte aos parceiros.",
+    title: "Servidor oficial",
+    text: "O Discord oficial será o canal de comunicação, avisos e acompanhamento das indicações.",
   },
   {
     label: "04",
-    title: "Concordar com as regras oficiais.",
-    text: "A participação depende da concordância integral com o Regulamento do Programa de Parceiros, os Termos de Uso e a Política de Privacidade.",
+    title: "Aceite das regras",
+    text: "É preciso concordar com o Regulamento, os Termos de Uso e a Política de Privacidade.",
   },
   {
     label: "05",
-    title: "Realizar apenas indicações legítimas, espontâneas e de boa-fé.",
-    text: "Não são permitidas práticas de spam, abordagens enganosas, compra de leads, uso de informações obtidas ilegalmente ou qualquer conduta que prejudique terceiros ou a reputação do programa.",
+    title: "Indicações legítimas",
+    text: "Spam, compra de leads, abordagens enganosas e dados obtidos ilegalmente não são permitidos.",
   },
   {
     label: "06",
-    title: "Respeitar a legislação brasileira aplicável.",
-    text: "As indicações devem observar as normas de proteção de dados, incluindo a LGPD, direitos do consumidor e demais leis pertinentes.",
+    title: "Legislação brasileira",
+    text: "As indicações devem respeitar proteção de dados, consumidor e demais normas aplicáveis.",
   },
   {
     label: "07",
-    title: "As informações fornecidas precisam ser verdadeiras.",
-    text: "Ao participar do programa, o participante declara que os dados enviados são corretos e autoriza as validações necessárias para cumprimento das obrigações legais.",
+    title: "Dados verdadeiros",
+    text: "O participante declara que as informações enviadas são corretas e podem ser validadas.",
   },
   {
     label: "08",
-    title: "A participação não cria vínculo além do previsto no regulamento.",
-    text: "O programa não gera vínculo empregatício, representação comercial, sociedade, franquia, exclusividade ou qualquer outra relação não prevista expressamente no Regulamento.",
+    title: "Sem vínculo oculto",
+    text: "A participação não gera emprego, sociedade, franquia, representação ou exclusividade.",
   },
   {
     label: "09",
-    title: "Formalização da participação.",
-    text: "A participação no Programa de Parceiros não é automática. Depois de entrar no servidor oficial do Discord e demonstrar interesse, o candidato poderá passar por uma análise inicial. Caso seja aprovado, a entrada será formalizada por meio de um Contrato de Parceria para Indicação de Clientes, com regras sobre comissões, pagamentos, validação das indicações, confidencialidade, proteção de dados, encerramento da parceria e demais condições do programa.",
+    title: "Formalização",
+    text: "A entrada oficial acontece após análise, aprovação e assinatura do contrato de parceria.",
   },
   {
     label: "10",
-    title: "Canais oficiais de contato.",
-    text: "Toda comunicação sobre o programa deve acontecer exclusivamente por e-mail, WhatsApp ou servidor oficial do Discord. Indicações feitas apenas por Instagram, TikTok, LinkedIn, Facebook, X ou plataformas semelhantes não serão consideradas válidas para fins de validação ou pagamento de comissão. Essa centralização mantém histórico, organização, segurança e transparência para todos os envolvidos.",
+    title: "Canais oficiais",
+    text: "Indicações precisam ser registradas por e-mail, WhatsApp ou servidor oficial do Discord.",
   },
 ];
 
 const partnerRequirementsEn = [
   {
     label: "01",
-    title: "Have the legal capacity to participate in the Partner Program under Brazilian law.",
-    text: "Participation must respect the legal conditions applicable to each person, including civil capacity, responsibility for submitted information and ability to receive commissions.",
+    title: "Legal capacity",
+    text: "Participation must respect the legal conditions applicable to each person.",
   },
   {
     label: "02",
-    title: "Participants over 18 may participate normally.",
-    text: "Participation depends on acceptance of the Program Rules, Terms of Use and Privacy Policy.",
+    title: "Age of majority",
+    text: "Participants over 18 may participate normally after accepting the rules.",
   },
   {
     label: "03",
-    title: "Be part of the official Discord server.",
-    text: "The server is the official communication channel for the program, referral follow-up, notices and partner support.",
+    title: "Official server",
+    text: "The official Discord is the communication, notice and referral follow-up channel.",
   },
   {
     label: "04",
-    title: "Agree with the official rules.",
-    text: "Participation depends on full agreement with the Partner Program Rules, Terms of Use and Privacy Policy.",
+    title: "Rule acceptance",
+    text: "You must agree with the Program Rules, Terms of Use and Privacy Policy.",
   },
   {
     label: "05",
-    title: "Only make legitimate, voluntary and good-faith referrals.",
-    text: "Spam, misleading approaches, purchased leads, use of illegally obtained information or any conduct that harms third parties or the program reputation are not allowed.",
+    title: "Legitimate referrals",
+    text: "Spam, purchased leads, misleading approaches and illegally obtained data are not allowed.",
   },
   {
     label: "06",
-    title: "Respect applicable Brazilian law.",
-    text: "Referrals must observe data protection rules, including LGPD, consumer rights and other applicable laws.",
+    title: "Brazilian law",
+    text: "Referrals must respect data protection, consumer rights and other applicable rules.",
   },
   {
     label: "07",
-    title: "The information provided must be true.",
-    text: "By participating in the program, the participant declares that the submitted data is correct and authorizes the validations needed to comply with legal obligations.",
+    title: "True information",
+    text: "The participant declares that submitted information is correct and can be validated.",
   },
   {
     label: "08",
-    title: "Participation does not create any relationship beyond the program rules.",
-    text: "The program does not create an employment relationship, commercial representation, company partnership, franchise, exclusivity or any other relationship not expressly provided in the Rules.",
+    title: "No hidden relationship",
+    text: "Participation does not create employment, partnership, franchise, representation or exclusivity.",
   },
   {
     label: "09",
-    title: "Participation formalization.",
-    text: "Participation in the Partner Program is not automatic. After joining the official Discord server and showing interest, the candidate may go through an initial review. If approved, entry will be formalized through a Client Referral Partnership Agreement, covering commissions, payments, referral validation, confidentiality, data protection, partnership termination and other program conditions.",
+    title: "Formalization",
+    text: "Official entry happens after review, approval and signing of the partnership agreement.",
   },
   {
     label: "10",
-    title: "Official contact channels.",
-    text: "All communication about the program must happen exclusively by e-mail, WhatsApp or the official Discord server. Referrals made only through Instagram, TikTok, LinkedIn, Facebook, X or similar platforms will not be considered valid for validation or commission payment. This centralization preserves history, organization, security and transparency for everyone involved.",
+    title: "Official channels",
+    text: "Referrals must be registered by e-mail, WhatsApp or the official Discord server.",
   },
 ];
 
@@ -546,21 +626,29 @@ const Affiliate = () => {
                 </div>
               </ScrollReveal>
 
-              <div className="overflow-hidden border border-border/20 bg-border/20">
-                <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+              <div className="overflow-hidden border border-border/20 bg-border/15">
+                <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-5">
                   {localizedPartnerBenefits.map((benefit, index) => (
                     <ScrollReveal
-                      key={benefit}
+                      key={benefit.title}
                       delay={Math.min(index * 0.03, 0.16)}
                       className="h-full"
                     >
-                      <div className="h-full w-full bg-background/92 p-5 xl:p-5">
-                        <span className="font-serif text-2xl leading-none text-foreground/20">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-                          {benefit}
-                        </p>
+                      <div className="group relative flex h-full min-h-[178px] w-full flex-col bg-background/94 p-5 transition-colors duration-300 hover:bg-foreground/[0.035] sm:p-6">
+                        <div className="flex items-center gap-4">
+                          <span className="font-serif text-3xl leading-none text-foreground/22 transition-colors duration-300 group-hover:text-foreground/45">
+                            {benefit.label}
+                          </span>
+                          <span className="h-px flex-1 bg-border/25 transition-colors duration-300 group-hover:bg-foreground/25" />
+                        </div>
+                        <div className="mt-7">
+                          <h3 className="text-[15px] font-semibold leading-snug text-foreground">
+                            {benefit.title}
+                          </h3>
+                          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                            {benefit.text}
+                          </p>
+                        </div>
                       </div>
                     </ScrollReveal>
                   ))}
@@ -659,20 +747,23 @@ const Affiliate = () => {
                 </div>
               </ScrollReveal>
 
-              <div className="overflow-hidden border border-border/20 bg-border/20">
-                <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+              <div className="overflow-hidden border border-border/20 bg-border/15">
+                <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-5">
                   {localizedPartnerRequirements.map((requirement, index) => (
                     <ScrollReveal
                       key={requirement.title}
                       delay={Math.min(index * 0.03, 0.16)}
                       className="h-full"
                     >
-                      <div className="h-full w-full bg-background/92 p-5 xl:p-5">
-                        <span className="font-serif text-2xl leading-none text-foreground/20">
-                          {requirement.label}
-                        </span>
-                        <div className="mt-5 max-w-xl">
-                          <h4 className="text-sm font-medium leading-relaxed text-foreground sm:text-base">
+                      <div className="group relative flex h-full min-h-[190px] w-full flex-col bg-background/94 p-5 transition-colors duration-300 hover:bg-foreground/[0.035] sm:p-6">
+                        <div className="flex items-center gap-4">
+                          <span className="font-serif text-3xl leading-none text-foreground/22 transition-colors duration-300 group-hover:text-foreground/45">
+                            {requirement.label}
+                          </span>
+                          <span className="h-px flex-1 bg-border/25 transition-colors duration-300 group-hover:bg-foreground/25" />
+                        </div>
+                        <div className="mt-7">
+                          <h4 className="text-[15px] font-semibold leading-snug text-foreground">
                             {requirement.title}
                           </h4>
                           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
@@ -690,26 +781,33 @@ const Affiliate = () => {
                       <span className="flex h-9 w-9 items-center justify-center rounded-full border border-border/30 text-foreground/55">
                         <ShieldCheck className="h-4 w-4" />
                       </span>
-                      <div className="max-w-3xl space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                      <div className="grid max-w-5xl gap-5 text-sm leading-relaxed text-muted-foreground lg:grid-cols-3">
                         <p>
                           {getText(
                             language,
-                            "Todas as indicações passam por um processo de validação antes da liberação da comissão. O objetivo é garantir transparência, segurança e uma relação de confiança entre o parceiro, o cliente e a organização do programa. As regras completas estão disponíveis no Regulamento do Programa de Parceiros.",
-                            "All referrals go through a validation process before the commission is released. The goal is to preserve transparency, security and trust between the partner, the client and the program organization. The complete rules are available in the Partner Program Rules."
+                            "Todas as indicações passam por validação antes da liberação da comissão. Isso protege o parceiro, o cliente e a organização do programa.",
+                            "All referrals go through validation before commission is released. This protects the partner, the client and the program organization."
                           )}
                         </p>
                         <p>
                           {getText(
                             language,
-                            "A participação no programa não gera vínculo empregatício, societário, representação comercial, franquia, agência ou exclusividade. Trata-se apenas de um programa de indicação de clientes, sujeito às regras do regulamento.",
-                            "Participation in the program does not create employment, company partnership, commercial representation, franchise, agency or exclusivity. It is only a client referral program, subject to the program rules."
+                            "A participação oficial acontece após análise, aprovação e assinatura do contrato de parceria para indicação de clientes.",
+                            "Official participation happens after review, approval and signing of the client referral partnership agreement."
                           )}
                         </p>
-                        <p className="text-foreground/85">
+                        <p>
                           {getText(
                             language,
-                            "Os requisitos para participação poderão ser alterados para atender mudanças na legislação ou aperfeiçoamentos do Programa de Parceiros.",
-                            "Participation requirements may be updated to follow legal changes or improvements to the Partner Program."
+                            "As comunicações do programa devem ficar centralizadas no e-mail, WhatsApp ou servidor oficial do Discord.",
+                            "Program communications must stay centralized by e-mail, WhatsApp or the official Discord server."
+                          )}
+                        </p>
+                        <p className="border-t border-border/20 pt-5 text-foreground/85 lg:col-span-3">
+                          {getText(
+                            language,
+                            "A participação não cria vínculo empregatício, sociedade, representação comercial, franquia, agência ou exclusividade. As regras podem ser atualizadas para acompanhar mudanças legais ou melhorias do programa.",
+                            "Participation does not create employment, company partnership, commercial representation, franchise, agency or exclusivity. Rules may be updated to follow legal changes or program improvements."
                           )}
                         </p>
                       </div>
