@@ -5,6 +5,7 @@ import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
 import GlassCard from "@/components/ui/GlassCard";
+import MobileBentoGrid from "@/components/services/MobileBentoGrid";
 import { 
   ArrowLeft, Code, Smartphone, Bot, Palette, Cloud, Users,
   CheckCircle, Star, MessageSquare, ArrowUpRight,
@@ -2226,6 +2227,7 @@ const ServiceDetail = () => {
           </div>
 
           {serviceId === "web-development" && <WebProductDashboardHero language={language} />}
+          {serviceId === "mobile-development" && <MobileBentoGrid language={language} />}
         </div>
       </section>
 
