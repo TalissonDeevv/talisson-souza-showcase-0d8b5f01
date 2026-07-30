@@ -879,7 +879,7 @@ const ServiceHeroArtifact = ({ cards, label, theme }: { cards: SolutionCard[]; l
 
 const CloudPerformanceRadar = ({ language }: { language: string }) => (
   <ScrollReveal>
-    <div id="performance-radar" className="grid gap-6 border-y border-border/20 py-7 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
+    <div id="performance-radar" className="mx-auto grid max-w-5xl gap-5 border-y border-border/20 py-5 lg:grid-cols-[0.95fr_1fr] lg:items-center">
       <div>
         <span className="mb-3 block text-[10px] uppercase tracking-[0.28em] text-muted-foreground/55">
           {getText(language, "Radar técnico", "Technical radar")}
@@ -901,7 +901,7 @@ const CloudPerformanceRadar = ({ language }: { language: string }) => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full max-w-[390px] py-4 sm:ml-auto sm:py-5 lg:border-l lg:border-border/20 lg:pl-6"
+        className="w-full max-w-[360px] py-2 sm:py-3 lg:justify-self-center lg:border-l lg:border-border/20 lg:pl-5"
       >
         <div className="mb-4 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
@@ -2232,7 +2232,7 @@ const ServiceDetail = () => {
       </section>
 
       {serviceId === "cloud-solutions" && (
-        <section id="radar-cloud" className="relative scroll-mt-28 overflow-hidden py-10 lg:py-14">
+        <section id="radar-cloud" className="relative scroll-mt-28 overflow-hidden py-6 lg:py-8">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-0 left-1/2 h-px w-[85%] -translate-x-1/2 bg-gradient-to-r from-transparent via-border/20 to-transparent" />
             <div className="absolute right-[10vw] top-16 h-64 w-64 rounded-full bg-foreground/[0.018] blur-3xl" />
