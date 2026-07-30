@@ -1995,6 +1995,7 @@ const ServiceDetail = () => {
         </div>
       </ParallaxSection>
 
+      {serviceId === "cloud-solutions" && <CloudPerformanceRadar language={language} />}
 
       {/* Solution Showcase */}
       <section id="solucoes" className="relative scroll-mt-28 overflow-hidden py-6 lg:py-8">
@@ -2031,8 +2032,6 @@ const ServiceDetail = () => {
           </div>
         </div>
       </section>
-
-      {serviceId === "cloud-solutions" && <CloudPerformanceRadar language={language} />}
 
       {serviceId === "bot-development" && (
         <section id="metodo-bot-operacional" className="relative scroll-mt-28 overflow-hidden py-10 lg:py-14">
