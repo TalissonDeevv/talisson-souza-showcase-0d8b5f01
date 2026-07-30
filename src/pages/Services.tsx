@@ -35,8 +35,8 @@ const Services = () => {
       id: "bot-development",
       icon: Bot,
       ...t.servicesPage.categories.botDevelopment,
-      context: getText(language, "Automação para comunidade e suporte", "Automation for community and support"),
-      useCases: language === "pt" ? ["Discord", "APIs", "Moderação"] : ["Discord", "APIs", "Moderation"],
+      context: getText(language, "Discord sob medida para comunidade e operação", "Custom Discord for community and operations"),
+      useCases: language === "pt" ? ["Moderação", "Tickets", "Engajamento"] : ["Moderation", "Tickets", "Engagement"],
     },
     {
       id: "uiux-design",

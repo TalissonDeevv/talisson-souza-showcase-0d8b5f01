@@ -249,8 +249,8 @@ const translations: Translations = {
         },
         botDevelopment: {
           title: "Desenvolvimento de Bots",
-          description: "Bots inteligentes para Discord, Telegram e outras plataformas",
-          features: ["Bots Discord", "Bots Telegram", "Automação", "Integração APIs", "Comandos Personalizados"]
+          description: "Bots Discord sob medida para moderação, atendimento, engajamento e operação de comunidades",
+          features: ["Moderação Avançada", "Tickets Inteligentes", "Engajamento Único", "Painéis e Logs", "Integrações"]
         },
         uiuxDesign: {
           title: "UI/UX Design",
@@ -478,8 +478,8 @@ const translations: Translations = {
         },
         botDevelopment: {
           title: "Bot Development",
-          description: "Intelligent bots for Discord, Telegram and other platforms",
-          features: ["Discord Bots", "Telegram Bots", "Automation", "API Integration", "Custom Commands"]
+          description: "Custom Discord bots for moderation, support, engagement and community operations",
+          features: ["Advanced Moderation", "Smart Tickets", "Unique Engagement", "Dashboards and Logs", "Integrations"]
         },
         uiuxDesign: {
           title: "UI/UX Design",
