@@ -1758,7 +1758,7 @@ const ServiceDetail = () => {
       
       {/* Hero Section */}
       <ParallaxSection 
-        className="pt-20 pb-8 lg:pt-24 lg:pb-10"
+        className="pt-4 pb-6 lg:pt-6 lg:pb-8"
         speed={0.1}
         backgroundElement={
           <>
