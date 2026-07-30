@@ -961,72 +961,72 @@ const ServiceDetail = () => {
       icon: Bot,
       ...t.servicesPage.categories.botDevelopment,
       requirements: language === 'pt' ? [
-        "Tipo de servidor, nicho e rotina atual da comunidade",
-        "Fluxo de moderação, cargos, permissões e equipe interna",
-        "Regras de tickets, autoatendimento e escalonamento",
-        "Mecânicas de engajamento, recompensas e interação desejadas",
+        "Plataformas desejadas: Discord, WhatsApp, Telegram ou combinação entre elas",
+        "Objetivo do bot e comportamento que ele precisa provocar",
+        "Nicho, público, jornada de uso e rotina atual da operação",
+        "Regras, permissões, automações e limites importantes",
         "Integrações, dados, APIs ou painéis necessários"
       ] : [
-        "Server type, niche and current community routine",
-        "Moderation flow, roles, permissions and internal staff",
-        "Ticket, self-service and escalation rules",
-        "Desired engagement, reward and interaction mechanics",
+        "Desired platforms: Discord, WhatsApp, Telegram or a combination of them",
+        "Bot goal and behavior it needs to trigger",
+        "Niche, audience, user journey and current operation routine",
+        "Rules, permissions, automations and important limits",
         "Required integrations, data, APIs or dashboards"
       ],
-      technologies: ["Node.js", "Discord.js", "TypeScript", "PostgreSQL", "Redis", "APIs", "Webhooks", "Dashboards"],
+      technologies: ["Node.js", "TypeScript", "Discord.js", "WhatsApp APIs", "Telegram Bot API", "PostgreSQL", "Redis", "Webhooks", "Dashboards"],
       idealFor: language === 'pt' ? [
-        "Comunidades Discord que precisam sair do bot genérico",
-        "Equipes que querem organizar tarefas internas e responsabilidades",
-        "Servidores com moderação, tickets, logs e monitoramento ativo",
-        "Comunidades que precisam de engajamento real, gamificação ou eventos",
-        "Empresas, lojas e projetos com atendimento dentro do Discord"
+        "Comunidades, empresas, lojas e projetos que precisam sair do bot genérico",
+        "Quem quer criar funcionalidades próprias para Discord, WhatsApp ou Telegram",
+        "Operações que dependem de atendimento, engajamento, organização ou automação recorrente",
+        "Projetos que precisam transformar uma ideia específica em fluxo usável",
+        "Equipes que querem reduzir improviso sem perder a identidade do nicho"
       ] : [
-        "Discord communities that need to move beyond generic bots",
-        "Teams that need internal task and responsibility organization",
-        "Servers with moderation, tickets, logs and active monitoring",
-        "Communities that need real engagement, gamification or events",
-        "Companies, stores and projects with support inside Discord"
+        "Communities, companies, stores and projects that need to move beyond generic bots",
+        "Teams that want custom functionality for Discord, WhatsApp or Telegram",
+        "Operations that rely on support, engagement, organization or recurring automation",
+        "Projects that need to turn a specific idea into a usable flow",
+        "Teams that want less improvisation without losing niche identity"
       ],
       notIdealFor: language === 'pt' ? [
         "Bots que violam termos de serviço das plataformas",
         "Automações sem propósito claro",
-        "Projetos que só querem clonar MEE6, Dyno ou Carl-bot",
+        "Projetos que só querem copiar um bot pronto sem adaptar ao contexto",
         "Projetos sem infraestrutura de hospedagem"
       ] : [
         "Bots that violate platform terms of service",
         "Automation without clear purpose",
-        "Projects that only want to clone MEE6, Dyno or Carl-bot",
+        "Projects that only want to copy a ready-made bot without adapting it to context",
         "Projects without hosting infrastructure"
       ],
       included: language === 'pt' ? [
         "Desenvolvimento do bot completo sob medida",
-        "Módulos avançados de moderação, tickets e atendimento",
-        "Organização interna para equipe, cargos, tarefas e permissões",
-        "Monitoramento ativo com logs, alertas e trilhas de auditoria",
-        "Mecânicas únicas de engajamento para o nicho da comunidade",
-        "Dashboard web e integrações quando fizer sentido",
+        "Desenho criativo das funcionalidades antes do desenvolvimento",
+        "Fluxos personalizados para comunidade, atendimento, vendas, suporte ou operação interna",
+        "Adaptação para Discord, WhatsApp, Telegram e integrações quando fizer sentido",
+        "Regras, permissões, dados, logs e automações alinhadas ao contexto",
+        "Dashboard web, APIs e webhooks quando agregarem valor real",
         "Documentação técnica e operacional completa"
       ] : [
         "Complete custom bot development",
-        "Advanced moderation, ticket and support modules",
-        "Internal organization for staff, roles, tasks and permissions",
-        "Active monitoring with logs, alerts and audit trails",
-        "Unique engagement mechanics for the community niche",
-        "Web dashboard and integrations when useful",
+        "Creative feature design before development",
+        "Custom flows for communities, support, sales, service or internal operations",
+        "Adaptation for Discord, WhatsApp, Telegram and integrations when useful",
+        "Rules, permissions, data, logs and automations aligned with context",
+        "Web dashboards, APIs and webhooks when they add real value",
         "Complete technical and operational documentation"
       ],
       expectedResults: language === 'pt' ? [
-        "Moderação mais completa, rastreável e menos dependente de improviso",
-        "Equipe interna com tarefas, responsabilidades e canais mais organizados",
-        "Atendimento em ticket com respostas automáticas, triagem e escalonamento",
-        "Membros interagindo por mecânicas próprias do servidor, não por comandos genéricos",
-        "Operação 24/7 com logs, alertas e integrações alinhadas ao negócio"
+        "Bot com identidade própria, não uma cópia de comandos genéricos",
+        "Interações pensadas para o público e para a plataforma usada",
+        "Atendimento, comunidade ou operação com menos improviso e mais clareza",
+        "Automação que resolve o problema real por trás da ideia",
+        "Base preparada para evoluir com novos fluxos e integrações"
       ] : [
-        "More complete, traceable moderation with less improvisation",
-        "Internal staff with clearer tasks, responsibilities and channels",
-        "Ticket support with automatic replies, triage and escalation",
-        "Members interacting through server-specific mechanics, not generic commands",
-        "24/7 operation with logs, alerts and integrations aligned to the business"
+        "A bot with its own identity, not a copy of generic commands",
+        "Interactions designed for the audience and platform being used",
+        "Support, community or operations with less improvisation and more clarity",
+        "Automation that solves the real problem behind the idea",
+        "A base ready to evolve with new flows and integrations"
       ],
     },
     "uiux-design": {
@@ -1284,12 +1284,12 @@ const ServiceDetail = () => {
     },
     "bot-development": {
       theme: "automation",
-      eyebrow: getText(language, "Bots Discord sob medida", "Custom Discord bots"),
-      title: getText(language, "Bots que viram operação própria do servidor", "Bots that become the server's own operation"),
+      eyebrow: getText(language, "Bots sob medida", "Custom bots"),
+      title: getText(language, "Bots que nascem da ideia, não do template", "Bots born from the idea, not the template"),
       description: getText(
         language,
-        "Eu crio bots que saem do genérico: moderação profunda, organização de equipe, tickets com autoatendimento, monitoramento ativo e mecânicas de engajamento desenhadas para o nicho da comunidade.",
-        "I build bots that move beyond generic commands: deep moderation, staff organization, self-service tickets, active monitoring and engagement mechanics designed for the community niche."
+        "Eu uso criatividade e leitura de contexto para criar bots que saem do genérico em Discord, WhatsApp, Telegram e outras integrações. A função nasce do problema, do público e da experiência que precisa existir.",
+        "I use creativity and context reading to build bots that move beyond generic templates across Discord, WhatsApp, Telegram and other integrations. The feature starts from the problem, the audience and the experience that needs to exist."
       ),
       layout: [
         "md:col-span-2 lg:col-span-6",
@@ -1422,33 +1422,33 @@ const ServiceDetail = () => {
     ],
     "bot-development": [
       {
-        title: getText(language, "Comandos com propósito", "Purposeful commands"),
-        description: getText(language, "Cada comando nasce de uma rotina real do servidor, não de uma lista genérica de funções.", "Every command starts from a real server routine, not from a generic feature list."),
+        title: getText(language, "Fluxos com propósito", "Purposeful flows"),
+        description: getText(language, "Cada interação nasce de uma rotina real, não de uma lista genérica de comandos.", "Every interaction starts from a real routine, not from a generic command list."),
         visual: "bot-command",
       },
       {
-        title: getText(language, "Moderação profunda", "Deep moderation"),
-        description: getText(language, "Módulos com regras, alertas, logs, punições graduais e leitura de risco por contexto.", "Modules with rules, alerts, logs, graduated actions and contextual risk reading."),
+        title: getText(language, "Criatividade aplicada", "Applied creativity"),
+        description: getText(language, "A solução pode virar atendimento, jogo, triagem, integração, ritual de comunidade ou qualquer fluxo útil para o nicho.", "The solution can become support, a game, triage, an integration, a community ritual or any useful flow for the niche."),
         visual: "bot-moderation",
       },
       {
-        title: getText(language, "Equipe organizada", "Organized staff"),
-        description: getText(language, "Divisão de tarefas, filas internas, permissões e canais operacionais para a equipe agir melhor.", "Task division, internal queues, permissions and operational channels for staff to act better."),
+        title: getText(language, "Multi-plataforma", "Multi-platform"),
+        description: getText(language, "Discord, WhatsApp e Telegram entram conforme o público usa, com lógica adaptada para cada ambiente.", "Discord, WhatsApp and Telegram are used according to the audience, with logic adapted to each environment."),
         visual: "bot-community",
       },
       {
-        title: getText(language, "Engajamento único", "Unique engagement"),
-        description: getText(language, "Pontuação, eventos, missões, cargos e recompensas alinhados à cultura do servidor.", "Points, events, quests, roles and rewards aligned with the server culture."),
+        title: getText(language, "Interação com identidade", "Interaction with identity"),
+        description: getText(language, "Mecânicas, mensagens e respostas são desenhadas para parecerem parte natural do projeto.", "Mechanics, messages and replies are designed to feel like a natural part of the project."),
         visual: "bot-economy",
       },
       {
-        title: getText(language, "Monitoramento ativo", "Active monitoring"),
-        description: getText(language, "Uptime, incidentes, ações críticas e sinais da comunidade acompanhados em tempo real.", "Uptime, incidents, critical actions and community signals tracked in real time."),
+        title: getText(language, "Operação conectada", "Connected operations"),
+        description: getText(language, "Quando precisa, o bot conversa com APIs, bancos, painéis, webhooks e sistemas internos.", "When needed, the bot talks to APIs, databases, dashboards, webhooks and internal systems."),
         visual: "bot-uptime",
       },
       {
-        title: getText(language, "Tickets inteligentes", "Smart tickets"),
-        description: getText(language, "Autoatendimento, triagem, categorias, histórico e escalonamento para suporte interno.", "Self-service, triage, categories, history and escalation for internal support."),
+        title: getText(language, "Evolução planejada", "Planned evolution"),
+        description: getText(language, "A base fica pronta para crescer com novos comportamentos, integrações e regras do negócio.", "The base is prepared to grow with new behaviors, integrations and business rules."),
         visual: "bot-permissions",
       },
     ],
@@ -1600,26 +1600,26 @@ const ServiceDetail = () => {
         : ["Frictionless touch", "Contextual return", "Consistent data", "Simple daily use"],
     },
     "bot-development": {
-      principle: getText(language, "Bot bom vira estrutura, não enfeite de servidor.", "A good bot becomes structure, not server decoration."),
+      principle: getText(language, "Bot bom resolve uma intenção específica, não só responde comando.", "A good bot solves a specific intent, not just a command."),
       narrative: getText(
         language,
-        "Eu trato bot Discord como produto operacional: ele precisa entender a cultura do servidor, dividir tarefas da equipe, moderar com contexto, atender em tickets, medir sinais importantes e criar motivos reais para os membros interagirem.",
-        "I treat Discord bots as operational products: they need to understand the server culture, divide staff tasks, moderate with context, support through tickets, measure important signals and create real reasons for members to interact."
+        "Eu trato bot como produto de interação. Pode ser para Discord, WhatsApp, Telegram, comunidade, empresa, loja ou suporte: primeiro vem a ideia e o comportamento desejado, depois eu desenho a automação que faz aquilo acontecer sem cair no genérico.",
+        "I treat bots as interaction products. It can be for Discord, WhatsApp, Telegram, communities, companies, stores or support: the idea and desired behavior come first, then I design the automation that makes it happen without becoming generic."
       ),
       stages: language === "pt"
-        ? ["Leitura do nicho, equipe e rotina atual", "Desenho dos módulos de moderação, ticket e engajamento", "Automação com logs, permissões e monitoramento", "Deploy, documentação e acompanhamento operacional"]
-        : ["Reading the niche, staff and current routine", "Design of moderation, ticket and engagement modules", "Automation with logs, permissions and monitoring", "Deploy, documentation and operational follow-up"],
+        ? ["Leitura do nicho, público e plataforma", "Desenho da experiência e dos fluxos próprios", "Automação com regras, integrações e dados", "Deploy, documentação e evolução planejada"]
+        : ["Reading the niche, audience and platform", "Designing the experience and custom flows", "Automation with rules, integrations and data", "Deploy, documentation and planned evolution"],
       signals: [
-        { label: getText(language, "nicho", "niche"), value: getText(language, "sob medida", "custom") },
-        { label: getText(language, "equipe", "staff"), value: getText(language, "organizada", "organized") },
-        { label: getText(language, "rotina", "routine"), value: getText(language, "monitorada", "monitored") },
+        { label: getText(language, "ideia", "idea"), value: getText(language, "traduzida", "translated") },
+        { label: getText(language, "plataforma", "platform"), value: getText(language, "adaptada", "adapted") },
+        { label: getText(language, "fluxo", "flow"), value: getText(language, "próprio", "custom") },
       ],
       handoff: language === "pt"
-        ? ["Mapa de módulos e comandos", "Fluxos de moderação e tickets", "Logs, alertas e painéis essenciais", "Manual de operação para equipe"]
-        : ["Module and command map", "Moderation and ticket flows", "Essential logs, alerts and dashboards", "Operations manual for staff"],
+        ? ["Mapa de jornadas e gatilhos", "Fluxos por plataforma", "Integrações e regras documentadas", "Manual de operação e evolução"]
+        : ["Journey and trigger map", "Flows by platform", "Documented integrations and rules", "Operations and evolution manual"],
       qualities: language === "pt"
-        ? ["Funcionalidade única", "Moderação rastreável", "Atendimento organizado", "Engajamento com identidade"]
-        : ["Unique functionality", "Traceable moderation", "Organized support", "Engagement with identity"],
+        ? ["Criatividade aplicada", "Experiência própria", "Automação útil", "Base evolutiva"]
+        : ["Applied creativity", "Own experience", "Useful automation", "Evolving base"],
     },
     "uiux-design": {
       principle: getText(language, "Design não é enfeite. É decisão antes do retrabalho.", "Design is not decoration. It is decision before rework."),
@@ -1692,39 +1692,39 @@ const ServiceDetail = () => {
   const botSpecialtyModules = [
     {
       icon: ShieldAlert,
-      title: getText(language, "Moderação que entende operação", "Moderation that understands operations"),
+      title: getText(language, "Ideias que viram fluxo", "Ideas turned into flows"),
       description: getText(
         language,
-        "Não é só ban, mute e filtro de palavra. Eu desenho módulos completos com logs, níveis de punição, alertas, filas de análise, histórico do membro, proteção contra spam, rotinas para staff e regras que ajudam a equipe a agir com consistência.",
-        "It is not only ban, mute and word filters. I design complete modules with logs, penalty levels, alerts, review queues, member history, anti-spam protection, staff routines and rules that help the team act consistently."
+        "Eu não parto de um pacote pronto de comandos. Eu entendo a intenção por trás do bot e transformo isso em jornadas, gatilhos, respostas, regras e experiências que fazem sentido para o público.",
+        "I do not start from a ready-made command package. I understand the intent behind the bot and turn it into journeys, triggers, replies, rules and experiences that make sense for the audience."
       ),
       points: language === "pt"
-        ? ["Logs e auditoria de ações", "Fila interna para revisão da equipe", "Regras por cargo, canal e contexto"]
-        : ["Action logs and audit trails", "Internal review queue for staff", "Rules by role, channel and context"],
+        ? ["Fluxos criados para o objetivo", "Gatilhos e respostas próprias", "Experiência alinhada ao nicho"]
+        : ["Flows created for the goal", "Custom triggers and replies", "Experience aligned with the niche"],
     },
     {
       icon: ClipboardCheck,
-      title: getText(language, "Atendimento e equipe interna", "Support and internal staff"),
+      title: getText(language, "Criatividade por plataforma", "Creativity by platform"),
       description: getText(
         language,
-        "Para tickets, suporte, loja, empresa ou comunidade grande, o bot pode organizar autoatendimento, perguntas frequentes, categorias, prioridade, responsáveis, divisão de tarefas e escalonamento. O objetivo é a equipe saber o que fazer sem depender de conversa solta.",
-        "For tickets, support, stores, companies or large communities, the bot can organize self-service, FAQs, categories, priority, assignees, task division and escalation. The goal is for staff to know what to do without relying on loose conversations."
+        "Discord, WhatsApp e Telegram não funcionam do mesmo jeito. Eu adapto a lógica, o tom, os comandos, os botões, as mensagens e as permissões para o ambiente onde a pessoa realmente vai usar.",
+        "Discord, WhatsApp and Telegram do not work the same way. I adapt logic, tone, commands, buttons, messages and permissions to the environment where people will actually use it."
       ),
       points: language === "pt"
-        ? ["Tickets com triagem automática", "Responsáveis e tarefas por demanda", "Categorias para suporte, vendas e denúncias"]
-        : ["Tickets with automatic triage", "Assignees and tasks per request", "Categories for support, sales and reports"],
+        ? ["Discord, WhatsApp e Telegram", "Regras por canal e contexto", "Interação pensada para cada uso"]
+        : ["Discord, WhatsApp and Telegram", "Rules by channel and context", "Interaction designed for each use"],
     },
     {
       icon: Trophy,
-      title: getText(language, "Engajamento feito para o nicho", "Engagement built for the niche"),
+      title: getText(language, "Funcionalidades fora do comum", "Uncommon functionality"),
       description: getText(
         language,
-        "Bots de engajamento precisam ter identidade. Eu crio mecânicas próprias para fazer membros interagirem: missões, rankings, desafios, eventos, recompensas, cargos, loja interna, sistemas de presença e ações pensadas para a cultura daquele servidor.",
-        "Engagement bots need identity. I create custom mechanics to make members interact: quests, rankings, challenges, events, rewards, roles, internal shops, presence systems and actions designed for that server's culture."
+        "Os exemplos podem passar por moderação, autoatendimento, organização interna, vendas, engajamento, eventos, suporte ou comunidade. O diferencial é desenhar algo próprio, não repetir o que todo bot genérico já faz.",
+        "Examples can include moderation, self-service, internal organization, sales, engagement, events, support or community. The difference is designing something specific, not repeating what every generic bot already does."
       ),
       points: language === "pt"
-        ? ["Missões, eventos e recompensas", "Ranking e progressão com sentido", "Mecânicas para comunidade, empresa ou loja"]
-        : ["Quests, events and rewards", "Meaningful ranking and progression", "Mechanics for communities, companies or stores"],
+        ? ["Comunidades, empresas e lojas", "Atendimento, vendas ou engajamento", "Módulos criados sob medida"]
+        : ["Communities, companies and stores", "Support, sales or engagement", "Custom-built modules"],
     },
   ];
 
@@ -1847,15 +1847,15 @@ const ServiceDetail = () => {
                   <h2 className="max-w-xl font-serif text-3xl leading-tight text-foreground lg:text-5xl">
                     {getText(
                       language,
-                      "Cada servidor tem uma cultura. O bot precisa nascer dela.",
-                      "Every server has a culture. The bot needs to come from it."
+                      "Cada projeto tem uma lógica. O bot precisa nascer dela.",
+                      "Every project has its own logic. The bot needs to come from it."
                     )}
                   </h2>
                   <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
                     {getText(
                       language,
-                      "O projeto começa entendendo como a comunidade funciona: quem modera, quem atende, onde surgem conflitos, o que faz os membros participarem e quais processos hoje dependem de improviso.",
-                      "The project starts by understanding how the community works: who moderates, who supports, where conflicts appear, what makes members participate and which processes currently depend on improvisation."
+                      "O projeto começa entendendo o que você quer provocar: interação, atendimento, organização, venda, suporte, comunidade ou qualquer rotina que precise ganhar uma experiência própria em Discord, WhatsApp ou Telegram.",
+                      "The project starts by understanding what you want to trigger: interaction, support, organization, sales, service, community or any routine that needs its own experience in Discord, WhatsApp or Telegram."
                     )}
                   </p>
                 </div>
