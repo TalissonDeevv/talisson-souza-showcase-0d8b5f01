@@ -14,7 +14,7 @@ export const PageBackdrop = ({ signature, signatureClassName, className }: PageB
   <div className={cn("pointer-events-none absolute inset-0 overflow-hidden", className)} aria-hidden="true">
     <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background" />
     <div
-      className="absolute inset-0 opacity-[0.018]"
+      className="absolute inset-0 opacity-[0.008]"
       style={{
         backgroundImage:
           "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
@@ -27,7 +27,7 @@ export const PageBackdrop = ({ signature, signatureClassName, className }: PageB
       transition={{ duration: 1.15, ease }}
       className="absolute left-[8vw] right-[8vw] top-32 h-px origin-left bg-gradient-to-r from-transparent via-foreground/12 to-transparent"
     />
-    <div className="absolute left-1/2 top-1/2 h-[520px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground/[0.025] blur-3xl" />
+    <div className="absolute left-1/2 top-1/2 h-[420px] w-[640px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground/[0.012] blur-3xl" />
     <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent" />
     {signature && (
       <motion.img
@@ -202,14 +202,14 @@ export const IdentityPanel = ({ children, className, hover = true, delay = 0 }: 
     )}
   >
     <div
-      className="pointer-events-none absolute inset-0 opacity-[0.018]"
+      className="pointer-events-none absolute inset-0 opacity-[0.006]"
       style={{
         backgroundImage:
           "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
         backgroundSize: "38px 38px",
       }}
     />
-    <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-foreground/[0.04] to-transparent opacity-80" />
+    <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-foreground/[0.025] to-transparent opacity-70" />
     <div className="pointer-events-none absolute left-0 top-0 h-14 w-14 border-l border-t border-foreground/10" />
     <div className="pointer-events-none absolute bottom-0 right-0 h-14 w-14 border-b border-r border-foreground/10" />
     <div className="relative z-10">{children}</div>

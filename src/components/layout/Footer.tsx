@@ -49,21 +49,21 @@ const Footer = () => {
   }, [isPlaying]);
 
   return (
-    <footer className="relative mt-16 overflow-hidden border-t border-border/25 bg-background">
+    <footer className="relative mt-10 overflow-hidden border-t border-border/25 bg-background">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/25 to-transparent" />
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.022]"
+        className="pointer-events-none absolute inset-0 opacity-[0.006]"
         style={{
           backgroundImage:
             "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
           backgroundSize: "56px 56px",
         }}
       />
-      <div className="pointer-events-none absolute left-1/2 top-0 h-80 w-[680px] -translate-x-1/2 rounded-full bg-foreground/[0.035] blur-3xl" />
+      <div className="pointer-events-none absolute left-1/2 top-0 h-44 w-[520px] -translate-x-1/2 rounded-full bg-foreground/[0.015] blur-3xl" />
 
       <div className="container relative mx-auto px-6 lg:px-8">
-        <div className="border-y border-border/20 py-10">
-          <Link to={homePath} className="mb-8 block w-[230px] text-foreground/90 transition-opacity hover:opacity-75 sm:w-[280px]">
+        <div className="border-b border-border/20 py-6">
+          <Link to={homePath} className="mb-5 block w-[170px] text-foreground/90 transition-opacity hover:opacity-75 sm:w-[210px]">
             <span className="sr-only">Talisson Souza</span>
             <svg viewBox={SIGNATURE_VECTOR_VIEWBOX} className="h-auto w-full overflow-visible">
               <path d={SIGNATURE_VECTOR_PATH} fill="currentColor" fillRule="evenodd" />
@@ -71,10 +71,10 @@ const Footer = () => {
           </Link>
 
           <div>
-            <p className="max-w-2xl font-serif text-3xl leading-[1.04] text-foreground sm:text-4xl">
+            <p className="max-w-2xl font-serif text-2xl leading-[1.08] text-foreground sm:text-3xl">
               {getText(language, "Tecnologia. Sistemas. Decisões.", "Technology. Systems. Decisions.")}
             </p>
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
               {getText(
                 language,
                 "Um site direto para conhecer meu trabalho, minha história e meus critérios profissionais.",
@@ -84,7 +84,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="grid gap-8 border-b border-border/20 py-7 lg:grid-cols-[1fr_auto] lg:items-start">
+        <div className="grid gap-5 border-b border-border/20 py-5 lg:grid-cols-[1fr_auto] lg:items-start">
           <nav className="grid grid-cols-2 gap-x-8 gap-y-3 sm:flex sm:flex-wrap" aria-label={getText(language, "Links principais", "Main links")}>
             {mainLinks.map((item) => (
               <Link key={item.path} to={item.path} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
@@ -109,7 +109,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="grid gap-3 border-b border-border/20 py-5 md:grid-cols-2 md:items-center">
+        <div className="grid gap-3 border-b border-border/20 py-4 md:grid-cols-2 md:items-center">
           <motion.button
             onClick={handlePlayPause}
             whileTap={{ scale: 0.97 }}
@@ -132,7 +132,7 @@ const Footer = () => {
           </a>
         </div>
 
-        <div className="flex flex-col gap-4 py-5 text-[11px] text-muted-foreground/50 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-4 py-4 text-[11px] text-muted-foreground/50 sm:flex-row sm:items-center sm:justify-between">
           <p>© {currentYear} Talisson Souza. {getText(language, "Construído para durar.", "Built to last.")}</p>
           <div className="flex items-center gap-3">
             <FooterWeather />

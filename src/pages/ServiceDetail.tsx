@@ -766,28 +766,28 @@ const SolutionIllustration = ({ visual, theme }: { visual: SolutionVisual; theme
 };
 
 const SolutionShowcaseCard = ({ card, index, theme }: { card: SolutionCard; index: number; theme: SolutionTheme }) => {
-  const styles = themeCardStyles[theme];
-  const entranceX = theme === "automation" ? (index % 2 === 0 ? -18 : 18) : 0;
+  const frame = theme === "mobile" ? "rounded-[1.35rem]" : "rounded-2xl";
 
   return (
   <motion.article
-    initial={{ opacity: 0, y: 28, x: entranceX, scale: 0.985 }}
-    whileInView={{ opacity: 1, y: 0, x: 0, scale: 1 }}
+    initial={{ opacity: 0, y: 18 }}
+    whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-80px" }}
-    transition={{ duration: 0.7, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-    whileHover={{ y: -6 }}
-    className={`group relative isolate flex min-h-[244px] flex-col overflow-hidden ${styles.frame} border border-border/25 bg-card/35 backdrop-blur-sm transition-colors duration-500 hover:border-foreground/20 md:min-h-[260px] ${card.className}`}
+    transition={{ duration: 0.55, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
+    whileHover={{ y: -3 }}
+    className={`group relative flex min-h-[168px] flex-col overflow-hidden ${frame} border border-border/25 bg-background/75 p-5 transition-colors duration-300 hover:border-foreground/20 hover:bg-foreground/[0.025] md:min-h-[176px] ${card.className}`}
   >
-    <div className={`absolute inset-0 ${styles.grid}`} style={{ backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`, backgroundSize: theme === "mobile" ? "42px 42px" : "34px 34px" }} />
-    <div className={`absolute inset-x-0 top-0 h-28 bg-gradient-to-b ${styles.glow} to-transparent opacity-70`} />
-    <div className="absolute -right-16 -top-20 h-48 w-48 rounded-full bg-foreground/[0.04] blur-3xl transition-opacity duration-500 group-hover:opacity-80" />
-    <div className={`relative flex h-36 flex-none ${styles.visual} justify-center overflow-hidden md:h-40`}>
-      <SolutionIllustration visual={card.visual} theme={theme} />
+    <div className="mb-5 flex items-center gap-4">
+      <span className="font-serif text-3xl leading-none text-foreground/70">
+        {String(index + 1).padStart(2, "0")}
+      </span>
+      <span className="h-px flex-1 bg-border/25" />
+      <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-border/25 bg-card/25 text-muted-foreground/65 transition-colors duration-300 group-hover:text-foreground/85">
+        <IconTile visual={card.visual} className="h-4 w-4" />
+      </span>
     </div>
-    <div className="relative mt-auto border-t border-border/10 p-5" style={{ background: "linear-gradient(to top, hsl(var(--card)) 0%, hsl(var(--card) / 0.92) 72%, hsl(var(--card) / 0.72) 100%)" }}>
-      <p className="text-[13px] font-semibold leading-tight text-foreground">{card.title}</p>
-      <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-muted-foreground/75">{card.description}</p>
-    </div>
+    <h3 className="text-sm font-semibold leading-snug text-foreground">{card.title}</h3>
+    <p className="mt-3 text-sm leading-relaxed text-muted-foreground/75">{card.description}</p>
   </motion.article>
   );
 };
@@ -1550,9 +1550,9 @@ const ServiceDetail = () => {
     ],
   };
   const currentSolution = solutionPresentation[serviceId ?? ""] ?? solutionPresentation.consulting;
-  const solutionCards = (solutionContent[serviceId ?? ""] ?? solutionContent.consulting).map((card, index) => ({
+  const solutionCards = (solutionContent[serviceId ?? ""] ?? solutionContent.consulting).map((card) => ({
     ...card,
-    className: currentSolution.layout[index],
+    className: "md:col-span-1 lg:col-span-4",
   }));
   const serviceBlueprints: Record<string, ServiceBlueprint> = {
     "web-development": {
@@ -1758,12 +1758,12 @@ const ServiceDetail = () => {
       
       {/* Hero Section */}
       <ParallaxSection 
-        className="pt-4 pb-6 lg:pt-6 lg:pb-8"
+        className="pt-2 pb-4 lg:pt-3 lg:pb-5"
         speed={0.1}
         backgroundElement={
           <>
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
-            <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background" />
+            <div className="absolute top-1/3 right-1/4 w-[360px] h-[360px] bg-gradient-radial from-foreground/[0.012] to-transparent blur-3xl" />
           </>
         }
       >
@@ -1775,7 +1775,7 @@ const ServiceDetail = () => {
           >
             <Link 
               to="/servicos"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-7 transition-colors duration-300"
+              className="mb-4 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground"
             >
               <ArrowLeft className="w-4 h-4" />
               {language === 'pt' ? 'Voltar aos Serviços' : 'Back to Services'}
@@ -1785,25 +1785,25 @@ const ServiceDetail = () => {
               <motion.span 
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-5 font-medium"
+                className="mb-3 inline-block text-[11px] font-medium uppercase tracking-[0.3em] text-muted-foreground/70"
               >
                 {getText(language, 'Serviço', 'Service')}
               </motion.span>
               
-              <div className="mb-5 flex flex-col items-start gap-5 sm:flex-row sm:gap-6">
+              <div className="flex flex-col items-start gap-4 sm:flex-row sm:gap-5">
                 <motion.div 
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="hidden h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl border border-border/30 bg-card/50 sm:flex"
+                  className="hidden h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-border/25 bg-card/35 sm:flex"
                 >
-                  <IconComponent className="w-8 h-8 text-foreground/70" />
+                  <IconComponent className="h-6 w-6 text-foreground/70" />
                 </motion.div>
                 <div>
-                  <h1 className="font-serif text-3xl lg:text-4xl xl:text-5xl text-foreground mb-3 leading-[1.08]">
+                  <h1 className="mb-2 font-serif text-3xl leading-[1.08] text-foreground lg:text-4xl">
                     {service.title}
                   </h1>
-                  <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+                  <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
                     {service.description}
                   </p>
                 </div>
@@ -1815,34 +1815,34 @@ const ServiceDetail = () => {
 
 
       {/* Solution Showcase */}
-      <section id="solucoes" className="relative scroll-mt-28 overflow-hidden py-10 lg:py-14">
+      <section id="solucoes" className="relative scroll-mt-28 overflow-hidden py-6 lg:py-8">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
-          <div className="absolute left-1/2 top-1/2 h-[420px] w-[720px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground/[0.018] blur-3xl" />
+          <div className="absolute top-0 left-1/2 h-px w-[85%] -translate-x-1/2 bg-gradient-to-r from-transparent via-border/20 to-transparent" />
+          <div className="absolute left-1/2 top-1/2 h-[300px] w-[540px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground/[0.01] blur-3xl" />
         </div>
 
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <div className="mx-auto mb-8 max-w-3xl text-center">
+            <div className="mx-auto mb-6 max-w-3xl text-center">
               <motion.span
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                className="mb-4 inline-block text-[11px] font-medium uppercase tracking-[0.3em] text-muted-foreground/70"
+                className="mb-3 inline-block text-[11px] font-medium uppercase tracking-[0.3em] text-muted-foreground/65"
               >
                 {currentSolution.eyebrow}
               </motion.span>
-              <h2 className="font-serif text-3xl leading-tight text-foreground sm:text-4xl lg:text-5xl">
+              <h2 className="font-serif text-2xl leading-tight text-foreground sm:text-3xl lg:text-4xl">
                 {currentSolution.title}
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+              <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
                 {currentSolution.description}
               </p>
             </div>
           </ScrollReveal>
 
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-12">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-12">
             {solutionCards.map((card, index) => (
               <SolutionShowcaseCard key={card.title} card={card} index={index} theme={currentSolution.theme} />
             ))}
@@ -1851,26 +1851,26 @@ const ServiceDetail = () => {
       </section>
 
       {serviceId === "bot-development" && (
-        <section id="metodo-bot-operacional" className="relative scroll-mt-28 overflow-hidden py-14 lg:py-20">
+        <section id="metodo-bot-operacional" className="relative scroll-mt-28 overflow-hidden py-10 lg:py-14">
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 left-1/2 h-px w-[85%] -translate-x-1/2 bg-gradient-to-r from-transparent via-border/30 to-transparent" />
-            <div className="absolute left-[8vw] top-28 h-72 w-72 rounded-full bg-foreground/[0.018] blur-3xl" />
+            <div className="absolute top-0 left-1/2 h-px w-[85%] -translate-x-1/2 bg-gradient-to-r from-transparent via-border/20 to-transparent" />
+            <div className="absolute left-[8vw] top-28 h-60 w-60 rounded-full bg-foreground/[0.01] blur-3xl" />
           </div>
 
           <div className="container relative mx-auto px-6 lg:px-8">
             <ScrollReveal>
               <div className="mx-auto max-w-3xl text-center">
-                <span className="mb-5 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
                   {getText(language, "Método Bot Operacional", "Operational Bot Method")}
                 </span>
-                <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
+                <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-4xl">
                   {getText(
                     language,
                     "Consultoria antes do código.",
                     "Consulting before code."
                   )}
                 </h2>
-                <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
                   {getText(
                     language,
                     "O bot deixa de ser um conjunto de comandos quando existe diagnóstico, arquitetura, especificação e plano de evolução. A entrega vira parte da operação do servidor, comunidade, loja ou atendimento.",

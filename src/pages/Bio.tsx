@@ -227,16 +227,16 @@ const Bio = () => {
       />
 
       <section className="relative min-h-screen overflow-hidden bg-background">
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background" />
         <div
-          className="absolute inset-0 opacity-[0.025]"
+          className="absolute inset-0 opacity-[0.008]"
           style={{
             backgroundImage:
               "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
             backgroundSize: "56px 56px",
           }}
         />
-        <div className="pointer-events-none absolute left-1/2 top-24 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-foreground/[0.035] blur-3xl" />
+        <div className="pointer-events-none absolute left-1/2 top-24 h-[340px] w-[620px] -translate-x-1/2 rounded-full bg-foreground/[0.015] blur-3xl" />
 
         <div className="container relative z-10 mx-auto flex min-h-screen items-center px-6 pb-20 pt-24 lg:px-8">
           <div className="grid w-full items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14">
@@ -335,10 +335,10 @@ const Bio = () => {
             >
               <div className="absolute -inset-10 rounded-full border border-border/10" />
               <div className="absolute -inset-4 rounded-full border border-border/20" />
-              <div className="absolute -inset-10 rounded-full bg-gradient-to-b from-foreground/[0.08] via-transparent to-transparent opacity-70 blur-3xl" />
+              <div className="absolute -inset-10 rounded-full bg-gradient-to-b from-foreground/[0.04] via-transparent to-transparent opacity-70 blur-3xl" />
               <div className="relative aspect-square overflow-hidden rounded-full border border-border/30 bg-card/35 shadow-[0_34px_110px_hsl(0_0%_0%/0.46)]">
                 <div
-                  className="absolute inset-0 opacity-[0.035]"
+                  className="absolute inset-0 opacity-[0.01]"
                   style={{
                     backgroundImage:
                       "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
@@ -393,7 +393,7 @@ const Bio = () => {
                   className="group relative min-h-[260px] overflow-hidden rounded-2xl border border-border/35 bg-card/55 p-6 transition-colors duration-300 hover:border-foreground/20"
                 >
                   <div
-                    className="absolute inset-0 opacity-[0.02]"
+                    className="absolute inset-0 opacity-0"
                     style={{
                       backgroundImage:
                         "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
@@ -437,7 +437,7 @@ const Bio = () => {
 
       <section className="relative overflow-hidden bg-background py-16 lg:py-24">
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.018]"
+          className="pointer-events-none absolute inset-0 opacity-[0.006]"
           style={{
             backgroundImage:
               "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
