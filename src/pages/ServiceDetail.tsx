@@ -1689,154 +1689,173 @@ const ServiceDetail = () => {
     },
   };
   const blueprint = serviceBlueprints[serviceId ?? ""] ?? serviceBlueprints.consulting;
-  const botSpecialtyModules = [
-    {
-      icon: ShieldAlert,
-      title: getText(language, "Ideias que viram fluxo", "Ideas turned into flows"),
-      description: getText(
-        language,
-        "Eu não parto de um pacote pronto de comandos. Eu entendo a intenção por trás do bot e transformo isso em jornadas, gatilhos, respostas, regras e experiências que fazem sentido para o público.",
-        "I do not start from a ready-made command package. I understand the intent behind the bot and turn it into journeys, triggers, replies, rules and experiences that make sense for the audience."
-      ),
-      points: language === "pt"
-        ? ["Fluxos criados para o objetivo", "Gatilhos e respostas próprias", "Experiência alinhada ao nicho"]
-        : ["Flows created for the goal", "Custom triggers and replies", "Experience aligned with the niche"],
-    },
-    {
-      icon: ClipboardCheck,
-      title: getText(language, "Criatividade por plataforma", "Creativity by platform"),
-      description: getText(
-        language,
-        "Discord, WhatsApp e Telegram não funcionam do mesmo jeito. Eu adapto a lógica, o tom, os comandos, os botões, as mensagens e as permissões para o ambiente onde a pessoa realmente vai usar.",
-        "Discord, WhatsApp and Telegram do not work the same way. I adapt logic, tone, commands, buttons, messages and permissions to the environment where people will actually use it."
-      ),
-      points: language === "pt"
-        ? ["Discord, WhatsApp e Telegram", "Regras por canal e contexto", "Interação pensada para cada uso"]
-        : ["Discord, WhatsApp and Telegram", "Rules by channel and context", "Interaction designed for each use"],
-    },
-    {
-      icon: Trophy,
-      title: getText(language, "Funcionalidades fora do comum", "Uncommon functionality"),
-      description: getText(
-        language,
-        "Os exemplos podem passar por moderação, autoatendimento, organização interna, vendas, engajamento, eventos, suporte ou comunidade. O diferencial é desenhar algo próprio, não repetir o que todo bot genérico já faz.",
-        "Examples can include moderation, self-service, internal organization, sales, engagement, events, support or community. The difference is designing something specific, not repeating what every generic bot already does."
-      ),
-      points: language === "pt"
-        ? ["Comunidades, empresas e lojas", "Atendimento, vendas ou engajamento", "Módulos criados sob medida"]
-        : ["Communities, companies and stores", "Support, sales or engagement", "Custom-built modules"],
-    },
-  ];
   const botProcessSteps = language === "pt"
-    ? ["Diagnóstico Operacional", "Arquitetura do Bot", "Especificação Funcional", "Desenvolvimento", "Validação", "Implantação", "Treinamento", "Acompanhamento"]
-    : ["Operational Diagnosis", "Bot Architecture", "Functional Specification", "Development", "Validation", "Deployment", "Training", "Follow-up"];
+    ? [
+        { title: "Diagnóstico Operacional", text: "Leitura da estrutura atual, rotina, gargalos, riscos e oportunidades reais de automação." },
+        { title: "Arquitetura do Bot", text: "Mapa dos módulos, fluxos, permissões, integrações, dados e pontos de evolução." },
+        { title: "Especificação Funcional", text: "Definição clara do que será desenvolvido, como funciona e quais regras orientam cada ação." },
+        { title: "Desenvolvimento", text: "Implementação dos fluxos, comandos, integrações e automações com base escalável." },
+        { title: "Validação", text: "Teste dos cenários principais, permissões, logs, respostas e comportamentos esperados." },
+        { title: "Implantação", text: "Publicação assistida, configuração da plataforma e preparação para uso real." },
+        { title: "Treinamento", text: "Orientação da equipe sobre operação, comandos, configurações e boas práticas." },
+        { title: "Acompanhamento", text: "Observação pós-entrega para ajustar pontos finos e planejar próximas versões." },
+      ]
+    : [
+        { title: "Operational Diagnosis", text: "Reading the current structure, routine, bottlenecks, risks and real automation opportunities." },
+        { title: "Bot Architecture", text: "Mapping modules, flows, permissions, integrations, data and evolution points." },
+        { title: "Functional Specification", text: "Clear definition of what will be built, how it works and which rules guide each action." },
+        { title: "Development", text: "Implementation of flows, commands, integrations and automations on a scalable base." },
+        { title: "Validation", text: "Testing key scenarios, permissions, logs, replies and expected behaviors." },
+        { title: "Deployment", text: "Guided release, platform setup and preparation for real use." },
+        { title: "Training", text: "Team guidance on operations, commands, settings and best practices." },
+        { title: "Follow-up", text: "Post-delivery observation to adjust details and plan next versions." },
+      ];
   const botUniquenessFactors = language === "pt"
-    ? ["Objetivo da comunidade", "Comportamento dos membros", "Rotina da equipe", "Regras internas", "Identidade visual", "Forma de monetização", "Crescimento esperado", "Integrações existentes"]
-    : ["Community goal", "Member behavior", "Team routine", "Internal rules", "Visual identity", "Monetization model", "Expected growth", "Existing integrations"];
+    ? [
+        { title: "Objetivo da comunidade", text: "O bot nasce do que a comunidade, empresa ou operação precisa provocar." },
+        { title: "Comportamento dos membros", text: "As interações consideram como as pessoas participam, pedem ajuda e retornam." },
+        { title: "Rotina da equipe", text: "A automação respeita quem atende, modera, vende, organiza ou acompanha." },
+        { title: "Regras internas", text: "Permissões, limites, cargos e critérios entram no desenho desde o início." },
+        { title: "Identidade visual", text: "Mensagens, tom, nomes e experiências mantêm a personalidade do projeto." },
+        { title: "Forma de monetização", text: "Quando faz sentido, o bot já considera planos, acesso, benefícios e retenção." },
+        { title: "Crescimento esperado", text: "A estrutura evita retrabalho quando novos módulos, usuários e fluxos surgirem." },
+        { title: "Integrações existentes", text: "APIs, painéis, webhooks, dados e plataformas entram como parte da operação." },
+      ]
+    : [
+        { title: "Community goal", text: "The bot starts from what the community, company or operation needs to trigger." },
+        { title: "Member behavior", text: "Interactions consider how people participate, ask for help and come back." },
+        { title: "Team routine", text: "Automation respects who supports, moderates, sells, organizes or follows up." },
+        { title: "Internal rules", text: "Permissions, limits, roles and criteria are designed from the beginning." },
+        { title: "Visual identity", text: "Messages, tone, names and experiences keep the project's personality." },
+        { title: "Monetization model", text: "When useful, the bot already considers plans, access, benefits and retention." },
+        { title: "Expected growth", text: "The structure avoids rework when new modules, users and flows appear." },
+        { title: "Existing integrations", text: "APIs, dashboards, webhooks, data and platforms become part of operations." },
+      ];
   const botOperationalFlow = language === "pt"
-    ? ["Usuário", "Triagem", "Bot", "Categoria correta", "Equipe responsável", "Logs", "Encerramento", "Pesquisa de satisfação"]
-    : ["User", "Triage", "Bot", "Correct category", "Responsible team", "Logs", "Closure", "Satisfaction survey"];
+    ? [
+        { title: "Usuário", text: "A pessoa inicia o fluxo pelo canal certo, comando, botão, mensagem ou gatilho." },
+        { title: "Triagem", text: "O bot identifica intenção, contexto e informações necessárias antes de encaminhar." },
+        { title: "Bot", text: "A automação aplica regras, responde, registra dados e evita etapas manuais repetitivas." },
+        { title: "Categoria correta", text: "Cada demanda segue para o setor, canal, fila ou módulo adequado." },
+        { title: "Equipe responsável", text: "Responsáveis recebem contexto suficiente para agir com clareza." },
+        { title: "Logs", text: "Ações relevantes ficam registradas para histórico, auditoria e acompanhamento." },
+        { title: "Encerramento", text: "O fluxo fecha com status, registro final e regra de continuidade quando necessário." },
+        { title: "Pesquisa de satisfação", text: "Quando faz sentido, o retorno do usuário vira dado para melhorar a operação." },
+      ]
+    : [
+        { title: "User", text: "The person starts the flow through the right channel, command, button, message or trigger." },
+        { title: "Triage", text: "The bot identifies intent, context and required information before routing." },
+        { title: "Bot", text: "Automation applies rules, replies, records data and avoids repetitive manual steps." },
+        { title: "Correct category", text: "Each request moves to the right department, channel, queue or module." },
+        { title: "Responsible team", text: "Owners receive enough context to act clearly." },
+        { title: "Logs", text: "Relevant actions are recorded for history, auditability and follow-up." },
+        { title: "Closure", text: "The flow closes with status, final record and continuity rule when needed." },
+        { title: "Satisfaction survey", text: "When useful, user feedback becomes data to improve the operation." },
+      ];
   const botMethodHighlights = [
     {
-      icon: Search,
       title: getText(language, "Diagnóstico do Projeto", "Project Diagnosis"),
       description: getText(
         language,
         "Antes de escrever qualquer linha de código, realizo uma descoberta para entender como a comunidade, empresa ou operação funciona de verdade.",
         "Before writing any line of code, I run a discovery step to understand how the community, company or operation actually works."
       ),
-      items: language === "pt"
-        ? ["Estrutura atual", "Rotina da equipe", "Gargalos", "Oportunidades de automação", "Pontos de segurança", "Experiência dos membros"]
-        : ["Current structure", "Team routine", "Bottlenecks", "Automation opportunities", "Security points", "Member experience"],
-      footer: getText(
+      text: getText(
         language,
-        "No final dessa etapa o cliente já sabe exatamente o que será desenvolvido.",
-        "By the end of this step, the client already knows exactly what will be built."
+        "Inclui estrutura atual, rotina da equipe, gargalos, oportunidades de automação, pontos de segurança e experiência dos membros. No final, o cliente já sabe exatamente o que será desenvolvido.",
+        "Includes current structure, team routine, bottlenecks, automation opportunities, security points and member experience. By the end, the client already knows exactly what will be built."
       ),
     },
     {
-      icon: Map,
       title: getText(language, "Arquitetura do Bot", "Bot Architecture"),
       description: getText(
         language,
         "Antes do desenvolvimento, o bot ganha uma arquitetura completa para evitar improviso técnico e facilitar evolução.",
         "Before development, the bot gets a complete architecture to avoid technical improvisation and make evolution easier."
       ),
-      items: language === "pt"
-        ? ["Mapa mental", "Módulos", "Fluxos", "Permissões", "Integrações", "Banco de dados", "Comandos", "Automações", "Evolução futura"]
-        : ["Mind map", "Modules", "Flows", "Permissions", "Integrations", "Database", "Commands", "Automations", "Future evolution"],
+      text: getText(
+        language,
+        "Documento mapa mental, módulos, fluxos, permissões, integrações, banco de dados, comandos, automações e evolução futura.",
+        "I document mind map, modules, flows, permissions, integrations, database, commands, automations and future evolution."
+      ),
     },
     {
-      icon: LineChart,
       title: getText(language, "Oportunidades Encontradas", "Found Opportunities"),
       description: getText(
         language,
         "Durante a análise eu também proponho funcionalidades que o cliente talvez ainda não tenha considerado.",
         "During analysis, I also propose features the client may not have considered yet."
       ),
-      items: language === "pt"
-        ? ["Automações", "Economia", "Monetização", "Fidelização", "IA", "Integração com APIs", "Dashboards", "Analytics"]
-        : ["Automations", "Economy", "Monetization", "Loyalty systems", "AI", "API integrations", "Dashboards", "Analytics"],
+      text: getText(
+        language,
+        "Podem surgir ideias de automação, economia, monetização, fidelização, IA, APIs, dashboards e analytics.",
+        "Ideas may emerge around automation, economy, monetization, loyalty, AI, APIs, dashboards and analytics."
+      ),
     },
     {
-      icon: Route,
       title: getText(language, "Fluxos Operacionais", "Operational Flows"),
       description: getText(
         language,
         "Tickets, atendimento, suporte, vendas ou moderação são desenhados como processos, não como comandos soltos.",
         "Tickets, service, support, sales or moderation are designed as processes, not loose commands."
       ),
-      items: language === "pt"
-        ? ["Entrada do usuário", "Triagem", "Categoria correta", "Responsável", "Logs", "Encerramento", "Feedback"]
-        : ["User entry", "Triage", "Correct category", "Assignee", "Logs", "Closure", "Feedback"],
+      text: getText(
+        language,
+        "Cada fluxo define entrada, triagem, categoria correta, responsável, logs, encerramento e feedback.",
+        "Each flow defines entry, triage, correct category, assignee, logs, closure and feedback."
+      ),
     },
     {
-      icon: DatabaseBackup,
       title: getText(language, "Banco de Dados", "Database"),
       description: getText(
         language,
         "Estruturo o banco pensando em crescimento, histórico, auditoria e futuras expansões do bot.",
         "I structure the database around growth, history, auditability and future bot expansions."
       ),
-      items: language === "pt"
-        ? ["Histórico", "Auditoria", "Relacionamentos", "Permissões", "Consultas", "Expansões futuras"]
-        : ["History", "Auditability", "Relationships", "Permissions", "Queries", "Future expansions"],
+      text: getText(
+        language,
+        "Histórico, auditoria, relacionamentos, permissões, consultas e expansão futura entram na modelagem.",
+        "History, auditability, relationships, permissions, queries and future expansion are part of the modeling."
+      ),
     },
     {
-      icon: GitBranch,
       title: getText(language, "Escalabilidade", "Scalability"),
       description: getText(
         language,
         "O projeto já nasce preparado para receber novos módulos sem precisar reescrever todo o sistema.",
         "The project is born ready to receive new modules without rewriting the entire system."
       ),
-      items: language === "pt"
-        ? ["Módulos independentes", "Regras reutilizáveis", "Integrações extensíveis", "Base preparada para versões futuras"]
-        : ["Independent modules", "Reusable rules", "Extensible integrations", "Base prepared for future versions"],
+      text: getText(
+        language,
+        "Módulos independentes, regras reutilizáveis e integrações extensíveis deixam a base pronta para versões futuras.",
+        "Independent modules, reusable rules and extensible integrations make the base ready for future versions."
+      ),
     },
     {
-      icon: FileCheck,
       title: getText(language, "Documentação Completa", "Complete Documentation"),
       description: getText(
         language,
         "A entrega não fica presa na memória de quem desenvolveu. Tudo que sustenta a operação fica documentado.",
         "The delivery does not depend on the developer's memory. Everything supporting the operation is documented."
       ),
-      items: language === "pt"
-        ? ["Documentação técnica", "Arquitetura", "Fluxos", "Manual da equipe", "Comandos", "Configurações", "Integrações"]
-        : ["Technical documentation", "Architecture", "Flows", "Team manual", "Commands", "Settings", "Integrations"],
+      text: getText(
+        language,
+        "A entrega inclui documentação técnica, arquitetura, fluxos, manual da equipe, comandos, configurações e integrações.",
+        "The delivery includes technical documentation, architecture, flows, team manual, commands, settings and integrations."
+      ),
     },
     {
-      icon: Network,
       title: getText(language, "Roadmap de Evolução", "Evolution Roadmap"),
       description: getText(
         language,
         "O desenvolvimento é pensado para evoluir em versões futuras sem perder organização.",
         "Development is designed to evolve in future versions without losing organization."
       ),
-      items: language === "pt"
-        ? ["Próximos módulos", "Melhorias de experiência", "Novas integrações", "Métricas para decidir evolução"]
-        : ["Next modules", "Experience improvements", "New integrations", "Metrics to guide evolution"],
+      text: getText(
+        language,
+        "Próximos módulos, melhorias de experiência, novas integrações e métricas ajudam a decidir a evolução.",
+        "Next modules, experience improvements, new integrations and metrics help guide evolution."
+      ),
     },
   ];
 
@@ -1944,73 +1963,6 @@ const ServiceDetail = () => {
       </section>
 
       {serviceId === "bot-development" && (
-        <section id="bots-sob-medida" className="relative scroll-mt-28 py-14 lg:py-20">
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 left-1/2 h-px w-[85%] -translate-x-1/2 bg-gradient-to-r from-transparent via-border/30 to-transparent" />
-          </div>
-
-          <div className="container mx-auto px-6 lg:px-8">
-            <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
-              <ScrollReveal>
-                <div className="lg:sticky lg:top-28">
-                  <span className="mb-5 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                    {getText(language, "Fora do genérico", "Beyond generic")}
-                  </span>
-                  <h2 className="max-w-xl font-serif text-3xl leading-tight text-foreground lg:text-5xl">
-                    {getText(
-                      language,
-                      "Cada projeto tem uma lógica. O bot precisa nascer dela.",
-                      "Every project has its own logic. The bot needs to come from it."
-                    )}
-                  </h2>
-                  <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
-                    {getText(
-                      language,
-                      "O projeto começa entendendo o que você quer provocar: interação, atendimento, organização, venda, suporte, comunidade ou qualquer rotina que precise ganhar uma experiência própria em Discord, WhatsApp ou Telegram.",
-                      "The project starts by understanding what you want to trigger: interaction, support, organization, sales, service, community or any routine that needs its own experience in Discord, WhatsApp or Telegram."
-                    )}
-                  </p>
-                </div>
-              </ScrollReveal>
-
-              <div className="grid gap-px overflow-hidden border border-border/20 bg-border/20">
-                {botSpecialtyModules.map((module, index) => {
-                  const ModuleIcon = module.icon;
-                  return (
-                    <ScrollReveal key={module.title} delay={index * 0.06}>
-                      <motion.div
-                        whileHover={{ x: 4 }}
-                        className="grid gap-6 bg-background/95 p-6 lg:grid-cols-[72px_1fr]"
-                      >
-                        <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-border/25 bg-background/40">
-                          <ModuleIcon className="h-6 w-6 text-foreground/55" />
-                        </div>
-                        <div>
-                          <h3 className="font-serif text-2xl leading-tight text-foreground">
-                            {module.title}
-                          </h3>
-                          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                            {module.description}
-                          </p>
-                          <div className="mt-6 grid gap-3 sm:grid-cols-3">
-                            {module.points.map((point) => (
-                              <div key={point} className="border-l border-foreground/20 pl-4">
-                                <span className="text-xs font-medium leading-relaxed text-foreground/85">{point}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </motion.div>
-                    </ScrollReveal>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {serviceId === "bot-development" && (
         <section id="metodo-bot-operacional" className="relative scroll-mt-28 overflow-hidden py-14 lg:py-20">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-0 left-1/2 h-px w-[85%] -translate-x-1/2 bg-gradient-to-r from-transparent via-border/30 to-transparent" />
@@ -2018,170 +1970,206 @@ const ServiceDetail = () => {
           </div>
 
           <div className="container relative mx-auto px-6 lg:px-8">
-            <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
-              <ScrollReveal>
-                <div className="lg:sticky lg:top-28">
-                  <span className="mb-5 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                    {getText(language, "Método Bot Operacional", "Operational Bot Method")}
-                  </span>
-                  <h2 className="max-w-xl font-serif text-3xl leading-tight text-foreground lg:text-5xl">
-                    {getText(
-                      language,
-                      "Consultoria antes do código.",
-                      "Consulting before code."
-                    )}
-                  </h2>
-                  <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
-                    {getText(
-                      language,
-                      "O bot deixa de ser um conjunto de comandos quando existe diagnóstico, arquitetura, especificação e plano de evolução. A entrega vira parte da operação do servidor, comunidade, loja ou atendimento.",
-                      "The bot stops being a set of commands when there is diagnosis, architecture, specification and an evolution plan. The delivery becomes part of the server, community, store or support operation."
-                    )}
-                  </p>
+            <ScrollReveal>
+              <div className="mx-auto max-w-3xl text-center">
+                <span className="mb-5 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                  {getText(language, "Método Bot Operacional", "Operational Bot Method")}
+                </span>
+                <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
+                  {getText(
+                    language,
+                    "Consultoria antes do código.",
+                    "Consulting before code."
+                  )}
+                </h2>
+                <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  {getText(
+                    language,
+                    "O bot deixa de ser um conjunto de comandos quando existe diagnóstico, arquitetura, especificação e plano de evolução. A entrega vira parte da operação do servidor, comunidade, loja ou atendimento.",
+                    "The bot stops being a set of commands when there is diagnosis, architecture, specification and an evolution plan. The delivery becomes part of the server, community, store or support operation."
+                  )}
+                </p>
+              </div>
+            </ScrollReveal>
 
-                  <div className="mt-8 border-y border-border/20 py-6">
-                    <h3 className="font-serif text-2xl leading-tight text-foreground">
-                      {getText(language, "O que torna cada bot único", "What makes each bot unique")}
-                    </h3>
-                    <div className="mt-5 grid gap-px overflow-hidden border border-border/20 bg-border/20 sm:grid-cols-2">
-                      {botUniquenessFactors.map((factor, index) => (
-                        <motion.div
-                          key={factor}
-                          initial={{ opacity: 0, y: 10 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.45, delay: index * 0.035 }}
-                          className="bg-background/95 p-4"
-                        >
-                          <span className="mb-3 block font-serif text-2xl text-foreground/14">
+            <div className="mt-12 space-y-12">
+              <ScrollReveal>
+                <div className="border-y border-border/20 py-8">
+                  <div className="mb-7 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                      <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                        {getText(language, "Projeto próprio", "Custom project")}
+                      </span>
+                      <h3 className="font-serif text-3xl leading-tight text-foreground">
+                        {getText(language, "O que torna cada bot único", "What makes each bot unique")}
+                      </h3>
+                    </div>
+                    <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
+                      {getText(
+                        language,
+                        "Cada decisão parte da operação real, do comportamento esperado e da forma como o público usa a plataforma.",
+                        "Every decision starts from the real operation, expected behavior and how the audience uses the platform."
+                      )}
+                    </p>
+                  </div>
+
+                  <div className="overflow-hidden border border-border/20 bg-border/15">
+                    <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-4">
+                    {botUniquenessFactors.map((factor, index) => (
+                      <motion.div
+                        key={factor.title}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.45, delay: index * 0.035 }}
+                        className="group relative flex h-full min-h-[178px] w-full flex-col bg-background/94 p-5 transition-colors duration-300 hover:bg-foreground/[0.035] sm:p-6"
+                      >
+                        <div className="flex items-center gap-4">
+                          <span className="font-serif text-3xl leading-none text-foreground/22 transition-colors duration-300 group-hover:text-foreground/45">
                             {String(index + 1).padStart(2, "0")}
                           </span>
-                          <span className="text-xs font-medium leading-relaxed text-foreground/85">{factor}</span>
-                        </motion.div>
-                      ))}
+                          <span className="h-px flex-1 bg-border/25 transition-colors duration-300 group-hover:bg-foreground/25" />
+                        </div>
+                        <div className="mt-7">
+                          <h4 className="text-[15px] font-semibold leading-snug text-foreground">
+                            {factor.title}
+                          </h4>
+                          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                            {factor.text}
+                          </p>
+                        </div>
+                      </motion.div>
+                    ))}
                     </div>
                   </div>
                 </div>
               </ScrollReveal>
 
-              <div className="space-y-10">
-                <ScrollReveal>
-                  <div className="border-y border-border/20 py-8">
-                    <div className="mb-7 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-                      <div>
-                        <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                          {getText(language, "Processo", "Process")}
-                        </span>
-                        <h3 className="font-serif text-3xl leading-tight text-foreground">
-                          {getText(language, "Da descoberta ao acompanhamento", "From discovery to follow-up")}
-                        </h3>
-                      </div>
-                      <span className="text-xs uppercase tracking-[0.24em] text-muted-foreground/55">
-                        {getText(language, "08 etapas", "08 steps")}
+              <ScrollReveal>
+                <div className="border-y border-border/20 py-8">
+                  <div className="mb-7 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                      <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                        {getText(language, "Processo", "Process")}
                       </span>
+                      <h3 className="font-serif text-3xl leading-tight text-foreground">
+                        {getText(language, "Da descoberta ao acompanhamento", "From discovery to follow-up")}
+                      </h3>
                     </div>
+                    <span className="text-xs uppercase tracking-[0.24em] text-muted-foreground/55">
+                      {getText(language, "08 etapas", "08 steps")}
+                    </span>
+                  </div>
 
-                    <div className="grid gap-px overflow-hidden border border-border/20 bg-border/20 sm:grid-cols-2 lg:grid-cols-4">
-                      {botProcessSteps.map((step, index) => (
-                        <motion.div
-                          key={step}
-                          whileHover={{ y: -3 }}
-                          className="group bg-background/95 p-5"
-                        >
-                          <span className="font-serif text-3xl leading-none text-foreground/16 transition-colors duration-300 group-hover:text-foreground/30">
+                  <div className="overflow-hidden border border-border/20 bg-border/15">
+                    <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-4">
+                    {botProcessSteps.map((step, index) => (
+                      <motion.div
+                        key={step.title}
+                        whileHover={{ y: -3 }}
+                        className="group relative flex h-full min-h-[178px] w-full flex-col bg-background/94 p-5 transition-colors duration-300 hover:bg-foreground/[0.035] sm:p-6"
+                      >
+                        <div className="flex items-center gap-4">
+                          <span className="font-serif text-3xl leading-none text-foreground/22 transition-colors duration-300 group-hover:text-foreground/45">
                             {String(index + 1).padStart(2, "0")}
                           </span>
-                          <span className="mt-5 block text-sm font-medium leading-tight text-foreground">{step}</span>
-                        </motion.div>
-                      ))}
+                          <span className="h-px flex-1 bg-border/25 transition-colors duration-300 group-hover:bg-foreground/25" />
+                        </div>
+                        <div className="mt-7">
+                          <h4 className="text-[15px] font-semibold leading-snug text-foreground">
+                            {step.title}
+                          </h4>
+                          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                            {step.text}
+                          </p>
+                        </div>
+                      </motion.div>
+                    ))}
                     </div>
                   </div>
-                </ScrollReveal>
+                </div>
+              </ScrollReveal>
 
-                <div className="grid gap-px overflow-hidden border border-border/20 bg-border/20 lg:grid-cols-2">
-                  {botMethodHighlights.map((highlight, index) => {
-                    const HighlightIcon = highlight.icon;
-                    return (
-                      <ScrollReveal key={highlight.title} delay={index * 0.035}>
-                        <motion.div
-                          whileHover={{ x: 3 }}
-                          className="flex h-full flex-col bg-background/95 p-6"
-                        >
-                          <div className="mb-5 flex items-center justify-between gap-4">
-                            <div className="flex h-12 w-12 items-center justify-center border border-border/25 bg-background/40">
-                              <HighlightIcon className="h-5 w-5 text-foreground/55" />
-                            </div>
-                            <span className="font-serif text-3xl leading-none text-foreground/12">
-                              {String(index + 1).padStart(2, "0")}
-                            </span>
-                          </div>
-                          <h3 className="font-serif text-2xl leading-tight text-foreground">
+              <div className="overflow-hidden border border-border/20 bg-border/15">
+                <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-4">
+                  {botMethodHighlights.map((highlight, index) => (
+                    <ScrollReveal key={highlight.title} delay={index * 0.035}>
+                      <motion.div
+                        whileHover={{ y: -3 }}
+                        className="group relative flex h-full min-h-[220px] w-full flex-col bg-background/94 p-5 transition-colors duration-300 hover:bg-foreground/[0.035] sm:p-6"
+                      >
+                        <div className="flex items-center gap-4">
+                          <span className="font-serif text-3xl leading-none text-foreground/22 transition-colors duration-300 group-hover:text-foreground/45">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
+                          <span className="h-px flex-1 bg-border/25 transition-colors duration-300 group-hover:bg-foreground/25" />
+                        </div>
+                        <div className="mt-7">
+                          <h3 className="text-[15px] font-semibold leading-snug text-foreground">
                             {highlight.title}
                           </h3>
                           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                             {highlight.description}
                           </p>
-                          <div className="mt-5 flex flex-wrap gap-2">
-                            {highlight.items.map((item) => (
-                              <span
-                                key={item}
-                                className="border border-border/25 bg-background/35 px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground/65"
-                              >
-                                {item}
-                              </span>
-                            ))}
-                          </div>
-                          {"footer" in highlight && highlight.footer && (
-                            <p className="mt-5 border-l border-foreground/20 pl-4 text-xs font-medium leading-relaxed text-foreground/80">
-                              {highlight.footer}
-                            </p>
-                          )}
-                        </motion.div>
-                      </ScrollReveal>
-                    );
-                  })}
+                          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                            {highlight.text}
+                          </p>
+                        </div>
+                      </motion.div>
+                    </ScrollReveal>
+                  ))}
                 </div>
+              </div>
 
-                <ScrollReveal>
-                  <div className="border-y border-border/20 py-8">
-                    <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-                      <div>
-                        <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                          {getText(language, "Exemplo de fluxo", "Flow example")}
-                        </span>
-                        <h3 className="font-serif text-3xl leading-tight text-foreground">
-                          {getText(language, "Processo visível do começo ao fim", "Visible process from start to finish")}
-                        </h3>
-                        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                          {getText(
-                            language,
-                            "Quando o bot organiza uma operação, cada etapa precisa ter regra, responsável, registro e encerramento claro.",
-                            "When the bot organizes an operation, each step needs rules, ownership, records and clear closure."
-                          )}
-                        </p>
-                      </div>
+              <ScrollReveal>
+                <div className="border-y border-border/20 py-8">
+                  <div className="mb-7 max-w-2xl">
+                    <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                      {getText(language, "Exemplo de fluxo", "Flow example")}
+                    </span>
+                    <h3 className="font-serif text-3xl leading-tight text-foreground">
+                      {getText(language, "Processo visível do começo ao fim", "Visible process from start to finish")}
+                    </h3>
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                      {getText(
+                        language,
+                        "Quando o bot organiza uma operação, cada etapa precisa ter regra, responsável, registro e encerramento claro.",
+                        "When the bot organizes an operation, each step needs rules, ownership, records and clear closure."
+                      )}
+                    </p>
+                  </div>
 
-                      <div className="grid gap-px overflow-hidden border border-border/20 bg-border/20 sm:grid-cols-2">
-                        {botOperationalFlow.map((step, index) => (
-                          <motion.div
-                            key={step}
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.45, delay: index * 0.035 }}
-                            className="grid grid-cols-[48px_1fr] items-center gap-4 bg-background/95 p-4"
-                          >
-                            <span className="flex h-10 w-10 items-center justify-center border border-border/25 font-serif text-xl text-foreground/35">
-                              {String(index + 1).padStart(2, "0")}
-                            </span>
-                            <span className="text-sm font-medium leading-tight text-foreground">{step}</span>
-                          </motion.div>
-                        ))}
-                      </div>
+                  <div className="overflow-hidden border border-border/20 bg-border/15">
+                    <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-4">
+                    {botOperationalFlow.map((step, index) => (
+                      <motion.div
+                        key={step.title}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.45, delay: index * 0.035 }}
+                        className="group relative flex h-full min-h-[178px] w-full flex-col bg-background/94 p-5 transition-colors duration-300 hover:bg-foreground/[0.035] sm:p-6"
+                      >
+                        <div className="flex items-center gap-4">
+                          <span className="font-serif text-3xl leading-none text-foreground/22 transition-colors duration-300 group-hover:text-foreground/45">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
+                          <span className="h-px flex-1 bg-border/25 transition-colors duration-300 group-hover:bg-foreground/25" />
+                        </div>
+                        <div className="mt-7">
+                          <h4 className="text-[15px] font-semibold leading-snug text-foreground">
+                            {step.title}
+                          </h4>
+                          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                            {step.text}
+                          </p>
+                        </div>
+                      </motion.div>
+                    ))}
                     </div>
                   </div>
-                </ScrollReveal>
-              </div>
+                </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>
