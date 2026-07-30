@@ -2231,6 +2231,18 @@ const ServiceDetail = () => {
         </div>
       </section>
 
+      {serviceId === "cloud-solutions" && (
+        <section id="radar-cloud" className="relative scroll-mt-28 overflow-hidden py-10 lg:py-14">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-0 left-1/2 h-px w-[85%] -translate-x-1/2 bg-gradient-to-r from-transparent via-border/20 to-transparent" />
+            <div className="absolute right-[10vw] top-16 h-64 w-64 rounded-full bg-foreground/[0.018] blur-3xl" />
+          </div>
+          <div className="container relative mx-auto px-6 lg:px-8">
+            <CloudPerformanceRadar language={language} />
+          </div>
+        </section>
+      )}
+
       {serviceId === "bot-development" && (
         <section id="metodo-bot-operacional" className="relative scroll-mt-28 overflow-hidden py-10 lg:py-14">
           <div className="absolute inset-0 pointer-events-none">
@@ -2457,8 +2469,6 @@ const ServiceDetail = () => {
                   </ScrollReveal>
                 ))}
               </div>
-
-              {serviceId === "cloud-solutions" && <CloudPerformanceRadar language={language} />}
 
               <div className="divide-y divide-border/20 border-y border-border/20">
                 {blueprint.stages.map((stage, index) => (
