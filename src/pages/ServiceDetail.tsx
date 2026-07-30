@@ -792,6 +792,53 @@ const SolutionShowcaseCard = ({ card, index, theme }: { card: SolutionCard; inde
   );
 };
 
+const cloudRadarMetrics = [
+  { metric: "Speed", value: 86 },
+  { metric: "Quality", value: 90 },
+  { metric: "Reliability", value: 94 },
+  { metric: "Scalability", value: 88 },
+  { metric: "Security", value: 92 },
+  { metric: "UX", value: 82 },
+];
+
+const radarCenter = 120;
+const radarRadius = 78;
+const radarLabelRadius = 103;
+
+const getRadarPoint = (index: number, radius: number) => {
+  const angle = -Math.PI / 2 + (index * 2 * Math.PI) / cloudRadarMetrics.length;
+
+  return {
+    x: radarCenter + Math.cos(angle) * radius,
+    y: radarCenter + Math.sin(angle) * radius,
+  };
+};
+
+const radarGridLevels = [0.25, 0.5, 0.75, 1];
+const radarGridPolygons = radarGridLevels.map((level) =>
+  cloudRadarMetrics
+    .map((_, index) => {
+      const point = getRadarPoint(index, radarRadius * level);
+      return `${point.x},${point.y}`;
+    })
+    .join(" ")
+);
+const radarDataPoints = cloudRadarMetrics.map((item, index) =>
+  getRadarPoint(index, radarRadius * (item.value / 100))
+);
+const radarDataPolygon = radarDataPoints.map((point) => `${point.x},${point.y}`).join(" ");
+
+const getRadarTextAnchor = (x: number) => {
+  if (Math.abs(x - radarCenter) < 6) return "middle";
+  return x > radarCenter ? "start" : "end";
+};
+
+const getRadarLabelDy = (y: number) => {
+  if (y < radarCenter - 72) return "-0.35em";
+  if (y > radarCenter + 72) return "0.85em";
+  return "0.35em";
+};
+
 const ServiceHeroArtifact = ({ cards, label, theme }: { cards: SolutionCard[]; label: string; theme: SolutionTheme }) => {
   const styles = themeCardStyles[theme];
   const primary = cards[0];
@@ -826,6 +873,141 @@ const ServiceHeroArtifact = ({ cards, label, theme }: { cards: SolutionCard[]; l
     </motion.div>
   );
 };
+
+const CloudPerformanceRadar = ({ language }: { language: string }) => (
+  <section id="performance-radar" className="relative scroll-mt-28 py-8 lg:py-10">
+    <div className="container mx-auto px-6 lg:px-8">
+      <ScrollReveal>
+        <div className="mx-auto grid max-w-6xl gap-6 rounded-2xl border border-[#1e1e1e] bg-[#0a0a0a] p-5 sm:p-6 lg:grid-cols-[0.9fr_1.1fr] lg:p-8">
+          <div className="flex flex-col justify-center">
+            <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+              {getText(language, "Radar técnico", "Technical radar")}
+            </span>
+            <h2 className="max-w-xl font-serif text-3xl leading-tight text-foreground lg:text-4xl">
+              {getText(language, "Performance vista como sistema.", "Performance viewed as a system.")}
+            </h2>
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
+              {getText(
+                language,
+                "Infraestrutura boa equilibra velocidade, segurança, escala, confiabilidade e experiência. O radar ajuda a enxergar onde a solução precisa ser forte desde o primeiro deploy.",
+                "Good infrastructure balances speed, security, scale, reliability and experience. The radar helps show where the solution needs to be strong from the first deploy."
+              )}
+            </p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="mx-auto w-full max-w-md rounded-xl border border-[#1e1e1e] bg-[#111111] p-5 sm:p-6"
+          >
+            <div className="mb-5 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.035]">
+                  <CloudCog className="h-4 w-4 text-white/70" />
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-foreground">Performance Overview</p>
+                  <p className="mt-1 text-xs text-muted-foreground/70">
+                    {getText(language, "Leitura operacional", "Operational reading")}
+                  </p>
+                </div>
+              </div>
+              <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-semibold text-white/80">
+                89/100
+              </span>
+            </div>
+
+            <div
+              className="h-[250px] w-full sm:h-[280px]"
+              role="img"
+              aria-label={getText(
+                language,
+                "Radar de performance com velocidade, qualidade, confiabilidade, escalabilidade, segurança e experiência.",
+                "Performance radar with speed, quality, reliability, scalability, security and UX."
+              )}
+            >
+              <svg viewBox="0 0 240 240" className="h-full w-full overflow-visible">
+                {radarGridPolygons.map((points, index) => (
+                  <polygon
+                    key={index}
+                    points={points}
+                    fill="none"
+                    stroke="#1e1e1e"
+                    strokeWidth={1}
+                  />
+                ))}
+
+                {cloudRadarMetrics.map((_, index) => {
+                  const point = getRadarPoint(index, radarRadius);
+
+                  return (
+                    <line
+                      key={index}
+                      x1={radarCenter}
+                      y1={radarCenter}
+                      x2={point.x}
+                      y2={point.y}
+                      stroke="#1e1e1e"
+                      strokeWidth={1}
+                    />
+                  );
+                })}
+
+                <motion.polygon
+                  points={radarDataPolygon}
+                  fill="rgba(255,255,255,0.13)"
+                  stroke="rgba(255,255,255,0.86)"
+                  strokeWidth={2}
+                  initial={{ opacity: 0, scale: 0.2 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ transformOrigin: `${radarCenter}px ${radarCenter}px` }}
+                />
+
+                {radarDataPoints.map((point, index) => (
+                  <motion.circle
+                    key={index}
+                    cx={point.x}
+                    cy={point.y}
+                    r={3}
+                    fill="#f5f5f5"
+                    stroke="#111111"
+                    strokeWidth={1}
+                    initial={{ opacity: 0, cx: radarCenter, cy: radarCenter }}
+                    whileInView={{ opacity: 1, cx: point.x, cy: point.y }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.35 + index * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                ))}
+
+                {cloudRadarMetrics.map((item, index) => {
+                  const point = getRadarPoint(index, radarLabelRadius);
+
+                  return (
+                    <text
+                      key={item.metric}
+                      x={point.x}
+                      y={point.y}
+                      textAnchor={getRadarTextAnchor(point.x)}
+                      dy={getRadarLabelDy(point.y)}
+                      fill="rgba(255,255,255,0.58)"
+                      fontSize={10}
+                    >
+                      {item.metric}
+                    </text>
+                  );
+                })}
+              </svg>
+            </div>
+          </motion.div>
+        </div>
+      </ScrollReveal>
+    </div>
+  </section>
+);
 
 const ServiceDetail = () => {
   const { serviceId } = useParams();
@@ -1849,6 +2031,8 @@ const ServiceDetail = () => {
           </div>
         </div>
       </section>
+
+      {serviceId === "cloud-solutions" && <CloudPerformanceRadar language={language} />}
 
       {serviceId === "bot-development" && (
         <section id="metodo-bot-operacional" className="relative scroll-mt-28 overflow-hidden py-10 lg:py-14">
