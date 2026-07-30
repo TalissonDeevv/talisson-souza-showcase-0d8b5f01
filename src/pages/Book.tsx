@@ -7,10 +7,11 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { PageHero } from "@/components/ui/PageIdentity";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
+import { bookOfficial } from "@/data/book-official";
 import bookMockup from "@/assets/book-mockup-opt.jpg";
 
-const physicalBookUrl = "https://www.amazon.com/dp/B0GVS4D8HL";
-const digitalBookUrl = "https://www.amazon.com/dp/B0FXV8WP3Y";
+const physicalBookUrl = bookOfficial.links.physical;
+const digitalBookUrl = bookOfficial.links.digital;
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -19,6 +20,8 @@ const Book = () => {
   const bookTitle = getText(language, "Superando Limites", "Overcoming Limits");
   const bookSubtitle = getText(language, "Da Rejeição ao Sucesso", "From Rejection to Success");
   const policyBase = language === "en" ? "/en-us/policies" : "/politicas";
+  const registrationStatus = getText(language, bookOfficial.registration.protocolStatus.pt, bookOfficial.registration.protocolStatus.en);
+  const registrationClarification = getText(language, bookOfficial.registration.clarification.pt, bookOfficial.registration.clarification.en);
 
   const chapters = [
     {
@@ -124,6 +127,44 @@ const Book = () => {
                   "This book does not try to sell a perfect life. It organizes a real journey made of rejection, limitation, discipline, work and the decision to keep building when stopping would be easier."
                 )}
               </p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      <section id="registro" className="scroll-mt-28 pb-12 lg:pb-16">
+        <div className="container mx-auto px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="grid gap-8 border-y border-border/20 py-10 lg:grid-cols-[0.55fr_1.45fr]">
+              <div>
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-border/30 bg-background/35">
+                  <FileText className="h-5 w-5 text-foreground/70" />
+                </div>
+                <span className="block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                  {getText(language, "Registro da obra", "Work registration")}
+                </span>
+              </div>
+              <div className="max-w-4xl">
+                <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
+                  {getText(language, "Pedido protocolado na Fundação Biblioteca Nacional.", "Request filed with Fundação Biblioteca Nacional.")}
+                </h2>
+                <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+                  {registrationStatus}
+                </p>
+                <div className="mt-7 grid gap-4 sm:grid-cols-[220px_1fr]">
+                  <div className="border-l border-foreground/25 pl-5">
+                    <span className="block text-[10px] uppercase tracking-[0.24em] text-muted-foreground/60">
+                      {getText(language, "Protocolo", "Protocol")}
+                    </span>
+                    <span className="mt-2 block font-mono text-sm text-foreground">
+                      {bookOfficial.registration.protocol}
+                    </span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {registrationClarification}
+                  </p>
+                </div>
+              </div>
             </div>
           </ScrollReveal>
         </div>
