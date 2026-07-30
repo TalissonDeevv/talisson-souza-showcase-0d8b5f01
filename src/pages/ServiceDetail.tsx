@@ -839,6 +839,8 @@ const getRadarLabelDy = (y: number) => {
   return "0.35em";
 };
 
+const webDashboardBars = [44, 58, 39, 72, 64, 86, 68, 92, 76, 104, 88, 112];
+
 const ServiceHeroArtifact = ({ cards, label, theme }: { cards: SolutionCard[]; label: string; theme: SolutionTheme }) => {
   const styles = themeCardStyles[theme];
   const primary = cards[0];
@@ -1006,6 +1008,202 @@ const CloudPerformanceRadar = ({ language }: { language: string }) => (
     </div>
   </ScrollReveal>
 );
+
+const WebProductDashboardHero = ({ language }: { language: string }) => {
+  const stats = language === "pt"
+    ? [
+        { label: "Visitas úteis", value: "48.293", detail: "+18% no mês" },
+        { label: "Conversão", value: "3,84%", detail: "CTAs e formulários" },
+        { label: "Tempo médio", value: "2m48s", detail: "leitura por página" },
+        { label: "SEO técnico", value: "92/100", detail: "base otimizada" },
+      ]
+    : [
+        { label: "Qualified visits", value: "48,293", detail: "+18% month" },
+        { label: "Conversion", value: "3.84%", detail: "CTAs and forms" },
+        { label: "Avg time", value: "2m48s", detail: "page reading" },
+        { label: "Technical SEO", value: "92/100", detail: "optimized base" },
+      ];
+
+  const topPages = language === "pt"
+    ? [
+        { page: "Página inicial", metric: "Leads", value: "126" },
+        { page: "Serviços", metric: "CTR", value: "12,4%" },
+        { page: "Contato", metric: "Envios", value: "38" },
+      ]
+    : [
+        { page: "Home page", metric: "Leads", value: "126" },
+        { page: "Services", metric: "CTR", value: "12.4%" },
+        { page: "Contact", metric: "Submits", value: "38" },
+      ];
+
+  return (
+    <ScrollReveal>
+      <div id="produto-web-dashboard" className="mx-auto mt-10 max-w-6xl scroll-mt-28 border-y border-border/20 py-8 lg:py-10">
+        <div className="mx-auto max-w-3xl text-center">
+          <motion.span
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-3 block text-[11px] uppercase tracking-[0.3em] text-muted-foreground/60"
+          >
+            {getText(language, "Produto web em operação", "Web product in operation")}
+          </motion.span>
+          <motion.h3
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="font-serif text-2xl leading-tight text-foreground sm:text-3xl lg:text-4xl"
+          >
+            {getText(language, "Site que mostra o que está funcionando", "A website that shows what is working")}
+          </motion.h3>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground"
+          >
+            {getText(
+              language,
+              "Além da interface, o projeto pode nascer com leitura de tráfego, conversão, páginas principais e sinais técnicos para orientar evolução.",
+              "Beyond the interface, the project can start with traffic, conversion, top pages and technical signals to guide evolution."
+            )}
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-5 flex justify-center"
+          >
+            <Link
+              to={language === "en" ? "/en-us/contact" : "/contato"}
+              className="inline-flex h-11 items-center justify-center gap-2 border border-border/35 bg-background/40 px-6 text-sm font-semibold text-foreground transition-colors duration-300 hover:bg-foreground/10"
+            >
+              {getText(language, "Planejar projeto web", "Plan web project")}
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.97 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          className="relative mx-auto mt-8 max-w-5xl overflow-hidden border border-border/20 bg-card/25 p-3 shadow-[0_28px_80px_hsl(var(--foreground)/0.035)] sm:p-4 lg:p-5"
+          aria-label={getText(language, "Mockup de dashboard para produto web", "Web product dashboard mockup")}
+        >
+          <div className="absolute inset-0 bg-[linear-gradient(hsl(var(--foreground)/0.035)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground)/0.035)_1px,transparent_1px)] bg-[size:36px_36px] opacity-40" />
+          <div className="relative">
+            <div className="mb-4 flex flex-col gap-3 border-b border-border/20 pb-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center border border-border/25 bg-background/45">
+                  <BarChart3 className="h-4 w-4 text-foreground/65" />
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-foreground">
+                    {getText(language, "Painel do Produto Web", "Web Product Panel")}
+                  </p>
+                  <p className="mt-1 text-xs text-muted-foreground/65">
+                    {getText(language, "Tráfego, conversão e páginas", "Traffic, conversion and pages")}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground/55">
+                <span className="h-2 w-2 bg-foreground/60" />
+                {getText(language, "Leitura ativa", "Active reading")}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: 0.55 + index * 0.06 }}
+                  className="border border-border/20 bg-background/45 p-4"
+                >
+                  <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground/55">{stat.label}</span>
+                  <strong className="mt-3 block font-serif text-2xl font-semibold leading-none text-foreground">{stat.value}</strong>
+                  <span className="mt-2 block text-xs text-muted-foreground/65">{stat.detail}</span>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="mt-3 grid gap-3 lg:grid-cols-[1.2fr_0.8fr]">
+              <div className="border border-border/20 bg-background/40 p-4">
+                <div className="mb-5 flex items-start justify-between gap-4">
+                  <div>
+                    <h4 className="text-sm font-semibold text-foreground">
+                      {getText(language, "Evolução semanal", "Weekly evolution")}
+                    </h4>
+                    <p className="mt-1 text-xs text-muted-foreground/65">
+                      {getText(language, "visitas, leads e interesse real", "visits, leads and real interest")}
+                    </p>
+                  </div>
+                  <LineChart className="h-4 w-4 text-foreground/35" />
+                </div>
+                <div className="flex h-36 items-end gap-2 border-l border-b border-border/20 px-2 pb-2 sm:h-44">
+                  {webDashboardBars.map((height, index) => (
+                    <motion.span
+                      key={index}
+                      initial={{ scaleY: 0 }}
+                      whileInView={{ scaleY: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.7 + index * 0.03, ease: [0.16, 1, 0.3, 1] }}
+                      style={{ height, transformOrigin: "bottom" }}
+                      className="w-full bg-foreground/70 odd:bg-foreground/35 even:bg-foreground/55"
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.55, delay: 0.7 }}
+                className="border border-border/20 bg-background/40 p-4"
+              >
+                <div className="mb-5 flex items-start justify-between gap-4">
+                  <div>
+                    <h4 className="text-sm font-semibold text-foreground">
+                      {getText(language, "Páginas principais", "Top pages")}
+                    </h4>
+                    <p className="mt-1 text-xs text-muted-foreground/65">
+                      {getText(language, "onde a decisão acontece", "where decisions happen")}
+                    </p>
+                  </div>
+                  <Monitor className="h-4 w-4 text-foreground/35" />
+                </div>
+
+                <div className="overflow-hidden border border-border/15">
+                  <div className="grid grid-cols-[1.15fr_0.7fr_0.55fr] border-b border-border/15 bg-foreground/[0.035] px-3 py-2 text-[10px] uppercase tracking-[0.16em] text-muted-foreground/55">
+                    <span>{getText(language, "Página", "Page")}</span>
+                    <span>{getText(language, "Sinal", "Signal")}</span>
+                    <span className="text-right">{getText(language, "Valor", "Value")}</span>
+                  </div>
+                  {topPages.map((row) => (
+                    <div key={row.page} className="grid grid-cols-[1.15fr_0.7fr_0.55fr] border-b border-border/10 px-3 py-3 text-xs last:border-b-0">
+                      <span className="font-medium text-foreground/85">{row.page}</span>
+                      <span className="text-muted-foreground/65">{row.metric}</span>
+                      <span className="text-right font-semibold text-foreground">{row.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </ScrollReveal>
+  );
+};
 
 const ServiceDetail = () => {
   const { serviceId } = useParams();
@@ -2026,6 +2224,8 @@ const ServiceDetail = () => {
               <SolutionShowcaseCard key={card.title} card={card} index={index} theme={currentSolution.theme} />
             ))}
           </div>
+
+          {serviceId === "web-development" && <WebProductDashboardHero language={language} />}
         </div>
       </section>
 
