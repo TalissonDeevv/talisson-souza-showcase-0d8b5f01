@@ -47,14 +47,14 @@ export const trails: TrailData[] = [
   },
   {
     id: 'community-management',
-    title: { pt: 'Gestão de Comunidades', en: 'Community Management' },
+    title: { pt: 'Gestão de Comunidades no Discord', en: 'Discord Community Management' },
     description: {
-      pt: 'Conteúdos sobre moderação, administração de servidores, cultura interna, estrutura de staff e crescimento estruturado.',
-      en: 'Content on moderation, server administration, internal culture, staff structure, and structured growth.',
+      pt: 'Conteúdos sobre moderação, treinamento de equipes, segurança, cultura interna, operação de servidores e crescimento saudável em comunidades no Discord.',
+      en: 'Content on moderation, staff training, safety, internal culture, server operations and healthy growth in Discord communities.',
     },
     icon: '🌐',
     path: { pt: '/trilhas/gestao-de-comunidades', en: '/en-us/trails/community-management' },
-    articleIds: ['discord-community-engagement', 'discord-community-monetization', 'discord-moderation', 'discord-promotion', 'professional-discord-bot', 'discord-bot-niche', 'monetizing-bots', 'discord-bot-rental'],
+    articleIds: ['discord-community-engagement', 'discord-community-monetization', 'discord-moderation', 'discord-moderation-training', 'discord-promotion', 'professional-discord-bot', 'discord-bot-niche', 'monetizing-bots', 'discord-bot-rental'],
   },
   {
     id: 'strategy-mindset',
@@ -354,6 +354,22 @@ export const articles: ArticleData[] = [
     path: { pt: '/artigos/moderacao-discord', en: '/en-us/articles/discord-moderation' },
     tags: { pt: ['Discord', 'Moderação', 'Gestão'], en: ['Discord', 'Moderation', 'Management'] },
     publishedDate: '2025-02-14',
+  },
+  {
+    id: 'discord-moderation-training',
+    title: {
+      pt: 'Quando o Moderador Sabe a Regra, Mas Ainda Não Sabe Decidir',
+      en: 'When the Moderator Knows the Rule but Still Cannot Decide',
+    },
+    excerpt: {
+      pt: 'Uma análise prática sobre treinamento de equipes no Discord a partir de respostas reais de administradores e moderadores, com foco em punições, golpes, postura e tomada de decisão.',
+      en: 'A practical analysis of Discord staff training based on real answers from administrators and moderators, focused on punishments, scams, posture and decision making.',
+    },
+    date: { pt: '8 de Agosto, 2026', en: 'August 8, 2026' },
+    readTime: '24 min',
+    path: { pt: '/artigos/treinamento-moderacao-discord', en: '/en-us/articles/discord-moderation-training' },
+    tags: { pt: ['Discord', 'Moderação', 'Treinamento', 'Trust & Safety', 'Comunidades'], en: ['Discord', 'Moderation', 'Training', 'Trust & Safety', 'Communities'] },
+    publishedDate: '2026-08-08',
   },
   {
     id: 'clt-to-freelancer',
