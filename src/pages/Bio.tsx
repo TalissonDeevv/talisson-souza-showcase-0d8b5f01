@@ -162,12 +162,12 @@ const Bio = () => {
         />
         <div className="pointer-events-none absolute left-1/2 top-24 h-[420px] w-[680px] -translate-x-1/2 rounded-full bg-foreground/[0.035] blur-3xl" />
 
-        <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 py-8 sm:px-8 lg:py-10">
+        <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-4xl flex-col px-6 py-8 sm:px-8 lg:py-10">
           <motion.header
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease }}
-            className="flex items-center justify-between gap-6"
+            className="mx-auto flex w-full max-w-3xl items-center justify-between gap-6"
           >
             <Link to={isEnglish ? "/en-us" : "/"} className="text-sm font-semibold text-foreground">
               Talisson Souza
@@ -189,11 +189,11 @@ const Bio = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.08, ease }}
-            className="flex flex-1 flex-col justify-center py-8 sm:py-10"
+            className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-start pt-5 pb-8 sm:pt-7"
           >
-            <div className="mx-auto w-full max-w-5xl">
-              <div className="mx-auto flex flex-col items-center justify-center gap-5 text-center sm:flex-row">
-                <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full border border-border/35 bg-card/50 shadow-[0_26px_70px_hsl(0_0%_0%/0.36)] sm:h-24 sm:w-24">
+            <div className="w-full">
+              <div className="flex flex-col items-start justify-center gap-0 text-left">
+                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border border-border/35 bg-card/50 shadow-[0_26px_70px_hsl(0_0%_0%/0.36)] sm:h-16 sm:w-16">
                   <img
                     src={portrait}
                     alt="Talisson Souza"
@@ -203,7 +203,19 @@ const Bio = () => {
                   />
                 </div>
 
-                <div className="min-w-0 text-center">
+                <div className="mt-7 flex flex-wrap items-center gap-x-8 gap-y-4 opacity-75">
+                  {brandMarks.map((brand) => (
+                    <img
+                      key={brand.name}
+                      src={brand.logo}
+                      alt={brand.name}
+                      className="max-h-6 w-auto max-w-[118px] object-contain grayscale"
+                      loading="lazy"
+                    />
+                  ))}
+                </div>
+
+                <div className="sr-only">
                   <p className="mb-3 text-[11px] uppercase tracking-[0.36em] text-muted-foreground/70">
                     {getText(language, "Bio oficial", "Official bio")}
                   </p>
@@ -218,31 +230,10 @@ const Bio = () => {
                 </div>
               </div>
 
-              <div className="mx-auto mt-6 h-px w-24 bg-foreground/65" />
+              <div className="mt-6 h-px w-24 bg-foreground/65" />
 
-              <div className="mx-auto mt-6 flex max-w-3xl flex-wrap items-center justify-center gap-6">
-                {socialLinks.map(({ label, href, icon: Icon, internal }) => {
-                  const className =
-                    "text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:text-foreground";
-
-                  if (internal) {
-                    return (
-                      <Link key={label} to={isEnglish ? "/en-us/contact" : href} aria-label={label} className={className}>
-                        <Icon className="h-6 w-6" />
-                      </Link>
-                    );
-                  }
-
-                  return (
-                    <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className={className}>
-                      <Icon className="h-6 w-6" />
-                    </a>
-                  );
-                })}
-              </div>
-
-              <div className="mx-auto mt-7 max-w-3xl space-y-3 border-t border-border/20 pt-6 text-center text-base leading-relaxed text-muted-foreground sm:text-lg">
-                <p className="text-[1.45rem] font-semibold leading-[1.14] text-foreground sm:text-[1.9rem]">
+              <div className="mt-6 max-w-3xl space-y-4 text-left text-sm leading-relaxed text-muted-foreground sm:text-base">
+                <p className="max-w-3xl font-serif text-[clamp(1.55rem,3vw,2.25rem)] font-semibold leading-[1.14] tracking-[-0.01em] text-foreground">
                   {getText(
                     language,
                     "Construindo software, empresas e conteúdo que continuam fazendo sentido depois da primeira entrega.",
@@ -257,10 +248,31 @@ const Bio = () => {
                     "My work moves through software engineering, architecture, automations, digital products and strategy. I like understanding the problem carefully and turning messy decisions into clear, useful and sustainable systems."
                   )}
                 </p>
+
+                <div className="flex flex-wrap items-center gap-7 pt-1">
+                  {socialLinks.map(({ label, href, icon: Icon, internal }) => {
+                    const className =
+                      "text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:text-foreground";
+
+                    if (internal) {
+                      return (
+                        <Link key={label} to={isEnglish ? "/en-us/contact" : href} aria-label={label} className={className}>
+                          <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
+                        </Link>
+                      );
+                    }
+
+                    return (
+                      <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className={className}>
+                        <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
+                      </a>
+                    );
+                  })}
+                </div>
               </div>
             </div>
 
-            <aside className="mt-6 hidden md:block">
+            <aside className="hidden">
               <div className="mx-auto max-w-3xl border-y border-border/20 py-6">
                 <p className="mb-5 text-[10px] uppercase tracking-[0.3em] text-muted-foreground/60">
                   {getText(language, "Canais oficiais", "Official channels")}
