@@ -20,41 +20,10 @@ import { getText } from "@/utils/translations";
 import portrait from "@/assets/talisson-portrait.png";
 import cheetahLogo from "@/assets/logos/cheetah-solutions.png";
 import squareCloudLogo from "@/assets/logos/square-cloud.png";
+import rocketseatLogo from "@/assets/logos/rocketseat.png";
+import splendoriLogo from "@/assets/logos/splendori.png";
 
 const ease = [0.16, 1, 0.3, 1] as const;
-
-const primaryLinks = [
-  {
-    label: "Website",
-    href: "https://www.talissonsouza.com.br",
-    icon: Globe2,
-    external: true,
-  },
-  {
-    label: "Newsletter",
-    href: "https://newsletter.talissonsouza.com.br",
-    icon: Newspaper,
-    external: true,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://linkedin.com/in/talissondevv",
-    icon: FaLinkedinIn,
-    external: true,
-  },
-  {
-    label: "GitHub",
-    href: "https://github.com/TalinhoDev",
-    icon: Github,
-    external: true,
-  },
-  {
-    label: "Contato",
-    href: "/contato",
-    icon: Mail,
-    external: false,
-  },
-];
 
 const socialLinks = [
   { label: "LinkedIn", href: "https://linkedin.com/in/talissondevv", icon: FaLinkedinIn },
@@ -62,6 +31,14 @@ const socialLinks = [
   { label: "Instagram", href: "https://instagram.com/talisson.dev", icon: FaInstagram },
   { label: "Discord", href: "https://discord.talissonsouza.com.br", icon: FaDiscord },
   { label: "X", href: "https://x.com/talissondev", icon: FaXTwitter },
+  { label: "Contato", href: "/contato", icon: Mail, internal: true },
+];
+
+const brandMarks = [
+  { name: "Cheetah Solutions Network", logo: cheetahLogo },
+  { name: "Square Cloud", logo: squareCloudLogo },
+  { name: "Rocketseat", logo: rocketseatLogo },
+  { name: "Splendori", logo: splendoriLogo },
 ];
 
 const communityAssets = {
@@ -75,125 +52,73 @@ const communityAssets = {
 
 const Bio = () => {
   const { language } = useTheme();
+  const isEnglish = language === "en";
 
-  const projects = [
+  const navItems = [
+    { label: getText(language, "Site", "Website"), href: isEnglish ? "/en-us" : "/" },
+    { label: getText(language, "Sobre", "About"), href: isEnglish ? "/en-us/about" : "/sobre" },
+    { label: getText(language, "Artigos", "Articles"), href: isEnglish ? "/en-us/articles" : "/artigos" },
+    { label: getText(language, "Contato", "Contact"), href: isEnglish ? "/en-us/contact" : "/contato" },
+  ];
+
+  const quickLinks = [
     {
-      title: "Cheetah Solutions Network",
-      description: getText(
-        language,
-        "Software house especializada em sistemas, automação e infraestrutura para operações digitais.",
-        "Software house focused on systems, automation and infrastructure for digital operations."
-      ),
+      label: "Website",
+      description: getText(language, "Site principal e caminhos oficiais.", "Main website and official paths."),
+      href: "https://www.talissonsouza.com.br",
+      icon: Globe2,
+      external: true,
+    },
+    {
+      label: "Newsletter",
+      description: getText(language, "Leituras e publicações profissionais.", "Professional readings and publications."),
+      href: "https://newsletter.talissonsouza.com.br",
+      icon: Newspaper,
+      external: true,
+    },
+    {
+      label: "Cheetah Solutions",
+      description: getText(language, "Software, automações e infraestrutura.", "Software, automations and infrastructure."),
       href: "https://www.cheetahsolutions.com.br",
+      icon: BriefcaseBusiness,
       external: true,
-      visual: (
-        <img
-          src={cheetahLogo}
-          alt=""
-          className="h-9 w-auto max-w-[170px] object-contain opacity-85"
-          loading="lazy"
-        />
-      ),
-    },
-    {
-      title: "Square Cloud",
-      description: getText(
-        language,
-        "Infraestrutura para hospedar aplicações, bots e APIs com deploy simples e operação contínua.",
-        "Infrastructure to host applications, bots and APIs with simple deploys and continuous operation."
-      ),
-      href: "https://squarecloud.app",
-      external: true,
-      visual: (
-        <img
-          src={squareCloudLogo}
-          alt=""
-          className="h-10 w-auto max-w-[160px] object-contain opacity-85"
-          loading="lazy"
-        />
-      ),
-    },
-    {
-      title: getText(language, "Artigos", "Articles"),
-      description: getText(
-        language,
-        "Guias sobre desenvolvimento, negócios, carreira e tecnologia escritos com aplicação prática.",
-        "Guides on development, business, career and technology written with practical use in mind."
-      ),
-      href: language === "en" ? "/en-us/trails/market-programming" : "/trilhas/mercado-programacao",
-      external: false,
-      visual: (
-        <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-border/35 bg-foreground/[0.04]">
-          <Newspaper className="h-5 w-5 text-foreground/75" />
-        </div>
-      ),
     },
   ];
 
   const communities = [
     {
       name: "Escritório do Talisson",
-      role: getText(language, "Proprietário", "Owner"),
-      description: getText(
-        language,
-        "Espaço oficial onde concentro comunidade, projetos e conteúdo sobre tecnologia e negócios.",
-        "Official space for my community, projects and content about technology and business."
-      ),
+      role: getText(language, "Comunidade oficial", "Official community"),
       logo: communityAssets.escritorioLogo,
       href: "https://discord.gg/DzZN6tUJKq",
     },
     {
       name: "AGON by AOC",
       role: getText(language, "Ex Moderador", "Former Moderator"),
-      description: getText(
-        language,
-        "Servidor oficial da AGON by AOC no Discord Brasil, com foco em performance e comunidade gamer.",
-        "Official AGON by AOC server on Discord Brazil, focused on performance and gamer community."
-      ),
       logo: communityAssets.agonLogo,
       href: "https://discord.gg/yBy8Vu79J3",
     },
     {
       name: "DuneCo Dungeons",
-      role: getText(language, "Criador Independente Verificado", "Verified Independent Creator"),
-      description: getText(
-        language,
-        "Ecossistema para marcas, criadores e projetos que querem explorar comunidades no Discord.",
-        "Ecosystem for brands, creators and projects exploring Discord communities."
-      ),
+      role: getText(language, "Criador verificado", "Verified Creator"),
       logo: communityAssets.dunecoLogo,
       href: "https://discord.gg/SyEnrAknqA",
     },
     {
       name: "Hytale Brasil",
-      role: getText(language, "Desenvolvedor Interno", "Internal Developer"),
-      description: getText(
-        language,
-        "Comunidade brasileira dedicada a Hytale, reunindo jogadores, notícias e estrutura interna.",
-        "Brazilian Hytale community bringing players, news and internal structure together."
-      ),
+      role: getText(language, "Desenvolvedor interno", "Internal Developer"),
       logo: communityAssets.hytaleLogo,
       href: "https://discord.gg/x2SvJd2NsZ",
     },
     {
       name: "ModsClub",
-      role: getText(language, "Especialista em Comunidades", "Community Specialist"),
-      description: getText(
-        language,
-        "Comunidade para moderadores, administradores e proprietários de comunidades brasileiras.",
-        "Community for moderators, administrators and owners of Brazilian communities."
-      ),
+      role: getText(language, "Especialista em comunidades", "Community Specialist"),
       logo: communityAssets.modsclubLogo,
       href: "https://discord.gg/uuHdJUNYQs",
     },
     {
       name: "Elixir Lab",
       role: getText(language, "Ex Moderador", "Former Moderator"),
-      description: getText(
-        language,
-        "Comunidade de entrada para Discord, bots, jogos e suporte no ecossistema brasileiro.",
-        "Gateway community for Discord, bots, games and support in the Brazilian ecosystem."
-      ),
       logo: communityAssets.elixirLogo,
       href: "https://discord.gg/elixirlab",
     },
@@ -205,8 +130,8 @@ const Bio = () => {
         title="Bio Oficial | Talisson Souza"
         description={getText(
           language,
-          "Página oficial de bio de Talisson Souza com links, projetos, redes sociais e canais profissionais.",
-          "Official bio page for Talisson Souza with links, projects, social media and professional channels."
+          "Página oficial de bio de Talisson Souza com links, projetos, redes sociais, comunidades e canais profissionais.",
+          "Official bio page for Talisson Souza with links, projects, social media, communities and professional channels."
         )}
         canonical="https://bio.talissonsouza.com.br"
         image="/og/home.png"
@@ -221,363 +146,333 @@ const Bio = () => {
             name: "Talisson Souza",
             jobTitle: "Software Engineer",
             url: "https://www.talissonsouza.com.br",
-            sameAs: socialLinks.map((item) => item.href),
+            sameAs: socialLinks.filter((item) => !item.internal).map((item) => item.href),
           },
         }}
       />
 
-      <section className="relative min-h-screen overflow-hidden bg-background">
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+      <main className="relative min-h-screen overflow-hidden bg-background text-foreground">
         <div
-          className="absolute inset-0 opacity-[0.025]"
+          className="pointer-events-none absolute inset-0 opacity-[0.026]"
           style={{
             backgroundImage:
               "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
             backgroundSize: "56px 56px",
           }}
         />
-        <div className="pointer-events-none absolute left-1/2 top-24 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-foreground/[0.035] blur-3xl" />
+        <div className="pointer-events-none absolute left-1/2 top-24 h-[420px] w-[680px] -translate-x-1/2 rounded-full bg-foreground/[0.035] blur-3xl" />
 
-        <div className="container relative z-10 mx-auto flex min-h-screen items-center px-6 pb-20 pt-24 lg:px-8">
-          <div className="grid w-full items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease }}
-              className="mx-auto max-w-2xl text-center lg:mx-0 lg:text-left"
-            >
-              <p className="mb-5 text-[11px] uppercase tracking-[0.34em] text-muted-foreground/75">
-                {getText(language, "Bio oficial", "Official bio")}
-              </p>
+        <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 py-10 sm:px-8 lg:py-14">
+          <motion.header
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, ease }}
+            className="flex items-center justify-between gap-6"
+          >
+            <Link to={isEnglish ? "/en-us" : "/"} className="text-sm font-semibold text-foreground">
+              Talisson Souza
+            </Link>
 
-              <h1 className="whitespace-nowrap font-serif text-[clamp(3.25rem,7.2vw,5.4rem)] leading-[0.9] text-foreground">
-                Talisson Souza
-              </h1>
-
-              <p className="mt-6 whitespace-nowrap font-mono text-[clamp(0.68rem,1.25vw,0.98rem)] uppercase tracking-[clamp(0.12em,0.8vw,0.26em)] text-muted-foreground">
-                Software Engineer · Founder · Entrepreneur
-              </p>
-
-              <div className="mx-auto mt-10 h-px w-24 bg-foreground/65 lg:mx-0" />
-
-              <div className="mx-auto mt-9 max-w-xl space-y-4 text-left text-base leading-relaxed text-muted-foreground sm:text-lg lg:mx-0">
-                <p>
-                  {getText(
-                    language,
-                    "Construo sistemas, empresas, conteúdo e comunidades para transformar ideias em estruturas que continuam funcionando depois da primeira entrega.",
-                    "I build systems, companies, content and communities to turn ideas into structures that keep working after the first delivery."
-                  )}
-                </p>
-                <p>
-                  {getText(
-                    language,
-                    "Minha atuação une engenharia de software, arquitetura, Trust & Safety, gestão de comunidades no Discord e uma forma simples de pensar: primeiro o problema, depois a solução.",
-                    "My work brings together software engineering, architecture, Trust & Safety, Discord community management and a simple way of thinking: problem first, solution after."
-                  )}
-                </p>
-              </div>
-
-              <div className="mt-10 flex flex-wrap items-center justify-center gap-5 lg:justify-start">
-                {socialLinks.map(({ label, href, icon: Icon }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className="text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:text-foreground"
-                  >
-                    <Icon className="h-6 w-6" />
-                  </a>
-                ))}
-                <Link
-                  to={language === "en" ? "/en-us/contact" : "/contato"}
-                  aria-label={getText(language, "Contato", "Contact")}
-                  className="text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:text-foreground"
-                >
-                  <Mail className="h-6 w-6" />
+            <nav className="hidden items-center gap-7 text-sm text-muted-foreground sm:flex">
+              {navItems.map((item) => (
+                <Link key={item.href} to={item.href} className="transition-colors duration-300 hover:text-foreground">
+                  {item.label}
                 </Link>
+              ))}
+              <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground/70">
+                {isEnglish ? "EN" : "PT"}
+              </span>
+            </nav>
+          </motion.header>
+
+          <motion.section
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.08, ease }}
+            className="grid flex-1 items-center gap-12 py-12 sm:py-14 md:grid-cols-[minmax(0,1fr)_300px] md:gap-12 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16"
+          >
+            <div className="min-w-0">
+              <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+                <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full border border-border/35 bg-card/50 shadow-[0_26px_70px_hsl(0_0%_0%/0.36)] sm:h-28 sm:w-28">
+                  <img
+                    src={portrait}
+                    alt="Talisson Souza"
+                    className="h-full w-full object-cover object-[50%_18%] grayscale"
+                    loading="eager"
+                    fetchPriority="high"
+                  />
+                </div>
+
+                <div className="min-w-0">
+                  <p className="mb-4 text-[11px] uppercase tracking-[0.36em] text-muted-foreground/70">
+                    {getText(language, "Bio oficial", "Official bio")}
+                  </p>
+
+                  <h1 className="whitespace-nowrap font-serif text-[clamp(2.45rem,6.4vw,5.15rem)] leading-[0.9] tracking-[-0.02em] text-foreground">
+                    Talisson Souza
+                  </h1>
+
+                  <p className="mt-5 whitespace-nowrap font-mono text-[clamp(0.56rem,1.4vw,0.78rem)] uppercase tracking-[clamp(0.1em,0.55vw,0.22em)] text-muted-foreground">
+                    Software Engineer · Founder · Entrepreneur
+                  </p>
+                </div>
               </div>
 
-              <div className="mt-9 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 lg:justify-start">
-                {primaryLinks
-                  .filter((link) => ["Website", "Newsletter", "Contato"].includes(link.label))
-                  .map((link) => {
-                    const Icon = link.icon;
-                    const className =
-                      "group inline-flex items-center gap-2 text-sm font-medium text-foreground underline-offset-4 transition-colors duration-300 hover:text-muted-foreground";
-                    const content = (
-                      <>
-                        <Icon className="h-4 w-4 text-muted-foreground" />
-                        <span>{link.label}</span>
-                        <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform duration-300 group-hover:translate-x-1" />
-                      </>
-                    );
+              <div className="mt-8 h-px w-24 bg-foreground/65" />
 
-                    return link.external ? (
-                      <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" className={className}>
-                        {content}
-                      </a>
-                    ) : (
-                      <Link key={link.label} to={link.href} className={className}>
-                        {content}
+              <div className="mt-7 max-w-2xl space-y-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+                <p className="text-[1.65rem] font-semibold leading-[1.12] text-foreground sm:text-[2.15rem]">
+                  {getText(
+                    language,
+                    "Construindo software, empresas e conteúdo que continuam fazendo sentido depois da primeira entrega.",
+                    "Building software, companies and content that keep making sense after the first delivery."
+                  )}
+                </p>
+
+                <p>
+                  {getText(
+                    language,
+                    "Minha atuação passa por engenharia de software, arquitetura, automações, produtos digitais e estratégia. Gosto de entender o problema com calma e transformar decisões confusas em sistemas claros, úteis e sustentáveis.",
+                    "My work moves through software engineering, architecture, automations, digital products and strategy. I like understanding the problem carefully and turning messy decisions into clear, useful and sustainable systems."
+                  )}
+                </p>
+              </div>
+
+              <div className="mt-8 flex flex-wrap items-center gap-6">
+                {socialLinks.map(({ label, href, icon: Icon, internal }) => {
+                  const className =
+                    "text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:text-foreground";
+
+                  if (internal) {
+                    return (
+                      <Link key={label} to={isEnglish ? "/en-us/contact" : href} aria-label={label} className={className}>
+                        <Icon className="h-6 w-6" />
                       </Link>
                     );
-                  })}
-              </div>
-            </motion.div>
+                  }
 
-            <motion.div
-              initial={{ opacity: 0, y: 28, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.12, ease }}
-              className="relative mx-auto w-full max-w-[390px] lg:ml-auto lg:max-w-[520px]"
-            >
-              <div className="absolute -inset-10 rounded-full border border-border/10" />
-              <div className="absolute -inset-4 rounded-full border border-border/20" />
-              <div className="absolute -inset-10 rounded-full bg-gradient-to-b from-foreground/[0.08] via-transparent to-transparent opacity-70 blur-3xl" />
-              <div className="relative aspect-square overflow-hidden rounded-full border border-border/30 bg-card/35 shadow-[0_34px_110px_hsl(0_0%_0%/0.46)]">
-                <div
-                  className="absolute inset-0 opacity-[0.035]"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
-                    backgroundSize: "34px 34px",
-                  }}
-                />
-                <img
-                  src={portrait}
-                  alt="Talisson Souza"
-                  className="relative h-full w-full object-cover object-[50%_20%] grayscale"
-                  loading="eager"
-                  fetchPriority="high"
-                />
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background/70 via-background/25 to-transparent" />
+                  return (
+                    <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className={className}>
+                      <Icon className="h-6 w-6" />
+                    </a>
+                  );
+                })}
               </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      <section className="relative overflow-hidden border-y border-border/20 bg-background py-16 lg:py-24">
-        <div className="container mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-              <div>
-                <p className="mb-4 text-[11px] uppercase tracking-[0.34em] text-muted-foreground/70">
-                  {getText(language, "Projetos principais", "Main projects")}
-                </p>
-                <h2 className="max-w-2xl font-serif text-4xl leading-tight text-foreground sm:text-5xl">
-                  {getText(language, "Caminhos oficiais para conhecer meu trabalho.", "Official paths to understand my work.")}
-                </h2>
-              </div>
-              <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-                {getText(
-                  language,
-                  "Poucos links, escolhidos com intenção. O suficiente para chegar rápido no que importa.",
-                  "A few intentional links. Enough to reach what matters quickly."
-                )}
-              </p>
             </div>
-          </ScrollReveal>
 
-          <div className="grid gap-4 lg:grid-cols-3">
-            {projects.map((project, index) => {
-              const card = (
-                <motion.article
-                  initial={{ opacity: 0, y: 22 }}
+            <aside className="hidden md:block">
+              <div className="border-y border-border/20 py-6">
+                <p className="mb-5 text-[10px] uppercase tracking-[0.3em] text-muted-foreground/60">
+                  {getText(language, "Canais oficiais", "Official channels")}
+                </p>
+
+                <div className="space-y-1">
+                  {quickLinks.map((link) => {
+                    const Icon = link.icon;
+                    return (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target={link.external ? "_blank" : undefined}
+                        rel={link.external ? "noopener noreferrer" : undefined}
+                        className="group flex items-center justify-between gap-4 py-3 text-sm transition-colors duration-300 hover:text-foreground"
+                      >
+                        <span className="flex items-center gap-3 text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
+                          <Icon className="h-4 w-4" />
+                          <span>{link.label}</span>
+                        </span>
+                        <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground/70 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
+                      </a>
+                    );
+                  })}
+                </div>
+
+                <div className="mt-7 border-t border-border/15 pt-6">
+                  <p className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground/55">Trust & Safety</p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {getText(
+                      language,
+                      "Comunidades, moderação e operações digitais também fazem parte da forma como eu construo.",
+                      "Communities, moderation and digital operations are also part of the way I build."
+                    )}
+                  </p>
+                </div>
+              </div>
+            </aside>
+          </motion.section>
+        </div>
+
+        <section className="relative z-10 border-t border-border/20 bg-background/85 py-12">
+          <div className="mx-auto w-full max-w-6xl px-6 sm:px-8">
+            <ScrollReveal>
+              <div className="space-y-8">
+                <div className="mx-auto max-w-3xl text-center">
+                  <p className="mb-3 text-[11px] uppercase tracking-[0.34em] text-muted-foreground/70">
+                    {getText(language, "Empresas", "Companies")}
+                  </p>
+                  <h2 className="font-serif text-3xl leading-tight text-foreground sm:text-4xl">
+                    {getText(language, "Ecossistema profissional.", "Professional ecosystem.")}
+                  </h2>
+                  <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                    {getText(
+                      language,
+                      "Algumas frentes aparecem como empresa, outras como parceria, conteúdo ou produto. Todas fazem parte do mesmo caminho: construir tecnologia com consistência, reputação e visão de longo prazo.",
+                      "Some fronts appear as companies, others as partnerships, content or products. They all belong to the same path: building technology with consistency, reputation and long-term vision."
+                    )}
+                  </p>
+                  <div className="mt-5 flex flex-wrap justify-center gap-2">
+                    {[
+                      getText(language, "Sistemas", "Systems"),
+                      getText(language, "Comunidades", "Communities"),
+                      getText(language, "Conteúdo", "Content"),
+                    ].map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-border/30 bg-foreground/[0.035] px-3 py-2 text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <motion.div
+                  className="relative overflow-hidden border-y border-border/15 py-5"
+                  initial={{ opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.58, delay: index * 0.08, ease }}
-                  whileHover={{ y: -5 }}
-                  className="group relative min-h-[260px] overflow-hidden rounded-2xl border border-border/35 bg-card/55 p-6 transition-colors duration-300 hover:border-foreground/20"
+                  transition={{ duration: 0.58, ease }}
+                  style={{
+                    WebkitMaskImage:
+                      "linear-gradient(90deg, transparent 0%, transparent 8%, black 16%, black 84%, transparent 92%, transparent 100%)",
+                    maskImage:
+                      "linear-gradient(90deg, transparent 0%, transparent 8%, black 16%, black 84%, transparent 92%, transparent 100%)",
+                  }}
                 >
-                  <div
-                    className="absolute inset-0 opacity-[0.02]"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
-                      backgroundSize: "32px 32px",
-                    }}
-                  />
-                  <div className="relative flex h-full flex-col">
-                    <div className="mb-10 flex min-h-12 items-center justify-between gap-4">
-                      {project.visual}
-                      <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
-                    </div>
-                    <div className="mt-auto">
-                      <h3 className="text-2xl text-foreground">{project.title}</h3>
-                      <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{project.description}</p>
-                      <span className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground">
-                        {getText(language, "Conhecer", "Open")}
-                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                      </span>
-                    </div>
-                  </div>
-                </motion.article>
-              );
+                  <motion.div
+                    className="flex w-max items-center"
+                    animate={{ x: ["0%", "-50%"] }}
+                    transition={{ duration: 22, ease: "linear", repeat: Infinity, repeatType: "loop" }}
+                  >
+                    {[...brandMarks, ...brandMarks].map((brand, index) => (
+                      <div
+                        key={`${brand.name}-${index}`}
+                        className="flex min-h-16 w-[190px] shrink-0 items-center justify-center px-7 sm:w-[220px]"
+                      >
+                        <img
+                          src={brand.logo}
+                          alt={brand.name}
+                          className="max-h-9 w-auto max-w-[150px] object-contain grayscale opacity-70 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
+                          loading="lazy"
+                        />
+                      </div>
+                    ))}
+                  </motion.div>
+                </motion.div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
 
-              if (project.external) {
-                return (
-                  <a key={project.title} href={project.href} target="_blank" rel="noopener noreferrer">
-                    {card}
-                  </a>
-                );
-              }
+        <section className="relative z-10 border-t border-border/20 bg-background/80 py-16 md:hidden">
+          <div className="mx-auto grid w-full max-w-3xl gap-4 px-6 sm:px-8">
+            <ScrollReveal>
+              <p className="mb-4 text-[11px] uppercase tracking-[0.34em] text-muted-foreground/70">
+                {getText(language, "Para chegar rápido", "Quick paths")}
+              </p>
+            </ScrollReveal>
 
+            {quickLinks.map((link, index) => {
+              const Icon = link.icon;
               return (
-                <Link key={project.title} to={project.href}>
-                  {card}
-                </Link>
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noopener noreferrer" : undefined}
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.52, delay: index * 0.06, ease }}
+                  className="group flex items-center justify-between gap-5 border-b border-border/20 py-5 text-left transition-colors duration-300 hover:border-foreground/30"
+                >
+                  <span className="flex items-center gap-4">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border/30 bg-card/45 text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
+                      <Icon className="h-4 w-4" />
+                    </span>
+                    <span>
+                      <span className="block text-base font-medium text-foreground">{link.label}</span>
+                      <span className="mt-1 block text-sm text-muted-foreground">{link.description}</span>
+                    </span>
+                  </span>
+                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
+                </motion.a>
               );
             })}
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="relative overflow-hidden bg-background py-16 lg:py-24">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.018]"
-          style={{
-            backgroundImage:
-              "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
-            backgroundSize: "44px 44px",
-          }}
-        />
-        <div className="container relative z-10 mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
-              <div>
-                <p className="mb-4 text-[11px] uppercase tracking-[0.34em] text-muted-foreground/70">
-                  Trust & Safety
-                </p>
-                <h2 className="max-w-2xl font-serif text-4xl leading-tight text-foreground sm:text-5xl">
-                  {getText(
-                    language,
-                    "Comunidades também fazem parte do meu trabalho.",
-                    "Communities are also part of my work."
-                  )}
-                </h2>
-              </div>
-              <div className="rounded-2xl border border-border/25 bg-card/35 p-6">
-                <div className="mb-5 flex flex-wrap gap-2">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-border/35 bg-foreground/[0.035] px-3 py-2 text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
-                    <ShieldCheck className="h-3.5 w-3.5" />
-                    {getText(language, "Especialista em Trust & Safety", "Trust & Safety Specialist")}
-                  </span>
-                  <span className="inline-flex items-center gap-2 rounded-full border border-border/35 bg-foreground/[0.035] px-3 py-2 text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
-                    <Users className="h-3.5 w-3.5" />
-                    {getText(language, "Gerente de Comunidade no Discord", "Discord Community Manager")}
-                  </span>
-                </div>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {getText(
-                    language,
-                    "Além de software, atuo com segurança, moderação, processos e organização de comunidades digitais. Essa experiência aparece em servidores, equipes de moderação, automações, prevenção de abuso, resposta a incidentes e construção de ambientes mais saudáveis.",
-                    "Beyond software, I work with safety, moderation, processes and digital community organization. This experience appears in servers, moderation teams, automations, abuse prevention, incident response and healthier community environments."
-                  )}
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
-
-          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {communities.map((community, index) => (
-              <motion.a
-                key={community.name}
-                href={community.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.52, delay: index * 0.05, ease }}
-                whileHover={{ y: -4 }}
-                className="group relative overflow-hidden rounded-2xl border border-border/30 bg-card/45 p-5 transition-colors duration-300 hover:border-foreground/20"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-border/25 bg-background/45">
-                    <img
-                      src={community.logo}
-                      alt=""
-                      className="h-9 w-9 object-contain"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="flex items-start justify-between gap-3">
-                      <h3 className="text-lg leading-tight text-foreground">{community.name}</h3>
-                      <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
-                    </div>
-                    <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground/70">
-                      {community.role}
-                    </p>
-                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                      {community.description}
-                    </p>
+        <section className="relative z-10 border-t border-border/20 bg-background py-16 lg:py-20">
+          <div className="mx-auto w-full max-w-6xl px-6 sm:px-8">
+            <ScrollReveal>
+              <div className="space-y-8">
+                <div className="mx-auto max-w-3xl text-center">
+                  <p className="mb-3 text-[11px] uppercase tracking-[0.34em] text-muted-foreground/70">
+                    Trust & Safety
+                  </p>
+                  <h2 className="font-serif text-3xl leading-tight text-foreground sm:text-4xl">
+                    {getText(language, "Comunidades também fazem parte do trabalho.", "Communities are part of the work too.")}
+                  </h2>
+                  <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                    {getText(
+                      language,
+                      "Também atuo como especialista em Trust & Safety e gerente de comunidades no Discord. Isso envolve moderação, processos, prevenção de abuso, resposta a incidentes, automações e cuidado com ambientes digitais que precisam crescer sem perder controle.",
+                      "I also work as a Trust & Safety specialist and Discord community manager. That includes moderation, processes, abuse prevention, incident response, automations and care for digital spaces that need to grow without losing control."
+                    )}
+                  </p>
+                  <div className="mt-5 flex flex-wrap justify-center gap-2">
+                    <span className="inline-flex items-center gap-2 rounded-full border border-border/35 bg-foreground/[0.035] px-3 py-2 text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                      <ShieldCheck className="h-3.5 w-3.5" />
+                      Trust & Safety
+                    </span>
+                    <span className="inline-flex items-center gap-2 rounded-full border border-border/35 bg-foreground/[0.035] px-3 py-2 text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                      <Users className="h-3.5 w-3.5" />
+                      Discord
+                    </span>
                   </div>
                 </div>
-              </motion.a>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      <section className="relative overflow-hidden bg-background py-16 lg:py-20">
-        <div className="container mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="mx-auto max-w-4xl text-center">
-              <p className="mb-5 text-[11px] uppercase tracking-[0.34em] text-muted-foreground/70">
-                {getText(language, "Redes sociais", "Social")}
-              </p>
-              <h2 className="font-serif text-4xl text-foreground sm:text-5xl">
-                {getText(language, "Onde acompanhar.", "Where to follow.")}
-              </h2>
-              <div className="mt-9 flex flex-wrap justify-center gap-3">
-                {socialLinks.map(({ label, href, icon: Icon }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className="group inline-flex h-12 w-12 items-center justify-center rounded-full border border-border/35 bg-foreground/[0.035] text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/25 hover:bg-foreground/[0.07] hover:text-foreground"
-                  >
-                    <Icon className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
-                  </a>
-                ))}
+                <div className="grid gap-x-6 gap-y-1 border-y border-border/15 py-5 sm:grid-cols-2 lg:grid-cols-3">
+                  {communities.map((community, index) => (
+                    <motion.a
+                      key={community.name}
+                      href={community.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-70px" }}
+                      transition={{ duration: 0.48, delay: index * 0.04, ease }}
+                      className="group flex items-center gap-4 border-b border-border/15 py-4 transition-colors duration-300 hover:border-foreground/25 lg:[&:nth-last-child(-n+3)]:border-b-0"
+                    >
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border/25 bg-card/45">
+                        <img src={community.logo} alt="" className="h-7 w-7 object-contain" loading="lazy" />
+                      </span>
+                      <span className="min-w-0 flex-1">
+                        <span className="block truncate text-sm font-medium text-foreground">{community.name}</span>
+                        <span className="mt-1 block truncate text-xs uppercase tracking-[0.14em] text-muted-foreground/70">
+                          {community.role}
+                        </span>
+                      </span>
+                      <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform duration-300 group-hover:translate-x-1 group-hover:text-foreground" />
+                    </motion.a>
+                  ))}
+                </div>
               </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      <section className="relative overflow-hidden border-t border-border/20 bg-background py-14">
-        <div className="container mx-auto px-6 lg:px-8">
-          <div className="flex flex-col items-center justify-between gap-5 rounded-2xl border border-border/25 bg-card/35 px-6 py-6 text-center sm:flex-row sm:text-left">
-            <div>
-              <p className="text-[11px] uppercase tracking-[0.28em] text-muted-foreground/70">
-                {getText(language, "Contato direto", "Direct contact")}
-              </p>
-              <p className="mt-2 max-w-xl text-sm text-muted-foreground">
-                {getText(
-                  language,
-                  "Para projetos, parcerias e conversas profissionais, comece pelo contexto.",
-                  "For projects, partnerships and professional conversations, start with context."
-                )}
-              </p>
-            </div>
-            <Link
-              to={language === "en" ? "/en-us/contact" : "/contato"}
-              className="group inline-flex h-12 items-center gap-3 rounded-full border border-border/35 bg-background/45 px-5 text-sm font-medium text-foreground transition-all duration-300 hover:border-foreground/25 hover:bg-foreground/[0.06]"
-            >
-              <BriefcaseBusiness className="h-4 w-4" />
-              {getText(language, "Conversar", "Contact")}
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
+            </ScrollReveal>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
     </Layout>
   );
 };
