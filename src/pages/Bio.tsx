@@ -162,7 +162,7 @@ const Bio = () => {
         />
         <div className="pointer-events-none absolute left-1/2 top-24 h-[420px] w-[680px] -translate-x-1/2 rounded-full bg-foreground/[0.035] blur-3xl" />
 
-        <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 py-10 sm:px-8 lg:py-14">
+        <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 py-8 sm:px-8 lg:py-10">
           <motion.header
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -189,11 +189,11 @@ const Bio = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.08, ease }}
-            className="flex flex-1 flex-col justify-center py-12 sm:py-14"
+            className="flex flex-1 flex-col justify-center py-8 sm:py-10"
           >
             <div className="mx-auto w-full max-w-5xl">
-              <div className="mx-auto flex flex-col items-center justify-center gap-6 text-center sm:flex-row">
-                <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full border border-border/35 bg-card/50 shadow-[0_26px_70px_hsl(0_0%_0%/0.36)] sm:h-28 sm:w-28">
+              <div className="mx-auto flex flex-col items-center justify-center gap-5 text-center sm:flex-row">
+                <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full border border-border/35 bg-card/50 shadow-[0_26px_70px_hsl(0_0%_0%/0.36)] sm:h-24 sm:w-24">
                   <img
                     src={portrait}
                     alt="Talisson Souza"
@@ -204,41 +204,23 @@ const Bio = () => {
                 </div>
 
                 <div className="min-w-0 text-center">
-                  <p className="mb-4 text-[11px] uppercase tracking-[0.36em] text-muted-foreground/70">
+                  <p className="mb-3 text-[11px] uppercase tracking-[0.36em] text-muted-foreground/70">
                     {getText(language, "Bio oficial", "Official bio")}
                   </p>
 
-                  <h1 className="whitespace-nowrap font-serif text-[clamp(2.35rem,7.8vw,5.15rem)] leading-[0.9] tracking-[-0.02em] text-foreground">
+                  <h1 className="whitespace-nowrap font-serif text-[clamp(2.25rem,7.2vw,4.75rem)] leading-[0.9] tracking-[-0.02em] text-foreground">
                     Talisson Souza
                   </h1>
 
-                  <p className="mt-5 whitespace-nowrap font-mono text-[clamp(0.56rem,1.4vw,0.78rem)] uppercase tracking-[clamp(0.1em,0.55vw,0.22em)] text-muted-foreground">
+                  <p className="mt-4 whitespace-nowrap font-mono text-[clamp(0.56rem,1.4vw,0.76rem)] uppercase tracking-[clamp(0.1em,0.55vw,0.22em)] text-muted-foreground">
                     Software Engineer · Founder · Entrepreneur
                   </p>
                 </div>
               </div>
 
-              <div className="mx-auto mt-8 h-px w-24 bg-foreground/65" />
+              <div className="mx-auto mt-6 h-px w-24 bg-foreground/65" />
 
-              <div className="mx-auto mt-10 max-w-3xl space-y-4 border-t border-border/20 pt-8 text-center text-base leading-relaxed text-muted-foreground sm:text-lg">
-                <p className="text-[1.65rem] font-semibold leading-[1.12] text-foreground sm:text-[2.15rem]">
-                  {getText(
-                    language,
-                    "Construindo software, empresas e conteúdo que continuam fazendo sentido depois da primeira entrega.",
-                    "Building software, companies and content that keep making sense after the first delivery."
-                  )}
-                </p>
-
-                <p>
-                  {getText(
-                    language,
-                    "Minha atuação passa por engenharia de software, arquitetura, automações, produtos digitais e estratégia. Gosto de entender o problema com calma e transformar decisões confusas em sistemas claros, úteis e sustentáveis.",
-                    "My work moves through software engineering, architecture, automations, digital products and strategy. I like understanding the problem carefully and turning messy decisions into clear, useful and sustainable systems."
-                  )}
-                </p>
-              </div>
-
-              <div className="mx-auto mt-8 flex max-w-3xl flex-wrap items-center justify-center gap-6 border-b border-border/20 pb-8">
+              <div className="mx-auto mt-6 flex max-w-3xl flex-wrap items-center justify-center gap-6">
                 {socialLinks.map(({ label, href, icon: Icon, internal }) => {
                   const className =
                     "text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:text-foreground";
@@ -258,9 +240,27 @@ const Bio = () => {
                   );
                 })}
               </div>
+
+              <div className="mx-auto mt-7 max-w-3xl space-y-3 border-t border-border/20 pt-6 text-center text-base leading-relaxed text-muted-foreground sm:text-lg">
+                <p className="text-[1.45rem] font-semibold leading-[1.14] text-foreground sm:text-[1.9rem]">
+                  {getText(
+                    language,
+                    "Construindo software, empresas e conteúdo que continuam fazendo sentido depois da primeira entrega.",
+                    "Building software, companies and content that keep making sense after the first delivery."
+                  )}
+                </p>
+
+                <p>
+                  {getText(
+                    language,
+                    "Minha atuação passa por engenharia de software, arquitetura, automações, produtos digitais e estratégia. Gosto de entender o problema com calma e transformar decisões confusas em sistemas claros, úteis e sustentáveis.",
+                    "My work moves through software engineering, architecture, automations, digital products and strategy. I like understanding the problem carefully and turning messy decisions into clear, useful and sustainable systems."
+                  )}
+                </p>
+              </div>
             </div>
 
-            <aside className="mt-8 hidden md:block">
+            <aside className="mt-6 hidden md:block">
               <div className="mx-auto max-w-3xl border-y border-border/20 py-6">
                 <p className="mb-5 text-[10px] uppercase tracking-[0.3em] text-muted-foreground/60">
                   {getText(language, "Canais oficiais", "Official channels")}
