@@ -189,10 +189,10 @@ const Bio = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.08, ease }}
-            className="grid flex-1 items-center gap-12 py-12 sm:py-14 md:grid-cols-[minmax(0,1fr)_300px] md:gap-12 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16"
+            className="flex flex-1 flex-col justify-center py-12 sm:py-14"
           >
-            <div className="min-w-0">
-              <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+            <div className="mx-auto w-full max-w-5xl">
+              <div className="mx-auto flex flex-col items-center justify-center gap-6 text-center sm:flex-row">
                 <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full border border-border/35 bg-card/50 shadow-[0_26px_70px_hsl(0_0%_0%/0.36)] sm:h-28 sm:w-28">
                   <img
                     src={portrait}
@@ -203,12 +203,12 @@ const Bio = () => {
                   />
                 </div>
 
-                <div className="min-w-0">
+                <div className="min-w-0 text-center">
                   <p className="mb-4 text-[11px] uppercase tracking-[0.36em] text-muted-foreground/70">
                     {getText(language, "Bio oficial", "Official bio")}
                   </p>
 
-                  <h1 className="whitespace-nowrap font-serif text-[clamp(2.45rem,6.4vw,5.15rem)] leading-[0.9] tracking-[-0.02em] text-foreground">
+                  <h1 className="whitespace-nowrap font-serif text-[clamp(2.35rem,7.8vw,5.15rem)] leading-[0.9] tracking-[-0.02em] text-foreground">
                     Talisson Souza
                   </h1>
 
@@ -218,9 +218,9 @@ const Bio = () => {
                 </div>
               </div>
 
-              <div className="mt-8 h-px w-24 bg-foreground/65" />
+              <div className="mx-auto mt-8 h-px w-24 bg-foreground/65" />
 
-              <div className="mt-7 max-w-2xl space-y-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+              <div className="mx-auto mt-10 max-w-3xl space-y-4 border-t border-border/20 pt-8 text-center text-base leading-relaxed text-muted-foreground sm:text-lg">
                 <p className="text-[1.65rem] font-semibold leading-[1.12] text-foreground sm:text-[2.15rem]">
                   {getText(
                     language,
@@ -238,7 +238,7 @@ const Bio = () => {
                 </p>
               </div>
 
-              <div className="mt-8 flex flex-wrap items-center gap-6">
+              <div className="mx-auto mt-8 flex max-w-3xl flex-wrap items-center justify-center gap-6 border-b border-border/20 pb-8">
                 {socialLinks.map(({ label, href, icon: Icon, internal }) => {
                   const className =
                     "text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:text-foreground";
@@ -260,8 +260,8 @@ const Bio = () => {
               </div>
             </div>
 
-            <aside className="hidden md:block">
-              <div className="border-y border-border/20 py-6">
+            <aside className="mt-8 hidden md:block">
+              <div className="mx-auto max-w-3xl border-y border-border/20 py-6">
                 <p className="mb-5 text-[10px] uppercase tracking-[0.3em] text-muted-foreground/60">
                   {getText(language, "Canais oficiais", "Official channels")}
                 </p>
