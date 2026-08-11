@@ -60,9 +60,7 @@ const pageMeta = new Map([
   ['/en-us/policies', ['Policies | Talisson Souza', 'Policy, terms and guideline hub for my professional work.']],
 ]);
 
-const canonicalOverrides = new Map([
-  ['/bio', 'https://bio.talissonsouza.com.br'],
-]);
+const canonicalOverrides = new Map();
 
 const serviceTitles = new Map([
   ['web-development', ['Desenvolvimento Web | Talisson Souza', 'Sites, aplicações e sistemas web com estrutura, performance e base preparada para crescer.']],

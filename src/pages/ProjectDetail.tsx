@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import SectionTitle from "@/components/ui/SectionTitle";
 import TechList from "@/components/ui/TechList";
 import { ArrowLeft, ExternalLink, Calendar, Users } from "lucide-react";
@@ -26,6 +27,7 @@ const ProjectDetail = () => {
   const { language } = useTheme();
   const t = useTranslation(language);
   const { slug } = useParams();
+  const projectsPath = language === 'en' ? '/en-us/projects' : '/projetos';
 
   // Dados dos projetos com detalhes expandidos
   const projectsData: Record<string, ProjectDetailData> = {
@@ -312,11 +314,17 @@ const ProjectDetail = () => {
   if (!project) {
     return (
       <Layout>
+        <SEO
+          title={language === 'pt' ? 'Projeto não encontrado | Talisson Souza' : 'Project Not Found | Talisson Souza'}
+          description={language === 'pt' ? 'O projeto solicitado não está disponível publicamente.' : 'The requested project is not publicly available.'}
+          canonical={projectsPath}
+          noindex
+        />
         <div className="container mx-auto px-4 pt-32 pb-16 text-center">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
             {language === 'pt' ? 'Projeto não encontrado' : 'Project not found'}
           </h1>
-          <Link to="/projects" className="text-accent-blue hover:underline">
+          <Link to={projectsPath} className="text-accent-blue hover:underline">
             {language === 'pt' ? 'Voltar aos projetos' : 'Back to projects'}
           </Link>
         </div>
@@ -326,10 +334,17 @@ const ProjectDetail = () => {
 
   return (
     <Layout>
+      <SEO
+        title={`${project.title} | ${language === 'pt' ? 'Portfólio em Curadoria' : 'Curated Portfolio'}`}
+        description={project.description}
+        canonical={`${projectsPath}/${slug || ''}`}
+        image={project.image}
+        noindex
+      />
       <div className="container mx-auto px-4 pt-32 pb-16">
         <div className="mb-8">
-          <Link 
-            to="/projects" 
+          <Link
+            to={projectsPath}
             className="inline-flex items-center text-accent-blue hover:underline mb-6"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />

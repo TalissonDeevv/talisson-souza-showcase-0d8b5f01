@@ -71,6 +71,7 @@ const Articles = () => {
 
       <PageHero
         compact
+        className="z-30 overflow-visible"
         eyebrow={getText(language, "Publicações", "Publications")}
         title={getText(language, "Artigos & Guias", "Articles & Guides")}
         subtitle={getText(

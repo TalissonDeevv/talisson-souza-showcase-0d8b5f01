@@ -133,14 +133,14 @@ const Bio = () => {
           "Página oficial de bio de Talisson Souza com links, projetos, redes sociais, comunidades e canais profissionais.",
           "Official bio page for Talisson Souza with links, projects, social media, communities and professional channels."
         )}
-        canonical="https://bio.talissonsouza.com.br"
+        canonical="/bio"
         image="/og/home.png"
         keywords={["bio Talisson Souza", "Talisson Souza links", "Cheetah Solutions Network", "Square Cloud"]}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "ProfilePage",
           name: "Bio Oficial | Talisson Souza",
-          url: "https://bio.talissonsouza.com.br",
+          url: "https://www.talissonsouza.com.br/bio",
           mainEntity: {
             "@type": "Person",
             name: "Talisson Souza",

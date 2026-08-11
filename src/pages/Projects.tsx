@@ -166,7 +166,6 @@ const Projects = () => {
           "Curated portfolio with respect for client confidentiality. Learn how to review cases, authorize publications and discuss projects in context."
         )}
         canonical={language === "en" ? "/en-us/projects" : "/projetos"}
-        noindex
       />
 
       <section className="relative isolate overflow-hidden pt-28 pb-12 lg:pt-32 lg:pb-16">

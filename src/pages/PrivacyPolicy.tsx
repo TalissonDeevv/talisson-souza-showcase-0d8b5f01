@@ -21,7 +21,7 @@ const PrivacyPolicy = () => {
           "Política de privacidade e proteção de dados do site de Talisson Souza.",
           "Privacy policy and data protection for Talisson Souza's website."
         )}
-        canonical={language === "en" ? "/en-us/privacy-policy" : "/politica-de-privacidade"}
+        canonical={language === "en" ? "/en-us/policies/politica-de-privacidade" : "/politicas/politica-de-privacidade"}
       />
 
       <section className="pt-20 pb-16 lg:pt-24 lg:pb-20">

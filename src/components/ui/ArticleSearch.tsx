@@ -61,10 +61,10 @@ const ArticleSearch = ({ variant = 'compact' }: ArticleSearchProps) => {
 
   if (variant === 'hero') {
     return (
-      <div ref={containerRef} className="relative w-full max-w-xl">
+      <div ref={containerRef} className="relative z-[80] w-full max-w-xl">
         <div className={`flex items-center gap-3 px-4 py-3 rounded-xl border transition-all duration-300 ${
-          isFocused 
-            ? 'border-foreground/20 bg-card/80 backdrop-blur-xl shadow-lg shadow-foreground/[0.02]' 
+          isFocused
+            ? 'border-foreground/20 bg-background/95 backdrop-blur-xl shadow-lg shadow-foreground/[0.02]'
             : 'border-border/30 bg-card/40 backdrop-blur-sm'
         }`}>
           <Search className="w-4 h-4 text-muted-foreground/60 shrink-0" />
@@ -78,7 +78,7 @@ const ArticleSearch = ({ variant = 'compact' }: ArticleSearchProps) => {
               'Buscar por título, tema ou palavra-chave...', 
               'Search by title, topic or keyword...'
             )}
-            className="flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground/40 outline-none"
+            className="min-w-0 flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground/40 outline-none"
           />
           {query ? (
             <button onClick={handleClose} className="text-muted-foreground/60 hover:text-foreground transition-colors">
@@ -99,7 +99,7 @@ const ArticleSearch = ({ variant = 'compact' }: ArticleSearchProps) => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -4 }}
               transition={{ duration: 0.15 }}
-              className="absolute top-full left-0 right-0 mt-2 max-h-[420px] overflow-y-auto rounded-xl border border-border/50 bg-card backdrop-blur-xl shadow-2xl z-50"
+              className="relative z-[100] mt-2 max-h-[52vh] w-full overflow-y-auto overscroll-contain rounded-xl border border-border/50 bg-background/95 shadow-2xl backdrop-blur-xl sm:max-h-[420px]"
             >
               {results.length === 0 ? (
                 <div className="p-6 text-center">

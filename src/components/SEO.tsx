@@ -17,6 +17,7 @@ interface SEOProps {
 
 const BASE_URL = 'https://www.talissonsouza.com.br';
 const SITE_NAME = 'Talisson Souza';
+const SITE_LOGO_URL = `${BASE_URL}/apple-touch-icon.png`;
 
 const routeImageKey = (path: string) => {
   const normalizedPath = (path || '/').split('?')[0].split('#')[0].replace(/\/+$/, '') || '/';
@@ -50,7 +51,6 @@ const SEO = ({
   publishedTime,
   modifiedTime,
   author = 'Talisson Souza',
-  keywords = [],
   noindex = false,
   jsonLd,
 }: SEOProps) => {
@@ -71,18 +71,11 @@ const SEO = ({
   const locale = language === 'pt' ? 'pt_BR' : 'en_US';
   const alternateLocale = language === 'pt' ? 'en_US' : 'pt_BR';
   
-  const defaultKeywords = language === 'pt'
-    ? ['Talisson Souza', 'desenvolvedor full stack', 'desenvolvimento web', 'React', 'Node.js', 'TypeScript', 'CEO', 'Cheetah Solutions Network']
-    : ['Talisson Souza', 'full stack developer', 'web development', 'React', 'Node.js', 'TypeScript', 'CEO', 'Cheetah Solutions Network'];
-
-  const allKeywords = [...new Set([...defaultKeywords, ...keywords])].join(', ');
-
   return (
     <Helmet>
       <html lang={language === 'pt' ? 'pt-BR' : 'en-US'} />
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
-      <meta name="keywords" content={allKeywords} />
       <meta name="author" content={author} />
       <link rel="canonical" href={canonicalUrl} />
       <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
@@ -130,7 +123,7 @@ const SEO = ({
           dateModified: modifiedTime || publishedTime,
           mainEntityOfPage: canonicalUrl,
           image: socialImageUrl,
-          publisher: { '@type': 'Organization', name: SITE_NAME, logo: { '@type': 'ImageObject', url: socialImageUrl } },
+          publisher: { '@type': 'Organization', name: SITE_NAME, logo: { '@type': 'ImageObject', url: SITE_LOGO_URL } },
         })}</script>
       )}
 

@@ -59,7 +59,7 @@ const Terminal = () => {
 
   const allCommands = [
     'help', 'sobre', 'about', 'projetos', 'projects', 'contato', 'contact',
-    'empresas', 'companies', 'servicos', 'services', 'blog', 'carreira', 'career',
+    'empresas', 'companies', 'servicos', 'services', 'artigos', 'articles', 'blog', 'carreira', 'career',
     'livro', 'book', 'parcerias', 'partnerships', 'skills', 'habilidades',
     'clear', 'whoami', 'ls', 'pwd', 'date', 'neofetch', 'matrix', 'joke'
   ];
@@ -119,12 +119,12 @@ const Terminal = () => {
     },
     habilidades: { pt: "", en: "" },
     blog: {
-      pt: "📝 Blog & Artigos:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n📰 Artigos sobre:\n   • Desenvolvimento Web\n   • Bots e Automação\n   • Gestão de Projetos\n   • Empreendedorismo Tech\n\n💡 Digite 'open blog' para ler",
-      en: "📝 Blog & Articles:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n📰 Articles about:\n   • Web Development\n   • Bots and Automation\n   • Project Management\n   • Tech Entrepreneurship\n\n💡 Type 'open blog' to read"
+      pt: "📝 Artigos & Guias:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n📰 Conteúdos sobre:\n   • Desenvolvimento Web\n   • Bots e Automação\n   • Gestão de Comunidades\n   • Carreira em Tecnologia\n\n💡 Digite 'open artigos' para ler",
+      en: "📝 Articles & Guides:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n📰 Content about:\n   • Web Development\n   • Bots and Automation\n   • Community Management\n   • Tech Career\n\n💡 Type 'open articles' to read"
     },
     ls: {
-      pt: "📁 Páginas disponíveis:\n\n  📄 /           (home)\n  📄 /about      (sobre)\n  📄 /projects   (projetos)\n  📄 /services   (servicos)\n  📄 /career     (carreira)\n  📄 /blog       (blog)\n  📄 /contact    (contato)",
-      en: "📁 Available pages:\n\n  📄 /           (home)\n  📄 /about      (about)\n  📄 /projects   (projects)\n  📄 /services   (services)\n  📄 /career     (career)\n  📄 /blog       (blog)\n  📄 /contact    (contact)"
+      pt: "📁 Páginas disponíveis:\n\n  📄 /           (home)\n  📄 /sobre      (sobre)\n  📄 /projetos   (projetos)\n  📄 /servicos   (servicos)\n  📄 /carreira   (carreira)\n  📄 /artigos    (artigos)\n  📄 /contato    (contato)",
+      en: "📁 Available pages:\n\n  📄 /           (home)\n  📄 /en-us/about      (about)\n  📄 /en-us/projects   (projects)\n  📄 /en-us/services   (services)\n  📄 /en-us/career     (career)\n  📄 /en-us/articles   (articles)\n  📄 /en-us/contact    (contact)"
     },
     pwd: {
       pt: "/home/talinho/portfolio",
@@ -236,15 +236,25 @@ const Terminal = () => {
 
     if (command.startsWith("open ") || command.startsWith("cd ")) {
       const page = command.split(" ")[1];
-      const pageMap: { [key: string]: string } = {
-        contato: "/contact", contact: "/contact",
-        projetos: "/projects", projects: "/projects",
-        sobre: "/about", about: "/about",
-        empresas: "/career", companies: "/career",
-        servicos: "/services", services: "/services",
-        blog: "/blog",
-        carreira: "/career", career: "/career",
-      };
+      const pageMap: { [key: string]: string } = language === "pt"
+        ? {
+            contato: "/contato", contact: "/contato",
+            projetos: "/projetos", projects: "/projetos",
+            sobre: "/sobre", about: "/sobre",
+            empresas: "/carreira", companies: "/carreira",
+            servicos: "/servicos", services: "/servicos",
+            artigos: "/artigos", articles: "/artigos", blog: "/artigos",
+            carreira: "/carreira", career: "/carreira",
+          }
+        : {
+            contato: "/en-us/contact", contact: "/en-us/contact",
+            projetos: "/en-us/projects", projects: "/en-us/projects",
+            sobre: "/en-us/about", about: "/en-us/about",
+            empresas: "/en-us/career", companies: "/en-us/career",
+            servicos: "/en-us/services", services: "/en-us/services",
+            artigos: "/en-us/articles", articles: "/en-us/articles", blog: "/en-us/articles",
+            carreira: "/en-us/career", career: "/en-us/career",
+          };
       
       if (pageMap[page]) {
         setTimeout(() => navigate(pageMap[page]), 500);
