@@ -9,8 +9,8 @@ import squareCloudLogo from "@/assets/logos/square-cloud.png";
 import quackPayLogo from "@/assets/logos/quack-pay.png";
 import rocketseatLogo from "@/assets/logos/rocketseat.png";
 import splendoriLogo from "@/assets/logos/splendori.png";
-import ShoopeLogo from "@/assets/logos/shoope.png";
-import HostingerLogo from "@/assets/logos/hostinger.png";
+import shoopeLogo from "@/assets/logos/shoope.png";
+import sostingerLogo from "@/assets/logos/hostinger.png";
 import collaborationsSignature from "@/assets/collaborations-signature.png";
 
 const premiumEase = [0.16, 1, 0.3, 1] as const;
