@@ -9,6 +9,8 @@ import squareCloudLogo from "@/assets/logos/square-cloud.png";
 import quackPayLogo from "@/assets/logos/quack-pay.png";
 import rocketseatLogo from "@/assets/logos/rocketseat.png";
 import splendoriLogo from "@/assets/logos/splendori.png";
+import ShoopeLogo from "@/assets/logos/shoope.png";
+import HostingerLogo from "@/assets/logos/hostinger.png";
 import collaborationsSignature from "@/assets/collaborations-signature.png";
 
 const premiumEase = [0.16, 1, 0.3, 1] as const;
@@ -38,13 +40,13 @@ const companies: Company[] = [
     name: "Quack Pay",
     logo: quackPayLogo,
     url: "https://quackpay.com.br",
-    imageClassName: "max-h-8 max-w-[120px] sm:max-h-9 sm:max-w-[150px] xl:max-h-10 xl:max-w-[170px]",
+    imageClassName: "max-h-8 max-w-[126px] sm:max-h-10 sm:max-w-[170px] xl:max-h-11 xl:max-w-[190px]",
   },
   {
     name: "Rocketseat",
     logo: rocketseatLogo,
     url: "https://www.rocketseat.com.br/oferta/influencer/v2/talinho",
-    imageClassName: "max-h-6 max-w-[132px] sm:max-h-7 sm:max-w-[190px] xl:max-h-8 xl:max-w-[220px]",
+    imageClassName: "max-h-8 max-w-[126px] sm:max-h-10 sm:max-w-[170px] xl:max-h-11 xl:max-w-[190px]",
   },
   {
     name: "Splendori",
@@ -53,6 +55,16 @@ const companies: Company[] = [
     imageClassName: "h-12 w-12 rounded-sm object-cover lg:h-14 lg:w-14",
     showLabel: true,
   },
+  {
+    name: "Shoope",
+    logo: shoopeLogo,
+    url: "https://collshp.com/talisson.dev?view=storefront",
+    imageClassName: "max-h-8 max-w-[126px] sm:max-h-10 sm:max-w-[170px] xl:max-h-11 xl:max-w-[190px]",
+    {
+    name: "Hostinger",
+    logo: hostingerLogo,
+    url: "https://www.hostinger.com/br?REFERRALCODE=talissonsouza",
+    imageClassName: "max-h-8 max-w-[126px] sm:max-h-10 sm:max-w-[170px] xl:max-h-11 xl:max-w-[190px]",
 ];
 
 const sectionVariants = {
