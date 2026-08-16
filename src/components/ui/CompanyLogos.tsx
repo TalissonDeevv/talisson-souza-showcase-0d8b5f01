@@ -65,6 +65,7 @@ const companies: Company[] = [
     logo: hostingerLogo,
     url: "https://www.hostinger.com/br?REFERRALCODE=talissonsouza",
     imageClassName: "max-h-8 max-w-[126px] sm:max-h-10 sm:max-w-[170px] xl:max-h-11 xl:max-w-[190px]",
+  }
 ];
 
 const sectionVariants = {
