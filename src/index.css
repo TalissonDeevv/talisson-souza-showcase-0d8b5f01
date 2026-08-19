@@ -59,11 +59,6 @@
     letter-spacing: -0.01em;
   }
 
-  img {
-    -webkit-user-drag: none;
-    user-select: none;
-  }
-
   ::selection {
     @apply bg-foreground/10 text-foreground;
   }
@@ -334,48 +329,6 @@ html.lenis body {
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--muted-foreground) / 0.5);
 }
-
-.policy-reading-scrollbar {
-  overscroll-behavior: contain;
-  scrollbar-color: hsl(var(--foreground) / 0.38) transparent;
-  scrollbar-gutter: stable;
-  scrollbar-width: thin;
-}
-
-.policy-reading-scrollbar::-webkit-scrollbar {
-  width: 6px;
-}
-
-.policy-reading-scrollbar::-webkit-scrollbar-track {
-  margin-block: 6px;
-  border-radius: 999px;
-  background: hsl(var(--foreground) / 0.045);
-}
-
-.policy-reading-scrollbar::-webkit-scrollbar-thumb {
-  border: 1px solid hsl(var(--background) / 0.7);
-  border-radius: 999px;
-  background: linear-gradient(
-    180deg,
-    hsl(var(--foreground) / 0.5),
-    hsl(var(--foreground) / 0.18)
-  );
-}
-
-.policy-reading-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(
-    180deg,
-    hsl(var(--foreground) / 0.72),
-    hsl(var(--foreground) / 0.3)
-  );
-}
-
-.policy-reading-scrollbar::-webkit-scrollbar-button {
-  display: none;
-  width: 0;
-  height: 0;
-}
-
 .animated-signature-wrapper {
   filter: drop-shadow(0 0 26px hsl(var(--foreground) / 0.32));
 }

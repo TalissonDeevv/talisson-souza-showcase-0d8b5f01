@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 
 import talissonPortrait from "@/assets/talisson-portrait.png";
@@ -11,34 +13,46 @@ const StoryHighlight = () => {
     <div className="container relative mx-auto px-6 lg:px-8">
       <div className="grid min-h-[460px] grid-cols-1 items-center gap-8 overflow-visible lg:grid-cols-12 lg:gap-4 xl:gap-0">
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 28, filter: "blur(6px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
           className="relative z-10 lg:col-span-6"
         >
           <span className="mb-6 block text-[11px] font-medium uppercase tracking-[0.3em] text-muted-foreground/70">
-            {language === "pt" ? "Reflexão" : "Reflection"}
+            {language === "pt" ? "Origem" : "Origin"}
           </span>
 
           <h2 className="max-w-xl font-serif text-3xl leading-[1.05] text-foreground sm:text-4xl lg:text-5xl">
-            {language === "pt" ? "Capacidade não se mede pela primeira impressão." : "Capability is not measured by a first impression."}
+            {language === "pt" ? "Por que fundei minha empresa aos 17?" : "Why I started my company at 17?"}
           </h2>
 
           <div className="mt-7 max-w-xl space-y-4">
             <p className="text-base leading-relaxed text-muted-foreground/90">
               {language === "pt"
-                ? "Uma recusa pode tentar resumir quem você é. Eu aprendi a responder construindo, estudando e assumindo responsabilidade pelo que ainda podia nascer dali."
-                : "A rejection can try to summarize who you are. I learned to answer by building, studying and taking responsibility for what could still be created from it."}
+                ? "Em 2021, fui recusado em um processo seletivo não por falta de qualificação, mas por causa da minha cadeira de rodas. Esse momento transformou frustração em propósito."
+                : "In 2021, I was rejected in a selection process not for lack of qualification, but because of my wheelchair. That moment transformed frustration into purpose."}
             </p>
             <p className="text-base leading-relaxed text-muted-foreground/80">
               {language === "pt"
-                ? "Essa parte da minha história não é sobre abrir uma empresa cedo. É sobre transformar frustração em postura, trabalho e clareza para continuar."
-                : "This part of my story is not about starting a company early. It is about turning frustration into posture, work and clarity to continue."}
+                ? "Assim nasceu a Cheetah Solutions Network: mais que uma empresa, uma prova de que todos merecem oportunidades reais."
+                : "That is how Cheetah Solutions Network was born: more than a company, proof that everyone deserves real opportunities."}
             </p>
           </div>
 
-          <div className="mt-8 w-[220px] text-foreground/78 sm:w-[260px]" aria-hidden="true">
+          <Link
+            to={language === "en" ? "/en-us/career" : "/carreira"}
+            className="group mt-9 inline-flex items-center gap-3 text-sm font-medium text-foreground"
+          >
+            <span className="relative">
+              {language === "pt" ? "Ler história completa" : "Read full story"}
+              <span className="absolute bottom-0 left-0 h-px w-full bg-foreground/20" />
+              <span className="absolute bottom-0 left-0 h-px w-0 bg-foreground transition-all duration-500 group-hover:w-full" />
+            </span>
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+          </Link>
+
+          <div className="mt-7 w-[220px] text-foreground/78 sm:w-[260px]" aria-hidden="true">
             <svg viewBox={SIGNATURE_VECTOR_VIEWBOX} className="h-auto w-full overflow-visible">
               <path
                 d={SIGNATURE_VECTOR_PATH}

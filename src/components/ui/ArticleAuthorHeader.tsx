@@ -5,7 +5,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import { useRelativeTime } from "@/hooks/useRelativeTime";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import authorPhoto from "@/assets/talisson-portrait.png";
+import authorPhoto from "@/assets/author-talisson-small.jpg";
 
 interface ArticleAuthorHeaderProps {
   date: string;
@@ -14,65 +14,67 @@ interface ArticleAuthorHeaderProps {
 
 const ArticleAuthorHeader = ({ date, readingTime }: ArticleAuthorHeaderProps) => {
   const { language } = useTheme();
-  const relativeTime = useRelativeTime(date, language === "en" ? "en" : "pt");
+  const relativeTime = useRelativeTime(date, language === 'en' ? 'en' : 'pt');
 
   const fullDate = new Date(date).toLocaleDateString(
-    language === "pt" ? "pt-BR" : "en-US",
-    { day: "numeric", month: "long", year: "numeric" }
+    language === 'pt' ? 'pt-BR' : 'en-US',
+    { day: 'numeric', month: 'long', year: 'numeric' }
   );
 
-  const readingLabel =
-    language === "pt" ? `${readingTime} min de leitura` : `${readingTime} min read`;
+  const readingLabel = language === 'pt'
+    ? `${readingTime} min de leitura`
+    : `${readingTime} min read`;
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: 0.1 }}
-      className="flex items-center gap-3 sm:gap-4"
+      className="flex items-center gap-3 sm:gap-4 mb-6"
     >
-      <Link to={language === "en" ? "/en-us/about" : "/sobre"} className="group shrink-0">
+      <Link
+        to={language === 'en' ? '/en-us/about' : '/sobre'}
+        className="shrink-0 group"
+      >
         <img
           src={authorPhoto}
           alt="Talisson Souza"
-          className="h-12 w-12 rounded-full object-cover object-[50%_24%] ring-2 ring-border/30 transition-all duration-300 group-hover:ring-foreground/30 sm:h-14 sm:w-14"
-          draggable={false}
+          className="w-11 h-11 sm:w-14 sm:h-14 rounded-full object-cover ring-2 ring-border/30 group-hover:ring-primary/50 transition-all duration-300"
         />
       </Link>
 
-      <div className="flex min-w-0 flex-col gap-0.5">
+      <div className="flex flex-col gap-0.5">
         <div className="flex items-center gap-1.5">
           <Link
-            to={language === "en" ? "/en-us/about" : "/sobre"}
-            className="truncate text-sm font-semibold text-foreground transition-colors duration-200 hover:text-foreground/80 sm:text-base"
+            to={language === 'en' ? '/en-us/about' : '/sobre'}
+            className="text-sm sm:text-base font-semibold text-foreground hover:text-primary transition-colors duration-200"
           >
             Talisson Souza
           </Link>
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <BadgeCheck className="h-4 w-4 shrink-0 text-foreground/70" />
+                <BadgeCheck className="w-4 h-4 text-primary shrink-0 cursor-default" />
               </TooltipTrigger>
               <TooltipContent side="top" className="text-xs">
-                {getText(language, "Usuario verificado", "Verified user")}
+                {getText(language, 'Usuário Verificado', 'Verified User')}
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
         </div>
 
-        <p className="line-clamp-1 text-xs leading-snug text-muted-foreground/80 sm:text-sm">
-          {getText(
-            language,
-            "Engenheiro de Software, Fundador & CEO da Cheetah Solutions Network",
-            "Software Engineer, Founder & CEO at Cheetah Solutions Network"
+        <p className="text-xs sm:text-sm text-muted-foreground/80 leading-snug">
+          {getText(language,
+            'Engenheiro de Software, Fundador & CEO da Cheetah Solutions',
+            'Software Engineer, Founder & CEO at Cheetah Solutions'
           )}
         </p>
 
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <p className="mt-0.5 cursor-default text-[11px] text-muted-foreground/60 sm:text-xs">
-                {relativeTime} - {readingLabel}
+              <p className="text-[11px] sm:text-xs text-muted-foreground/60 mt-0.5 cursor-default">
+                {relativeTime} • {readingLabel}
               </p>
             </TooltipTrigger>
             <TooltipContent side="bottom" className="text-xs">

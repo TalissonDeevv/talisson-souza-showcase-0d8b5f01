@@ -169,7 +169,7 @@ const Projects = () => {
         noindex
       />
 
-      <section className="relative isolate overflow-hidden pt-28 pb-12 lg:pt-32 lg:pb-16">
+      <section className="relative isolate min-h-[100svh] overflow-hidden pt-32 pb-16 lg:pt-36 lg:pb-24">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute inset-0 bg-[linear-gradient(90deg,hsl(var(--foreground)/0.018)_1px,transparent_1px),linear-gradient(0deg,hsl(var(--foreground)/0.018)_1px,transparent_1px)] bg-[size:58px_58px]" />
           <div className="absolute left-1/2 top-1/3 hidden h-[660px] w-[860px] -translate-x-1/2 rounded-full bg-gradient-radial from-foreground/[0.04] via-transparent to-transparent blur-3xl lg:block" />
@@ -177,7 +177,7 @@ const Projects = () => {
         </div>
 
         <div className="container relative z-10 mx-auto px-6 lg:px-8">
-          <div className="mx-auto grid max-w-6xl grid-cols-1 items-start gap-9 lg:grid-cols-[minmax(0,0.9fr)_minmax(380px,0.82fr)] lg:gap-10">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(0,0.86fr)_minmax(420px,0.94fr)] lg:gap-12">
             <motion.div
               initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -204,7 +204,7 @@ const Projects = () => {
                 </span>
               </div>
 
-              <h1 className="max-w-3xl font-serif text-[clamp(2.55rem,5.05vw,4.25rem)] font-semibold uppercase leading-[0.98] text-foreground">
+              <h1 className="max-w-3xl font-serif text-[clamp(2.65rem,5.7vw,4.65rem)] font-semibold uppercase leading-[0.98] text-foreground">
                 {getText(language, "Portfólio com curadoria.", "Curated portfolio.")}
               </h1>
 
@@ -266,9 +266,9 @@ const Projects = () => {
               initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.8, delay: 0.12, ease: premiumEase }}
-              className="relative lg:justify-self-end"
+              className="relative"
             >
-              <div className="relative max-w-[520px] overflow-hidden rounded-lg border border-border/25 bg-card/25 p-4 shadow-[0_24px_72px_hsl(0_0%_0%/0.24)] backdrop-blur-sm sm:p-5">
+              <div className="relative overflow-hidden rounded-lg border border-border/25 bg-card/25 p-4 shadow-[0_24px_72px_hsl(0_0%_0%/0.24)] backdrop-blur-sm sm:p-5">
                 <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,hsl(var(--foreground)/0.025)_1px,transparent_1px),linear-gradient(0deg,hsl(var(--foreground)/0.025)_1px,transparent_1px)] bg-[size:44px_44px]" />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-foreground/[0.05] via-transparent to-background/80" />
                 <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
@@ -289,7 +289,7 @@ const Projects = () => {
                     </span>
                   </div>
 
-                  <div className="relative overflow-hidden rounded-md border border-border/20 bg-background/45 px-5 py-4 sm:px-7 sm:py-5">
+                  <div className="relative overflow-hidden rounded-md border border-border/20 bg-background/45 px-5 py-5 sm:px-7 sm:py-6">
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
                     <div className="pointer-events-none absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-radial from-foreground/[0.08] to-transparent blur-2xl" />
                     <div className="relative mx-auto max-w-md">
@@ -298,7 +298,7 @@ const Projects = () => {
                         alt={getText(language, "Projetos em curadoria", "Projects in curation")}
                         loading="lazy"
                         decoding="async"
-                        className="relative mx-auto w-full max-w-[360px] opacity-85"
+                        className="relative mx-auto w-full max-w-[320px] opacity-82"
                       />
                     </div>
                   </div>
@@ -310,12 +310,12 @@ const Projects = () => {
                           initial={{ opacity: 0, y: 14 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.55, delay: 0.22 + index * 0.08, ease: premiumEase }}
-                          className="rounded-md border border-border/20 bg-background/38 p-3"
+                          className="rounded-md border border-border/20 bg-background/38 p-3.5"
                         >
-                          <span className="mb-2 block font-serif text-2xl leading-none text-foreground/24">{step.label}</span>
+                          <span className="mb-3 block font-serif text-2xl leading-none text-foreground/24">{step.label}</span>
                           <span className="block">
                             <span className="block text-sm font-medium text-foreground">{step.title}</span>
-                            <span className="mt-1.5 block text-xs leading-relaxed text-muted-foreground/75">
+                            <span className="mt-2 block text-xs leading-relaxed text-muted-foreground/75">
                               {step.description}
                             </span>
                           </span>

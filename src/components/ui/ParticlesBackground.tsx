@@ -14,7 +14,7 @@ interface Particle {
 const ParticlesBackground = () => {
   // Reduce particles on mobile for better performance
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  const particleCount = isMobile ? 7 : 35;
+  const particleCount = isMobile ? 15 : 35;
   
   const particles = useMemo<Particle[]>(() => {
     return Array.from({ length: particleCount }, (_, i) => ({
@@ -30,8 +30,9 @@ const ParticlesBackground = () => {
 
   // Fewer orbs on mobile
   const orbs = isMobile ? [
-    { x: '18%', y: '24%', size: 3, duration: 10, delay: 0 },
-    { x: '78%', y: '42%', size: 3, duration: 12, delay: 1.5 },
+    { x: '15%', y: '20%', size: 4, duration: 8, delay: 0 },
+    { x: '85%', y: '30%', size: 3, duration: 10, delay: 2 },
+    { x: '50%', y: '50%', size: 5, duration: 12, delay: 0.5 },
   ] : [
     { x: '15%', y: '20%', size: 4, duration: 8, delay: 0 },
     { x: '85%', y: '30%', size: 3, duration: 10, delay: 2 },
@@ -56,10 +57,10 @@ const ParticlesBackground = () => {
             transform: 'translateZ(0)',
           }}
           animate={{
-            y: isMobile ? [0, -34, 0] : [0, -100, 0],
-            x: isMobile ? [0, 8, 0] : [0, Math.random() * 30 - 15, 0],
+            y: [0, -100, 0],
+            x: [0, Math.random() * 30 - 15, 0],
             opacity: [particle.opacity * 0.5, particle.opacity, particle.opacity * 0.5],
-            scale: isMobile ? [1, 1.08, 1] : [1, 1.2, 1],
+            scale: [1, 1.2, 1],
           }}
           transition={{
             duration: particle.duration,
@@ -85,9 +86,9 @@ const ParticlesBackground = () => {
             transform: 'translateZ(0)',
           }}
           animate={{
-            y: isMobile ? [0, -18, 0] : [0, -40, 0],
-            opacity: isMobile ? [0.16, 0.28, 0.16] : [0.2, 0.5, 0.2],
-            scale: isMobile ? [1, 1.12, 1] : [1, 1.3, 1],
+            y: [0, -40, 0],
+            opacity: [0.2, 0.5, 0.2],
+            scale: [1, 1.3, 1],
           }}
           transition={{
             duration: orb.duration,

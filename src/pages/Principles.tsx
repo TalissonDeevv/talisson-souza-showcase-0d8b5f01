@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen, Fingerprint, Layers, Quote, ShieldCheck } from "lucide-react";
+import { ArrowRight, BookOpen, Fingerprint, Layers, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
@@ -94,13 +94,6 @@ const Principles = () => {
       ],
     },
   ];
-
-  const finalReflection =
-    "O mundo jamais conheceu uma marca tão poderosa quanto a deles. Ele abriu mão do luxo dos palácios, da opulência do trono, acima de todos, da glória, que não precisava de aprovação. Ele escolheu descer. Sua marca não nasceu entre mármores e coroas. Foi construída no chão mais simples dessa terra, na forma mais humilde nasceu. Entre gente comum cresceu, serviu sem exigir aplauso. Foi tratado como o mais vil dos homens, traído, moído, humilhado publicamente por aqueles que não eram dignos sequer de sustentar o seu olhar. Separado do pai, exposto, silenciado pela violência de um mundo pequeno demais para compreendê-lo. A morte mais cruel: a cruz, símbolo de vergonha, transformada em estandarte eterno. E então veio o silêncio, um silêncio pesado, quase definitivo, até que uma voz ecoou através da eternidade. Está consumado, sem marketing, sem estratégia de expansão, sem investimento publicitário. Ainda assim dois mil anos depois, esse nome atravessa culturas, impérios, idiomas e gerações. Sua marca não vende produto. Entrega esperança. Não oferece status. Oferece salvação. Não promete poder terreno. Promete vida eterna. Impérios caíram. Reinos desapareceram. Nomes outrora temidos viraram pó mas esse permanece. Jesus Cristo de Nazaré";
-
-  const finalReflectionParagraphs = finalReflection
-    .replace("A morte mais cruel:", "A morte mais cruel,")
-    .split(/(?=Foi tratado|E então|Ainda assim|Sua marca|Impérios caíram)/);
 
   return (
     <Layout withPadding={false}>
@@ -243,53 +236,6 @@ const Principles = () => {
                 )}
               </p>
             </IdentityPanel>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      <section className="border-t border-border/20 pb-24 pt-14">
-        <div className="container mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="relative mx-auto max-w-6xl overflow-hidden border-y border-border/25 py-12 sm:py-14">
-              <div
-                className="pointer-events-none absolute inset-0 opacity-[0.018]"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
-                  backgroundSize: "52px 52px",
-                }}
-              />
-              <div className="pointer-events-none absolute -left-20 top-10 h-56 w-56 rounded-full bg-foreground/[0.035] blur-3xl" />
-              <div className="relative grid gap-10 px-2 sm:px-8 lg:grid-cols-[0.38fr_0.62fr] lg:items-start">
-                <div>
-                  <p className="mb-5 text-[11px] uppercase tracking-[0.32em] text-muted-foreground/60">
-                    {getText(language, "Reflexão final", "Final reflection")}
-                  </p>
-                  <h2 className="max-w-sm font-serif text-3xl leading-tight text-foreground sm:text-4xl">
-                    {getText(language, "Uma marca que atravessa gerações.", "A mark that crosses generations.")}
-                  </h2>
-                  <div className="mt-8 flex items-center gap-4">
-                    <span className="h-px w-12 bg-foreground/20" />
-                    <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground/65">
-                      Monica Rayol
-                    </p>
-                  </div>
-                </div>
-
-                <blockquote className="relative border-l border-foreground/12 pl-6 sm:pl-8">
-                  <Quote className="mb-6 h-6 w-6 text-foreground/45" />
-                  <div className="space-y-5">
-                    {finalReflectionParagraphs.map((paragraph, index) => (
-                      <p key={paragraph} className="text-base leading-[1.85] text-foreground/82 sm:text-lg">
-                        {index === 0 ? "“" : ""}
-                        {paragraph}
-                        {index === finalReflectionParagraphs.length - 1 ? "”" : ""}
-                      </p>
-                    ))}
-                  </div>
-                </blockquote>
-              </div>
-            </div>
           </ScrollReveal>
         </div>
       </section>

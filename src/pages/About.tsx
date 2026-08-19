@@ -1,282 +1,159 @@
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, BookOpen, Briefcase, Code2, Download, MapPin, Sparkles } from "lucide-react";
-import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
-import AnimatedSignature from "@/components/ui/AnimatedSignature";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import ParallaxSection from "@/components/ui/ParallaxSection";
+import GlassCard from "@/components/ui/GlassCard";
 import SocialIcons from "@/components/ui/SocialIcons";
-import { MotionRail, PageHero } from "@/components/ui/PageIdentity";
+import AnimatedTitle from "@/components/ui/AnimatedTitle";
+import { IdentityPanel, MotionRail, PageHero } from "@/components/ui/PageIdentity";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Download, ArrowRight, ArrowUpRight, Briefcase, GraduationCap, Heart, Star, BookOpen, Zap, Users, Calendar, Award, ExternalLink, Code2, Lightbulb, Target, Coffee, Rocket, TrendingUp, Clock, Layers, Gamepad2, Music, Camera, Plane, Dumbbell, Film } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
-import { getText } from "@/utils/translations";
-
-const ease = [0.16, 1, 0.3, 1] as const;
-
-const aboutParagraphsPt = [
-  "Meu nome é Talisson Souza.",
-  "Sou Engenheiro e Arquiteto de Software, fundador da Cheetah Solutions Network e trabalho desenvolvendo sistemas, automações e soluções digitais para empresas que precisam crescer com estrutura, eficiência e tecnologia construída para durar.",
-  "Se alguém me perguntasse quando começou minha relação com a tecnologia, eu provavelmente não saberia responder com uma data exata. Ela simplesmente aconteceu.",
-  "Muito antes de pensar em carreira, empresa ou clientes, eu já tinha curiosidade de entender como as coisas funcionavam. Sempre achei estranho usar um sistema sem imaginar como ele havia sido construído. Enquanto muitas pessoas viam apenas uma tela, eu tentava imaginar o que existia por trás dela.",
-  "Foi essa curiosidade que me trouxe até a programação. Não comecei porque estava seguindo uma tendência. Não comecei porque disseram que era uma profissão promissora. Comecei porque descobrir como as coisas eram construídas era divertido.",
-  "Em 2018 comecei a desenvolver bots e pequenas automações. Os primeiros projetos eram simples. Hoje, olhando para aquele código, consigo enxergar dezenas de erros. Na época eu acreditava que estava escrevendo um software excelente. E isso é curioso.",
-  "Quanto mais aprendemos, mais percebemos o quanto ainda temos para aprender. Essa talvez seja uma das maiores lições que a tecnologia me ensinou. O conhecimento nunca está completo.",
-  "Foi estudando, errando e reconstruindo projetos que desenvolvi minha base técnica. Grande parte desse aprendizado aconteceu de forma autodidata, lendo documentações, testando bibliotecas, desmontando projetos, quebrando aplicações e tentando entender por que determinada solução funcionava enquanto outra falhava.",
-  "Com o tempo, percebi que programar era apenas uma pequena parte do desenvolvimento de software. Escrever código é relativamente fácil. Difícil é entender o problema antes de pensar na solução.",
-  "Difícil é tomar decisões que continuem fazendo sentido daqui a cinco anos. Difícil é construir algo que outra pessoa consiga manter sem precisar reescrever tudo do zero.",
-  "Foi nesse momento que comecei a enxergar software de uma forma diferente. Passei a me interessar muito mais por arquitetura, organização, escalabilidade e engenharia do que apenas por linguagens de programação.",
-  "Sempre gostei da ideia de construir sistemas que permanecem úteis ao longo do tempo. Acredito que um software bem desenvolvido deve facilitar o crescimento de uma empresa, e não se tornar um obstáculo para ele.",
-  "Quando chegou o momento de entrar no mercado de trabalho, encontrei algumas dificuldades. Nem sempre as oportunidades aparecem quando estamos preparados para elas. Em alguns momentos percebi que seria mais fácil esperar alguém confiar no meu trabalho.",
-  "Mas também percebi que poderia fazer exatamente o contrário. Construir algo que demonstrasse meu trabalho sem depender da aprovação de ninguém. Foi assim que comecei a enxergar o empreendedorismo.",
-  "Em 2020 nasceu a Cheetah Solutions Network. Ela não surgiu porque eu queria apenas abrir uma empresa. Surgiu porque eu acreditava que era possível desenvolver tecnologia de uma forma diferente.",
-  "Sempre enxerguei software como investimento, nunca como produto descartável. Um sistema pode economizar milhares de horas de trabalho. Uma automação pode eliminar tarefas repetitivas durante anos. Uma boa arquitetura pode evitar problemas que só apareceriam muito tempo depois.",
-  "Hoje participo de projetos envolvendo desenvolvimento de sistemas, arquitetura de software, automações, integrações, infraestrutura e soluções sob medida. Gosto de acompanhar todas as etapas do processo: desde entender o problema até acompanhar o resultado daquilo que foi construído.",
-  "Acredito que tecnologia só faz sentido quando melhora a vida de quem está do outro lado. Se um sistema é complexo apenas para parecer sofisticado, provavelmente ele foi projetado da maneira errada.",
-  "Ao longo da minha trajetória também aprendi que disciplina costuma ser mais importante do que motivação. Motivação muda. Disciplina continua existindo mesmo quando a motivação desaparece.",
-  "Talvez por isso eu nunca tenha acreditado muito em fórmulas rápidas para alcançar resultados. Quase tudo que realmente vale a pena exige tempo, repetição e consistência. Software também funciona assim.",
-  "Não existe arquitetura sólida construída às pressas. Não existe experiência adquirida em poucas semanas. Não existe excelência sem prática.",
-  "Também gosto de compartilhar conhecimento. Sempre que possível ajudo desenvolvedores, participo de comunidades, escrevo conteúdos e converso com pessoas que estão iniciando na área. Acredito que ensinar também é uma forma de aprender.",
-  "Sou recifense, nascido e criado em Pernambuco. Tenho orgulho das minhas origens e de tudo que elas representam. Aprendi desde cedo que as circunstâncias não precisam definir até onde alguém pode chegar.",
-  "Como pessoa com deficiência (PCD), também enfrentei desafios que fizeram parte da minha história. Essas experiências mudaram minha forma de enxergar trabalho, responsabilidade e perseverança.",
-  "Elas me ensinaram que capacidade não pode ser medida pela primeira impressão que alguém tem de você. Ela aparece quando existe dedicação suficiente para continuar construindo, mesmo quando o caminho parece mais difícil.",
-  "Também sou autor do livro Superando Limites - Da Rejeição ao Sucesso, onde compartilho parte dessa trajetória e das experiências que moldaram minha forma de pensar.",
-  "Hoje continuo estudando praticamente todos os dias. A tecnologia muda rapidamente. O que sabemos hoje pode não ser suficiente amanhã. E, sinceramente, acho que isso é uma das coisas mais interessantes dessa profissão.",
-  "No fim das contas, acredito que minha trajetória nunca foi apenas sobre tecnologia. Sempre foi sobre construir conhecimento, soluções, oportunidades, empresas, confiança e algo que continue fazendo sentido muitos anos depois da última linha de código ser escrita.",
-];
-
-const aboutParagraphsEn = [
-  "My name is Talisson Souza.",
-  "I am a Software Engineer and Software Architect, founder of Cheetah Solutions Network, working on systems, automations and digital solutions for companies that need to grow with structure, efficiency and technology built to last.",
-  "My relationship with technology did not start from a trend. It started from curiosity and the need to understand what existed behind the screen, how things worked, and why one solution held up while another failed.",
-  "I started building bots and small automations in 2018. Those first projects were simple, imperfect and necessary. They taught me that knowledge is never complete and that every rebuild leaves a better engineer behind.",
-  "Over time I understood that writing code is only a small part of software development. The hard part is understanding the problem, making decisions that still make sense years later, and building something other people can maintain.",
-  "In 2020 I founded Cheetah Solutions Network because I believed technology could be developed with more responsibility. I have always seen software as an investment, not a disposable product.",
-  "Today I work across systems development, software architecture, automations, integrations, infrastructure and custom digital solutions. I like staying close to the full process, from diagnosis to the real result.",
-  "I was born and raised in Recife, Pernambuco. As a disabled person, I also faced experiences that shaped how I see work, responsibility and perseverance. They taught me that capability cannot be measured by first impressions.",
-  "I am also the author of Superando Limites - Da Rejeição ao Sucesso, a book where I share part of this journey and the experiences that shaped my way of thinking.",
-  "In the end, my journey has never been only about technology. It has always been about building knowledge, solutions, opportunities, companies, trust and things that still make sense long after the last line of code is written.",
-];
+import { useTranslation, getText } from "@/utils/translations";
+import bookCover from "@/assets/book-cover.jpg";
+import SetupSection from "@/components/ui/SetupSection";
 
 const About = () => {
   const { language } = useTheme();
-  const paragraphs = language === "pt" ? aboutParagraphsPt : aboutParagraphsEn;
+  const t = useTranslation(language);
+
+  const getAge = () => {
+    const today = new Date();
+    const birth = new Date(2004, 10, 10); // Nov 10, 2004
+    let age = today.getFullYear() - birth.getFullYear();
+    const m = today.getMonth() - birth.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+    return age;
+  };
+
+  const aboutTextPt = `Oi, tudo bem? Meu nome é Talisson Souza, mas muitos me chamam de Talinho. Tenho ${getAge()} anos, sou Empreendedor Executivo, Diretor de Negócios Empresariais e Desenvolvedor Full Stack. Como CEO da Cheetah Solutions Network, minha jornada com tecnologia começou meio que na curiosidade, fuçando aqui e ali, até que virei apaixonado de vez.
+
+Gosto de estar envolvido em tudo que crio, desde a primeira linha de código até ver o resultado final funcionando na prática. Trabalhar com desenvolvimento web, mobile, bots inteligentes e infraestrutura não é só meu trabalho, é parte do meu dia a dia.
+
+No fim, minha missão é criar soluções que realmente façam diferença, com um toque humano, e continuar aprendendo e evoluindo todos os dias.`;
+
+  const aboutTextEn = `Hi, how are you? My name is Talisson Souza, but many call me Talinho. I'm ${getAge()} years old, an Executive Entrepreneur, Business Director, and Full Stack Developer. As CEO of Cheetah Solutions Network, my journey with technology began out of curiosity, dabbling here and there, until I became completely passionate.
+
+I enjoy being involved in everything I create, from the first line of code to seeing the final result in action. Working with web and mobile development, smart bots, and infrastructure isn't just my job; it's part of my daily life.
+
+Ultimately, my mission is to create solutions that truly make a difference, with a human touch, and to continue learning and evolving every day.`;
+
+  const experiences = language === 'pt' ? [
+    { company: "Cheetah Solutions Network", position: "CEO & Founder", period: "2020 - Presente", description: "Fundei e lidero a Cheetah Solutions Network, empresa especializada em soluções digitais." },
+    { company: "Werneck Group", position: "Diretor Estratégico", period: "2024 - Presente", description: "Direção estratégica em consultoria empresarial e gestão de operações." },
+    { company: "Splendori", position: "Parceiro Estratégico", period: "2026 - Presente", description: "Parceiro estratégico em iniciativas de tecnologia e desenvolvimento de produtos digitais." },
+    { company: "Noyevel", position: "Diretor de Operações", period: "2026 - Temporário", description: "Organização de processos internos, definição de KPIs e gestão de equipe." },
+  ] : [
+    { company: "Cheetah Solutions Network", position: "CEO & Founder", period: "2020 - Present", description: "Founded and lead Cheetah Solutions Network, a company specialized in digital solutions." },
+    { company: "Werneck Group", position: "Strategic Director", period: "2024 - Present", description: "Strategic direction in business consulting and operations management." },
+    { company: "Splendori", position: "Strategic Partner", period: "2026 - Present", description: "Strategic partner in technology initiatives and digital product development." },
+    { company: "Noyevel", position: "Operations Director", period: "2026 - Temporary", description: "Internal process organization, KPI definition and team management." },
+  ];
+
+  const values = language === 'pt' ? [
+    { icon: Zap, title: "Qualidade", description: "Código limpo, eficiente e bem documentado" },
+    { icon: BookOpen, title: "Aprendizado", description: "Sempre estudando novas tecnologias" },
+    { icon: Heart, title: "Colaboração", description: "Melhores projetos vêm do trabalho em equipe" }
+  ] : [
+    { icon: Zap, title: "Quality", description: "Clean, efficient and well-documented code" },
+    { icon: BookOpen, title: "Learning", description: "Always studying new technologies" },
+    { icon: Heart, title: "Collaboration", description: "Best projects come from teamwork" }
+  ];
+
+  const certificates = language === 'pt' ? [
+    { id: 1, title: "Administração no Século 21", issuer: "Fundação Bradesco", date: "2025", link: "https://drive.google.com/file/d/1uNq5H26X0WbQf2Ohxr3hWJ_bzHMnMT9Y" },
+    { id: 2, title: "Estratégia de Negócios", issuer: "Fundação Bradesco", date: "2025", link: "https://drive.google.com/file/d/1Mel2pK_6ajyFOHQIuvFF5XbljNjY40TA/view?usp=drive_link" },
+    { id: 3, title: "Gestão de Projetos", issuer: "Fundação Bradesco", date: "2023", link: "https://drive.google.com/file/d/1Y454v0F4R4G91iR2ZBC8ps1vfUNh-gHI/view?usp=drive_link" }
+  ] : [
+    { id: 1, title: "Administration in the 21st Century", issuer: "Bradesco Foundation", date: "2025", link: "https://drive.google.com/file/d/1uNq5H26X0WbQf2Ohxr3hWJ_bzHMnMT9Y" },
+    { id: 2, title: "Business Strategy", issuer: "Bradesco Foundation", date: "2025", link: "https://drive.google.com/file/d/1Mel2pK_6ajyFOHQIuvFF5XbljNjY40TA/view?usp=drive_link" },
+    { id: 3, title: "Project Management", issuer: "Bradesco Foundation", date: "2023", link: "https://drive.google.com/file/d/1Y454v0F4R4G91iR2ZBC8ps1vfUNh-gHI/view?usp=drive_link" }
+  ];
+
+  // Tech Stack
+  const techStack = [
+    { name: "React", category: "Frontend" },
+    { name: "TypeScript", category: "Language" },
+    { name: "Node.js", category: "Backend" },
+    { name: "Python", category: "Language" },
+    { name: "PostgreSQL", category: "Database" },
+    { name: "Docker", category: "DevOps" },
+  ];
+
+  // Work Philosophy
+  const workPhilosophy = language === 'pt' ? [
+    { icon: Lightbulb, title: "Simplicidade", description: "Código complexo é fácil. Código simples que resolve problemas complexos é arte." },
+    { icon: Target, title: "Foco no Resultado", description: "Tecnologia é meio, não fim. O que importa é o impacto real no negócio." },
+    { icon: Coffee, title: "Iteração Constante", description: "Prefiro lançar rápido e melhorar continuamente do que buscar perfeição impossível." },
+    { icon: Rocket, title: "Automação", description: "Se algo precisa ser feito mais de duas vezes, automatizo." }
+  ] : [
+    { icon: Lightbulb, title: "Simplicity", description: "Complex code is easy. Simple code that solves complex problems is art." },
+    { icon: Target, title: "Result Focused", description: "Technology is a means, not an end. What matters is the real business impact." },
+    { icon: Coffee, title: "Constant Iteration", description: "I prefer to launch fast and improve continuously rather than seek impossible perfection." },
+    { icon: Rocket, title: "Automation", description: "If something needs to be done more than twice, I automate it." }
+  ];
+
+  // Stats/Achievements
   const yearsOfExperience = `${new Date().getFullYear() - 2018}+`;
+  const stats = language === 'pt' ? [
+    { value: yearsOfExperience, label: "Anos de experiência", icon: Clock },
+    { value: "50+", label: "Projetos entregues", icon: Layers },
+    { value: "4", label: "Empresas & Parcerias", icon: TrendingUp },
+    { value: "1", label: "Livro publicado", icon: BookOpen }
+  ] : [
+    { value: yearsOfExperience, label: "Years of experience", icon: Clock },
+    { value: "50+", label: "Projects delivered", icon: Layers },
+    { value: "4", label: "Companies & Partnerships", icon: TrendingUp },
+    { value: "1", label: "Book published", icon: BookOpen }
+  ];
 
-  const chapters = language === "pt"
-    ? [
-        { label: "01", title: "Curiosidade", text: "Antes de carreira, veio a vontade de entender como sistemas eram construídos." },
-        { label: "02", title: "Engenharia", text: "Código virou arquitetura, processo, manutenção e responsabilidade de longo prazo." },
-        { label: "03", title: "Empresa", text: "A Cheetah nasceu para transformar tecnologia em estrutura de crescimento." },
-        { label: "04", title: "Construção", text: "Hoje o foco é criar soluções que continuem úteis depois da entrega." },
-      ]
-    : [
-        { label: "01", title: "Curiosity", text: "Before career, there was the need to understand how systems were built." },
-        { label: "02", title: "Engineering", text: "Code became architecture, process, maintenance and long-term responsibility." },
-        { label: "03", title: "Company", text: "Cheetah was created to turn technology into growth structure." },
-        { label: "04", title: "Construction", text: "Today the focus is building solutions that remain useful after delivery." },
-      ];
+  // Career Timeline Milestones
+  const careerMilestones = language === 'pt' ? [
+    { year: "2016", title: "Primeiros Passos", description: "Comecei a explorar programação e tecnologia por curiosidade", icon: Code2 },
+    { year: "2018", title: "Talisson Souza Mídia", description: "Fundador e criador de conteúdo focado em Games, com mais de 2,5 mil inscritos e 118 mil visualizações", icon: Rocket },
+    { year: "2020", title: "Cheetah Solutions Network", description: "Fundei a Cheetah Solutions Network, minha primeira empresa de tecnologia", icon: TrendingUp },
+    { year: "2022", title: "Especialização", description: "Foquei em desenvolvimento Full Stack com React e Node.js", icon: Target },
+    { year: "2024", title: "Werneck Group", description: "Assumi posição de liderança como Diretor Estratégico no Werneck Group", icon: Briefcase },
+    { year: "2025", title: "Warlocks & Rocketseat", description: "Criador verificado na Warlocks e Influencer Academy na Rocketseat", icon: Star },
+    { year: "2025", title: "Livro Publicado", description: "Publiquei meu primeiro livro sobre empreendedorismo e tecnologia", icon: BookOpen },
+    { year: "2026", title: "Noyevel & Splendori", description: "Diretor de Operações na Noyevel e Parceiro Estratégico na Splendori", icon: Award },
+  ] : [
+    { year: "2016", title: "First Steps", description: "Started exploring programming and technology out of curiosity", icon: Code2 },
+    { year: "2018", title: "Talisson Souza Media", description: "Founder and content creator focused on Games, with over 2.5K subscribers and 118K views", icon: Rocket },
+    { year: "2020", title: "Cheetah Solutions Network", description: "Founded Cheetah Solutions Network, my first technology company", icon: TrendingUp },
+    { year: "2022", title: "Specialization", description: "Focused on Full Stack development with React and Node.js", icon: Target },
+    { year: "2024", title: "Werneck Group", description: "Took leadership position as Strategic Director at Werneck Group", icon: Briefcase },
+    { year: "2025", title: "Warlocks & Rocketseat", description: "Verified creator at Warlocks and Influencer Academy at Rocketseat", icon: Star },
+    { year: "2025", title: "Book Published", description: "Published my first book about entrepreneurship and technology", icon: BookOpen },
+    { year: "2026", title: "Noyevel & Splendori", description: "Operations Director at Noyevel and Strategic Partner at Splendori", icon: Award },
+  ];
 
-  const beliefs = language === "pt"
-    ? [
-        "Software bom não complica para parecer importante.",
-        "Arquitetura precisa sobreviver ao entusiasmo inicial.",
-        "Tecnologia só vale quando melhora a vida de quem usa.",
-        "Disciplina constrói mais que motivação.",
-      ]
-    : [
-        "Good software does not complicate itself to look important.",
-        "Architecture needs to survive the initial excitement.",
-        "Technology matters when it improves life for the person using it.",
-        "Discipline builds more than motivation.",
-      ];
-
-  const policyHighlights = language === "pt"
-    ? [
-        {
-          title: "Como eu trabalho",
-          text: "Começo pelo contexto, organizo o problema e só então transformo decisão em execução técnica.",
-          path: "/politicas/como-trabalho",
-        },
-        {
-          title: "O que eu faço",
-          text: "Desenvolvo sistemas, automações, integrações, arquitetura e soluções digitais sob medida.",
-          path: "/politicas/o-que-faco",
-        },
-        {
-          title: "O que eu não faço",
-          text: "Não vendo promessa vazia, atalho milagroso, gambiarra sem critério ou entrega sem responsabilidade.",
-          path: "/politicas/o-que-nao-faco",
-        },
-      ]
-    : [
-        {
-          title: "How I work",
-          text: "I start from context, organize the problem and only then turn decisions into technical execution.",
-          path: "/en-us/policies/como-trabalho",
-        },
-        {
-          title: "What I do",
-          text: "I build systems, automations, integrations, architecture and custom digital solutions.",
-          path: "/en-us/policies/o-que-faco",
-        },
-        {
-          title: "What I do not do",
-          text: "I do not sell empty promises, miraculous shortcuts, careless patches or work without responsibility.",
-          path: "/en-us/policies/o-que-nao-faco",
-        },
-      ];
-
-  const addedNarrativeSections = language === "pt"
-    ? [
-        {
-          eyebrow: "Motivação",
-          title: "O que me move",
-          text: [
-            "O que me move não é a ideia abstrata de tecnologia. É perceber um problema que atrapalha uma pessoa, uma empresa ou uma comunidade e conseguir transformar aquilo em algo mais claro, mais estável e mais útil.",
-            "Gosto quando uma solução deixa de chamar atenção porque funciona bem o suficiente para virar parte natural da rotina. Esse tipo de resultado quase nunca nasce de pressa. Ele aparece quando existe escuta, estudo, critério e respeito pelo impacto que uma decisão técnica pode causar.",
-            "Também me move compartilhar conhecimento. Não como vitrine, mas como retorno. Muito do que aprendi veio de documentação, comunidades, conversas e pessoas que explicaram algo com paciência. Quando escrevo, gravo, respondo ou organizo uma ideia, tento devolver um pouco disso.",
-          ],
-        },
-        {
-          eyebrow: "Além do software",
-          title: "A tecnologia não é o único centro da minha história",
-          text: [
-            "A escrita se tornou uma forma de organizar pensamento. Antes de publicar qualquer coisa, normalmente existe uma fase de pesquisa, rascunho, revisão e tentativa de transformar uma ideia complexa em algo que outra pessoa consiga usar de verdade.",
-            "O livro Superando Limites nasceu desse mesmo lugar. Ele não existe para transformar minha trajetória em espetáculo. Existe porque algumas experiências precisavam ser registradas com mais calma, sem depender do ritmo rápido das redes sociais.",
-            "Comunidades, estudo constante, produção de conteúdo e novos projetos fazem parte da mesma linha. São maneiras diferentes de construir repertório, testar ideias, conversar com pessoas e amadurecer decisões antes de colocá-las no mundo.",
-          ],
-        },
-        {
-          eyebrow: "2021",
-          title: "Uma experiência que fortaleceu minha decisão de empreender",
-          text: [
-            "Em 2021, candidatei-me a três oportunidades profissionais. Em algumas conversas, tive a percepção de que o tom mudava quando minha condição como pessoa com deficiência se tornava conhecida. Em certos casos, o retorno simplesmente não veio.",
-            "Não transformo essa percepção em acusação contra pessoas ou empresas específicas. O que posso dizer, com honestidade, é que aquele período me fez olhar para o meu caminho com mais seriedade. Se eu dependesse apenas da autorização de alguém para provar minha capacidade, talvez demorasse muito mais para construir o que eu queria construir.",
-            "A resposta foi estudar mais, organizar melhor meu portfólio, assumir projetos com responsabilidade e desenvolver minha empresa com consistência. O empreendedorismo, para mim, não apareceu como frase bonita. Apareceu como uma forma concreta de continuar avançando.",
-          ],
-        },
-        {
-          eyebrow: "Impacto",
-          title: "O que eu quero deixar em construção",
-          text: [
-            "Quero que meu trabalho ajude empresas a funcionarem melhor, mas também quero que ajude pessoas a pensarem melhor sobre tecnologia. Um sistema útil resolve uma parte do problema. Conhecimento compartilhado pode mudar a forma como alguém enxerga o próprio caminho.",
-            "Quando alguém que também enfrenta barreiras olha para minha trajetória, eu não quero que veja uma história perfeita. Quero que veja uma pessoa construindo com responsabilidade, errando, corrigindo, insistindo e tentando abrir espaço para que outras pessoas também se levem a sério.",
-            "Legado, para mim, não é aparecer mais. É construir algo que continue ajudando quando a atenção passa.",
-          ],
-        },
-        {
-          eyebrow: "Fora do código",
-          title: "Onde as ideias amadurecem",
-          text: [
-            "Boa parte do meu trabalho acontece antes do editor de código abrir. Estudo, pesquiso, comparo caminhos, escrevo anotações, organizo prioridades e tento entender se a solução que parece boa hoje ainda fará sentido depois.",
-            "Também mantenho projetos pessoais porque eles me dão liberdade para experimentar sem transformar cada tentativa em uma entrega pública. Algumas ideias amadurecem rápido. Outras precisam de silêncio, revisão e tempo.",
-          ],
-        },
-      ]
-    : [
-        {
-          eyebrow: "Motivation",
-          title: "What moves me",
-          text: [
-            "What moves me is not technology as an abstract idea. It is seeing a problem that affects a person, a company or a community and turning it into something clearer, more stable and more useful.",
-            "I like when a solution stops calling attention because it works well enough to become part of the routine. That kind of result rarely comes from haste. It comes from listening, studying, judgment and respect for the impact of technical decisions.",
-          ],
-        },
-        {
-          eyebrow: "Beyond software",
-          title: "Technology is not the only center of my story",
-          text: [
-            "Writing became a way to organize thought. Before publishing anything, there is usually research, drafting, revision and an attempt to turn a complex idea into something someone else can actually use.",
-            "My book Superando Limites came from that same place. It exists because some experiences needed to be registered with more calm than social media allows.",
-          ],
-        },
-        {
-          eyebrow: "2021",
-          title: "An experience that strengthened my decision to build",
-          text: [
-            "In 2021, I applied to three professional opportunities. In some conversations, I had the perception that the tone changed when my condition as a disabled person became known. In certain cases, the follow-up simply never came.",
-            "I do not turn that perception into an accusation against specific people or companies. What I can say honestly is that the period made me take my path more seriously. I studied more, organized my portfolio, took projects responsibly and kept building my company with consistency.",
-          ],
-        },
-        {
-          eyebrow: "Impact",
-          title: "What I want to keep building",
-          text: [
-            "I want my work to help companies operate better, but I also want it to help people think better about technology. A useful system solves part of the problem. Shared knowledge can change how someone sees their own path.",
-            "Legacy, to me, is not about appearing more. It is about building something that keeps helping when attention moves on.",
-          ],
-        },
-        {
-          eyebrow: "Outside code",
-          title: "Where ideas mature",
-          text: [
-            "Much of my work happens before the code editor opens. I study, research, compare paths, write notes, organize priorities and try to understand whether the solution that looks good today will still make sense later.",
-          ],
-        },
-      ];
-
-  const curiosities = language === "pt"
-    ? [
-        { value: "Recife", label: "Nasci e cresci em Pernambuco, uma origem que continua presente na forma como enxergo trabalho e responsabilidade." },
-        { value: "2018", label: "Comecei com bots e automações simples, aprendendo na prática o peso de cada decisão mal pensada." },
-        { value: "2020", label: "A Cheetah Solutions Network nasceu como uma resposta concreta à vontade de construir com mais autonomia." },
-        { value: "Livro", label: "Superando Limites registra parte da minha história fora do formato rápido das redes sociais." },
-      ]
-    : [
-        { value: "Recife", label: "I was born and raised in Pernambuco, an origin that still shapes how I see work and responsibility." },
-        { value: "2018", label: "I started with simple bots and automations, learning in practice the weight of poorly made decisions." },
-        { value: "2020", label: "Cheetah Solutions Network was born as a concrete answer to the will to build with more autonomy." },
-        { value: "Book", label: "Superando Limites records part of my story outside the fast rhythm of social media." },
-      ];
-
-  const trajectoryFaq = language === "pt"
-    ? [
-        {
-          question: "Por que a página Sobre fala tanto de construção?",
-          answer: "Porque essa palavra atravessa minha história de formas diferentes. Construir conhecimento, empresa, confiança, conteúdo, sistemas e oportunidades. A tecnologia aparece como parte desse processo, não como ponto isolado.",
-        },
-        {
-          question: "O que a Cheetah representa na sua trajetória?",
-          answer: "Ela representa autonomia e responsabilidade. Não nasceu apenas como empresa, mas como uma forma de provar trabalho por meio de entrega, organização e visão de longo prazo.",
-        },
-        {
-          question: "O livro tem relação com sua carreira?",
-          answer: "Tem relação com a pessoa por trás da carreira. O livro registra experiências que ajudaram a formar minha visão sobre persistência, rejeição, responsabilidade e construção de futuro.",
-        },
-        {
-          question: "Como sua experiência como PCD aparece no seu trabalho?",
-          answer: "Ela aparece na forma como levo responsabilidade a sério. Aprendi que capacidade nem sempre é reconhecida de imediato, então passei a valorizar evidência, consistência e entrega bem feita.",
-        },
-        {
-          question: "O que você espera construir nos próximos anos?",
-          answer: "Quero continuar desenvolvendo soluções úteis, fortalecendo a Cheetah, escrevendo conteúdos melhores, criando projetos próprios e ajudando outras pessoas a enxergarem caminhos possíveis com mais clareza.",
-        },
-      ]
-    : [
-        {
-          question: "Why does this page talk so much about building?",
-          answer: "Because that word runs through my story in different ways. Building knowledge, company, trust, content, systems and opportunities. Technology is part of that process, not an isolated point.",
-        },
-        {
-          question: "What does Cheetah represent in your journey?",
-          answer: "It represents autonomy and responsibility. It was not created only as a company, but as a way to prove work through delivery, organization and long-term vision.",
-        },
-        {
-          question: "Is the book connected to your career?",
-          answer: "It is connected to the person behind the career. The book records experiences that helped shape how I see persistence, rejection, responsibility and future building.",
-        },
-      ];
+  // Hobbies and Interests
+  const hobbies = language === 'pt' ? [
+    { icon: Gamepad2, title: "Games", description: "Jogos de estratégia e RPGs nas horas vagas" },
+    { icon: Music, title: "Música", description: "Apreciador de diversos gêneros, especialmente eletrônica" },
+    { icon: Camera, title: "Fotografia", description: "Capturando momentos e paisagens urbanas" },
+    { icon: Plane, title: "Viagens", description: "Conhecer novas culturas e lugares" },
+    { icon: Dumbbell, title: "Exercícios", description: "Manter corpo e mente saudáveis" },
+    { icon: Film, title: "Cinema", description: "Filmes de ficção científica e documentários" }
+  ] : [
+    { icon: Gamepad2, title: "Games", description: "Strategy games and RPGs in spare time" },
+    { icon: Music, title: "Music", description: "Appreciate various genres, especially electronic" },
+    { icon: Camera, title: "Photography", description: "Capturing moments and urban landscapes" },
+    { icon: Plane, title: "Travel", description: "Discovering new cultures and places" },
+    { icon: Dumbbell, title: "Exercise", description: "Keeping body and mind healthy" },
+    { icon: Film, title: "Cinema", description: "Sci-fi movies and documentaries" }
+  ];
 
   return (
     <Layout withPadding={false}>
       <SEO
-        title={getText(language, "Sobre Talisson Souza | Engenheiro e Arquiteto de Software", "About Talisson Souza | Software Engineer and Architect")}
-        description={getText(
-          language,
-          "Conheça Talisson Souza, engenheiro e arquiteto de software, fundador da Cheetah Solutions Network e profissional focado em sistemas, automações e tecnologia construída para durar.",
-          "Meet Talisson Souza, software engineer and architect, founder of Cheetah Solutions Network and professional focused on systems, automations and technology built to last."
-        )}
-        canonical={language === "en" ? "/en-us/about" : "/sobre"}
-        keywords={language === "pt" ? ["Talisson Souza", "sobre", "engenheiro de software", "arquiteto de software", "Cheetah Solutions Network"] : ["Talisson Souza", "about", "software engineer", "software architect", "Cheetah Solutions Network"]}
+        title={getText(language, 'Sobre Talisson Souza | Engenheiro de Software', 'About Talisson Souza | Software Engineer')}
+        description={getText(language, 'Conheça Talisson Souza, engenheiro de software com mais de 8 anos, CEO da Cheetah Solutions Network e Diretor Estratégico do Werneck Group.', 'Meet Talisson Souza, software engineer with 8+ years, CEO of Cheetah Solutions Network and Strategic Director of Werneck Group.')}
+        canonical={language === 'en' ? '/en-us/about' : '/sobre'}
+        keywords={language === 'pt' ? ['sobre', 'desenvolvedor', 'full stack', 'experiência', 'Cheetah Solutions Network', 'Werneck Group'] : ['about', 'developer', 'full stack', 'experience', 'Cheetah Solutions Network', 'Werneck Group']}
       />
 
       <PageHero
@@ -285,395 +162,813 @@ const About = () => {
         title="Talisson Souza"
         subtitle={getText(
           language,
-          "Engenheiro e Arquiteto de Software. Fundador da Cheetah Solutions Network. Recife, Pernambuco.",
-          "Software Engineer and Architect. Founder of Cheetah Solutions Network. Recife, Pernambuco."
+          "Desenvolvedor full stack e fundador que transforma tecnologia em sistemas, operação e reputação digital com direção clara.",
+          "Full stack developer and founder turning technology into systems, operations and digital reputation with clear direction."
         )}
         meta={
           <MotionRail
             className="max-w-2xl"
             items={[
-              { value: yearsOfExperience, label: getText(language, "construindo", "building") },
-              { value: "CEO", label: "Cheetah Solutions Network" },
+              { value: yearsOfExperience, label: getText(language, "experiência", "experience") },
+              { value: "50+", label: getText(language, "projetos", "projects") },
+              { value: "CEO", label: getText(language, "Cheetah Solutions", "Cheetah Solutions") },
             ]}
           />
         }
         actions={
-          <div className="flex flex-wrap items-center gap-3">
-            <motion.button
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => window.open("https://drive.google.com/file/d/1JBmXK4aCAPfeY4kuEc5QpO-ehlA2rfWO/view?usp=sharing", "_blank", "noopener,noreferrer")}
-              className="group inline-flex items-center justify-center gap-2 rounded-full border border-border/35 bg-background/30 px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-foreground/10"
-            >
-              <Download className="h-4 w-4" />
-              {getText(language, "Baixar CV", "Download CV")}
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </motion.button>
-            <Link
-              to={language === "en" ? "/en-us/career" : "/carreira"}
-              className="group inline-flex items-center justify-center gap-2 rounded-full border border-border/35 bg-background/30 px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-foreground/10"
-            >
-              {getText(language, "Ver carreira", "See career")}
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
-            <SocialIcons showLabels={false} className="sm:ml-2" />
+          <div className="flex flex-col gap-5">
+            <div className="flex flex-wrap gap-3">
+              <motion.button
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => window.open("https://drive.google.com/file/d/1JBmXK4aCAPfeY4kuEc5QpO-ehlA2rfWO/view?usp=sharing", "_blank", "noopener,noreferrer")}
+                className="group inline-flex items-center justify-center gap-2 rounded-full border border-border/35 bg-background/30 px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-foreground/10"
+              >
+                <Download className="h-4 w-4" />
+                {t.about.downloadCV}
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </motion.button>
+              <Link
+                to={language === "en" ? "/en-us/contact" : "/contato"}
+                className="group inline-flex items-center justify-center gap-2 rounded-full border border-border/35 bg-background/30 px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-foreground/10"
+              >
+                {getText(language, "Falar sobre projeto", "Talk about a project")}
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            </div>
+            <SocialIcons />
           </div>
         }
-      />
+      >
+        <IdentityPanel hover={false} className="mx-auto max-w-sm p-6">
+          <div className="relative mx-auto mb-6 h-44 w-44 overflow-hidden rounded-[2rem] border border-border/30 bg-background/40 p-2">
+            <Avatar className="h-full w-full rounded-[1.5rem] border border-border/20">
+              <AvatarImage src="https://i.ibb.co/MySV14GV/Polish-20231015-221849134-112435.jpg" alt="Talisson Souza" className="object-cover" />
+              <AvatarFallback>TS</AvatarFallback>
+            </Avatar>
+          </div>
+          <div className="space-y-3 text-center">
+            <p className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground/55">
+              {getText(language, "tecnologia. sistemas. decisões.", "technology. systems. decisions.")}
+            </p>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              {getText(
+                language,
+                "Minha atuação mistura desenvolvimento, estratégia e cuidado com produto para entregar soluções que resistem ao uso real.",
+                "My work blends development, strategy and product care to deliver solutions that hold up in real use."
+              )}
+            </p>
+          </div>
+        </IdentityPanel>
+      </PageHero>
 
-      <section id="perfil" className="relative scroll-mt-28 overflow-hidden py-12 lg:py-16">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
-        <div className="container mx-auto px-6 lg:px-8">
-          <div className="mx-auto max-w-6xl">
-            <ScrollReveal>
-              <div className="mb-10 max-w-4xl border-y border-border/20 py-8">
-                <span className="mb-5 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                  {getText(language, "Perfil", "Profile")}
-                </span>
-                <h2 className="font-serif text-4xl leading-[1.02] text-foreground lg:text-6xl">
-                  {getText(language, "Quem eu sou antes do codigo.", "Who I am before the code.")}
-                </h2>
+      {/* Hero Section */}
+      <section className="hidden min-h-[70vh] items-center relative overflow-hidden pt-24 pb-16">
+        {/* Background */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background" />
+          <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl hidden md:block" />
+          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl hidden md:block" />
+          <div
+            className="absolute inset-0 opacity-[0.015]"
+            style={{
+              backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+              backgroundSize: '60px 60px'
+            }}
+          />
+        </div>
+
+        <div
+          className="absolute bottom-0 left-0 right-0 h-32 z-10 pointer-events-none"
+          style={{
+            background: 'linear-gradient(to top, hsl(var(--background)) 0%, transparent 100%)'
+          }}
+        />
+
+        <div className="container mx-auto px-6 lg:px-8 relative z-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Avatar Section */}
+            <ScrollReveal className="lg:col-span-4" direction="left">
+              <div className="flex flex-col items-center lg:items-start gap-8">
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.6 }}
+                  className="relative"
+                >
+                  <div className="absolute -inset-4 bg-gradient-radial from-foreground/10 to-transparent rounded-full blur-2xl opacity-50 hidden md:block" />
+                  <Avatar className="h-40 w-40 lg:h-48 lg:w-48 border-2 border-border/30 relative z-10">
+                    <AvatarImage src="https://i.ibb.co/MySV14GV/Polish-20231015-221849134-112435.jpg" alt="Talisson Souza" className="object-cover" />
+                    <AvatarFallback>TS</AvatarFallback>
+                  </Avatar>
+                </motion.div>
+
+                <div className="flex flex-col items-center lg:items-start gap-4 w-full">
+                  <SocialIcons />
+                  <div className="flex flex-col gap-2 w-full max-w-[200px]">
+                    <a
+                      href="https://discord.com/invite/WXwguHWjxg"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors duration-200"
+                    >
+                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+                      {getText(language, 'Servidor Discord', 'Discord Server')}
+                    </a>
+                    <a
+                      href="https://whatsapp.com/channel/0029Vb7TfXuLI8YWaMpsJ13v"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors duration-200"
+                    >
+                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                      {getText(language, 'Canal no WhatsApp', 'WhatsApp Channel')}
+                    </a>
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => window.open('https://drive.google.com/file/d/1JBmXK4aCAPfeY4kuEc5QpO-ehlA2rfWO/view?usp=sharing', '_blank', 'noopener,noreferrer')}
+                    className="group w-full max-w-[200px] inline-flex items-center justify-center gap-2 text-sm font-medium text-primary-foreground bg-foreground rounded-full py-3 transition-all duration-300"
+                    style={{
+                      boxShadow: '0 0 20px hsl(var(--foreground) / 0.15)'
+                    }}
+                  >
+                    <Download className="w-4 h-4" />
+                    {t.about.downloadCV}
+                  </motion.button>
+                </div>
               </div>
             </ScrollReveal>
 
-            <article className="relative">
-              <div className="space-y-8">
-                {paragraphs.map((paragraph, index) => {
-                  const highlight = index === 0 || index === 1 || index === 15 || index === paragraphs.length - 1;
-                  return (
-                    <ScrollReveal key={index} delay={Math.min(index * 0.015, 0.16)}>
-                      <motion.p
-                        initial={{ opacity: 0, y: 18 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-80px" }}
-                        transition={{ duration: 0.58, ease }}
-                        className={
-                          highlight
-                            ? "max-w-5xl border-l border-foreground/25 pl-5 font-serif text-2xl leading-[1.45] text-foreground lg:text-3xl"
-                            : "max-w-4xl text-[17px] leading-[1.92] text-muted-foreground"
-                        }
-                      >
-                        {paragraph}
-                      </motion.p>
-                    </ScrollReveal>
-                  );
-                })}
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="historia-expandida" className="relative scroll-mt-28 overflow-hidden pb-14 lg:pb-20">
-        <div className="container mx-auto px-6 lg:px-8">
-          <div className="mx-auto max-w-6xl border-y border-border/20 py-10 lg:py-14">
-            <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+            {/* Content Section */}
+            <div className="lg:col-span-8">
               <ScrollReveal>
-                <div className="lg:sticky lg:top-28">
-                  <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                    {getText(language, "Camadas", "Layers")}
-                  </span>
-                  <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
-                    {getText(language, "A pessoa por trás da entrega.", "The person behind the work.")}
-                  </h2>
-                  <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
-                    {getText(
-                      language,
-                      "Algumas partes da trajetória não cabem em cargos, tecnologias ou datas. Elas aparecem nas decisões que continuam moldando minha forma de construir.",
-                      "Some parts of a journey do not fit into roles, technologies or dates. They appear in decisions that keep shaping how I build."
-                    )}
-                  </p>
-                </div>
+                <motion.span
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+                >
+                  {t.about.title}
+                </motion.span>
+                <AnimatedTitle variant="hero" as="h1" className="mb-6">
+                  Talisson Souza
+                </AnimatedTitle>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-2xl">
+                  {t.about.subtitle}
+                </p>
               </ScrollReveal>
-
-              <div className="space-y-10">
-                {addedNarrativeSections.map((section, index) => (
-                  <ScrollReveal key={section.title} delay={index * 0.04}>
-                    <motion.div
-                      initial={{ opacity: 0, y: 18 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-80px" }}
-                      transition={{ duration: 0.58, ease }}
-                      className="border-b border-border/15 pb-10 last:border-b-0 last:pb-0"
-                    >
-                      <span className="mb-4 block text-[11px] uppercase tracking-[0.28em] text-muted-foreground/55">
-                        {section.eyebrow}
-                      </span>
-                      <h3 className="font-serif text-2xl leading-tight text-foreground lg:text-4xl">
-                        {section.title}
-                      </h3>
-                      <div className="mt-5 space-y-5">
-                        {section.text.map((paragraph) => (
-                          <p key={paragraph} className="max-w-3xl text-[16px] leading-[1.88] text-muted-foreground">
-                            {paragraph}
-                          </p>
-                        ))}
-                      </div>
-                    </motion.div>
-                  </ScrollReveal>
-                ))}
-
-                <ScrollReveal>
-                  <div className="border-y border-border/20 py-10">
-                    <span className="mb-4 block text-[11px] uppercase tracking-[0.28em] text-muted-foreground/55">
-                      {getText(language, "Curiosidades", "Notes")}
-                    </span>
-                    <div className="grid gap-px overflow-hidden border border-border/20 bg-border/20 sm:grid-cols-2">
-                      {curiosities.map((item, index) => (
-                        <motion.div
-                          key={item.value}
-                          initial={{ opacity: 0, y: 14 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true, margin: "-80px" }}
-                          transition={{ duration: 0.5, delay: index * 0.04, ease }}
-                          className="bg-background/92 p-5 lg:p-6"
-                        >
-                          <span className="font-serif text-3xl text-foreground">{item.value}</span>
-                          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{item.label}</p>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-                </ScrollReveal>
-
-                <ScrollReveal>
-                  <div className="border-b border-border/20 pb-10">
-                    <span className="mb-4 block text-[11px] uppercase tracking-[0.28em] text-muted-foreground/55">
-                      FAQ
-                    </span>
-                    <div className="divide-y divide-border/15 border-y border-border/15">
-                      {trajectoryFaq.map((item) => (
-                        <details key={item.question} className="group py-5">
-                          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-xl text-foreground">
-                            <span>{item.question}</span>
-                            <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300 group-open:rotate-90" />
-                          </summary>
-                          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-                            {item.answer}
-                          </p>
-                        </details>
-                      ))}
-                    </div>
-                  </div>
-                </ScrollReveal>
-
-                <ScrollReveal>
-                  <div>
-                    <span className="mb-4 block text-[11px] uppercase tracking-[0.28em] text-muted-foreground/55">
-                      {getText(language, "Continuidade", "Continuity")}
-                    </span>
-                    <p className="max-w-4xl font-serif text-2xl leading-[1.45] text-foreground lg:text-3xl">
-                      {getText(
-                        language,
-                        "Essa história continua sendo construída com responsabilidade, propósito e visão de longo prazo. Sem pressa de parecer pronta antes da hora.",
-                        "This story is still being built with responsibility, purpose and long-term vision. Without rushing to look finished before its time."
-                      )}
-                    </p>
-                  </div>
-                </ScrollReveal>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="reflexao" className="relative scroll-mt-28 overflow-hidden pb-14 lg:pb-20">
-        <div className="container mx-auto px-6 lg:px-8">
+      {/* About Text Section */}
+      <ParallaxSection
+        className="py-20 lg:py-24"
+        speed={0.1}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <div className="mx-auto max-w-6xl border-y border-border/20 py-10 lg:py-14">
-              <div className="mx-auto max-w-4xl text-center">
-                <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                  {getText(language, "Reflex\u00e3o", "Reflection")}
-                </span>
-                <h2 className="mx-auto max-w-3xl font-serif text-3xl leading-tight text-foreground lg:text-5xl">
-                  {getText(
-                    language,
-                    "Construir tamb\u00e9m \u00e9 escolher o que permanece.",
-                    "Building also means choosing what remains."
-                  )}
-                </h2>
+            <motion.div
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.4 }}
+              className="max-w-4xl mx-auto"
+            >
+              <div
+                className="relative p-10 lg:p-12 rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm"
+                style={{
+                  boxShadow: '0 8px 40px hsl(var(--foreground) / 0.03)'
+                }}
+              >
+                <div className="absolute top-0 left-0 w-24 h-24 border-l border-t border-foreground/[0.06] rounded-tl-3xl" />
+                <div className="absolute bottom-0 right-0 w-24 h-24 border-r border-b border-foreground/[0.06] rounded-br-3xl" />
 
-                <motion.div
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.64, ease }}
-                  className="mx-auto mt-8 space-y-5"
-                >
-                  <p className="mx-auto max-w-3xl text-[16px] leading-[1.88] text-muted-foreground">
-                    {getText(
-                      language,
-                      "Olhar para minha trajet\u00f3ria me ensinou que nem toda constru\u00e7\u00e3o precisa ser barulhenta. Algumas decis\u00f5es importantes acontecem no sil\u00eancio, quando escolho estudar mais um pouco, revisar uma ideia, recome\u00e7ar um projeto ou aceitar que uma solu\u00e7\u00e3o ainda n\u00e3o est\u00e1 madura.",
-                      "Looking at my path taught me that not every construction needs to be loud. Some important decisions happen quietly, while choosing to study a little more, review an idea, restart a project or accept that a solution is not mature yet."
-                    )}
-                  </p>
-                  <p className="mx-auto max-w-3xl text-[16px] leading-[1.88] text-muted-foreground">
-                    {getText(
-                      language,
-                      "N\u00e3o quero que minha hist\u00f3ria seja lida como uma linha reta. Ela tem pausas, recusas, reconstru\u00e7\u00f5es e escolhas que s\u00f3 fizeram sentido depois. Talvez por isso eu valorize tanto o que permanece. Trabalho bem feito, palavra honrada, conhecimento compartilhado e responsabilidade com quem confia em mim.",
-                      "I do not want my story to be read as a straight line. It has pauses, rejections, rebuilds and choices that only made sense later. Maybe that is why I value what remains. Careful work, kept word, shared knowledge and responsibility toward those who trust me."
-                    )}
-                  </p>
-                  <div className="mx-auto mt-8 w-full max-w-[360px] opacity-85">
-                    <AnimatedSignature />
-                  </div>
-                </motion.div>
+                <div className="text-6xl font-serif text-foreground/[0.04] mb-4 select-none leading-none" style={{ letterSpacing: '-0.1em' }}>"</div>
+
+                <p className="text-base lg:text-lg text-muted-foreground leading-[1.9] whitespace-pre-line">
+                  {language === 'pt' ? aboutTextPt : aboutTextEn}
+                </p>
               </div>
-            </div>
+            </motion.div>
           </ScrollReveal>
         </div>
-      </section>
+      </ParallaxSection>
 
-      <section id="principios" className="relative scroll-mt-28 overflow-hidden py-14 lg:py-20">
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
-        <div className="container relative mx-auto px-6 lg:px-8">
-          <div className="grid gap-10 border-y border-border/20 py-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
-            <ScrollReveal>
-              <div>
-                <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                  {getText(language, "Princípios", "Principles")}
+      {/* Experience Section */}
+      <ParallaxSection
+        className="py-20 lg:py-24"
+        speed={0.12}
+        backgroundElement={
+          <>
+            <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-card/20 to-transparent" />
+            <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+            <ScrollReveal className="lg:col-span-5">
+              <motion.span
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+              >
+                {getText(language, 'Experiência', 'Experience')}
+              </motion.span>
+              <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
+                {getText(language, 'Trajetória Profissional', 'Professional Journey')}
+              </h2>
+              <p className="text-base text-muted-foreground leading-relaxed mb-10 max-w-md">
+                {getText(language, 'Posições de liderança e contribuições que moldaram minha carreira.', 'Leadership positions and contributions that shaped my career.')}
+              </p>
+              <Link
+                to="/carreira"
+                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"
+              >
+                <span className="relative">
+                  {getText(language, 'Ver trajetória completa', 'View full career')}
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
+                  <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
                 </span>
-                <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
-                  {getText(language, "O que guia minha forma de construir.", "What guides how I build.")}
-                </h2>
-              </div>
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+              </Link>
             </ScrollReveal>
 
-            <div className="divide-y divide-border/20 border-y border-border/20 lg:border-y-0">
-              {beliefs.map((belief, index) => (
-                <ScrollReveal key={belief} delay={index * 0.06}>
+            <div className="lg:col-span-7 space-y-6 relative">
+              <motion.div
+                initial={{ scaleY: 0 }}
+                whileInView={{ scaleY: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                className="absolute left-6 lg:left-0 top-0 bottom-0 w-px origin-top hidden sm:block"
+                style={{
+                  background: 'linear-gradient(to bottom, hsl(var(--foreground) / 0.2), hsl(var(--foreground) / 0.05) 70%, transparent)'
+                }}
+              />
+
+              {experiences.map((exp, index) => (
+                <ScrollReveal key={exp.company} delay={index * 0.15}>
                   <motion.div
-                    whileInView={{ "--line": "100%" } as Record<string, string>}
-                    viewport={{ once: true, margin: "-80px" }}
-                    transition={{ duration: 0.75, delay: index * 0.06, ease }}
-                    className="relative grid gap-4 py-6 sm:grid-cols-[90px_1fr]"
-                    style={{ "--line": "0%" } as Record<string, string>}
+                    whileHover={{ y: -3, x: 3 }}
+                    transition={{ duration: 0.3 }}
+                    className="relative pl-0 sm:pl-12 lg:pl-10"
                   >
-                    <div className="absolute bottom-0 left-0 h-px w-[var(--line)] bg-foreground/20" />
-                    <span className="font-serif text-4xl leading-none text-foreground/18">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <p className="font-serif text-2xl leading-tight text-foreground">{belief}</p>
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.15 + 0.3 }}
+                      className="absolute left-4 lg:left-[-5px] top-8 hidden sm:flex items-center justify-center"
+                    >
+                      <div className="w-2.5 h-2.5 rounded-full bg-foreground/30 ring-4 ring-background" />
+                    </motion.div>
+
+                    <div
+                      className="relative p-8 rounded-2xl border border-border/30 bg-card/40 backdrop-blur-sm group"
+                      style={{
+                        boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                      }}
+                    >
+                      <div className="absolute top-0 right-0 w-16 h-16 border-t border-r border-foreground/[0.04] rounded-tr-2xl" />
+
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
+                        <div>
+                          <h3 className="text-lg font-serif text-foreground">{exp.company}</h3>
+                          <p className="text-sm text-foreground/70">{exp.position}</p>
+                        </div>
+                        <span className="text-xs px-3 py-1.5 rounded-full border border-border/30 bg-card/50 text-muted-foreground w-fit">
+                          {exp.period}
+                        </span>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
+                    </div>
                   </motion.div>
                 </ScrollReveal>
               ))}
             </div>
           </div>
         </div>
-      </section>
+      </ParallaxSection>
 
-      <section id="criterios" className="relative scroll-mt-28 overflow-hidden py-12 lg:py-16">
-        <div className="container mx-auto px-6 lg:px-8">
+      {/* Values Section */}
+      <ParallaxSection
+        className="py-20 lg:py-24"
+        speed={0.1}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-card/30 via-background to-card/30" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <div className="mb-8 max-w-3xl">
-              <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                {getText(language, "Critérios", "Criteria")}
-              </span>
-              <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
-                {getText(language, "Clareza antes de qualquer acordo.", "Clarity before any agreement.")}
+            <div className="text-center mb-12">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+              >
+                {getText(language, 'Valores', 'Values')}
+              </motion.span>
+              <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6 leading-tight">
+                {getText(language, 'O que me guia', 'What guides me')}
               </h2>
-              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                {getText(
-                  language,
-                  "Parte do meu trabalho é deixar explícito o modo como conduzo projetos, o tipo de entrega que assumo e os limites que protegem a relação profissional.",
-                  "Part of my work is making clear how I lead projects, what kind of delivery I take on and which limits protect the professional relationship."
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {values.map((value, index) => (
+              <ScrollReveal key={value.title} delay={index * 0.1}>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className="h-full"
+                >
+                  <div
+                    className="relative h-full p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm text-center group"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+
+                    <div className="w-14 h-14 rounded-2xl border border-border/30 bg-card/50 flex items-center justify-center mx-auto mb-6 group-hover:border-foreground/20 transition-colors duration-300">
+                      <value.icon className="w-6 h-6 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
+                    </div>
+                    <h3 className="text-lg font-serif text-foreground mb-3">{value.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
+                  </div>
+                </motion.div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </ParallaxSection>
+
+      {/* Stats Section */}
+      <ParallaxSection
+        className="py-20 lg:py-24"
+        speed={0.08}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/10 to-background" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+              >
+                {getText(language, 'Números', 'Numbers')}
+              </motion.span>
+              <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6 leading-tight">
+                {getText(language, 'Em números', 'By the numbers')}
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            {stats.map((stat, index) => (
+              <ScrollReveal key={stat.label} delay={index * 0.1}>
+                <motion.div
+                  whileHover={{ y: -4, scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-center group"
+                >
+                  <div
+                    className="relative p-6 lg:p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+
+                    <div className="w-10 h-10 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center mx-auto mb-4 group-hover:border-foreground/20 transition-colors duration-300">
+                      <stat.icon className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
+                    </div>
+
+                    <div className="text-3xl lg:text-4xl font-serif text-foreground mb-2">{stat.value}</div>
+                    <p className="text-xs text-muted-foreground">{stat.label}</p>
+                  </div>
+                </motion.div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </ParallaxSection>
+
+      {/* Career Timeline Section */}
+      <ParallaxSection
+        className="py-20 lg:py-24"
+        speed={0.1}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/15 to-background" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+            <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl hidden md:block" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+              >
+                {getText(language, 'Jornada', 'Journey')}
+              </motion.span>
+              <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6 leading-tight">
+                {getText(language, 'Marcos da Carreira', 'Career Milestones')}
+              </h2>
+              <p className="text-base text-muted-foreground max-w-xl mx-auto">
+                {getText(language,
+                  'Os momentos decisivos que moldaram minha trajetória profissional.',
+                  'The decisive moments that shaped my professional journey.'
                 )}
               </p>
             </div>
           </ScrollReveal>
 
-          <div className="grid gap-px overflow-hidden border border-border/20 bg-border/20 lg:grid-cols-3">
-            {policyHighlights.map((item, index) => (
-              <ScrollReveal key={item.path} delay={index * 0.05}>
-                <Link
-                  to={item.path}
-                  className="group block h-full bg-background/92 p-6 transition-colors hover:bg-foreground/[0.035] lg:p-8"
+          <div className="relative max-w-4xl mx-auto">
+            {/* Timeline Line */}
+            <motion.div
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px origin-top hidden md:block"
+              style={{
+                background: 'linear-gradient(to bottom, transparent, hsl(var(--foreground) / 0.2) 10%, hsl(var(--foreground) / 0.2) 90%, transparent)'
+              }}
+            />
+
+            <div className="space-y-12 md:space-y-0">
+              {careerMilestones.map((milestone, index) => (
+                <ScrollReveal key={milestone.year} delay={index * 0.15}>
+                  <motion.div
+                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className={`relative flex items-center md:gap-8 ${
+                      index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                    }`}
+                  >
+                    {/* Content Card */}
+                    <motion.div
+                      whileHover={{ y: -4, scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                      className={`w-full md:w-[calc(50%-2rem)] ${
+                        index % 2 === 0 ? 'md:text-right' : 'md:text-left'
+                      }`}
+                    >
+                      <div
+                        className="relative p-6 lg:p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm group"
+                        style={{
+                          boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                        }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+
+                        <div className={`flex items-center gap-4 mb-4 ${
+                          index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                        }`}>
+                          <div className="w-12 h-12 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center group-hover:border-foreground/20 transition-colors duration-300">
+                            <milestone.icon className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
+                          </div>
+                          <div className={index % 2 === 0 ? 'md:text-right' : ''}>
+                            <span className="text-2xl font-serif text-foreground">{milestone.year}</span>
+                          </div>
+                        </div>
+
+                        <h3 className="text-lg font-medium text-foreground mb-2">{milestone.title}</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{milestone.description}</p>
+                      </div>
+                    </motion.div>
+
+                    {/* Center Dot */}
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.15 + 0.2 }}
+                      className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center justify-center"
+                    >
+                      <div className="relative">
+                        <div className="w-4 h-4 rounded-full bg-foreground/30 ring-4 ring-background" />
+                        <motion.div
+                          initial={{ scale: 1, opacity: 0.5 }}
+                          animate={{ scale: 2, opacity: 0 }}
+                          transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
+                          className="absolute inset-0 rounded-full bg-foreground/20"
+                        />
+                      </div>
+                    </motion.div>
+
+                    {/* Spacer for alternating layout */}
+                    <div className="hidden md:block w-[calc(50%-2rem)]" />
+                  </motion.div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </ParallaxSection>
+
+      {/* Hobbies Section */}
+      <ParallaxSection
+        className="py-20 lg:py-24"
+        speed={0.08}
+        backgroundElement={
+          <>
+            <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-card/15 to-transparent" />
+            <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl hidden md:block" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+              >
+                {getText(language, 'Pessoal', 'Personal')}
+              </motion.span>
+              <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6 leading-tight">
+                {getText(language, 'Além do Código', 'Beyond the Code')}
+              </h2>
+              <p className="text-base text-muted-foreground max-w-xl mx-auto">
+                {getText(language,
+                  'Interesses e hobbies que me mantêm criativo e equilibrado.',
+                  'Interests and hobbies that keep me creative and balanced.'
+                )}
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6 max-w-4xl mx-auto">
+            {hobbies.map((hobby, index) => (
+              <ScrollReveal key={hobby.title} delay={index * 0.08}>
+                <motion.div
+                  whileHover={{ y: -4, scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  className="group h-full"
                 >
-                  <span className="mb-8 block font-serif text-4xl text-foreground/14">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="font-serif text-2xl text-foreground">{item.title}</h3>
-                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
-                  <span className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground">
-                    {getText(language, "Ler política", "Read policy")}
-                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </span>
-                </Link>
+                  <div
+                    className="relative h-full p-6 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm text-center"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+
+                    <div className="w-12 h-12 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center mx-auto mb-4 group-hover:border-foreground/20 transition-colors duration-300">
+                      <hobby.icon className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
+                    </div>
+                    <h3 className="text-base font-medium text-foreground mb-2">{hobby.title}</h3>
+                    <p className="text-xs text-muted-foreground leading-relaxed">{hobby.description}</p>
+                  </div>
+                </motion.div>
               </ScrollReveal>
             ))}
           </div>
         </div>
-      </section>
+      </ParallaxSection>
 
-      <section id="caminhos" className="scroll-mt-28 py-14 lg:py-20">
-        <div className="container mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="grid gap-px overflow-hidden border border-border/20 bg-border/20 lg:grid-cols-3">
-              {[
-                {
-                  icon: Code2,
-                  title: getText(language, "Soluções sob medida", "Custom solutions"),
-                  text: getText(language, "Sistemas, automações, integrações e infraestrutura pensados para durar.", "Systems, automations, integrations and infrastructure designed to last."),
-                  path: language === "en" ? "/en-us/services" : "/servicos",
-                },
-                {
-                  icon: Briefcase,
-                  title: getText(language, "Trajetória profissional", "Professional journey"),
-                  text: getText(language, "Empresas, comunidades, parcerias e experiências que moldaram meu trabalho.", "Companies, communities, partnerships and experiences that shaped my work."),
-                  path: language === "en" ? "/en-us/career" : "/carreira",
-                },
-                {
-                  icon: BookOpen,
-                  title: "Superando Limites",
-                  text: getText(language, "O livro onde compartilho parte da minha história e visão de mundo.", "The book where I share part of my story and worldview."),
-                  path: language === "en" ? "/en-us/book" : "/livro",
-                },
-              ].map((item, index) => (
-                <Link key={item.title} to={item.path} className="group bg-background/92 p-6 transition-colors hover:bg-foreground/[0.035] lg:p-8">
-                  <div className="mb-10 flex items-center justify-between">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-border/30 bg-background/40">
-                      <item.icon className="h-5 w-5 text-foreground/70" />
-                    </span>
-                    <span className="font-serif text-4xl text-foreground/12">{String(index + 1).padStart(2, "0")}</span>
-                  </div>
-                  <h3 className="font-serif text-2xl text-foreground">{item.title}</h3>
-                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
-                  <span className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground">
-                    {getText(language, "Abrir", "Open")}
-                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      <section id="contato" className="scroll-mt-28 pb-20">
-        <div className="container mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="flex flex-col gap-6 border-y border-border/20 py-10 lg:flex-row lg:items-center lg:justify-between">
-              <div>
-                <span className="mb-4 flex items-center gap-2 text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                  <MapPin className="h-3.5 w-3.5" />
-                  Recife, Pernambuco
-                </span>
-                <h2 className="font-serif text-3xl leading-tight text-foreground">
-                  {getText(language, "Construir confiança também faz parte do trabalho.", "Building trust is also part of the work.")}
-                </h2>
-              </div>
-              <Link
-                to={language === "en" ? "/en-us/contact" : "/contato"}
-                className="group inline-flex items-center gap-3 rounded-full border border-border/35 bg-background/30 px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-foreground/10"
+      {/* Tech Stack Section */}
+      <ParallaxSection
+        className="py-20 lg:py-24"
+        speed={0.1}
+        backgroundElement={
+          <>
+            <div className="absolute top-0 left-0 w-1/4 h-full bg-gradient-to-r from-card/15 to-transparent" />
+            <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl hidden md:block" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+            <ScrollReveal className="lg:col-span-5">
+              <motion.span
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
               >
-                <Sparkles className="h-4 w-4" />
-                {getText(language, "Conversar com Talisson", "Talk to Talisson")}
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
+                {getText(language, 'Stack', 'Stack')}
+              </motion.span>
+              <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
+                {getText(language, 'Tecnologias Favoritas', 'Favorite Technologies')}
+              </h2>
+              <p className="text-base text-muted-foreground leading-relaxed max-w-md">
+                {getText(language,
+                  'Ferramentas que uso no dia a dia para construir soluções robustas e escaláveis.',
+                  'Tools I use daily to build robust and scalable solutions.'
+                )}
+              </p>
+            </ScrollReveal>
+
+            <div className="lg:col-span-7">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                {techStack.map((tech, index) => (
+                  <ScrollReveal key={tech.name} delay={index * 0.08}>
+                    <motion.div
+                      whileHover={{ y: -3, scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                      className="group"
+                    >
+                      <div
+                        className="relative p-5 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm"
+                        style={{
+                          boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                        }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+
+                        <div className="flex items-center gap-3">
+                          <div className="w-9 h-9 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center group-hover:border-foreground/20 transition-colors duration-300">
+                            <Code2 className="w-4 h-4 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
+                          </div>
+                          <div>
+                            <h4 className="text-sm font-medium text-foreground">{tech.name}</h4>
+                            <p className="text-xs text-muted-foreground/70">{tech.category}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </ScrollReveal>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </ParallaxSection>
+
+      {/* Work Philosophy Section */}
+      <ParallaxSection
+        className="py-20 lg:py-24"
+        speed={0.12}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-card/20 via-background to-card/20" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[75%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6"
+              >
+                {getText(language, 'Filosofia', 'Philosophy')}
+              </motion.span>
+              <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6 leading-tight">
+                {getText(language, 'Como eu trabalho', 'How I work')}
+              </h2>
+              <p className="text-base text-muted-foreground max-w-xl mx-auto">
+                {getText(language,
+                  'Princípios que guiam cada linha de código e decisão de negócio.',
+                  'Principles that guide every line of code and business decision.'
+                )}
+              </p>
             </div>
           </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {workPhilosophy.map((item, index) => (
+              <ScrollReveal key={item.title} delay={index * 0.1}>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className="h-full"
+                >
+                  <div
+                    className="relative h-full p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm group"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+                    <div className="absolute top-0 right-0 w-20 h-20 border-t border-r border-foreground/[0.04] rounded-tr-2xl" />
+
+                    <div className="flex items-start gap-5">
+                      <div className="w-12 h-12 rounded-2xl border border-border/30 bg-card/50 flex items-center justify-center shrink-0 group-hover:border-foreground/20 transition-colors duration-300">
+                        <item.icon className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-serif text-foreground mb-2">{item.title}</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
-      </section>
+      </ParallaxSection>
+
+
+      {/* Certificates Section */}
+      <ParallaxSection
+        className="py-20 lg:py-24"
+        speed={0.1}
+        backgroundElement={
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+          </>
+        }
+      >
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <ScrollReveal>
+            <div className="mb-10">
+              <motion.span
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
+              >
+                {t.certificates.title}
+              </motion.span>
+              <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
+                {getText(language, 'Certificações', 'Certifications')}
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {certificates.map((cert, index) => (
+              <ScrollReveal key={cert.id} delay={index * 0.1}>
+                <motion.a
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className="block h-full group"
+                >
+                  <div
+                    className="relative h-full p-6 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm"
+                    style={{
+                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="w-10 h-10 rounded-xl border border-border/30 bg-card/50 flex items-center justify-center group-hover:border-foreground/20 transition-colors duration-300">
+                        <Award className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors duration-300" />
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-foreground/30 group-hover:text-foreground/70 transition-colors duration-300" />
+                    </div>
+
+                    <h3 className="text-base font-medium text-foreground mb-2">{cert.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-3">{cert.issuer}</p>
+
+                    <div className="flex items-center text-xs text-muted-foreground/70">
+                      <Calendar className="w-3 h-3 mr-1" />
+                      {cert.date}
+                    </div>
+                  </div>
+                </motion.a>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </ParallaxSection>
+
+      {/* Setup Section */}
+      <SetupSection />
+
+
+
     </Layout>
   );
 };

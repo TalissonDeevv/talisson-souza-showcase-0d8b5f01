@@ -40,7 +40,6 @@ const Index = () => {
     language
   } = useTheme();
   const t = useTranslation(language);
-  const showLegacyStoryPreview = import.meta.env.DEV && import.meta.env.VITE_SHOW_LEGACY_STORY === "true";
   const featuredProjects = [{
     title: "Land page Sagiri Bot",
     description: getText(language, "Uma land page pra uma bot de discord de parcerias.", "A landing page for a Discord bot for partnerships."),
@@ -212,7 +211,7 @@ const Index = () => {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="mt-2">
 
-              <SocialIcons centered className="mx-auto max-w-[92vw] justify-center" />
+              <SocialIcons />
             </motion.div>
           </div>
         </div>
@@ -249,31 +248,112 @@ const Index = () => {
                 <p className="text-base text-muted-foreground leading-relaxed max-w-md mb-7">
                   {getText(language, 'Ferramentas e tecnologias que domino para construir sistemas robustos e escal\u00e1veis.', 'Tools and technologies I master to build robust and scalable systems.')}
                 </p>
+                <div className="grid max-w-sm grid-cols-3 border-y border-border/25 py-4">
+                  <div>
+                    <span className="block font-serif text-4xl leading-none text-foreground/80">{techStack.length}</span>
+                    <span className="mt-2 block text-[10px] uppercase tracking-[0.18em] text-muted-foreground/65">
+                      {getText(language, 'tecnologias', 'technologies')}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="block font-serif text-4xl leading-none text-foreground/80">03</span>
+                    <span className="mt-2 block text-[10px] uppercase tracking-[0.18em] text-muted-foreground/65">
+                      {getText(language, 'camadas', 'layers')}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="block font-serif text-4xl leading-none text-foreground/80">01</span>
+                    <span className="mt-2 block text-[10px] uppercase tracking-[0.18em] text-muted-foreground/65">
+                      {getText(language, 'base', 'base')}
+                    </span>
+                  </div>
+                </div>
               </div>
 
               <div className="lg:col-span-8">
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-                  {techStack.map((tech, index) => {
-                    const IconComponent = tech.icon;
-                    return (
-                      <motion.div
-                        key={tech.name}
-                        initial={{ opacity: 0, y: 16, filter: "blur(5px)" }}
-                        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.45, delay: index * 0.025, ease: [0.16, 1, 0.3, 1] }}
-                        whileHover={{ y: -3 }}
-                        className="group flex min-h-[92px] items-center gap-3 rounded-lg border border-border/20 bg-card/25 px-4 py-4 transition-colors duration-300 hover:border-foreground/20 hover:bg-foreground/[0.035]"
-                      >
-                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-border/25 bg-background/45 text-foreground/65 transition-colors duration-300 group-hover:text-foreground">
-                          <IconComponent className="h-5 w-5" />
+                <div className="relative overflow-hidden rounded-lg border border-border/20 bg-card/20 p-4 backdrop-blur-sm sm:p-5">
+                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,hsl(var(--foreground)/0.022)_1px,transparent_1px),linear-gradient(0deg,hsl(var(--foreground)/0.022)_1px,transparent_1px)] bg-[size:56px_56px]" />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-foreground/[0.035] via-transparent to-background/70" />
+
+                  <div className="relative grid gap-3 md:grid-cols-[0.78fr_1.22fr] md:items-stretch">
+                    <motion.div
+                      initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
+                      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                      className="relative flex min-h-[170px] flex-col justify-between overflow-hidden rounded-lg border border-border/25 bg-background/55 p-5"
+                    >
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-foreground/[0.06] via-transparent to-transparent" />
+                      <div className="relative">
+                        <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg border border-foreground/20 bg-background/80 shadow-[0_0_28px_hsl(var(--foreground)/0.06)]">
+                          <SiTypescript className="h-6 w-6 text-foreground/80" />
+                        </div>
+                        <span className="mb-3 block text-[10px] font-medium uppercase tracking-[0.28em] text-muted-foreground/70">
+                          {getText(language, "N\u00facleo", "Core")}
                         </span>
-                        <span className="text-sm font-medium text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
-                          {tech.name}
-                        </span>
-                      </motion.div>
-                    );
-                  })}
+                        <h3 className="max-w-xs font-serif text-xl leading-tight text-foreground">
+                          {getText(language, "Uma base limpa para produtos que precisam evoluir.", "A clean base for products that need to evolve.")}
+                        </h3>
+                      </div>
+                      <div className="relative mt-6 flex items-center gap-3 border-t border-border/20 pt-4 text-[11px] uppercase tracking-[0.16em] text-muted-foreground/65">
+                        <span>{getText(language, "arquitetura", "architecture")}</span>
+                        <span className="h-px flex-1 bg-gradient-to-r from-foreground/20 to-transparent" />
+                        <span>{getText(language, "entrega", "delivery")}</span>
+                      </div>
+                    </motion.div>
+
+                    <div className="grid gap-3">
+                      {stackLayers.map((layer, layerIndex) => (
+                        <motion.div
+                          key={layer.number}
+                          initial={{ opacity: 0, x: 18, filter: "blur(6px)" }}
+                          whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.58, delay: layerIndex * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                          className="group relative overflow-hidden rounded-lg border border-border/20 bg-background/45 p-3.5 transition-colors duration-300 hover:border-foreground/20"
+                        >
+                          <div className="pointer-events-none absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-foreground/15 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                          <div className="grid gap-3 sm:grid-cols-[56px_1fr] sm:items-start">
+                            <div className="flex items-center gap-3 sm:block">
+                              <span className="font-serif text-2xl leading-none text-foreground/[0.14] transition-colors duration-500 group-hover:text-foreground/30">
+                                {layer.number}
+                              </span>
+                              <span className="h-px flex-1 bg-gradient-to-r from-foreground/15 to-transparent sm:mt-3 sm:block sm:w-8" />
+                            </div>
+
+                            <div>
+                              <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                                <div>
+                                  <h3 className="font-serif text-base leading-tight text-foreground">
+                                    {layer.title}
+                                  </h3>
+                                  <p className="mt-1.5 max-w-md text-xs leading-relaxed text-muted-foreground">
+                                    {layer.description}
+                                  </p>
+                                </div>
+                                <ArrowRight className="hidden h-4 w-4 shrink-0 text-foreground/35 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-foreground/70 sm:block" />
+                              </div>
+
+                              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                                {layer.tools.map((tech) => {
+                                  const IconComponent = tech.icon;
+                                  return (
+                                    <div
+                                      key={tech.name}
+                                      className="flex min-h-[38px] items-center gap-2 rounded-md border border-border/25 bg-card/35 px-2.5 text-muted-foreground/75 transition-colors duration-300 group-hover:border-border/40 group-hover:text-foreground/85"
+                                    >
+                                      <IconComponent className="h-4 w-4 shrink-0" />
+                                      <span className="truncate text-[11px] font-medium">{tech.name}</span>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -742,7 +822,7 @@ const Index = () => {
 
         
         <StoryHighlight />
-        {showLegacyStoryPreview && (
+        <div className="hidden">
           <ScrollReveal>
             <motion.div
               whileHover={{ y: -4 }}
@@ -763,7 +843,7 @@ const Index = () => {
                 <div className="text-6xl font-serif text-foreground/[0.04] mb-2 select-none leading-none" style={{ letterSpacing: '-0.1em' }}>"</div>
                 
                 <h2 className="font-serif text-xl lg:text-2xl xl:text-3xl text-foreground mb-6 leading-[1.2]">
-                  {language === 'pt' ? 'Reflexão' : 'Reflection'}
+                  {language === 'pt' ? 'Por que fundei minha empresa aos 17?' : 'Why I started my company at 17?'}
                 </h2>
                 
                 <p className="text-sm text-muted-foreground leading-[1.8] mb-4 max-w-2xl mx-auto">
@@ -778,7 +858,7 @@ const Index = () => {
                   className="group inline-flex items-center gap-3 text-sm font-medium text-foreground">
 
                   <span className="relative">
-                    {language === 'pt' ? 'Abrir carreira' : 'Open career'}
+                    {language === 'pt' ? 'Ler história completa' : 'Read full story'}
                     <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
                     <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
                   </span>
@@ -787,7 +867,7 @@ const Index = () => {
               </div>
             </motion.div>
           </ScrollReveal>
-        )}
+        </div>
       </ParallaxSection>
 
       {/* Testimonials - Premium Cards */}
@@ -1753,7 +1833,7 @@ const Index = () => {
                   className="relative z-10 mx-auto h-auto w-64 animate-float drop-shadow-[0_32px_70px_hsl(0_0%_0%/0.55)] lg:w-80"
                 />
                 <div className="relative z-10 mx-auto mt-5 flex max-w-md flex-col justify-center gap-3 sm:flex-row">
-                  <a href="https://www.amazon.com/dp/B0GVS4D8HL" target="_blank" rel="noopener noreferrer"
+                  <a href="https://www.amazon.com/dp/B0GVS4D8HL/ref=tmm_pap_swatch_0?_encoding=UTF8&dib_tag=se&dib=eyJ2IjoiMSJ9.YwqalvZK7CfKxFD0kPkYgg.3O8srGTxR_gr4EkS_chJa4jDQJm1-0ervY2_COJZNEs&qid=1775137388&sr=8-1" target="_blank" rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 border border-foreground/20 bg-foreground px-4 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90">
                     <BookOpen className="h-3.5 w-3.5" />
                     {getText(language, 'Livro Físico', 'Physical Book')}
@@ -1821,7 +1901,7 @@ const Index = () => {
                     alt={getText(language, 'Superando Limites - Da Rejeição ao Sucesso', 'Overcoming Limits - From Rejection to Success')}
                     className="w-56 lg:w-72 h-auto animate-float" />
                   <div className="flex flex-col sm:flex-row gap-2 mt-2">
-                    <a href="https://www.amazon.com/dp/B0GVS4D8HL" target="_blank" rel="noopener noreferrer"
+                    <a href="https://www.amazon.com/dp/B0GVS4D8HL/ref=tmm_pap_swatch_0?_encoding=UTF8&dib_tag=se&dib=eyJ2IjoiMSJ9.YwqalvZK7CfKxFD0kPkYgg.3O8srGTxR_gr4EkS_chJa4jDQJm1-0ervY2_COJZNEs&qid=1775137388&sr=8-1" target="_blank" rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-xs font-medium text-primary-foreground bg-foreground rounded-full px-4 py-2 hover:opacity-90 transition-opacity">
                       <BookOpen className="w-3.5 h-3.5" />
                       {getText(language, 'Livro Físico', 'Physical Book')}

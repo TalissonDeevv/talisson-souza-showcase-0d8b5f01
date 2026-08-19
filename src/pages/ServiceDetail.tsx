@@ -5,9 +5,9 @@ import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
 import GlassCard from "@/components/ui/GlassCard";
-import { 
+import {
   ArrowLeft, Code, Smartphone, Bot, Palette, Cloud, Users,
-  CheckCircle, Star, MessageSquare, ArrowUpRight,
+  CheckCircle, Star, MessageSquare, ArrowUpRight, Clock,
   Target, XCircle, TrendingUp, Briefcase, AlertTriangle, BarChart3,
   Gauge, LineChart, ShieldCheck, Monitor, Server, GitBranch,
   Boxes, Bell, RefreshCcw, Store, Fingerprint, Terminal, ShieldAlert,
@@ -45,7 +45,7 @@ type SolutionVisual =
   | "ux-handoff"
   | "cloud-deploy"
   | "cloud-monitoring"
-  | "cloud-capacity"
+  | "cloud-cost"
   | "cloud-backup"
   | "cloud-pipeline"
   | "cloud-scale"
@@ -62,15 +62,6 @@ type SolutionCard = {
   description: string;
   visual: SolutionVisual;
   className: string;
-};
-
-type ServiceBlueprint = {
-  principle: string;
-  narrative: string;
-  stages: string[];
-  signals: Array<{ label: string; value: string }>;
-  handoff: string[];
-  qualities: string[];
 };
 
 const themeCardStyles: Record<SolutionTheme, { frame: string; visual: string; grid: string; glow: string }> = {
@@ -139,7 +130,7 @@ const visualIconMap = {
   "ux-handoff": ClipboardCheck,
   "cloud-deploy": CloudCog,
   "cloud-monitoring": RadioTower,
-  "cloud-capacity": Gauge,
+  "cloud-cost": Gauge,
   "cloud-backup": DatabaseBackup,
   "cloud-pipeline": GitBranch,
   "cloud-scale": Boxes,
@@ -638,7 +629,7 @@ const SolutionIllustration = ({ visual, theme }: { visual: SolutionVisual; theme
       );
     }
 
-    if (visual === "cloud-capacity" || visual === "cloud-scale") {
+    if (visual === "cloud-cost" || visual === "cloud-scale") {
       return (
         <div className="relative flex h-full w-full items-center justify-center px-5">
           <div className="flex w-full max-w-[360px] items-end gap-3 rounded-2xl border border-foreground/10 bg-background/35 p-4">
@@ -776,12 +767,12 @@ const SolutionShowcaseCard = ({ card, index, theme }: { card: SolutionCard; inde
     viewport={{ once: true, margin: "-80px" }}
     transition={{ duration: 0.7, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
     whileHover={{ y: -6 }}
-    className={`group relative isolate flex min-h-[244px] flex-col overflow-hidden ${styles.frame} border border-border/25 bg-card/35 backdrop-blur-sm transition-colors duration-500 hover:border-foreground/20 md:min-h-[260px] ${card.className}`}
+    className={`group relative isolate flex min-h-[232px] flex-col overflow-hidden ${styles.frame} border border-border/25 bg-card/35 backdrop-blur-sm transition-colors duration-500 hover:border-foreground/20 md:min-h-[248px] ${card.className}`}
   >
     <div className={`absolute inset-0 ${styles.grid}`} style={{ backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`, backgroundSize: theme === "mobile" ? "42px 42px" : "34px 34px" }} />
     <div className={`absolute inset-x-0 top-0 h-28 bg-gradient-to-b ${styles.glow} to-transparent opacity-70`} />
     <div className="absolute -right-16 -top-20 h-48 w-48 rounded-full bg-foreground/[0.04] blur-3xl transition-opacity duration-500 group-hover:opacity-80" />
-    <div className={`relative flex h-36 flex-none ${styles.visual} justify-center overflow-hidden md:h-40`}>
+    <div className={`relative flex min-h-[132px] flex-1 ${styles.visual} justify-center overflow-hidden md:min-h-[150px]`}>
       <SolutionIllustration visual={card.visual} theme={theme} />
     </div>
     <div className="relative mt-auto border-t border-border/10 p-5" style={{ background: "linear-gradient(to top, hsl(var(--card)) 0%, hsl(var(--card) / 0.92) 72%, hsl(var(--card) / 0.72) 100%)" }}>
@@ -844,12 +835,13 @@ const ServiceDetail = () => {
         "Janela desejada para entrega"
       ] : [
         "Clear definition of project objectives",
-        "Visual identity or brand guidelines", 
+        "Visual identity or brand guidelines",
         "Content (texts, images, videos)",
         "Specific desired functionalities",
         "Desired delivery window"
       ],
       technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Node.js", "PostgreSQL"],
+      deliveryTime: language === 'pt' ? "2-6 semanas" : "2-6 weeks",
       idealFor: language === 'pt' ? [
         "Empresas que precisam de presença digital profissional",
         "Startups lançando seu primeiro produto",
@@ -894,6 +886,29 @@ const ServiceDetail = () => {
         "Better search engine ranking",
         "Optimized user experience"
       ],
+      realExample: {
+        title: "Werneck Group",
+        description: language === 'pt'
+          ? "Plataforma corporativa moderna com sistema de gerenciamento interno, integrações com APIs de terceiros e dashboard analítico. Entregue em 5 semanas com aumento de 52% na eficiência operacional."
+          : "Modern corporate platform with internal management system, third-party API integrations and analytics dashboard. Delivered in 5 weeks with 52% increase in operational efficiency."
+      },
+      additionalExamples: [
+        {
+          title: "Sagiri Bot Landing",
+          result: language === 'pt' ? "Taxa de conversão de 12% em visitas orgânicas" : "12% conversion rate on organic visits",
+          tech: "React + Tailwind CSS"
+        },
+        {
+          title: language === 'pt' ? "Portal Família Werneck" : "Werneck Family Portal",
+          result: language === 'pt' ? "500+ membros ativos em 2 meses" : "500+ active members in 2 months",
+          tech: "React + Firebase"
+        },
+        {
+          title: language === 'pt' ? "Dashboard Analítico" : "Analytics Dashboard",
+          result: language === 'pt' ? "Redução de 70% no tempo de análise" : "70% reduction in analysis time",
+          tech: "Next.js + PostgreSQL"
+        }
+      ]
     },
     "mobile-development": {
       icon: Smartphone,
@@ -912,6 +927,7 @@ const ServiceDetail = () => {
         "Launch priorities"
       ],
       technologies: ["React Native", "TypeScript", "Expo", "Firebase", "Native APIs"],
+      deliveryTime: language === 'pt' ? "6-12 semanas" : "6-12 weeks",
       idealFor: language === 'pt' ? [
         "Empresas que querem alcançar usuários mobile",
         "Negócios com processos que funcionam melhor em app",
@@ -956,6 +972,24 @@ const ServiceDetail = () => {
         "Push notifications with high open rate",
         "Smooth native experience"
       ],
+      realExample: {
+        title: language === 'pt' ? "App de Gestão Interna" : "Internal Management App",
+        description: language === 'pt'
+          ? "Aplicativo para equipe de vendas com tracking de metas, catálogo de produtos e relatórios em tempo real. Reduziu o tempo de fechamento de vendas em 35%."
+          : "Sales team app with goal tracking, product catalog and real-time reports. Reduced sales closing time by 35%."
+      },
+      additionalExamples: [
+        {
+          title: language === 'pt' ? "App de Delivery" : "Delivery App",
+          result: language === 'pt' ? "4.8 estrelas na Play Store" : "4.8 stars on Play Store",
+          tech: "React Native + Node.js"
+        },
+        {
+          title: language === 'pt' ? "Gestão de Eventos" : "Event Management",
+          result: language === 'pt' ? "2.000+ check-ins processados" : "2,000+ check-ins processed",
+          tech: "Expo + Firebase"
+        }
+      ]
     },
     "bot-development": {
       icon: Bot,
@@ -974,6 +1008,7 @@ const ServiceDetail = () => {
         "Data or APIs for integration"
       ],
       technologies: ["Node.js", "Discord.js", "Python", "APIs", "Database Integration"],
+      deliveryTime: language === 'pt' ? "1-4 semanas" : "1-4 weeks",
       idealFor: language === 'pt' ? [
         "Comunidades que precisam de moderação automatizada",
         "Empresas que querem automatizar atendimento",
@@ -1018,6 +1053,29 @@ const ServiceDetail = () => {
         "24/7 automated processes",
         "Smooth integration with other systems"
       ],
+      realExample: {
+        title: "Sagiri Bot",
+        description: language === 'pt'
+          ? "Bot multifuncional para Discord com sistema de economia, moderação avançada e integração com APIs externas. Atende milhares de usuários diariamente."
+          : "Multifunctional Discord bot with economy system, advanced moderation and external API integration. Serves thousands of users daily."
+      },
+      additionalExamples: [
+        {
+          title: language === 'pt' ? "Bot de Moderação" : "Moderation Bot",
+          result: language === 'pt' ? "99.9% uptime em 12 meses" : "99.9% uptime in 12 months",
+          tech: "Node.js + Discord.js"
+        },
+        {
+          title: language === 'pt' ? "Bot de Atendimento" : "Support Bot",
+          result: language === 'pt' ? "85% dos tickets resolvidos automaticamente" : "85% tickets resolved automatically",
+          tech: "Python + Telegram API"
+        },
+        {
+          title: language === 'pt' ? "Bot de Integração" : "Integration Bot",
+          result: language === 'pt' ? "50+ integrações com APIs externas" : "50+ external API integrations",
+          tech: "Node.js + REST APIs"
+        }
+      ]
     },
     "uiux-design": {
       icon: Palette,
@@ -1036,6 +1094,7 @@ const ServiceDetail = () => {
         "Project timeline"
       ],
       technologies: ["Figma", "Adobe XD", "Principle", "InVision", "User Research"],
+      deliveryTime: language === 'pt' ? "2-8 semanas" : "2-8 weeks",
       idealFor: language === 'pt' ? [
         "Produtos digitais que precisam de redesign",
         "Startups criando nova identidade visual",
@@ -1080,6 +1139,29 @@ const ServiceDetail = () => {
         "Significant reduction in user errors",
         "Higher satisfaction and retention"
       ],
+      realExample: {
+        title: language === 'pt' ? "Redesign de Dashboard" : "Dashboard Redesign",
+        description: language === 'pt'
+          ? "Redesign completo de sistema de gestão empresarial. Interface simplificada resultou em 45% menos tempo de treinamento para novos funcionários."
+          : "Complete redesign of business management system. Simplified interface resulted in 45% less training time for new employees."
+      },
+      additionalExamples: [
+        {
+          title: language === 'pt' ? "App Fintech" : "Fintech App",
+          result: language === 'pt' ? "NPS de 72 após redesign" : "NPS of 72 after redesign",
+          tech: "Figma + User Research"
+        },
+        {
+          title: language === 'pt' ? "E-commerce Premium" : "Premium E-commerce",
+          result: language === 'pt' ? "+38% em conversões" : "+38% in conversions",
+          tech: "Figma + Prototyping"
+        },
+        {
+          title: language === 'pt' ? "Design System" : "Design System",
+          result: language === 'pt' ? "60% mais rápido no desenvolvimento" : "60% faster in development",
+          tech: "Figma + Documentation"
+        }
+      ]
     },
     "cloud-solutions": {
       icon: Cloud,
@@ -1098,6 +1180,7 @@ const ServiceDetail = () => {
         "Cloud provider preference"
       ],
       technologies: ["AWS", "Docker", "Kubernetes", "CI/CD", "Monitoring Tools"],
+      deliveryTime: language === 'pt' ? "1-3 semanas" : "1-3 weeks",
       idealFor: language === 'pt' ? [
         "Aplicações que precisam escalar",
         "Empresas migrando de hospedagem tradicional",
@@ -1142,6 +1225,29 @@ const ServiceDetail = () => {
         "On-demand scalability",
         "Infrastructure sized with clear criteria"
       ],
+      realExample: {
+        title: language === 'pt' ? "Migração Cloud" : "Cloud Migration",
+        description: language === 'pt'
+          ? "Migração de aplicação legada para AWS com containerização. Melhorou previsibilidade operacional e reduziu o tempo de resposta em 60%."
+          : "Migration of legacy application to AWS with containerization. Improved operational predictability and reduced response time by 60%."
+      },
+      additionalExamples: [
+        {
+          title: language === 'pt' ? "Infraestrutura Escalável" : "Scalable Infrastructure",
+          result: language === 'pt' ? "10x mais capacidade sob demanda" : "10x more capacity on demand",
+          tech: "AWS + Kubernetes"
+        },
+        {
+          title: language === 'pt' ? "CI/CD Pipeline" : "CI/CD Pipeline",
+          result: language === 'pt' ? "Deploy em 3 min vs 2h anteriores" : "Deploy in 3 min vs 2h before",
+          tech: "GitHub Actions + Docker"
+        },
+        {
+          title: language === 'pt' ? "Monitoramento 24/7" : "24/7 Monitoring",
+          result: language === 'pt' ? "MTTR reduzido de 4h para 15min" : "MTTR reduced from 4h to 15min",
+          tech: "Datadog + PagerDuty"
+        }
+      ]
     },
     "consulting": {
       icon: Users,
@@ -1160,6 +1266,7 @@ const ServiceDetail = () => {
         "Specific objectives"
       ],
       technologies: ["Strategic Planning", "Code Review", "Architecture Design", "Team Training"],
+      deliveryTime: language === 'pt' ? "Flexível" : "Flexible",
       idealFor: language === 'pt' ? [
         "CTOs e tech leads buscando segunda opinião",
         "Startups definindo arquitetura inicial",
@@ -1204,6 +1311,29 @@ const ServiceDetail = () => {
         "Improved code quality",
         "More capable team"
       ],
+      realExample: {
+        title: language === 'pt' ? "Consultoria de Arquitetura" : "Architecture Consulting",
+        description: language === 'pt'
+          ? "Consultoria para produto digital na definição de arquitetura de microserviços. Reduziu retrabalho relevante e acelerou decisões de produto."
+          : "Consulting for a digital product on microservices architecture definition. Reduced relevant rework and accelerated product decisions."
+      },
+      additionalExamples: [
+        {
+          title: language === 'pt' ? "Mentoria de Time" : "Team Mentoring",
+          result: language === 'pt' ? "Produtividade +40% em 3 meses" : "Productivity +40% in 3 months",
+          tech: "Code Review + Workshops"
+        },
+        {
+          title: language === 'pt' ? "Auditoria de Código" : "Code Audit",
+          result: language === 'pt' ? "87 vulnerabilidades corrigidas" : "87 vulnerabilities fixed",
+          tech: "Security Analysis"
+        },
+        {
+          title: language === 'pt' ? "Planejamento Técnico" : "Technical Planning",
+          result: language === 'pt' ? "Roadmap de 18 meses definido" : "18-month roadmap defined",
+          tech: "Strategic Planning"
+        }
+      ]
     }
   };
 
@@ -1216,7 +1346,7 @@ const ServiceDetail = () => {
           <h1 className="font-serif text-3xl text-foreground mb-6">
             {language === 'pt' ? 'Serviço não encontrado' : 'Service not found'}
           </h1>
-          <Link 
+          <Link
             to="/servicos"
             className="inline-flex items-center gap-2 text-sm font-medium text-foreground"
           >
@@ -1260,8 +1390,8 @@ const ServiceDetail = () => {
       title: getText(language, "Aplicativo pensado para voltar todo dia", "An app designed for daily return"),
       description: getText(
         language,
-        "No mobile, cada toque precisa ter intenção, fluxo curto, estado claro, dados sincronizados e lançamento sem improviso.",
-        "On mobile, every tap needs intent, short flows, clear state, synced data and release without improvisation."
+        "No mobile, cada toque precisa ter intenção: fluxo curto, estado claro, dados sincronizados e lançamento sem improviso.",
+        "On mobile, every tap needs intent: short flows, clear state, synced data and release without improvisation."
       ),
       layout: [
         "md:col-span-1 lg:col-span-4",
@@ -1296,8 +1426,8 @@ const ServiceDetail = () => {
       title: getText(language, "Experiência desenhada antes do código", "Experience designed before code"),
       description: getText(
         language,
-        "A interface nasce da leitura do problema, com hierarquia, jornada, estados, protótipo e handoff caminhando juntos.",
-        "The interface starts from reading the problem, with hierarchy, journey, states, prototype and handoff moving together."
+        "A interface nasce da leitura do problema: hierarquia, jornada, estados, protótipo e handoff caminhando juntos.",
+        "The interface starts from reading the problem: hierarchy, journey, states, prototype and handoff moving together."
       ),
       layout: [
         "md:col-span-1 lg:col-span-4",
@@ -1314,8 +1444,8 @@ const ServiceDetail = () => {
       title: getText(language, "Deploy, escala e estabilidade no mesmo desenho", "Deploy, scale and stability in the same design"),
       description: getText(
         language,
-        "A nuvem precisa ser compreensível, com ambientes, limites, alertas, backup e pipeline funcionando como um sistema só.",
-        "Cloud needs to be understandable, with environments, limits, alerts, backup and pipeline working as one system."
+        "A nuvem precisa ser compreensível: ambientes, limites, alertas, backup e pipeline funcionando como um sistema só.",
+        "Cloud needs to be understandable: environments, limits, alerts, backup and pipeline working as one system."
       ),
       layout: [
         "md:col-span-1 lg:col-span-3",
@@ -1332,8 +1462,8 @@ const ServiceDetail = () => {
       title: getText(language, "Clareza para decidir antes de executar", "Clarity to decide before executing"),
       description: getText(
         language,
-        "Consultoria boa diminui ruído e revela gargalos, prioriza risco, organiza arquitetura e transforma diagnóstico em próxima ação.",
-        "Good consulting reduces noise and it reveals bottlenecks, prioritizes risk, organizes architecture and turns diagnosis into the next action."
+        "Consultoria boa diminui ruído: revela gargalos, prioriza risco, organiza arquitetura e transforma diagnóstico em próxima ação.",
+        "Good consulting reduces noise: it reveals bottlenecks, prioritizes risk, organizes architecture and turns diagnosis into the next action."
       ),
       layout: [
         "md:col-span-2 lg:col-span-6",
@@ -1488,7 +1618,7 @@ const ServiceDetail = () => {
       {
         title: getText(language, "Capacidade ajustada", "Right-sized capacity"),
         description: getText(language, "Infraestrutura dimensionada para desempenho sem excesso operacional.", "Infrastructure sized for performance without operational excess."),
-        visual: "cloud-capacity",
+        visual: "cloud-cost",
       },
       {
         title: getText(language, "Backup e recuperação", "Backup and recovery"),
@@ -1544,154 +1674,19 @@ const ServiceDetail = () => {
     ...card,
     className: currentSolution.layout[index],
   }));
-  const serviceBlueprints: Record<string, ServiceBlueprint> = {
-    "web-development": {
-      principle: getText(language, "O site como sistema, não como vitrine solta.", "The website as a system, not a loose showcase."),
-      narrative: getText(
-        language,
-        "Uma entrega web precisa sustentar leitura, conversão, manutenção e operação. Antes de desenhar tela, eu organizo intenção, dados, fluxo editorial e o que precisa continuar funcionando depois do lançamento.",
-        "A web delivery needs to support reading, conversion, maintenance and operation. Before drawing screens, I organize intent, data, editorial flow and what must keep working after launch."
-      ),
-      stages: language === "pt"
-        ? ["Leitura do negócio e dos usuários", "Arquitetura de páginas, rotas e estados", "Interface responsiva com performance", "Publicação, documentação e handoff"]
-        : ["Business and user reading", "Page, route and state architecture", "Responsive interface with performance", "Release, documentation and handoff"],
-      signals: [
-        { label: getText(language, "entrada", "input"), value: getText(language, "objetivo + conteúdo", "goal + content") },
-        { label: getText(language, "núcleo", "core"), value: getText(language, "UX + front-end", "UX + front-end") },
-        { label: getText(language, "saída", "output"), value: getText(language, "produto publicável", "publishable product") },
-      ],
-      handoff: language === "pt"
-        ? ["Estrutura de páginas e componentes", "Critérios de responsividade", "Integrações documentadas", "Base preparada para evolução"]
-        : ["Page and component structure", "Responsiveness criteria", "Documented integrations", "Base prepared for evolution"],
-      qualities: language === "pt"
-        ? ["Carregamento rápido", "Navegação óbvia", "Conteúdo legível", "Manutenção previsível"]
-        : ["Fast loading", "Obvious navigation", "Readable content", "Predictable maintenance"],
-    },
-    "mobile-development": {
-      principle: getText(language, "Um app só faz sentido quando vira hábito útil.", "An app only makes sense when it becomes a useful habit."),
-      narrative: getText(
-        language,
-        "No mobile, o usuário não perdoa fluxo confuso. A entrega precisa respeitar toque, contexto, retorno frequente, estados offline e o caminho até publicação.",
-        "On mobile, users do not forgive confusing flows. The delivery must respect touch, context, frequent return, offline states and the path to release."
-      ),
-      stages: language === "pt"
-        ? ["Mapeamento de jornada recorrente", "Protótipo dos fluxos principais", "Integração com dados e notificações", "Preparação para loja e evolução"]
-        : ["Recurring journey mapping", "Prototype of key flows", "Data and notification integration", "Store and evolution preparation"],
-      signals: [
-        { label: getText(language, "uso", "usage"), value: getText(language, "toque diário", "daily touch") },
-        { label: getText(language, "estado", "state"), value: getText(language, "sincronizado", "synced") },
-        { label: getText(language, "lançamento", "release"), value: getText(language, "assistido", "guided") },
-      ],
-      handoff: language === "pt"
-        ? ["Fluxos de tela claros", "Estados e permissões definidos", "Integrações com backend", "Checklist de publicação"]
-        : ["Clear screen flows", "Defined states and permissions", "Backend integrations", "Release checklist"],
-      qualities: language === "pt"
-        ? ["Toque sem fricção", "Retorno com contexto", "Dados consistentes", "Uso simples no dia a dia"]
-        : ["Frictionless touch", "Contextual return", "Consistent data", "Simple daily use"],
-    },
-    "bot-development": {
-      principle: getText(language, "Bot bom reduz ruído humano sem perder controle.", "A good bot reduces human noise without losing control."),
-      narrative: getText(
-        language,
-        "Eu trato bot como operação, onde comandos, regras, permissões, logs, banco de dados e comportamento da comunidade precisam conversar entre si.",
-        "I treat bots as operations, where commands, rules, permissions, logs, databases and community behavior need to talk to each other."
-      ),
-      stages: language === "pt"
-        ? ["Leitura das regras da comunidade", "Desenho de comandos e permissões", "Automação com logs e proteção", "Rotina de deploy e acompanhamento"]
-        : ["Community rules reading", "Command and permission design", "Automation with logs and protection", "Deploy routine and follow-up"],
-      signals: [
-        { label: getText(language, "ambiente", "environment"), value: "Discord" },
-        { label: getText(language, "controle", "control"), value: getText(language, "permissões", "permissions") },
-        { label: getText(language, "rotina", "routine"), value: "24/7" },
-      ],
-      handoff: language === "pt"
-        ? ["Mapa de comandos", "Regras de moderação", "Logs e painéis essenciais", "Rotina de hospedagem"]
-        : ["Command map", "Moderation rules", "Essential logs and dashboards", "Hosting routine"],
-      qualities: language === "pt"
-        ? ["Comandos previsíveis", "Permissões seguras", "Menos retrabalho manual", "Comunidade mais organizada"]
-        : ["Predictable commands", "Safe permissions", "Less manual rework", "More organized community"],
-    },
-    "uiux-design": {
-      principle: getText(language, "Design não é enfeite. É decisão antes do retrabalho.", "Design is not decoration. It is decision before rework."),
-      narrative: getText(
-        language,
-        "A entrega de UI/UX existe para reduzir dúvida antes do desenvolvimento, unindo hierarquia, intenção de uso, estados, protótipo e documentação para execução.",
-        "UI/UX delivery exists to reduce doubt before development, connecting hierarchy, usage intent, states, prototype and execution documentation."
-      ),
-      stages: language === "pt"
-        ? ["Diagnóstico de experiência", "Arquitetura de informação", "Protótipo e estados críticos", "Handoff com componentes e regras"]
-        : ["Experience diagnosis", "Information architecture", "Prototype and critical states", "Handoff with components and rules"],
-      signals: [
-        { label: getText(language, "decisão", "decision"), value: getText(language, "visual", "visual") },
-        { label: getText(language, "base", "base"), value: getText(language, "sistema", "system") },
-        { label: getText(language, "saída", "output"), value: getText(language, "handoff", "handoff") },
-      ],
-      handoff: language === "pt"
-        ? ["Fluxos priorizados", "Componentes e variações", "Estados vazios, erro e sucesso", "Critérios para desenvolvimento"]
-        : ["Prioritized flows", "Components and variations", "Empty, error and success states", "Development criteria"],
-      qualities: language === "pt"
-        ? ["Hierarquia clara", "Atrito reduzido", "Consistência visual", "Entrega interpretável"]
-        : ["Clear hierarchy", "Reduced friction", "Visual consistency", "Interpretable delivery"],
-    },
-    "cloud-solutions": {
-      principle: getText(language, "Nuvem boa é a que a equipe entende.", "Good cloud is cloud the team understands."),
-      narrative: getText(
-        language,
-        "Infraestrutura precisa ser previsível, com ambientes, deploy, backup, logs e alerta devem formar uma operação que não dependa de improviso.",
-        "Infrastructure needs to be predictable, with environments, deploy, backup, logs and alerts should form an operation that does not depend on improvisation."
-      ),
-      stages: language === "pt"
-        ? ["Mapeamento de ambiente atual", "Desenho de deploy e observabilidade", "Backup, segurança e recuperação", "Documentação operacional"]
-        : ["Current environment mapping", "Deploy and observability design", "Backup, security and recovery", "Operational documentation"],
-      signals: [
-        { label: getText(language, "deploy", "deploy"), value: getText(language, "contínuo", "continuous") },
-        { label: getText(language, "dados", "data"), value: getText(language, "protegidos", "protected") },
-        { label: getText(language, "alerta", "alert"), value: getText(language, "acionável", "actionable") },
-      ],
-      handoff: language === "pt"
-        ? ["Ambientes organizados", "Pipeline de publicação", "Rotina de backup", "Manual de operação"]
-        : ["Organized environments", "Release pipeline", "Backup routine", "Operations manual"],
-      qualities: language === "pt"
-        ? ["Deploy sem susto", "Logs encontráveis", "Recuperação planejada", "Escala compreensível"]
-        : ["Calm deploy", "Findable logs", "Planned recovery", "Understandable scale"],
-    },
-    consulting: {
-      principle: getText(language, "Consultoria boa deixa a próxima decisão mais óbvia.", "Good consulting makes the next decision more obvious."),
-      narrative: getText(
-        language,
-        "A consultoria entra quando existe ruído técnico, produto travado ou crescimento sem base. O objetivo é transformar incerteza em rota, prioridade e critério.",
-        "Consulting enters when there is technical noise, stuck product or growth without a base. The goal is to turn uncertainty into route, priority and criteria."
-      ),
-      stages: language === "pt"
-        ? ["Escuta do problema e das restrições", "Diagnóstico técnico e organizacional", "Roadmap por impacto e risco", "Acompanhamento das decisões críticas"]
-        : ["Problem and constraint listening", "Technical and organizational diagnosis", "Roadmap by impact and risk", "Critical decision follow-up"],
-      signals: [
-        { label: getText(language, "leitura", "reading"), value: getText(language, "profunda", "deep") },
-        { label: getText(language, "foco", "focus"), value: getText(language, "prioridade", "priority") },
-        { label: getText(language, "saída", "output"), value: getText(language, "rota", "route") },
-      ],
-      handoff: language === "pt"
-        ? ["Mapa de riscos", "Recomendações técnicas", "Prioridades de execução", "Critérios para decidir"]
-        : ["Risk map", "Technical recommendations", "Execution priorities", "Decision criteria"],
-      qualities: language === "pt"
-        ? ["Menos achismo", "Risco visível", "Decisão documentada", "Execução com direção"]
-        : ["Less guesswork", "Visible risk", "Documented decision", "Directed execution"],
-    },
-  };
-  const blueprint = serviceBlueprints[serviceId ?? ""] ?? serviceBlueprints.consulting;
 
   return (
     <Layout>
-      <SEO 
+      <SEO
         title={`${service.title} | Serviços - Talisson Souza`}
         description={service.description}
-        canonical={language === "en" ? `/en-us/services/${serviceId}` : `/servicos/${serviceId}`}
+        canonical={`/servicos/${serviceId}`}
         keywords={[service.title, 'serviço', 'desenvolvimento', ...service.technologies]}
       />
-      
+
       {/* Hero Section */}
-      <ParallaxSection 
-        className="pt-20 pb-8 lg:pt-24 lg:pb-10"
+      <ParallaxSection
+        className="pt-24 pb-16 lg:pt-28 lg:pb-20"
         speed={0.1}
         backgroundElement={
           <>
@@ -1701,39 +1696,36 @@ const ServiceDetail = () => {
         }
       >
         <div className="container mx-auto px-6 lg:px-8 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <Link 
+          <ScrollReveal>
+            <Link
               to="/servicos"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-7 transition-colors duration-300"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-10 transition-colors duration-300"
             >
               <ArrowLeft className="w-4 h-4" />
               {language === 'pt' ? 'Voltar aos Serviços' : 'Back to Services'}
             </Link>
-            
-            <div className="max-w-5xl">
-              <motion.span 
+
+            <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_390px] xl:grid-cols-[minmax(0,1fr)_430px]">
+              <div className="max-w-3xl">
+              <motion.span
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-5 font-medium"
+                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
               >
                 {getText(language, 'Serviço', 'Service')}
               </motion.span>
-              
-              <div className="mb-5 flex flex-col items-start gap-5 sm:flex-row sm:gap-6">
-                <motion.div 
+
+              <div className="flex items-start gap-6 mb-6">
+                <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="hidden h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl border border-border/30 bg-card/50 sm:flex"
+                  className="w-16 h-16 rounded-2xl border border-border/30 bg-card/50 flex items-center justify-center flex-shrink-0"
                 >
                   <IconComponent className="w-8 h-8 text-foreground/70" />
                 </motion.div>
                 <div>
-                  <h1 className="font-serif text-3xl lg:text-4xl xl:text-5xl text-foreground mb-3 leading-[1.08]">
+                  <h1 className="font-serif text-3xl lg:text-4xl xl:text-5xl text-foreground mb-4 leading-[1.1]">
                     {service.title}
                   </h1>
                   <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
@@ -1741,14 +1733,44 @@ const ServiceDetail = () => {
                   </p>
                 </div>
               </div>
+              </div>
+              <ServiceHeroArtifact cards={solutionCards} label={getText(language, 'Mapa de entrega', 'Delivery map')} theme={currentSolution.theme} />
             </div>
-          </motion.div>
+          </ScrollReveal>
         </div>
       </ParallaxSection>
 
+      {/* Quick Stats */}
+      <section className="pb-12 relative">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl">
+            {[
+              { icon: Clock, label: getText(language, 'Prazo', 'Timeline'), value: service.deliveryTime },
+              { icon: Target, label: getText(language, 'Escopo', 'Scope'), value: getText(language, 'Sob medida', 'Tailored') },
+              { icon: CheckCircle, label: getText(language, 'Recursos', 'Features'), value: `${service.features.length}+` },
+              { icon: Star, label: getText(language, 'Tecnologias', 'Technologies'), value: `${service.technologies.length}` }
+            ].map((stat, index) => (
+              <ScrollReveal key={index} delay={index * 0.1}>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className="rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm p-5"
+                  style={{
+                    boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                  }}
+                >
+                  <stat.icon className="w-5 h-5 text-foreground/50 mb-3" />
+                  <p className="text-xs text-muted-foreground/70 mb-1">{stat.label}</p>
+                  <p className="text-sm font-medium text-foreground">{stat.value}</p>
+                </motion.div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Solution Showcase */}
-      <section id="solucoes" className="relative scroll-mt-28 overflow-hidden py-10 lg:py-14">
+      <section className="py-14 lg:py-20 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
           <div className="absolute left-1/2 top-1/2 h-[420px] w-[720px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground/[0.018] blur-3xl" />
@@ -1756,7 +1778,7 @@ const ServiceDetail = () => {
 
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
-            <div className="mx-auto mb-8 max-w-3xl text-center">
+            <div className="mx-auto mb-10 max-w-3xl text-center">
               <motion.span
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1783,188 +1805,12 @@ const ServiceDetail = () => {
         </div>
       </section>
 
-      {/* Service Blueprint */}
-      <section id="leitura" className="relative scroll-mt-28 overflow-hidden py-14 lg:py-20">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 h-px w-[85%] -translate-x-1/2 bg-gradient-to-r from-transparent via-border/30 to-transparent" />
-          <div className="absolute right-[8vw] top-20 h-64 w-64 rounded-full bg-foreground/[0.025] blur-3xl" />
-        </div>
-
-        <div className="container relative mx-auto px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[0.68fr_1.32fr] lg:items-start">
-            <ScrollReveal>
-              <div className="lg:sticky lg:top-28">
-                <span className="mb-5 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                  {getText(language, "Leitura do projeto", "Project reading")}
-                </span>
-                <h2 className="max-w-xl font-serif text-3xl leading-tight text-foreground lg:text-5xl">
-                  {blueprint.principle}
-                </h2>
-                <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
-                  {blueprint.narrative}
-                </p>
-              </div>
-            </ScrollReveal>
-
-            <div className="space-y-8">
-              <div className="grid gap-3 sm:grid-cols-3">
-                {blueprint.signals.map((signal, index) => (
-                  <ScrollReveal key={signal.label} delay={index * 0.05}>
-                    <motion.div whileHover={{ y: -4 }} className="border-y border-border/20 py-5">
-                      <span className="block text-[10px] uppercase tracking-[0.24em] text-muted-foreground/55">{signal.label}</span>
-                      <span className="mt-3 block font-serif text-2xl leading-none text-foreground">{signal.value}</span>
-                    </motion.div>
-                  </ScrollReveal>
-                ))}
-              </div>
-
-              <div className="divide-y divide-border/20 border-y border-border/20">
-                {blueprint.stages.map((stage, index) => (
-                  <ScrollReveal key={stage} delay={index * 0.06}>
-                    <motion.div
-                      whileHover={{ x: 4 }}
-                      className="group grid gap-4 py-6 sm:grid-cols-[86px_1fr_auto] sm:items-center"
-                    >
-                      <span className="font-serif text-4xl leading-none text-foreground/15 transition-colors duration-300 group-hover:text-foreground/30">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <span className="text-lg font-medium leading-tight text-foreground">{stage}</span>
-                      <span className="hidden h-px w-16 bg-foreground/12 transition-all duration-300 group-hover:w-24 sm:block" />
-                    </motion.div>
-                  </ScrollReveal>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Delivery Matrix */}
-      <section id="handoff" className="relative scroll-mt-28 py-14 lg:py-20">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 h-px w-[85%] -translate-x-1/2 bg-gradient-to-r from-transparent via-border/30 to-transparent" />
-        </div>
-
-        <div className="container mx-auto px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[1.04fr_0.96fr] lg:items-start">
-            <ScrollReveal>
-              <div className="border-y border-border/20 py-8">
-                <div className="mb-8 flex items-center justify-between gap-5">
-                  <div>
-                    <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                      {getText(language, "Handoff", "Handoff")}
-                    </span>
-                    <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
-                      {getText(language, "O que sai organizado", "What leaves organized")}
-                    </h2>
-                  </div>
-                  <Briefcase className="h-7 w-7 text-foreground/25" />
-                </div>
-
-                <div className="grid gap-px overflow-hidden border border-border/20 bg-border/20 sm:grid-cols-2">
-                  {blueprint.handoff.map((item, index) => (
-                    <motion.div
-                      key={item}
-                      initial={{ opacity: 0, y: 14 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-70px" }}
-                      transition={{ duration: 0.55, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
-                      className="bg-background/95 p-5"
-                    >
-                      <span className="mb-6 block font-serif text-3xl text-foreground/14">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <div className="flex items-start gap-3">
-                        <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-foreground/45" />
-                        <span className="text-sm font-medium leading-relaxed text-foreground">{item}</span>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <div className="space-y-7">
-              <ScrollReveal>
-                <div className="border-y border-border/20 py-8">
-                  <span className="mb-5 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                    {getText(language, "Critério", "Criteria")}
-                  </span>
-                  <div className="space-y-4">
-                    {blueprint.qualities.map((quality, index) => (
-                      <motion.div
-                        key={quality}
-                        initial={{ opacity: 0, x: 14 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.45, delay: index * 0.05 }}
-                        className="flex items-center gap-4"
-                      >
-                        <span className="font-serif text-2xl leading-none text-foreground/16">{String(index + 1).padStart(2, "0")}</span>
-                        <span className="h-px flex-1 bg-border/25" />
-                        <span className="min-w-[42%] text-sm font-medium text-foreground">{quality}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </ScrollReveal>
-
-              <ScrollReveal>
-                <div className="border-y border-border/20 py-8">
-                  <span className="mb-5 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                    {language === "pt" ? "Stack possível" : "Possible stack"}
-                  </span>
-                  <div className="flex flex-wrap gap-2">
-                    {service.technologies.map((tech: string, index: number) => (
-                      <motion.span
-                        key={tech}
-                        initial={{ opacity: 0, y: 8 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: index * 0.035 }}
-                        className="rounded-full border border-border/25 bg-background/35 px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted-foreground/65"
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </div>
-                </div>
-              </ScrollReveal>
-
-              <ScrollReveal>
-                <div className="flex flex-col gap-4 border-y border-border/20 py-8 sm:flex-row sm:items-center sm:justify-between">
-                  <div>
-                    <h3 className="font-serif text-2xl leading-tight text-foreground">
-                      {getText(language, "A conversa começa por contexto.", "The conversation starts with context.")}
-                    </h3>
-                    <p className="mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
-                      {getText(
-                        language,
-                        "Objetivo, risco, operação atual e critério de sucesso vêm antes de qualquer promessa.",
-                        "Goal, risk, current operation and success criteria come before any promise."
-                      )}
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => window.open("https://wa.me/5581993964261", "_blank", "noopener,noreferrer")}
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-border/35 bg-background/30 px-6 py-3 text-sm font-medium text-foreground transition-colors duration-300 hover:bg-foreground/10"
-                  >
-                    <MessageSquare className="h-4 w-4" />
-                    {language === "pt" ? "Solicitar diagnóstico" : "Request diagnosis"}
-                  </button>
-                </div>
-              </ScrollReveal>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Target Audience Section */}
-      <section className="hidden" aria-hidden="true">
+      <section className="py-12 relative">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
         </div>
-        
+
         <div className="container mx-auto px-6 lg:px-8">
           <ScrollReveal>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl">
@@ -1980,8 +1826,8 @@ const ServiceDetail = () => {
                 </div>
                 <div className="space-y-3">
                   {service.idealFor.map((item: string, index: number) => (
-                    <motion.div 
-                      key={index} 
+                    <motion.div
+                      key={index}
                       initial={{ opacity: 0, x: -10 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -2007,8 +1853,8 @@ const ServiceDetail = () => {
                 </div>
                 <div className="space-y-3">
                   {service.notIdealFor.map((item: string, index: number) => (
-                    <motion.div 
-                      key={index} 
+                    <motion.div
+                      key={index}
                       initial={{ opacity: 0, x: -10 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -2027,11 +1873,11 @@ const ServiceDetail = () => {
       </section>
 
       {/* Main Content */}
-      <section className="hidden" aria-hidden="true">
+      <section className="py-16 lg:py-20 relative">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
         </div>
-        
+
         <div className="container mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
             {/* Main Column */}
@@ -2049,8 +1895,8 @@ const ServiceDetail = () => {
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {service.included.map((item: string, index: number) => (
-                      <motion.div 
-                        key={index} 
+                      <motion.div
+                        key={index}
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -2080,8 +1926,8 @@ const ServiceDetail = () => {
                   </div>
                   <div className="space-y-4">
                     {service.expectedResults.map((result: string, index: number) => (
-                      <motion.div 
-                        key={index} 
+                      <motion.div
+                        key={index}
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -2106,7 +1952,7 @@ const ServiceDetail = () => {
                   </h2>
                   <div className="flex flex-wrap gap-3">
                     {service.technologies.map((tech: string, index: number) => (
-                      <motion.span 
+                      <motion.span
                         key={index}
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
@@ -2132,16 +1978,19 @@ const ServiceDetail = () => {
                     <h3 className="font-serif text-lg text-foreground mb-6">
                       {language === 'pt' ? 'Pronto para começar?' : 'Ready to start?'}
                     </h3>
-                    
-                    <p className="mb-6 border-b border-border/20 pb-6 text-sm leading-relaxed text-muted-foreground">
-                      {getText(
-                        language,
-                        'A conversa começa por contexto, objetivo, risco, operação atual e critério de sucesso.',
-                        'The conversation starts with context, goal, risk, current operation and success criteria.'
-                      )}
-                    </p>
 
-                    <motion.button 
+                    <div className="space-y-4 mb-6 pb-6 border-b border-border/20">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">{language === 'pt' ? 'Prazo' : 'Timeline'}</span>
+                        <span className="text-sm text-foreground font-medium">{service.deliveryTime}</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">{language === 'pt' ? 'Formato' : 'Format'}</span>
+                        <span className="text-sm text-foreground font-medium">{getText(language, 'Sob medida', 'Tailored')}</span>
+                      </div>
+                    </div>
+
+                    <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => window.open('https://wa.me/5581993964261', '_blank', 'noopener,noreferrer')}
@@ -2154,7 +2003,7 @@ const ServiceDetail = () => {
                       {language === 'pt' ? 'Solicitar diagnóstico' : 'Request diagnosis'}
                     </motion.button>
 
-                    <Link 
+                    <Link
                       to="/contato"
                       className="w-full inline-flex items-center justify-center gap-2 text-sm font-medium text-foreground border border-border/30 rounded-xl py-3.5 hover:bg-card/50 hover:border-foreground/20 transition-all duration-300"
                     >
@@ -2175,8 +2024,8 @@ const ServiceDetail = () => {
                     </div>
                     <div className="space-y-3">
                       {benefits.map((benefit, index) => (
-                        <motion.div 
-                          key={index} 
+                        <motion.div
+                          key={index}
                           initial={{ opacity: 0, x: -10 }}
                           whileInView={{ opacity: 1, x: 0 }}
                           viewport={{ once: true }}
@@ -2197,12 +2046,12 @@ const ServiceDetail = () => {
       </section>
 
       {/* CTA Section */}
-      <section id="conversa" className="relative scroll-mt-28 overflow-hidden py-20 lg:py-24">
+      <section className="py-20 lg:py-24 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl" />
         </div>
-        
+
         <div className="container mx-auto px-6 lg:px-8 relative">
           <ScrollReveal>
             <motion.div
@@ -2210,7 +2059,7 @@ const ServiceDetail = () => {
               transition={{ duration: 0.4 }}
               className="max-w-2xl mx-auto"
             >
-              <div 
+              <div
                 className="relative p-10 lg:p-12 rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm text-center"
                 style={{
                   boxShadow: '0 8px 40px hsl(var(--foreground) / 0.03)'
@@ -2218,20 +2067,20 @@ const ServiceDetail = () => {
               >
                 <div className="absolute top-0 left-0 w-20 h-20 border-l border-t border-foreground/[0.06] rounded-tl-3xl" />
                 <div className="absolute bottom-0 right-0 w-20 h-20 border-r border-b border-foreground/[0.06] rounded-br-3xl" />
-                
+
                 <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-4 leading-tight">
                   {getText(language, 'Tem alguma dúvida?', 'Have any questions?')}
                 </h2>
                 <p className="text-muted-foreground mb-8 leading-relaxed max-w-xl mx-auto">
-                  {getText(language, 
+                  {getText(language,
                     'Solicite uma leitura técnica do seu cenário e descubra o melhor caminho para o projeto.',
                     'Request a technical reading of your scenario and discover the best path for the project.'
                   )}
                 </p>
-                
-                <a 
-                  href="https://wa.me/5581993964261" 
-                  target="_blank" 
+
+                <a
+                  href="https://wa.me/5581993964261"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-3 px-8 py-4 text-sm font-medium text-primary-foreground bg-foreground rounded-full transition-all duration-300 hover:opacity-90"
                   style={{

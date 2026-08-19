@@ -1,4 +1,4 @@
-import type { DragEvent, MouseEvent, ReactNode } from "react";
+import { ReactNode } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import DiscordPopup from "@/components/ui/DiscordPopup";
@@ -7,31 +7,18 @@ interface LayoutProps {
   children: ReactNode;
   withPadding?: boolean;
   showDiscordPopup?: boolean;
-  showChrome?: boolean;
 }
 
-const Layout = ({ children, withPadding = true, showDiscordPopup = false, showChrome = true }: LayoutProps) => {
-  const preventImageSave = (event: MouseEvent<HTMLDivElement> | DragEvent<HTMLDivElement>) => {
-    const target = event.target;
-
-    if (target instanceof HTMLElement && target.closest("img")) {
-      event.preventDefault();
-    }
-  };
-
+const Layout = ({ children, withPadding = true, showDiscordPopup = false }: LayoutProps) => {
   return (
-    <div
-      className="flex flex-col min-h-screen bg-background"
-      onContextMenu={preventImageSave}
-      onDragStart={preventImageSave}
-    >
-      {showChrome && <Navbar />}
+    <div className="flex flex-col min-h-screen bg-background">
+      <Navbar />
       
       <main className={`flex-grow ${withPadding ? 'pt-20' : ''}`}>
         {children}
       </main>
       
-      {showChrome && <Footer />}
+      <Footer />
       
       {showDiscordPopup && <DiscordPopup />}
     </div>

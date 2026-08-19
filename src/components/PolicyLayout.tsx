@@ -32,12 +32,7 @@ const PolicyLayout = ({ children, activeSectionId }: PolicyLayoutProps) => {
         {mobileOpen && (
           <>
             <div className="fixed inset-0 z-40 bg-background/60 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
-            <div
-              data-lenis-prevent=""
-              data-lenis-prevent-wheel=""
-              data-lenis-prevent-vertical=""
-              className="policy-reading-scrollbar absolute bottom-full right-0 z-50 mb-2 max-h-[70vh] w-72 overflow-y-auto rounded-2xl border border-border/30 bg-card/95 shadow-xl backdrop-blur-xl"
-            >
+            <div className="absolute bottom-full right-0 z-50 mb-2 max-h-[70vh] w-72 overflow-y-auto rounded-2xl border border-border/30 bg-card/95 shadow-xl backdrop-blur-xl">
               <div className="border-b border-border/30 px-4 py-3">
                 <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground">
                   {getText(language, 'Nesta página', 'On this page')}
@@ -68,12 +63,7 @@ const PolicyLayout = ({ children, activeSectionId }: PolicyLayoutProps) => {
         )}
       </div>
 
-      <nav
-        data-lenis-prevent=""
-        data-lenis-prevent-wheel=""
-        data-lenis-prevent-vertical=""
-        className="policy-reading-scrollbar hidden shrink-0 lg:sticky lg:top-28 lg:block lg:max-h-[calc(100vh-8rem)] lg:w-72 lg:self-start lg:overflow-y-auto"
-      >
+      <nav className="hidden shrink-0 lg:sticky lg:top-28 lg:block lg:max-h-[calc(100vh-8rem)] lg:w-72 lg:self-start lg:overflow-y-auto">
         <div className="relative overflow-hidden rounded-2xl border border-border/25 bg-card/35 p-4 backdrop-blur-sm">
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.018]"

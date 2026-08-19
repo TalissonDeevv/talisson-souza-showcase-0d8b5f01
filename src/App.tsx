@@ -7,15 +7,13 @@ import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import ScrollToTop from "@/components/ScrollToTop";
 import SmoothScroll from "@/components/SmoothScroll";
-import TrailReadingPrompt from "@/components/ui/TrailReadingPrompt";
 import { lazy, Suspense } from "react";
+import { StudioRouter } from "./studio/routes/StudioRouter";
 
 const queryClient = new QueryClient();
 
 const Index = lazy(() => import("./pages/Index"));
-const Bio = lazy(() => import("./pages/Bio"));
 const About = lazy(() => import("./pages/About"));
-const Affiliate = lazy(() => import("./pages/Affiliate"));
 const Projects = lazy(() => import("./pages/Projects"));
 const Services = lazy(() => import("./pages/Services"));
 const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
@@ -28,7 +26,6 @@ const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 const Book = lazy(() => import("./pages/Book"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Articles = lazy(() => import("./pages/Articles"));
-const ArticleSuggestions = lazy(() => import("./pages/ArticleSuggestions"));
 const TagPage = lazy(() => import("./pages/TagPage"));
 const TrailPage = lazy(() => import("./pages/TrailPage"));
 const Principles = lazy(() => import("./pages/Principles"));
@@ -56,9 +53,7 @@ const AppRoutes = () => (
           <Routes>
             {/* ===== PT-BR Routes (root) ===== */}
             <Route path="/" element={<Index />} />
-            <Route path="/bio" element={<Bio />} />
             <Route path="/sobre" element={<About />} />
-            <Route path="/seja-afiliado" element={<Affiliate />} />
             <Route path="/projetos" element={<Projects />} />
             <Route path="/projetos/:id" element={<ProjectDetail />} />
             <Route path="/servicos" element={<Services />} />
@@ -74,7 +69,6 @@ const AppRoutes = () => (
             <Route path="/checklists/:checklistId" element={<ChecklistDetail />} />
 
             <Route path="/artigos" element={<Articles />} />
-            <Route path="/sugestoes-artigos" element={<ArticleSuggestions />} />
             <Route path="/artigos/tag/:tag" element={<TagPage />} />
             <Route path="/trilhas/:trailId" element={<TrailPage />} />
             <Route path="/artigos/:slug" element={<MarketTrailArticle />} />
@@ -83,11 +77,10 @@ const AppRoutes = () => (
             <Route path="/feedbacks" element={<Feedbacks />} />
             <Route path="/politicas" element={<Policies />} />
             <Route path="/politicas/:sectionId" element={<PolicyDetail />} />
-            <Route path="/404" element={<NotFound />} />
+            <Route path="/studio/*" element={<StudioRouter />} />
+
             <Route path="/en-us" element={<Index />} />
-            <Route path="/en-us/bio" element={<Bio />} />
             <Route path="/en-us/about" element={<About />} />
-            <Route path="/en-us/affiliate-program" element={<Affiliate />} />
             <Route path="/en-us/projects" element={<Projects />} />
             <Route path="/en-us/projects/:id" element={<ProjectDetail />} />
             <Route path="/en-us/services" element={<Services />} />
@@ -103,7 +96,6 @@ const AppRoutes = () => (
             <Route path="/en-us/checklists/:checklistId" element={<ChecklistDetail />} />
 
             <Route path="/en-us/articles" element={<Articles />} />
-            <Route path="/en-us/article-suggestions" element={<ArticleSuggestions />} />
             <Route path="/en-us/articles/tag/:tag" element={<TagPage />} />
             <Route path="/en-us/trails/:trailId" element={<TrailPage />} />
             <Route path="/en-us/articles/:slug" element={<MarketTrailArticle />} />
@@ -112,7 +104,6 @@ const AppRoutes = () => (
             <Route path="/en-us/feedbacks" element={<Feedbacks />} />
             <Route path="/en-us/policies" element={<Policies />} />
             <Route path="/en-us/policies/:sectionId" element={<PolicyDetail />} />
-            <Route path="/en-us/404" element={<NotFound />} />
 
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
@@ -125,7 +116,6 @@ const AppRoutes = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
-        <TrailReadingPrompt />
       </SmoothScroll>
     </TooltipProvider>
   </ThemeProvider>

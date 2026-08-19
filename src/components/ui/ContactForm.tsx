@@ -78,7 +78,7 @@ const ContactForm = () => {
     : ['Urgent (less than 2 weeks)', '1 to 2 months', '2 to 4 months', '4 to 6 months', 'No defined deadline'];
 
   const contactMethods = language === 'pt'
-    ? ['Email', 'WhatsApp', 'Sem preferência']
+    ? ['Email', 'WhatsApp', 'Ligação', 'Sem preferência']
     : ['Email', 'WhatsApp', 'No preference'];
 
   const howFoundOptions = language === 'pt'

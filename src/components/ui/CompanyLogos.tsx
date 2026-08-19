@@ -1,56 +1,117 @@
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
+import { SiHostinger, SiShopee } from "react-icons/si";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import { cn } from "@/lib/utils";
 
 import cheetahLogo from "@/assets/logos/cheetah-solutions.png";
 import squareCloudLogo from "@/assets/logos/square-cloud.png";
-import quackPayLogo from "@/assets/logos/quack-pay.png";
 import rocketseatLogo from "@/assets/logos/rocketseat.png";
 import splendoriLogo from "@/assets/logos/splendori.png";
+import agonLogo from "@/assets/discord/agon-logo.png";
 import collaborationsSignature from "@/assets/collaborations-signature.png";
 
 const premiumEase = [0.16, 1, 0.3, 1] as const;
 
 type Company = {
   name: string;
-  logo: string;
   url: string;
+  logo?: string;
+  customLogo?: ReactNode;
   imageClassName?: string;
+  slotClassName?: string;
+  toneClassName?: string;
+  invert?: boolean;
   showLabel?: boolean;
 };
+
+const logoSlotClassName = "h-14 w-[178px] sm:h-16 sm:w-[210px] xl:h-[72px] xl:w-[230px]";
+const logoImageClassName = "max-h-8 max-w-[126px] sm:max-h-10 sm:max-w-[170px] xl:max-h-11 xl:max-w-[190px]";
 
 const companies: Company[] = [
   {
     name: "Cheetah Solutions",
     logo: cheetahLogo,
     url: "https://cheetahsolutions.com.br",
-    imageClassName: "max-h-8 max-w-[132px] sm:max-h-10 sm:max-w-[220px] xl:max-h-12 xl:max-w-[260px]",
   },
   {
     name: "Square Cloud",
     logo: squareCloudLogo,
     url: "https://squarecloud.app",
-    imageClassName: "max-h-8 max-w-[126px] sm:max-h-10 sm:max-w-[170px] xl:max-h-11 xl:max-w-[190px]",
   },
   {
-    name: "Quack Pay",
-    logo: quackPayLogo,
-    url: "https://quackpay.com.br",
-    imageClassName: "max-h-8 max-w-[120px] sm:max-h-9 sm:max-w-[150px] xl:max-h-10 xl:max-w-[170px]",
+    name: "Accend",
+    url: "https://www.linkedin.com/company/withaccend",
+    customLogo: (
+      <span className="flex items-center gap-3 text-foreground/90">
+        <span className="relative h-5 w-9 overflow-hidden" aria-hidden="true">
+          <span className="absolute left-0 top-1/2 h-2.5 w-7 -translate-y-1/2 skew-x-[-28deg] rounded-[2px] bg-current" />
+          <span className="absolute right-0 top-1/2 h-2.5 w-5 -translate-y-1/2 skew-x-[-28deg] rounded-[2px] bg-current opacity-55" />
+        </span>
+        <span className="font-sans text-[1.4rem] font-semibold tracking-[-0.04em] sm:text-[1.65rem]">
+          Accend
+        </span>
+      </span>
+    ),
+    toneClassName: "opacity-95",
+  },
+  {
+    name: "Hostinger",
+    url: "https://www.hostinger.com/br?REFERRALCODE=talissonsouza",
+    customLogo: (
+      <span className="flex items-center gap-2.5 text-foreground">
+        <SiHostinger className="h-7 w-7 sm:h-8 sm:w-8" aria-hidden="true" />
+        <span className="font-sans text-[1.15rem] font-semibold uppercase tracking-[0.12em] sm:text-[1.3rem]">
+          Hostinger
+        </span>
+      </span>
+    ),
+    toneClassName: "opacity-100",
+  },
+  {
+    name: "Shopee",
+    url: "https://collshp.com/talisson.dev?view=storefront",
+    customLogo: (
+      <span className="flex items-center gap-2.5 text-foreground/90">
+        <SiShopee className="h-7 w-7 sm:h-8 sm:w-8" aria-hidden="true" />
+        <span className="font-sans text-[1.25rem] font-semibold tracking-[-0.01em] sm:text-[1.45rem]">
+          Shopee
+        </span>
+      </span>
+    ),
   },
   {
     name: "Rocketseat",
     logo: rocketseatLogo,
     url: "https://www.rocketseat.com.br/oferta/influencer/v2/talinho",
-    imageClassName: "max-h-6 max-w-[132px] sm:max-h-7 sm:max-w-[190px] xl:max-h-8 xl:max-w-[220px]",
+  },
+  {
+    name: "AGON by AOC",
+    logo: agonLogo,
+    url: "https://agonby.aoc.com/br/",
+    imageClassName: "max-h-8 max-w-[118px] sm:max-h-10 sm:max-w-[150px] xl:max-h-11 xl:max-w-[168px]",
+  },
+  {
+    name: "Mynexis",
+    url: "https://www.linkedin.com/company/mynexis",
+    customLogo: (
+      <span className="flex items-center gap-3 text-foreground/85">
+        <span className="grid h-8 w-8 place-items-center" aria-hidden="true">
+          <span className="block h-5 w-5 rotate-45 border-l-2 border-t-2 border-current opacity-85" />
+        </span>
+        <span className="font-sans text-[1.25rem] font-semibold uppercase tracking-[0.12em] sm:text-[1.42rem]">
+          Mynexis
+        </span>
+      </span>
+    ),
+    toneClassName: "opacity-95",
   },
   {
     name: "Splendori",
     logo: splendoriLogo,
     url: "https://www.linkedin.com/company/splendoribr/",
-    imageClassName: "h-12 w-12 rounded-sm object-cover lg:h-14 lg:w-14",
+    imageClassName: "h-10 w-10 rounded-sm object-cover sm:h-11 sm:w-11 xl:h-12 xl:w-12",
     showLabel: true,
   },
 ];
@@ -161,17 +222,32 @@ const CompanyLogos = () => {
 
   const renderLogo = (company: Company, index: number, isDuplicate = false) => {
     const content = (
-      <div className="relative flex flex-col items-center gap-2.5">
-        <img
-          src={company.logo}
-          alt={company.name}
-          loading="lazy"
-          decoding="async"
-          className={cn(
-            "h-auto w-auto object-contain grayscale opacity-60 transition-all duration-500 group-hover:grayscale-0 group-hover:opacity-100",
-            company.imageClassName
-          )}
-        />
+      <div className={cn("relative flex flex-col items-center justify-center gap-2.5", logoSlotClassName, company.slotClassName)}>
+        {company.customLogo ? (
+          <div
+            className={cn(
+              "flex h-full w-full items-center justify-center grayscale brightness-125 contrast-110 transition-all duration-500 group-hover:opacity-100",
+              company.toneClassName ?? "opacity-70"
+            )}
+          >
+            {company.customLogo}
+          </div>
+        ) : company.logo ? (
+          <img
+            src={company.logo}
+            alt={company.name}
+            loading="lazy"
+            decoding="async"
+            className={cn(
+              "h-auto w-auto select-none object-contain grayscale transition-all duration-500 group-hover:opacity-100",
+              company.invert
+                ? "invert brightness-[1.65] contrast-125 opacity-75"
+                : "brightness-125 contrast-110 opacity-70",
+              company.toneClassName,
+              company.imageClassName ?? logoImageClassName
+            )}
+          />
+        ) : null}
 
         {company.showLabel && (
           <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground/65 transition-colors duration-500 group-hover:text-foreground/80">
@@ -186,7 +262,7 @@ const CompanyLogos = () => {
         <div
           key={`${company.name}-duplicate-${index}`}
           aria-hidden="true"
-          className="group relative flex min-w-[124px] items-center justify-center py-3 sm:min-w-[150px] lg:min-w-[172px]"
+          className="group relative flex min-w-[178px] items-center justify-center py-3 sm:min-w-[210px] lg:min-w-[230px]"
         >
           {content}
         </div>
@@ -202,7 +278,7 @@ const CompanyLogos = () => {
         aria-label={getText(language, `Abrir ${company.name}`, `Open ${company.name}`)}
         whileHover={{ y: -3 }}
         transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
-        className="group relative flex min-w-[124px] items-center justify-center py-3 sm:min-w-[150px] lg:min-w-[172px]"
+        className="group relative flex min-w-[178px] items-center justify-center py-3 sm:min-w-[210px] lg:min-w-[230px]"
       >
         {content}
       </motion.a>
@@ -270,8 +346,8 @@ const CompanyLogos = () => {
           <div
             className="relative overflow-hidden py-4 sm:py-5"
             style={{
-              WebkitMaskImage: "linear-gradient(90deg, transparent 0%, black 9%, black 91%, transparent 100%)",
-              maskImage: "linear-gradient(90deg, transparent 0%, black 9%, black 91%, transparent 100%)",
+              WebkitMaskImage: "linear-gradient(90deg, transparent 0%, black 1.5%, black 98.5%, transparent 100%)",
+              maskImage: "linear-gradient(90deg, transparent 0%, black 1.5%, black 98.5%, transparent 100%)",
             }}
           >
             <motion.div
@@ -279,10 +355,10 @@ const CompanyLogos = () => {
               animate={marqueeWidth > 0 ? { x: [0, -marqueeWidth] } : { x: 0 }}
               transition={{ duration: 28, ease: "linear", repeat: Infinity, repeatType: "loop" }}
             >
-              <div ref={logoGroupRef} className="flex shrink-0 items-center gap-8 pr-8 sm:gap-10 sm:pr-10 lg:gap-12 lg:pr-12">
+              <div ref={logoGroupRef} className="flex shrink-0 items-center gap-8 pl-6 pr-8 sm:gap-10 sm:pl-8 sm:pr-10 lg:gap-12 lg:pr-12">
                 {companies.map((company, index) => renderLogo(company, index))}
               </div>
-              <div className="flex shrink-0 items-center gap-8 pr-8 sm:gap-10 sm:pr-10 lg:gap-12 lg:pr-12">
+              <div className="flex shrink-0 items-center gap-8 pl-6 pr-8 sm:gap-10 sm:pl-8 sm:pr-10 lg:gap-12 lg:pr-12">
                 {companies.map((company, index) => renderLogo(company, index, true))}
               </div>
             </motion.div>

@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, ChevronDown, FileText, FolderOpen, Route } from "lucide-react";
+import { ArrowRight, ChevronDown, ExternalLink, FileText, FolderOpen, Route } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
@@ -11,8 +11,7 @@ import { articles, getAllTags, trails } from "@/data/articles";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 
-const SUGGEST_PATH = { pt: "/sugestoes-artigos", en: "/en-us/article-suggestions" };
-const displayArticleTitle = (title: string) => title.replace(/\s*:\s*/g, ". ");
+const SUGGEST_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdUM_KRTJfGm8zw7Z4VWBA0845PBQZomFypiJhNOEaWd5ORGw/viewform?usp=dialog";
 
 const PRIMARY_CATEGORIES: Record<string, { pt: string; en: string }> = {
   Carreira: { pt: "Carreira", en: "Career" },
@@ -54,7 +53,7 @@ const Articles = () => {
     ? articles.filter((article) => article.tags[language].some((tag) => tag === selectedCategory))
     : articles;
 
-  const featuredTrail = trails.find((trail) => trail.id === "market-programming") ?? trails[0];
+  const featured = articles.find((article) => article.id === "eca-digital-anpd") ?? articles[0];
 
   return (
     <Layout withPadding={false}>
@@ -119,38 +118,30 @@ const Articles = () => {
       <section className="pb-12">
         <div className="container mx-auto px-6 lg:px-8">
           <ScrollReveal>
-            <Link to={featuredTrail.path[language]} className="group block">
+            <Link to={featured.path[language]} className="group block">
               <IdentityPanel className="p-6 lg:p-8">
                 <div className="grid gap-8 lg:grid-cols-[1fr_0.38fr]">
                   <div>
                     <div className="mb-6 flex flex-wrap items-center gap-3">
                       <span className="rounded-full border border-border/25 bg-background/35 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-muted-foreground/60">
-                        {getText(language, "trilha em destaque", "featured trail")}
+                        {getText(language, "destaque", "featured")}
                       </span>
-                      <span className="text-xs text-muted-foreground/50">
-                        {featuredTrail.articleIds.length} {getText(language, "artigos", "articles")}
-                      </span>
+                      <span className="text-xs text-muted-foreground/50">{featured.date[language]}</span>
                       <span className="h-1 w-1 rounded-full bg-muted-foreground/35" />
                       <span className="text-xs text-muted-foreground/50">
-                        {getText(language, "programação e carreira", "programming and career")}
+                        {featured.readTime} {getText(language, "de leitura", "read")}
                       </span>
                     </div>
                     <h2 className="max-w-4xl font-serif text-2xl leading-tight text-foreground lg:text-4xl">
-                      {featuredTrail.title[language]}
+                      {featured.title[language]}
                     </h2>
                     <p className="mt-5 max-w-3xl text-sm leading-relaxed text-muted-foreground lg:text-base">
-                      {featuredTrail.description[language]}
+                      {featured.excerpt[language]}
                     </p>
                   </div>
                   <div className="flex flex-col justify-between gap-8 border-t border-border/20 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
                     <div className="flex flex-wrap gap-2">
-                      {[
-                        getText(language, "Fundamentos", "Fundamentals"),
-                        getText(language, "Engenharia", "Engineering"),
-                        getText(language, "Carreira", "Career"),
-                        getText(language, "Mercado", "Market"),
-                        getText(language, "Negócios", "Business"),
-                      ].map((tag) => (
+                      {featured.tags[language].slice(0, 5).map((tag) => (
                         <span key={tag} className="rounded-full border border-border/20 px-3 py-1 text-[10px] uppercase tracking-[0.16em] text-muted-foreground/55">
                           {tag}
                         </span>
@@ -158,7 +149,7 @@ const Articles = () => {
                     </div>
                     <span className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
                       <span className="relative">
-                        {getText(language, "Explorar trilha", "Explore trail")}
+                        {getText(language, "Ler artigo", "Read article")}
                         <span className="absolute bottom-0 left-0 h-px w-full bg-foreground/20" />
                         <span className="absolute bottom-0 left-0 h-px w-0 bg-foreground transition-all duration-500 group-hover:w-full" />
                       </span>
@@ -333,7 +324,7 @@ const Articles = () => {
                             <span className="h-1 w-1 rounded-full bg-muted-foreground/30" />
                             <span>{article.readTime} {getText(language, "de leitura", "read")}</span>
                           </div>
-                          <h2 className="font-serif text-lg leading-tight text-foreground lg:text-xl">{displayArticleTitle(article.title[language])}</h2>
+                          <h2 className="font-serif text-lg leading-tight text-foreground lg:text-xl">{article.title[language]}</h2>
                           <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground/70">
                             {article.excerpt[language]}
                           </p>
@@ -377,13 +368,15 @@ const Articles = () => {
                   "Articles come from real community problems. If a topic deserves clarity, it can become an agenda."
                 )}
               </p>
-              <Link
-                to={SUGGEST_PATH[language]}
+              <a
+                href={SUGGEST_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-8 inline-flex items-center gap-2 rounded-full border border-border/30 bg-background/30 px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-foreground/10"
               >
                 {getText(language, "Sugerir um artigo", "Suggest an article")}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+                <ExternalLink className="h-4 w-4" />
+              </a>
             </IdentityPanel>
           </ScrollReveal>
         </div>

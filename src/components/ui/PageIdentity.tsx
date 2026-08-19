@@ -36,8 +36,8 @@ export const PageBackdrop = ({ signature, signatureClassName, className }: PageB
         aria-hidden="true"
         loading="eager"
         decoding="async"
-        initial={{ opacity: 0, y: 22, scale: 0.98 }}
-        animate={{ opacity: 0.16, y: 0, scale: 1 }}
+        initial={{ opacity: 0, y: 22, scale: 0.98, filter: "blur(8px)" }}
+        animate={{ opacity: 0.16, y: 0, scale: 1, filter: "blur(0px)" }}
         transition={{ duration: 1.05, delay: 0.08, ease }}
         className={cn(
           "absolute left-1/2 top-[22%] w-[min(92vw,760px)] -translate-x-1/2 select-none object-contain mix-blend-screen",
@@ -63,7 +63,6 @@ type PageHeroProps = {
   titleClassName?: string;
   uppercase?: boolean;
   compact?: boolean;
-  visualPlacement?: "none" | "below" | "side";
 };
 
 export const PageHero = ({
@@ -81,7 +80,6 @@ export const PageHero = ({
   titleClassName,
   uppercase = true,
   compact = false,
-  visualPlacement = "none",
 }: PageHeroProps) => (
   <section
     className={cn(
@@ -90,18 +88,12 @@ export const PageHero = ({
       className
     )}
   >
-    <PageBackdrop />
+    <PageBackdrop signature={signature} signatureClassName={signature ? "top-[18%] opacity-20" : undefined} />
     <div className="container relative z-10 mx-auto px-6 lg:px-8">
-      <div
-        className={cn(
-          visualPlacement === "side" && children
-            ? "grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(300px,0.72fr)]"
-            : "block"
-        )}
-      >
+      <div className={cn("grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(300px,0.72fr)]", !children && "lg:block")}>
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.85, ease }}
           className={cn("max-w-4xl", contentClassName)}
         >
@@ -111,8 +103,8 @@ export const PageHero = ({
               alt={signatureAlt}
               loading="eager"
               decoding="async"
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 0.78, y: 0 }}
+              initial={{ opacity: 0, y: 14, filter: "blur(6px)" }}
+              animate={{ opacity: 0.78, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.8, delay: 0.05, ease }}
               className="mb-5 h-14 w-auto max-w-[min(68vw,330px)] select-none object-contain object-left mix-blend-screen"
             />
@@ -131,7 +123,7 @@ export const PageHero = ({
 
           <h1
             className={cn(
-              "max-w-5xl break-words font-serif font-semibold leading-[0.92] tracking-normal text-foreground [overflow-wrap:anywhere]",
+              "max-w-5xl font-serif font-semibold leading-[0.92] tracking-normal text-foreground",
               compact ? "text-[clamp(2.7rem,7.4vw,5.2rem)]" : "text-[clamp(3rem,9vw,6.4rem)]",
               uppercase && "uppercase",
               titleClassName
@@ -155,10 +147,10 @@ export const PageHero = ({
           {actions && <div className="mt-9">{actions}</div>}
         </motion.div>
 
-        {children && visualPlacement === "side" && (
+        {children && (
           <motion.div
-            initial={{ opacity: 0, y: 32, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
+            initial={{ opacity: 0, y: 32, scale: 0.98, filter: "blur(10px)" }}
+            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
             transition={{ duration: 0.9, delay: 0.18, ease }}
             className={cn("relative", visualClassName)}
           >
@@ -166,17 +158,6 @@ export const PageHero = ({
           </motion.div>
         )}
       </div>
-
-      {children && visualPlacement === "below" && (
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, delay: 0.2, ease }}
-          className={cn("mt-10", visualClassName)}
-        >
-          {children}
-        </motion.div>
-      )}
     </div>
   </section>
 );
@@ -185,15 +166,14 @@ type IdentityPanelProps = {
   children: ReactNode;
   className?: string;
   hover?: boolean;
-  delay?: number;
 };
 
-export const IdentityPanel = ({ children, className, hover = true, delay = 0 }: IdentityPanelProps) => (
+export const IdentityPanel = ({ children, className, hover = true }: IdentityPanelProps) => (
   <motion.div
     initial={{ opacity: 0, y: 22 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-70px" }}
-    transition={{ duration: 0.65, delay, ease }}
+    transition={{ duration: 0.65, ease }}
     whileHover={hover ? { y: -4 } : undefined}
     className={cn(
       "group relative overflow-hidden rounded-2xl border border-border/25 bg-card/35 backdrop-blur-sm",

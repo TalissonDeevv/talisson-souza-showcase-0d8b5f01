@@ -3,9 +3,7 @@
 
 export const ptToEnRoutes: Record<string, string> = {
   '/': '/en-us',
-  '/bio': '/en-us/bio',
   '/sobre': '/en-us/about',
-  '/seja-afiliado': '/en-us/affiliate-program',
   '/projetos': '/en-us/projects',
   '/servicos': '/en-us/services',
   '/carreira': '/en-us/career',
@@ -21,7 +19,6 @@ export const ptToEnRoutes: Record<string, string> = {
   '/checklists/abrir-servidor-publico': '/en-us/checklists/opening-public-server',
   '/checklists/infraestrutura-minima': '/en-us/checklists/minimum-infrastructure',
   '/artigos': '/en-us/articles',
-  '/sugestoes-artigos': '/en-us/article-suggestions',
   '/trilhas/seguranca-digital': '/en-us/trails/digital-security',
   '/trilhas/arquitetura-infraestrutura': '/en-us/trails/architecture-infrastructure',
   '/trilhas/gestao-de-comunidades': '/en-us/trails/community-management',
@@ -97,7 +94,6 @@ export const ptToEnRoutes: Record<string, string> = {
   '/faq': '/en-us/faq',
   '/feedbacks': '/en-us/feedbacks',
   '/politicas': '/en-us/policies',
-  '/politicas/canais-oficiais-comunicacao-institucional': '/en-us/policies/canais-oficiais-comunicacao-institucional',
   '/politicas/disclaimer-livro': '/en-us/policies/disclaimer-livro',
   '/politicas/livro-direitos-autorais': '/en-us/policies/livro-direitos-autorais',
   '/politicas/livro-licenca-de-uso': '/en-us/policies/livro-licenca-de-uso',
