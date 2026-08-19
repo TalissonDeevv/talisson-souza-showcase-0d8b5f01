@@ -54,7 +54,7 @@ export const trails: TrailData[] = [
     },
     icon: '🌐',
     path: { pt: '/trilhas/gestao-de-comunidades', en: '/en-us/trails/community-management' },
-    articleIds: ['discord-community-engagement', 'discord-community-monetization', 'discord-moderation', 'discord-moderation-training', 'discord-promotion', 'professional-discord-bot', 'discord-bot-niche', 'monetizing-bots', 'discord-bot-rental'],
+    articleIds: ['discord-community-engagement', 'discord-community-monetization', 'discord-moderation', 'discord-moderation-training', 'discord-brazil-open-letter', 'discord-promotion', 'professional-discord-bot', 'discord-bot-niche', 'monetizing-bots', 'discord-bot-rental'],
   },
   {
     id: 'strategy-mindset',
@@ -370,6 +370,22 @@ export const articles: ArticleData[] = [
     path: { pt: '/artigos/treinamento-moderacao-discord', en: '/en-us/articles/discord-moderation-training' },
     tags: { pt: ['Discord', 'Moderação', 'Treinamento', 'Trust & Safety', 'Comunidades'], en: ['Discord', 'Moderation', 'Training', 'Trust & Safety', 'Communities'] },
     publishedDate: '2026-08-08',
+  },
+  {
+    id: 'discord-brazil-open-letter',
+    title: {
+      pt: 'Minha opinião sobre o Discord no Brasil e a discussão que ficou grande demais para ser tratada no grito',
+      en: 'My Opinion on Discord in Brazil and a Debate That Became Too Big to Be Treated as Noise',
+    },
+    excerpt: {
+      pt: 'Uma carta aberta sobre o Discord no Brasil, a suspensão do Go Live, proteção de menores, responsabilidades reais e por que essa discussão não pode ser rasa.',
+      en: 'An open letter about Discord in Brazil, the Go Live suspension, minor protection, real responsibilities, and why this debate cannot be shallow.',
+    },
+    date: { pt: '19 de Agosto, 2026', en: 'August 19, 2026' },
+    readTime: '24 min',
+    path: { pt: '/artigos/carta-aberta-discord-brasil', en: '/en-us/articles/open-letter-discord-brazil' },
+    tags: { pt: ['Discord', 'Comunidades', 'Segurança', 'Regulação', 'Opinião'], en: ['Discord', 'Communities', 'Security', 'Regulation', 'Opinion'] },
+    publishedDate: '2026-08-19',
   },
   {
     id: 'clt-to-freelancer',

@@ -21,6 +21,7 @@ import { devFinancialGrowthArticle } from './market-trail/dev-financial-growth';
 import { aiReplacingDevsArticle } from './market-trail/ai-replacing-devs';
 import { devJobPositioningArticle } from './market-trail/dev-job-positioning';
 import { discordCommunityStrategyArticles } from './market-trail/discord-community-strategy';
+import { discordBrazilOpenLetterArticle } from './market-trail/discord-brazil-open-letter';
 
 type LocalizedText = { pt: string; en: string };
 
@@ -81,6 +82,7 @@ const rawMarketTrailArticles: MarketTrailArticle[] = [
   ...devFinancialGrowthArticle,
   ...aiReplacingDevsArticle,
   ...devJobPositioningArticle,
+  ...discordBrazilOpenLetterArticle,
 ];
 
 export const marketTrailArticles: MarketTrailArticle[] = rawMarketTrailArticles
