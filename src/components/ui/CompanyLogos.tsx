@@ -16,7 +16,7 @@ import squareCloudLogo from "@/assets/logos/square-cloud.png";
 import collaborationsSignature from "@/assets/collaborations-signature.png";
 
 const premiumEase = [0.16, 1, 0.3, 1] as const;
-const logoSlotClassName = "h-14 w-[176px] sm:h-16 sm:w-[208px] xl:h-[72px] xl:w-[232px]";
+const logoSlotClassName = "h-14 w-[148px] sm:h-16 sm:w-[174px] xl:h-[72px] xl:w-[194px]";
 const logoImageClassName = "max-h-8 max-w-[126px] sm:max-h-10 sm:max-w-[170px] xl:max-h-11 xl:max-w-[190px]";
 
 type Company = {
@@ -299,10 +299,10 @@ const CompanyLogos = () => {
               animate={marqueeWidth > 0 ? { x: [0, -marqueeWidth] } : { x: 0 }}
               transition={{ duration: 34, ease: "linear", repeat: Infinity, repeatType: "loop" }}
             >
-              <div ref={logoGroupRef} className="flex shrink-0 items-center gap-4 pl-8 pr-4 sm:gap-5 sm:pl-10 sm:pr-5 lg:gap-6 lg:pl-12 lg:pr-6">
+              <div ref={logoGroupRef} className="flex shrink-0 items-center gap-2 pl-4 pr-2 sm:gap-3 sm:pl-5 sm:pr-3 lg:gap-4 lg:pl-6 lg:pr-4">
                 {companies.map((company, index) => renderLogo(company, index))}
               </div>
-              <div className="flex shrink-0 items-center gap-4 pl-8 pr-4 sm:gap-5 sm:pl-10 sm:pr-5 lg:gap-6 lg:pl-12 lg:pr-6">
+              <div className="flex shrink-0 items-center gap-2 pl-4 pr-2 sm:gap-3 sm:pl-5 sm:pr-3 lg:gap-4 lg:pl-6 lg:pr-4">
                 {companies.map((company, index) => renderLogo(company, index, true))}
               </div>
             </motion.div>
