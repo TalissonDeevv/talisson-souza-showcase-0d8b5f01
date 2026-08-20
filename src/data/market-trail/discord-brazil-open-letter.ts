@@ -7,6 +7,23 @@ const section = (title: string, content: string) => ({
   content: same(content),
 });
 
+const englishSection = (title: string, content: string) => ({ title, content });
+
+const withEnglishSections = (
+  sections: ReturnType<typeof section>[],
+  englishSections: ReturnType<typeof englishSection>[]
+) =>
+  sections.map((item, index) => ({
+    title: {
+      pt: item.title.pt,
+      en: englishSections[index]?.title ?? item.title.en,
+    },
+    content: {
+      pt: item.content.pt,
+      en: englishSections[index]?.content ?? item.content.en,
+    },
+  }));
+
 export const discordBrazilOpenLetterArticle: MarketTrailArticle[] = [
   {
     id: 'discord-brazil-open-letter',
@@ -15,22 +32,22 @@ export const discordBrazilOpenLetterArticle: MarketTrailArticle[] = [
     showDisclaimer: true,
     disclaimerText: {
       pt: 'Esta carta aberta expressa uma opinião pessoal sobre tecnologia, segurança, comunidades digitais e medidas regulatórias no Brasil. O texto não substitui investigação oficial, decisão judicial, orientação jurídica ou análise técnica da autoridade competente.',
-      en: 'Esta carta aberta expressa uma opinião pessoal sobre tecnologia, segurança, comunidades digitais e medidas regulatórias no Brasil. O texto não substitui investigação oficial, decisão judicial, orientação jurídica ou análise técnica da autoridade competente.',
+      en: 'This open letter expresses a personal opinion about technology, safety, digital communities and regulatory measures in Brazil. It does not replace an official investigation, a court decision, legal advice or a technical analysis from the competent authority.',
     },
     title: {
       pt: 'Minha opinião sobre o Discord no Brasil e a discussão que ficou grande demais para ser tratada no grito',
-      en: 'Minha opinião sobre o Discord no Brasil e a discussão que ficou grande demais para ser tratada no grito',
+      en: 'My opinion on Discord in Brazil and a discussion that became too big to be handled by shouting',
     },
     excerpt: {
       pt: 'Uma carta aberta sobre o caso envolvendo o Discord no Brasil, a suspensão do Go Live, a proteção de menores e o cuidado necessário para não transformar uma tragédia em uma discussão rasa.',
-      en: 'Uma carta aberta sobre o caso envolvendo o Discord no Brasil, a suspensão do Go Live, a proteção de menores e o cuidado necessário para não transformar uma tragédia em uma discussão rasa.',
+      en: 'An open letter about the case involving Discord in Brazil, the suspension of Go Live, the protection of minors and the care needed to avoid turning a tragedy into a shallow argument.',
     },
-    date: { pt: '19 de Agosto, 2026', en: '19 de Agosto, 2026' },
+    date: { pt: '19 de Agosto, 2026', en: 'August 19, 2026' },
     publishedDate: '2026-08-19',
     readTime: '28 min',
     tags: {
       pt: ['Discord', 'Comunidades', 'Segurança', 'Regulação', 'Opinião'],
-      en: ['Discord', 'Comunidades', 'Segurança', 'Regulação', 'Opinião'],
+      en: ['Discord', 'Communities', 'Safety', 'Regulation', 'Opinion'],
     },
     keywords: {
       pt: [
@@ -44,22 +61,22 @@ export const discordBrazilOpenLetterArticle: MarketTrailArticle[] = [
         'eca digital',
       ],
       en: [
-        'discord brasil',
+        'discord brazil',
         'anpd discord',
-        'go live discord brasil',
-        'segurança no discord',
-        'moderação no discord',
-        'proteção de menores online',
-        'comunidades digitais',
-        'eca digital',
+        'go live discord brazil',
+        'discord safety',
+        'discord moderation',
+        'online child safety',
+        'digital communities',
+        'digital child protection law brazil',
       ],
     },
     sourceUrl: 'https://www.gov.br/anpd/pt-br/assuntos/noticias/em-medida-preventiva-anpd-determina-que-discord-suspenda-transmissoes-ao-vivo-no-brasil',
     sourceLabel: {
       pt: 'Fonte oficial da ANPD sobre a medida preventiva',
-      en: 'Fonte oficial da ANPD sobre a medida preventiva',
+      en: 'Official ANPD source about the preventive measure',
     },
-    sections: [
+    sections: withEnglishSections([
       section(
         'Por que eu resolvi escrever isso',
         `Eu quero deixar uma coisa muito clara antes de qualquer coisa. Eu não estou falando sobre o Discord como alguém que abriu a plataforma recentemente, viu uma notícia pesada e resolveu comentar porque o assunto ficou em alta. Eu uso Discord desde 2018. São anos entrando quase todos os dias, administrando servidores, organizando canais, lidando com permissões, cargos, bots, automações, denúncias, moderação, conflitos e decisões que nem sempre são simples.
@@ -256,6 +273,203 @@ Eu continuo achando que grandes comunidades digitais merecem ser olhadas com mai
 
 Essa é a minha opinião neste momento. Não precisa ser a sua. Se você concorda, discorda ou enxerga algo que eu não considerei, comenta sua visão. Eu prefiro uma conversa difícil, com gente pensando de verdade, do que mais uma discussão onde todo mundo escolhe um lado e para de escutar.`
       ),
-    ],
+    ], [
+      englishSection(
+        'Why I decided to write this',
+        `I want to make one thing very clear before anything else. I am not talking about Discord as someone who opened the platform recently, saw a heavy news story and decided to comment because the topic became popular. I have used Discord since 2018. That means years of logging in almost every day, managing servers, organizing channels, dealing with permissions, roles, bots, automations, reports, moderation, conflicts and decisions that are not always simple.
+
+So when I look at everything happening in Brazil, my reaction is not just the reaction of someone watching technology from the outside. I know the platform from the inside. I know the good parts, the bad parts, the technical limits, the cultural problems, the moderation difficulties and also the real importance Discord has for many people who use it as a work tool, a study space, a community hub, a support channel and a place to belong.
+
+And maybe that is exactly why this whole discussion bothers me. Not because I think Discord should not be criticized. It can be criticized. It should be. Any large platform needs to be held accountable when serious failures happen. What bothers me is when the discussion turns into a fight that is too simple for a problem that is clearly not simple.
+
+I am not defending criminals. I am not defending people who groom minors, manipulate teenagers, encourage self harm, violence, suicide or anything like that. In my view, people who do that need to be investigated and held accountable seriously. The case involving the 13 year old girl is a tragedy. There is no way to treat it as a detail, an exaggeration or just another internet controversy.
+
+What I question is something else. I question the proportionality of restricting a Discord feature because of a problem that involved multiple platforms and whose responsibility still needs to be properly investigated. That is different from saying Discord has no responsibility. I am not saying that. I am saying that before turning an entire platform into the symbol of the problem, we need to understand where the problem started, where it went, what failed and what can actually prevent something like this from happening again.`
+      ),
+      englishSection(
+        'Discord is not just another social network',
+        `One of the things I see most in this discussion is people talking about Discord as if it were a regular social network. I understand why that happens, because from the outside everything can look the same. There is a profile, messages, groups, voice calls, video, communities and people talking. But in practice, Discord works very differently from platforms like Instagram, TikTok or X.
+
+Discord is much closer to communication infrastructure. There are public servers, private servers, text channels, voice channels, specific permissions, roles, bots, automation systems, integrations, logs, distributed moderation and communities that operate in completely different ways. A study server does not behave like a gaming server. A support server does not behave like a creator community. A company server does not behave like a group of friends.
+
+I have seen Discord being used for programming communities, support, study, games, independent projects, team organization, networking, classes, events, technical support, professional communities and even internal processes that would normally happen inside much more expensive tools. For many people, Discord is not some random place to chat. It is where the community exists.
+
+That is why I struggle when part of the debate treats the platform as if it were a space dominated by crime. That does not match the reality I see every day. There are serious problems inside Discord, just as there are inside other large platforms. But there are also millions of legitimate, productive and healthy uses. Putting everything in the same bag may create a strong headline, but it does not help solve anything.
+
+In my experience, a Discord community can be extremely organized. It can have clear rules, a trained team, well defined channels, automations, reporting systems, filters, internal records and incident response processes. It can also be a complete mess. That difference does not depend only on the platform. It depends on who manages it, who moderates it, the culture of the community, the tools available and the way the platform itself reacts when something crosses the line.`
+      ),
+      englishSection(
+        'The tragedy needs to be treated as a tragedy',
+        `I am very careful when talking about the case involving the teenager, because I do not want to turn a family's pain into a cheap argument. I also do not want to repeat sensitive details, speculate about what happened or use the death of a girl to win a public debate. That would be disrespectful and completely unnecessary.
+
+What can be said responsibly is that there is an investigation, there is a preventive measure from ANPD, there is pressure around the protection of children and teenagers and there is a serious discussion about criminals acting in digital environments. ANPD stated that it identified failures in the implementation of structural measures and procedures to prevent and fight serious violations against children and teenagers. That is public information, it is in the authority's official statement and it needs to be taken seriously.
+
+At the same time, the case did not happen exclusively on Discord. Instagram and other platforms also appear in the context of the investigations and the information that has been made public. This matters a lot, because it changes how we should think about the response. If the problem moves across platforms, the solution cannot be designed as if a single tool were the beginning and the end of everything.
+
+In my view, the priority should be to hold the people who committed crimes accountable, understand how they reached the victim, map the channels that were used, identify where reports failed, where prevention failed, where response failed and which mechanisms need to improve. If the response stays only at the suspension of a feature, I am afraid society may feel that something was solved when, in practice, the criminal structure can simply move somewhere else.
+
+I do not want to reduce the importance of the measure. I also do not want to act as if any government action is automatically bad. I just think a tragedy of this size demands more than a visible response. It demands a response that works.`
+      ),
+      englishSection(
+        'My doubt about the Go Live suspension',
+        `When ANPD ordered the preventive suspension of Go Live in Brazil, the first question that came to my mind was simple. Does this really attack the problem in the right way? I understand the authority's logic. Live streams inside closed servers can create risk, especially when minors are involved and when the platform cannot demonstrate enough protection mechanisms. From that angle, wanting to reduce immediate risk makes sense.
+
+But I also look at this as someone who actually uses Discord. Go Live is not used only for bad things. A lot of people use it to study together, share a screen during a project call, help someone with code, provide support, play with friends, review design, explain configuration, teach a class, guide a team and create presence inside a community. Suspending a feature like that affects legitimate uses too.
+
+This is where my criticism begins. I am not saying nothing should have been done. I am saying the measure needs to be proportional, technically clear and connected to a real plan for fixing the problem. If the suspension becomes only an emergency response without objective criteria for returning the feature, people who use it correctly are left in the dark. Serious administrators are affected too, even when they do everything they can to keep their communities safe.
+
+Maybe someone reads this and thinks I care too much about one platform feature. But for someone who manages a community, tools matter. When a feature disappears from one moment to another, entire routines need to be adapted. Events change. Classes change. Support changes. Workflows change. And all of that happens even in servers that had no connection at all with the investigated case.
+
+That is why I return to the central point. Holding Discord accountable is necessary. Suspending something can be defensible in a risk situation. But the discussion cannot end there. If it ends there, the measure becomes a symbol. And a symbol does not protect anyone by itself.`
+      ),
+      englishSection(
+        'When restriction becomes a way around it',
+        `There is another point I think needs to be part of this conversation. After Discord's video functions were suspended in Brazil, it was reported that Proton VPN saw an 800% increase in new Brazilian signups. The most obvious reading is that many people started looking for a VPN to try to recover access to Go Live.
+
+I am not bringing this up to teach anyone how to bypass anything. Quite the opposite. I am bringing it up because this kind of reaction shows a side effect that needs to be discussed. When a heavily used feature disappears from one moment to another, some people look for another path. That does not mean every VPN user is doing something wrong. VPNs can be used for privacy, security, work and many legitimate reasons. But in this specific case, the reported increase appeared precisely linked to the suspension of Discord's video functions in the country.
+
+The question I ask is simple. If someone with bad intentions decides to keep streaming through a VPN, does the investigation become easier or harder? In my view, it tends to become harder. Not because using a VPN is a crime, because it is not. But because any additional layer of circumvention can make behavior analysis, origin identification, platform response and cooperation with authorities more difficult.
+
+And that is where the discussion becomes less comfortable. The intention behind the measure may be to protect minors. I understand that intention and I think child safety needs to be taken seriously. But if the practical consequence is pushing some users toward circumvention tools, we need to ask whether the response is reducing risk or just moving the problem somewhere else.
+
+I have also seen tutorials circulating on social networks teaching ways to restore streams or bypass the limitation. I will not mention names, links or methods, because that helps nothing and can even give visibility to bad content. But the simple fact that this kind of tutorial appears already shows one thing. Removing a feature does not end the problem. Many times it creates a race between blocking and bypassing.
+
+That is the point I wanted to make clear. No platform is 100% safe. Discord is not. Instagram is not. TikTok is not. X is not. WhatsApp is not. Telegram is not. None of them are. Every large platform will attract legitimate use and also people trying to use its resources for crime. Adding a new restriction may reduce risk, but there will always be someone trying to bypass it.
+
+That is why I think it is dangerous to sell any isolated measure as if it were a definitive solution. Maybe it helps with something. Maybe it is necessary for a period. But if it does not come together with investigation, technical improvement, cooperation between platforms, digital education and a response against the people actually committing crimes, we risk only changing the path used by those who already wanted to do something wrong.`
+      ),
+      englishSection(
+        'Safety exists but perfect safety does not',
+        `It also bothers me when I see people saying Discord simply has no safety. I cannot agree with that. I have used the platform since 2018 and I have followed many changes over the years. Discord did not start thinking about safety now because the topic became news in Brazil.
+
+The platform has AutoMod, filters, reporting tools, controls for administrators, anti spam systems, rules against self bots, abuse detection mechanisms, privacy settings, age based content restrictions and recent changes aimed at users in Brazil. Discord's own documentation talks about more protective settings for Brazilian teenagers and age verification for access to certain content and spaces.
+
+Now, recognizing that these mechanisms exist does not mean saying they are enough. That is the difference many people miss. One thing is saying the platform has nothing. Another thing is saying the platform has mechanisms, but they may have failed, may be insufficient or may not keep up with the complexity of real abuse.
+
+I prefer discussing it this way, because it is more honest. Safety systems fail. Moderation fails. Automation fails. Reporting fails. Human teams fail. And when the failure involves a child or teenager, the consequence can be far too serious to be treated as a common operational mistake.
+
+So yes, I think Discord needs to be held accountable. It needs to explain better how it identifies risk, how it responds to reports, how it treats closed servers, how it handles suspicious accounts, how it applies measures involving minors, how it improves age assurance and how it communicates this to the public. I just do not think it is correct to pretend nothing exists and that the platform was completely idle. That version is simple, but it does not seem accurate to me.`
+      ),
+      englishSection(
+        'Minimum age also needs to be part of the conversation',
+        `Another point that almost always appears in a confused way is minimum age. Discord is not officially open to every child. For countries that do not have a different specific rule in the platform's own minimum age list, access begins at 13. In Brazil, the public discussion around the case involves a 13 year old teenager, so this does not remove the platform's responsibility. But it helps us understand that there is a layer of rules, verification and protection that needs to be analyzed more carefully.
+
+A child who is 11 or 12, for example, should not even maintain a Discord account if they do not meet the applicable minimum age. That does not mean it never happens. We know minors can lie about age, use someone else's account, bypass signup flows and pass through automated systems. This is a real problem for almost every digital platform.
+
+In my view, the more useful question is not only whether a minimum age exists. The question is how that age is verified, when verification happens, which signals are used to detect inconsistency, how reports involving younger users are handled and what happens when an account does not meet the requirements. Discord has been making changes in Brazil, but the existence of change does not end the subject. What needs to be analyzed is whether those changes work.
+
+There is also another delicate side. Age verification can involve sensitive data, documents, biometrics, facial estimation and external providers. Many people want protection, but they do not want to give too much personal data to any platform. I understand that concern. I also think any age solution needs to balance child safety with user privacy.
+
+That balance is difficult. But pretending it does not exist does not help. If the solution is weak, minors remain vulnerable. If the solution is too invasive, legitimate users become exposed to another kind of risk. This is a technical, legal and social discussion. It does not fit into a catchy phrase.`
+      ),
+      englishSection(
+        'Managing a community is not controlling the entire platform',
+        `I also think it is dangerous when the conversation treats server administrators as if they had absolute control over everything that happens. I manage communities and I can say calmly that this is not how it works. An administrator can create rules, define permissions, configure bots, train moderators, organize channels, establish processes and respond to reports inside their space. That alone is already a lot of work.
+
+But they do not see everything. They do not control private conversations between users. They do not know what happens in other servers. They do not have access to the platform backend. They cannot identify all fake accounts, compromised accounts, coordinated networks or behaviors that begin outside the server on their own. There is a huge difference between managing a community and being responsible for the entire safety layer of the platform.
+
+That does not mean administrators have no responsibility. They do. Whoever creates a community needs to take care of it. They need to think about rules, team, culture, protection, reporting channels, logs, proportional punishments and fast response when something goes out of control. I actually think many large communities handle moderation in a way that is too amateur.
+
+But we also need to be fair. In many cases, serious administrators are trying to do the best they can with the tools they have. They depend on platform resources, documentation, APIs, alerts, support, clear policies and reporting mechanisms that actually work. When the platform fails at that level, the local community is limited.
+
+In practice, safety in a digital community is a shared responsibility. Part of it belongs to the user. Part of it belongs to parents or guardians when minors are involved. Part of it belongs to the community administration. Part of it belongs to the platform. Part of it belongs to the authorities. When someone tries to put everything on one side only, the response usually becomes unfair and incomplete.`
+      ),
+      englishSection(
+        'What I see happening in real servers',
+        `Someone looking at Discord from the outside may imagine that managing a server is just creating channels and choosing moderators. But anyone who has been inside knows it is more complicated. You need to deal with people who join just to cause trouble, members who test limits, conflicts between groups, poorly explained reports, screenshots without context, newly created accounts, scam attempts, bot raids, leaks of information, permission abuse and moderators who sometimes make the wrong decision.
+
+In large communities, all of this scales quickly. A bad decision can become a public fight. A poorly applied punishment can create distrust. An unprepared moderator can make an already sensitive situation worse. A rule written in a vague way can open space for completely different interpretations. A channel without monitoring can become a problem before the team notices.
+
+That is why I talk so much about process. Not because I want to turn a community into a company, because they are not the same thing. A company has much larger legal, financial, tax, contractual and operational responsibilities. But a large community also needs organization. It needs standards. It needs training. It needs documentation. It needs mature people making decisions.
+
+When a community grows, improvisation starts to cost more. A moderator cannot punish someone just because they woke up irritated. They cannot protect a friend. They cannot use their role to joke around with members. They cannot delete evidence because they got scared. They cannot make a serious decision without understanding the context. This may sound obvious, but in practice it is not. I have seen many good people make mistakes because they lacked guidance, not because they had bad intentions.
+
+That is why I think the debate about Discord in Brazil should also talk about training administrators and moderators. The platform can and should improve its tools. But communities also need to mature from the inside.`
+      ),
+      englishSection(
+        'Criminals change platforms if the root problem is not addressed',
+        `This may be the point that worries me the most. If someone uses Discord to commit a crime and the response is to restrict one tool, that person may try to move somewhere else. They may use Telegram. They may use Instagram. They may use TikTok. They may use a closed group on another platform. They may use an external call. They may change the method. A criminal does not stop being a criminal because they lost one button.
+
+Of course, reducing a risk surface can make sense. If a feature is being used in a dangerous way and the platform does not demonstrate enough control, a preventive measure can reduce immediate harm. I understand that logic. My concern is when this becomes a substitute for deeper investigation.
+
+The focus needs to be on the people who committed crimes, the groups coordinating abuse, the flows used to reach victims, the contact methods, the circulation of content, the reporting failures, the accounts involved and cooperation between platforms. If the criminal network used more than one environment, the response needs to follow that network. Otherwise, we are only changing the address of the problem.
+
+In my view, public debate often likes to choose one villain because it makes anger easier to organize. But digital crimes almost never work that cleanly. They cross platforms, accounts, groups, private messages, invites, links, fake profiles and breaches of trust. Solving this takes more than pointing at a brand and saying it represents everything that is wrong.
+
+I am not saying the platform has no responsibility. I am saying the platform is not the only layer of the problem. And if the public response ignores that, the chance of getting it wrong increases.`
+      ),
+      englishSection(
+        'Where I agree with the pressure',
+        `I agree that platforms need to be pressured when children and teenagers are at risk. I agree that a company the size of Discord cannot simply say moderating closed servers is hard and stop there. Technical difficulty does not erase responsibility. If a platform offers a sensitive feature, especially to a young audience, it needs to prove that it thought about the risks from the design of the product.
+
+I also agree that reporting tools need to be better. Anyone who manages a community knows that bad reports get in the way, but also knows that a good report can save a situation. The problem is that many users do not know what to send, do not know where to report, do not receive clear feedback and end up giving up. This creates a feeling of abandonment.
+
+I also agree that minimum age and teen protection need to move beyond text. It is not enough to have beautiful wording in a policy if the real experience allows minors to access anything, talk to anyone and join risky spaces without proportional protection.
+
+I also think Discord needs to improve communication with administrators. Many people who manage large servers need clearer guidance on serious incidents, compromised accounts, threats, scams, reports involving minors, preservation of evidence and crisis response. Materials do exist, yes, but they do not always arrive in a practical way for the people actually moderating every day.
+
+So when I criticize the way the measure was received or applied, it is not because I think everything is fine. It is not. I just do not want accountability to become a simplistic solution.`
+      ),
+      englishSection(
+        'Where I disagree with how the conversation turned',
+        `I disagree when the discussion starts treating every Discord user as suspicious. Discord is not a synonym for crime. A closed server is not automatically a criminal environment. A gaming community is not automatically dangerous. A server administrator is not automatically negligent. This kind of generalization is bad because it harms people who use the platform legitimately and still gets in the way of understanding the real problem.
+
+I also disagree when I see people asking for a total block of the platform as if that were a mature response. Maybe for some people it feels like a quick solution. To me, it looks like a measure that would affect millions of legitimate users and push problems elsewhere without solving the root. Blocking everything may create a feeling of control, but a feeling of control is not control.
+
+Another thing that bothers me is the lack of care toward people who work with communities. There are administrators who spend years building safe spaces. There are volunteer moderators who stay up late solving conflicts. There are study servers helping people learn. There are programming communities connecting people. There are serious projects that depend on the platform. When public discussion pushes all those uses aside, it loses humanity too.
+
+I understand the outrage. I also feel outraged when I see a crime involving a minor. I just think outrage needs precision. When anger decides alone, the chance of hitting the wrong people is huge.
+
+Maybe other people see it differently. That is fine. But this is the part I cannot ignore.`
+      ),
+      englishSection(
+        'What I would do if the decision were mine',
+        `If it depended on my view, I would not treat this as a war between government and platform. I would treat it as a digital safety problem with different layers. First, serious investigation against the criminals. Without that, any measure becomes makeup. Second, clear technical requirements for the platform to show what it does, what failed and what will change. Third, objective deadlines, return criteria and public follow up within what can be disclosed without harming the investigation.
+
+I would also demand improvements in reporting channels. Not just a hidden button. A real flow. Guidance for users. Guidance for administrators. Proper response when a report involves a minor, violence, coercion, threat, scam or immediate risk. This kind of report cannot fall into a common queue as if it were spam.
+
+I would also demand better tools for communities. Administrators should have better ways to identify abuse patterns without violating everyone's privacy. More useful alerts, clearer logs, quarantine resources for suspicious accounts, protection against coordinated raids, better filters for dangerous links and more practical training materials for moderation.
+
+Besides that, I would demand cooperation between platforms. If the case involves Instagram, Discord, Telegram, TikTok or any other platform, each one needs to cooperate within the law. It does not help if one platform acts and another becomes shelter for the same group. Digital crimes cross product boundaries. The response needs to cross them too.
+
+And finally, I would demand education. It sounds boring to say this, but it is real. Users need to understand scams. Guardians need to understand risk. Moderators need to understand procedure. Administrators need to understand limits. Platforms need to understand that safety is not just a technical resource, it is the whole experience.`
+      ),
+      englishSection(
+        'The role of communities in this story',
+        `I do not want to end this letter as if everything depended only on Discord and the government. Communities also need to look inward. If you manage a server, especially one with many teenagers, you need to take this seriously. Rules cannot be decoration, moderation cannot be a status role and reports cannot be treated as an inconvenience.
+
+A minimally mature community needs to know how to act when someone reports a scam, threat, harassment, blackmail, predatory behavior or risk involving a minor. It needs records. It needs to preserve evidence. It needs to avoid unnecessary exposure of the victim. It needs to know when to ban, when to limit access, when to contact the platform and when to guide the person to seek help outside the server.
+
+It also needs to train moderators. It is not enough to call someone nice, give them a role and expect them to know how to handle a crisis. Moderation involves judgment. It involves calm. It involves communication. It involves listening without immediately believing everything. It involves acting without humiliating. It involves correcting mistakes. It involves recognizing limits.
+
+I see many large communities operating with processes that are too small for their size. While everything is fine, nobody notices. When a serious problem happens, the fragility appears. Then everyone discovers there was no flow, no standard, no documentation, no responsible person and no clarity about what to do.
+
+This is also part of the discussion. Safety does not begin only when an authority appears. Safety begins when whoever creates a space understands that real people will move through it.`
+      ),
+      englishSection(
+        'I may be wrong on some points',
+        `I may be wrong on some points. I may be looking at this too much through my own experience using Discord every day. I may be giving too much weight to the impact on legitimate communities. I may be missing something that someone from law, child protection or criminal investigation would see better than I can.
+
+And that is fine. This letter is not meant to say I own the truth. It is meant to put my view on the table. I am writing as a developer, digital entrepreneur and community administrator who knows Discord well, but who also understands that this subject goes beyond my own experience.
+
+What I do not want is to pretend neutrality. I think criminals need to be held accountable. I think Discord needs to improve and provide explanations. I think authorities need to act. I also think measures need to be proportional, technically well explained and designed to solve the problem, not just to show a quick reaction.
+
+That is the line I try to follow. Accountability without hysteria. Defense of legitimate users without excusing a serious failure. Protection of minors without turning the entire internet into an improvised response. Maybe it is a difficult line to sustain, but it feels like the most honest one to me.
+
+If someone disagrees, I genuinely want to hear it. Especially if they manage a server, moderate a community, work with safety, are a parent or guardian, are a lawyer, developer or simply use Discord for years and saw this discussion from another angle.`
+      ),
+      englishSection(
+        'The conversation needs to continue better than it started',
+        `In the end, Discord is still a platform. Important, huge, full of layers, but still a platform. The real problem does not fit inside one single app. It involves crime, vulnerability, moderation, technology, corporate responsibility, state action, digital education, child safety, privacy and the way communities work when nobody is watching.
+
+I do not want this letter to become blind defense of Discord. I also do not want it to be used as an argument to minimize the tragedy. What happened is serious. What needs to be investigated should be investigated. Whoever committed a crime needs to answer for it. The platform needs to cooperate and improve. Authorities need to act with firmness and responsibility.
+
+But I also do not want to accept a discussion where it is enough to choose one visible culprit and move on. That would be too comfortable. And maybe that comfort is exactly what prevents better solutions.
+
+I still think large digital communities deserve to be looked at with more maturity. There are risks, yes. There are abuses, yes. There are criminals trying to use any available tool, yes. But there are also people studying, creating, working, teaching, learning, forming teams, building projects and finding belonging in spaces that only exist because platforms like Discord allow this kind of organization.
+
+This is my opinion right now. It does not have to be yours. If you agree, disagree or see something I did not consider, leave your view. I prefer a difficult conversation with people actually thinking over another debate where everyone chooses a side and stops listening.`
+      ),
+    ]),
   },
 ];
