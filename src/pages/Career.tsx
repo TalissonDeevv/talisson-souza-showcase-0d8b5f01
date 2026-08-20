@@ -13,6 +13,10 @@ import cheetahLogo from "@/assets/logos/cheetah-solutions.png";
 import rocketLogo from "@/assets/logos/rocketseat.png";
 import squareLogo from "@/assets/logos/square-cloud.png";
 import splendoriLogo from "@/assets/logos/splendori.png";
+import hostingerLogo from "@/assets/logos/hostinger.png";
+import shopeeLogo from "@/assets/logos/shopee.png";
+import agonByAocLogo from "@/assets/logos/agon-by-aoc.png";
+import mynexisLogo from "@/assets/logos/mynexis.png";
 
 const elixirLogo = "/images/discord/elixir-lab-logo.png";
 const elixirBanner = "/images/discord/elixir-lab-banner.png";
@@ -87,6 +91,54 @@ const Career = () => {
           ],
           skills: ["Parcerias estratégicas", "Desenvolvimento web", "Soluções SaaS", "Automação", "Produto digital"],
         },
+        {
+          icon: Megaphone,
+          role: "Afiliado e criador de conteúdo",
+          company: "Hostinger",
+          logo: hostingerLogo,
+          period: "06 de julho de 2026 - presente",
+          place: "Recife, Pernambuco · Remoto",
+          description: [
+            "Atuação como afiliado e criador de conteúdo voltado à tecnologia, com foco na divulgação de produtos, serviços e soluções do setor.",
+          ],
+          skills: ["Afiliados", "Criação de conteúdo", "Tecnologia", "Divulgação"],
+        },
+        {
+          icon: Megaphone,
+          role: "Afiliado",
+          company: "Shopee",
+          logo: shopeeLogo,
+          period: "11 de julho de 2026 - presente",
+          place: "Recife, Pernambuco · Remoto",
+          description: [
+            "Atuação como afiliado, com foco na divulgação de produtos, acessórios, itens para setups e outros achados relacionados à tecnologia e ao universo gamer.",
+          ],
+          skills: ["Afiliados", "Setups", "Tecnologia gamer", "Curadoria de produtos"],
+        },
+        {
+          icon: Users,
+          role: "Supervisor de Conteúdo e Diretor Comunitário",
+          company: "AGON by AOC",
+          logo: agonByAocLogo,
+          period: "17 de agosto de 2026 - presente",
+          place: "Recife, Pernambuco · Remoto",
+          description: [
+            "Atuação como Supervisor de Conteúdo e Diretor Comunitário, assumindo responsabilidades relacionadas à gestão de conteúdo, acompanhamento da comunidade e atuação estratégica.",
+          ],
+          skills: ["Gestão de conteúdo", "Direção comunitária", "Comunidade gamer", "Estratégia"],
+        },
+        {
+          icon: Users,
+          role: "Supervisor de Conteúdo",
+          company: "Mynexis",
+          logo: mynexisLogo,
+          period: "17 de agosto de 2026 - presente",
+          place: "Recife, Pernambuco · Remoto",
+          description: [
+            "Atuação como Supervisor de Conteúdo, com responsabilidades envolvendo elaboração de relatórios, participação em reuniões pontuais e suporte na organização e execução de eventos em comunidades do Discord.",
+          ],
+          skills: ["Supervisão de conteúdo", "Relatórios", "Eventos", "Comunidades no Discord"],
+        },
       ]
     : [
         {
@@ -128,6 +180,46 @@ const Career = () => {
           place: "Recife, Pernambuco · Remote",
           description: ["Strategic partnership in technology initiatives and digital product development.", "Collaboration on web development, landing pages, automations and SaaS solutions."],
           skills: ["Strategic partnerships", "Web development", "SaaS", "Automation", "Digital product"],
+        },
+        {
+          icon: Megaphone,
+          role: "Affiliate and Content Creator",
+          company: "Hostinger",
+          logo: hostingerLogo,
+          period: "Jul 06, 2026 - Present",
+          place: "Recife, Pernambuco · Remote",
+          description: ["Work as an affiliate and technology-focused content creator, promoting products, services and solutions in the sector."],
+          skills: ["Affiliate marketing", "Content creation", "Technology", "Promotion"],
+        },
+        {
+          icon: Megaphone,
+          role: "Affiliate",
+          company: "Shopee",
+          logo: shopeeLogo,
+          period: "Jul 11, 2026 - Present",
+          place: "Recife, Pernambuco · Remote",
+          description: ["Affiliate work focused on products, accessories, setup items and technology or gaming finds."],
+          skills: ["Affiliate marketing", "Setups", "Gaming technology", "Product curation"],
+        },
+        {
+          icon: Users,
+          role: "Content Supervisor and Community Director",
+          company: "AGON by AOC",
+          logo: agonByAocLogo,
+          period: "Aug 17, 2026 - Present",
+          place: "Recife, Pernambuco · Remote",
+          description: ["Work as Content Supervisor and Community Director, with responsibilities related to content management, community follow-up and strategic community operations."],
+          skills: ["Content management", "Community direction", "Gaming community", "Strategy"],
+        },
+        {
+          icon: Users,
+          role: "Content Supervisor",
+          company: "Mynexis",
+          logo: mynexisLogo,
+          period: "Aug 17, 2026 - Present",
+          place: "Recife, Pernambuco · Remote",
+          description: ["Work as Content Supervisor, including reports, occasional meetings and support in organizing and executing events in Discord communities."],
+          skills: ["Content supervision", "Reports", "Events", "Discord communities"],
         },
       ];
 
@@ -179,7 +271,7 @@ const Career = () => {
       logo: agonLogo,
       banner: agonBanner,
       link: "https://discord.gg/yBy8Vu79J3",
-      role: getText(language, "Ex Moderador", "Former Moderator"),
+      role: getText(language, "Diretor Comunitário", "Community Director"),
     },
     {
       name: "DuneCo Dungeons",
