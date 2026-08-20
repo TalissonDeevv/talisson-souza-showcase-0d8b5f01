@@ -27,7 +27,7 @@ export const discordBrazilOpenLetterArticle: MarketTrailArticle[] = [
     },
     date: { pt: '19 de Agosto, 2026', en: '19 de Agosto, 2026' },
     publishedDate: '2026-08-19',
-    readTime: '24 min',
+    readTime: '28 min',
     tags: {
       pt: ['Discord', 'Comunidades', 'Segurança', 'Regulação', 'Opinião'],
       en: ['Discord', 'Comunidades', 'Segurança', 'Regulação', 'Opinião'],
@@ -107,6 +107,22 @@ Mas eu também olho para isso como alguém que usa Discord de verdade. Go Live n
 Talvez alguém leia isso e pense que estou preocupado demais com uma função da plataforma. Mas para quem administra comunidade, ferramentas importam. Quando uma funcionalidade some de uma hora para outra, fluxos inteiros precisam ser adaptados. Eventos mudam. Aulas mudam. Suporte muda. Rotinas mudam. E tudo isso acontece mesmo em servidores que nunca tiveram relação com o caso investigado.
 
 Por isso eu volto ao ponto central. Cobrar o Discord é necessário. Suspender algo pode ser defensável em uma situação de risco. Mas a discussão não pode terminar aí. Se terminar aí, a medida vira um símbolo. E símbolo não protege ninguém sozinho.`
+      ),
+      section(
+        'Quando a restrição vira caminho de contorno',
+        `Tem outro ponto que eu acho que precisa entrar nessa conversa. Depois que as funções de vídeo do Discord foram suspensas no Brasil, foi divulgado que a Proton VPN registrou um aumento de 800% em novos cadastros de usuários brasileiros. A leitura mais óbvia é que muita gente passou a procurar VPN para tentar recuperar o acesso ao Go Live.
+
+Eu não estou trazendo isso para ensinar ninguém a burlar nada. Pelo contrário. Estou trazendo porque esse tipo de reação mostra um efeito colateral que precisa ser discutido. Quando uma funcionalidade muito usada desaparece de uma hora para outra, parte das pessoas procura outro caminho. Isso não significa que todo usuário de VPN esteja fazendo algo errado. VPN pode ser usada por privacidade, segurança, trabalho e várias razões legítimas. Mas, nesse caso específico, o aumento divulgado apareceu justamente ligado à suspensão das funções de vídeo do Discord no país.
+
+A pergunta que eu faço é simples. Se alguém mal intencionado decide continuar usando transmissão por meio de VPN, a investigação fica mais fácil ou mais difícil? Na minha visão, tende a ficar mais difícil. Não porque VPN seja crime, porque não é. Mas porque qualquer camada adicional de contorno pode dificultar leitura de comportamento, identificação de origem, resposta da plataforma e cooperação com autoridades.
+
+E é aí que a discussão fica menos confortável. A intenção da medida pode ser proteger menores. Eu entendo essa intenção e acho que proteção de menores precisa ser levada a sério. Mas se a consequência prática é empurrar uma parte dos usuários para ferramentas de contorno, a gente precisa perguntar se a resposta está reduzindo risco ou apenas mudando o problema de lugar.
+
+Também tenho visto tutoriais circulando em redes sociais ensinando formas de recuperar transmissões ou contornar a limitação. Não vou citar nomes, links ou métodos, porque isso não ajuda em nada e ainda pode dar palco para conteúdo ruim. Mas o simples fato desse tipo de tutorial aparecer já mostra uma coisa. Remover uma funcionalidade não encerra o problema. Muitas vezes cria uma corrida entre bloqueio e contorno.
+
+Esse é o ponto que eu queria deixar claro. Nenhuma plataforma é 100% segura. Discord não é. Instagram não é. TikTok não é. X não é. WhatsApp não é. Telegram não é. Nenhuma. Toda plataforma grande vai atrair uso legítimo e também gente tentando usar seus recursos de forma criminosa. Colocar uma trava nova pode reduzir risco, mas sempre vai existir alguém tentando burlar.
+
+Por isso eu acho perigoso vender qualquer medida isolada como se fosse solução definitiva. Talvez ela ajude em algo. Talvez seja necessária por um período. Mas se ela não vier acompanhada de investigação, melhoria técnica, cooperação entre plataformas, educação digital e resposta contra quem realmente comete crime, a gente corre o risco de apenas trocar o caminho usado por quem já queria fazer coisa errada.`
       ),
       section(
         'Segurança existe, mas não existe segurança perfeita',

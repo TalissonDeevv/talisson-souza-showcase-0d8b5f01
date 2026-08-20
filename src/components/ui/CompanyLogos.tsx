@@ -42,7 +42,7 @@ const companies: Company[] = [
     name: "Hostinger",
     logo: hostingerLogo,
     url: "https://www.hostinger.com/br?REFERRALCODE=talissonsouza",
-    imageClassName: "opacity-90",
+    imageClassName: "opacity-100",
   },
   {
     name: "Shopee",
