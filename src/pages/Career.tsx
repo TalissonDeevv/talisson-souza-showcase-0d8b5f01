@@ -419,7 +419,7 @@ const Career = () => {
                         <img
                           src={experience.logo}
                           alt={experience.company}
-                          className="max-h-9 w-auto max-w-[176px] select-none object-contain opacity-70 grayscale sm:max-h-10 sm:max-w-[210px]"
+                          className="max-h-9 w-auto max-w-[176px] select-none object-contain opacity-85 brightness-0 invert contrast-125 sm:max-h-10 sm:max-w-[210px]"
                           loading="lazy"
                           draggable={false}
                         />
