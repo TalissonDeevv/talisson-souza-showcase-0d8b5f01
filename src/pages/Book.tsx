@@ -314,9 +314,9 @@ const Book = () => {
                 </a>
               </div>
 
-              <div className="mx-auto w-full max-w-[360px] lg:ml-auto">
-                <div className="relative overflow-hidden border border-border/25 bg-foreground p-4 shadow-[0_26px_80px_hsl(var(--foreground)/0.12)]">
-                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,transparent_0%,hsl(var(--background)/0.06)_45%,transparent_70%)]" />
+              <div className="mx-auto w-full max-w-[320px] lg:ml-auto">
+                <div className="relative overflow-hidden border border-border/20 bg-background/20 p-0 shadow-[0_26px_80px_hsl(var(--foreground)/0.10)]">
+                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,transparent_0%,hsl(var(--foreground)/0.035)_45%,transparent_70%)]" />
                   <img
                     src={bookQrCode}
                     alt={getText(
@@ -324,7 +324,7 @@ const Book = () => {
                       "QR Code para comprar o livro Superando Limites",
                       "QR Code to purchase the book Overcoming Limits"
                     )}
-                    className="relative z-10 aspect-square w-full bg-white object-contain"
+                    className="relative z-10 mx-auto w-full object-contain"
                     loading="lazy"
                     decoding="async"
                   />
