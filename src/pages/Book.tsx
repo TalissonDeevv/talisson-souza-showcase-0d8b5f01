@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, BookOpen, Feather, FileText, ShieldCheck, ShoppingBag } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Feather, FileText, QrCode, ShieldCheck, ShoppingBag } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -9,6 +9,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import { bookOfficial } from "@/data/book-official";
 import bookMockup from "@/assets/book-mockup-opt.jpg";
+import bookQrCode from "@/assets/book-qr-code.svg";
 
 const physicalBookUrl = bookOfficial.links.physical;
 const digitalBookUrl = bookOfficial.links.digital;
@@ -264,6 +265,77 @@ const Book = () => {
               </div>
             </ScrollReveal>
           </div>
+        </div>
+      </section>
+
+      <section id="qr-code" className="scroll-mt-28 py-14 lg:py-20">
+        <div className="container mx-auto px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="grid gap-10 border-y border-border/20 py-10 lg:grid-cols-[0.9fr_0.62fr] lg:items-center">
+              <div>
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-border/30 bg-background/35">
+                  <QrCode className="h-5 w-5 text-foreground/70" />
+                </div>
+                <span className="mb-5 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                  {getText(language, "Compra rápida", "Quick purchase")}
+                </span>
+                <h2 className="max-w-3xl font-serif text-4xl leading-tight text-foreground lg:text-5xl">
+                  {getText(
+                    language,
+                    "Aponte a câmera e vá direto para o livro.",
+                    "Point your camera and open the book on your phone."
+                  )}
+                </h2>
+                <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-muted-foreground">
+                  <p>
+                    {getText(
+                      language,
+                      "Se estiver vendo esta página pelo computador, use o QR Code ao lado para abrir a compra no celular. É um caminho simples para acessar o livro sem procurar link, copiar endereço ou trocar de aba.",
+                      "If you are viewing this page on a computer, use the QR Code beside it to open the purchase page on your phone. It is a simple path to access the book without searching, copying links or switching tabs."
+                    )}
+                  </p>
+                  <p>
+                    {getText(
+                      language,
+                      "Antes de finalizar, confira se a página aberta corresponde ao livro Superando Limites e aos canais oficiais de compra.",
+                      "Before finishing, check that the opened page matches the book Overcoming Limits and the official purchase channels."
+                    )}
+                  </p>
+                </div>
+                <a
+                  href={physicalBookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group mt-8 inline-flex items-center justify-center gap-2 rounded-full border border-border/35 bg-background/30 px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-foreground/10"
+                >
+                  <ShoppingBag className="h-4 w-4" />
+                  {getText(language, "Abrir página de compra", "Open purchase page")}
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              </div>
+
+              <div className="mx-auto w-full max-w-[360px] lg:ml-auto">
+                <div className="relative overflow-hidden border border-border/25 bg-foreground p-4 shadow-[0_26px_80px_hsl(var(--foreground)/0.12)]">
+                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,transparent_0%,hsl(var(--background)/0.06)_45%,transparent_70%)]" />
+                  <img
+                    src={bookQrCode}
+                    alt={getText(
+                      language,
+                      "QR Code para comprar o livro Superando Limites",
+                      "QR Code to purchase the book Overcoming Limits"
+                    )}
+                    className="relative z-10 aspect-square w-full bg-white object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div className="mt-4 flex items-center justify-between gap-4 border-t border-border/20 pt-4 text-[10px] uppercase tracking-[0.22em] text-muted-foreground/60">
+                  <span>{getText(language, "QR Code oficial", "Official QR Code")}</span>
+                  <span>{getText(language, "Superando Limites", "Overcoming Limits")}</span>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
