@@ -245,7 +245,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-xs sm:text-sm tracking-[0.3em] uppercase text-muted-foreground mb-8">
+              className="mb-3 text-xs uppercase tracking-[0.3em] text-muted-foreground sm:mb-4 sm:text-sm">
 
               {t.hero.badge}
             </motion.p>
@@ -255,7 +255,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.05 }}
-              className="mb-8 flex w-full max-w-[98vw] justify-center"
+              className="mb-3 flex w-full max-w-[98vw] justify-center sm:mb-4"
             >
               <AnimatedSignature />
             </motion.div>

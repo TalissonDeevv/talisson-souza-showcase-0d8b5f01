@@ -377,9 +377,13 @@ html.lenis body {
 }
 
 .animated-signature-wrapper {
-  filter: drop-shadow(0 0 26px hsl(var(--foreground) / 0.32));
+  filter:
+    drop-shadow(0 0 16px hsl(var(--foreground) / 0.2))
+    drop-shadow(0 0 34px hsl(var(--foreground) / 0.12));
 }
 
-.animated-signature__static {
-  shape-rendering: geometricPrecision;
+.animated-signature-image {
+  display: block;
+  pointer-events: none;
+  user-select: none;
 }

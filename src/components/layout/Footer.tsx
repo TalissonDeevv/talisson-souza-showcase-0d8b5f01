@@ -5,7 +5,7 @@ import { ArrowUp, ExternalLink, Music, Pause, Play } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import FooterWeather from "@/components/ui/FooterWeather";
-import { SIGNATURE_VECTOR_PATH, SIGNATURE_VECTOR_VIEWBOX } from "@/components/ui/signatureVectorPath";
+import signatureReduzida from "@/assets/signature-reduzida.png";
 
 const Footer = () => {
   const { language } = useTheme();
@@ -63,11 +63,16 @@ const Footer = () => {
 
       <div className="container relative mx-auto px-6 lg:px-8">
         <div className="border-b border-border/20 py-6">
-          <Link to={homePath} className="mb-5 block w-[170px] text-foreground/90 transition-opacity hover:opacity-75 sm:w-[210px]">
+          <Link to={homePath} className="mb-5 block w-[160px] text-foreground/90 transition-opacity hover:opacity-75 sm:w-[220px]">
             <span className="sr-only">Talisson Souza</span>
-            <svg viewBox={SIGNATURE_VECTOR_VIEWBOX} className="h-auto w-full overflow-visible">
-              <path d={SIGNATURE_VECTOR_PATH} fill="currentColor" fillRule="evenodd" />
-            </svg>
+            <img
+              src={signatureReduzida}
+              alt=""
+              aria-hidden="true"
+              draggable={false}
+              className="h-auto w-full object-contain"
+              loading="lazy"
+            />
           </Link>
 
           <div>

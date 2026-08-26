@@ -1,27 +1,25 @@
-import {
-  SIGNATURE_VECTOR_PATH,
-  SIGNATURE_VECTOR_VIEWBOX,
-} from "./signatureVectorPath";
+import signatureAutoral from "@/assets/signature-autoral.png";
 
-const AnimatedSignature = () => (
-  <div
-    className="animated-signature-wrapper relative w-full max-w-[1360px] select-none"
-    role="img"
-    aria-label="Assinatura Talisson Souza"
-  >
-    <svg
-      viewBox={SIGNATURE_VECTOR_VIEWBOX}
-      className="animated-signature h-auto w-full overflow-visible text-foreground"
-      aria-hidden="true"
+type AnimatedSignatureProps = {
+  className?: string;
+};
+
+const AnimatedSignature = ({ className = "" }: AnimatedSignatureProps) => {
+  return (
+    <div
+      className={`animated-signature-wrapper relative w-full max-w-[1420px] select-none ${className}`}
+      role="img"
+      aria-label="Assinatura Talisson Souza"
     >
-      <path
-        d={SIGNATURE_VECTOR_PATH}
-        fill="currentColor"
-        fillRule="evenodd"
-        className="animated-signature__static"
+      <img
+        src={signatureAutoral}
+        alt=""
+        aria-hidden="true"
+        draggable={false}
+        className="animated-signature-image h-auto w-full object-contain"
       />
-    </svg>
-  </div>
-);
+    </div>
+  );
+};
 
 export default AnimatedSignature;

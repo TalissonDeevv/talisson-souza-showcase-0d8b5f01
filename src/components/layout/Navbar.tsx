@@ -21,7 +21,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
 import ThemeLanguageToggle from "@/components/ui/ThemeLanguageToggle";
 import { trails } from "@/data/articles";
-import logo from "@/assets/logo.png";
+import signatureReduzida from "@/assets/signature-reduzida.png";
 
 interface DropdownItem {
   name: string;
@@ -133,9 +133,9 @@ const Navbar = () => {
         <div className="flex items-center justify-between gap-4 h-14 px-3 lg:px-5 rounded-full bg-background/80 backdrop-blur-md border border-border/40 shadow-sm">
           <Link to={language === 'en' ? '/en-us' : '/'} className="group shrink-0 pl-1">
             <img
-              src={logo}
-              alt="Talisson Souza - Desenvolvedor Full Stack"
-              className="h-10 w-auto transition-opacity duration-200 group-hover:opacity-80"
+              src={signatureReduzida}
+              alt="Talisson Souza"
+              className="h-7 w-auto max-w-[132px] object-contain transition-opacity duration-200 group-hover:opacity-80 sm:h-8 sm:max-w-[154px]"
               loading="eager"
               fetchPriority="high"
             />
