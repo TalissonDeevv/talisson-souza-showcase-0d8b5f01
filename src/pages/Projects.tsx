@@ -189,7 +189,7 @@ const Projects = () => {
                 aria-hidden="true"
                 loading="eager"
                 decoding="async"
-                className="mb-5 h-10 w-auto max-w-[220px] select-none object-contain object-left opacity-80 mix-blend-screen sm:h-12 lg:h-14"
+                className="theme-aware-signature mb-5 h-10 w-auto max-w-[220px] select-none object-contain object-left opacity-80 sm:h-12 lg:h-14"
               />
 
               <div className="mb-5 flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-muted-foreground/70">

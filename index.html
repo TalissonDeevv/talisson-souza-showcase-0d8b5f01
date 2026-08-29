@@ -7,6 +7,21 @@
     <meta name="description" content="Engenheiro de Software e fundador da Cheetah Solutions Network. Mais de 8 anos criando sistemas, automações e arquiteturas digitais." />
     <meta name="author" content="Talisson Souza" />
     <link rel="canonical" href="https://www.talissonsouza.com.br" />
+    <script>
+      (function () {
+        try {
+          var savedTheme = window.localStorage.getItem("talisson-theme");
+          var theme = savedTheme === "light" ? "light" : "dark";
+          document.documentElement.classList.add(theme);
+          document.documentElement.dataset.theme = theme;
+          document.documentElement.style.colorScheme = theme;
+        } catch (error) {
+          document.documentElement.classList.add("dark");
+          document.documentElement.dataset.theme = "dark";
+          document.documentElement.style.colorScheme = "dark";
+        }
+      })();
+    </script>
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />

@@ -70,7 +70,7 @@ const Footer = () => {
               alt=""
               aria-hidden="true"
               draggable={false}
-              className="h-auto w-full object-contain"
+              className="site-brand-signature h-auto w-full object-contain"
               loading="lazy"
             />
           </Link>

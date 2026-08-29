@@ -135,7 +135,7 @@ const Navbar = () => {
             <img
               src={signatureReduzida}
               alt="Talisson Souza"
-              className="h-7 w-auto max-w-[132px] object-contain transition-opacity duration-200 group-hover:opacity-80 sm:h-8 sm:max-w-[154px]"
+              className="site-brand-signature h-7 w-auto max-w-[132px] object-contain transition-opacity duration-200 group-hover:opacity-80 sm:h-8 sm:max-w-[154px]"
               loading="eager"
               fetchPriority="high"
             />

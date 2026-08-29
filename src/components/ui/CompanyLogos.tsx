@@ -85,13 +85,11 @@ const signatureVariants = {
     opacity: 0,
     scale: 0.98,
     y: 14,
-    filter: "blur(6px)",
   },
   show: {
     opacity: 0.72,
     scale: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: {
       duration: 0.9,
       delay: 0.02,
@@ -188,7 +186,7 @@ const CompanyLogos = () => {
         decoding="async"
         draggable={false}
         className={cn(
-          "h-auto w-auto select-none object-contain opacity-80 transition-all duration-500 [filter:grayscale(1)_brightness(0)_invert(1)_contrast(1.12)] group-hover:opacity-100",
+          "company-logo-monochrome h-auto w-auto select-none object-contain transition-all duration-500 group-hover:opacity-100",
           logoImageClassName,
           company.imageClassName
         )}
@@ -252,7 +250,7 @@ const CompanyLogos = () => {
                 loading="eager"
                 decoding="async"
                 variants={signatureVariants}
-                className="mb-4 h-14 w-auto max-w-[min(68vw,320px)] select-none object-contain object-left mix-blend-screen sm:h-16 lg:h-[72px]"
+                className="theme-aware-signature mb-4 h-14 w-auto max-w-[min(68vw,320px)] select-none object-contain object-left sm:h-16 lg:h-[72px]"
               />
               <span className="sr-only">
                 {getText(language, "Colaborações", "Collaborations")}

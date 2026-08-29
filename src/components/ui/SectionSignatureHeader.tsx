@@ -53,12 +53,12 @@ const SectionSignatureHeader = ({
             aria-hidden="true"
             loading="eager"
             decoding="async"
-            initial={{ opacity: 0, y: 14, scale: 0.98, filter: "blur(6px)" }}
-            whileInView={{ opacity: 0.72, y: 0, scale: 1, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 14, scale: 0.98 }}
+            whileInView={{ opacity: 0.72, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: premiumEase }}
             className={cn(
-              "relative z-10 mb-4 h-14 w-auto max-w-[min(68vw,320px)] select-none object-contain object-left mix-blend-screen sm:h-16 lg:h-[72px]",
+              "theme-aware-signature relative z-10 mb-4 h-14 w-auto max-w-[min(68vw,320px)] select-none object-contain object-left sm:h-16 lg:h-[72px]",
               centered && "mx-auto object-center",
               signatureClassName
             )}

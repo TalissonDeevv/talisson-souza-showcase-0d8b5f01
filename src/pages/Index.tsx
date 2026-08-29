@@ -764,7 +764,7 @@ const Index = () => {
                 className="h-full">
 
                   <div
-                  className="relative h-full min-h-[310px] overflow-hidden rounded-lg border border-border/20 bg-card/30 p-8 backdrop-blur-sm group"
+                  className="project-card-surface relative h-full min-h-[310px] overflow-hidden rounded-lg border border-border/20 bg-card/30 p-8 backdrop-blur-sm group"
                   style={{
                     boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
                   }}>
@@ -777,8 +777,8 @@ const Index = () => {
                     
                     {/* Project number */}
                     <div className="mb-6 flex items-center gap-4">
-                      <span className="text-4xl font-serif text-foreground/[0.08] group-hover:text-foreground/15 transition-colors duration-500" style={{ letterSpacing: '-0.05em' }}>0{index + 1}</span>
-                      <div className="flex-1 h-px bg-gradient-to-r from-foreground/10 to-transparent" />
+                      <span className="project-card-number text-4xl font-serif text-foreground/[0.08] group-hover:text-foreground/15 transition-colors duration-500" style={{ letterSpacing: '-0.05em' }}>0{index + 1}</span>
+                      <div className="project-card-rule flex-1 h-px bg-gradient-to-r from-foreground/10 to-transparent" />
                     </div>
                     
                     <h3 className="font-serif text-xl lg:text-2xl text-foreground mb-4 group-hover:text-gradient transition-all duration-500 leading-tight">

@@ -40,7 +40,7 @@ export const PageBackdrop = ({ signature, signatureClassName, className }: PageB
         animate={{ opacity: 0.16, y: 0, scale: 1 }}
         transition={{ duration: 1.05, delay: 0.08, ease }}
         className={cn(
-          "absolute left-1/2 top-[22%] w-[min(92vw,760px)] -translate-x-1/2 select-none object-contain mix-blend-screen",
+          "theme-aware-signature absolute left-1/2 top-[22%] w-[min(92vw,760px)] -translate-x-1/2 select-none object-contain",
           signatureClassName
         )}
       />
@@ -114,7 +114,7 @@ export const PageHero = ({
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 0.78, y: 0 }}
               transition={{ duration: 0.8, delay: 0.05, ease }}
-              className="mb-5 h-14 w-auto max-w-[min(68vw,330px)] select-none object-contain object-left mix-blend-screen"
+              className="theme-aware-signature mb-5 h-14 w-auto max-w-[min(68vw,330px)] select-none object-contain object-left"
             />
           ) : (
             eyebrow && (
