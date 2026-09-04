@@ -5,10 +5,8 @@ import { getText } from "@/utils/translations";
 import { cn } from "@/lib/utils";
 
 import accendLogo from "@/assets/logos/accend.png";
-import agonLogo from "@/assets/logos/agon-by-aoc.png";
 import cheetahLogo from "@/assets/logos/cheetah-solutions.png";
 import hostingerLogo from "@/assets/logos/hostinger.png";
-import mynexisLogo from "@/assets/logos/mynexis.png";
 import rocketseatLogo from "@/assets/logos/rocketseat.png";
 import shopeeLogo from "@/assets/logos/shopee.png";
 import splendoriLogo from "@/assets/logos/splendori.png";
@@ -57,14 +55,6 @@ const companies: Company[] = [
     name: "Rocketseat",
     logo: rocketseatLogo,
     url: "https://www.rocketseat.com.br/oferta/influencer/v2/talinho",
-  },
-  {
-    name: "AGON by AOC",
-    logo: agonLogo,
-  },
-  {
-    name: "Mynexis",
-    logo: mynexisLogo,
   },
   {
     name: "Splendori",
@@ -262,7 +252,7 @@ const CompanyLogos = () => {
                   <span className="font-sans text-[0.38em] font-light leading-none text-muted-foreground/55">
                     &
                   </span>
-                  <span>{getText(language, "Parcerias", "Partnerships")}</span>
+                  <span>{getText(language, "Atuações", "Activities")}</span>
                 </span>
               </h2>
             </motion.div>
@@ -276,8 +266,8 @@ const CompanyLogos = () => {
               <p className="text-base leading-relaxed text-muted-foreground/90">
                 {getText(
                   language,
-                  "Atuo com empresas, comunidades e marcas onde tecnologia precisa sustentar reputação, operação e crescimento. Cada parceria é conduzida com clareza estratégica, execução cuidadosa e compromisso real com o resultado.",
-                  "I collaborate with companies, communities and brands where technology has to support reputation, operations and growth. Each partnership is guided by strategic clarity, careful execution and a real commitment to outcomes."
+                  "Reúno aqui empresas e projetos ligados ao meu trabalho por atuação, afiliação, influência, prestação de serviço ou colaboração pública. Cada frente aparece pelo contexto real da minha participação.",
+                  "This section brings together companies and projects connected to my work through activities, affiliation, influence, services or public collaboration. Each one is presented according to the real context of my involvement."
                 )}
               </p>
             </div>

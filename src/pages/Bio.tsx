@@ -94,7 +94,7 @@ const Bio = () => {
     },
     {
       name: "AGON by AOC",
-      role: getText(language, "Diretor Comunitário", "Community Director"),
+      role: getText(language, "Supervisor de Conteúdo", "Content Supervisor"),
       logo: communityAssets.agonLogo,
       href: "https://discord.gg/yBy8Vu79J3",
     },

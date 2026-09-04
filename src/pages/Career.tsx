@@ -15,7 +15,6 @@ import squareLogo from "@/assets/logos/square-cloud.png";
 import splendoriLogo from "@/assets/logos/splendori.png";
 import hostingerLogo from "@/assets/logos/hostinger.png";
 import shopeeLogo from "@/assets/logos/shopee.png";
-import agonByAocLogo from "@/assets/logos/agon-by-aoc.png";
 import mynexisLogo from "@/assets/logos/mynexis.png";
 
 const elixirLogo = "/images/discord/elixir-lab-logo.png";
@@ -117,27 +116,16 @@ const Career = () => {
         },
         {
           icon: Users,
-          role: "Supervisor de Conteúdo e Diretor Comunitário",
-          company: "AGON by AOC",
-          logo: agonByAocLogo,
-          period: "17 de agosto de 2026 - presente",
-          place: "Recife, Pernambuco · Remoto",
-          description: [
-            "Atuação como Supervisor de Conteúdo e Diretor Comunitário, assumindo responsabilidades relacionadas à gestão de conteúdo, acompanhamento da comunidade e atuação estratégica.",
-          ],
-          skills: ["Gestão de conteúdo", "Direção comunitária", "Comunidade gamer", "Estratégia"],
-        },
-        {
-          icon: Users,
           role: "Supervisor de Conteúdo",
           company: "Mynexis",
           logo: mynexisLogo,
           period: "17 de agosto de 2026 - presente",
           place: "Recife, Pernambuco · Remoto",
           description: [
-            "Atuação como Supervisor de Conteúdo, com responsabilidades envolvendo elaboração de relatórios, participação em reuniões pontuais e suporte na organização e execução de eventos em comunidades do Discord.",
+            "Atuação como Supervisor de Conteúdo na Mynexis, com participação de auxílio operacional na comunidade AGON by AOC.",
+            "Responsabilidades envolvendo elaboração de relatórios, participação em reuniões pontuais e suporte na organização e execução de eventos em comunidades do Discord.",
           ],
-          skills: ["Supervisão de conteúdo", "Relatórios", "Eventos", "Comunidades no Discord"],
+          skills: ["Supervisão de conteúdo", "Relatórios", "Apoio operacional", "Comunidades no Discord"],
         },
       ]
     : [
@@ -203,23 +191,16 @@ const Career = () => {
         },
         {
           icon: Users,
-          role: "Content Supervisor and Community Director",
-          company: "AGON by AOC",
-          logo: agonByAocLogo,
-          period: "Aug 17, 2026 - Present",
-          place: "Recife, Pernambuco · Remote",
-          description: ["Work as Content Supervisor and Community Director, with responsibilities related to content management, community follow-up and strategic community operations."],
-          skills: ["Content management", "Community direction", "Gaming community", "Strategy"],
-        },
-        {
-          icon: Users,
           role: "Content Supervisor",
           company: "Mynexis",
           logo: mynexisLogo,
           period: "Aug 17, 2026 - Present",
           place: "Recife, Pernambuco · Remote",
-          description: ["Work as Content Supervisor, including reports, occasional meetings and support in organizing and executing events in Discord communities."],
-          skills: ["Content supervision", "Reports", "Events", "Discord communities"],
+          description: [
+            "Content Supervisor work at Mynexis, with operational support participation in the AGON by AOC community.",
+            "Responsibilities include reports, occasional meetings and support in organizing and executing events in Discord communities.",
+          ],
+          skills: ["Content supervision", "Reports", "Operational support", "Discord communities"],
         },
       ];
 
@@ -267,11 +248,11 @@ const Career = () => {
     },
     {
       name: "AGON by AOC",
-      description: getText(language, "Servidor oficial da AGON by AOC no Discord Brasil, com foco em performance e comunidade gamer.", "Official AGON by AOC server on Discord Brazil, focused on performance and gamer community."),
+      description: getText(language, "Comunidade AGON by AOC no Discord Brasil, onde atuei com suporte de conteúdo e auxílio operacional via Mynexis.", "AGON by AOC community on Discord Brazil, where I contributed with content support and operational assistance through Mynexis."),
       logo: agonLogo,
       banner: agonBanner,
       link: "https://discord.gg/yBy8Vu79J3",
-      role: getText(language, "Diretor Comunitário", "Community Director"),
+      role: getText(language, "Supervisor de Conteúdo", "Content Supervisor"),
     },
     {
       name: "DuneCo Dungeons",
@@ -547,7 +528,7 @@ const Career = () => {
                   <p className="text-base leading-relaxed text-muted-foreground">
                     {getText(
                       language,
-                      "O ponto n?o ? colecionar cargos. ? mostrar onde minhas decis?es foram testadas em produto, empresa, comunidade, conteúdo, parceria e operação real.",
+                      "O ponto não é colecionar cargos. É mostrar onde minhas decisões foram testadas em produto, empresa, comunidade, conteúdo, parceria e operação real.",
                       "The point is not collecting titles. It is showing where my decisions were tested across product, company, community, content, partnership and real operations."
                     )}
                   </p>

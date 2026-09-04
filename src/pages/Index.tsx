@@ -1390,11 +1390,11 @@ const Index = () => {
             <ScrollReveal delay={0.1}>
               <DiscordCommunityCard
                 name="AGON by AOC"
-                description={getText(language, "Servidor oficial da AGON by AOC no Discord Brasil. Um espaço para gamers competitivos e entusiastas de hardware.", "Official AGON by AOC server on Discord Brazil. A space for competitive gamers and hardware enthusiasts.")}
+                description={getText(language, "Comunidade AGON by AOC no Discord Brasil, onde atuei com suporte de conteúdo e auxílio operacional via Mynexis.", "AGON by AOC community on Discord Brazil, where I contributed with content support and operational assistance through Mynexis.")}
                 logo={agonLogo}
                 banner={agonBanner}
                 link="https://discord.gg/yBy8Vu79J3"
-                role={getText(language, "Diretor Comunitário", "Community Director")}
+                role={getText(language, "Supervisor de Conteúdo", "Content Supervisor")}
               />
             </ScrollReveal>
             <ScrollReveal delay={0.15}>
