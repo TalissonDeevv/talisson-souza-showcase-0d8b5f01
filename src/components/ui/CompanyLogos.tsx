@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import accendLogo from "@/assets/logos/accend.png";
 import cheetahLogo from "@/assets/logos/cheetah-solutions.png";
 import hostingerLogo from "@/assets/logos/hostinger.png";
+import mynexisLogo from "@/assets/logos/mynexis.png";
 import rocketseatLogo from "@/assets/logos/rocketseat.png";
 import shopeeLogo from "@/assets/logos/shopee.png";
 import splendoriLogo from "@/assets/logos/splendori.png";
@@ -55,6 +56,10 @@ const companies: Company[] = [
     name: "Rocketseat",
     logo: rocketseatLogo,
     url: "https://www.rocketseat.com.br/oferta/influencer/v2/talinho",
+  },
+  {
+    name: "Mynexis",
+    logo: mynexisLogo,
   },
   {
     name: "Splendori",
@@ -266,8 +271,8 @@ const CompanyLogos = () => {
               <p className="text-base leading-relaxed text-muted-foreground/90">
                 {getText(
                   language,
-                  "Reúno aqui empresas e projetos ligados ao meu trabalho por atuação, afiliação, influência, prestação de serviço ou colaboração pública. Cada frente aparece pelo contexto real da minha participação.",
-                  "This section brings together companies and projects connected to my work through activities, affiliation, influence, services or public collaboration. Each one is presented according to the real context of my involvement."
+                  "Projetos e empresas nas quais trabalhei, atuei, colaborei ou mantive alguma frente pública ligada a tecnologia, comunidade, conteúdo, afiliação ou prestação de serviço. Cada logo aparece pelo contexto real da minha participação.",
+                  "Projects and companies where I worked, contributed, collaborated or had a public activity connected to technology, community, content, affiliation or services. Each logo appears according to the real context of my involvement."
                 )}
               </p>
             </div>
