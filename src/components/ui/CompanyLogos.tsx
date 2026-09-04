@@ -35,7 +35,7 @@ const companies: Company[] = [
   {
     name: "Square Cloud",
     logo: squareCloudLogo,
-    url: "https://squarecloud.app",
+    url: "https://www.squarecloud.app",
   },
   {
     name: "Hostinger",
@@ -51,6 +51,7 @@ const companies: Company[] = [
   {
     name: "Accend",
     logo: accendLogo,
+    url: "https://www.accend.now",
   },
   {
     name: "Rocketseat",
@@ -60,6 +61,7 @@ const companies: Company[] = [
   {
     name: "Mynexis",
     logo: mynexisLogo,
+    url: "https://www.mynexis.com.br",
   },
   {
     name: "Splendori",
@@ -198,27 +200,27 @@ const CompanyLogos = () => {
   const renderLogo = (company: Company, index: number, isDuplicate = false) => {
     const className = "group relative flex shrink-0 items-center justify-center py-3";
 
-    if (isDuplicate || !company.url) {
+    if (!company.url) {
       return (
-        <div key={`${company.name}-${isDuplicate ? "duplicate" : "static"}-${index}`} aria-hidden={isDuplicate || undefined} className={className}>
+        <div key={`${company.name}-static-${index}`} className={className}>
           {renderLogoContent(company)}
         </div>
       );
     }
 
     return (
-      <motion.a
-        key={company.name}
+      <a
+        key={`${company.name}-${isDuplicate ? "duplicate" : "link"}-${index}`}
         href={company.url}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={getText(language, `Abrir ${company.name}`, `Open ${company.name}`)}
-        whileHover={{ y: -3 }}
-        transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
+        aria-hidden={isDuplicate || undefined}
+        aria-label={isDuplicate ? undefined : getText(language, `Abrir ${company.name}`, `Open ${company.name}`)}
+        tabIndex={isDuplicate ? -1 : undefined}
         className={className}
       >
         {renderLogoContent(company)}
-      </motion.a>
+      </a>
     );
   };
 
