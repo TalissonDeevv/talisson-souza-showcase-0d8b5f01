@@ -8,6 +8,7 @@ import { PageHero } from "@/components/ui/PageIdentity";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import { bookOfficial } from "@/data/book-official";
+import { contactEmails, mailtoHref } from "@/data/contact-channels";
 import bookMockup from "@/assets/book-mockup-opt.jpg";
 import bookQrCode from "@/assets/book-qr-code.svg";
 
@@ -312,6 +313,12 @@ const Book = () => {
                   {getText(language, "Abrir página de compra", "Open purchase page")}
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
+                <a
+                  href={mailtoHref(contactEmails.book, "Superando Limites")}
+                  className="mt-4 inline-flex break-all text-sm font-medium text-foreground underline-offset-4 transition-opacity hover:opacity-70 sm:mt-0"
+                >
+                  {contactEmails.book}
+                </a>
               </div>
 
               <div className="mx-auto w-full max-w-[320px] lg:ml-auto">
@@ -353,6 +360,13 @@ const Book = () => {
                 <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
                   {getText(language, "As regras do livro ficam no mesmo lugar.", "The book rules live in one place.")}
                 </h2>
+                <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
+                  {getText(
+                    language,
+                    `Dúvidas sobre compra, obra ou canais oficiais do livro podem ser enviadas para ${contactEmails.book}.`,
+                    `Questions about purchase, the book or official book channels can be sent to ${contactEmails.book}.`
+                  )}
+                </p>
               </div>
 
               <div className="grid gap-px overflow-hidden border border-border/20 bg-border/20 sm:grid-cols-2">

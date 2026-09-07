@@ -21,6 +21,7 @@ const staticPaths = [
   '/livro',
   '/principios',
   '/checklists',
+  '/changelogs',
   '/artigos',
   '/sugestoes-artigos',
   '/politicas',
@@ -40,6 +41,7 @@ const staticPaths = [
   '/en-us/book',
   '/en-us/principles',
   '/en-us/checklists',
+  '/en-us/changelogs',
   '/en-us/articles',
   '/en-us/article-suggestions',
   '/en-us/policies',
@@ -62,7 +64,7 @@ function readSource(filePath) {
 
 function extractLocalizedPaths(filePath) {
   const source = readSource(filePath);
-  const pathRegex = /path:\s*\{\s*pt:\s*['"]([^'"]+)['"],\s*en:\s*['"]([^'"]+)['"]\s*\}/g;
+  const pathRegex = /path:\s*\{\s*pt:\s*['"]([^'"]+)['"],\s*en:\s*['"]([^'"]+)['"],?\s*\}/g;
   return [...source.matchAll(pathRegex)].flatMap((match) => [match[1], match[2]]);
 }
 
@@ -96,6 +98,7 @@ const urls = new Set([
   ...serviceIds.flatMap((id) => [toAbsoluteUrl(`/servicos/${id}`), toAbsoluteUrl(`/en-us/services/${id}`)]),
   ...extractLocalizedPaths('src/data/articles.ts').map(toAbsoluteUrl),
   ...extractLocalizedPaths('src/data/checklists.ts').map(toAbsoluteUrl),
+  ...extractLocalizedPaths('src/data/changelogs.ts').map(toAbsoluteUrl),
   ...extractPolicyPaths().map(toAbsoluteUrl),
 ]);
 

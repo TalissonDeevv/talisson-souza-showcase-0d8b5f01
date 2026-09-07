@@ -20,19 +20,31 @@ const getChapterNumber = (heading: string) => {
 
 const cleanChapterTitle = (heading: string) => heading.replace(/^\d+\.\s*/, "");
 
+const getOfficialChannelGroup = (label: string) => {
+  if (label.startsWith("E-mail")) return "emails";
+  if (label.startsWith("Domínio") || label === "Discord") return "identity";
+  if (["WhatsApp profissional", "Servidor Discord", "Newsletter no LinkedIn"].includes(label)) return "main";
+  return "social";
+};
+
 const renderPolicyText = (text: string) => {
-  const parts = text.split(/(https?:\/\/[^\s)]+)/g);
+  const parts = text.split(/(https?:\/\/[^\s)]+|[\w.+-]+@[\w.-]+\.[a-zA-Z]{2,})/g);
   return parts.map((part, index) => {
-    if (!/^https?:\/\//.test(part)) return part;
+    const isUrl = /^https?:\/\//.test(part);
+    const isEmail = /^[\w.+-]+@[\w.-]+\.[a-zA-Z]{2,}$/.test(part);
+    if (!isUrl && !isEmail) return part;
+
     const href = part.replace(/[.,;]+$/, "");
     const suffix = part.slice(href.length);
+    const linkHref = isEmail ? `mailto:${href}` : href;
+
     return (
       <span key={`${href}-${index}`}>
         <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-foreground underline decoration-foreground/25 underline-offset-4 transition-colors hover:decoration-foreground"
+          href={linkHref}
+          target={isUrl ? "_blank" : undefined}
+          rel={isUrl ? "noopener noreferrer" : undefined}
+          className="break-words text-foreground underline decoration-foreground/25 underline-offset-4 transition-colors [overflow-wrap:anywhere] hover:decoration-foreground"
         >
           {href}
         </a>
@@ -42,43 +54,102 @@ const renderPolicyText = (text: string) => {
   });
 };
 
-const renderPolicyParagraph = (text: string, heading?: string) => {
+const renderPolicyParagraph = (text: string, lang: "pt" | "en", heading?: string) => {
   const lines = text.split("\n").filter((line) => line.trim().length > 0);
-  const shouldRenderAsOfficialList = Boolean(heading?.toLowerCase().includes("canais") && lines.length > 2);
+  const shouldRenderAsOfficialList = Boolean(
+    heading?.toLowerCase().includes("canais e identificações oficiais") && lines.length > 2
+  );
 
   if (shouldRenderAsOfficialList) {
     const [intro, ...items] = lines;
+    const parsedItems = items.map((line) => {
+      const [label, ...valueParts] = line.split(" - ");
+      return {
+        line,
+        label,
+        value: valueParts.join(" - "),
+        group: getOfficialChannelGroup(label),
+      };
+    });
+    const groups = [
+      {
+        key: "main",
+        title: getText(lang, "Canais principais", "Main channels"),
+        description: getText(lang, "Meios usados com mais frequência para acesso, comunidade e publicação.", "Frequently used channels for access, community and publishing."),
+      },
+      {
+        key: "social",
+        title: getText(lang, "Redes sociais", "Social networks"),
+        description: getText(lang, "Perfis públicos reconhecidos como oficiais.", "Public profiles recognized as official."),
+      },
+      {
+        key: "emails",
+        title: getText(lang, "Emails por finalidade", "Emails by purpose"),
+        description: getText(lang, "Cada endereço existe para um tipo específico de demanda.", "Each address exists for a specific type of request."),
+      },
+      {
+        key: "identity",
+        title: getText(lang, "Domínios e identificação", "Domains and identity"),
+        description: getText(lang, "Referências usadas para confirmar autenticidade.", "References used to confirm authenticity."),
+      },
+    ];
 
     return (
-      <span className="block">
+      <>
         <span className="block">{renderPolicyText(intro)}</span>
-        <span className="mt-6 grid gap-3">
-          {items.map((line) => {
-            const [label, ...valueParts] = line.split(" - ");
-            const value = valueParts.join(" - ");
-
-            if (!value) {
-              return (
-                <span key={line} className="block rounded-xl border border-border/20 bg-background/25 px-4 py-3">
-                  {renderPolicyText(line)}
-                </span>
-              );
-            }
+        <div className="mt-7 space-y-5">
+          {groups.map((group) => {
+            const groupItems = parsedItems.filter((item) => item.group === group.key);
+            if (groupItems.length === 0) return null;
 
             return (
-              <span
-                key={line}
-                className="grid gap-1 rounded-xl border border-border/20 bg-background/25 px-4 py-3 sm:grid-cols-[220px_1fr] sm:gap-5"
-              >
-                <span className="text-sm font-medium text-foreground">{label}</span>
-                <span className="min-w-0 break-words text-muted-foreground [overflow-wrap:anywhere]">
-                  {renderPolicyText(value)}
-                </span>
-              </span>
+              <section key={group.key} className="overflow-hidden rounded-2xl border border-border/25 bg-foreground/[0.018]">
+                <div className="border-b border-border/15 px-4 py-4 sm:px-5">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                      <h3 className="text-[12px] font-semibold uppercase tracking-[0.22em] text-foreground">
+                        {group.title}
+                      </h3>
+                      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground/75">
+                        {group.description}
+                      </p>
+                    </div>
+                    <span className="w-fit rounded-full border border-border/25 px-3 py-1 text-[11px] font-medium text-muted-foreground">
+                      {groupItems.length} {groupItems.length === 1 ? getText(lang, "canal", "channel") : getText(lang, "canais", "channels")}
+                    </span>
+                  </div>
+                </div>
+
+                <dl className="divide-y divide-border/15">
+                  {groupItems.map(({ line, label, value }) => {
+                    if (!value) {
+                      return (
+                        <div key={line} className="px-4 py-3.5 sm:px-5">
+                          <dd className="min-w-0 break-words text-sm leading-relaxed text-muted-foreground [overflow-wrap:anywhere]">
+                            {renderPolicyText(line)}
+                          </dd>
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <div
+                        key={line}
+                        className="grid gap-1.5 px-4 py-3.5 sm:grid-cols-[220px_minmax(0,1fr)] sm:gap-6 sm:px-5"
+                      >
+                        <dt className="text-sm font-medium leading-relaxed text-foreground">{label}</dt>
+                        <dd className="min-w-0 break-words text-sm leading-relaxed text-muted-foreground [overflow-wrap:anywhere]">
+                          {renderPolicyText(value)}
+                        </dd>
+                      </div>
+                    );
+                  })}
+                </dl>
+              </section>
             );
           })}
-        </span>
-      </span>
+        </div>
+      </>
     );
   }
 
@@ -95,6 +166,10 @@ const PolicyDetail = () => {
   const lang = language as "pt" | "en";
   const basePath = lang === "en" ? "/en-us/policies" : "/politicas";
   const [activeChapter, setActiveChapter] = useState<string | null>(null);
+  const [showReadingPanel, setShowReadingPanel] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.localStorage.getItem("policy-reading-panel") === "visible";
+  });
 
   const sectionIndex = policySections.findIndex((item) => item.id === sectionId);
   const section = policySections[sectionIndex];
@@ -143,6 +218,10 @@ const PolicyDetail = () => {
     return () => observer.disconnect();
   }, [chapterItems]);
 
+  useEffect(() => {
+    window.localStorage.setItem("policy-reading-panel", showReadingPanel ? "visible" : "hidden");
+  }, [showReadingPanel]);
+
   if (!section) {
     return <Navigate to={basePath} replace />;
   }
@@ -155,6 +234,23 @@ const PolicyDetail = () => {
         canonical={`${basePath}/${section.id}`}
         keywords={lang === "pt" ? ["políticas", "termos de uso", section.title.pt.toLowerCase()] : ["policies", "terms of use", section.title.en.toLowerCase()]}
       />
+
+      <button
+        type="button"
+        aria-pressed={showReadingPanel}
+        onClick={() => setShowReadingPanel((value) => !value)}
+        className="fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom))] right-4 z-[60] inline-flex items-center gap-2 rounded-full border border-border/40 bg-background/90 px-4 py-3 text-xs font-semibold text-foreground shadow-[0_18px_55px_rgba(0,0,0,0.22)] backdrop-blur-xl transition-colors hover:border-foreground/35 hover:bg-background sm:right-6 sm:px-5 lg:bottom-[calc(1.5rem+env(safe-area-inset-bottom))]"
+      >
+        <FileText className="h-4 w-4" />
+        <span className="sm:hidden">
+          {showReadingPanel ? getText(language, "Esconder", "Hide") : getText(language, "Leitura", "Reading")}
+        </span>
+        <span className="hidden sm:inline">
+          {showReadingPanel
+            ? getText(language, "Esconder painel de leitura", "Hide reading panel")
+            : getText(language, "Mostrar painel de leitura", "Show reading panel")}
+        </span>
+      </button>
 
       <PageHero
         compact
@@ -186,7 +282,7 @@ const PolicyDetail = () => {
       <section id="documento" className="relative scroll-mt-28 overflow-visible py-12 lg:py-16">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="mx-auto max-w-5xl">
+          <div className={cn("mx-auto", showReadingPanel ? "max-w-5xl" : "max-w-6xl")}>
             <div className="mb-8 flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.16em] text-muted-foreground/60">
               <Link to={basePath} className="transition-colors hover:text-foreground">
                 {getText(language, "Políticas", "Policies")}
@@ -195,31 +291,33 @@ const PolicyDetail = () => {
               <span className="text-foreground">{section.title[lang]}</span>
             </div>
 
-            <div className="grid gap-10 lg:grid-cols-[0.62fr_1.38fr] lg:items-start">
-              <aside className="lg:sticky lg:top-24 lg:self-start">
-                <ScrollReveal>
-                  <span className="mb-5 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                    {getText(language, "Leitura", "Reading")}
-                  </span>
-                  <h2 className="break-words font-serif text-3xl leading-tight text-foreground [overflow-wrap:anywhere] lg:text-5xl">
-                    {getText(language, "Um documento, sem ruído.", "One document, no noise.")}
-                  </h2>
-                  <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-                    {getText(
-                      language,
-                      "A intenção aqui é deixar responsabilidades visíveis antes de qualquer contratação, compra ou uso de conteúdo.",
-                      "The goal here is to make responsibilities visible before any engagement, purchase or use of content."
-                    )}
-                  </p>
-                  <div className="mt-8 h-1.5 overflow-hidden rounded-full bg-border/35">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: `${((sectionIndex + 1) / policySections.length) * 100}%` }}
-                      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-                      className="h-full rounded-full bg-foreground/60"
-                    />
-                  </div>
-                </ScrollReveal>
+            <div className={cn("grid gap-10 lg:items-start", showReadingPanel && "lg:grid-cols-[minmax(0,1.38fr)_minmax(260px,0.62fr)]")}>
+              {showReadingPanel && (
+                <aside className="relative order-first lg:order-2 lg:sticky lg:top-24 lg:self-start lg:pl-8">
+                  <div className="absolute left-0 top-0 hidden h-full w-px bg-gradient-to-b from-transparent via-border/30 to-transparent lg:block" />
+                  <ScrollReveal>
+                    <span className="mb-5 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                      {getText(language, "Leitura", "Reading")}
+                    </span>
+                    <h2 className="break-words font-serif text-3xl leading-tight text-foreground [overflow-wrap:anywhere] lg:text-5xl">
+                      {getText(language, "Um documento, sem ruído.", "One document, no noise.")}
+                    </h2>
+                    <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                      {getText(
+                        language,
+                        "A intenção aqui é deixar responsabilidades visíveis antes de qualquer contratação, compra ou uso de conteúdo.",
+                        "The goal here is to make responsibilities visible before any engagement, purchase or use of content."
+                      )}
+                    </p>
+                    <div className="mt-8 h-1.5 overflow-hidden rounded-full bg-border/35">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: `${((sectionIndex + 1) / policySections.length) * 100}%` }}
+                        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                        className="h-full rounded-full bg-foreground/60"
+                      />
+                    </div>
+                  </ScrollReveal>
                   {chapterItems.length > 0 && (
                     <nav
                       data-lenis-prevent=""
@@ -252,11 +350,11 @@ const PolicyDetail = () => {
                       ))}
                     </nav>
                   )}
-              </aside>
+                </aside>
+              )}
 
-              <article className="relative">
-                <div className="absolute left-0 top-0 hidden h-full w-px bg-gradient-to-b from-transparent via-border/30 to-transparent lg:block" />
-                <div className="space-y-7 lg:pl-10">
+              <article className="relative order-last lg:order-1">
+                <div className="space-y-7">
                   {section.paragraphs.map((paragraph, index) => (
                     <ScrollReveal key={index} delay={Math.min(index * 0.025, 0.18)}>
                       <motion.div
@@ -275,9 +373,9 @@ const PolicyDetail = () => {
                             {paragraph.heading[lang]}
                           </h2>
                         )}
-                        <p className={paragraph.heading ? "text-[16px] leading-[1.92] text-muted-foreground" : ""}>
-                          {renderPolicyParagraph(paragraph[lang], paragraph.heading?.[lang])}
-                        </p>
+                        <div className={paragraph.heading ? "text-[16px] leading-[1.92] text-muted-foreground" : ""}>
+                          {renderPolicyParagraph(paragraph[lang], lang, paragraph.heading?.[lang])}
+                        </div>
                       </motion.div>
                     </ScrollReveal>
                   ))}

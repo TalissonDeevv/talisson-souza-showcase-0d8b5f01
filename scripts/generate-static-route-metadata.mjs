@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { createRequire } from 'node:module';
 
 const rootDir = process.cwd();
 const distDir = path.join(rootDir, 'dist');
@@ -7,6 +8,29 @@ const indexPath = path.join(distDir, 'index.html');
 const manifestPath = path.join(rootDir, 'public', 'og', 'manifest.json');
 const baseUrl = 'https://www.talissonsouza.com.br';
 const siteName = 'Talisson Souza';
+const require = createRequire(import.meta.url);
+const ts = require('typescript');
+const Module = require('node:module');
+
+function loadTsModule(relativePath) {
+  const filename = path.join(rootDir, relativePath);
+  const source = fs.readFileSync(filename, 'utf8');
+  const compiled = ts.transpileModule(source, {
+    compilerOptions: {
+      esModuleInterop: true,
+      jsx: ts.JsxEmit.ReactJSX,
+      module: ts.ModuleKind.CommonJS,
+      target: ts.ScriptTarget.ES2020,
+    },
+    fileName: filename,
+  });
+
+  const mod = new Module(filename);
+  mod.filename = filename;
+  mod.paths = Module._nodeModulePaths(path.dirname(filename));
+  mod._compile(compiled.outputText, filename);
+  return mod.exports;
+}
 
 const html = fs.readFileSync(indexPath, 'utf8');
 const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
@@ -22,6 +46,7 @@ const pageMeta = new Map([
   ['/livro', ['Superando Limites | Talisson Souza', 'Livro autoral de Talisson Souza sobre rejeição, trajetória, disciplina e construção de futuro.']],
   ['/principios', ['Princípios | Talisson Souza', 'Princípios que orientam decisões, trabalho, comunicação e responsabilidade profissional.']],
   ['/checklists', ['Checklists | Talisson Souza', 'Guias práticos para segurança, produção, comunidades e infraestrutura digital.']],
+  ['/changelogs', ['Changelogs | Talisson Souza', 'Histórico público de mudanças relevantes no site, serviços, políticas e infraestrutura de Talisson Souza.']],
   ['/faq', ['FAQ | Talisson Souza', 'Respostas diretas sobre serviços, processos, limites, prazos e forma de trabalho.']],
   ['/feedbacks', ['Feedbacks | Talisson Souza', 'Depoimentos reais de clientes, parceiros e profissionais que já acompanharam meu trabalho.']],
   ['/seja-afiliado', ['Programa de Parceiros | Talisson Souza', 'Indique clientes para meus serviços e receba comissão por cada projeto fechado pelo Programa de Parceiros.']],
@@ -47,6 +72,7 @@ const pageMeta = new Map([
   ['/en-us/book', ['Overcoming Limits | Talisson Souza', 'Talisson Souza’s authorial book about rejection, trajectory, discipline and building a future.']],
   ['/en-us/principles', ['Principles | Talisson Souza', 'Principles that guide decisions, work, communication and professional responsibility.']],
   ['/en-us/checklists', ['Checklists | Talisson Souza', 'Practical guides for security, production, communities and digital infrastructure.']],
+  ['/en-us/changelogs', ['Changelogs | Talisson Souza', 'Public history of relevant changes to Talisson Souza’s website, services, policies and infrastructure.']],
   ['/en-us/faq', ['FAQ | Talisson Souza', 'Direct answers about services, processes, limits, timelines and work style.']],
   ['/en-us/feedbacks', ['Feedbacks | Talisson Souza', 'Real testimonials from clients, partners and professionals who have followed my work.']],
   ['/en-us/affiliate-program', ['Partner Program | Talisson Souza', 'Refer clients to my services and receive a commission for every closed project through the Partner Program.']],
@@ -85,6 +111,19 @@ const checklistTitleBySlug = new Map();
 const checklistsSource = fs.readFileSync(path.join(rootDir, 'src', 'data', 'checklists.ts'), 'utf8');
 for (const match of checklistsSource.matchAll(/slug:\s*['"]([^'"]+)['"][\s\S]{0,800}?title:\s*\{\s*pt:\s*['"]([^'"]+)['"]/g)) {
   checklistTitleBySlug.set(match[1], match[2]);
+}
+
+const changelogMetaByPath = new Map();
+const { changelogCategories } = loadTsModule('src/data/changelogs.ts');
+for (const category of changelogCategories) {
+  changelogMetaByPath.set(category.path.pt, [
+    `${category.title.pt} | Changelogs | ${siteName}`,
+    category.seoDescription.pt,
+  ]);
+  changelogMetaByPath.set(category.path.en, [
+    `${category.title.en} | Changelogs | ${siteName}`,
+    category.seoDescription.en,
+  ]);
 }
 
 const articleMetaByPath = new Map();
@@ -171,6 +210,7 @@ const fallbackMeta = (route) => {
 const getMeta = (route) => {
   if (pageMeta.has(route)) return pageMeta.get(route);
   if (articleMetaByPath.has(route)) return articleMetaByPath.get(route);
+  if (changelogMetaByPath.has(route)) return changelogMetaByPath.get(route);
 
   const serviceMatch = route.match(/^\/(?:en-us\/)?services?\/([^/]+)$/);
   if (serviceMatch && serviceTitles.has(serviceMatch[1])) return serviceTitles.get(serviceMatch[1]);
@@ -241,6 +281,12 @@ for (const entry of manifest) {
 }
 
 for (const route of articleMetaByPath.keys()) {
+  if (!routeImages.has(route)) {
+    routeImages.set(route, '/og/artigos.png');
+  }
+}
+
+for (const route of ['/changelogs', '/en-us/changelogs', ...changelogMetaByPath.keys()]) {
   if (!routeImages.has(route)) {
     routeImages.set(route, '/og/artigos.png');
   }

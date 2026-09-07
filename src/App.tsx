@@ -34,6 +34,7 @@ const TrailPage = lazy(() => import("./pages/TrailPage"));
 const Principles = lazy(() => import("./pages/Principles"));
 const Checklists = lazy(() => import("./pages/Checklists"));
 const ChecklistDetail = lazy(() => import("./pages/ChecklistDetail"));
+const Changelogs = lazy(() => import("./pages/Changelogs"));
 const MarketTrailArticle = lazy(() => import("./pages/articles/MarketTrailArticle"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const FAQ = lazy(() => import("./pages/FAQ"));
@@ -72,6 +73,8 @@ const AppRoutes = () => (
             <Route path="/principios" element={<Principles />} />
             <Route path="/checklists" element={<Checklists />} />
             <Route path="/checklists/:checklistId" element={<ChecklistDetail />} />
+            <Route path="/changelogs" element={<Changelogs />} />
+            <Route path="/changelogs/:categorySlug" element={<Changelogs />} />
 
             <Route path="/artigos" element={<Articles />} />
             <Route path="/sugestoes-artigos" element={<ArticleSuggestions />} />
@@ -101,6 +104,8 @@ const AppRoutes = () => (
             <Route path="/en-us/principles" element={<Principles />} />
             <Route path="/en-us/checklists" element={<Checklists />} />
             <Route path="/en-us/checklists/:checklistId" element={<ChecklistDetail />} />
+            <Route path="/en-us/changelogs" element={<Changelogs />} />
+            <Route path="/en-us/changelogs/:categorySlug" element={<Changelogs />} />
 
             <Route path="/en-us/articles" element={<Articles />} />
             <Route path="/en-us/article-suggestions" element={<ArticleSuggestions />} />

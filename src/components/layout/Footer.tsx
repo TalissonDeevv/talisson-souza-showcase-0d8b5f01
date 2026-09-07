@@ -5,6 +5,7 @@ import { ArrowUp, ExternalLink, Music, Pause, Play } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import FooterWeather from "@/components/ui/FooterWeather";
+import { contactEmails, mailtoHref } from "@/data/contact-channels";
 import signatureReduzida from "@/assets/signature-reduzida.png";
 
 const Footer = () => {
@@ -20,6 +21,7 @@ const Footer = () => {
     { name: getText(language, "Sobre", "About"), path: `${root}/sobre`.replace("/en-us/sobre", "/en-us/about") },
     { name: getText(language, "Carreira", "Career"), path: `${root}/carreira`.replace("/en-us/carreira", "/en-us/career") },
     { name: getText(language, "Serviços", "Services"), path: `${root}/servicos`.replace("/en-us/servicos", "/en-us/services") },
+    { name: "Changelogs", path: language === "en" ? "/en-us/changelogs" : "/changelogs" },
     { name: getText(language, "Parceiros", "Partners"), path: language === "en" ? "/en-us/affiliate-program" : "/seja-afiliado" },
     { name: getText(language, "Livro", "Book"), path: `${root}/livro`.replace("/en-us/livro", "/en-us/book") },
     { name: getText(language, "Políticas", "Policies"), path: `${root}/politicas`.replace("/en-us/politicas", "/en-us/policies") },
@@ -127,14 +129,22 @@ const Footer = () => {
             </span>
           </motion.button>
 
-          <a
-            href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7445971461145677824"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex h-8 w-full items-center justify-center rounded-full bg-[#0A66C2] px-[7px] text-center text-sm font-semibold text-[#fff] transition-colors hover:bg-[#0958a8] sm:w-[200px] md:ml-auto"
-          >
-            {getText(language, "Assinar no LinkedIn", "Subscribe on LinkedIn")}
-          </a>
+          <div className="flex flex-col gap-2 md:ml-auto md:items-end">
+            <a
+              href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7445971461145677824"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-8 w-full items-center justify-center rounded-full bg-[#0A66C2] px-[7px] text-center text-sm font-semibold text-[#fff] transition-colors hover:bg-[#0958a8] sm:w-[200px]"
+            >
+              {getText(language, "Assinar no LinkedIn", "Subscribe on LinkedIn")}
+            </a>
+            <a
+              href={mailtoHref(contactEmails.newsletter, "Newsletter Talisson Souza")}
+              className="break-all text-center text-xs text-muted-foreground transition-colors hover:text-foreground md:text-right"
+            >
+              {contactEmails.newsletter}
+            </a>
+          </div>
         </div>
 
         <div className="flex flex-col gap-4 py-4 text-[11px] text-muted-foreground/50 sm:flex-row sm:items-center sm:justify-between">

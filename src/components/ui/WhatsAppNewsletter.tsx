@@ -1,5 +1,6 @@
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
+import { contactEmails, mailtoHref } from "@/data/contact-channels";
 import { MessageCircle, ArrowRight } from "lucide-react";
 import GlassCard from "./GlassCard";
 import { motion } from "framer-motion";
@@ -50,6 +51,12 @@ const WhatsAppNewsletter = ({ variant = "card", className = "" }: WhatsAppNewsle
         {getText(language, "Seguir no WhatsApp", "Follow on WhatsApp")}
         <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
       </motion.a>
+      <a
+        href={mailtoHref(contactEmails.newsletter, "Newsletter Talisson Souza")}
+        className="mt-4 block break-all text-sm text-muted-foreground transition-colors hover:text-foreground"
+      >
+        {contactEmails.newsletter}
+      </a>
     </div>
   );
 

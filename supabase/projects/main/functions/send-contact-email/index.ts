@@ -16,6 +16,20 @@ const ALLOWED_ORIGINS = (
   .map((origin) => origin.trim())
   .filter(Boolean);
 
+const CONTACT_RECIPIENTS = {
+  contact: "contato@talissonsouza.com.br",
+  budget: "orcamento@talissonsouza.com.br",
+  commercial: "comercial@talissonsouza.com.br",
+  finance: "financeiro@talissonsouza.com.br",
+  legal: "juridico@talissonsouza.com.br",
+  partnerships: "parcerias@talissonsouza.com.br",
+  book: "livro@talissonsouza.com.br",
+  portfolio: "portfolio@talissonsouza.com.br",
+  privacy: "privacidade@talissonsouza.com.br",
+  security: "seguranca@talissonsouza.com.br",
+  newsletter: "newsletter@talissonsouza.com.br",
+} as const;
+
 const CAPTCHA_TTL_MS = 10 * 60 * 1000;
 const RATE_LIMIT_WINDOW_SECONDS = 60 * 60;
 const RATE_LIMIT_MAX = 3;
@@ -64,6 +78,104 @@ function getCorsHeaders(req: Request) {
   }
 
   return headers;
+}
+
+function normalizeSubject(subject: string) {
+  return subject
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+function getRecipientForSubject(subject: string) {
+  const normalized = normalizeSubject(subject);
+
+  if (normalized.includes("parceria") || normalized.includes("partnership")) {
+    return CONTACT_RECIPIENTS.partnerships;
+  }
+
+  if (
+    normalized.includes("orcamento") ||
+    normalized.includes("novo projeto") ||
+    normalized.includes("new project") ||
+    normalized.includes("consultoria") ||
+    normalized.includes("consulting") ||
+    normalized.includes("freelance")
+  ) {
+    return CONTACT_RECIPIENTS.budget;
+  }
+
+  if (normalized.includes("comercial") || normalized.includes("commercial")) {
+    return CONTACT_RECIPIENTS.commercial;
+  }
+
+  if (
+    normalized.includes("financeiro") ||
+    normalized.includes("finance") ||
+    normalized.includes("pagamento") ||
+    normalized.includes("payment") ||
+    normalized.includes("cobranca") ||
+    normalized.includes("billing") ||
+    normalized.includes("reembolso") ||
+    normalized.includes("refund")
+  ) {
+    return CONTACT_RECIPIENTS.finance;
+  }
+
+  if (
+    normalized.includes("juridico") ||
+    normalized.includes("legal") ||
+    normalized.includes("contrato") ||
+    normalized.includes("contract")
+  ) {
+    return CONTACT_RECIPIENTS.legal;
+  }
+
+  if (
+    normalized.includes("livro") ||
+    normalized.includes("book") ||
+    normalized.includes("superando limites") ||
+    normalized.includes("overcoming limits")
+  ) {
+    return CONTACT_RECIPIENTS.book;
+  }
+
+  if (
+    normalized.includes("portfolio") ||
+    normalized.includes("portifolio") ||
+    normalized.includes("case")
+  ) {
+    return CONTACT_RECIPIENTS.portfolio;
+  }
+
+  if (
+    normalized.includes("privacidade") ||
+    normalized.includes("privacy") ||
+    normalized.includes("lgpd") ||
+    normalized.includes("dados pessoais") ||
+    normalized.includes("personal data")
+  ) {
+    return CONTACT_RECIPIENTS.privacy;
+  }
+
+  if (
+    normalized.includes("seguranca") ||
+    normalized.includes("security") ||
+    normalized.includes("phishing") ||
+    normalized.includes("golpe") ||
+    normalized.includes("scam") ||
+    normalized.includes("incidente") ||
+    normalized.includes("incident")
+  ) {
+    return CONTACT_RECIPIENTS.security;
+  }
+
+  if (normalized.includes("newsletter")) {
+    return CONTACT_RECIPIENTS.newsletter;
+  }
+
+  return CONTACT_RECIPIENTS.contact;
 }
 
 function json(
@@ -309,8 +421,8 @@ const handler = async (req: Request): Promise<Response> => {
       return json(req, { error: "Email invalido" }, 400);
     }
 
-    if (message.length > 5000) {
-      return json(req, { error: "Mensagem deve ter no maximo 5000 caracteres" }, 400);
+    if (message.length > 12000) {
+      return json(req, { error: "Mensagem deve ter no maximo 12000 caracteres" }, 400);
     }
 
     if (phone && phone.length > 30) {
@@ -340,10 +452,12 @@ const handler = async (req: Request): Promise<Response> => {
       buildInfoRow("Contato Preferido", preferredContact),
       buildInfoRow("Como me encontrou", howFound),
     ].filter(Boolean).join("");
+    const recipient = getRecipientForSubject(subject);
+    const isBudgetRequest = recipient === CONTACT_RECIPIENTS.budget;
 
     const emailResponse = await resend.emails.send({
       from: "Portfolio Talisson <onboarding@resend.dev>",
-      to: ["talinhodev@gmail.com"],
+      to: [recipient],
       reply_to: email,
       subject: `${subject} - ${name}`,
       html: `
@@ -355,7 +469,7 @@ const handler = async (req: Request): Promise<Response> => {
         </head>
         <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
           <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 30px; border-radius: 12px 12px 0 0;">
-            <h1 style="color: #fff; margin: 0; font-size: 22px;">Nova Mensagem de Contato</h1>
+            <h1 style="color: #fff; margin: 0; font-size: 22px;">${isBudgetRequest ? "Nova Solicitação de Orçamento" : "Nova Mensagem de Contato"}</h1>
             <p style="color: rgba(255,255,255,0.7); margin: 8px 0 0; font-size: 14px;">${escapeHtml(subject)}</p>
           </div>
 
@@ -382,7 +496,7 @@ const handler = async (req: Request): Promise<Response> => {
 
           <div style="background: #f8f9fa; padding: 16px 30px; border: 1px solid #e5e5e5; border-top: none; border-radius: 0 0 12px 12px;">
             <p style="color: #999; font-size: 12px; text-align: center; margin: 0;">
-              Enviado via formulario de contato do portfolio<br>
+              Enviado via formulario oficial do site<br>
               ${new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" })}
             </p>
           </div>

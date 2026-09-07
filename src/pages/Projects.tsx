@@ -5,6 +5,7 @@ import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
+import { contactEmails, mailtoHref } from "@/data/contact-channels";
 import {
   ArrowRight,
   Eye,
@@ -259,6 +260,16 @@ const Projects = () => {
                   {getText(language, "Portal do cliente", "Client portal")}
                 </button>
               </div>
+
+              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                {getText(language, "Assuntos de portfólio:", "Portfolio matters:")}{" "}
+                <a
+                  href={mailtoHref(contactEmails.portfolio)}
+                  className="break-all font-medium text-foreground underline underline-offset-4 transition-opacity hover:opacity-70"
+                >
+                  {contactEmails.portfolio}
+                </a>
+              </p>
             </motion.div>
 
             <motion.div

@@ -1,6 +1,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ArrowUpRight } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
+import { contactEmails, mailtoHref } from "@/data/contact-channels";
 
 interface ContactDialogProps {
   children: React.ReactNode;
@@ -35,10 +36,10 @@ const ContactDialog = ({ children }: ContactDialogProps) => {
               E-mail
             </p>
             <a 
-              href="mailto:talinhodev@gmail.com" 
+              href={mailtoHref(contactEmails.contact)}
               className="group inline-flex items-center gap-2 text-foreground hover:opacity-70 transition-opacity duration-200"
             >
-              <span>talinhodev@gmail.com</span>
+              <span>{contactEmails.contact}</span>
               <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             </a>
           </div>

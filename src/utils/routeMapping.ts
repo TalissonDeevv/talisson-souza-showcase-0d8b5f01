@@ -16,6 +16,11 @@ export const ptToEnRoutes: Record<string, string> = {
   '/acessibilidade': '/en-us/accessibility',
   '/principios': '/en-us/principles',
   '/checklists': '/en-us/checklists',
+  '/changelogs': '/en-us/changelogs',
+  '/changelogs/servico-bots': '/en-us/changelogs/servico-bots',
+  '/changelogs/infraestrutura': '/en-us/changelogs/infraestrutura',
+  '/changelogs/site': '/en-us/changelogs/site',
+  '/changelogs/politicas': '/en-us/changelogs/politicas',
   '/checklists/seguranca-conta-discord': '/en-us/checklists/discord-account-security',
   '/checklists/bot-em-producao': '/en-us/checklists/bot-in-production',
   '/checklists/abrir-servidor-publico': '/en-us/checklists/opening-public-server',
@@ -129,6 +134,7 @@ export function getEquivalentRoute(currentPath: string, targetLang: 'pt' | 'en')
     if (path.startsWith('/projetos/')) return path.replace('/projetos/', '/en-us/projects/');
     if (path.startsWith('/servicos/')) return path.replace('/servicos/', '/en-us/services/');
     if (path.startsWith('/checklists/')) return path.replace('/checklists/', '/en-us/checklists/');
+    if (path.startsWith('/changelogs/')) return path.replace('/changelogs/', '/en-us/changelogs/');
     
     return '/en-us';
   } else {
@@ -138,6 +144,7 @@ export function getEquivalentRoute(currentPath: string, targetLang: 'pt' | 'en')
     if (path.startsWith('/en-us/projects/')) return path.replace('/en-us/projects/', '/projetos/');
     if (path.startsWith('/en-us/services/')) return path.replace('/en-us/services/', '/servicos/');
     if (path.startsWith('/en-us/checklists/')) return path.replace('/en-us/checklists/', '/checklists/');
+    if (path.startsWith('/en-us/changelogs/')) return path.replace('/en-us/changelogs/', '/changelogs/');
 
     return '/';
   }

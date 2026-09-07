@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Mail, MessageCircle, Send, Users } from "lucide-react";
+import { ArrowUpRight, Mail, MessageCircle, Send, Users } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -8,6 +7,7 @@ import SocialIcons from "@/components/ui/SocialIcons";
 import { IdentityPanel, PageBackdrop } from "@/components/ui/PageIdentity";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
+import { budgetFormUrl, contactEmails, mailtoHref } from "@/data/contact-channels";
 
 const Contact = () => {
   const { language } = useTheme();
@@ -21,9 +21,9 @@ const Contact = () => {
     },
     {
       icon: Mail,
-      label: "Email",
-      value: "talinhodev@gmail.com",
-      href: "mailto:talinhodev@gmail.com",
+      label: getText(language, "Contato", "Contact"),
+      value: contactEmails.contact,
+      href: mailtoHref(contactEmails.contact),
     },
     {
       icon: Users,
@@ -44,7 +44,7 @@ const Contact = () => {
     "@type": "LocalBusiness",
     name: "Talisson Souza | Cheetah Solutions Network",
     image: "https://www.talissonsouza.com.br/og/contato.png",
-    email: "talinhodev@gmail.com",
+    email: contactEmails.contact,
     telephone: "+5581993964261",
     url: "https://www.talissonsouza.com.br",
     address: {
@@ -125,34 +125,51 @@ const Contact = () => {
                   <SocialIcons centered showLabels={false} className="w-full" />
                 </div>
               </ScrollReveal>
+
             </div>
 
             <ScrollReveal delay={0.12} direction="right">
-              <IdentityPanel hover={false} className="p-5 sm:p-7 lg:p-8">
-                <div className="mb-8 flex flex-col gap-6 border-b border-border/20 pb-7 sm:flex-row sm:items-end sm:justify-between">
+              <IdentityPanel hover={false} className="p-4 sm:p-5 lg:p-6">
+                <div className="mb-5 flex flex-col gap-4 border-b border-border/20 pb-5 sm:flex-row sm:items-end sm:justify-between">
                   <div>
                     <span className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground/55">
                       {getText(language, "Mensagem", "Message")}
                     </span>
-                    <h2 className="mt-3 font-serif text-3xl text-foreground">
+                    <h2 className="mt-2 font-serif text-2xl text-foreground lg:text-3xl">
                       {getText(language, "Comece pelo problema.", "Start with the problem.")}
                     </h2>
                   </div>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-border/30 bg-foreground text-background">
-                    <Send className="h-5 w-5" />
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full border border-border/30 bg-foreground text-background">
+                    <Send className="h-4 w-4" />
                   </div>
                 </div>
 
-                <div className="mb-8 grid gap-3 sm:grid-cols-3">
+                <div className="mb-5 grid gap-2 sm:grid-cols-3">
                   {contextItems.map((item, index) => (
-                    <div key={item} className="rounded-2xl border border-border/20 bg-background/25 p-4">
-                      <span className="font-serif text-2xl text-foreground/35">
+                    <div key={item} className="rounded-xl border border-border/20 bg-background/25 p-3">
+                      <span className="font-serif text-xl text-foreground/35">
                         {String(index + 1).padStart(2, "0")}
                       </span>
-                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item}</p>
+                      <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{item}</p>
                     </div>
                   ))}
                 </div>
+
+                <a
+                  href={budgetFormUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mb-4 flex items-center justify-between gap-3 rounded-xl border border-border/25 bg-background/35 px-3 py-2.5 text-xs leading-relaxed text-muted-foreground transition-colors hover:border-foreground/20 hover:bg-foreground/5 hover:text-foreground sm:text-sm"
+                >
+                  <span>
+                    {getText(
+                      language,
+                      "Pedidos de orçamento devem ser solicitados pelo Google Forms oficial.",
+                      "Quote requests must be sent through the official Google Forms.",
+                    )}
+                  </span>
+                  <ArrowUpRight className="h-4 w-4 shrink-0 text-foreground/50" />
+                </a>
 
                 <ContactForm />
               </IdentityPanel>

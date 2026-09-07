@@ -7,6 +7,7 @@ import GlassCard from "@/components/ui/GlassCard";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
+import { contactEmails, mailtoHref } from "@/data/contact-channels";
 import { 
   Eye, 
   Keyboard, 
@@ -338,10 +339,10 @@ const Accessibility = () => {
                 )}
               </p>
               <a 
-                href="mailto:talinhodev@gmail.com?subject=Feedback de Acessibilidade"
+                href={mailtoHref(contactEmails.contact, "Feedback de Acessibilidade")}
                 className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:opacity-70 transition-opacity"
               >
-                talinhodev@gmail.com
+                {contactEmails.contact}
               </a>
             </GlassCard>
           </ScrollReveal>

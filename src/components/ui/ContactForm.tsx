@@ -4,6 +4,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import { Check, Send, AlertCircle, ShieldCheck } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { getContactRecipientForSubject } from "@/data/contact-channels";
 import {
   Select,
   SelectContent,
@@ -202,6 +203,7 @@ const ContactForm = () => {
       const supabase = await getSupabaseClient();
 
       if (!supabase) {
+        const recipientEmail = getContactRecipientForSubject(formData.subject);
         const lines = [
           `Nome: ${formData.name.trim()}`,
           `Email: ${formData.email.trim()}`,
@@ -214,7 +216,7 @@ const ContactForm = () => {
           formData.message.trim(),
         ].filter(Boolean);
 
-        window.location.href = `mailto:talinhodev@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+        window.location.href = `mailto:${recipientEmail}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
         setIsSubmitted(true);
         setFormData(initialFormData);
         setCaptchaInput("");

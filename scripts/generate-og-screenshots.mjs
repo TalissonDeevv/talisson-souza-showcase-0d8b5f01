@@ -248,6 +248,7 @@ const staticRoutes = [
   '/livro',
   '/principios',
   '/checklists',
+  '/changelogs',
   '/artigos',
   '/politica-de-privacidade',
   '/faq',
@@ -266,6 +267,7 @@ const staticRoutes = [
   '/en-us/book',
   '/en-us/principles',
   '/en-us/checklists',
+  '/en-us/changelogs',
   '/en-us/articles',
   '/en-us/privacy-policy',
   '/en-us/faq',
@@ -278,6 +280,7 @@ const routes = requestedRoutes.length > 0
   : (() => {
       const { articles, trails } = loadTsModule('src/data/articles.ts');
       const { checklists } = loadTsModule('src/data/checklists.ts');
+      const { changelogCategories } = loadTsModule('src/data/changelogs.ts');
       const { policySections } = loadTsModule('src/data/policies-content.ts');
 
       return uniqueRoutes([
@@ -287,6 +290,7 @@ const routes = requestedRoutes.length > 0
         '/artigos/o-que-o-monitoramento-da-discord-pelo-stf-significa-para-quem-cria-comunidades',
         ...trails.flatMap((trail) => [trail.path.pt, trail.path.en]),
         ...checklists.flatMap((checklist) => [checklist.path.pt, checklist.path.en]),
+        ...changelogCategories.flatMap((category) => [category.path.pt, category.path.en]),
         ...policySections.flatMap((section) => [`/politicas/${section.id}`, `/en-us/policies/${section.id}`]),
       ]);
     })();

@@ -7,6 +7,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { IdentityPanel, MotionRail, PageHero } from "@/components/ui/PageIdentity";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
+import { budgetFormUrl } from "@/data/contact-channels";
 import signatureServicos from "@/assets/signature-servicos.png";
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -272,12 +273,12 @@ const Services = () => {
                 {t.servicesPage.projectIdeaDescription}
               </p>
               <a
-                href="https://wa.me/5581993964261"
+                href={budgetFormUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 inline-flex items-center gap-3 rounded-full border border-border/30 bg-background/30 px-7 py-3 text-sm font-medium text-foreground transition-colors hover:bg-foreground/10"
               >
-                {getText(language, "Solicitar diagnóstico técnico", "Request technical diagnosis")}
+                {getText(language, "Solicitar orçamento pelo formulário", "Request a quote through the form")}
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>

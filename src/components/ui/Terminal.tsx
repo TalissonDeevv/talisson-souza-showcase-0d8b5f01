@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
+import { budgetFormUrl, contactEmails } from "@/data/contact-channels";
 import { ChevronUp, ChevronDown, ChevronsUp, ChevronsDown } from "lucide-react";
 
 const Terminal = () => {
@@ -59,15 +60,15 @@ const Terminal = () => {
 
   const allCommands = [
     'help', 'sobre', 'about', 'projetos', 'projects', 'contato', 'contact',
-    'empresas', 'companies', 'servicos', 'services', 'artigos', 'articles', 'blog', 'carreira', 'career',
-    'livro', 'book', 'parcerias', 'partnerships', 'skills', 'habilidades',
+    'orcamento', 'quote', 'empresas', 'companies', 'servicos', 'services', 'artigos', 'articles', 'blog', 'carreira', 'career',
+    'livro', 'book', 'changelogs', 'changelog', 'parcerias', 'partnerships', 'skills', 'habilidades',
     'clear', 'whoami', 'ls', 'pwd', 'date', 'neofetch', 'matrix', 'joke'
   ];
 
   const commands: { [key: string]: { pt: string; en: string } } = {
     help: {
-      pt: "📋 Comandos disponíveis:\n\n  📄 Navegação:\n  • sobre      - Informações sobre mim\n  • projetos   - Meus projetos\n  • contato    - Entre em contato\n  • empresas   - Minhas empresas\n  • servicos   - Serviços prestados\n  • blog       - Artigos e tutoriais\n  • carreira   - Minha trajetória\n  • livro      - Meu livro\n  • parcerias  - Parcerias e atuações\n\n  🛠️ Utilitários:\n  • skills     - Minhas habilidades\n  • whoami     - Quem sou eu\n  • neofetch   - Info do sistema\n  • date       - Data atual\n  • ls         - Listar páginas\n  • joke       - Piada de dev\n  • matrix     - Efeito matrix\n  • clear      - Limpar terminal\n\n  💡 Dicas:\n  • Use 'open <página>' para navegar\n  • Use ↑↓ para histórico de comandos\n  • Tab para autocompletar",
-      en: "📋 Available commands:\n\n  📄 Navigation:\n  • about      - Information about me\n  • projects   - My projects\n  • contact    - Get in touch\n  • companies  - My companies\n  • services   - Services provided\n  • blog       - Articles and tutorials\n  • career     - My journey\n  • book       - My book\n  • partnerships - Partnerships & activities\n\n  🛠️ Utilities:\n  • skills     - My skills\n  • whoami     - Who am I\n  • neofetch   - System info\n  • date       - Current date\n  • ls         - List pages\n  • joke       - Dev joke\n  • matrix     - Matrix effect\n  • clear      - Clear terminal\n\n  💡 Tips:\n  • Use 'open <page>' to navigate\n  • Use ↑↓ for command history\n  • Tab to autocomplete"
+      pt: "📋 Comandos disponíveis:\n\n  📄 Navegação:\n  • sobre      - Informações sobre mim\n  • projetos   - Meus projetos\n  • contato    - Entre em contato\n  • orcamento  - Link do Google Forms\n  • empresas   - Minhas empresas\n  • servicos   - Serviços prestados\n  • blog       - Artigos e tutoriais\n  • changelogs - Histórico de mudanças\n  • carreira   - Minha trajetória\n  • livro      - Meu livro\n  • parcerias  - Parcerias e atuações\n\n  🛠️ Utilitários:\n  • skills     - Minhas habilidades\n  • whoami     - Quem sou eu\n  • neofetch   - Info do sistema\n  • date       - Data atual\n  • ls         - Listar páginas\n  • joke       - Piada de dev\n  • matrix     - Efeito matrix\n  • clear      - Limpar terminal\n\n  💡 Dicas:\n  • Use 'open <página>' para navegar\n  • Use ↑↓ para histórico de comandos\n  • Tab para autocompletar",
+      en: "📋 Available commands:\n\n  📄 Navigation:\n  • about      - Information about me\n  • projects   - My projects\n  • contact    - Get in touch\n  • quote      - Google Forms link\n  • companies  - My companies\n  • services   - Services provided\n  • blog       - Articles and tutorials\n  • changelogs - Change history\n  • career     - My journey\n  • book       - My book\n  • partnerships - Partnerships & activities\n\n  🛠️ Utilities:\n  • skills     - My skills\n  • whoami     - Who am I\n  • neofetch   - System info\n  • date       - Current date\n  • ls         - List pages\n  • joke       - Dev joke\n  • matrix     - Matrix effect\n  • clear      - Clear terminal\n\n  💡 Tips:\n  • Use 'open <page>' to navigate\n  • Use ↑↓ for command history\n  • Tab to autocomplete"
     },
     sobre: {
       pt: "👨‍💻 Talisson Souza (Talinho)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💼 Empreendedor Executivo | Diretor de Negócios | Dev Full Stack\n📍 Recife, Pernambuco, Brasil\n\n🎯 Especialista em:\n   • React, Node.js, TypeScript, Python\n   • Gestão de Projetos e Equipes\n   • Consultoria Empresarial\n\n🚀 Fundador:\n   • Cheetah Solutions Network (CEO)\n   • Werneck Group (Diretor Estratégico)\n\n🤝 Parcerias:\n   • Square Cloud (Parceiro Oficial)\n   • Rocketseat (Influencer)\n\n📚 Autor do livro 'Superando Limites'\n\n💡 Digite 'open sobre' para ver mais",
@@ -84,10 +85,15 @@ const Terminal = () => {
     },
     projects: { pt: "", en: "" },
     contato: {
-      pt: "📬 Informações de Contato:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n📧 Email:     talinhodev@gmail.com\n📱 WhatsApp:  +55 (81) 9 9396-4261\n🔗 LinkedIn:  /in/talisson-souza\n🐙 GitHub:    /talissontbf\n📍 Local:     Recife, PE - Brasil\n\n💡 Digite 'open contato' para o formulário",
-      en: "📬 Contact Information:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n📧 Email:     talinhodev@gmail.com\n📱 WhatsApp:  +55 (81) 9 9396-4261\n🔗 LinkedIn:  /in/talisson-souza\n🐙 GitHub:    /talissontbf\n📍 Location:  Recife, PE - Brazil\n\n💡 Type 'open contact' for the form"
+      pt: `📬 Informações de Contato:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n📧 Contato:      ${contactEmails.contact}\n📱 WhatsApp:     +55 (81) 9 9396-4261\n🔗 LinkedIn:     /in/talisson-souza\n🐙 GitHub:       /talissontbf\n📍 Local:        Recife, PE - Brasil\n\n📐 Orçamentos devem ser solicitados pelo Google Forms oficial.\n💡 Digite 'open contato' para o formulário`,
+      en: `📬 Contact Information:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n📧 Contact:      ${contactEmails.contact}\n📱 WhatsApp:     +55 (81) 9 9396-4261\n🔗 LinkedIn:     /in/talisson-souza\n🐙 GitHub:       /talissontbf\n📍 Location:     Recife, PE - Brazil\n\n📐 Quote requests must be sent through the official Google Forms.\n💡 Type 'open contact' for the form`
     },
     contact: { pt: "", en: "" },
+    orcamento: {
+      pt: `📐 Orçamento oficial:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nPedidos de orçamento devem ser enviados pelo Google Forms oficial:\n${budgetFormUrl}`,
+      en: `📐 Official quote:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nQuote requests must be sent through the official Google Forms:\n${budgetFormUrl}`
+    },
+    quote: { pt: "", en: "" },
     empresas: {
       pt: "🏢 Minhas Empresas:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🐆 Cheetah Solutions Network\n   └── CEO & Founder (2020 - Presente)\n       Soluções digitais: bots, sites, sistemas\n\n🏛️ Werneck Group\n   └── Diretor Estratégico (2024 - Presente)\n       Consultoria empresarial e tecnologia\n\n💡 Digite 'open empresas' para mais detalhes",
       en: "🏢 My Companies:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🐆 Cheetah Solutions Network\n   └── CEO & Founder (2020 - Present)\n       Digital solutions: bots, websites, systems\n\n🏛️ Werneck Group\n   └── Strategic Director (2024 - Present)\n       Business consulting and technology\n\n💡 Type 'open companies' for more details"
@@ -122,9 +128,17 @@ const Terminal = () => {
       pt: "📝 Artigos & Guias:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n📰 Conteúdos sobre:\n   • Desenvolvimento Web\n   • Bots e Automação\n   • Gestão de Comunidades\n   • Carreira em Tecnologia\n\n💡 Digite 'open artigos' para ler",
       en: "📝 Articles & Guides:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n📰 Content about:\n   • Web Development\n   • Bots and Automation\n   • Community Management\n   • Tech Career\n\n💡 Type 'open articles' to read"
     },
+    changelogs: {
+      pt: "🗂️ Changelogs:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nHistórico oficial de mudanças por área:\n• Serviço de Bots\n• Infraestrutura\n• Site\n• Políticas\n\n💡 Digite 'open changelogs' para abrir",
+      en: "🗂️ Changelogs:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nOfficial change history by area:\n• Bot Service\n• Infrastructure\n• Website\n• Policies\n\n💡 Type 'open changelogs' to open"
+    },
+    changelog: {
+      pt: "🗂️ Changelog:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nHistórico oficial de mudanças por área:\n• Serviço de Bots\n• Infraestrutura\n• Site\n• Políticas\n\n💡 Digite 'open changelog' para abrir",
+      en: "🗂️ Changelog:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nOfficial change history by area:\n• Bot Service\n• Infrastructure\n• Website\n• Policies\n\n💡 Type 'open changelog' to open"
+    },
     ls: {
-      pt: "📁 Páginas disponíveis:\n\n  📄 /           (home)\n  📄 /sobre      (sobre)\n  📄 /projetos   (projetos)\n  📄 /servicos   (servicos)\n  📄 /carreira   (carreira)\n  📄 /artigos    (artigos)\n  📄 /contato    (contato)",
-      en: "📁 Available pages:\n\n  📄 /           (home)\n  📄 /en-us/about      (about)\n  📄 /en-us/projects   (projects)\n  📄 /en-us/services   (services)\n  📄 /en-us/career     (career)\n  📄 /en-us/articles   (articles)\n  📄 /en-us/contact    (contact)"
+      pt: "📁 Páginas disponíveis:\n\n  📄 /           (home)\n  📄 /sobre      (sobre)\n  📄 /projetos   (projetos)\n  📄 /servicos   (servicos)\n  📄 /carreira   (carreira)\n  📄 /artigos    (artigos)\n  📄 /changelogs (changelogs)\n  📄 /contato    (contato)",
+      en: "📁 Available pages:\n\n  📄 /           (home)\n  📄 /en-us/about      (about)\n  📄 /en-us/projects   (projects)\n  📄 /en-us/services   (services)\n  📄 /en-us/career     (career)\n  📄 /en-us/articles   (articles)\n  📄 /en-us/changelogs (changelogs)\n  📄 /en-us/contact    (contact)"
     },
     pwd: {
       pt: "/home/talinho/portfolio",
@@ -244,6 +258,7 @@ const Terminal = () => {
             empresas: "/carreira", companies: "/carreira",
             servicos: "/servicos", services: "/servicos",
             artigos: "/artigos", articles: "/artigos", blog: "/artigos",
+            changelogs: "/changelogs", changelog: "/changelogs",
             carreira: "/carreira", career: "/carreira",
           }
         : {
@@ -253,6 +268,7 @@ const Terminal = () => {
             empresas: "/en-us/career", companies: "/en-us/career",
             servicos: "/en-us/services", services: "/en-us/services",
             artigos: "/en-us/articles", articles: "/en-us/articles", blog: "/en-us/articles",
+            changelogs: "/en-us/changelogs", changelog: "/en-us/changelogs",
             carreira: "/en-us/career", career: "/en-us/career",
           };
       

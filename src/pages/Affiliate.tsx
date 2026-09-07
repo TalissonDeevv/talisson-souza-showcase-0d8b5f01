@@ -7,8 +7,10 @@ import { IdentityPanel, MotionRail, PageHero } from "@/components/ui/PageIdentit
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
+import { contactEmails, mailtoHref } from "@/data/contact-channels";
 
 const DISCORD_URL = "https://discord.talissonsouza.com.br";
+const PARTNERSHIPS_EMAIL = contactEmails.partnerships;
 
 const flowSteps = [
   {
@@ -231,7 +233,7 @@ const partnerRequirements = [
   {
     label: "10",
     title: "Canais oficiais",
-    text: "Indicações precisam ser registradas por e-mail, WhatsApp ou servidor oficial do Discord.",
+    text: `Indicações precisam ser registradas por e-mail, WhatsApp ou servidor oficial do Discord. Para e-mail, use ${PARTNERSHIPS_EMAIL}.`,
   },
 ];
 
@@ -284,7 +286,7 @@ const partnerRequirementsEn = [
   {
     label: "10",
     title: "Official channels",
-    text: "Referrals must be registered by e-mail, WhatsApp or the official Discord server.",
+    text: `Referrals must be registered by e-mail, WhatsApp or the official Discord server. For email, use ${PARTNERSHIPS_EMAIL}.`,
   },
 ];
 
@@ -513,7 +515,7 @@ const affiliateFaqs: AffiliateFaq[] = [
     question: "Por quais canais posso entrar em contato?",
     answer: [
       "Todo contato relacionado ao Programa de Parceiros deverá ser realizado exclusivamente pelos canais oficiais do programa.",
-      "Discord, WhatsApp e e-mail são os canais usados para registrar e acompanhar indicações. Solicitações enviadas apenas por Instagram, TikTok, LinkedIn, Facebook, X ou outras redes sociais não serão consideradas canais oficiais do programa.",
+      `Discord, WhatsApp e ${PARTNERSHIPS_EMAIL} são os canais usados para registrar e acompanhar indicações. Solicitações enviadas apenas por Instagram, TikTok, LinkedIn, Facebook, X ou outras redes sociais não serão consideradas canais oficiais do programa.`,
     ],
   },
   {
@@ -698,7 +700,7 @@ const affiliateFaqsEn: AffiliateFaq[] = [
     question: "Which channels can I use to contact you?",
     answer: [
       "All contact related to the Partner Program must happen exclusively through the official program channels.",
-      "Discord, WhatsApp and e-mail are used to register and follow referrals. Requests sent only through Instagram, TikTok, LinkedIn, Facebook, X or other social networks are not considered official program channels.",
+      `Discord, WhatsApp and ${PARTNERSHIPS_EMAIL} are used to register and follow referrals. Requests sent only through Instagram, TikTok, LinkedIn, Facebook, X or other social networks are not considered official program channels.`,
     ],
   },
   {
@@ -792,15 +794,23 @@ const Affiliate = () => {
             "A lot of people have asked me if there was a way to earn money by referring clients to my services. Now there is."
           )}
           actions={
-            <a
-              href={DISCORD_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex w-full items-center justify-center gap-3 rounded-full border border-foreground/20 bg-foreground px-7 py-3 text-sm font-semibold text-background transition-all duration-300 hover:bg-foreground/90 sm:w-auto"
-            >
-              {getText(language, "Entrar no servidor", "Join the server")}
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
+            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+              <a
+                href={DISCORD_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex w-full items-center justify-center gap-3 rounded-full border border-foreground/20 bg-foreground px-7 py-3 text-sm font-semibold text-background transition-all duration-300 hover:bg-foreground/90 sm:w-auto"
+              >
+                {getText(language, "Entrar no servidor", "Join the server")}
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </a>
+              <a
+                href={mailtoHref(PARTNERSHIPS_EMAIL, "Programa de Parceiros")}
+                className="inline-flex w-full items-center justify-center rounded-full border border-border/35 bg-background/35 px-7 py-3 text-sm font-semibold text-foreground transition-colors duration-300 hover:bg-foreground/10 sm:w-auto"
+              >
+                {PARTNERSHIPS_EMAIL}
+              </a>
+            </div>
           }
           meta={
             <MotionRail
@@ -1368,15 +1378,23 @@ const Affiliate = () => {
                         )}
                       </p>
                     </div>
-                    <a
-                      href={DISCORD_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group inline-flex w-full items-center justify-center gap-3 rounded-full border border-foreground/20 bg-foreground px-7 py-3 text-sm font-semibold text-background transition-all duration-300 hover:bg-foreground/90 sm:w-auto"
-                    >
-                      {getText(language, "Entrar no servidor", "Join the server")}
-                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </a>
+                    <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
+                      <a
+                        href={DISCORD_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group inline-flex w-full items-center justify-center gap-3 rounded-full border border-foreground/20 bg-foreground px-7 py-3 text-sm font-semibold text-background transition-all duration-300 hover:bg-foreground/90 sm:w-auto"
+                      >
+                        {getText(language, "Entrar no servidor", "Join the server")}
+                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      </a>
+                      <a
+                        href={mailtoHref(PARTNERSHIPS_EMAIL, "Programa de Parceiros")}
+                        className="inline-flex w-full items-center justify-center rounded-full border border-border/35 bg-background/35 px-7 py-3 text-sm font-semibold text-foreground transition-colors duration-300 hover:bg-foreground/10 sm:w-auto"
+                      >
+                        {PARTNERSHIPS_EMAIL}
+                      </a>
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>

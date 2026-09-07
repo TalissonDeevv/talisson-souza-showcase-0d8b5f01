@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Mail } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
+import { contactEmails, mailtoHref } from "@/data/contact-channels";
 const escritorioLogo = "/images/discord/escritorio-logo.png";
 const escritorioBanner = "/images/discord/escritorio-banner.png";
 
@@ -125,6 +126,12 @@ const NewsletterPopup = () => {
                 <Mail className="w-4 h-4 pointer-events-none" />
                 {getText(language, 'Inscrever na Newsletter', 'Subscribe to Newsletter')}
               </motion.button>
+              <a
+                href={mailtoHref(contactEmails.newsletter, "Newsletter Talisson Souza")}
+                className="mt-4 block break-all text-center text-xs text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {contactEmails.newsletter}
+              </a>
             </div>
           </div>
         </motion.div>

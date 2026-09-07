@@ -4,6 +4,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import AnimatedTitle from "@/components/ui/AnimatedTitle";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
+import { contactEmails, mailtoHref } from "@/data/contact-channels";
 
 const PrivacyPolicy = () => {
   const { language } = useTheme();
@@ -70,8 +71,8 @@ const PrivacyPolicy = () => {
                         {getText(language, "Newsletter (WhatsApp):", "Newsletter (WhatsApp):")}
                       </strong>{" "}
                       {getText(language,
-                        "A newsletter é distribuída via canal do WhatsApp. Nenhum dado pessoal é coletado diretamente por este site para esse fim.",
-                        "The newsletter is distributed via WhatsApp channel. No personal data is collected directly by this site for that purpose."
+                        `A newsletter é distribuída via canal do WhatsApp. Nenhum dado pessoal é coletado diretamente por este site para esse fim. Dúvidas sobre publicações e assinatura podem ser enviadas para ${contactEmails.newsletter}.`,
+                        `The newsletter is distributed via WhatsApp channel. No personal data is collected directly by this site for that purpose. Questions about posts and subscription can be sent to ${contactEmails.newsletter}.`
                       )}
                     </li>
                     <li>
@@ -112,7 +113,7 @@ const PrivacyPolicy = () => {
                     {getText(language, "3. Finalidade do uso dos dados", "3. Purpose of data use")}
                   </h2>
                   <ul className="list-disc list-inside text-sm text-muted-foreground/70 leading-relaxed space-y-2 ml-2">
-                    <li>{getText(language, "Envio de newsletters e conteúdos relevantes", "Sending newsletters and relevant content")}</li>
+                    <li>{getText(language, "Acesso a newsletters e conteúdos relevantes pelos canais oficiais", "Access to newsletters and relevant content through official channels")}</li>
                     <li>{getText(language, "Resposta a mensagens de contato", "Responding to contact messages")}</li>
                     <li>{getText(language, "Melhoria da experiência do usuário no site", "Improving user experience on the site")}</li>
                     <li>{getText(language, "Análise estatística de uso do site", "Statistical analysis of site usage")}</li>
@@ -144,8 +145,8 @@ const PrivacyPolicy = () => {
                   </h2>
                   <p className="text-sm text-muted-foreground/70 leading-relaxed">
                     {getText(language,
-                      "A newsletter é distribuída exclusivamente via canal do WhatsApp. Para segui-la, o usuário acessa o link do canal e opta por seguir dentro da própria plataforma do WhatsApp. Nenhum dado pessoal adicional é coletado por este site para esse fim. A política de privacidade do WhatsApp (Meta) se aplica ao uso do canal.",
-                      "The newsletter is distributed exclusively via WhatsApp channel. To follow it, the user accesses the channel link and opts to follow within the WhatsApp platform itself. No additional personal data is collected by this site for that purpose. WhatsApp's (Meta) privacy policy applies to channel usage."
+                      `A newsletter é distribuída exclusivamente via canal do WhatsApp. Para segui-la, o usuário acessa o link do canal e opta por seguir dentro da própria plataforma do WhatsApp. Nenhum dado pessoal adicional é coletado por este site para esse fim. O e-mail ${contactEmails.newsletter} existe apenas como canal oficial para dúvidas, correções ou solicitações relacionadas às publicações. A política de privacidade do WhatsApp (Meta) se aplica ao uso do canal.`,
+                      `The newsletter is distributed exclusively via WhatsApp channel. To follow it, the user accesses the channel link and opts to follow within WhatsApp itself. No additional personal data is collected by this site for that purpose. The email ${contactEmails.newsletter} exists only as an official channel for questions, corrections or requests related to publications. WhatsApp's (Meta) privacy policy applies to channel usage.`
                     )}
                   </p>
                 </section>
@@ -203,8 +204,8 @@ const PrivacyPolicy = () => {
                   </ul>
                   <p className="text-sm text-muted-foreground/70 leading-relaxed mt-3">
                     {getText(language,
-                      "Para exercer qualquer desses direitos, entre em contato através da página de contato ou envie um email diretamente.",
-                      "To exercise any of these rights, get in touch through the contact page or send an email directly."
+                      `Para exercer qualquer desses direitos, entre em contato através da página de contato ou envie um email diretamente para ${contactEmails.privacy}.`,
+                      `To exercise any of these rights, get in touch through the contact page or send an email directly to ${contactEmails.privacy}.`
                     )}
                   </p>
                 </section>
@@ -257,6 +258,13 @@ const PrivacyPolicy = () => {
                     >
                       {getText(language, "página de contato", "contact page")}
                     </a>.
+                    {" "}
+                    <a
+                      href={mailtoHref(contactEmails.privacy)}
+                      className="break-all text-foreground/70 underline underline-offset-4 hover:text-foreground transition-colors"
+                    >
+                      {contactEmails.privacy}
+                    </a>
                   </p>
                 </section>
               </ScrollReveal>
