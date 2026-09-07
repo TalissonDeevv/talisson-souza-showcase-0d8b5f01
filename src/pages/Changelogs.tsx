@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, ExternalLink, Search } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
@@ -483,6 +483,9 @@ const Changelogs = () => {
   const locale = language as ChangelogLocale;
 
   if (!categorySlug) return <ChangelogIndex locale={locale} />;
+  if (categorySlug === "servico-bots") {
+    return <Navigate to={locale === "en" ? "/en-us/changelogs/servicos" : "/changelogs/servicos"} replace />;
+  }
 
   return <ChangelogCategoryPage categorySlug={categorySlug} locale={locale} />;
 };

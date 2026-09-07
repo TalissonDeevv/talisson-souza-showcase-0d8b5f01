@@ -129,12 +129,12 @@ const Terminal = () => {
       en: "📝 Articles & Guides:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n📰 Content about:\n   • Web Development\n   • Bots and Automation\n   • Community Management\n   • Tech Career\n\n💡 Type 'open articles' to read"
     },
     changelogs: {
-      pt: "🗂️ Changelogs:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nHistórico oficial de mudanças por área:\n• Serviço de Bots\n• Infraestrutura\n• Site\n• Políticas\n\n💡 Digite 'open changelogs' para abrir",
-      en: "🗂️ Changelogs:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nOfficial change history by area:\n• Bot Service\n• Infrastructure\n• Website\n• Policies\n\n💡 Type 'open changelogs' to open"
+      pt: "🗂️ Changelogs:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nHistórico oficial de mudanças por área:\n• Serviços\n• Infraestrutura\n• Site\n• Políticas\n\n💡 Digite 'open changelogs' para abrir",
+      en: "🗂️ Changelogs:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nOfficial change history by area:\n• Services\n• Infrastructure\n• Website\n• Policies\n\n💡 Type 'open changelogs' to open"
     },
     changelog: {
-      pt: "🗂️ Changelog:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nHistórico oficial de mudanças por área:\n• Serviço de Bots\n• Infraestrutura\n• Site\n• Políticas\n\n💡 Digite 'open changelog' para abrir",
-      en: "🗂️ Changelog:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nOfficial change history by area:\n• Bot Service\n• Infrastructure\n• Website\n• Policies\n\n💡 Type 'open changelog' to open"
+      pt: "🗂️ Changelog:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nHistórico oficial de mudanças por área:\n• Serviços\n• Infraestrutura\n• Site\n• Políticas\n\n💡 Digite 'open changelog' para abrir",
+      en: "🗂️ Changelog:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nOfficial change history by area:\n• Services\n• Infrastructure\n• Website\n• Policies\n\n💡 Type 'open changelog' to open"
     },
     ls: {
       pt: "📁 Páginas disponíveis:\n\n  📄 /           (home)\n  📄 /sobre      (sobre)\n  📄 /projetos   (projetos)\n  📄 /servicos   (servicos)\n  📄 /carreira   (carreira)\n  📄 /artigos    (artigos)\n  📄 /changelogs (changelogs)\n  📄 /contato    (contato)",

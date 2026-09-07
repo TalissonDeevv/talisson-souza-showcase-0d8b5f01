@@ -45,22 +45,22 @@ export interface ChangelogEntry {
 
 export const changelogCategories: ChangelogCategory[] = [
   {
-    slug: "servico-bots",
+    slug: "servicos",
     title: {
-      pt: "Serviço de Bots",
-      en: "Bot Service",
+      pt: "Serviços",
+      en: "Services",
     },
     description: {
-      pt: "Atualizações ligadas a bots, automações, integrações, suporte e manutenção técnica.",
-      en: "Updates related to bots, automations, integrations, support and technical maintenance.",
+      pt: "Atualizações ligadas aos serviços oferecidos, incluindo desenvolvimento, automações, integrações, suporte e manutenção técnica.",
+      en: "Updates related to offered services, including development, automations, integrations, support and technical maintenance.",
     },
     seoDescription: {
-      pt: "Histórico oficial de mudanças no serviço de bots de Talisson Souza, incluindo automações, integrações, suporte e manutenção.",
-      en: "Official change history for Talisson Souza's bot service, including automations, integrations, support and maintenance.",
+      pt: "Histórico oficial de mudanças nos serviços de Talisson Souza, incluindo desenvolvimento, automações, integrações, suporte e manutenção.",
+      en: "Official change history for Talisson Souza's services, including development, automations, integrations, support and maintenance.",
     },
     path: {
-      pt: "/changelogs/servico-bots",
-      en: "/en-us/changelogs/servico-bots",
+      pt: "/changelogs/servicos",
+      en: "/en-us/changelogs/servicos",
     },
   },
   {
