@@ -15,9 +15,12 @@ import squareLogo from "@/assets/logos/square-cloud.png";
 import splendoriLogo from "@/assets/logos/splendori.png";
 import hostingerLogo from "@/assets/logos/hostinger.png";
 import shopeeLogo from "@/assets/logos/shopee.png";
+import mynexisLogo from "@/assets/logos/mynexis.png";
 
 const elixirLogo = "/images/discord/elixir-lab-logo.png";
 const elixirBanner = "/images/discord/elixir-lab-banner.png";
+const agonLogo = "/images/discord/agon-logo.png";
+const agonBanner = "/images/discord/agon-banner.png";
 const dunecoLogo = "/images/discord/duneco-logo.png";
 const dunecoBanner = "/images/discord/duneco-banner.png";
 const hytaleLogo = "/images/discord/hytale-logo.gif";
@@ -111,6 +114,19 @@ const Career = () => {
           ],
           skills: ["Afiliados", "Setups", "Tecnologia gamer", "Curadoria de produtos"],
         },
+        {
+          icon: Users,
+          role: "Ex Supervisor de Conteúdo",
+          company: "Mynexis",
+          logo: mynexisLogo,
+          period: "17 de agosto de 2026 - atuação encerrada",
+          place: "Recife, Pernambuco · Remoto",
+          description: [
+            "Atuei como Supervisor de Conteúdo na Mynexis, com participação de auxílio operacional na comunidade AGON by AOC.",
+            "A atuação foi encerrada e permanece aqui apenas como registro histórico de experiência envolvendo relatórios, reuniões pontuais e suporte na organização de eventos em comunidades do Discord.",
+          ],
+          skills: ["Supervisão de conteúdo", "Relatórios", "Apoio operacional", "Comunidades no Discord"],
+        },
       ]
     : [
         {
@@ -173,6 +189,19 @@ const Career = () => {
           description: ["Affiliate work focused on products, accessories, setup items and technology or gaming finds."],
           skills: ["Affiliate marketing", "Setups", "Gaming technology", "Product curation"],
         },
+        {
+          icon: Users,
+          role: "Former Content Supervisor",
+          company: "Mynexis",
+          logo: mynexisLogo,
+          period: "Aug 17, 2026 - ended",
+          place: "Recife, Pernambuco · Remote",
+          description: [
+            "I worked as a Content Supervisor at Mynexis, with operational support participation in the AGON by AOC community.",
+            "The role has ended and remains here only as a historical record of experience involving reports, occasional meetings and support organizing Discord community events.",
+          ],
+          skills: ["Content supervision", "Reports", "Operational support", "Discord communities"],
+        },
       ];
 
   const whatIDo = language === "pt"
@@ -216,6 +245,14 @@ const Career = () => {
       banner: escritorioBannerFull,
       link: "https://discord.gg/DzZN6tUJKq",
       role: getText(language, "Proprietário", "Owner"),
+    },
+    {
+      name: "AGON by AOC",
+      description: getText(language, "Comunidade AGON by AOC no Discord Brasil, onde tive atuação encerrada com suporte de conteúdo e auxílio operacional via Mynexis.", "AGON by AOC community on Discord Brazil, where I had a completed role with content support and operational assistance through Mynexis."),
+      logo: agonLogo,
+      banner: agonBanner,
+      link: "https://discord.gg/yBy8Vu79J3",
+      role: getText(language, "Ex Supervisor de Conteúdo", "Former Content Supervisor"),
     },
     {
       name: "DuneCo Dungeons",

@@ -12,7 +12,7 @@ import { policySections, policiesPageMeta } from "@/data/policies-content";
 import { cn } from "@/lib/utils";
 
 const groupIds = {
-  base: ["visao-geral", "termos-de-uso", "politica-de-privacidade", "disclaimer", "diretrizes-comunidade", "canais-oficiais-comunicacao-institucional"],
+  base: ["visao-geral", "termos-de-uso", "inspiracao-visual", "politica-de-privacidade", "disclaimer", "diretrizes-comunidade", "canais-oficiais-comunicacao-institucional"],
   work: ["como-trabalho", "o-que-faco", "o-que-nao-faco"],
   book: [
     "disclaimer-livro",
@@ -194,6 +194,10 @@ const Policies = () => {
                     <div className="divide-y divide-border/20 border-y border-border/20">
                       {group.sections.map((section) => {
                         const sectionIndex = policySections.findIndex((item) => item.id === section.id);
+                        const sectionPath =
+                          lang === "pt" && section.id === "inspiracao-visual"
+                            ? "/politica/inspiracao-visual"
+                            : `${basePath}/${section.id}`;
                         return (
                           <motion.div
                             key={section.id}
@@ -202,7 +206,7 @@ const Policies = () => {
                             viewport={{ once: true, margin: "-70px" }}
                             transition={{ duration: 0.5, delay: Math.min(sectionIndex * 0.025, 0.2), ease: [0.16, 1, 0.3, 1] }}
                           >
-                            <Link to={`${basePath}/${section.id}`} className="group grid gap-4 py-5 sm:grid-cols-[72px_1fr_auto] sm:items-center">
+                            <Link to={sectionPath} className="group grid gap-4 py-5 sm:grid-cols-[72px_1fr_auto] sm:items-center">
                               <span className="font-serif text-3xl leading-none text-foreground/14 transition-colors group-hover:text-foreground/28">
                                 {String(sectionIndex + 1).padStart(2, "0")}
                               </span>

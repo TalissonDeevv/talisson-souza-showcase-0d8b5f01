@@ -27,6 +27,8 @@ import signatureFeedbacks from "@/assets/signature-feedbacks.png";
 import signatureProjetos from "@/assets/signature-projetos.png";
 import signatureServicos from "@/assets/signature-servicos.png";
 import signatureDiscord from "@/assets/signature-discord.png";
+const agonLogo = "/images/discord/agon-logo.png";
+const agonBanner = "/images/discord/agon-banner.png";
 const hytaleLogo = "/images/discord/hytale-logo.gif";
 const hytaleBanner = "/images/discord/hytale-banner.png";
 const modsclubLogo = "/images/discord/modsclub-logo.png";
@@ -1387,6 +1389,16 @@ const Index = () => {
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
               <DiscordCommunityCard
+                name="AGON by AOC"
+                description={getText(language, "Comunidade AGON by AOC no Discord Brasil, onde tive atuação encerrada com suporte de conteúdo e auxílio operacional via Mynexis.", "AGON by AOC community on Discord Brazil, where I had a completed role with content support and operational assistance through Mynexis.")}
+                logo={agonLogo}
+                banner={agonBanner}
+                link="https://discord.gg/yBy8Vu79J3"
+                role={getText(language, "Ex Supervisor de Conteúdo", "Former Content Supervisor")}
+              />
+            </ScrollReveal>
+            <ScrollReveal delay={0.15}>
+              <DiscordCommunityCard
                 name="Hytale Brasil"
                 description={getText(language, "O servidor definitivo de Hytale no Discord! O lar dos jogadores brasileiros.", "The ultimate Hytale server on Discord! The home of Brazilian players.")}
                 logo={hytaleLogo}
@@ -1395,7 +1407,7 @@ const Index = () => {
                 role={getText(language, "Desenvolvedor Interno", "Internal Developer")}
               />
             </ScrollReveal>
-            <ScrollReveal delay={0.15}>
+            <ScrollReveal delay={0.2}>
               <DiscordCommunityCard
                 name="ModsClub"
                 description={getText(language, "Comunidade que reúne moderadores e administradores de comunidades brasileiras.", "Community that brings together moderators and administrators of Brazilian communities.")}

@@ -139,6 +139,41 @@ export const policySections: PolicySection[] = [
     ]
   },
   {
+    id: 'inspiracao-visual',
+    title: { pt: 'Inspiração Visual', en: 'Visual Inspiration' },
+    paragraphs: [
+      {
+        pt: 'Esta política existe para deixar claro como deve ser feito o crédito quando alguém usa este site como referência visual. Eu entendo que inspiração faz parte do processo criativo, mas quando uma inspiração fica reconhecível, o mínimo esperado é transparência sobre a origem da referência.',
+        en: 'This policy exists to clarify how credit should be given when someone uses this website as a visual reference. I understand that inspiration is part of the creative process, but when the inspiration is recognizable, the minimum expected standard is transparency about the source of the reference.'
+      },
+      {
+        heading: { pt: 'Quando essa política se aplica', en: 'When this policy applies' },
+        pt: 'Ela se aplica quando uma pessoa, empresa, criador, agência, freelancer ou projeto copia, adapta ou se inspira de forma reconhecível no design deste site, incluindo layout, composição visual, tipografia, seções, animações, hierarquia de conteúdo, estrutura de navegação, assinatura visual ou combinação geral desses elementos.',
+        en: 'It applies when a person, company, creator, agency, freelancer or project copies, adapts or is recognizably inspired by this website design, including layout, visual composition, typography, sections, animations, content hierarchy, navigation structure, visual signature or the general combination of these elements.'
+      },
+      {
+        heading: { pt: 'Crédito obrigatório', en: 'Required credit' },
+        pt: 'Quando a inspiração visual for reconhecível, o projeto publicado deve conter um crédito visível informando a referência original. O crédito deve conter o texto "Design inspirado pelo Talisson Souza" ou uma frase equivalente, acompanhado do link https://www.talissonsouza.com.br.',
+        en: 'When the visual inspiration is recognizable, the published project must include visible credit stating the original reference. The credit must include the text "Design inspired by Talisson Souza" or an equivalent sentence, together with the link https://www.talissonsouza.com.br.'
+      },
+      {
+        heading: { pt: 'Modelo recomendado para o footer', en: 'Recommended footer model' },
+        pt: 'O crédito pode aparecer no rodapé do site de forma simples, discreta e legível. Este é o modelo recomendado:\n```html\n<footer>\n  <p>\n    Design inspirado pelo\n    <a href="https://www.talissonsouza.com.br" target="_blank" rel="noopener noreferrer">\n      Talisson Souza\n    </a>\n  </p>\n</footer>\n```',
+        en: 'The credit may appear in the website footer in a simple, discreet and readable way. This is the recommended model:\n```html\n<footer>\n  <p>\n    Design inspired by\n    <a href="https://www.talissonsouza.com.br" target="_blank" rel="noopener noreferrer">\n      Talisson Souza\n    </a>\n  </p>\n</footer>\n```'
+      },
+      {
+        heading: { pt: 'O que esse crédito não autoriza', en: 'What this credit does not authorize' },
+        pt: 'Esse crédito não substitui autorização para cópia literal, reprodução integral da identidade visual, uso indevido de textos, imagens, código, marca, assinatura, componentes próprios ou qualquer material protegido. Também não permite sugerir parceria, aprovação, participação comercial, endosso ou vínculo direto comigo sem autorização formal.',
+        en: 'This credit does not replace authorization for literal copying, full reproduction of the visual identity, misuse of texts, images, code, brand, signature, custom components or any protected material. It also does not allow suggesting partnership, approval, commercial involvement, endorsement or direct connection with me without formal authorization.'
+      },
+      {
+        heading: { pt: 'Dúvidas e solicitações', en: 'Questions and requests' },
+        pt: `Se houver dúvida sobre o que é inspiração aceitável, cópia indevida ou uso correto do crédito, entre em contato antes da publicação. Demandas formais sobre autoria, uso indevido, remoção, notificação ou autorização devem ser encaminhadas para ${contactEmails.legal}.`,
+        en: `If there is any doubt about what counts as acceptable inspiration, improper copying or correct credit usage, contact should be made before publication. Formal matters about authorship, misuse, removal, notices or authorization should be sent to ${contactEmails.legal}.`
+      }
+    ]
+  },
+  {
     id: 'politica-de-privacidade',
     title: { pt: 'Política de Privacidade', en: 'Privacy Policy' },
     paragraphs: [

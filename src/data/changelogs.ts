@@ -135,6 +135,47 @@ export const changelogTypeLabels: Record<ChangelogType, LocalizedText> = {
 
 export const changelogEntries: ChangelogEntry[] = [
   {
+    id: "site-agon-mynexis-registro-historico-2026-09-14",
+    slug: "agon-mynexis-registro-historico",
+    categorySlug: "site",
+    date: "2026-09-14",
+    time: "12:55",
+    title: {
+      pt: "Registro histórico de AGON by AOC e Mynexis",
+      en: "Historical record for AGON by AOC and Mynexis",
+    },
+    type: "alteracao",
+    description: [
+      {
+        pt: "As referências a AGON by AOC e Mynexis foram restauradas no site como histórico de atuação, sem indicar vínculo atual.",
+        en: "References to AGON by AOC and Mynexis were restored on the website as a historical record, without indicating a current role.",
+      },
+      {
+        pt: "Os textos foram ajustados para deixar claro que a participação foi encerrada e permanece apenas como registro de experiência.",
+        en: "The copy was adjusted to make clear that the participation has ended and remains only as an experience record.",
+      },
+    ],
+    impact: {
+      pt: "As áreas públicas voltam a mostrar esse histórico sem sugerir parceria, cargo atual ou representação oficial ativa.",
+      en: "Public areas show this history again without suggesting a partnership, current position or active official representation.",
+    },
+    status: {
+      pt: "Publicado",
+      en: "Published",
+    },
+    effectiveDate: "2026-09-14",
+    relatedLinks: [
+      {
+        label: { pt: "Página inicial", en: "Home" },
+        href: "/",
+      },
+      {
+        label: { pt: "Carreira", en: "Career" },
+        href: "/carreira",
+      },
+    ],
+  },
+  {
     id: "politicas-afiliados-comissao-50-2026-09-14",
     slug: "comissao-afiliados-50-por-cento",
     categorySlug: "politicas",

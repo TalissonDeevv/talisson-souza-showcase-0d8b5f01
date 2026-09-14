@@ -255,6 +255,7 @@ const staticRoutes = [
   '/feedbacks',
   '/seja-afiliado',
   '/politicas',
+  '/politica/inspiracao-visual',
   '/en-us',
   '/en-us/about',
   '/en-us/projects',
@@ -291,7 +292,11 @@ const routes = requestedRoutes.length > 0
         ...trails.flatMap((trail) => [trail.path.pt, trail.path.en]),
         ...checklists.flatMap((checklist) => [checklist.path.pt, checklist.path.en]),
         ...changelogCategories.flatMap((category) => [category.path.pt, category.path.en]),
-        ...policySections.flatMap((section) => [`/politicas/${section.id}`, `/en-us/policies/${section.id}`]),
+        ...policySections.flatMap((section) => [
+          `/politicas/${section.id}`,
+          ...(section.id === 'inspiracao-visual' ? ['/politica/inspiracao-visual'] : []),
+          `/en-us/policies/${section.id}`,
+        ]),
       ]);
     })();
 

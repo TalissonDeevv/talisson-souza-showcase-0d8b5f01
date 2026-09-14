@@ -71,7 +71,13 @@ function extractLocalizedPaths(filePath) {
 function extractPolicyPaths() {
   const source = readSource('src/data/policies-content.ts');
   const ids = [...source.matchAll(/id:\s*['"]([^'"]+)['"]/g)].map((match) => match[1]);
-  return ids.flatMap((id) => [`/politicas/${id}`, `/en-us/policies/${id}`]);
+  return ids.flatMap((id) => {
+    if (id === 'inspiracao-visual') {
+      return ['/politica/inspiracao-visual', '/en-us/policies/inspiracao-visual'];
+    }
+
+    return [`/politicas/${id}`, `/en-us/policies/${id}`];
+  });
 }
 
 function normalizePathname(pathname) {

@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
-import { useParams, Navigate, Link } from "react-router-dom";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useParams, Navigate, Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, ChevronRight, FileText } from "lucide-react";
 import Layout from "@/components/layout/Layout";
@@ -52,6 +52,48 @@ const renderPolicyText = (text: string) => {
       </span>
     );
   });
+};
+
+const renderPolicyContent = (text: string) => {
+  const blocks: ReactNode[] = [];
+  const codeFenceRegex = /```(\w+)?\n([\s\S]*?)```/g;
+  let lastIndex = 0;
+  let blockIndex = 0;
+  let match: RegExpExecArray | null;
+
+  const renderTextLines = (value: string, keyPrefix: string) =>
+    value
+      .split("\n")
+      .filter((line) => line.trim().length > 0)
+      .map((line, index) => (
+        <span key={`${keyPrefix}-line-${index}`} className={blocks.length > 0 || index > 0 ? "mt-4 block" : "block"}>
+          {renderPolicyText(line)}
+        </span>
+      ));
+
+  while ((match = codeFenceRegex.exec(text)) !== null) {
+    const before = text.slice(lastIndex, match.index);
+    blocks.push(...renderTextLines(before, `text-${blockIndex}`));
+
+    const language = match[1] || "text";
+    const code = match[2].trim();
+    blocks.push(
+      <pre
+        key={`code-${blockIndex}`}
+        className="my-6 max-w-full overflow-x-auto rounded-2xl border border-border/25 bg-foreground/[0.045] p-4 text-sm leading-relaxed text-foreground shadow-inner"
+      >
+        <code data-language={language} className="block whitespace-pre font-mono">
+          {code}
+        </code>
+      </pre>
+    );
+
+    lastIndex = codeFenceRegex.lastIndex;
+    blockIndex += 1;
+  }
+
+  blocks.push(...renderTextLines(text.slice(lastIndex), `text-${blockIndex}`));
+  return blocks;
 };
 
 const renderPolicyParagraph = (text: string, lang: "pt" | "en", heading?: string) => {
@@ -153,18 +195,16 @@ const renderPolicyParagraph = (text: string, lang: "pt" | "en", heading?: string
     );
   }
 
-  return lines.map((line, index) => (
-    <span key={`${line}-${index}`} className={index > 0 ? "mt-4 block" : "block"}>
-      {renderPolicyText(line)}
-    </span>
-  ));
+  return renderPolicyContent(text);
 };
 
 const PolicyDetail = () => {
   const { language } = useTheme();
   const { sectionId } = useParams<{ sectionId: string }>();
+  const location = useLocation();
   const lang = language as "pt" | "en";
-  const basePath = lang === "en" ? "/en-us/policies" : "/politicas";
+  const hubPath = lang === "en" ? "/en-us/policies" : "/politicas";
+  const isSingularPolicyPath = lang === "pt" && location.pathname.startsWith("/politica/");
   const [activeChapter, setActiveChapter] = useState<string | null>(null);
   const [showReadingPanel, setShowReadingPanel] = useState(() => {
     if (typeof window === "undefined") return false;
@@ -223,15 +263,21 @@ const PolicyDetail = () => {
   }, [showReadingPanel]);
 
   if (!section) {
-    return <Navigate to={basePath} replace />;
+    return <Navigate to={hubPath} replace />;
   }
+
+  const detailBasePath = lang === "pt" && section.id === "inspiracao-visual"
+    ? "/politica"
+    : isSingularPolicyPath
+      ? "/politica"
+      : hubPath;
 
   return (
     <Layout withPadding={false}>
       <SEO
         title={`${section.title[lang]} | ${getText(language, "Políticas", "Policies")}`}
         description={section.paragraphs[0][lang].slice(0, 155)}
-        canonical={`${basePath}/${section.id}`}
+        canonical={`${detailBasePath}/${section.id}`}
         keywords={lang === "pt" ? ["políticas", "termos de uso", section.title.pt.toLowerCase()] : ["policies", "terms of use", section.title.en.toLowerCase()]}
       />
 
@@ -269,7 +315,7 @@ const PolicyDetail = () => {
         }
         actions={
           <Link
-            to={basePath}
+            to={hubPath}
             className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -284,7 +330,7 @@ const PolicyDetail = () => {
         <div className="container mx-auto px-6 lg:px-8">
           <div className={cn("mx-auto", showReadingPanel ? "max-w-5xl" : "max-w-6xl")}>
             <div className="mb-8 flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.16em] text-muted-foreground/60">
-              <Link to={basePath} className="transition-colors hover:text-foreground">
+              <Link to={hubPath} className="transition-colors hover:text-foreground">
                 {getText(language, "Políticas", "Policies")}
               </Link>
               <ChevronRight className="h-3 w-3" />
@@ -391,7 +437,7 @@ const PolicyDetail = () => {
           <div className="mx-auto max-w-5xl border-y border-border/20 py-6">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-stretch sm:justify-between">
               {prev ? (
-                <Link to={`${basePath}/${prev.id}`} className="group flex flex-1 items-center gap-3 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground">
+                <Link to={`${hubPath}/${prev.id}`} className="group flex flex-1 items-center gap-3 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground">
                   <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
                   <span>
                     <span className="block text-[10px] uppercase tracking-[0.22em] text-muted-foreground/50">{getText(language, "Anterior", "Previous")}</span>
@@ -402,13 +448,13 @@ const PolicyDetail = () => {
                 <span className="hidden flex-1 sm:block" />
               )}
 
-              <Link to={basePath} className="inline-flex items-center justify-center gap-2 rounded-full border border-border/30 bg-background/30 px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-foreground/10">
+              <Link to={hubPath} className="inline-flex items-center justify-center gap-2 rounded-full border border-border/30 bg-background/30 px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-foreground/10">
                 <FileText className="h-4 w-4" />
                 {getText(language, "Central", "Hub")}
               </Link>
 
               {next ? (
-                <Link to={`${basePath}/${next.id}`} className="group flex flex-1 items-center justify-end gap-3 py-3 text-right text-sm text-muted-foreground transition-colors hover:text-foreground">
+                <Link to={`${hubPath}/${next.id}`} className="group flex flex-1 items-center justify-end gap-3 py-3 text-right text-sm text-muted-foreground transition-colors hover:text-foreground">
                   <span>
                     <span className="block text-[10px] uppercase tracking-[0.22em] text-muted-foreground/50">{getText(language, "Próximo", "Next")}</span>
                     <span className="mt-1 block font-medium text-foreground">{next.title[lang]}</span>

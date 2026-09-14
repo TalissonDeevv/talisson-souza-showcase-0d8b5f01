@@ -105,6 +105,7 @@ for (const match of policiesSource.matchAll(/id:\s*'([^']+)'[\s\S]*?title:\s*\{\
 
 const policyDescriptionById = new Map([
   ['canais-oficiais-comunicacao-institucional', 'Regras para reconhecer canais oficiais, evitar golpes e confirmar comunicações ligadas ao trabalho de Talisson Souza.'],
+  ['inspiracao-visual', 'Regras de crédito para projetos que copiam, adaptam ou se inspiram no design visual do site de Talisson Souza.'],
 ]);
 
 const checklistTitleBySlug = new Map();
@@ -215,7 +216,7 @@ const getMeta = (route) => {
   const serviceMatch = route.match(/^\/(?:en-us\/)?services?\/([^/]+)$/);
   if (serviceMatch && serviceTitles.has(serviceMatch[1])) return serviceTitles.get(serviceMatch[1]);
 
-  const policyMatch = route.match(/^\/(?:en-us\/policies|politicas)\/([^/]+)$/);
+  const policyMatch = route.match(/^\/(?:en-us\/policies|politicas|politica)\/([^/]+)$/);
   if (policyMatch && policyTitleById.has(policyMatch[1])) {
     const title = policyTitleById.get(policyMatch[1]);
     const description = policyDescriptionById.get(policyMatch[1]) || `Política institucional sobre ${title.toLocaleLowerCase('pt-BR')}.`;
@@ -289,6 +290,12 @@ for (const route of articleMetaByPath.keys()) {
 for (const route of ['/changelogs', '/en-us/changelogs', ...changelogMetaByPath.keys()]) {
   if (!routeImages.has(route)) {
     routeImages.set(route, '/og/artigos.png');
+  }
+}
+
+for (const route of ['/politica/inspiracao-visual', '/en-us/policies/inspiracao-visual']) {
+  if (!routeImages.has(route)) {
+    routeImages.set(route, '/og/politicas.png');
   }
 }
 

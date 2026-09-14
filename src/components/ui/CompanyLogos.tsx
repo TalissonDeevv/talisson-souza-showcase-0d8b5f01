@@ -5,8 +5,10 @@ import { getText } from "@/utils/translations";
 import { cn } from "@/lib/utils";
 
 import accendLogo from "@/assets/logos/accend.png";
+import agonLogo from "@/assets/logos/agon-by-aoc.png";
 import cheetahLogo from "@/assets/logos/cheetah-solutions.png";
 import hostingerLogo from "@/assets/logos/hostinger.png";
+import mynexisLogo from "@/assets/logos/mynexis.png";
 import rocketseatLogo from "@/assets/logos/rocketseat.png";
 import shopeeLogo from "@/assets/logos/shopee.png";
 import splendoriLogo from "@/assets/logos/splendori.png";
@@ -56,6 +58,15 @@ const companies: Company[] = [
     name: "Rocketseat",
     logo: rocketseatLogo,
     url: "https://www.rocketseat.com.br/oferta/influencer/v2/talinho",
+  },
+  {
+    name: "AGON by AOC",
+    logo: agonLogo,
+  },
+  {
+    name: "Mynexis",
+    logo: mynexisLogo,
+    url: "https://www.mynexis.com.br",
   },
   {
     name: "Splendori",
