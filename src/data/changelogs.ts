@@ -135,6 +135,44 @@ export const changelogTypeLabels: Record<ChangelogType, LocalizedText> = {
 
 export const changelogEntries: ChangelogEntry[] = [
   {
+    id: "politicas-inspiracao-visual-identidade-autoral-2026-09-14",
+    slug: "politica-inspiracao-visual-logo-assinatura",
+    categorySlug: "politicas",
+    date: "2026-09-14",
+    time: "18:07",
+    title: {
+      pt: "Escopo da política inclui logo e assinatura",
+      en: "Policy scope now includes logo and signature",
+    },
+    type: "atualizacao",
+    description: [
+      {
+        pt: "A política de inspiração visual foi ajustada para deixar claro que também cobre logo, assinatura, assinatura reduzida, marca pessoal, símbolos e elementos de identidade autoral.",
+        en: "The visual inspiration policy was adjusted to clarify that it also covers logo, signature, reduced signature, personal brand, symbols and authorial identity elements.",
+      },
+      {
+        pt: "O texto passou a proibir de forma direta qualquer cópia da logo e da assinatura, incluindo redesenho, vetorização, recorte, recoloração, uso como base, variação reconhecível ou aplicação em outro projeto sem autorização expressa.",
+        en: "The text now directly prohibits any copying of the logo and signature, including redrawing, vectorizing, cropping, recoloring, use as a basis, recognizable variation or application in another project without express authorization.",
+      },
+    ],
+    impact: {
+      pt: "A política deixa de ser apenas sobre layout e passa a proteger de forma explícita a identidade visual completa associada ao nome Talisson Souza.",
+      en: "The policy is no longer only about layout and now explicitly protects the full visual identity associated with the Talisson Souza name.",
+    },
+    status: {
+      pt: "Publicado",
+      en: "Published",
+    },
+    effectiveDate: "2026-09-14",
+    relatedLinks: [
+      {
+        label: { pt: "Política de inspiração visual", en: "Visual inspiration policy" },
+        href: "/politicas/inspiracao-visual",
+      },
+    ],
+    important: true,
+  },
+  {
     id: "politicas-inspiracao-visual-juridica-2026-09-14",
     slug: "politica-inspiracao-visual-ampliada",
     categorySlug: "politicas",

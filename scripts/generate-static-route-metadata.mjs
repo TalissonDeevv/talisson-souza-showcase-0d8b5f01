@@ -105,7 +105,7 @@ for (const match of policiesSource.matchAll(/id:\s*'([^']+)'[\s\S]*?title:\s*\{\
 
 const policyDescriptionById = new Map([
   ['canais-oficiais-comunicacao-institucional', 'Regras para reconhecer canais oficiais, evitar golpes e confirmar comunicações ligadas ao trabalho de Talisson Souza.'],
-  ['inspiracao-visual', 'Política de crédito, limites de uso e condições jurídicas para projetos que copiam, adaptam ou se inspiram no design visual do site de Talisson Souza.'],
+  ['inspiracao-visual', 'Política de crédito, limites de uso e condições jurídicas para projetos que copiam, adaptam ou se inspiram no site, logo, assinatura ou identidade visual de Talisson Souza.'],
 ]);
 
 const checklistTitleBySlug = new Map();
