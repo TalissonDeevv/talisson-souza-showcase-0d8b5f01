@@ -135,6 +135,47 @@ export const changelogTypeLabels: Record<ChangelogType, LocalizedText> = {
 
 export const changelogEntries: ChangelogEntry[] = [
   {
+    id: "site-colaboracoes-remove-logo-agon-2026-09-14",
+    slug: "remove-logo-agon-colaboracoes",
+    categorySlug: "site",
+    date: "2026-09-14",
+    time: "18:10",
+    title: {
+      pt: "Logo da AGON removida de Colaborações",
+      en: "AGON logo removed from Collaborations",
+    },
+    type: "alteracao",
+    description: [
+      {
+        pt: "A logo da AGON by AOC foi removida da seção Colaborações & Atuações da página inicial.",
+        en: "The AGON by AOC logo was removed from the Collaborations & Activities section on the home page.",
+      },
+      {
+        pt: "A alteração evita interpretar a marca como uma colaboração ativa nessa seção, mantendo eventuais menções históricas apenas nos contextos apropriados.",
+        en: "The change avoids presenting the brand as an active collaboration in that section, while keeping any historical mentions only in the appropriate contexts.",
+      },
+    ],
+    impact: {
+      pt: "A seção de colaborações fica mais precisa e alinhada ao contexto atual de atuação.",
+      en: "The collaborations section is now more accurate and aligned with the current activity context.",
+    },
+    status: {
+      pt: "Publicado",
+      en: "Published",
+    },
+    effectiveDate: "2026-09-14",
+    relatedLinks: [
+      {
+        label: { pt: "Página inicial", en: "Home" },
+        href: "/",
+      },
+      {
+        label: { pt: "Changelog do site", en: "Website changelog" },
+        href: "/changelogs/site",
+      },
+    ],
+  },
+  {
     id: "politicas-inspiracao-visual-identidade-autoral-2026-09-14",
     slug: "politica-inspiracao-visual-logo-assinatura",
     categorySlug: "politicas",
