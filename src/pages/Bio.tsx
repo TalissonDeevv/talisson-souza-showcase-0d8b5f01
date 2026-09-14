@@ -43,7 +43,6 @@ const brandMarks = [
 
 const communityAssets = {
   escritorioLogo: "/images/discord/escritorio-logo.png",
-  agonLogo: "/images/discord/agon-logo.png",
   dunecoLogo: "/images/discord/duneco-logo.png",
   hytaleLogo: "/images/discord/hytale-logo.gif",
   modsclubLogo: "/images/discord/modsclub-logo.png",
@@ -91,12 +90,6 @@ const Bio = () => {
       role: getText(language, "Comunidade oficial", "Official community"),
       logo: communityAssets.escritorioLogo,
       href: "https://discord.gg/DzZN6tUJKq",
-    },
-    {
-      name: "AGON by AOC",
-      role: getText(language, "Supervisor de Conteúdo", "Content Supervisor"),
-      logo: communityAssets.agonLogo,
-      href: "https://discord.gg/yBy8Vu79J3",
     },
     {
       name: "DuneCo Dungeons",

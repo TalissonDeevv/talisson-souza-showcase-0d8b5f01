@@ -333,42 +333,6 @@ export const changelogEntries: ChangelogEntry[] = [
     ],
   },
   {
-    id: "site-referencias-agon-mynexis-2026-09-04",
-    slug: "referencias-agon-e-mynexis-ajustadas",
-    categorySlug: "site",
-    date: "2026-09-04",
-    time: "10:28",
-    title: {
-      pt: "Referências de AGON e Mynexis ajustadas",
-      en: "AGON and Mynexis references adjusted",
-    },
-    type: "alteracao",
-    description: [
-      {
-        pt: "A seção de carreira e as áreas de colaboração foram ajustadas para representar melhor a atuação ligada a AGON by AOC e Mynexis.",
-        en: "The career section and collaboration areas were adjusted to better represent work connected to AGON by AOC and Mynexis.",
-      },
-      {
-        pt: "O texto passou a evitar interpretações de parceria formal quando o contexto correto era atuação, participação ou colaboração pública.",
-        en: "The text now avoids implying a formal partnership when the correct context is work, participation or public collaboration.",
-      },
-    ],
-    impact: {
-      pt: "A comunicação fica mais precisa para empresas, comunidades e visitantes do site.",
-      en: "Communication becomes more accurate for companies, communities and website visitors.",
-    },
-    status: {
-      pt: "Ajustado",
-      en: "Adjusted",
-    },
-    relatedLinks: [
-      {
-        label: { pt: "Carreira", en: "Career" },
-        href: "/carreira",
-      },
-    ],
-  },
-  {
     id: "site-tema-claro-2026-08-29",
     slug: "tema-claro-com-ajustes-de-contraste",
     categorySlug: "site",
