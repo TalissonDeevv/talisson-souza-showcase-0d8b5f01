@@ -194,10 +194,7 @@ const Policies = () => {
                     <div className="divide-y divide-border/20 border-y border-border/20">
                       {group.sections.map((section) => {
                         const sectionIndex = policySections.findIndex((item) => item.id === section.id);
-                        const sectionPath =
-                          lang === "pt" && section.id === "inspiracao-visual"
-                            ? "/politica/inspiracao-visual"
-                            : `${basePath}/${section.id}`;
+                        const sectionPath = `${basePath}/${section.id}`;
                         return (
                           <motion.div
                             key={section.id}

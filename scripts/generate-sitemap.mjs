@@ -73,7 +73,7 @@ function extractPolicyPaths() {
   const ids = [...source.matchAll(/id:\s*['"]([^'"]+)['"]/g)].map((match) => match[1]);
   return ids.flatMap((id) => {
     if (id === 'inspiracao-visual') {
-      return ['/politica/inspiracao-visual', '/en-us/policies/inspiracao-visual'];
+      return ['/politicas/inspiracao-visual', '/en-us/policies/inspiracao-visual'];
     }
 
     return [`/politicas/${id}`, `/en-us/policies/${id}`];

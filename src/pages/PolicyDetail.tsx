@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
-import { useParams, Navigate, Link, useLocation } from "react-router-dom";
+import { useParams, Navigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, ChevronRight, FileText } from "lucide-react";
 import Layout from "@/components/layout/Layout";
@@ -201,10 +201,8 @@ const renderPolicyParagraph = (text: string, lang: "pt" | "en", heading?: string
 const PolicyDetail = () => {
   const { language } = useTheme();
   const { sectionId } = useParams<{ sectionId: string }>();
-  const location = useLocation();
   const lang = language as "pt" | "en";
   const hubPath = lang === "en" ? "/en-us/policies" : "/politicas";
-  const isSingularPolicyPath = lang === "pt" && location.pathname.startsWith("/politica/");
   const [activeChapter, setActiveChapter] = useState<string | null>(null);
   const [showReadingPanel, setShowReadingPanel] = useState(() => {
     if (typeof window === "undefined") return false;
@@ -266,11 +264,7 @@ const PolicyDetail = () => {
     return <Navigate to={hubPath} replace />;
   }
 
-  const detailBasePath = lang === "pt" && section.id === "inspiracao-visual"
-    ? "/politica"
-    : isSingularPolicyPath
-      ? "/politica"
-      : hubPath;
+  const detailBasePath = hubPath;
 
   return (
     <Layout withPadding={false}>

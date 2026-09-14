@@ -135,6 +135,48 @@ export const changelogTypeLabels: Record<ChangelogType, LocalizedText> = {
 
 export const changelogEntries: ChangelogEntry[] = [
   {
+    id: "politicas-inspiracao-visual-juridica-2026-09-14",
+    slug: "politica-inspiracao-visual-ampliada",
+    categorySlug: "politicas",
+    date: "2026-09-14",
+    time: "13:01",
+    title: {
+      pt: "Política de inspiração visual ampliada",
+      en: "Visual inspiration policy expanded",
+    },
+    type: "atualizacao",
+    description: [
+      {
+        pt: "A política de inspiração visual foi ampliada com linguagem mais jurídica, regras de crédito, limites de uso e orientações sobre remoção ou regularização.",
+        en: "The visual inspiration policy was expanded with more legal language, credit rules, usage limits and guidance on removal or regularization.",
+      },
+      {
+        pt: "A URL preferida da política passa a seguir o padrão das demais políticas em /politicas/inspiracao-visual.",
+        en: "The preferred policy URL now follows the same pattern as other policies at /politicas/inspiracao-visual.",
+      },
+      {
+        pt: "Também foram incluídos modelos de crédito para footer, página de créditos, página Sobre, documentação e repositório público.",
+        en: "Credit models were also added for footer, credits page, About page, documentation and public repository.",
+      },
+    ],
+    impact: {
+      pt: "Projetos que usarem o site como referência têm regras mais claras sobre crédito, falsa associação, cópia substancial, templates, uso de elementos protegidos e formas aceitáveis de atribuição pública.",
+      en: "Projects using the website as a reference now have clearer rules on credit, false association, substantial copying, templates, use of protected elements and acceptable forms of public attribution.",
+    },
+    status: {
+      pt: "Publicado",
+      en: "Published",
+    },
+    effectiveDate: "2026-09-14",
+    relatedLinks: [
+      {
+        label: { pt: "Política de inspiração visual", en: "Visual inspiration policy" },
+        href: "/politicas/inspiracao-visual",
+      },
+    ],
+    important: true,
+  },
+  {
     id: "site-agon-mynexis-registro-historico-2026-09-14",
     slug: "agon-mynexis-registro-historico",
     categorySlug: "site",

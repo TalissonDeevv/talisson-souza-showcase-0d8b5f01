@@ -255,6 +255,7 @@ const staticRoutes = [
   '/feedbacks',
   '/seja-afiliado',
   '/politicas',
+  '/politicas/inspiracao-visual',
   '/politica/inspiracao-visual',
   '/en-us',
   '/en-us/about',

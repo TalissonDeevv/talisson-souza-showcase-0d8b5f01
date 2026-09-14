@@ -105,7 +105,7 @@ for (const match of policiesSource.matchAll(/id:\s*'([^']+)'[\s\S]*?title:\s*\{\
 
 const policyDescriptionById = new Map([
   ['canais-oficiais-comunicacao-institucional', 'Regras para reconhecer canais oficiais, evitar golpes e confirmar comunicações ligadas ao trabalho de Talisson Souza.'],
-  ['inspiracao-visual', 'Regras de crédito para projetos que copiam, adaptam ou se inspiram no design visual do site de Talisson Souza.'],
+  ['inspiracao-visual', 'Política de crédito, limites de uso e condições jurídicas para projetos que copiam, adaptam ou se inspiram no design visual do site de Talisson Souza.'],
 ]);
 
 const checklistTitleBySlug = new Map();
@@ -293,7 +293,7 @@ for (const route of ['/changelogs', '/en-us/changelogs', ...changelogMetaByPath.
   }
 }
 
-for (const route of ['/politica/inspiracao-visual', '/en-us/policies/inspiracao-visual']) {
+for (const route of ['/politicas/inspiracao-visual', '/politica/inspiracao-visual', '/en-us/policies/inspiracao-visual']) {
   if (!routeImages.has(route)) {
     routeImages.set(route, '/og/politicas.png');
   }
