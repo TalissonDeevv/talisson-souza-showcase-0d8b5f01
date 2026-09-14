@@ -11,6 +11,8 @@ import { contactEmails, mailtoHref } from "@/data/contact-channels";
 
 const DISCORD_URL = "https://discord.talissonsouza.com.br";
 const PARTNERSHIPS_EMAIL = contactEmails.partnerships;
+const AFFILIATE_COMMISSION_RATE = 0.5;
+const AFFILIATE_COMMISSION_LABEL = "50%";
 
 const flowSteps = [
   {
@@ -25,13 +27,13 @@ const flowSteps = [
   },
   {
     label: "03",
-    title: "O projeto é fechado",
-    text: "Se a indicação virar um projeto contratado e o pagamento do cliente for confirmado, a comissão fica registrada conforme as regras do programa.",
+    title: "O projeto é fechado e finalizado",
+    text: "Se a indicação virar um projeto contratado, a comissão de 50% do valor do projeto fica registrada conforme as regras do programa.",
   },
   {
     label: "04",
     title: "A comissão é liberada",
-    text: "Depois da confirmação financeira e validação da indicação, o repasse acontece pelo fluxo combinado dentro do servidor oficial.",
+    text: "Depois da validação da indicação e da finalização do projeto, o repasse acontece pelo fluxo combinado dentro do servidor oficial.",
   },
 ];
 
@@ -48,13 +50,13 @@ const flowStepsEn = [
   },
   {
     label: "03",
-    title: "The project is closed",
-    text: "If the referral becomes a contracted project and the client's payment is confirmed, the commission is registered according to the program rules.",
+    title: "The project is closed and completed",
+    text: "If the referral becomes a contracted project, the 50% commission on the project value is registered according to the program rules.",
   },
   {
     label: "04",
     title: "The commission is released",
-    text: "After financial confirmation and referral validation, the payout follows the flow agreed inside the official server.",
+    text: "After referral validation and project completion, the payout follows the flow agreed inside the official server.",
   },
 ];
 
@@ -82,7 +84,7 @@ const partnerBenefits = [
   {
     label: "01",
     title: "Comissão por projeto",
-    text: "A indicação validada gera comissão quando o projeto é fechado e o pagamento é confirmado.",
+    text: "A indicação validada gera 50% do valor do projeto depois que ele for finalizado.",
   },
   {
     label: "02",
@@ -135,7 +137,7 @@ const partnerBenefitsEn = [
   {
     label: "01",
     title: "Project commission",
-    text: "A validated referral generates commission when the project is closed and payment is confirmed.",
+    text: "A validated referral generates 50% of the project value after it is completed.",
   },
   {
     label: "02",
@@ -414,7 +416,7 @@ const affiliateFaqs: AffiliateFaq[] = [
   {
     question: "Quando recebo minha comissão?",
     answer: [
-      "A comissão é liberada após a validação da indicação, o fechamento do projeto e a confirmação do pagamento realizado pelo cliente, conforme previsto no Contrato de Parceria e no Regulamento.",
+      "A comissão de 50% do valor do projeto é liberada após a validação da indicação e a finalização do projeto, conforme previsto no Contrato de Parceria e no Regulamento.",
     ],
   },
   {
@@ -449,7 +451,7 @@ const affiliateFaqs: AffiliateFaq[] = [
   {
     question: "Existe comissão para qualquer projeto?",
     answer: [
-      "Não. A comissão será aplicada apenas às indicações válidas, aprovadas e que resultarem em projetos efetivamente contratados e pagos.",
+      "Não. A comissão será aplicada apenas às indicações válidas, aprovadas e que resultarem em projetos efetivamente contratados e finalizados.",
     ],
   },
   {
@@ -599,7 +601,7 @@ const affiliateFaqsEn: AffiliateFaq[] = [
   {
     question: "When do I receive my commission?",
     answer: [
-      "Commission is released after referral validation, project closing and confirmation of the client's payment, according to the Partnership Agreement and Program Rules.",
+      "The 50% commission on the project value is released after referral validation and project completion, according to the Partnership Agreement and Program Rules.",
     ],
   },
   {
@@ -634,7 +636,7 @@ const affiliateFaqsEn: AffiliateFaq[] = [
   {
     question: "Is there commission for any project?",
     answer: [
-      "No. Commission applies only to valid and approved referrals that result in contracted and paid projects.",
+      "No. Commission applies only to valid and approved referrals that result in contracted and completed projects.",
     ],
   },
   {
@@ -734,7 +736,7 @@ const Affiliate = () => {
   const [projectAmount, setProjectAmount] = useState("5000");
   const [openFaq, setOpenFaq] = useState<string | undefined>("faq-0");
   const amount = parseCurrencyValue(projectAmount);
-  const commission = amount * 0.1;
+  const commission = amount * AFFILIATE_COMMISSION_RATE;
   const isPt = language === "pt";
   const canonicalPath = isPt ? "/seja-afiliado" : "/en-us/affiliate-program";
   const localizedFlowSteps = isPt ? flowSteps : flowStepsEn;
@@ -746,8 +748,8 @@ const Affiliate = () => {
   const seoTitle = getText(language, "Programa de Parceiros | Talisson Souza", "Partner Program | Talisson Souza");
   const seoDescription = getText(
     language,
-    "Indique clientes para os meus serviços e receba comissão por cada projeto fechado. Conheça o Programa de Parceiros da Talisson Souza.",
-    "Refer clients to my services and receive a commission for every closed project. Learn about Talisson Souza's Partner Program."
+    "Indique clientes para os meus serviços e receba 50% do valor de cada projeto finalizado. Conheça o Programa de Parceiros da Talisson Souza.",
+    "Refer clients to my services and receive 50% of each completed project value. Learn about Talisson Souza's Partner Program."
   );
 
   const jsonLd = {
@@ -843,15 +845,15 @@ const Affiliate = () => {
                     <p>
                       {getText(
                         language,
-                        "Se você conhece alguém que está precisando de um site, sistema, automação, bot para Discord ou qualquer outra solução tecnológica, pode fazer essa indicação para mim. Se o projeto for fechado, você recebe uma comissão.",
-                        "If you know someone who needs a website, system, automation, Discord bot or any other technology solution, you can refer that person to me. If the project is closed, you receive a commission."
+                        "Se você conhece alguém que está precisando de um site, sistema, automação, bot para Discord ou qualquer outra solução tecnológica, pode fazer essa indicação para mim. Se o projeto for finalizado, você recebe 50% do valor dele.",
+                        "If you know someone who needs a website, system, automation, Discord bot or any other technology solution, you can refer that person to me. If the project is completed, you receive 50% of its value."
                       )}
                     </p>
                     <p>
                       {getText(
                         language,
-                        "Você faz a indicação e eu cuido de toda a negociação, desenvolvimento, entrega e suporte. Depois que o pagamento do cliente for confirmado, a sua comissão é liberada conforme as regras do programa.",
-                        "You make the referral and I take care of the negotiation, development, delivery and support. Once the client's payment is confirmed, your commission is released according to the program rules."
+                        "Você faz a indicação e eu cuido de toda a negociação, desenvolvimento, entrega e suporte. Depois que o projeto indicado for finalizado, a sua comissão é liberada conforme as regras do programa.",
+                        "You make the referral and I take care of the negotiation, development, delivery and support. Once the referred project is completed, your commission is released according to the program rules."
                       )}
                     </p>
                   </div>
@@ -896,8 +898,8 @@ const Affiliate = () => {
                     <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
                       {getText(
                         language,
-                        "Um projeto de R$ 5.000 com comissão de 10% gera R$ 500 para quem fez a indicação validada. Se quiser simular outro valor, basta digitar abaixo.",
-                        "A R$ 5,000 project with a 10% commission generates R$ 500 for the person who made the validated referral. If you want to simulate another value, just type it below."
+                        "Um projeto de R$ 5.000 com comissão de 50% gera R$ 2.500 para quem fez a indicação validada. Se quiser simular outro valor, basta digitar abaixo.",
+                        "A R$ 5,000 project with a 50% commission generates R$ 2,500 for the person who made the validated referral. If you want to simulate another value, just type it below."
                       )}
                     </p>
                     <div className="grid gap-4 sm:grid-cols-[1fr_220px] sm:items-end">
@@ -933,7 +935,7 @@ const Affiliate = () => {
                 <div className="mt-10 grid gap-px overflow-hidden border border-border/20 bg-border/20 sm:grid-cols-3">
                   {[
                     { label: getText(language, "Projeto", "Project"), value: formatCurrency(amount) },
-                    { label: getText(language, "Comissão", "Commission"), value: "10%" },
+                    { label: getText(language, "Comissão", "Commission"), value: AFFILIATE_COMMISSION_LABEL },
                     { label: getText(language, "Você recebe", "You receive"), value: formatCurrency(commission) },
                   ].map((item, index) => (
                     <IdentityPanel
@@ -1441,8 +1443,8 @@ const Affiliate = () => {
                 <p className="max-w-2xl">
                   {getText(
                     language,
-                    "O programa depende de indicação identificável, cliente real, projeto fechado e pagamento confirmado. As regras operacionais podem ser ajustadas dentro do servidor para preservar clareza entre todos os envolvidos.",
-                    "The program depends on an identifiable referral, a real client, a closed project and confirmed payment. Operational rules may be adjusted inside the server to preserve clarity for everyone involved."
+                    "O programa depende de indicação identificável, cliente real, projeto fechado e projeto finalizado. As regras operacionais podem ser ajustadas dentro do servidor para preservar clareza entre todos os envolvidos.",
+                    "The program depends on an identifiable referral, a real client, a closed project and a completed project. Operational rules may be adjusted inside the server to preserve clarity for everyone involved."
                   )}
                 </p>
                 <div className="flex items-center gap-2 text-foreground/70">

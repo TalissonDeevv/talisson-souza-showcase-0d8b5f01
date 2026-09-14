@@ -135,6 +135,44 @@ export const changelogTypeLabels: Record<ChangelogType, LocalizedText> = {
 
 export const changelogEntries: ChangelogEntry[] = [
   {
+    id: "politicas-afiliados-comissao-50-2026-09-14",
+    slug: "comissao-afiliados-50-por-cento",
+    categorySlug: "politicas",
+    date: "2026-09-14",
+    time: "06:30",
+    title: {
+      pt: "Comissão de afiliados em 50%",
+      en: "Affiliate commission set to 50%",
+    },
+    type: "alteracao",
+    description: [
+      {
+        pt: "A página de afiliados foi atualizada para informar que indicações válidas recebem 50% do valor do projeto.",
+        en: "The affiliate page was updated to state that valid referrals receive 50% of the project value.",
+      },
+      {
+        pt: "A regra foi descrita como aplicável após a validação da indicação e a finalização do projeto indicado.",
+        en: "The rule was described as applying after referral validation and completion of the referred project.",
+      },
+    ],
+    impact: {
+      pt: "Afiliados passam a ter uma comunicação mais direta sobre porcentagem, condição de liberação e cálculo estimado.",
+      en: "Affiliates now have clearer communication about percentage, release condition and estimated calculation.",
+    },
+    status: {
+      pt: "Ativo",
+      en: "Active",
+    },
+    effectiveDate: "2026-09-14",
+    relatedLinks: [
+      {
+        label: { pt: "Página de afiliados", en: "Affiliate page" },
+        href: "/seja-afiliado",
+      },
+    ],
+    important: true,
+  },
+  {
     id: "site-changelogs-hierarquicos-2026-09-06",
     slug: "central-de-changelogs-por-area",
     categorySlug: "site",
