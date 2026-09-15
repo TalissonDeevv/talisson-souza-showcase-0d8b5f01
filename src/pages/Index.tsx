@@ -1,7 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import ContactDialog from "@/components/ui/ContactDialog";
-import { useState } from "react";
 
 import SocialIcons from "@/components/ui/SocialIcons";
 import FAQ from "@/components/ui/FAQ";
@@ -11,17 +10,17 @@ import PremiumBadge from "@/components/ui/PremiumBadge";
 import ParticlesBackground from "@/components/ui/ParticlesBackground";
 import ParallaxSection from "@/components/ui/ParallaxSection";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, BookOpen, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Quote } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import AnimatedSignature from "@/components/ui/AnimatedSignature";
 import { SiJavascript, SiTypescript, SiPython, SiReact, SiNodedotjs, SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFirebase } from "react-icons/si";
 import CompanyLogos from "@/components/ui/CompanyLogos";
 import DiscordCommunityCard from "@/components/ui/DiscordCommunityCard";
 import StoryHighlight from "@/components/ui/StoryHighlight";
 import SectionSignatureHeader from "@/components/ui/SectionSignatureHeader";
-import { feedbacks } from "@/data/feedbacks";
+import { TestimonialsSplit } from "@/components/ui/split-testimonial";
 import signatureTrajetoria from "@/assets/signature-trajetoria.png";
 import signatureFeedbacks from "@/assets/signature-feedbacks.png";
 import signatureProjetos from "@/assets/signature-projetos.png";
@@ -36,99 +35,6 @@ const modsclubBanner = "/images/discord/modsclub-banner.png";
 const escritorioLogo = "/images/discord/escritorio-logo.png";
 const escritorioBannerFull = "/images/discord/escritorio-banner-full.png";
 import bookMockupImg from "@/assets/book-mockup-v3.png";
-
-const HomeTestimonialCarousel = ({ language }: { language: string }) => {
-  const homeFeedbacks = feedbacks.slice(0, 7);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const active = homeFeedbacks[activeIndex];
-  const lang = language === "en" ? "en" : "pt";
-
-  const goToPrevious = () => {
-    setActiveIndex((current) => (current === 0 ? homeFeedbacks.length - 1 : current - 1));
-  };
-
-  const goToNext = () => {
-    setActiveIndex((current) => (current === homeFeedbacks.length - 1 ? 0 : current + 1));
-  };
-
-  return (
-    <ScrollReveal>
-      <div className="relative mx-auto flex max-w-2xl flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/[0.06] bg-card/25 px-5 py-7 shadow-[0_24px_90px_hsl(var(--foreground)/0.035)] sm:px-8 sm:py-8 lg:p-10">
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/[0.025] via-transparent to-transparent" />
-        <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
-
-        <div className="relative w-full max-w-2xl">
-          <AnimatePresence mode="wait">
-            <motion.article
-              key={active.name}
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -40 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="text-center"
-              aria-label={getText(language, `Depoimento de ${active.name}`, `Testimonial from ${active.name}`)}
-            >
-              <Quote className="mx-auto mb-6 h-7 w-7 text-foreground/22" />
-              <blockquote>
-                <p className="text-lg font-light leading-relaxed text-foreground/75 sm:text-xl md:text-2xl">
-                  "{active.text[lang]}"
-                </p>
-              </blockquote>
-
-              <footer className="mt-8 flex items-center justify-center gap-4">
-                <img
-                  src={active.image}
-                  alt={active.name}
-                  className="h-12 w-12 rounded-full border border-white/[0.08] object-cover"
-                  loading="lazy"
-                />
-                <div className="text-left">
-                  <cite className="block text-sm font-semibold not-italic text-foreground">{active.name}</cite>
-                  <p className="mt-1 text-xs text-muted-foreground/65">{active.role[lang]}</p>
-                </div>
-              </footer>
-            </motion.article>
-          </AnimatePresence>
-        </div>
-
-        <div className="relative mt-8 flex items-center justify-center gap-4">
-          <button
-            type="button"
-            onClick={goToPrevious}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-background/45 text-foreground/70 transition-colors duration-300 hover:bg-foreground/10 hover:text-foreground"
-            aria-label={getText(language, "Feedback anterior", "Previous feedback")}
-          >
-            <ChevronLeft className="h-4 w-4" />
-          </button>
-
-          <div className="flex max-w-[220px] flex-wrap items-center justify-center gap-2">
-            {homeFeedbacks.map((feedback, index) => (
-              <button
-                key={feedback.name}
-                type="button"
-                onClick={() => setActiveIndex(index)}
-                className={`h-2 w-2 rounded-full transition-all duration-300 ${
-                  index === activeIndex ? "w-6 bg-foreground" : "bg-foreground/25 hover:bg-foreground/45"
-                }`}
-                aria-label={getText(language, `Ver feedback de ${feedback.name}`, `View feedback from ${feedback.name}`)}
-                aria-current={index === activeIndex ? "true" : undefined}
-              />
-            ))}
-          </div>
-
-          <button
-            type="button"
-            onClick={goToNext}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-background/45 text-foreground/70 transition-colors duration-300 hover:bg-foreground/10 hover:text-foreground"
-            aria-label={getText(language, "Próximo feedback", "Next feedback")}
-          >
-            <ChevronRight className="h-4 w-4" />
-          </button>
-        </div>
-      </div>
-    </ScrollReveal>
-  );
-};
 
 const Index = () => {
   const {
@@ -898,7 +804,7 @@ const Index = () => {
           <SectionSignatureHeader
             eyebrow={getText(language, 'Depoimentos', 'Testimonials')}
             title={language === 'pt' ? 'O que dizem' : 'What they say'}
-            subtitle={language === 'pt' ? 'Feedbacks reais de colegas, parceiros e clientes em movimento cont\u00ednuo.' : 'Real feedback from colleagues, partners and clients in continuous motion.'}
+            subtitle={language === 'pt' ? 'Feedbacks reais de colegas, parceiros e clientes em uma leitura mais direta e interativa.' : 'Real feedback from colleagues, partners and clients in a cleaner interactive reading experience.'}
             signature={signatureFeedbacks}
             className="mb-12"
           />
@@ -917,12 +823,14 @@ const Index = () => {
                 {language === 'pt' ? 'O que dizem' : 'What they say'}
               </h2>
               <p className="text-base text-muted-foreground max-w-md leading-relaxed">
-                {language === 'pt' ? 'Feedbacks reais de colegas, parceiros e clientes em movimento contínuo.' : 'Real feedback from colleagues, partners and clients in continuous motion.'}
+                {language === 'pt' ? 'Feedbacks reais de colegas, parceiros e clientes em uma leitura mais direta e interativa.' : 'Real feedback from colleagues, partners and clients in a cleaner interactive reading experience.'}
               </p>
             </div>
           </div>
 
-          <HomeTestimonialCarousel language={language} />
+          <ScrollReveal>
+            <TestimonialsSplit />
+          </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
             <div className="mt-10">

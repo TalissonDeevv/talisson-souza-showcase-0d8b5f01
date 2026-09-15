@@ -135,6 +135,47 @@ export const changelogTypeLabels: Record<ChangelogType, LocalizedText> = {
 
 export const changelogEntries: ChangelogEntry[] = [
   {
+    id: "site-home-depoimentos-split-2026-09-15",
+    slug: "home-depoimentos-split-interativo",
+    categorySlug: "site",
+    date: "2026-09-15",
+    time: "06:42",
+    title: {
+      pt: "Depoimentos da Home em formato split",
+      en: "Home testimonials in split format",
+    },
+    type: "melhoria",
+    description: [
+      {
+        pt: "A seção de depoimentos da página inicial foi redesenhada com leitura em destaque, imagem lateral e navegação interativa por clique.",
+        en: "The home testimonials section was redesigned with a highlighted reading layout, side image and click-based interactive navigation.",
+      },
+      {
+        pt: "O novo componente usa os feedbacks reais já publicados no site e substitui o carrossel anterior por uma experiência mais focada.",
+        en: "The new component uses the real feedback already published on the website and replaces the previous carousel with a more focused experience.",
+      },
+    ],
+    impact: {
+      pt: "A Home passa a destacar cada depoimento com mais presença visual, mantendo acesso para a página completa de feedbacks.",
+      en: "The Home page now highlights each testimonial with more visual presence while keeping access to the full feedback page.",
+    },
+    status: {
+      pt: "Publicado",
+      en: "Published",
+    },
+    effectiveDate: "2026-09-15",
+    relatedLinks: [
+      {
+        label: { pt: "Página inicial", en: "Home" },
+        href: "/",
+      },
+      {
+        label: { pt: "Feedbacks", en: "Feedbacks" },
+        href: "/feedbacks",
+      },
+    ],
+  },
+  {
     id: "site-colaboracoes-remove-logo-agon-2026-09-14",
     slug: "remove-logo-agon-colaboracoes",
     categorySlug: "site",
