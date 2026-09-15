@@ -135,6 +135,47 @@ export const changelogTypeLabels: Record<ChangelogType, LocalizedText> = {
 
 export const changelogEntries: ChangelogEntry[] = [
   {
+    id: "site-home-depoimentos-marquee-2026-09-15",
+    slug: "home-depoimentos-marquee-continuo",
+    categorySlug: "site",
+    date: "2026-09-15",
+    time: "07:18",
+    title: {
+      pt: "Depoimentos da Home em marquee contínuo",
+      en: "Home testimonials in continuous marquee",
+    },
+    type: "melhoria",
+    description: [
+      {
+        pt: "A seção de depoimentos da página inicial foi atualizada para um carrossel horizontal em marquee, com cartões compactos, avatar, cargo e texto do feedback.",
+        en: "The home testimonials section was updated to a horizontal marquee carousel with compact cards, avatar, role and feedback text.",
+      },
+      {
+        pt: "A animação pausa ao passar o mouse e utiliza os depoimentos reais já cadastrados no site.",
+        en: "The animation pauses on hover and uses the real testimonials already registered on the website.",
+      },
+    ],
+    impact: {
+      pt: "A leitura dos feedbacks fica mais dinâmica na Home, mantendo o acesso para a página completa de depoimentos.",
+      en: "Feedback reading is more dynamic on the Home page while keeping access to the full testimonials page.",
+    },
+    status: {
+      pt: "Publicado",
+      en: "Published",
+    },
+    effectiveDate: "2026-09-15",
+    relatedLinks: [
+      {
+        label: { pt: "Página inicial", en: "Home" },
+        href: "/",
+      },
+      {
+        label: { pt: "Feedbacks", en: "Feedbacks" },
+        href: "/feedbacks",
+      },
+    ],
+  },
+  {
     id: "site-home-depoimentos-split-2026-09-15",
     slug: "home-depoimentos-split-interativo",
     categorySlug: "site",

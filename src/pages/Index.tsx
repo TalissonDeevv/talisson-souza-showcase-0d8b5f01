@@ -20,9 +20,9 @@ import CompanyLogos from "@/components/ui/CompanyLogos";
 import DiscordCommunityCard from "@/components/ui/DiscordCommunityCard";
 import StoryHighlight from "@/components/ui/StoryHighlight";
 import SectionSignatureHeader from "@/components/ui/SectionSignatureHeader";
-import { TestimonialsSplit } from "@/components/ui/split-testimonial";
+import { TestimonialsSection } from "@/components/ui/testimonials-with-marquee";
+import { feedbacks } from "@/data/feedbacks";
 import signatureTrajetoria from "@/assets/signature-trajetoria.png";
-import signatureFeedbacks from "@/assets/signature-feedbacks.png";
 import signatureProjetos from "@/assets/signature-projetos.png";
 import signatureServicos from "@/assets/signature-servicos.png";
 import signatureDiscord from "@/assets/signature-discord.png";
@@ -58,6 +58,15 @@ const Index = () => {
     technologies: ["React", "Firebase", "Styled Components"],
     link: "https://familiawerneck.vercel.app"
   }];
+  const feedbackLanguage = language === "en" ? "en" : "pt";
+  const homeTestimonials = feedbacks.map((feedback) => ({
+    author: {
+      name: feedback.name,
+      handle: feedback.role[feedbackLanguage],
+      avatar: feedback.image,
+    },
+    text: feedback.text[feedbackLanguage],
+  }));
   const featuredCompanies = [{
     name: "Cheetah Solutions Network",
     role: "CEO & Founder",
@@ -800,40 +809,18 @@ const Index = () => {
         }>
 
         
-        <div className="container mx-auto px-6 lg:px-8 relative">
-          <SectionSignatureHeader
-            eyebrow={getText(language, 'Depoimentos', 'Testimonials')}
-            title={language === 'pt' ? 'O que dizem' : 'What they say'}
-            subtitle={language === 'pt' ? 'Feedbacks reais de colegas, parceiros e clientes em uma leitura mais direta e interativa.' : 'Real feedback from colleagues, partners and clients in a cleaner interactive reading experience.'}
-            signature={signatureFeedbacks}
-            className="mb-12"
-          />
-
-          <div className="hidden">
-            <div className="mb-10">
-              <motion.span
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium">
-
-                {getText(language, 'Depoimentos', 'Testimonials')}
-              </motion.span>
-              <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
-                {language === 'pt' ? 'O que dizem' : 'What they say'}
-              </h2>
-              <p className="text-base text-muted-foreground max-w-md leading-relaxed">
-                {language === 'pt' ? 'Feedbacks reais de colegas, parceiros e clientes em uma leitura mais direta e interativa.' : 'Real feedback from colleagues, partners and clients in a cleaner interactive reading experience.'}
-              </p>
-            </div>
-          </div>
-
+        <div className="container mx-auto px-0 lg:px-8 relative">
           <ScrollReveal>
-            <TestimonialsSplit />
+            <TestimonialsSection
+              title={language === 'pt' ? 'O que dizem' : 'What they say'}
+              description={language === 'pt' ? 'Feedbacks reais de colegas, parceiros e clientes em movimento contínuo.' : 'Real feedback from colleagues, partners and clients in continuous motion.'}
+              testimonials={homeTestimonials}
+              className="bg-transparent py-0"
+            />
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-            <div className="mt-10">
+            <div className="mt-10 px-6 lg:px-0">
               <Link
                 to={language === 'en' ? '/en-us/feedbacks' : '/feedbacks'}
                 className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"
