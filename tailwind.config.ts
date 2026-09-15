@@ -68,9 +68,6 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
-			maxWidth: {
-				container: "1280px",
-			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
@@ -108,10 +105,6 @@ export default {
 				'float': {
 					'0%, 100%': { transform: 'translateY(0)' },
 					'50%': { transform: 'translateY(-10px)' }
-				},
-				'marquee': {
-					from: { transform: 'translateX(0)' },
-					to: { transform: 'translateX(calc(-100% - var(--gap)))' }
 				}
 			},
 			animation: {
@@ -122,8 +115,7 @@ export default {
 				'scale-in': 'scale-in 0.4s ease-out forwards',
 				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
 				'shimmer': 'shimmer 2s linear infinite',
-				'float': 'float 3s ease-in-out infinite',
-				'marquee': 'marquee var(--duration) linear infinite'
+				'float': 'float 3s ease-in-out infinite'
 			},
 			letterSpacing: {
 				'editorial': '-0.02em',

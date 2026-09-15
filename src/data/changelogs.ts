@@ -135,6 +135,47 @@ export const changelogTypeLabels: Record<ChangelogType, LocalizedText> = {
 
 export const changelogEntries: ChangelogEntry[] = [
   {
+    id: "site-home-depoimentos-editorial-2026-09-15",
+    slug: "home-depoimentos-editorial",
+    categorySlug: "site",
+    date: "2026-09-15",
+    time: "12:25",
+    title: {
+      pt: "Depoimentos da Home em formato editorial",
+      en: "Home testimonials in editorial format",
+    },
+    type: "melhoria",
+    description: [
+      {
+        pt: "A seção de depoimentos da página inicial foi redesenhada em um formato editorial, com número em destaque, fala principal, autor, cargo e navegação por linhas.",
+        en: "The home testimonials section was redesigned into an editorial format, with a highlighted number, main quote, author, role and line-based navigation.",
+      },
+      {
+        pt: "A navegação usa botões dedicados de anterior e próximo, sem cursor customizado ou clique escondido na área inteira.",
+        en: "Navigation uses dedicated previous and next buttons, without a custom cursor or hidden whole-area click.",
+      },
+    ],
+    impact: {
+      pt: "A Home passa a apresentar os feedbacks com uma leitura mais elegante, controlada e consistente em desktop e mobile.",
+      en: "The Home page now presents feedback with a more elegant, controlled and consistent reading experience across desktop and mobile.",
+    },
+    status: {
+      pt: "Publicado",
+      en: "Published",
+    },
+    effectiveDate: "2026-09-15",
+    relatedLinks: [
+      {
+        label: { pt: "Página inicial", en: "Home" },
+        href: "/",
+      },
+      {
+        label: { pt: "Feedbacks", en: "Feedbacks" },
+        href: "/feedbacks",
+      },
+    ],
+  },
+  {
     id: "site-home-depoimentos-marquee-2026-09-15",
     slug: "home-depoimentos-marquee-continuo",
     categorySlug: "site",

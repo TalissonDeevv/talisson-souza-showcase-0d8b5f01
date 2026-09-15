@@ -20,7 +20,7 @@ import CompanyLogos from "@/components/ui/CompanyLogos";
 import DiscordCommunityCard from "@/components/ui/DiscordCommunityCard";
 import StoryHighlight from "@/components/ui/StoryHighlight";
 import SectionSignatureHeader from "@/components/ui/SectionSignatureHeader";
-import { TestimonialsSection } from "@/components/ui/testimonials-with-marquee";
+import TestimonialsEditorial from "@/components/ui/editorial-testimonial";
 import { feedbacks } from "@/data/feedbacks";
 import signatureTrajetoria from "@/assets/signature-trajetoria.png";
 import signatureProjetos from "@/assets/signature-projetos.png";
@@ -60,12 +60,10 @@ const Index = () => {
   }];
   const feedbackLanguage = language === "en" ? "en" : "pt";
   const homeTestimonials = feedbacks.map((feedback) => ({
-    author: {
-      name: feedback.name,
-      handle: feedback.role[feedbackLanguage],
-      avatar: feedback.image,
-    },
-    text: feedback.text[feedbackLanguage],
+    quote: feedback.text[feedbackLanguage],
+    author: feedback.name,
+    role: feedback.role[feedbackLanguage],
+    image: feedback.image,
   }));
   const featuredCompanies = [{
     name: "Cheetah Solutions Network",
@@ -811,11 +809,10 @@ const Index = () => {
         
         <div className="container mx-auto px-0 lg:px-8 relative">
           <ScrollReveal>
-            <TestimonialsSection
+            <TestimonialsEditorial
               title={language === 'pt' ? 'O que dizem' : 'What they say'}
-              description={language === 'pt' ? 'Feedbacks reais de colegas, parceiros e clientes em movimento contínuo.' : 'Real feedback from colleagues, partners and clients in continuous motion.'}
+              description={language === 'pt' ? 'Feedbacks reais de colegas, parceiros e clientes em uma leitura editorial.' : 'Real feedback from colleagues, partners and clients in an editorial reading experience.'}
               testimonials={homeTestimonials}
-              className="bg-transparent py-0"
             />
           </ScrollReveal>
 
