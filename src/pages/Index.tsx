@@ -26,6 +26,7 @@ import signatureTrajetoria from "@/assets/signature-trajetoria.png";
 import signatureProjetos from "@/assets/signature-projetos.png";
 import signatureServicos from "@/assets/signature-servicos.png";
 import signatureDiscord from "@/assets/signature-discord.png";
+import signatureFeedbacks from "@/assets/signature-feedbacks.png";
 const agonLogo = "/images/discord/agon-logo.png";
 const agonBanner = "/images/discord/agon-banner.png";
 const hytaleLogo = "/images/discord/hytale-logo.gif";
@@ -809,15 +810,24 @@ const Index = () => {
         
         <div className="container mx-auto px-0 lg:px-8 relative">
           <ScrollReveal>
-            <TestimonialsEditorial
+            <SectionSignatureHeader
+              eyebrow={language === 'pt' ? 'Feedbacks' : 'Feedbacks'}
               title={language === 'pt' ? 'O que dizem' : 'What they say'}
-              description={language === 'pt' ? 'Feedbacks reais de colegas, parceiros e clientes em uma leitura editorial.' : 'Real feedback from colleagues, partners and clients in an editorial reading experience.'}
+              subtitle={language === 'pt' ? 'Feedbacks reais de colegas, parceiros e clientes em uma leitura editorial, direta e sem excesso de moldura.' : 'Real feedback from colleagues, partners and clients in a direct editorial reading experience.'}
+              signature={signatureFeedbacks}
+              className="px-6 lg:px-0"
+            />
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.12}>
+            <TestimonialsEditorial
               testimonials={homeTestimonials}
+              className="mt-12"
             />
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-            <div className="mt-10 px-6 lg:px-0">
+            <div className="mx-auto mt-10 flex w-full max-w-6xl justify-end px-6 lg:px-8">
               <Link
                 to={language === 'en' ? '/en-us/feedbacks' : '/feedbacks'}
                 className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"

@@ -135,6 +135,55 @@ export const changelogTypeLabels: Record<ChangelogType, LocalizedText> = {
 
 export const changelogEntries: ChangelogEntry[] = [
   {
+    id: "site-home-faq-carreira-timeline-2026-09-16",
+    slug: "home-faq-carreira-timeline",
+    categorySlug: "site",
+    date: "2026-09-16",
+    time: "09:41",
+    title: {
+      pt: "Home, FAQs e carreira atualizados",
+      en: "Home, FAQs and career updated",
+    },
+    type: "melhoria",
+    description: [
+      {
+        pt: "O destaque narrativo da Home foi atualizado para um bloco com foto, linhas editoriais e a frase autoral sobre software e permanência.",
+        en: "The Home narrative highlight was updated to a block with photo, editorial lines and the authorial quote about software and permanence.",
+      },
+      {
+        pt: "Os blocos de FAQ do site passaram a usar o novo componente com busca, expansão animada e melhor organização visual.",
+        en: "FAQ blocks across the site now use the new component with search, animated expansion and improved visual organization.",
+      },
+      {
+        pt: "A página de carreira recebeu timeline animada e a atuação com a Square Cloud foi marcada como encerrada em 15/09/2026.",
+        en: "The career page received an animated timeline and the Square Cloud work was marked as ended on September 15, 2026.",
+      },
+    ],
+    impact: {
+      pt: "A leitura da Home, das dúvidas frequentes e da trajetória profissional fica mais clara, consistente e atualizada.",
+      en: "The Home, FAQ and professional journey reading experience is clearer, more consistent and up to date.",
+    },
+    status: {
+      pt: "Publicado",
+      en: "Published",
+    },
+    effectiveDate: "2026-09-16",
+    relatedLinks: [
+      {
+        label: { pt: "Página inicial", en: "Home" },
+        href: "/",
+      },
+      {
+        label: { pt: "Carreira", en: "Career" },
+        href: "/carreira",
+      },
+      {
+        label: { pt: "FAQ", en: "FAQ" },
+        href: "/faq",
+      },
+    ],
+  },
+  {
     id: "site-home-depoimentos-editorial-2026-09-15",
     slug: "home-depoimentos-editorial",
     categorySlug: "site",

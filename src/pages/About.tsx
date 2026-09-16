@@ -7,6 +7,7 @@ import AnimatedSignature from "@/components/ui/AnimatedSignature";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import SocialIcons from "@/components/ui/SocialIcons";
 import { MotionRail, PageHero } from "@/components/ui/PageIdentity";
+import { FaqPro } from "@/components/ui/faq-pro";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 
@@ -441,19 +442,17 @@ const About = () => {
                     <span className="mb-4 block text-[11px] uppercase tracking-[0.28em] text-muted-foreground/55">
                       FAQ
                     </span>
-                    <div className="divide-y divide-border/15 border-y border-border/15">
-                      {trajectoryFaq.map((item) => (
-                        <details key={item.question} className="group py-5">
-                          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-xl text-foreground">
-                            <span>{item.question}</span>
-                            <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300 group-open:rotate-90" />
-                          </summary>
-                          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-                            {item.answer}
-                          </p>
-                        </details>
-                      ))}
-                    </div>
+                    <FaqPro
+                      className="mx-0 max-w-3xl"
+                      defaultOpenFirst
+                      emptyText={getText(language, "Nenhuma pergunta encontrada.", "No FAQs match your search.")}
+                      items={trajectoryFaq.map((item, index) => ({
+                        id: `about-${index}`,
+                        question: item.question,
+                        answer: item.answer,
+                      }))}
+                      searchPlaceholder={getText(language, "Buscar perguntas...", "Search FAQs...")}
+                    />
                   </div>
                 </ScrollReveal>
 

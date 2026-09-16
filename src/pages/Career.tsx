@@ -6,6 +6,7 @@ import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import DiscordCommunityCard from "@/components/ui/DiscordCommunityCard";
 import { IdentityPanel, MotionRail, PageHero } from "@/components/ui/PageIdentity";
+import { Timeline } from "@/components/ui/timeline";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import signatureTrajetoria from "@/assets/signature-trajetoria.png";
@@ -66,13 +67,14 @@ const Career = () => {
         },
         {
           icon: Handshake,
-          role: "Parceiro estratégico",
+          role: "Ex-parceiro estratégico",
           company: "Square Cloud",
           logo: squareLogo,
-          period: "set 2025 - presente",
+          period: "set 2025 - 15 de setembro de 2026",
           place: "Recife, Pernambuco · Remoto",
           description: [
-            "Colaboração em projetos de desenvolvimento, suporte e estratégias para comunidade e clientes.",
+            "Parceria estratégica encerrada em 15/09/2026, mantida aqui como registro histórico da atuação.",
+            "Colaborei em projetos de desenvolvimento, suporte e estratégias para comunidade e clientes.",
             "Fornecimento de feedback e sugestões sobre sistemas, programas de engajamento e melhorias na experiência do usuário.",
           ],
           skills: ["Parcerias estratégicas", "Divulgação pública", "Estratégia"],
@@ -151,12 +153,16 @@ const Career = () => {
         },
         {
           icon: Handshake,
-          role: "Strategic Partner",
+          role: "Former Strategic Partner",
           company: "Square Cloud",
           logo: squareLogo,
-          period: "Sep 2025 - Present",
+          period: "Sep 2025 - September 15, 2026",
           place: "Recife, Pernambuco · Remote",
-          description: ["Collaboration on development, support and community/client strategies.", "Feedback and suggestions for systems, engagement programs and user experience improvements."],
+          description: [
+            "Strategic partnership ended on September 15, 2026 and remains here as a historical record.",
+            "Collaboration on development, support and community/client strategies.",
+            "Feedback and suggestions for systems, engagement programs and user experience improvements.",
+          ],
           skills: ["Strategic partnerships", "Public promotion", "Strategy"],
         },
         {
@@ -288,6 +294,77 @@ const Career = () => {
     },
   ];
 
+  const careerTimeline = experiences.map((experience) => {
+    const ExperienceIcon = experience.icon;
+
+    return {
+      title: experience.company,
+      content: (
+        <motion.article
+          whileHover={{ y: -3 }}
+          transition={{ duration: 0.3 }}
+          className="relative overflow-hidden border-y border-border/20 bg-background/30 px-0 py-7 sm:px-6 lg:px-8"
+        >
+          <div
+            className="pointer-events-none absolute inset-0 opacity-[0.018]"
+            style={{
+              backgroundImage:
+                "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
+              backgroundSize: "44px 44px",
+            }}
+          />
+          <div className="relative">
+            <div className="mb-5 flex flex-wrap items-center gap-4">
+              <div className="inline-flex min-h-12 items-center rounded-2xl border border-border/20 bg-background/25 px-4 py-3">
+                <img
+                  src={experience.logo}
+                  alt={experience.company}
+                  className="company-logo-monochrome max-h-9 w-auto max-w-[176px] select-none object-contain sm:max-h-10 sm:max-w-[210px]"
+                  loading="lazy"
+                  draggable={false}
+                />
+              </div>
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/25 bg-background/35 text-foreground/65">
+                <ExperienceIcon className="h-4 w-4" />
+              </span>
+            </div>
+
+            <h3 className="font-serif text-2xl leading-tight text-foreground">{experience.role}</h3>
+            <p className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs uppercase tracking-[0.16em] text-muted-foreground/55">
+              <span className="inline-flex items-center gap-1.5">
+                <CalendarDays className="h-3.5 w-3.5" />
+                {experience.period}
+              </span>
+              <span>{experience.place}</span>
+            </p>
+
+            <div className="mt-5 space-y-3">
+              {experience.description.map((item) => (
+                <p key={item} className="max-w-3xl text-sm leading-relaxed text-muted-foreground">
+                  {item}
+                </p>
+              ))}
+            </div>
+
+            <details className="group mt-6 border-t border-border/20 pt-4">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-[11px] uppercase tracking-[0.24em] text-muted-foreground/60 transition-colors hover:text-foreground">
+                <span>{getText(language, "Competências", "Skills")}</span>
+                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-open:rotate-90" />
+              </summary>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {experience.skills.map((skill) => (
+                  <span key={skill} className="rounded-full border border-border/25 bg-background/35 px-3 py-1.5 text-[11px] text-muted-foreground">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </details>
+          </div>
+        </motion.article>
+      ),
+    };
+  });
+
   return (
     <Layout withPadding={false}>
       <SEO
@@ -364,78 +441,17 @@ const Career = () => {
       </section>
 
       <section id="experiencias" className="scroll-mt-28 py-14 lg:py-20">
-        <div className="container mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="mb-10 flex flex-col gap-4 border-y border-border/20 py-8 lg:flex-row lg:items-end lg:justify-between">
-              <div>
-                <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                  {getText(language, "Experiências", "Experience")}
-                </span>
-                <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
-                  {getText(language, "Onde essa atuação foi construída.", "Where this practice was built.")}
-                </h2>
-              </div>
-              <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-                {getText(
-                  language,
-                  "Uma leitura profissional sem parecer currículo engessado, com função, contexto, impacto e competências reais.",
-                  "A professional reading without feeling like a rigid resume, with role, context, impact and real skills."
-                )}
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <div className="space-y-5">
-            {experiences.map((experience, index) => (
-              <ScrollReveal key={`${experience.company}-${experience.role}`} delay={index * 0.05}>
-                <motion.article
-                  whileHover={{ y: -3 }}
-                  transition={{ duration: 0.3 }}
-                  className="relative overflow-hidden border-y border-border/20 bg-background/30 px-0 py-7 sm:px-6 lg:px-8"
-                >
-                  <div className="pointer-events-none absolute inset-0 opacity-[0.018]" style={{ backgroundImage: "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)", backgroundSize: "44px 44px" }} />
-                  <div className="relative">
-                    <div>
-                      <div className="mb-5 inline-flex min-h-12 items-center rounded-2xl border border-border/20 bg-background/25 px-4 py-3">
-                        <img
-                          src={experience.logo}
-                          alt={experience.company}
-                          className="company-logo-monochrome max-h-9 w-auto max-w-[176px] select-none object-contain sm:max-h-10 sm:max-w-[210px]"
-                          loading="lazy"
-                          draggable={false}
-                        />
-                      </div>
-                      <h3 className="font-serif text-2xl leading-tight text-foreground">{experience.role}</h3>
-                      <p className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs uppercase tracking-[0.16em] text-muted-foreground/55">
-                        <span className="inline-flex items-center gap-1.5"><CalendarDays className="h-3.5 w-3.5" /> {experience.period}</span>
-                        <span>{experience.place}</span>
-                      </p>
-                      <div className="mt-5 space-y-3">
-                        {experience.description.map((item) => (
-                          <p key={item} className="max-w-3xl text-sm leading-relaxed text-muted-foreground">{item}</p>
-                        ))}
-                      </div>
-
-                      <details className="group mt-6 border-t border-border/20 pt-4">
-                        <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-[11px] uppercase tracking-[0.24em] text-muted-foreground/60 transition-colors hover:text-foreground">
-                          <span>{getText(language, "Competências", "Skills")}</span>
-                          <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-open:rotate-90" />
-                        </summary>
-                        <div className="mt-4 flex flex-wrap gap-2">
-                          {experience.skills.map((skill) => (
-                            <span key={skill} className="rounded-full border border-border/25 bg-background/35 px-3 py-1.5 text-[11px] text-muted-foreground">
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
-                      </details>
-                    </div>
-                  </div>
-                </motion.article>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
+        <ScrollReveal>
+          <Timeline
+            data={careerTimeline}
+            description={getText(
+              language,
+              "Uma leitura profissional sem parecer currículo engessado, com função, contexto, impacto e competências reais.",
+              "A professional reading without feeling like a rigid resume, with role, context, impact and real skills."
+            )}
+            title={getText(language, "Onde essa atuação foi construída.", "Where this practice was built.")}
+          />
+        </ScrollReveal>
       </section>
 
       <section id="certificacoes" className="relative scroll-mt-28 overflow-hidden py-14 lg:py-20">

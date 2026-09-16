@@ -20,6 +20,7 @@ import {
 import organizingImage from "@/assets/organizing-projects.png";
 import signatureProjetos from "@/assets/signature-projetos.png";
 import ClientPortalDialog from "@/components/projects/ClientPortalDialog";
+import { FaqPro } from "@/components/ui/faq-pro";
 
 const premiumEase = [0.16, 1, 0.3, 1] as const;
 
@@ -484,21 +485,16 @@ const Projects = () => {
               {getText(language, "Perguntas frequentes", "Frequently asked questions")}
             </motion.h2>
 
-            <div className="divide-y divide-border/30 border-y border-border/30">
-              {faqs.map((faq, index) => (
-                <motion.div
-                  key={faq.q}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.5, delay: index * 0.08, ease: premiumEase }}
-                  className="py-6"
-                >
-                  <h3 className="mb-2 text-base font-medium text-foreground md:text-lg">{faq.q}</h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{faq.a}</p>
-                </motion.div>
-              ))}
-            </div>
+            <FaqPro
+              defaultOpenFirst
+              emptyText={getText(language, "Nenhuma pergunta encontrada.", "No FAQs match your search.")}
+              items={faqs.map((faq, index) => ({
+                id: `projects-${index}`,
+                question: faq.q,
+                answer: faq.a,
+              }))}
+              searchPlaceholder={getText(language, "Buscar perguntas...", "Search FAQs...")}
+            />
           </div>
         </div>
       </section>

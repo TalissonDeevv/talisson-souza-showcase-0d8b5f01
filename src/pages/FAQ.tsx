@@ -4,10 +4,10 @@ import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { MotionRail, PageHero } from "@/components/ui/PageIdentity";
+import { FaqPro } from "@/components/ui/faq-pro";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import { ArrowRight, HelpCircle } from "lucide-react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 type FAQCategory = {
   title: string;
@@ -233,18 +233,17 @@ const FAQ = () => {
                       <HelpCircle className="hidden h-5 w-5 text-foreground/35 sm:block" />
                     </div>
 
-                    <Accordion type="single" collapsible className="w-full">
-                      {category.questions.map((item, qIndex) => (
-                        <AccordionItem key={item.q} value={`cat-${catIndex}-q-${qIndex}`} className="border-b border-border/20 last:border-b-0">
-                          <AccordionTrigger className="py-5 text-left text-base font-medium text-foreground transition-opacity duration-200 hover:no-underline hover:opacity-75">
-                            {item.q}
-                          </AccordionTrigger>
-                          <AccordionContent className="pb-5">
-                            <p className="max-w-3xl text-sm leading-[1.9] text-muted-foreground">{item.a}</p>
-                          </AccordionContent>
-                        </AccordionItem>
-                      ))}
-                    </Accordion>
+                    <FaqPro
+                      className="mx-0 max-w-3xl"
+                      defaultOpenFirst={catIndex === 0}
+                      emptyText={getText(language, "Nenhuma pergunta encontrada.", "No FAQs match your search.")}
+                      items={category.questions.map((item, qIndex) => ({
+                        id: `cat-${catIndex}-q-${qIndex}`,
+                        question: item.q,
+                        answer: item.a,
+                      }))}
+                      searchPlaceholder={getText(language, "Buscar nesta categoria...", "Search this category...")}
+                    />
                   </section>
                 </ScrollReveal>
               ))}

@@ -1,71 +1,51 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { FaqPro, type FaqProItem } from "@/components/ui/faq-pro";
 import { useTheme } from "@/contexts/ThemeContext";
-import { useTranslation } from "@/utils/translations";
+import { getText, useTranslation } from "@/utils/translations";
 
 const FAQ = () => {
   const { language } = useTheme();
   const t = useTranslation(language);
 
-  const faqData = [
+  const faqData: FaqProItem[] = [
     {
+      id: "faq-1",
       question: t.faq.questions.question1,
-      answer: t.faq.questions.answer1
+      answer: t.faq.questions.answer1,
     },
     {
+      id: "faq-2",
       question: t.faq.questions.question2,
-      answer: t.faq.questions.answer2
+      answer: t.faq.questions.answer2,
     },
     {
+      id: "faq-3",
       question: t.faq.questions.question3,
-      answer: t.faq.questions.answer3
+      answer: t.faq.questions.answer3,
     },
     {
+      id: "faq-4",
       question: t.faq.questions.question4,
-      answer: t.faq.questions.answer4
+      answer: t.faq.questions.answer4,
     },
     {
+      id: "faq-5",
       question: t.faq.questions.question5,
-      answer: t.faq.questions.answer5
+      answer: t.faq.questions.answer5,
     },
     {
+      id: "faq-6",
       question: t.faq.questions.question6,
-      answer: t.faq.questions.answer6
-    }
+      answer: t.faq.questions.answer6,
+    },
   ];
 
   return (
-    <div>
-      <Accordion type="single" collapsible className="w-full border-y border-border/25">
-        {faqData.map((item, index) => (
-          <AccordionItem 
-            key={index} 
-            value={`item-${index}`}
-            className="border-b border-border/25 last:border-b-0"
-          >
-            <AccordionTrigger className="group py-6 text-left text-foreground hover:no-underline">
-              <span className="flex items-center gap-4 pr-4">
-                <span className="font-serif text-xl leading-none text-foreground/[0.16] transition-colors duration-300 group-hover:text-foreground/35">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <span className="text-base font-medium leading-snug">
-                  {item.question}
-                </span>
-              </span>
-            </AccordionTrigger>
-            <AccordionContent className="pb-6 pl-12 text-sm leading-relaxed text-muted-foreground sm:pl-16">
-              <span className="block max-w-2xl">
-                {item.answer}
-              </span>
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-    </div>
+    <FaqPro
+      defaultOpenFirst
+      emptyText={getText(language, "Nenhuma pergunta encontrada.", "No FAQs match your search.")}
+      items={faqData}
+      searchPlaceholder={getText(language, "Buscar perguntas...", "Search FAQs...")}
+    />
   );
 };
 

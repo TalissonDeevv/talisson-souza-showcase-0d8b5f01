@@ -4,7 +4,7 @@ import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { IdentityPanel, MotionRail, PageHero } from "@/components/ui/PageIdentity";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { FaqPro } from "@/components/ui/faq-pro";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import { contactEmails, mailtoHref } from "@/data/contact-channels";
@@ -734,7 +734,6 @@ const formatCurrency = (value: number) =>
 const Affiliate = () => {
   const { language } = useTheme();
   const [projectAmount, setProjectAmount] = useState("5000");
-  const [openFaq, setOpenFaq] = useState<string | undefined>("faq-0");
   const amount = parseCurrencyValue(projectAmount);
   const commission = amount * AFFILIATE_COMMISSION_RATE;
   const isPt = language === "pt";
@@ -763,11 +762,6 @@ const Affiliate = () => {
       name: "Talisson Souza",
     },
   };
-  const faqColumns = [
-    localizedAffiliateFaqs.filter((_, index) => index % 2 === 0),
-    localizedAffiliateFaqs.filter((_, index) => index % 2 !== 0),
-  ];
-
   return (
     <Layout withPadding={false}>
       <SEO
@@ -1328,42 +1322,19 @@ const Affiliate = () => {
                 </div>
               </ScrollReveal>
 
-              <div className="mt-10 grid gap-8 lg:grid-cols-2">
-                {faqColumns.map((column, columnIndex) => (
-                  <ScrollReveal key={columnIndex} delay={columnIndex * 0.08}>
-                    <Accordion
-                      type="single"
-                      collapsible
-                      value={openFaq}
-                      onValueChange={(value) => setOpenFaq(value || undefined)}
-                      className="border-y border-border/20"
-                    >
-                      {column.map((item, itemIndex) => {
-                        const originalIndex = columnIndex === 0 ? itemIndex * 2 : itemIndex * 2 + 1;
-
-                        return (
-                          <AccordionItem
-                            key={item.question}
-                            value={`faq-${originalIndex}`}
-                            className="border-border/20"
-                          >
-                            <AccordionTrigger className="py-6 text-left text-base font-semibold leading-snug text-foreground transition-opacity duration-200 hover:no-underline hover:opacity-75">
-                              <span className="pr-6">{item.question}</span>
-                            </AccordionTrigger>
-                            <AccordionContent className="pb-6">
-                              <div className="space-y-3 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
-                                {item.answer.map((paragraph) => (
-                                  <p key={paragraph}>{paragraph}</p>
-                                ))}
-                              </div>
-                            </AccordionContent>
-                          </AccordionItem>
-                        );
-                      })}
-                    </Accordion>
-                  </ScrollReveal>
-                ))}
-              </div>
+              <ScrollReveal delay={0.08}>
+                <FaqPro
+                  className="mt-10 max-w-4xl"
+                  defaultOpenFirst
+                  emptyText={getText(language, "Nenhuma pergunta encontrada.", "No FAQs match your search.")}
+                  items={localizedAffiliateFaqs.map((item, index) => ({
+                    id: `affiliate-${index}`,
+                    question: item.question,
+                    answer: item.answer.join("\n\n"),
+                  }))}
+                  searchPlaceholder={getText(language, "Buscar perguntas...", "Search FAQs...")}
+                />
+              </ScrollReveal>
 
               <ScrollReveal delay={0.16}>
                 <div className="mt-10 border-y border-border/20 py-8">
