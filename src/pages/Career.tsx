@@ -249,7 +249,7 @@ const Career = () => {
       description: getText(language, "Espaço oficial onde concentro comunidade, projetos e conteúdo sobre tecnologia e negócios.", "Official space for my community, projects and content about technology and business."),
       logo: escritorioLogo,
       banner: escritorioBannerFull,
-      link: "https://discord.gg/DzZN6tUJKq",
+      link: "https://discord.talissonsouza.com.br/",
       role: getText(language, "Proprietário", "Owner"),
     },
     {

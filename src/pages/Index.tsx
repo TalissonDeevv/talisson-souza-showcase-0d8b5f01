@@ -738,7 +738,7 @@ const Index = () => {
 
       {/* Story Highlight - Premium */}
       <ParallaxSection
-        className="py-20 lg:py-24"
+        className="py-10 sm:py-12 lg:py-16"
         speed={0.12}
         backgroundElement={
         <>
@@ -1285,7 +1285,7 @@ const Index = () => {
                 description={getText(language, "Espaço oficial onde concentro minha comunidade, projetos e conteúdos de tecnologia e estratégia de negócios.", "Official space where I concentrate my community, projects and content on technology and business strategy.")}
                 logo={escritorioLogo}
                 banner={escritorioBannerFull}
-                link="https://discord.gg/DzZN6tUJKq"
+                link="https://discord.talissonsouza.com.br/"
                 role={getText(language, "Proprietário", "Owner")}
               />
             </ScrollReveal>

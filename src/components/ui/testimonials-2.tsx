@@ -26,7 +26,7 @@ export function TestimonialsSection({
   return (
     <figure
       className={cn(
-        "mx-auto flex w-full max-w-3xl flex-col items-center justify-center md:grid md:grid-cols-[auto_1fr]",
+        "mx-auto flex w-full max-w-6xl flex-col items-center justify-center md:grid md:grid-cols-[minmax(180px,240px)_minmax(0,1fr)] md:gap-x-10 lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)] lg:gap-x-16",
         className
       )}
     >
@@ -36,7 +36,7 @@ export function TestimonialsSection({
         <MaskLine className="top-0 md:w-xl" orientation="horizontal" />
         <MaskLine className="bottom-0 md:w-xl" orientation="horizontal" />
 
-        <Avatar className="size-24 rounded-none [mask-image:radial-gradient(circle,black_60%,transparent_100%)] *:rounded-none md:size-32">
+        <Avatar className="size-36 rounded-none [mask-image:radial-gradient(circle,black_60%,transparent_100%)] *:rounded-none md:size-44 lg:size-52">
           <AvatarImage
             alt={imageAlt ?? author}
             src={imageSrc}
@@ -46,8 +46,8 @@ export function TestimonialsSection({
         </Avatar>
       </div>
 
-      <figcaption className="space-y-4 p-8 text-center md:p-6 md:text-left">
-        <blockquote className="text-lg leading-tight tracking-normal text-muted-foreground sm:text-xl">
+      <figcaption className="space-y-6 px-2 py-8 text-center sm:px-4 md:p-0 md:text-left">
+        <blockquote className="max-w-4xl text-xl leading-[1.25] tracking-normal text-muted-foreground sm:text-2xl lg:text-4xl">
           &quot;
           <span className="font-medium text-foreground">{quote}</span>
           &quot;

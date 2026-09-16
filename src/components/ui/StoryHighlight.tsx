@@ -8,7 +8,7 @@ const StoryHighlight = () => {
   const { language } = useTheme();
 
   return (
-    <div className="container relative mx-auto px-6 lg:px-8">
+    <div className="container relative mx-auto w-full px-6 lg:px-8">
       <TestimonialsSection
         author="Talisson Souza"
         imageAlt="Talisson Souza"

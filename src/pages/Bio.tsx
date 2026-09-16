@@ -90,7 +90,7 @@ const Bio = () => {
       name: "Escritório do Talisson",
       role: getText(language, "Comunidade oficial", "Official community"),
       logo: communityAssets.escritorioLogo,
-      href: "https://discord.gg/DzZN6tUJKq",
+      href: "https://discord.talissonsouza.com.br/",
     },
     {
       name: "AGON by AOC",
