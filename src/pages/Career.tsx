@@ -28,6 +28,10 @@ const hytaleLogo = "/images/discord/hytale-logo.gif";
 const hytaleBanner = "/images/discord/hytale-banner.png";
 const modsclubLogo = "/images/discord/modsclub-logo.png";
 const modsclubBanner = "/images/discord/modsclub-banner.png";
+const bpsLogo = "/images/discord/bps-logo.gif";
+const bpsBanner = "/images/discord/bps-banner.png";
+const epfLogo = "/images/discord/epf-logo.png";
+const epfBanner = "/images/discord/epf-banner.png";
 const escritorioLogo = "/images/discord/escritorio-logo.png";
 const escritorioBannerFull = "/images/discord/escritorio-banner-full.png";
 
@@ -291,6 +295,22 @@ const Career = () => {
       banner: elixirBanner,
       link: "https://discord.gg/elixirlab",
       role: getText(language, "Ex Moderador", "Former Moderator"),
+    },
+    {
+      name: "Brasil Play Shox",
+      description: getText(language, "Comunidade ligada ao projeto brasileiro de GTA San Andreas Multiplayer, onde atuei anteriormente na moderação do Discord.", "Community connected to the Brazilian GTA San Andreas Multiplayer project, where I previously worked as a Discord moderator."),
+      logo: bpsLogo,
+      banner: bpsBanner,
+      link: "https://discord.gg/bps",
+      role: getText(language, "Ex Moderador", "Former Moderator"),
+    },
+    {
+      name: "Elite Penguin Force",
+      description: getText(language, "Comunidade própria para criadores, administradores, moderadores e desenvolvedores ligados ao ecossistema do Discord.", "My own community for creators, administrators, moderators and developers connected to the Discord ecosystem."),
+      logo: epfLogo,
+      banner: epfBanner,
+      link: "https://discord.gg/hT868BCY32",
+      role: getText(language, "Proprietário", "Owner"),
     },
   ];
 

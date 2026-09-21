@@ -33,6 +33,8 @@ const staticPaths = [
   '/en-us/affiliate-program',
   '/en-us/projects',
   '/en-us/services',
+  '/servicos/comunidade-discord',
+  '/en-us/services/community-discord',
   '/en-us/career',
   '/en-us/contact',
   '/en-us/how-i-work',

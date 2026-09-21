@@ -278,11 +278,16 @@ const PolicyDetail = () => {
       <button
         type="button"
         aria-pressed={showReadingPanel}
+        aria-label={
+          showReadingPanel
+            ? getText(language, "Esconder painel de leitura", "Hide reading panel")
+            : getText(language, "Mostrar painel de leitura", "Show reading panel")
+        }
         onClick={() => setShowReadingPanel((value) => !value)}
-        className="fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom))] right-4 z-[60] inline-flex items-center gap-2 rounded-full border border-border/40 bg-background/90 px-4 py-3 text-xs font-semibold text-foreground shadow-[0_18px_55px_rgba(0,0,0,0.22)] backdrop-blur-xl transition-colors hover:border-foreground/35 hover:bg-background sm:right-6 sm:px-5 lg:bottom-[calc(1.5rem+env(safe-area-inset-bottom))]"
+        className="fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom))] right-4 z-[60] inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-full border border-border/40 bg-background/90 px-3 py-3 text-xs font-semibold text-foreground shadow-[0_18px_55px_rgba(0,0,0,0.22)] backdrop-blur-xl transition-colors hover:border-foreground/35 hover:bg-background min-[341px]:px-4 sm:right-6 sm:px-5 lg:bottom-[calc(1.5rem+env(safe-area-inset-bottom))]"
       >
         <FileText className="h-4 w-4" />
-        <span className="sm:hidden">
+        <span className="hidden min-[341px]:inline sm:hidden">
           {showReadingPanel ? getText(language, "Esconder", "Hide") : getText(language, "Leitura", "Reading")}
         </span>
         <span className="hidden sm:inline">
@@ -296,6 +301,7 @@ const PolicyDetail = () => {
         compact
         eyebrow={getText(language, "Políticas", "Policies")}
         title={section.title[lang]}
+        titleClassName="text-[clamp(2.15rem,12vw,5.2rem)]"
         subtitle={section.paragraphs[0][lang]}
         meta={
           <MotionRail
@@ -363,7 +369,7 @@ const PolicyDetail = () => {
                       data-lenis-prevent=""
                       data-lenis-prevent-wheel=""
                       data-lenis-prevent-vertical=""
-                      className="policy-reading-scrollbar mt-8 hidden max-h-[154px] space-y-1 overflow-y-auto pr-2 lg:block"
+                      className="policy-reading-scrollbar mt-8 hidden max-h-[min(52vh,520px)] space-y-1 overflow-y-auto pr-2 lg:block"
                     >
                       {chapterItems.map((item) => (
                         <a

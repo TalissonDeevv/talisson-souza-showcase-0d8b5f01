@@ -266,6 +266,11 @@ const translations: Translations = {
           title: "Consultoria Tech",
           description: "Consultoria especializada em tecnologia e gestão de projetos",
           features: ["Análise de Projetos", "Arquitetura de Software", "Code Review", "Mentoria", "Gestão de Equipes"]
+        },
+        communityDiscord: {
+          title: "Comunidades no Discord",
+          description: "Administração, moderação e estruturação de comunidades no Discord",
+          features: ["Administração", "Moderação", "Segurança", "Processos", "Automação"]
         }
       }
     },
@@ -495,6 +500,11 @@ const translations: Translations = {
           title: "Tech Consulting",
           description: "Specialized consulting in technology and project management",
           features: ["Project Analysis", "Software Architecture", "Code Review", "Mentoring", "Team Management"]
+        },
+        communityDiscord: {
+          title: "Discord Communities",
+          description: "Administration, moderation and structuring for Discord communities",
+          features: ["Administration", "Moderation", "Security", "Processes", "Automation"]
         }
       }
     },

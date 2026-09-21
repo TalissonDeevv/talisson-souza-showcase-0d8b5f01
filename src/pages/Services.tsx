@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Bot, Check, Cloud, Code, Compass, Palette, Shield, Smartphone, Users, Zap } from "lucide-react";
+import { ArrowRight, Bot, Check, Cloud, Code, Compass, MessageCircle, Palette, Shield, Smartphone, Users, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
@@ -15,7 +15,9 @@ const ease = [0.16, 1, 0.3, 1] as const;
 const Services = () => {
   const { language } = useTheme();
   const t = useTranslation(language);
-  const servicePath = (id: string) => (language === "en" ? `/en-us/services/${id}` : `/servicos/${id}`);
+  const servicePath = (id: string) => id === "community-discord"
+    ? (language === "en" ? "/en-us/services/community-discord" : "/servicos/comunidade-discord")
+    : (language === "en" ? `/en-us/services/${id}` : `/servicos/${id}`);
 
   const services = [
     {
@@ -59,6 +61,13 @@ const Services = () => {
       ...t.servicesPage.categories.consulting,
       context: getText(language, "Clareza técnica para decidir melhor", "Technical clarity to decide better"),
       useCases: language === "pt" ? ["Diagnóstico", "Arquitetura", "Mentoria"] : ["Diagnosis", "Architecture", "Mentoring"],
+    },
+    {
+      id: "community-discord",
+      icon: MessageCircle,
+      ...t.servicesPage.categories.communityDiscord,
+      context: getText(language, "Pessoas, processos e operação", "People, processes and operations"),
+      useCases: language === "pt" ? ["Administração", "Moderação", "Segurança"] : ["Administration", "Moderation", "Security"],
     },
   ];
 
@@ -186,7 +195,7 @@ const Services = () => {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-12">
             {services.map((service, index) => {
               const Icon = service.icon;
-              const spans = ["xl:col-span-5", "xl:col-span-7", "xl:col-span-4", "xl:col-span-4", "xl:col-span-4", "xl:col-span-12"];
+              const spans = ["xl:col-span-5", "xl:col-span-7", "xl:col-span-4", "xl:col-span-4", "xl:col-span-4", "xl:col-span-6", "xl:col-span-6"];
               return (
                 <ScrollReveal key={service.id} delay={index * 0.05} className={spans[index]}>
                   <Link to={servicePath(service.id)} className="group block h-full">

@@ -1,5 +1,6 @@
 import { bookOfficial } from './book-official';
 import { contactEmails } from './contact-channels';
+import { howIWorkPolicy, whatIDoPolicy, whatIDontDoPolicy } from './professional-policies';
 
 type Lang = 'pt' | 'en';
 
@@ -45,7 +46,7 @@ const officialEmailChannelsBlock =
   `E-mail de segurança - ${contactEmails.security}\n` +
   `E-mail da newsletter - ${contactEmails.newsletter}`;
 
-export const policySections: PolicySection[] = [
+const basePolicySections: PolicySection[] = [
   {
     id: 'visao-geral',
     title: { pt: 'Visão Geral', en: 'Overview' },
@@ -1253,6 +1254,16 @@ export const policySections: PolicySection[] = [
     ]
   }
 ];
+
+const professionalPoliciesById = new Map<string, PolicySection>([
+  [howIWorkPolicy.id, howIWorkPolicy],
+  [whatIDoPolicy.id, whatIDoPolicy],
+  [whatIDontDoPolicy.id, whatIDontDoPolicy],
+]);
+
+export const policySections: PolicySection[] = basePolicySections.map(
+  (section) => professionalPoliciesById.get(section.id) ?? section
+);
 
 export const policiesPageMeta = {
   title: {

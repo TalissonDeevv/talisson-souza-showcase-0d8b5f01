@@ -43,6 +43,7 @@ const pageMeta = new Map([
   ['/contato', ['Contato | Talisson Souza', 'Canal para iniciar conversas profissionais com contexto, clareza e responsabilidade.']],
   ['/projetos', ['Portfólio em Curadoria | Talisson Souza', 'Projetos mantidos em curadoria, com respeito à confidencialidade e ao contexto de cada cliente.']],
   ['/servicos', ['Serviços | Talisson Souza', 'Soluções em desenvolvimento, arquitetura, automação, cloud, mobile, bots e UI/UX para operações digitais.']],
+  ['/servicos/comunidade-discord', ['Administração de Comunidade Discord | Talisson Souza', 'Administração, moderação, estruturação e suporte estratégico para comunidades no Discord, com foco em pessoas, processos, segurança e operação.']],
   ['/livro', ['Superando Limites | Talisson Souza', 'Livro autoral de Talisson Souza sobre rejeição, trajetória, disciplina e construção de futuro.']],
   ['/principios', ['Princípios | Talisson Souza', 'Princípios que orientam decisões, trabalho, comunicação e responsabilidade profissional.']],
   ['/checklists', ['Checklists | Talisson Souza', 'Guias práticos para segurança, produção, comunidades e infraestrutura digital.']],
@@ -58,6 +59,9 @@ const pageMeta = new Map([
   ['/trilhas/estrategia-mentalidade', ['Estratégia e Mentalidade | Talisson Souza', 'Artigos sobre pensamento crítico, empreendedorismo digital, responsabilidade técnica e tomada de decisão.']],
   ['/trilhas/mercado-programacao', ['Entrando no Mercado de Programação e Crescimento na Carreira | Talisson Souza', 'Manual gratuito com 140 artigos para quem começa a estudar programação, entra no mercado, amadurece tecnicamente e constrói carreira com critério.']],
   ['/politicas', ['Políticas | Talisson Souza', 'Central de políticas, termos e diretrizes que orientam minha atuação profissional.']],
+  ['/politicas/o-que-faco', ['O Que Eu Faço | Políticas | Talisson Souza', 'Escopo geral da atuação profissional de Talisson Souza em desenvolvimento de software, arquitetura, integrações, automação, segurança, infraestrutura e consultoria técnica.']],
+  ['/politicas/o-que-nao-faco', ['O Que Eu Não Faço | Políticas | Talisson Souza', 'Critérios profissionais para recusa, suspensão ou delimitação de projetos, com distinção entre segurança autorizada, práticas ilícitas e condições comerciais incompatíveis.']],
+  ['/politicas/como-trabalho', ['Como Eu Trabalho | Políticas | Talisson Souza', 'Condições gerais sobre escopo, contratação, pagamentos, execução, homologação, garantia, suporte, propriedade intelectual, segurança e proteção de dados.']],
   ['/como-trabalho', ['Como Eu Trabalho | Talisson Souza', 'Meu processo de trabalho, tomada de decisão, validação de escopo e condução técnica.']],
   ['/decisoes-tecnicas', ['Decisões Técnicas | Talisson Souza', 'Reflexões sobre stack, arquitetura, trade-offs e escolhas técnicas em projetos reais.']],
   ['/acessibilidade', ['Acessibilidade | Talisson Souza', 'Compromisso com acesso, clareza e experiência digital responsável.']],
@@ -69,6 +73,7 @@ const pageMeta = new Map([
   ['/en-us/contact', ['Contact | Talisson Souza', 'A channel to start professional conversations with context, clarity and responsibility.']],
   ['/en-us/projects', ['Curated Portfolio | Talisson Souza', 'Projects kept under curation, respecting confidentiality and each client’s context.']],
   ['/en-us/services', ['Services | Talisson Souza', 'Solutions in development, architecture, automation, cloud, mobile, bots and UI/UX for digital operations.']],
+  ['/en-us/services/community-discord', ['Discord Community Administration | Talisson Souza', 'Administration, moderation, structuring and strategic support for Discord communities, focused on people, processes, security and operations.']],
   ['/en-us/book', ['Overcoming Limits | Talisson Souza', 'Talisson Souza’s authorial book about rejection, trajectory, discipline and building a future.']],
   ['/en-us/principles', ['Principles | Talisson Souza', 'Principles that guide decisions, work, communication and professional responsibility.']],
   ['/en-us/checklists', ['Checklists | Talisson Souza', 'Practical guides for security, production, communities and digital infrastructure.']],
@@ -84,6 +89,9 @@ const pageMeta = new Map([
   ['/en-us/trails/strategy-mindset', ['Strategy and Mindset | Talisson Souza', 'Articles about critical thinking, digital entrepreneurship, technical responsibility and decision making.']],
   ['/en-us/trails/market-programming', ['Entering the Programming Market and Growing Your Career | Talisson Souza', 'A free 140 article manual for people starting in programming, entering the market, maturing technically and building a career with judgment.']],
   ['/en-us/policies', ['Policies | Talisson Souza', 'Policy, terms and guideline hub for my professional work.']],
+  ['/en-us/policies/o-que-faco', ['What I Do | Policies | Talisson Souza', 'General scope of Talisson Souza’s professional work in software development, architecture, integrations, automation, security, infrastructure, and technical consulting.']],
+  ['/en-us/policies/o-que-nao-faco', ["What I Don't Do | Policies | Talisson Souza", 'Professional criteria for refusing, suspending, or limiting projects, distinguishing authorized security work, unlawful practices, and incompatible commercial conditions.']],
+  ['/en-us/policies/como-trabalho', ['How I Work | Policies | Talisson Souza', 'General terms covering scope, engagement, payments, execution, acceptance, warranty, support, intellectual property, security, and data protection.']],
 ]);
 
 const canonicalOverrides = new Map();
@@ -296,6 +304,12 @@ for (const route of ['/changelogs', '/en-us/changelogs', ...changelogMetaByPath.
 for (const route of ['/politicas/inspiracao-visual', '/politica/inspiracao-visual', '/en-us/policies/inspiracao-visual']) {
   if (!routeImages.has(route)) {
     routeImages.set(route, '/og/politicas.png');
+  }
+}
+
+for (const route of ['/servicos/comunidade-discord', '/en-us/services/community-discord']) {
+  if (!routeImages.has(route)) {
+    routeImages.set(route, '/og/servicos.png');
   }
 }
 
