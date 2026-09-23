@@ -49,21 +49,6 @@ const Index = () => {
     technologies: [getText(language, "Saúde digital", "Digital health"), getText(language, "Privacidade", "Privacy"), getText(language, "Em desenvolvimento", "In development")],
     link: language === "en" ? "/en-us/project/saudemais" : "/projeto/saudemais",
     internal: true,
-  }, {
-    title: "Land page Sagiri Bot",
-    description: getText(language, "Uma land page pra uma bot de discord de parcerias.", "A landing page for a Discord bot for partnerships."),
-    technologies: ["React", "Tailwind CSS", "Framer Motion"],
-    link: "https://sagiribot.vercel.app"
-  }, {
-    title: getText(language, "Site da Werneck Group", "Werneck Group Website"),
-    description: getText(language, "Redesign completo da plataforma corporativa do Werneck Group, incluindo seções institucionais e área de clientes.", "Complete redesign of Werneck Group's corporate platform, including institutional sections and client area."),
-    technologies: ["TypeScript", "React", "Node.js", "MongoDB"],
-    link: "https://werneckgroup.com"
-  }, {
-    title: getText(language, "Site da Família Werneck", "Werneck Family Website"),
-    description: getText(language, "Portal personalizado para a Família Werneck com foco em compartilhamento de conteúdo e integração de mídias sociais.", "Customized portal for the Werneck Family focused on content sharing and social media integration."),
-    technologies: ["React", "Firebase", "Styled Components"],
-    link: "https://familiawerneck.vercel.app"
   }];
   const feedbackLanguage = language === "en" ? "en" : "pt";
   const homeTestimonials = feedbacks.map((feedback) => ({
