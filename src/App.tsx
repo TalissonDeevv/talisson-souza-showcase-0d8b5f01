@@ -17,6 +17,7 @@ const Bio = lazy(() => import("./pages/Bio"));
 const About = lazy(() => import("./pages/About"));
 const Affiliate = lazy(() => import("./pages/Affiliate"));
 const Projects = lazy(() => import("./pages/Projects"));
+const SaudeMais = lazy(() => import("./pages/SaudeMais"));
 const Services = lazy(() => import("./pages/Services"));
 const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
 const CommunityDiscord = lazy(() => import("./pages/CommunityDiscord"));
@@ -62,6 +63,8 @@ const AppRoutes = () => (
             <Route path="/sobre" element={<About />} />
             <Route path="/seja-afiliado" element={<Affiliate />} />
             <Route path="/projetos" element={<Projects />} />
+            <Route path="/projeto/saudemais" element={<SaudeMais />} />
+            <Route path="/projetos/saudemais" element={<SaudeMais />} />
             <Route path="/projetos/:id" element={<ProjectDetail />} />
             <Route path="/servicos" element={<Services />} />
             <Route path="/servicos/comunidade-discord" element={<CommunityDiscord />} />
@@ -95,6 +98,8 @@ const AppRoutes = () => (
             <Route path="/en-us/about" element={<About />} />
             <Route path="/en-us/affiliate-program" element={<Affiliate />} />
             <Route path="/en-us/projects" element={<Projects />} />
+            <Route path="/en-us/project/saudemais" element={<SaudeMais />} />
+            <Route path="/en-us/projects/saudemais" element={<SaudeMais />} />
             <Route path="/en-us/projects/:id" element={<ProjectDetail />} />
             <Route path="/en-us/services" element={<Services />} />
             <Route path="/en-us/services/community-discord" element={<CommunityDiscord />} />
@@ -125,6 +130,7 @@ const AppRoutes = () => (
 
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/saudemais" element={<SaudeMais />} />
             <Route path="/projects/:id" element={<ProjectDetail />} />
             <Route path="/services" element={<Services />} />
             <Route path="/services/:serviceId" element={<ServiceDetail />} />

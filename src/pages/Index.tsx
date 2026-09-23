@@ -44,6 +44,12 @@ const Index = () => {
   const t = useTranslation(language);
   const showLegacyStoryPreview = import.meta.env.DEV && import.meta.env.VITE_SHOW_LEGACY_STORY === "true";
   const featuredProjects = [{
+    title: "Saúde+",
+    description: getText(language, "Aplicativo pessoal e privado, ainda em desenvolvimento, para organizar a trajetória de saúde com clareza e responsabilidade.", "A private personal application, still in development, for organizing health history with clarity and responsibility."),
+    technologies: [getText(language, "Saúde digital", "Digital health"), getText(language, "Privacidade", "Privacy"), getText(language, "Em desenvolvimento", "In development")],
+    link: language === "en" ? "/en-us/project/saudemais" : "/projeto/saudemais",
+    internal: true,
+  }, {
     title: "Land page Sagiri Bot",
     description: getText(language, "Uma land page pra uma bot de discord de parcerias.", "A landing page for a Discord bot for partnerships."),
     technologies: ["React", "Tailwind CSS", "Framer Motion"],
@@ -670,7 +676,7 @@ const Index = () => {
             <ScrollReveal
               key={project.title}
               delay={index * 0.1}
-              className={`h-full ${index === 0 ? 'lg:col-span-5' : index === 1 ? 'lg:col-span-4' : 'lg:col-span-3'}`}
+              className={`h-full ${index === 0 ? 'lg:col-span-12' : 'lg:col-span-4'}`}
             >
                 <motion.div
                 whileHover={{ y: -6 }}
@@ -678,7 +684,7 @@ const Index = () => {
                 className="h-full">
 
                   <div
-                  className="project-card-surface relative h-full min-h-[310px] overflow-hidden rounded-lg border border-border/20 bg-card/30 p-8 backdrop-blur-sm group"
+                  className={`project-card-surface relative h-full overflow-hidden rounded-lg border border-border/20 bg-card/30 p-8 backdrop-blur-sm group ${index === 0 ? 'min-h-[270px] lg:p-10' : 'min-h-[310px]'}`}
                   style={{
                     boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
                   }}>
@@ -695,7 +701,7 @@ const Index = () => {
                       <div className="project-card-rule flex-1 h-px bg-gradient-to-r from-foreground/10 to-transparent" />
                     </div>
                     
-                    <h3 className="font-serif text-xl lg:text-2xl text-foreground mb-4 group-hover:text-gradient transition-all duration-500 leading-tight">
+                    <h3 className={`font-serif text-foreground mb-4 group-hover:text-gradient transition-all duration-500 leading-tight ${index === 0 ? 'text-3xl lg:text-4xl' : 'text-xl lg:text-2xl'}`}>
                       {project.title}
                     </h3>
                     <p className="text-sm text-muted-foreground leading-relaxed mb-6">
@@ -714,20 +720,31 @@ const Index = () => {
                     )}
                     </div>
                     
-                    {project.link &&
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/link inline-flex items-center gap-2 text-sm font-medium text-foreground">
-
+                    {project.link && (project.internal ? (
+                      <Link
+                        to={project.link}
+                        className="group/link inline-flex items-center gap-2 text-sm font-medium text-foreground"
+                      >
                         <span className="relative">
                           {t.projects.seeProject}
-                          <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover/link:w-full transition-all duration-300" />
+                          <span className="absolute bottom-0 left-0 h-px w-0 bg-foreground transition-all duration-300 group-hover/link:w-full" />
                         </span>
-                        <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-1" />
+                      </Link>
+                    ) : (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/link inline-flex items-center gap-2 text-sm font-medium text-foreground"
+                      >
+                        <span className="relative">
+                          {t.projects.seeProject}
+                          <span className="absolute bottom-0 left-0 h-px w-0 bg-foreground transition-all duration-300 group-hover/link:w-full" />
+                        </span>
+                        <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
                       </a>
-                  }
+                    ))}
                   </div>
                 </motion.div>
               </ScrollReveal>

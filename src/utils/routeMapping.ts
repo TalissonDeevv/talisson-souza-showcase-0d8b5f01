@@ -7,6 +7,7 @@ export const ptToEnRoutes: Record<string, string> = {
   '/sobre': '/en-us/about',
   '/seja-afiliado': '/en-us/affiliate-program',
   '/projetos': '/en-us/projects',
+  '/projeto/saudemais': '/en-us/project/saudemais',
   '/servicos': '/en-us/services',
   '/servicos/comunidade-discord': '/en-us/services/community-discord',
   '/carreira': '/en-us/career',

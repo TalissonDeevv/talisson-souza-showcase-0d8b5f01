@@ -42,6 +42,7 @@ const pageMeta = new Map([
   ['/carreira', ['Carreira | Talisson Souza', 'Trajetória profissional de Talisson Souza em tecnologia, liderança, arquitetura de software e construção de produtos digitais.']],
   ['/contato', ['Contato | Talisson Souza', 'Canal para iniciar conversas profissionais com contexto, clareza e responsabilidade.']],
   ['/projetos', ['Portfólio em Curadoria | Talisson Souza', 'Projetos mantidos em curadoria, com respeito à confidencialidade e ao contexto de cada cliente.']],
+  ['/projeto/saudemais', ['Saúde+ | Projeto de saúde digital | Talisson Souza', 'Aplicativo pessoal e privado em desenvolvimento para organizar a trajetória de saúde com clareza, privacidade e revisão responsável.']],
   ['/servicos', ['Serviços | Talisson Souza', 'Soluções em desenvolvimento, arquitetura, automação, cloud, mobile, bots e UI/UX para operações digitais.']],
   ['/servicos/comunidade-discord', ['Administração de Comunidade Discord | Talisson Souza', 'Administração, moderação, estruturação e suporte estratégico para comunidades no Discord, com foco em pessoas, processos, segurança e operação.']],
   ['/livro', ['Superando Limites | Talisson Souza', 'Livro autoral de Talisson Souza sobre rejeição, trajetória, disciplina e construção de futuro.']],
@@ -72,6 +73,7 @@ const pageMeta = new Map([
   ['/en-us/career', ['Career | Talisson Souza', 'Talisson Souza’s professional journey in technology, leadership, software architecture and digital products.']],
   ['/en-us/contact', ['Contact | Talisson Souza', 'A channel to start professional conversations with context, clarity and responsibility.']],
   ['/en-us/projects', ['Curated Portfolio | Talisson Souza', 'Projects kept under curation, respecting confidentiality and each client’s context.']],
+  ['/en-us/project/saudemais', ['Saúde+ | Digital health project | Talisson Souza', 'A private personal application in development for organizing health history with clarity, privacy and responsible review.']],
   ['/en-us/services', ['Services | Talisson Souza', 'Solutions in development, architecture, automation, cloud, mobile, bots and UI/UX for digital operations.']],
   ['/en-us/services/community-discord', ['Discord Community Administration | Talisson Souza', 'Administration, moderation, structuring and strategic support for Discord communities, focused on people, processes, security and operations.']],
   ['/en-us/book', ['Overcoming Limits | Talisson Souza', 'Talisson Souza’s authorial book about rejection, trajectory, discipline and building a future.']],
@@ -311,6 +313,10 @@ for (const route of ['/servicos/comunidade-discord', '/en-us/services/community-
   if (!routeImages.has(route)) {
     routeImages.set(route, '/og/servicos.png');
   }
+}
+
+for (const route of ['/projeto/saudemais', '/en-us/project/saudemais']) {
+  routeImages.set(route, '/images/projects/saudemais-concept.png');
 }
 
 let generated = 0;

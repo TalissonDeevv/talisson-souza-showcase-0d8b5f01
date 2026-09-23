@@ -45,6 +45,7 @@ const Projects = () => {
 
   const contactPath = language === "en" ? "/en-us/contact" : "/contato";
   const servicesPath = language === "en" ? "/en-us/services" : "/servicos";
+  const saudeMaisPath = language === "en" ? "/en-us/project/saudemais" : "/projeto/saudemais";
 
   const reviewSteps: ReviewStep[] = [
     {
@@ -344,6 +345,75 @@ const Projects = () => {
                 </div>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden py-16 lg:py-24">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="mx-auto grid max-w-6xl gap-10 border-y border-border/25 py-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(320px,0.72fr)] lg:items-center lg:gap-16 lg:py-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.65, ease: premiumEase }}
+            >
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] uppercase tracking-[0.22em] text-muted-foreground/70">
+                <span>{getText(language, "Projeto em destaque", "Featured project")}</span>
+                <span className="h-px w-8 bg-foreground/20" aria-hidden="true" />
+                <span>{getText(language, "Em desenvolvimento", "In development")}</span>
+              </div>
+              <h2 className="mt-6 font-serif text-5xl uppercase leading-[0.94] text-foreground sm:text-6xl lg:text-7xl">
+                Saúde+
+              </h2>
+              <p className="mt-6 max-w-xl text-base leading-8 text-muted-foreground">
+                {getText(
+                  language,
+                  "Aplicativo pessoal e privado para organizar a trajetória de saúde do usuário. A apresentação pública preserva a confidencialidade do produto e mostra apenas sua visão institucional.",
+                  "A private personal application for organizing the user's health history. Its public presentation preserves product confidentiality and shows only its institutional vision."
+                )}
+              </p>
+              <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3 text-[11px] uppercase tracking-[0.17em] text-muted-foreground/70">
+                <span>{getText(language, "Saúde digital", "Digital health")}</span>
+                <span>{getText(language, "Privacidade", "Privacy")}</span>
+                <span>{getText(language, "Revisão responsável", "Responsible review")}</span>
+              </div>
+              <Link
+                to={saudeMaisPath}
+                className="group mt-9 inline-flex items-center gap-3 text-sm font-medium text-foreground"
+              >
+                <span className="relative">
+                  {getText(language, "Conhecer o projeto", "Explore the project")}
+                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-foreground transition-all duration-300 group-hover:w-full" />
+                </span>
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+              </Link>
+            </motion.div>
+
+            <motion.figure
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0.08, ease: premiumEase }}
+              className="m-0 flex flex-col items-center lg:items-end"
+            >
+              <img
+                src="/images/projects/saudemais-concept.png"
+                alt={getText(language, "Demonstração conceitual do Saúde+", "Saúde+ concept demonstration")}
+                width={1254}
+                height={1254}
+                loading="lazy"
+                decoding="async"
+                className="max-h-[520px] w-full max-w-[500px] object-contain"
+              />
+              <figcaption className="mt-3 max-w-md text-center text-xs leading-relaxed text-muted-foreground/65 lg:text-right">
+                {getText(
+                  language,
+                  "Apresentação conceitual gerada com IA. A interface real permanece confidencial.",
+                  "AI-generated concept presentation. The real interface remains confidential."
+                )}
+              </figcaption>
+            </motion.figure>
           </div>
         </div>
       </section>
