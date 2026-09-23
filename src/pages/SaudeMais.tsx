@@ -168,9 +168,7 @@ const SaudeMais = () => {
           "Um aplicativo pessoal e privado pensado para organizar a história de saúde do usuário em um só contexto, sem assumir o lugar de médicos, prontuários ou serviços públicos.",
           "A private personal application designed to organize the user's health history in one context, without taking the place of doctors, medical records or public services."
         )}
-        visualPlacement="side"
         contentClassName="max-w-3xl"
-        visualClassName="lg:justify-self-end"
         meta={
           <div className="grid max-w-2xl grid-cols-1 border-y border-border/25 sm:grid-cols-3">
             {[
@@ -202,27 +200,54 @@ const SaudeMais = () => {
             </a>
           </div>
         }
-      >
-        <figure className="m-0 flex w-full flex-col items-center lg:items-end">
-          <img
-            src={conceptImage}
-            alt={getText(language, "Demonstração conceitual do aplicativo Saúde+", "Concept demonstration of the Saúde+ application")}
-            width={1254}
-            height={1254}
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-            className="max-h-[680px] w-full max-w-[620px] object-contain"
-          />
-          <figcaption className="mt-3 max-w-xl text-center text-xs leading-relaxed text-muted-foreground/70 lg:text-right">
-            {getText(
-              language,
-              "Demonstração de apresentação gerada com IA. Não representa a interface final e não contém dados reais de pacientes.",
-              "AI-generated presentation concept. It does not represent the final interface and contains no real patient data."
-            )}
-          </figcaption>
-        </figure>
-      </PageHero>
+      />
+
+      <section className="border-y border-border/25 py-16 lg:py-24">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[0.68fr_1.32fr] lg:gap-16">
+            <ScrollReveal>
+              <span className="text-[11px] uppercase tracking-[0.28em] text-muted-foreground/65">
+                {getText(language, "Apresentação visual", "Visual presentation")}
+              </span>
+              <h2 className="mt-5 max-w-md font-serif text-4xl uppercase leading-[0.98] text-foreground lg:text-5xl">
+                {getText(language, "Uma ideia que começa pelo contexto.", "An idea that starts with context.")}
+              </h2>
+              <p className="mt-6 max-w-md text-base leading-8 text-muted-foreground">
+                {getText(
+                  language,
+                  "Esta imagem apresenta a direção do Saúde+ sem expor o produto real. Ela existe para ajudar empresas e organizações a compreenderem a proposta enquanto o aplicativo segue em desenvolvimento.",
+                  "This image presents the direction of Saúde+ without exposing the real product. It exists to help companies and organizations understand the proposal while the application remains in development."
+                )}
+              </p>
+            </ScrollReveal>
+
+            <motion.figure
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease }}
+              className="m-0 flex flex-col items-center lg:items-end"
+            >
+              <img
+                src={conceptImage}
+                alt={getText(language, "Demonstração conceitual do aplicativo Saúde+", "Concept demonstration of the Saúde+ application")}
+                width={1254}
+                height={1254}
+                loading="lazy"
+                decoding="async"
+                className="max-h-[680px] w-full max-w-[620px] object-contain"
+              />
+              <figcaption className="mt-3 max-w-xl text-center text-xs leading-relaxed text-muted-foreground/70 lg:text-right">
+                {getText(
+                  language,
+                  "Demonstração de apresentação gerada com IA. Não representa a interface final e não contém dados reais de pacientes.",
+                  "AI-generated presentation concept. It does not represent the final interface and contains no real patient data."
+                )}
+              </figcaption>
+            </motion.figure>
+          </div>
+        </div>
+      </section>
 
       <section className="border-y border-border/25 bg-card/15">
         <div className="container mx-auto px-6 py-8 lg:px-8">
