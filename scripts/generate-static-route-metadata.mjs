@@ -242,6 +242,56 @@ const getMeta = (route) => {
   return fallbackMeta(route);
 };
 
+const healthProjectRoutes = new Set(['/projeto/saudemais', '/en-us/project/saudemais']);
+
+const getStaticJsonLd = (route, title, description, url, image) => {
+  if (!healthProjectRoutes.has(route)) return [];
+
+  const isEnglish = route.startsWith('/en-us');
+  const projectsUrl = `${baseUrl}${isEnglish ? '/en-us/projects' : '/projetos'}`;
+
+  return [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: isEnglish ? 'Home' : 'Início',
+          item: `${baseUrl}${isEnglish ? '/en-us' : ''}`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: isEnglish ? 'Projects' : 'Projetos',
+          item: projectsUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: 'Saúde+',
+          item: url,
+        },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Saúde+',
+      applicationCategory: 'HealthApplication',
+      description,
+      url,
+      image,
+      creator: {
+        '@type': 'Person',
+        name: 'Talisson Souza',
+        url: baseUrl,
+      },
+    },
+  ];
+};
+
 const replaceMeta = (source, route, imagePath) => {
   const [title, description] = getMeta(route);
   const cleanRoute = route === '/' ? '' : route;
@@ -279,8 +329,18 @@ const replaceMeta = (source, route, imagePath) => {
     );
   }
 
-  output = output.replace(/"url":\s*"https:\/\/www\.talissonsouza\.com\.br[^"]*"/, `"url": "${htmlEscape(url)}"`);
-  output = output.replace(/"image":\s*"https:\/\/www\.talissonsouza\.com\.br\/og\/home\.png"/, `"image": "${htmlEscape(image)}"`);
+  if (route === '/' || route === '/en-us') {
+    output = output.replace(/"url":\s*"https:\/\/www\.talissonsouza\.com\.br[^"]*"/, `"url": "${htmlEscape(url)}"`);
+    output = output.replace(/"image":\s*"https:\/\/www\.talissonsouza\.com\.br\/og\/home\.png"/, `"image": "${htmlEscape(image)}"`);
+  }
+
+  const staticJsonLd = getStaticJsonLd(route, title, description, url, image);
+  if (staticJsonLd.length > 0) {
+    const jsonLdMarkup = staticJsonLd
+      .map((data) => `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>`)
+      .join('\n    ');
+    output = output.replace('</head>', `    ${jsonLdMarkup}\n  </head>`);
+  }
 
   return output;
 };

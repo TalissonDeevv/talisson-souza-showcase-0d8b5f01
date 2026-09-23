@@ -51,6 +51,7 @@ const SEO = ({
   publishedTime,
   modifiedTime,
   author = 'Talisson Souza',
+  keywords,
   noindex = false,
   jsonLd,
 }: SEOProps) => {
@@ -77,6 +78,7 @@ const SEO = ({
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <meta name="author" content={author} />
+      {keywords && keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
       <link rel="canonical" href={canonicalUrl} />
       <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
       
@@ -111,6 +113,7 @@ const SEO = ({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={socialImageUrl} />
       <meta name="twitter:image:alt" content={fullTitle} />
+      <meta name="twitter:url" content={canonicalUrl} />
 
       {type === 'article' && (
         <script type="application/ld+json">{JSON.stringify({

@@ -202,9 +202,9 @@ const SaudeMais = () => {
         }
       />
 
-      <section className="border-y border-border/25 py-16 lg:py-24">
+      <section className="border-y border-border/25 py-20 lg:py-28">
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[0.68fr_1.32fr] lg:gap-16">
+          <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(250px,0.72fr)_minmax(0,1.28fr)] lg:gap-16">
             <ScrollReveal>
               <span className="text-[11px] uppercase tracking-[0.28em] text-muted-foreground/65">
                 {getText(language, "Apresentação visual", "Visual presentation")}
@@ -226,7 +226,7 @@ const SaudeMais = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, ease }}
-              className="m-0 flex flex-col items-center lg:items-end"
+              className="m-0 flex w-full flex-col items-center lg:items-end"
             >
               <img
                 src={conceptImage}
@@ -235,7 +235,7 @@ const SaudeMais = () => {
                 height={1254}
                 loading="lazy"
                 decoding="async"
-                className="max-h-[680px] w-full max-w-[620px] object-contain"
+                className="max-h-[620px] w-full max-w-[620px] object-contain"
               />
               <figcaption className="mt-3 max-w-xl text-center text-xs leading-relaxed text-muted-foreground/70 lg:text-right">
                 {getText(
@@ -419,16 +419,16 @@ const SaudeMais = () => {
       <section className="py-20 lg:py-28">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] lg:items-start lg:gap-20">
               <div>
                 <span className="text-[11px] uppercase tracking-[0.28em] text-muted-foreground/65">
                   {getText(language, "Conversa institucional", "Institutional conversation")}
                 </span>
                 <h2 className="mt-5 font-serif text-4xl uppercase leading-[0.98] text-foreground lg:text-5xl">
-                  {getText(language, "O projeto está aberto a organizações que possam qualificá-lo.", "The project is open to organizations that can help strengthen it.")}
+                  {getText(language, "O próximo passo é uma conversa responsável.", "The next step is a responsible conversation.")}
                 </h2>
               </div>
-              <p className="max-w-xl text-base leading-8 text-muted-foreground lg:justify-self-end">
+              <p className="max-w-xl text-base leading-8 text-muted-foreground lg:pt-2">
                 {getText(
                   language,
                   "A divulgação do Saúde+ não anuncia um lançamento. Ela abre espaço para empresas, organizações e profissionais que enxerguem valor em uma iniciativa privada de saúde digital construída com limites claros.",
