@@ -306,11 +306,11 @@ const Career = () => {
     },
     {
       name: "Elite Penguin Force",
-      description: getText(language, "Comunidade própria para criadores, administradores, moderadores e desenvolvedores ligados ao ecossistema do Discord.", "My own community for creators, administrators, moderators and developers connected to the Discord ecosystem."),
+      description: getText(language, "Ecossistema no qual participo como proprietário de uma comunidade registrada. Não sou proprietário, administrador ou representante da Elite Penguin Force.", "An ecosystem in which I participate as the owner of a registered community. I am not an owner, administrator or representative of Elite Penguin Force."),
       logo: epfLogo,
       banner: epfBanner,
       link: "https://discord.gg/hT868BCY32",
-      role: getText(language, "Proprietário", "Owner"),
+      role: getText(language, "Proprietário de comunidade registrada", "Owner of a registered community"),
     },
   ];
 
