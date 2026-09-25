@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/generate-static-route-metadata.mjs && node scripts/generate-sitemap.mjs --dist",
+    "build": "vite build && node scripts/generate-static-route-metadata.mjs && node scripts/generate-sitemap.mjs --dist && node scripts/verify-static-seo.mjs",
     "seo:sitemap": "node scripts/generate-sitemap.mjs",
+    "seo:verify": "node scripts/verify-static-seo.mjs",
     "og:capture": "node scripts/generate-og-screenshots.mjs",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",

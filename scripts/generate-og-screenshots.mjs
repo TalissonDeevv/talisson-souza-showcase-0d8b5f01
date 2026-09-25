@@ -183,6 +183,12 @@ async function capture(chrome, route, file) {
     client = createCdpClient(wsUrl);
     await client.send('Page.enable');
     await client.send('Runtime.enable');
+    await client.send('Emulation.setDeviceMetricsOverride', {
+      width: 1200,
+      height: 630,
+      deviceScaleFactor: 1,
+      mobile: false,
+    });
     await wait(2800);
     await client.send('Runtime.evaluate', {
       awaitPromise: true,
@@ -239,7 +245,9 @@ const staticRoutes = [
   '/',
   '/sobre',
   '/projetos',
+  '/projeto/saudemais',
   '/servicos',
+  '/servicos/comunidade-discord',
   '/carreira',
   '/contato',
   '/como-trabalho',
@@ -260,7 +268,9 @@ const staticRoutes = [
   '/en-us',
   '/en-us/about',
   '/en-us/projects',
+  '/en-us/project/saudemais',
   '/en-us/services',
+  '/en-us/services/community-discord',
   '/en-us/career',
   '/en-us/contact',
   '/en-us/how-i-work',

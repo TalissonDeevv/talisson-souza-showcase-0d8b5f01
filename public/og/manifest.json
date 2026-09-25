@@ -978,5 +978,21 @@
   {
     "route": "/en-us/article-suggestions",
     "image": "/og/en-us-article-suggestions.png"
+  },
+  {
+    "route": "/projeto/saudemais",
+    "image": "/og/projeto-saudemais.png"
+  },
+  {
+    "route": "/en-us/project/saudemais",
+    "image": "/og/en-us-project-saudemais.png"
+  },
+  {
+    "route": "/servicos/comunidade-discord",
+    "image": "/og/servicos-comunidade-discord.png"
+  },
+  {
+    "route": "/en-us/services/community-discord",
+    "image": "/og/en-us-services-community-discord.png"
   }
 ]

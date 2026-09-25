@@ -46,6 +46,14 @@
       "destination": "/en-us/project/saudemais/index.html"
     },
     {
+      "source": "/servicos/comunidade-discord",
+      "destination": "/servicos/comunidade-discord/index.html"
+    },
+    {
+      "source": "/en-us/services/community-discord",
+      "destination": "/en-us/services/community-discord/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

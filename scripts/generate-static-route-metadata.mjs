@@ -243,12 +243,60 @@ const getMeta = (route) => {
 };
 
 const healthProjectRoutes = new Set(['/projeto/saudemais', '/en-us/project/saudemais']);
+const discordCommunityRoutes = new Set(['/servicos/comunidade-discord', '/en-us/services/community-discord']);
 
 const getStaticJsonLd = (route, title, description, url, image) => {
+  const isEnglish = route.startsWith('/en-us');
+
+  if (discordCommunityRoutes.has(route)) {
+    const servicesUrl = `${baseUrl}${isEnglish ? '/en-us/services' : '/servicos'}`;
+
+    return [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: isEnglish ? 'Home' : 'Início',
+            item: `${baseUrl}${isEnglish ? '/en-us' : ''}`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: isEnglish ? 'Services' : 'Serviços',
+            item: servicesUrl,
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: isEnglish ? 'Discord Community Administration' : 'Administração de Comunidade Discord',
+            item: url,
+          },
+        ],
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: isEnglish ? 'Discord community administration and moderation' : 'Administração e moderação de comunidades no Discord',
+        serviceType: isEnglish ? 'Discord community administration' : 'Administração de comunidade Discord',
+        description,
+        url,
+        image,
+        provider: {
+          '@type': 'Person',
+          name: 'Talisson Souza',
+          url: baseUrl,
+        },
+      },
+    ];
+  }
+
   if (!healthProjectRoutes.has(route)) return [];
 
-  const isEnglish = route.startsWith('/en-us');
   const projectsUrl = `${baseUrl}${isEnglish ? '/en-us/projects' : '/projetos'}`;
+  const conceptImage = `${baseUrl}/images/projects/saudemais-concept.png`;
 
   return [
     {
@@ -282,7 +330,7 @@ const getStaticJsonLd = (route, title, description, url, image) => {
       applicationCategory: 'HealthApplication',
       description,
       url,
-      image,
+      image: conceptImage,
       creator: {
         '@type': 'Person',
         name: 'Talisson Souza',
@@ -371,12 +419,14 @@ for (const route of ['/politicas/inspiracao-visual', '/politica/inspiracao-visua
 
 for (const route of ['/servicos/comunidade-discord', '/en-us/services/community-discord']) {
   if (!routeImages.has(route)) {
-    routeImages.set(route, '/og/servicos.png');
+    routeImages.set(route, route.startsWith('/en-us') ? '/og/en-us-services-community-discord.png' : '/og/servicos-comunidade-discord.png');
   }
 }
 
 for (const route of ['/projeto/saudemais', '/en-us/project/saudemais']) {
-  routeImages.set(route, '/images/projects/saudemais-concept.png');
+  if (!routeImages.has(route)) {
+    routeImages.set(route, route.startsWith('/en-us') ? '/og/en-us-project-saudemais.png' : '/og/projeto-saudemais.png');
+  }
 }
 
 let generated = 0;

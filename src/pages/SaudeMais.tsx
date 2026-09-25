@@ -153,7 +153,7 @@ const SaudeMais = () => {
           "Discover Saúde+, a private personal application in development for organizing health history with clarity, privacy and responsible review."
         )}
         canonical={canonicalPath}
-        image={conceptImage}
+        image={pt ? "/og/projeto-saudemais.png" : "/og/en-us-project-saudemais.png"}
         keywords={pt
           ? ["Saúde+", "aplicativo de saúde", "saúde digital", "histórico de saúde", "privacidade em saúde"]
           : ["Saúde+", "health application", "digital health", "health history", "health privacy"]}

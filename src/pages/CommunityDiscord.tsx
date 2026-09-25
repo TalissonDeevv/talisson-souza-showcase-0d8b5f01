@@ -126,7 +126,7 @@ const CommunityDiscord = () => {
         description={pt ? "Administração, moderação, estruturação e suporte estratégico para comunidades no Discord, com foco em pessoas, processos, segurança e operação." : "Administration, moderation, structuring and strategic support for Discord communities, focused on people, processes, security and operations."}
         canonical={pt ? "/servicos/comunidade-discord" : "/en-us/services/community-discord"}
         keywords={pt ? ["administração de comunidade Discord", "moderação Discord", "gestão de comunidade Discord", "segurança para servidor Discord", "equipe de moderação Discord"] : ["Discord community administration", "Discord moderation", "Discord community management", "Discord server security", "Discord moderation team"]}
-        image="/og/servicos.png"
+        image={pt ? "/og/servicos-comunidade-discord.png" : "/og/en-us-services-community-discord.png"}
         jsonLd={serviceJsonLd}
       />
 
