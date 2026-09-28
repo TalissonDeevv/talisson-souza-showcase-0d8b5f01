@@ -20,6 +20,39 @@ const getChapterNumber = (heading: string) => {
 
 const cleanChapterTitle = (heading: string) => heading.replace(/^\d+\.\s*/, "");
 
+const professionalPolicyIds = new Set(["o-que-faco", "o-que-nao-faco", "como-trabalho"]);
+
+const splitLongPolicyText = (text: string) => {
+  const sentences = text
+    .replace(/([.!?]["”’]?)\s+(?=[A-ZÀ-ÖØ-Þ0-9“"'])/g, "$1\n")
+    .split("\n")
+    .map((sentence) => sentence.trim())
+    .filter(Boolean);
+
+  if (sentences.length <= 2) return [text.trim()];
+
+  const paragraphs: string[] = [];
+  let current: string[] = [];
+  let currentLength = 0;
+
+  sentences.forEach((sentence) => {
+    const shouldStartNextParagraph =
+      current.length >= 2 || (current.length > 0 && currentLength + sentence.length > 520);
+
+    if (shouldStartNextParagraph) {
+      paragraphs.push(current.join(" "));
+      current = [];
+      currentLength = 0;
+    }
+
+    current.push(sentence);
+    currentLength += sentence.length;
+  });
+
+  if (current.length > 0) paragraphs.push(current.join(" "));
+  return paragraphs;
+};
+
 const getOfficialChannelGroup = (label: string) => {
   if (label.startsWith("E-mail")) return "emails";
   if (label.startsWith("Domínio") || label === "Discord") return "identity";
@@ -54,22 +87,30 @@ const renderPolicyText = (text: string) => {
   });
 };
 
-const renderPolicyContent = (text: string) => {
+const renderPolicyContent = (text: string, separateLongParagraphs = false) => {
   const blocks: ReactNode[] = [];
   const codeFenceRegex = /```(\w+)?\n([\s\S]*?)```/g;
   let lastIndex = 0;
   let blockIndex = 0;
   let match: RegExpExecArray | null;
 
-  const renderTextLines = (value: string, keyPrefix: string) =>
-    value
-      .split("\n")
-      .filter((line) => line.trim().length > 0)
-      .map((line, index) => (
-        <span key={`${keyPrefix}-line-${index}`} className={blocks.length > 0 || index > 0 ? "mt-4 block" : "block"}>
-          {renderPolicyText(line)}
-        </span>
-      ));
+  const renderTextLines = (value: string, keyPrefix: string) => {
+    const explicitParagraphs = value
+      .split(/\n+/)
+      .filter((line) => line.trim().length > 0);
+    const paragraphs = separateLongParagraphs
+      ? explicitParagraphs.flatMap(splitLongPolicyText)
+      : explicitParagraphs;
+
+    return paragraphs.map((line, index) => (
+      <p
+        key={`${keyPrefix}-line-${index}`}
+        className={blocks.length > 0 || index > 0 ? "mt-6 sm:mt-7" : ""}
+      >
+        {renderPolicyText(line)}
+      </p>
+    ));
+  };
 
   while ((match = codeFenceRegex.exec(text)) !== null) {
     const before = text.slice(lastIndex, match.index);
@@ -96,7 +137,12 @@ const renderPolicyContent = (text: string) => {
   return blocks;
 };
 
-const renderPolicyParagraph = (text: string, lang: "pt" | "en", heading?: string) => {
+const renderPolicyParagraph = (
+  text: string,
+  lang: "pt" | "en",
+  heading?: string,
+  separateLongParagraphs = false
+) => {
   const lines = text.split("\n").filter((line) => line.trim().length > 0);
   const shouldRenderAsOfficialList = Boolean(
     heading?.toLowerCase().includes("canais e identificações oficiais") && lines.length > 2
@@ -195,7 +241,7 @@ const renderPolicyParagraph = (text: string, lang: "pt" | "en", heading?: string
     );
   }
 
-  return renderPolicyContent(text);
+  return renderPolicyContent(text, separateLongParagraphs);
 };
 
 const PolicyDetail = () => {
@@ -212,6 +258,7 @@ const PolicyDetail = () => {
   const sectionIndex = policySections.findIndex((item) => item.id === sectionId);
   const section = policySections[sectionIndex];
   const safeSection = section ?? policySections[0];
+  const isProfessionalPolicy = professionalPolicyIds.has(safeSection.id);
 
   const prev = sectionIndex > 0 ? policySections[sectionIndex - 1] : null;
   const next = sectionIndex < policySections.length - 1 ? policySections[sectionIndex + 1] : null;
@@ -402,10 +449,10 @@ const PolicyDetail = () => {
               <article
                 className={cn(
                   "relative order-last w-full lg:order-1",
-                  !showReadingPanel && "mx-auto max-w-4xl"
+                  !showReadingPanel && "mx-auto max-w-3xl"
                 )}
               >
-                <div className="space-y-10 lg:space-y-12">
+                <div className="space-y-14 lg:space-y-16">
                   {section.paragraphs.map((paragraph, index) => (
                     <ScrollReveal key={index} delay={Math.min(index * 0.025, 0.18)}>
                       <motion.div
@@ -417,17 +464,22 @@ const PolicyDetail = () => {
                         className={cn(
                           "scroll-mt-28",
                           index === 0 && !paragraph.heading
-                            ? "border-l border-foreground/25 pl-5 font-serif text-[1.55rem] leading-[1.5] text-foreground sm:pl-6 lg:text-[1.8rem]"
+                            ? "border-l border-foreground/25 pl-5 font-serif text-[1.65rem] leading-[1.5] text-foreground sm:pl-7 sm:text-[1.8rem] lg:text-[2rem]"
                             : ""
                         )}
                       >
                         {paragraph.heading && (
-                          <h2 className="mb-5 break-words font-serif text-[1.75rem] leading-[1.16] text-foreground [overflow-wrap:anywhere] sm:text-3xl lg:text-[2.15rem]">
+                          <h2 className="mb-6 break-words font-serif text-[2rem] leading-[1.14] text-foreground [overflow-wrap:anywhere] sm:text-[2.25rem] lg:text-[2.5rem]">
                             {paragraph.heading[lang]}
                           </h2>
                         )}
-                        <div className={paragraph.heading ? "text-[17px] leading-[1.86] text-muted-foreground sm:text-lg sm:leading-[1.9]" : ""}>
-                          {renderPolicyParagraph(paragraph[lang], lang, paragraph.heading?.[lang])}
+                        <div className={paragraph.heading ? "text-lg leading-[1.85] text-muted-foreground sm:text-[20px] sm:leading-[1.9]" : ""}>
+                          {renderPolicyParagraph(
+                            paragraph[lang],
+                            lang,
+                            paragraph.heading?.[lang],
+                            isProfessionalPolicy
+                          )}
                         </div>
                       </motion.div>
                     </ScrollReveal>
