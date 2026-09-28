@@ -152,7 +152,7 @@ const renderPolicyParagraph = (text: string, lang: "pt" | "en", heading?: string
                       <h3 className="text-[12px] font-semibold uppercase tracking-[0.22em] text-foreground">
                         {group.title}
                       </h3>
-                      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground/75">
+                      <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-muted-foreground/75 sm:text-base">
                         {group.description}
                       </p>
                     </div>
@@ -167,7 +167,7 @@ const renderPolicyParagraph = (text: string, lang: "pt" | "en", heading?: string
                     if (!value) {
                       return (
                         <div key={line} className="px-4 py-3.5 sm:px-5">
-                          <dd className="min-w-0 break-words text-sm leading-relaxed text-muted-foreground [overflow-wrap:anywhere]">
+                          <dd className="min-w-0 break-words text-[15px] leading-relaxed text-muted-foreground [overflow-wrap:anywhere] sm:text-base">
                             {renderPolicyText(line)}
                           </dd>
                         </div>
@@ -179,8 +179,8 @@ const renderPolicyParagraph = (text: string, lang: "pt" | "en", heading?: string
                         key={line}
                         className="grid gap-1.5 px-4 py-3.5 sm:grid-cols-[220px_minmax(0,1fr)] sm:gap-6 sm:px-5"
                       >
-                        <dt className="text-sm font-medium leading-relaxed text-foreground">{label}</dt>
-                        <dd className="min-w-0 break-words text-sm leading-relaxed text-muted-foreground [overflow-wrap:anywhere]">
+                        <dt className="text-[15px] font-medium leading-relaxed text-foreground sm:text-base">{label}</dt>
+                        <dd className="min-w-0 break-words text-[15px] leading-relaxed text-muted-foreground [overflow-wrap:anywhere] sm:text-base">
                           {renderPolicyText(value)}
                         </dd>
                       </div>
@@ -348,7 +348,7 @@ const PolicyDetail = () => {
                     <h2 className="break-words font-serif text-3xl leading-tight text-foreground [overflow-wrap:anywhere] lg:text-5xl">
                       {getText(language, "Um documento, sem ruído.", "One document, no noise.")}
                     </h2>
-                    <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                    <p className="mt-5 text-base leading-[1.75] text-muted-foreground">
                       {getText(
                         language,
                         "A intenção aqui é deixar responsabilidades visíveis antes de qualquer contratação, compra ou uso de conteúdo.",
@@ -376,7 +376,7 @@ const PolicyDetail = () => {
                           key={item.id}
                           href={`#${item.id}`}
                           className={cn(
-                            "group grid min-h-12 grid-cols-[42px_1fr] gap-3 rounded-lg px-1 py-2 text-left transition-colors hover:bg-foreground/[0.03]",
+                            "group grid min-h-14 grid-cols-[42px_1fr] gap-3 rounded-lg px-1 py-2.5 text-left transition-colors hover:bg-foreground/[0.03]",
                             activeChapter === item.id && "bg-foreground/[0.04]"
                           )}
                         >
@@ -387,7 +387,7 @@ const PolicyDetail = () => {
                             {item.number || "•"}
                           </span>
                           <span className={cn(
-                            "line-clamp-2 text-xs leading-relaxed text-muted-foreground/60 transition-colors group-hover:text-foreground/80",
+                            "line-clamp-2 text-[13px] leading-[1.55] text-muted-foreground/60 transition-colors group-hover:text-foreground/80",
                             activeChapter === item.id && "text-foreground/85"
                           )}>
                             {item.title}
@@ -399,8 +399,13 @@ const PolicyDetail = () => {
                 </aside>
               )}
 
-              <article className="relative order-last lg:order-1">
-                <div className="space-y-7">
+              <article
+                className={cn(
+                  "relative order-last w-full lg:order-1",
+                  !showReadingPanel && "mx-auto max-w-4xl"
+                )}
+              >
+                <div className="space-y-10 lg:space-y-12">
                   {section.paragraphs.map((paragraph, index) => (
                     <ScrollReveal key={index} delay={Math.min(index * 0.025, 0.18)}>
                       <motion.div
@@ -411,15 +416,17 @@ const PolicyDetail = () => {
                         transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
                         className={cn(
                           "scroll-mt-28",
-                          index === 0 && !paragraph.heading ? "border-l border-foreground/25 pl-5 font-serif text-2xl leading-[1.45] text-foreground" : ""
+                          index === 0 && !paragraph.heading
+                            ? "border-l border-foreground/25 pl-5 font-serif text-[1.55rem] leading-[1.5] text-foreground sm:pl-6 lg:text-[1.8rem]"
+                            : ""
                         )}
                       >
                         {paragraph.heading && (
-                          <h2 className="mb-4 break-words font-serif text-2xl leading-tight text-foreground [overflow-wrap:anywhere] lg:text-3xl">
+                          <h2 className="mb-5 break-words font-serif text-[1.75rem] leading-[1.16] text-foreground [overflow-wrap:anywhere] sm:text-3xl lg:text-[2.15rem]">
                             {paragraph.heading[lang]}
                           </h2>
                         )}
-                        <div className={paragraph.heading ? "text-[16px] leading-[1.92] text-muted-foreground" : ""}>
+                        <div className={paragraph.heading ? "text-[17px] leading-[1.86] text-muted-foreground sm:text-lg sm:leading-[1.9]" : ""}>
                           {renderPolicyParagraph(paragraph[lang], lang, paragraph.heading?.[lang])}
                         </div>
                       </motion.div>
