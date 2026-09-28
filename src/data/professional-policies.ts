@@ -228,143 +228,157 @@ export const whatIDontDoPolicy: ProfessionalPolicy = {
     ),
     chapter(
       3,
+      "Conteúdo sexual adulto e serviços +18",
+      "Adult sexual content and 18+ services",
+      `Não desenvolvo, adapto, mantenho, hospedo, integro ou presto consultoria para sites, aplicativos, plataformas, comunidades, sistemas de assinatura, lojas, áreas de membros, serviços de transmissão, automações ou infraestrutura cuja finalidade principal seja produzir, publicar, vender, distribuir, promover ou intermediar conteúdo sexual explícito, pornografia, serviços eróticos ou experiências classificadas como adultas (+18). A recusa também se aplica a recursos acessórios criados especificamente para viabilizar essa operação, como cobrança, catálogo, moderação, entrega de mídia ou gestão de criadores. Esta é uma regra de seleção profissional e comercial, inclusive quando o conteúdo envolver apenas adultos e for apresentado como consensual ou legal. Ela não equipara educação sexual, saúde, prevenção, pesquisa ou proteção de vítimas a entretenimento sexual; demandas legítimas dessas áreas ainda dependem de escopo, finalidade, segurança, privacidade e conformidade adequados.`,
+      `I do not develop, adapt, maintain, host, integrate, or consult on websites, applications, platforms, communities, subscription systems, stores, member areas, streaming services, automation, or infrastructure whose primary purpose is to produce, publish, sell, distribute, promote, or broker explicit sexual content, pornography, erotic services, or adult-rated (18+) experiences. This refusal also covers supporting features built specifically to enable such an operation, including payments, catalogs, moderation, media delivery, or creator management. It is a professional and commercial selection rule even where the content is presented as involving consenting adults and as lawful. It does not equate sexual education, healthcare, prevention, research, or victim protection with sexual entertainment; legitimate requests in those fields still require appropriate scope, purpose, security, privacy, and compliance.`
+    ),
+    chapter(
+      4,
+      "Exploração sexual de crianças e adolescentes e denúncia formal",
+      "Child sexual exploitation and formal reporting",
+      `Existe tolerância zero para qualquer solicitação, material ou operação relacionada à sexualização, exploração, abuso ou aliciamento de crianças ou adolescentes. Não desenvolvo nem mantenho recursos destinados a criar, armazenar, localizar, classificar, transmitir, comercializar, ocultar ou ampliar material de abuso sexual infantil, conteúdo sexual envolvendo menores, grooming, sextorsão, tráfico, facilitação de encontros ou qualquer forma de exploração. Diante de indícios concretos recebidos durante uma conversa ou projeto, recuso ou interrompo imediatamente a atividade afetada, limito o acesso e evito copiar, baixar, reenviar ou divulgar o material. Preservo somente as informações mínimas que possam ser tratadas com segurança e legitimidade e formalizo denúncia pelos canais oficiais cabíveis, que podem incluir a plataforma, provedor, hospedagem, meio de pagamento e autoridades competentes, conforme o caso e a legislação aplicável. A proteção da vítima e a integridade da apuração prevalecem sobre sigilo comercial ou continuidade contratual; não confronto o suspeito nem conduzo investigação particular.`,
+      `There is zero tolerance for any request, material, or operation involving the sexualization, exploitation, abuse, or grooming of a child or adolescent. I do not develop or maintain features intended to create, store, locate, classify, transmit, commercialize, conceal, or amplify child sexual abuse material, sexual content involving minors, grooming, sextortion, trafficking, meeting facilitation, or any form of exploitation. Where concrete indicators arise during a conversation or project, I refuse or immediately stop the affected activity, restrict access, and avoid copying, downloading, forwarding, or disclosing the material. I preserve only the minimum information that can be handled safely and lawfully and submit a formal report through the appropriate official channels, which may include the platform, provider, host, payment service, and competent authorities depending on the circumstances and applicable law. Victim protection and the integrity of an official investigation take precedence over commercial confidentiality or contract continuity; I do not confront the suspected person or conduct a private investigation.`
+    ),
+    chapter(
+      5,
       "Cybersecurity legítima e autorização",
       "Legitimate cybersecurity and authorization",
       `Cybersecurity não é proibida de forma genérica. Posso avaliar pentest autorizado, auditoria, análise defensiva, pesquisa, bug bounty, testes controlados, engenharia reversa legalmente permitida e desenvolvimento de ferramentas de segurança. Essas atividades exigem finalidade legítima, autorização verificável do titular do ambiente, escopo, alvos, janela, limites, tratamento de evidências e canal de incidente. Um programa público de bug bounty deve ser respeitado exatamente nos termos publicados. A mera afirmação de que o cliente “tem permissão” pode ser insuficiente quando o teste apresentar risco relevante.`,
       `Cybersecurity is not broadly prohibited. I may consider authorized penetration testing, audits, defensive analysis, research, bug bounty work, controlled testing, legally permitted reverse engineering, and security tool development. These activities require a legitimate purpose, verifiable authorization from the environment owner, scope, targets, timing, limits, evidence handling, and an incident channel. A public bug bounty program must be followed exactly as published. A simple claim that the client “has permission” may be insufficient where testing presents meaningful risk.`
     ),
     chapter(
-      4,
+      6,
       "Testes sem autorização e acesso indevido",
       "Unauthorized testing and improper access",
       `Não executo testes em sistemas, contas, redes, dispositivos, APIs, bancos de dados ou comunidades sem autorização clara e compatível com a atividade. Credenciais encontradas, vazadas ou compartilhadas por pessoa sem competência não concedem autorização. Também não ajudo a manter acesso obtido indevidamente, exfiltrar dados, apagar rastros ou explorar vulnerabilidade fora dos limites aprovados. Quando um achado inesperado surgir durante trabalho legítimo, a conduta deve priorizar contenção, preservação mínima de evidências e comunicação responsável ao contato autorizado.`,
       `I do not test systems, accounts, networks, devices, APIs, databases, or communities without clear authorization compatible with the activity. Credentials that are found, leaked, or shared by an unauthorized person do not create permission. I also do not help maintain improperly obtained access, exfiltrate data, erase traces, or exploit a vulnerability outside approved limits. When an unexpected finding arises during legitimate work, the response should prioritize containment, minimal evidence preservation, and responsible disclosure to the authorized contact.`
     ),
     chapter(
-      5,
+      7,
       "Privacidade, vigilância e uso de dados",
       "Privacy, surveillance, and data use",
       `Não construo mecanismos de coleta clandestina, perseguição, vigilância abusiva, doxxing, perfilamento discriminatório ou compartilhamento de dados sem fundamento compatível. Solicitações envolvendo dados pessoais precisam indicar finalidade, origem, base de autorização, retenção, destinatários e responsabilidades. Dados publicamente acessíveis não se tornam automaticamente livres para qualquer tratamento. Quando o projeto exigir interpretação jurídica, definição de base legal, dados sensíveis ou monitoramento de trabalhadores e usuários, a contratação pode depender de orientação jurídica e documentação específica.`,
       `I do not build mechanisms for covert collection, stalking, abusive surveillance, doxxing, discriminatory profiling, or data sharing without a compatible basis. Requests involving personal data must identify purpose, source, authorization basis, retention, recipients, and responsibilities. Publicly accessible data does not automatically become free for any use. Where a project requires legal interpretation, legal-basis determination, sensitive data, or employee and user monitoring, the engagement may depend on legal guidance and specific documentation.`
     ),
     chapter(
-      6,
+      8,
       "Manipulação, falsidade e padrões enganosos",
       "Manipulation, impersonation, and deceptive patterns",
       `Não implemento interfaces ou automações cujo objetivo seja induzir consentimento, assinatura, pagamento, instalação ou compartilhamento de dados por engano. Também não participo de falsificação de avaliações, métricas, seguidores, identidades, documentos, provas ou comunicações. Técnicas de conversão podem ser legítimas quando transparentes e compatíveis com a legislação, mas não quando ocultam custos, dificultam cancelamento, simulam urgência inexistente ou exploram vulnerabilidade do usuário. A fronteira é analisada pela finalidade e pelo efeito prático, não apenas pelo nome dado ao recurso.`,
       `I do not implement interfaces or automation intended to trick users into consent, subscription, payment, installation, or data sharing. I also do not participate in fabricating reviews, metrics, followers, identities, documents, evidence, or communications. Conversion techniques may be legitimate when transparent and lawful, but not when they conceal costs, obstruct cancellation, manufacture urgency, or exploit user vulnerability. The boundary is assessed by purpose and practical effect, not merely by the label given to a feature.`
     ),
     chapter(
-      7,
+      9,
       "Propriedade intelectual de terceiros",
       "Third-party intellectual property",
       `Não copio projetos, interfaces, marcas, imagens, textos, bancos de dados ou código de terceiros sem autorização ou licença compatível. Referências visuais e funcionais podem orientar pesquisa, mas não autorizam reprodução de elementos protegidos nem falsa associação. Não utilizo software pirata, chaves irregulares, bibliotecas incompatíveis ou ativos cuja origem não possa ser razoavelmente demonstrada. O cliente é responsável por possuir direitos sobre materiais fornecidos e deve informar limitações de uso. Quando houver dúvida relevante, o item poderá ser excluído até regularização.`,
       `I do not copy third-party projects, interfaces, brands, images, text, databases, or code without authorization or a compatible license. Visual and functional references may guide research, but do not authorize reproduction of protected elements or false association. I do not use pirated software, illicit keys, incompatible libraries, or assets whose provenance cannot reasonably be shown. The client is responsible for having rights to supplied materials and must disclose usage limitations. Where meaningful doubt exists, the item may be excluded until resolved.`
     ),
     chapter(
-      8,
+      10,
       "Projetos sem proposta ou contrato",
       "Projects without a proposal or contract",
       `Não inicio projeto comercial apenas com promessa verbal ou conversa dispersa. A contratação precisa registrar partes, escopo, preço, prazo, pagamento, entregáveis, responsabilidades, propriedade intelectual, licença, aceite, suporte e encerramento conforme a complexidade. Uma proposta aceita pode integrar o contrato quando isso estiver previsto. Provas de conceito ou diagnósticos também podem exigir documento próprio. A formalização não elimina confiança; ela preserva o entendimento comum e fornece referência quando pessoas, prioridades ou circunstâncias mudam.`,
       `I do not begin commercial projects based solely on a verbal promise or scattered conversation. The engagement must record the parties, scope, price, timeline, payment, deliverables, responsibilities, intellectual property, license, acceptance, support, and termination as appropriate to complexity. An accepted proposal may form part of the contract where provided. Proofs of concept or diagnostics may also require their own document. Formalization does not replace trust; it preserves shared understanding when people, priorities, or circumstances change.`
     ),
     chapter(
-      9,
+      11,
       "Escopo indefinido ou execução sem direção",
       "Undefined scope or directionless execution",
       `Não aceito o modelo “vai fazendo e depois vemos” como projeto fechado. Descoberta e experimentação podem ser contratadas, mas precisam de objetivo, limite de horas ou orçamento, entregável de aprendizado, responsáveis e critério de encerramento. Sem isso, o cliente não consegue avaliar custo e eu não consigo planejar capacidade. Requisitos podem evoluir, desde que exista um processo de mudança. A flexibilidade adequada é administrada por prioridades e decisões registradas, não pela ausência de qualquer referência.`,
       `I do not accept “keep building and we will see later” as a fixed project model. Discovery and experimentation may be contracted, but they need an objective, time or budget limit, learning deliverable, responsible parties, and completion criterion. Without these, the client cannot assess cost and I cannot plan capacity. Requirements may evolve, provided there is a change process. Appropriate flexibility is managed through priorities and recorded decisions, not by having no reference at all.`
     ),
     chapter(
-      10,
+      12,
       "Prazos tecnicamente inviáveis",
       "Technically unworkable schedules",
       `Não assumo datas que eliminem etapas essenciais de diagnóstico, segurança, testes ou validação sem que riscos, redução de escopo e responsabilidades sejam formalmente avaliados. Uma urgência pode ser atendida por fase menor, protótipo, entrega progressiva ou equipe adicional, se viável. Pressa do cliente não transforma uma estimativa impossível em compromisso técnico. Quando o prazo colocar pessoas, dados, operação ou reputação em risco desproporcional e não houver alternativa aceitável, o projeto será recusado.`,
       `I do not accept dates that remove essential diagnosis, security, testing, or validation without formally assessing risks, scope reduction, and responsibilities. An urgent need may be addressed through a smaller phase, prototype, progressive delivery, or additional staff where feasible. Client urgency does not turn an impossible estimate into a technical commitment. Where the schedule places people, data, operations, or reputation at disproportionate risk and no acceptable alternative exists, the project will be declined.`
     ),
     chapter(
-      11,
+      13,
       "Trabalho gratuito por promessa de exposição",
       "Unpaid work in exchange for exposure",
       `Não substituo remuneração por promessa genérica de divulgação, portfólio ou oportunidade futura. Parcerias, projetos sociais, pesquisa e contribuições de código aberto podem existir, mas dependem de decisão consciente, escopo próprio e contrapartidas claras; não são exigíveis como condição para “provar” competência. Custos de descoberta, planejamento e reserva de agenda existem mesmo quando ainda não há código em produção. Qualquer exceção deve ser expressa e não cria obrigação de repetição em outros projetos.`,
       `I do not replace compensation with a generic promise of exposure, portfolio value, or future opportunity. Partnerships, social projects, research, and open-source contributions may exist, but depend on a deliberate decision, their own scope, and clear consideration; they cannot be demanded as a condition to “prove” competence. Discovery, planning, and schedule reservation have costs even before code reaches production. Any exception must be explicit and does not create an obligation to repeat it in other projects.`
     ),
     chapter(
-      12,
+      14,
       "Condições financeiras incompatíveis",
       "Incompatible financial conditions",
       `Não inicio trabalho com pagamento futuro indefinido, orçamento incompatível com o risco ou dependência exclusiva de resultado comercial que não controlo. O modelo padrão utiliza 50% na contratação e 50% na entrega, sujeito à proposta e ao contrato. Projetos maiores podem adotar marcos diferentes. Condições devem cobrir diagnóstico, execução, tributos, ferramentas, fornecedores e disponibilidade reservada. Quando o orçamento não comportar o escopo, proponho redução, fases ou alternativas. Não reduzo silenciosamente qualidade, segurança ou documentação para caber em um valor sem informar as consequências.`,
       `I do not begin work with undefined future payment, a budget incompatible with risk, or payment solely dependent on a commercial outcome I do not control. The standard model uses 50% upon engagement and 50% upon delivery, subject to the proposal and contract. Larger projects may use different milestones. Terms should cover diagnosis, execution, taxes, tools, vendors, and reserved capacity. When the budget cannot support scope, I propose reduction, phases, or alternatives. I do not silently reduce quality, security, or documentation to fit a figure without explaining the consequences.`
     ),
     chapter(
-      13,
+      15,
       "Microgerenciamento e autonomia técnica",
       "Micromanagement and technical autonomy",
       `Não aceito controle de cada decisão ou linha de código de forma incompatível com a autonomia técnica contratada. Isso não elimina governança do cliente: prioridades, orçamento, requisitos, riscos e critérios de aceite continuam sujeitos a alinhamento. Revisões técnicas, pair programming e padrões internos são possíveis quando previstos. O problema surge quando instruções contraditórias, aprovações excessivas ou interferências sem responsável tornam inviável a entrega. Nessa situação, o fluxo deve ser reorganizado com papéis e autoridade de decisão definidos.`,
       `I do not accept control over every decision or line of code where it is incompatible with the contracted technical autonomy. This does not remove client governance: priorities, budget, requirements, risks, and acceptance criteria remain subject to alignment. Technical reviews, pair programming, and internal standards are possible when planned. The problem arises when conflicting instructions, excessive approvals, or interference without accountability make delivery unworkable. In that situation, the workflow must be reorganized with defined roles and decision authority.`
     ),
     chapter(
-      14,
+      16,
       "Revisões ilimitadas",
       "Unlimited revisions",
       `Não ofereço revisões ilimitadas ou alterações sucessivas que substituam o requisito aprovado. A proposta deve indicar rodadas, janelas ou critérios de ajuste. Uma correção de desconformidade não consome necessariamente a mesma categoria de revisão de uma preferência nova; cada pedido é classificado pelo seu conteúdo. Mudanças fora do escopo podem ser avaliadas por solicitação de mudança, com impacto em preço, prazo, testes e documentação. Esse limite evita que uma entrega validada permaneça indefinidamente aberta.`,
       `I do not offer unlimited revisions or successive changes that replace an approved requirement. The proposal should specify rounds, windows, or adjustment criteria. Correcting a nonconformity does not necessarily fall into the same category as a new preference; each request is classified by substance. Out-of-scope changes may be assessed through a change request with impact on price, schedule, testing, and documentation. This limit prevents an accepted delivery from remaining indefinitely open.`
     ),
     chapter(
-      15,
+      17,
       "Suporte ilimitado ou não contratado",
       "Unlimited or uncontracted support",
       `Não presumo suporte contínuo, plantão, monitoramento, manutenção evolutiva ou SLA dentro do preço de desenvolvimento. A garantia técnica cobre falhas relacionadas ao escopo e pelo período aplicável; suporte orienta uso ou investiga ocorrências; manutenção altera ou preserva o sistema ao longo do tempo. São serviços diferentes. Emergências fora do horário dependem de disponibilidade e contratação específica. Sem plano ativo, novas intervenções recebem estimativa e prioridade próprias. Isso permite que expectativa de resposta seja realista e que a operação crítica tenha cobertura adequada.`,
       `I do not assume continuous support, on-call coverage, monitoring, evolutionary maintenance, or an SLA is included in development pricing. A technical warranty covers scope-related defects for the applicable period; support assists use or investigates incidents; maintenance changes or preserves the system over time. These are different services. After-hours emergencies depend on availability and a specific agreement. Without an active plan, new interventions receive their own estimate and priority. This keeps response expectations realistic and gives critical operations appropriate coverage.`
     ),
     chapter(
-      16,
+      18,
       "Trabalho e aprovações fora dos canais oficiais",
       "Work and approvals outside official channels",
       `Não considero mensagem isolada em perfil pessoal, comentário público, áudio sem contexto ou recado de pessoa não autorizada como alteração automática de contrato. Comunicação cotidiana pode ocorrer em canal combinado, mas decisões sobre escopo, preço, prazo, aceite, licença e pagamento precisam ser registradas de forma recuperável. Não executo solicitação sensível enviada por contato que não possa ser confirmado. Essa disciplina reduz fraude, conflito de versão e decisões atribuídas à pessoa errada.`,
       `I do not treat an isolated message to a personal profile, public comment, context-free audio, or message from an unauthorized person as an automatic contract change. Daily communication may occur through an agreed channel, but decisions about scope, price, timing, acceptance, license, and payment must be recorded in a retrievable form. I do not execute sensitive requests from a contact that cannot be verified. This discipline reduces fraud, version conflicts, and decisions attributed to the wrong person.`
     ),
     chapter(
-      17,
+      19,
       "Credenciais, acessos e práticas inseguras",
       "Credentials, access, and unsafe practices",
       `Não recomendo compartilhamento de senha pessoal quando o provedor permite usuário próprio, função, chave restrita ou acesso temporário. Não armazeno credenciais em código ou documento aberto deliberadamente. Também não aceito como requisito a desativação permanente de controles essenciais sem justificativa e aprovação de risco. O cliente deve fornecer acessos legítimos e revogá-los quando deixarem de ser necessários. Se o ambiente não permitir um nível mínimo de segurança, a atividade pode ser limitada até que a condição seja corrigida.`,
       `I do not recommend sharing a personal password where a provider supports a dedicated user, role, restricted key, or temporary access. I do not deliberately store credentials in code or open documents. I also do not accept permanent disabling of essential controls as a requirement without justification and risk approval. The client must provide legitimate access and revoke it when no longer needed. If an environment cannot support a minimum security level, the activity may be limited until the condition is corrected.`
     ),
     chapter(
-      18,
+      20,
       "Promessas fora do controle técnico",
       "Promises beyond technical control",
       `Não garanto faturamento, lucro, conversão, posição em buscadores, aprovação em loja, disponibilidade absoluta, ausência total de vulnerabilidades ou continuidade de serviço terceiro. Posso assumir critérios técnicos mensuráveis quando documentados, testar o que está sob meu controle e comunicar riscos. Resultados também dependem de conteúdo, operação, mercado, infraestrutura, usuários, fornecedores e decisões do cliente. A ausência de garantia comercial não reduz o dever de executar o escopo com diligência nem de corrigir desconformidades abrangidas pela garantia aplicável.`,
       `I do not guarantee revenue, profit, conversion, search ranking, app-store approval, absolute availability, complete absence of vulnerabilities, or continuity of third-party services. I can commit to documented, measurable technical criteria, test what is under my control, and communicate risks. Outcomes also depend on content, operations, market conditions, infrastructure, users, providers, and client decisions. The absence of a commercial guarantee does not reduce the duty to perform the scope diligently or correct nonconformities covered by the applicable warranty.`
     ),
     chapter(
-      19,
+      21,
       "Abuso de plataformas e violação de termos",
       "Platform abuse and terms violations",
       `Não desenvolvo automações para spam, criação abusiva de contas, evasão de banimento, compra artificial de engajamento, contorno de limites, coleta proibida ou violação deliberada de termos de plataforma. Integrações devem utilizar meios autorizados sempre que disponíveis. Quando um requisito depender de técnica que possa levar ao bloqueio de conta, quebra de contrato com provedor ou prejuízo a terceiros, ele será recusado ou substituído. Mudanças nos termos da plataforma podem exigir interrupção ou adaptação do recurso.`,
       `I do not develop automation for spam, abusive account creation, ban evasion, artificial engagement purchasing, limit circumvention, prohibited collection, or deliberate platform-terms violations. Integrations should use authorized means whenever available. Where a requirement depends on a technique that may lead to account suspension, breach of a provider agreement, or harm to others, it will be declined or replaced. Changes to platform terms may require a feature to be suspended or adapted.`
     ),
     chapter(
-      20,
+      22,
       "Suspensão, recusa e encerramento responsável",
       "Responsible suspension, refusal, and termination",
       `Se durante o projeto surgir risco relevante, finalidade diferente da informada, inadimplência, falta de autorização, agressão, violação de segurança ou solicitação ilegal, posso interromper a atividade afetada e solicitar esclarecimento. Suspensão e encerramento devem observar notificação, contrato, proporcionalidade, preservação de evidências e legislação aplicável. Sempre que for seguro, busco permitir transição organizada e definir o tratamento dos materiais produzidos. A regra não autoriza abandono arbitrário de obrigação nem retenção indevida de dados pertencentes ao cliente.`,
       `If a material risk, undisclosed purpose, non-payment, lack of authorization, abuse, security violation, or illegal request emerges during a project, I may pause the affected activity and seek clarification. Suspension and termination must follow notice, contract terms, proportionality, evidence preservation, and applicable law. Where safe, I seek an orderly transition and define the handling of work produced. This rule does not authorize arbitrary abandonment of obligations or improper retention of client-owned data.`
     ),
     chapter(
-      21,
+      23,
       "Respeito, disponibilidade e comunicação",
       "Respect, availability, and communication",
       `Não mantenho relação de trabalho baseada em assédio, discriminação, ameaça, exposição indevida ou cobrança permanente fora dos horários combinados. Mensagens podem ser enviadas de forma assíncrona, mas expectativa de resposta segue o canal e a janela definidos. Urgências reais devem utilizar o procedimento contratado; declarar toda demanda como urgente não cria plantão. Divergências são tratadas com registro, fatos e tentativa de solução. Condutas graves ou repetidas podem justificar medidas previstas no contrato, sem eliminar deveres já constituídos.`,
       `I do not maintain a working relationship based on harassment, discrimination, threats, improper exposure, or constant demands outside agreed hours. Messages may be sent asynchronously, but response expectations follow the defined channel and window. Genuine emergencies must use the contracted procedure; labeling every request urgent does not create on-call coverage. Disagreements are handled through records, facts, and an attempt at resolution. Serious or repeated misconduct may justify contractual measures without erasing existing obligations.`
     ),
     chapter(
-      22,
+      24,
       "Exceções, contrato e validação jurídica",
       "Exceptions, contract, and legal review",
-      `Uma exceção precisa ser expressa, limitada e compatível com a lei; tolerância pontual não altera automaticamente esta política. A proposta e o contrato podem detalhar ou adaptar limites para um projeto específico, mas não tornam lícita uma atividade proibida nem afastam direitos indisponíveis. Situações envolvendo segurança ofensiva, dados sensíveis, regulação, consumidores, menores, propriedade intelectual complexa ou operação internacional podem depender de validação jurídica e documental adicional. Última atualização: 21 de setembro de 2026.`,
-      `An exception must be express, limited, and lawful; one-time tolerance does not automatically amend this policy. The proposal and contract may detail or adapt limits for a particular project, but cannot make prohibited conduct lawful or waive non-waivable rights. Matters involving offensive security, sensitive data, regulation, consumers, minors, complex intellectual property, or international operations may require additional legal and documentary review. Last updated: September 21, 2026.`
+      `Uma exceção precisa ser expressa, limitada e compatível com a lei; tolerância pontual não altera automaticamente esta política. A proposta e o contrato podem detalhar ou adaptar limites para um projeto específico, mas não tornam lícita uma atividade proibida nem afastam direitos indisponíveis. As recusas relativas a conteúdo sexual adulto e à exploração sexual de crianças ou adolescentes não são flexibilizadas por proposta comercial. Situações envolvendo segurança ofensiva, dados sensíveis, regulação, consumidores, menores, propriedade intelectual complexa ou operação internacional podem depender de validação jurídica e documental adicional. Última atualização: 28 de setembro de 2026.`,
+      `An exception must be express, limited, and lawful; one-time tolerance does not automatically amend this policy. The proposal and contract may detail or adapt limits for a particular project, but cannot make prohibited conduct lawful or waive non-waivable rights. The refusals concerning adult sexual content and the sexual exploitation of children or adolescents are not relaxed by a commercial proposal. Matters involving offensive security, sensitive data, regulation, consumers, minors, complex intellectual property, or international operations may require additional legal and documentary review. Last updated: September 28, 2026.`
     ),
   ],
 };
