@@ -9,6 +9,7 @@ import { MotionRail, PageHero } from "@/components/ui/PageIdentity";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import { policySections, policiesPageMeta } from "@/data/policies-content";
+import { professionalPolicySummaries } from "@/data/professional-policies";
 import { cn } from "@/lib/utils";
 
 const groupIds = {
@@ -210,7 +211,7 @@ const Policies = () => {
                               <span>
                                 <span className="block font-serif text-xl leading-tight text-foreground">{section.title[lang]}</span>
                                 <span className="mt-2 line-clamp-2 block max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                                  {section.paragraphs[0][lang]}
+                                  {professionalPolicySummaries[section.id]?.[lang] ?? section.paragraphs[0][lang]}
                                 </span>
                               </span>
                               <span className="inline-flex items-center gap-2 text-sm font-medium text-foreground/80">

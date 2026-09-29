@@ -15,6 +15,21 @@ type ProfessionalPolicy = {
   paragraphs: PolicyBlock[];
 };
 
+export const professionalPolicySummaries: Record<string, TextPair> = {
+  "como-trabalho": {
+    pt: "Etapas, responsabilidades, pagamentos, prazos, aceite, suporte e encerramento de projetos.",
+    en: "Project stages, responsibilities, payments, schedules, acceptance, support, and closure.",
+  },
+  "o-que-faco": {
+    pt: "Serviços, critérios técnicos e limites do escopo que posso assumir em cada contratação.",
+    en: "Services, technical criteria, and scope limits I may undertake in each engagement.",
+  },
+  "o-que-nao-faco": {
+    pt: "Projetos, práticas e condições que não aceito por razões jurídicas, éticas, técnicas ou comerciais.",
+    en: "Projects, practices, and conditions I do not accept for legal, ethical, technical, or commercial reasons.",
+  },
+};
+
 const introduction = (pt: string, en: string): PolicyBlock => ({ pt, en });
 
 const chapter = (
@@ -32,7 +47,235 @@ const chapter = (
   en,
 });
 
-export const whatIDoPolicy: ProfessionalPolicy = {
+type ProfessionalPolicyKind = "services" | "limits" | "process";
+
+const serviceClauseExpansion = (number: number, title: TextPair): TextPair => {
+  if (number <= 13) {
+    return {
+      pt: `A aplicação da cláusula “${title.pt}” começa pela identificação do problema que precisa ser resolvido e não apenas pela escolha antecipada de uma tecnologia. Para integrar uma contratação, essa frente deve aparecer na proposta ou em anexo técnico com objetivo, entregáveis, exclusões, dependências, ambientes envolvidos e critérios verificáveis de conclusão. Referências, reuniões ou demonstrações preliminares ajudam a formar entendimento, mas não ampliam automaticamente o escopo aprovado.`,
+      en: `Application of the “${title.en}” clause begins by identifying the problem to be solved rather than selecting a technology in advance. To form part of an engagement, this area must appear in the proposal or a technical schedule with its objective, deliverables, exclusions, dependencies, affected environments, and verifiable completion criteria. References, meetings, or preliminary demonstrations help establish understanding but do not automatically expand the approved scope.`,
+    };
+  }
+
+  if (number <= 20) {
+    return {
+      pt: `Na cláusula “${title.pt}”, decisões técnicas precisam ser proporcionais ao risco e acompanhadas de critérios observáveis. Sempre que o requisito for relevante para segurança, disponibilidade, desempenho, continuidade ou operação, a proposta deve indicar o que será medido, em qual ambiente, com quais limites e quais evidências serão usadas na validação. Expressões genéricas como “seguro”, “rápido” ou “escalável” não substituem metas, premissas e responsabilidades documentadas.`,
+      en: `Under the “${title.en}” clause, technical decisions must be proportionate to risk and supported by observable criteria. Whenever a requirement matters to security, availability, performance, continuity, or operations, the proposal should state what will be measured, in which environment, against which limits, and what evidence will support validation. Generic terms such as “secure,” “fast,” or “scalable” do not replace documented targets, assumptions, and responsibilities.`,
+    };
+  }
+
+  return {
+    pt: `A cláusula “${title.pt}” organiza condições gerais que precisam ser convertidas em obrigações específicas no documento aplicável ao projeto. Proposta, contrato, ordem de serviço e anexos devem indicar responsáveis, prazos, documentos de apoio, dependências e eventuais exceções. Uma orientação pública não substitui a análise do caso concreto, especialmente quando houver consumidor, dados pessoais, operação regulada, contratação internacional ou risco que exija assessoria especializada.`,
+    en: `The “${title.en}” clause organizes general conditions that must be converted into specific duties in the document applicable to the project. The proposal, contract, statement of work, and schedules should identify responsible parties, deadlines, supporting documents, dependencies, and any exceptions. Public guidance does not replace case-specific review, especially where consumers, personal data, regulated operations, international engagements, or risks requiring specialist advice are involved.`,
+  };
+};
+
+const limitClauseExpansion = (number: number, title: TextPair): TextPair => {
+  if (number <= 9) {
+    return {
+      pt: `A avaliação da cláusula “${title.pt}” considera a finalidade real do pedido, quem controla o ambiente, quem pode conceder autorização e quais pessoas podem ser afetadas. Nome dado ao projeto, uso de conta intermediária, alegação informal de consentimento ou fragmentação da demanda em tarefas menores não altera sua natureza. Quando o contexto não puder ser confirmado com segurança razoável, posso solicitar documentos, limitar a análise ou recusar a atividade sem executar testes potencialmente danosos.`,
+      en: `Assessment under the “${title.en}” clause considers the request's actual purpose, who controls the environment, who can grant authorization, and which people may be affected. A project label, use of an intermediary account, an informal claim of consent, or splitting the request into smaller tasks does not change its nature. Where the context cannot be confirmed with reasonable confidence, I may request documents, limit the review, or decline the activity without performing potentially harmful tests.`,
+    };
+  }
+
+  if (number <= 18) {
+    return {
+      pt: `Na cláusula “${title.pt}”, o limite existe para impedir que indefinição comercial seja transferida para a execução técnica. Antes do início, precisam estar identificados escopo, preço ou critério de cobrança, responsáveis por decisão, canais de aprovação, quantidade ou lógica de revisões e condições para trabalho adicional. Urgência, expectativa de parceria futura ou conversa informal não substituem esses registros nem criam disponibilidade ilimitada.`,
+      en: `Under the “${title.en}” clause, the boundary prevents commercial uncertainty from being transferred into technical delivery. Before work begins, the parties must identify scope, price or billing criteria, decision-makers, approval channels, the number or logic of revisions, and conditions for additional work. Urgency, expectations of a future partnership, or informal conversation do not replace those records or create unlimited availability.`,
+    };
+  }
+
+  return {
+    pt: `A aplicação da cláusula “${title.pt}” deve observar proporcionalidade, preservação de registros e comunicação pelo canal adequado. A medida adotada pode variar entre pedido de esclarecimento, correção de prática insegura, suspensão de uma etapa, recusa de acesso, replanejamento ou encerramento conforme o risco e o contrato. Nenhuma disposição pública autoriza retenção indevida de dados, exposição desnecessária, punição arbitrária ou afastamento de direito que a legislação aplicável considere indisponível.`,
+    en: `Application of the “${title.en}” clause should observe proportionality, record preservation, and communication through the proper channel. The response may range from a request for clarification or correction of an unsafe practice to suspension of a stage, refusal of access, replanning, or termination, depending on risk and contract. No public term authorizes improper data retention, unnecessary exposure, arbitrary punishment, or exclusion of a right that applicable law treats as non-waivable.`,
+  };
+};
+
+const processClauseExpansion = (number: number, title: TextPair): TextPair => {
+  if (number <= 22) {
+    return {
+      pt: `A etapa “${title.pt}” somente pode ser considerada iniciada quando os insumos mínimos, responsáveis e dependências correspondentes estiverem disponíveis. Conforme o projeto, isso pode envolver briefing, documentos, credenciais, conteúdo, ambiente, agenda de validação, aprovação anterior ou confirmação financeira. Se uma dependência permanecer ausente, a etapa pode ficar registrada como pendente sem que o tempo de espera seja confundido com atraso de execução.`,
+      en: `The “${title.en}” stage can be considered started only when its minimum inputs, responsible parties, and dependencies are available. Depending on the project, these may include a brief, documents, credentials, content, an environment, a validation schedule, prior approval, or financial confirmation. If a dependency remains unavailable, the stage may be recorded as pending without treating waiting time as a delivery delay.`,
+    };
+  }
+
+  if (number <= 29) {
+    return {
+      pt: `Na cláusula “${title.pt}”, classificação correta evita que uma alteração relevante seja tratada como simples correção. A análise deve comparar o pedido com requisitos, protótipos, critérios de aceite, versão entregue e premissas aprovadas. Quando houver impacto, o registro deve indicar esforço, risco, testes adicionais, documentação afetada, dependências, preço e novo marco de prazo antes da incorporação ao trabalho em andamento.`,
+      en: `Under the “${title.en}” clause, correct classification prevents a material change from being treated as a simple correction. The request should be compared with requirements, prototypes, acceptance criteria, the delivered version, and approved assumptions. Where an impact exists, the record should state effort, risk, additional testing, affected documentation, dependencies, price, and the revised schedule milestone before the change joins work in progress.`,
+    };
+  }
+
+  return {
+    pt: `A cláusula “${title.pt}” integra a governança do projeto e precisa ser lida com proposta, contrato e anexos aplicáveis. O nível de formalização aumenta conforme sensibilidade dos dados, criticidade da operação, quantidade de terceiros, valor envolvido e impacto de uma falha. Quando o tema exigir competência jurídica, contábil, regulatória ou de segurança especializada, a decisão pode depender de validação externa antes da implementação ou da liberação para produção.`,
+    en: `The “${title.en}” clause forms part of project governance and must be read with the applicable proposal, contract, and schedules. The required level of formality increases with data sensitivity, operational criticality, the number of third parties, value at stake, and the impact of failure. Where legal, accounting, regulatory, or specialist security competence is required, a decision may depend on external review before implementation or production release.`,
+  };
+};
+
+const responsibilityExpansion = (
+  kind: ProfessionalPolicyKind,
+  title: TextPair,
+  number: number
+): TextPair => {
+  const variant = number % 3;
+
+  if (kind === "services") {
+    if (variant === 1) {
+      return {
+        pt: `Na frente “${title.pt}”, cabe a mim transformar necessidades aprovadas em decisões técnicas justificáveis, apontar limitações conhecidas e indicar quando uma premissa precisa ser validada antes de gerar custo de implementação. Cabe ao cliente confirmar regras de negócio, origem e autorização dos dados, restrições internas e autoridade de quem aprova. A execução pode ser pausada se houver versões conflitantes ou ausência de responsável capaz de decidir.`,
+        en: `In the “${title.en}” area, I am responsible for turning approved needs into defensible technical decisions, identifying known limitations, and indicating when an assumption must be validated before implementation cost is incurred. The client is responsible for confirming business rules, data origin and authorization, internal constraints, and the authority of approvers. Delivery may pause where conflicting versions exist or no responsible decision-maker is available.`,
+      };
+    }
+
+    if (variant === 2) {
+      return {
+        pt: `A responsabilidade técnica relacionada a “${title.pt}” abrange diligência compatível com o escopo, registro de decisões relevantes e comunicação de riscos que possam alterar custo, prazo ou segurança. O cliente conserva responsabilidade sobre conteúdo, operação do negócio, licenças de materiais, contas de fornecedores e validações que dependam de conhecimento interno. Sempre que terceiro participar, seu papel e seus acessos precisam ser definidos para evitar sobreposição ou lacuna de responsabilidade.`,
+        en: `Technical responsibility related to “${title.en}” includes diligence proportionate to scope, recording material decisions, and communicating risks that may change cost, schedule, or security. The client remains responsible for content, business operations, material licenses, provider accounts, and validations that depend on internal knowledge. Whenever a third party participates, its role and access must be defined to avoid overlapping duties or accountability gaps.`,
+      };
+    }
+
+    return {
+      pt: `Minha responsabilidade é explicar alternativas relevantes, riscos conhecidos e efeitos previsíveis da decisão técnica dentro do nível de análise contratado. O cliente, por sua vez, deve fornecer contexto verdadeiro, acesso autorizado, restrições do negócio e pessoas capazes de validar o resultado. Se informações essenciais forem omitidas, alteradas ou entregues fora do prazo, estimativas e decisões podem precisar de revisão antes da continuidade.`,
+      en: `My responsibility is to explain relevant alternatives, known risks, and foreseeable effects of the technical decision within the contracted level of review. The client must provide truthful context, authorized access, business constraints, and people able to validate the outcome. If material information is omitted, changed, or delivered late, estimates and decisions may need review before work continues.`,
+    };
+  }
+
+  if (kind === "limits") {
+    if (variant === 1) {
+      return {
+        pt: `Em “${title.pt}”, minha responsabilidade inclui documentar o motivo técnico ou operacional da decisão sem produzir exposição desnecessária sobre o solicitante. Quem apresenta a demanda deve responder aos esclarecimentos de forma completa, comprovar legitimidade dos acessos e interromper qualquer ação própria que aumente o risco enquanto a análise estiver pendente. O dever de cooperação não obriga nenhuma parte a compartilhar material além do estritamente necessário e permitido.`,
+        en: `Under “${title.en},” my responsibility includes documenting the technical or operational basis for a decision without creating unnecessary exposure for the requester. The party presenting the request must answer clarifying questions completely, prove the legitimacy of access, and stop any action that increases risk while review is pending. The duty to cooperate does not require either party to share material beyond what is strictly necessary and permitted.`,
+      };
+    }
+
+    if (variant === 2) {
+      return {
+        pt: `Evidências relacionadas a “${title.pt}” devem ser tratadas pelo menor número possível de pessoas, em canal adequado e apenas pelo período necessário à decisão ou obrigação aplicável. Minha atuação não substitui investigação policial, perícia judicial, decisão de plataforma ou parecer jurídico. O solicitante continua responsável pela veracidade do contexto apresentado e pelas consequências de instruções emitidas sem autorização válida.`,
+        en: `Evidence related to “${title.en}” should be handled by as few people as possible, through an appropriate channel, and only for the period required by the decision or applicable duty. My work does not replace a police investigation, judicial forensics, a platform decision, or legal advice. The requester remains responsible for the truthfulness of the context presented and for consequences of instructions issued without valid authority.`,
+      };
+    }
+
+    return {
+      pt: `Durante a triagem, minha responsabilidade é fazer perguntas proporcionais e evitar contato desnecessário com conteúdo, credenciais ou dados sensíveis. O solicitante deve descrever a finalidade com boa-fé, comprovar autorização quando necessária e não ocultar beneficiários, alvos, métodos ou restrições relevantes. Documento apresentado de forma incompleta, inconsistente ou incompatível com os fatos pode impedir a contratação ou justificar nova verificação.`,
+      en: `During screening, my responsibility is to ask proportionate questions and avoid unnecessary contact with sensitive content, credentials, or data. The requester must describe the purpose in good faith, prove authorization where required, and not conceal relevant beneficiaries, targets, methods, or constraints. Documentation that is incomplete, inconsistent, or incompatible with the facts may prevent engagement or justify further verification.`,
+    };
+  }
+
+  if (variant === 1) {
+    return {
+      pt: `Na etapa “${title.pt}”, preparo os registros técnicos e entregáveis sob minha responsabilidade e informo cedo qualquer impedimento que altere a sequência prevista. O cliente concentra decisões de negócio em representante autorizado, devolve validações de forma consolidada e garante que materiais ou acessos fornecidos possam ser utilizados. Solicitações contraditórias de áreas diferentes ficam pendentes até que exista uma orientação única e recuperável.`,
+      en: `During the “${title.en}” stage, I prepare the technical records and deliverables under my responsibility and report early any blocker that changes the planned sequence. The client centralizes business decisions through an authorized representative, returns consolidated validation, and ensures supplied materials or access may be used. Conflicting requests from different areas remain pending until one clear, retrievable direction exists.`,
+    };
+  }
+
+  if (variant === 2) {
+    return {
+      pt: `As duas partes devem comunicar mudanças que afetem “${title.pt}” assim que forem conhecidas. Minha atuação cobre análise e execução técnica previstas; decisões institucionais, autorizações internas e validação de aderência ao negócio pertencem ao cliente, salvo contratação expressa em sentido diferente. O acompanhamento de terceiros não transfere automaticamente para mim obrigações assumidas por fornecedor, plataforma ou equipe externa.`,
+      en: `Both parties should communicate changes affecting “${title.en}” as soon as they become known. My work covers the agreed technical analysis and delivery; institutional decisions, internal approvals, and business-fit validation belong to the client unless expressly agreed otherwise. Oversight of third parties does not automatically transfer to me duties undertaken by a provider, platform, or external team.`,
+    };
+  }
+
+  return {
+    pt: `Minha responsabilidade nessa etapa é registrar decisões técnicas, comunicar impedimentos relevantes e executar o que estiver sob meu controle conforme o escopo. A responsabilidade do cliente é disponibilizar informações, materiais, acessos e aprovações por representante autorizado, além de revisar os resultados no período combinado. Terceiros envolvidos devem possuir função definida para que orientação, aprovação e responsabilidade não sejam confundidas.`,
+    en: `My responsibility at this stage is to record technical decisions, communicate material blockers, and perform work under my control within scope. The client's responsibility is to provide information, materials, access, and approvals through an authorized representative and to review results within the agreed period. Third parties involved should have defined roles so that advice, approval, and accountability are not confused.`,
+  };
+};
+
+const closingExpansion = (
+  kind: ProfessionalPolicyKind,
+  title: TextPair,
+  number: number
+): TextPair => {
+  const variant = number % 3;
+
+  if (kind === "services") {
+    if (variant === 1) {
+      return {
+        pt: `A validação de “${title.pt}” deve ocorrer no ambiente e com os dados definidos para o projeto. Diferença decorrente de conteúdo novo, volume não informado, configuração externa ou alteração posterior precisa ser separada de eventual desconformidade da entrega. Pendências aceitas com plano de correção não impedem necessariamente o encerramento da etapa, desde que impacto, responsável e prazo estejam registrados.`,
+        en: `Validation of “${title.en}” should occur in the environment and with the data defined for the project. Differences caused by new content, undisclosed volume, external configuration, or later changes must be distinguished from a delivery nonconformity. Accepted pending items with a remediation plan do not necessarily prevent stage closure where impact, owner, and deadline are recorded.`,
+      };
+    }
+
+    if (variant === 2) {
+      return {
+        pt: `A entrega referente a “${title.pt}” não cria obrigação permanente de acompanhar mudanças em sistema operacional, navegador, API, biblioteca ou fornecedor. Continuidade após o aceite depende de garantia aplicável, manutenção contratada ou nova autorização. Se o cliente optar por implantação própria ou intervenção de terceiro, devem ser preservados versão, documentação e registros necessários para distinguir o estado entregue de alterações posteriores.`,
+        en: `Delivery relating to “${title.en}” does not create a permanent duty to track changes in an operating system, browser, API, library, or provider. Continuity after acceptance depends on the applicable warranty, contracted maintenance, or new authorization. If the client chooses self-deployment or third-party intervention, the version, documentation, and records needed to distinguish the delivered state from later changes should be preserved.`,
+      };
+    }
+
+    return {
+      pt: `A conclusão relacionada a “${title.pt}” ocorre quando os entregáveis e critérios documentados forem atendidos ou quando as partes registrarem outra solução para pendências identificadas. Pedido posterior, mudança de prioridade, nova integração, aumento de volume ou alteração feita por terceiro pode exigir análise de impacto e contratação adicional. Garantia, suporte e manutenção seguem regimes próprios e não devem ser presumidos apenas porque a frente foi incluída no projeto original.`,
+      en: `Work related to “${title.en}” is complete when documented deliverables and criteria are met or when the parties record another resolution for identified pending items. A later request, priority change, new integration, volume increase, or third-party modification may require impact assessment and an additional engagement. Warranty, support, and maintenance follow separate arrangements and should not be presumed merely because the area was included in the original project.`,
+    };
+  }
+
+  if (kind === "limits") {
+    if (variant === 1) {
+      return {
+        pt: `Quando a situação de “${title.pt}” admitir correção, posso indicar condições mínimas para nova análise, como autorização válida, redução de escopo, troca de método, regularização de licença ou adoção de controle de segurança. Essa indicação não constitui promessa de contratação futura. Se o risco permanecer incompatível, a recusa continua válida sem afastar pagamentos, devoluções, transição ou outras consequências previstas no contrato e na lei.`,
+        en: `Where a “${title.en}” issue can be remediated, I may identify minimum conditions for reassessment, such as valid authorization, reduced scope, a different method, license regularization, or adoption of a security control. This does not promise a future engagement. If the risk remains incompatible, the refusal continues to apply without excluding payments, refunds, transition duties, or other consequences under contract and law.`,
+      };
+    }
+
+    if (variant === 2) {
+      return {
+        pt: `O encerramento relacionado a “${title.pt}” deve limitar novos riscos e organizar o destino de acessos, arquivos, credenciais e trabalhos já produzidos. A devolução ou eliminação de materiais observará titularidade, retenção necessária, preservação de prova e instrução legítima. Quando não houver urgência ou impedimento legal, procuro registrar o motivo, o estado da entrega e os próximos passos disponíveis para uma transição responsável.`,
+        en: `Closure related to “${title.en}” should limit further risk and organize the disposition of access, files, credentials, and work already produced. Return or deletion of materials will observe ownership, necessary retention, evidence preservation, and lawful instructions. Where no urgency or legal restriction exists, I seek to record the reason, delivery status, and available next steps for a responsible transition.`,
+      };
+    }
+
+    return {
+      pt: `Se fatos novos alterarem a avaliação de “${title.pt}”, a decisão pode ser revista antes ou durante o projeto. A resposta será definida conforme gravidade, possibilidade de correção, dever de preservar evidências, segurança das pessoas e obrigações contratuais ou legais. Quando a situação envolver possível crime, risco imediato, exploração de vulnerável ou dever de comunicação, o encaminhamento aos canais oficiais cabíveis pode prevalecer sobre a continuidade comercial.`,
+      en: `If new facts change the assessment of “${title.en},” the decision may be reviewed before or during the project. The response will depend on severity, ability to remediate, evidence-preservation duties, people's safety, and contractual or legal obligations. Where circumstances involve possible crime, immediate risk, exploitation of a vulnerable person, or a reporting duty, referral through the appropriate official channels may take precedence over commercial continuity.`,
+    };
+  }
+
+  if (variant === 1) {
+    return {
+      pt: `A conclusão de “${title.pt}” deve deixar visível o que foi aprovado, o que permanece pendente e qual documento sustenta a passagem para a etapa seguinte. Se a validação depender do cliente, o prazo de resposta e o efeito da ausência de manifestação precisam seguir a proposta ou o contrato, sem afastar direitos legalmente indisponíveis. Reabertura por requisito novo será tratada conforme o processo de mudança.`,
+      en: `Completion of “${title.en}” should make clear what was approved, what remains pending, and which document supports moving to the next stage. If validation depends on the client, the response period and effect of no response must follow the proposal or contract without excluding legally non-waivable rights. Reopening due to a new requirement will follow the change process.`,
+    };
+  }
+
+  if (variant === 2) {
+    return {
+      pt: `Ao encerrar “${title.pt}”, preservo os registros técnicos proporcionais ao projeto e indico dependências que continuarão sob responsabilidade do cliente ou de terceiros. A passagem de fase não apaga ocorrências anteriores nem transforma recomendação em garantia de resultado externo. Caso surja informação que altere premissa essencial, a etapa pode ser reavaliada antes da continuidade, com impacto registrado.`,
+      en: `When closing “${title.en},” I preserve technical records proportionate to the project and identify dependencies that remain with the client or third parties. Moving between stages does not erase prior events or turn a recommendation into a guarantee of an external outcome. If information emerges that changes a material assumption, the stage may be reassessed before work continues, with the impact recorded.`,
+    };
+  }
+
+  return {
+    pt: `A etapa “${title.pt}” termina quando seu critério de conclusão estiver documentado, as pendências tiverem responsável e prazo, e a decisão necessária estiver registrada. Silêncio, conversa informal ou uso parcial de uma entrega não substituem automaticamente aceite quando houver procedimento específico, sem prejuízo das hipóteses de aprovação tácita previstas validamente em contrato. Atrasos causados por dependência externa, mudança ou ausência de validação devem ser replanejados com transparência.`,
+    en: `The “${title.en}” stage ends when its completion criterion is documented, pending items have an owner and deadline, and the required decision is recorded. Silence, informal conversation, or partial use of a deliverable does not automatically replace acceptance where a specific procedure applies, without prejudice to valid deemed-acceptance terms in the contract. Delays caused by external dependencies, changes, or missing validation should be replanned transparently.`,
+  };
+};
+
+const expandProfessionalPolicy = (
+  policy: ProfessionalPolicy,
+  kind: ProfessionalPolicyKind
+): ProfessionalPolicy => ({
+  ...policy,
+  paragraphs: policy.paragraphs.map((block) => {
+    if (!block.heading) return block;
+
+    const number = Number.parseInt(block.heading.pt, 10);
+    const contextual = kind === "services"
+      ? serviceClauseExpansion(number, block.heading)
+      : kind === "limits"
+        ? limitClauseExpansion(number, block.heading)
+        : processClauseExpansion(number, block.heading);
+    const responsibilities = responsibilityExpansion(kind, block.heading, number);
+    const closing = closingExpansion(kind, block.heading, number);
+
+    return {
+      ...block,
+      pt: `${block.pt}\n\n${contextual.pt}\n\n${responsibilities.pt}\n\n${closing.pt}`,
+      en: `${block.en}\n\n${contextual.en}\n\n${responsibilities.en}\n\n${closing.en}`,
+    };
+  }),
+});
+
+const whatIDoPolicyBase: ProfessionalPolicy = {
   id: "o-que-faco",
   title: { pt: "O Que Eu Faço", en: "What I Do" },
   paragraphs: [
@@ -204,7 +447,7 @@ export const whatIDoPolicy: ProfessionalPolicy = {
   ],
 };
 
-export const whatIDontDoPolicy: ProfessionalPolicy = {
+const whatIDontDoPolicyBase: ProfessionalPolicy = {
   id: "o-que-nao-faco",
   title: { pt: "O Que Eu Não Faço", en: "What I Don't Do" },
   paragraphs: [
@@ -383,7 +626,7 @@ export const whatIDontDoPolicy: ProfessionalPolicy = {
   ],
 };
 
-export const howIWorkPolicy: ProfessionalPolicy = {
+const howIWorkPolicyBase: ProfessionalPolicy = {
   id: "como-trabalho",
   title: { pt: "Como Eu Trabalho", en: "How I Work" },
   paragraphs: [
@@ -687,3 +930,7 @@ export const howIWorkPolicy: ProfessionalPolicy = {
     ),
   ],
 };
+
+export const whatIDoPolicy = expandProfessionalPolicy(whatIDoPolicyBase, "services");
+export const whatIDontDoPolicy = expandProfessionalPolicy(whatIDontDoPolicyBase, "limits");
+export const howIWorkPolicy = expandProfessionalPolicy(howIWorkPolicyBase, "process");

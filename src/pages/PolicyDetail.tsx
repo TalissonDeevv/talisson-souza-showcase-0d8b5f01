@@ -9,6 +9,7 @@ import { MotionRail, PageHero } from "@/components/ui/PageIdentity";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getText } from "@/utils/translations";
 import { policySections } from "@/data/policies-content";
+import { professionalPolicySummaries } from "@/data/professional-policies";
 import { cn } from "@/lib/utils";
 
 const chapterId = (index: number) => `capitulo-${index + 1}`;
@@ -259,6 +260,7 @@ const PolicyDetail = () => {
   const section = policySections[sectionIndex];
   const safeSection = section ?? policySections[0];
   const isProfessionalPolicy = professionalPolicyIds.has(safeSection.id);
+  const sectionSummary = professionalPolicySummaries[safeSection.id]?.[lang] ?? safeSection.paragraphs[0][lang];
 
   const prev = sectionIndex > 0 ? policySections[sectionIndex - 1] : null;
   const next = sectionIndex < policySections.length - 1 ? policySections[sectionIndex + 1] : null;
@@ -317,7 +319,7 @@ const PolicyDetail = () => {
     <Layout withPadding={false}>
       <SEO
         title={`${section.title[lang]} | ${getText(language, "Políticas", "Policies")}`}
-        description={section.paragraphs[0][lang].slice(0, 155)}
+        description={sectionSummary.slice(0, 155)}
         canonical={`${detailBasePath}/${section.id}`}
         keywords={lang === "pt" ? ["políticas", "termos de uso", section.title.pt.toLowerCase()] : ["policies", "terms of use", section.title.en.toLowerCase()]}
       />
@@ -349,7 +351,7 @@ const PolicyDetail = () => {
         eyebrow={getText(language, "Políticas", "Policies")}
         title={section.title[lang]}
         titleClassName="text-[clamp(2.15rem,12vw,5.2rem)]"
-        subtitle={section.paragraphs[0][lang]}
+        subtitle={sectionSummary}
         meta={
           <MotionRail
             className="max-w-2xl"
