@@ -6,6 +6,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParallaxSection from "@/components/ui/ParallaxSection";
 import GlassCard from "@/components/ui/GlassCard";
 import MobileBentoGrid from "@/components/services/MobileBentoGrid";
+import ProjectShowcase, { type ProjectShowcaseItem } from "@/components/ui/project-showcase";
 import { 
   ArrowLeft, Code, Smartphone, Bot, Palette, Cloud, Users,
   CheckCircle, Star, MessageSquare, ArrowUpRight,
@@ -2125,6 +2126,107 @@ const ServiceDetail = () => {
       ),
     },
   ];
+  const botSystemShowcase: ProjectShowcaseItem[] = language === "pt"
+    ? [
+        {
+          eyebrow: "Programa de parceiros",
+          title: "Inscrições e operação em um painel único",
+          description: "O módulo reúne publicação, inscrições, bloqueios, permissões e leitura de métricas. A equipe administra o programa por componentes visuais, sem depender de uma sequência de comandos para tarefas recorrentes.",
+          image: "/images/services/bot-development/bella-parceiros.png",
+          imageAlt: "Painel administrativo sanitizado do programa de parceiros da Bella no Discord",
+          features: ["Gestão de inscrições", "Publicação e atualização controladas", "Permissões, bloqueios e métricas"],
+        },
+        {
+          eyebrow: "Atendimento",
+          title: "Central de tickets com regras de operação",
+          description: "A central permite configurar o atendimento, horários, equipe responsável, mensagens públicas e modos de abertura. Métricas e estados operacionais permanecem próximos de quem acompanha a rotina.",
+          image: "/images/services/bot-development/bella-tickets.png",
+          imageAlt: "Painel administrativo sanitizado da central de tickets da Bella no Discord",
+          features: ["Horários e estados do atendimento", "Equipe e canais configuráveis", "Acompanhamento de tickets e métricas"],
+        },
+        {
+          eyebrow: "Aprendizagem",
+          title: "Experiência de estudo dentro da comunidade",
+          description: "O módulo de aprendizagem organiza acesso, publicação e acompanhamento de atividades. A experiência pode reunir perfil, teste de nível, quiz, ranking e conteúdo recorrente em um fluxo próprio para os alunos.",
+          image: "/images/services/bot-development/bella-aprenda-ingles.png",
+          imageAlt: "Painel administrativo sanitizado do módulo de aprendizagem da Bella no Discord",
+          features: ["Painel dedicado aos alunos", "Teste de nível, quiz e ranking", "Conteúdo e métricas de uso"],
+        },
+        {
+          eyebrow: "Curadoria",
+          title: "Produtos organizados sem sair do Discord",
+          description: "Uma operação de curadoria pode cadastrar, editar, remover e publicar itens a partir do próprio painel. O módulo também separa a gestão interna da vitrine pública e concentra avisos de novos conteúdos.",
+          image: "/images/services/bot-development/bella-curadoria.png",
+          imageAlt: "Painel administrativo sanitizado do módulo de curadoria de produtos da Bella no Discord",
+          features: ["Cadastro e edição de produtos", "Vitrine pública configurável", "Avisos e controle de acesso"],
+        },
+        {
+          eyebrow: "Comunicação",
+          title: "Mensagens individuais com registro operacional",
+          description: "A central de comunicação apoia contatos pontuais e acompanhamentos autorizados. O fluxo registra o envio, prevê alternativa quando a mensagem direta está indisponível e mantém indicadores essenciais para a equipe.",
+          image: "/images/services/bot-development/bella-cartas.png",
+          imageAlt: "Painel administrativo sanitizado da central de mensagens da Bella no Discord",
+          features: ["Envios individuais autorizados", "Fallback e registro de falhas", "Histórico e indicadores de operação"],
+        },
+        {
+          eyebrow: "Observabilidade",
+          title: "Hospedagem acompanhada pelo painel",
+          description: "O painel aproxima a operação do bot dos sinais da infraestrutura. Status, métricas, disponibilidade, logs e deploys podem ser consultados sem expor credenciais ou exigir acesso direto ao provedor para cada verificação.",
+          image: "/images/services/bot-development/bella-hospedagem.png",
+          imageAlt: "Painel administrativo sanitizado de observabilidade de hospedagem da Bella no Discord",
+          features: ["Status, latência e uso de recursos", "Health checks, logs e deploys", "Ações operacionais com acesso controlado"],
+        },
+      ]
+    : [
+        {
+          eyebrow: "Partner program",
+          title: "Applications and operations in one panel",
+          description: "The module brings publishing, applications, blocks, permissions and metrics together. The team runs the program through visual components instead of relying on command sequences for recurring tasks.",
+          image: "/images/services/bot-development/bella-parceiros.png",
+          imageAlt: "Sanitized Bella partner program administration panel on Discord",
+          features: ["Application management", "Controlled publishing and updates", "Permissions, blocks and metrics"],
+        },
+        {
+          eyebrow: "Support",
+          title: "A ticket center with operational rules",
+          description: "The center configures support modes, schedules, responsible teams and public messages. Metrics and operational states stay close to the people managing the daily routine.",
+          image: "/images/services/bot-development/bella-tickets.png",
+          imageAlt: "Sanitized Bella ticket center administration panel on Discord",
+          features: ["Support hours and states", "Configurable teams and channels", "Ticket and metrics tracking"],
+        },
+        {
+          eyebrow: "Learning",
+          title: "A learning experience inside the community",
+          description: "The learning module organizes access, publishing and activity tracking. It can combine profiles, placement tests, quizzes, rankings and recurring content in a flow designed for students.",
+          image: "/images/services/bot-development/bella-aprenda-ingles.png",
+          imageAlt: "Sanitized Bella learning module administration panel on Discord",
+          features: ["Dedicated student panel", "Placement test, quiz and ranking", "Content and usage metrics"],
+        },
+        {
+          eyebrow: "Curation",
+          title: "Organized products without leaving Discord",
+          description: "A curation operation can add, edit, remove and publish items from the same panel. The module also separates internal management from the public showcase and centralizes new-content announcements.",
+          image: "/images/services/bot-development/bella-curadoria.png",
+          imageAlt: "Sanitized Bella product curation administration panel on Discord",
+          features: ["Product management", "Configurable public showcase", "Announcements and access control"],
+        },
+        {
+          eyebrow: "Communication",
+          title: "Individual messages with operational records",
+          description: "The communication center supports authorized one-to-one messages and follow-ups. It records deliveries, provides a fallback when direct messages are unavailable and keeps essential indicators available to the team.",
+          image: "/images/services/bot-development/bella-cartas.png",
+          imageAlt: "Sanitized Bella messaging center administration panel on Discord",
+          features: ["Authorized individual messages", "Fallback and failure records", "History and operational indicators"],
+        },
+        {
+          eyebrow: "Observability",
+          title: "Hosting signals available from the panel",
+          description: "The panel brings bot operations closer to infrastructure signals. Status, metrics, availability, logs and deployments can be reviewed without exposing credentials or requiring direct provider access for every check.",
+          image: "/images/services/bot-development/bella-hospedagem.png",
+          imageAlt: "Sanitized Bella hosting observability administration panel on Discord",
+          features: ["Status, latency and resource usage", "Health checks, logs and deployments", "Controlled operational actions"],
+        },
+      ];
 
   return (
     <Layout>
@@ -2431,6 +2533,53 @@ const ServiceDetail = () => {
                 </div>
               </ScrollReveal>
             </div>
+          </div>
+        </section>
+      )}
+
+      {serviceId === "bot-development" && (
+        <section id="showcase-bella" className="relative scroll-mt-28 overflow-hidden py-14 lg:py-20">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-0 left-1/2 h-px w-[85%] -translate-x-1/2 bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+          </div>
+          <div className="container relative mx-auto px-6 lg:px-8">
+            <ScrollReveal>
+              <div className="mb-10 grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+                <div>
+                  <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                    {getText(language, "Sistema em funcionamento", "System in operation")}
+                  </span>
+                  <h2 className="max-w-xl font-serif text-3xl leading-tight text-foreground sm:text-4xl lg:text-5xl">
+                    {getText(language, "Bella: módulos que organizam a operação", "Bella: modules that organize operations")}
+                  </h2>
+                </div>
+                <div className="lg:pb-1">
+                  <p className="max-w-2xl text-sm leading-[1.8] text-muted-foreground">
+                    {getText(
+                      language,
+                      "Este recorte mostra como um bot pode concentrar rotinas diferentes sem virar uma coleção solta de comandos. Cada módulo foi pensado para uma necessidade operacional específica e pode ser administrado por componentes visuais dentro do Discord.",
+                      "This selection shows how a bot can centralize different routines without becoming a loose collection of commands. Each module was designed for a specific operational need and can be managed through visual components inside Discord."
+                    )}
+                  </p>
+                  <p className="mt-3 max-w-2xl text-xs leading-relaxed text-muted-foreground/60">
+                    {getText(
+                      language,
+                      "Capturas de ambiente administrativo. Identificadores, canais, cargos e usuários foram omitidos por privacidade e segurança.",
+                      "Administrative environment screenshots. Identifiers, channels, roles and users were omitted for privacy and security."
+                    )}
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal>
+              <ProjectShowcase
+                items={botSystemShowcase}
+                previousLabel={getText(language, "Módulo anterior", "Previous module")}
+                nextLabel={getText(language, "Próximo módulo", "Next module")}
+                itemLabel={getText(language, "Módulo", "Module")}
+              />
+            </ScrollReveal>
           </div>
         </section>
       )}
