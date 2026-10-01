@@ -6,9 +6,9 @@ import SocialIcons from "@/components/ui/SocialIcons";
 import FAQ from "@/components/ui/FAQ";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import GlassCard from "@/components/ui/GlassCard";
-import PremiumBadge from "@/components/ui/PremiumBadge";
 import ParticlesBackground from "@/components/ui/ParticlesBackground";
 import ParallaxSection from "@/components/ui/ParallaxSection";
+import Timeline from "@/components/ui/timeline";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, BookOpen, Quote } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -22,7 +22,7 @@ import StoryHighlight from "@/components/ui/StoryHighlight";
 import SectionSignatureHeader from "@/components/ui/SectionSignatureHeader";
 import TestimonialsEditorial from "@/components/ui/editorial-testimonial";
 import { feedbacks } from "@/data/feedbacks";
-import signatureTrajetoria from "@/assets/signature-trajetoria.png";
+import { getCareerJourneyItems } from "@/data/career-journey";
 import signatureProjetos from "@/assets/signature-projetos.png";
 import signatureServicos from "@/assets/signature-servicos.png";
 import signatureDiscord from "@/assets/signature-discord.png";
@@ -42,6 +42,7 @@ const Index = () => {
     language
   } = useTheme();
   const t = useTranslation(language);
+  const careerJourneyItems = getCareerJourneyItems(language);
   const showLegacyStoryPreview = import.meta.env.DEV && import.meta.env.VITE_SHOW_LEGACY_STORY === "true";
   const featuredProjects = [{
     title: "Saúde+",
@@ -57,17 +58,6 @@ const Index = () => {
     role: feedback.role[feedbackLanguage],
     image: feedback.image,
   }));
-  const featuredCompanies = [{
-    name: "Cheetah Solutions Network",
-    role: "CEO & Founder",
-    period: "2020 - " + getText(language, 'Presente', 'Present'),
-    description: getText(language, "Soluções digitais especializadas em desenvolvimento de bots, aplicações web.", "Digital solutions specialized in bot development and web applications.")
-  }, {
-    name: "Werneck Group",
-    role: getText(language, 'Diretor Estratégico', 'Strategic Director'),
-    period: "2024 - " + getText(language, 'Presente', 'Present'),
-    description: getText(language, "Consultoria estratégica especializada em transformação digital e implementação de soluções tecnológicas empresariais.", "Strategic consulting specialized in digital transformation and implementation of enterprise technology solutions.")
-  }];
   const techStack = [
   { name: 'JavaScript', icon: SiJavascript },
   { name: 'TypeScript', icon: SiTypescript },
@@ -365,132 +355,21 @@ const Index = () => {
         </div>
       </ParallaxSection>
 
-      {/* Career Timeline - Premium Animated */}
-      <ParallaxSection
-        className="py-20 lg:py-24"
-        speed={0.12}
-        backgroundElement={
-        <>
-            <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-card/20 to-transparent" />
-            <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-card/20 to-transparent" />
-            <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-gradient-radial from-foreground/[0.02] to-transparent blur-3xl hidden md:block" />
-          </>
-        }>
-
-        
-        <div className="container mx-auto px-6 lg:px-8 relative">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-            <SectionSignatureHeader
-              eyebrow={getText(language, 'Experi\u00eancia', 'Experience')}
-              title={getText(language, 'Trajet\u00f3ria', 'Journey')}
-              subtitle={getText(language, 'Posi\u00e7\u00f5es de lideran\u00e7a e contribui\u00e7\u00f5es que moldaram minha carreira em tecnologia.', 'Leadership positions and contributions that shaped my career in technology.')}
-              signature={signatureTrajetoria}
-              className="lg:col-span-12"
-              action={
-                <Link
-                  to={language === 'en' ? '/en-us/career' : '/carreira'}
-                  className="group inline-flex items-center gap-3 text-sm font-medium text-foreground">
-                  <span className="relative">
-                    {getText(language, 'Ver trajet\u00f3ria completa', 'View full career')}
-                    <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
-                    <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
-                  </span>
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
-                </Link>
-              }
-            />
-            {/* Header */}
-            <ScrollReveal className="hidden">
-              <motion.span
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium">
-
-                {getText(language, 'Experiência', 'Experience')}
-              </motion.span>
-              <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
-                {getText(language, 'Trajetória', 'Journey')}
-              </h2>
-              <p className="text-base text-muted-foreground leading-relaxed mb-10 max-w-md">
-                {getText(language, 'Posições de liderança e contribuições que moldaram minha carreira em tecnologia.', 'Leadership positions and contributions that shaped my career in technology.')}
-              </p>
-              <Link
-                to={language === 'en' ? '/en-us/career' : '/carreira'}
-                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground">
-
-                <span className="relative">
-                    {getText(language, 'Ver trajet\u00f3ria completa', 'View full career')}
-                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
-                  <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
-                </span>
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
-              </Link>
-            </ScrollReveal>
-            
-            {/* Timeline Cards */}
-            <div className="lg:col-span-10 lg:col-start-2 space-y-6 relative">
-              {/* Animated Timeline Line with gradient */}
-              <motion.div
-                initial={{ scaleY: 0 }}
-                whileInView={{ scaleY: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
-                className="absolute left-6 lg:left-0 top-0 bottom-0 w-px origin-top hidden sm:block"
-                style={{
-                  background: 'linear-gradient(to bottom, hsl(var(--foreground) / 0.2), hsl(var(--foreground) / 0.05) 70%, transparent)'
-                }} />
-
-              
-              {featuredCompanies.map((company, index) =>
-              <ScrollReveal key={company.name} delay={index * 0.15}>
-                  <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="relative pl-0 sm:pl-12 lg:pl-10">
-
-                    {/* Timeline dot */}
-                    <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: index * 0.15 + 0.3 }}
-                    className="absolute left-4 lg:left-[-5px] top-8 hidden sm:flex items-center justify-center">
-
-                      <div className="w-2.5 h-2.5 rounded-full bg-foreground/30 ring-4 ring-background" />
-                    </motion.div>
-                    
-                    <motion.div
-                    whileHover={{ y: -3, x: 3 }}
-                    transition={{ duration: 0.3 }}
-                    className="relative p-8 rounded-2xl border border-border/30 bg-card/40 backdrop-blur-sm group"
-                    style={{
-                      boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
-                    }}>
-
-                      {/* Corner accent */}
-                      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-foreground/[0.02] to-transparent rounded-tr-2xl" />
-                      
-                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-5">
-                        <div>
-                          <h3 className="text-xl font-serif text-foreground mb-1 group-hover:text-gradient transition-all duration-300">{company.role}</h3>
-                          <p className="text-sm text-muted-foreground/80 font-medium">{company.name}</p>
-                        </div>
-                        <PremiumBadge variant="outline" className="text-xs shrink-0">{company.period}</PremiumBadge>
-                      </div>
-                      <p className="text-muted-foreground leading-relaxed text-sm">
-                        {company.description}
-                      </p>
-                    </motion.div>
-                  </motion.div>
-                </ScrollReveal>
-              )}
-            </div>
-          </div>
-        </div>
-      </ParallaxSection>
+      <Timeline
+        sectionId="trajetoria"
+        items={careerJourneyItems}
+        eyebrow={getText(language, "Experiência", "Experience")}
+        title={getText(language, "Trajetória", "Journey")}
+        description={getText(
+          language,
+          "Empresas, parcerias e atuações que ajudaram a formar minha experiência em tecnologia, conteúdo e comunidades.",
+          "Companies, partnerships and roles that shaped my experience in technology, content and communities."
+        )}
+        periodLabel={getText(language, "2020 - presente", "2020 - present")}
+        actionHref={language === "en" ? "/en-us/career" : "/carreira"}
+        actionLabel={getText(language, "Ver trajetória completa", "View full career")}
+        duration={1.2}
+      />
 
       {/* Company Logos - Social Proof */}
       <ParallaxSection

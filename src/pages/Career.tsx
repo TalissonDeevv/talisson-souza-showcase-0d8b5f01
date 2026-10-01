@@ -6,8 +6,9 @@ import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import DiscordCommunityCard from "@/components/ui/DiscordCommunityCard";
 import { IdentityPanel, MotionRail, PageHero } from "@/components/ui/PageIdentity";
-import { Timeline } from "@/components/ui/timeline";
+import Timeline from "@/components/ui/timeline";
 import { useTheme } from "@/contexts/ThemeContext";
+import { getCareerJourneyItems } from "@/data/career-journey";
 import { getText } from "@/utils/translations";
 import signatureTrajetoria from "@/assets/signature-trajetoria.png";
 import cheetahLogo from "@/assets/logos/cheetah-solutions.png";
@@ -39,6 +40,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 const Career = () => {
   const { language } = useTheme();
+  const careerJourneyItems = getCareerJourneyItems(language);
 
   const experiences = language === "pt"
     ? [
@@ -314,77 +316,6 @@ const Career = () => {
     },
   ];
 
-  const careerTimeline = experiences.map((experience) => {
-    const ExperienceIcon = experience.icon;
-
-    return {
-      title: experience.company,
-      content: (
-        <motion.article
-          whileHover={{ y: -3 }}
-          transition={{ duration: 0.3 }}
-          className="relative overflow-hidden border-y border-border/20 bg-background/30 px-0 py-7 sm:px-6 lg:px-8"
-        >
-          <div
-            className="pointer-events-none absolute inset-0 opacity-[0.018]"
-            style={{
-              backgroundImage:
-                "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
-              backgroundSize: "44px 44px",
-            }}
-          />
-          <div className="relative">
-            <div className="mb-5 flex flex-wrap items-center gap-4">
-              <div className="inline-flex min-h-12 items-center rounded-2xl border border-border/20 bg-background/25 px-4 py-3">
-                <img
-                  src={experience.logo}
-                  alt={experience.company}
-                  className="company-logo-monochrome max-h-9 w-auto max-w-[176px] select-none object-contain sm:max-h-10 sm:max-w-[210px]"
-                  loading="lazy"
-                  draggable={false}
-                />
-              </div>
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/25 bg-background/35 text-foreground/65">
-                <ExperienceIcon className="h-4 w-4" />
-              </span>
-            </div>
-
-            <h3 className="font-serif text-2xl leading-tight text-foreground">{experience.role}</h3>
-            <p className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs uppercase tracking-[0.16em] text-muted-foreground/55">
-              <span className="inline-flex items-center gap-1.5">
-                <CalendarDays className="h-3.5 w-3.5" />
-                {experience.period}
-              </span>
-              <span>{experience.place}</span>
-            </p>
-
-            <div className="mt-5 space-y-3">
-              {experience.description.map((item) => (
-                <p key={item} className="max-w-3xl text-sm leading-relaxed text-muted-foreground">
-                  {item}
-                </p>
-              ))}
-            </div>
-
-            <details className="group mt-6 border-t border-border/20 pt-4">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-[11px] uppercase tracking-[0.24em] text-muted-foreground/60 transition-colors hover:text-foreground">
-                <span>{getText(language, "Competências", "Skills")}</span>
-                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-open:rotate-90" />
-              </summary>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {experience.skills.map((skill) => (
-                  <span key={skill} className="rounded-full border border-border/25 bg-background/35 px-3 py-1.5 text-[11px] text-muted-foreground">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </details>
-          </div>
-        </motion.article>
-      ),
-    };
-  });
-
   return (
     <Layout withPadding={false}>
       <SEO
@@ -460,19 +391,19 @@ const Career = () => {
         </div>
       </section>
 
-      <section id="experiencias" className="scroll-mt-28 py-14 lg:py-20">
-        <ScrollReveal>
-          <Timeline
-            data={careerTimeline}
-            description={getText(
-              language,
-              "Uma leitura profissional sem parecer currículo engessado, com função, contexto, impacto e competências reais.",
-              "A professional reading without feeling like a rigid resume, with role, context, impact and real skills."
-            )}
-            title={getText(language, "Onde essa atuação foi construída.", "Where this practice was built.")}
-          />
-        </ScrollReveal>
-      </section>
+      <Timeline
+        sectionId="experiencias"
+        items={careerJourneyItems}
+        eyebrow={getText(language, "Trajetória profissional", "Professional journey")}
+        title={getText(language, "Onde essa atuação foi construída.", "Where this practice was built.")}
+        description={getText(
+          language,
+          "Empresas e frentes nas quais atuei, com função, período e contexto apresentados de forma direta.",
+          "Companies and initiatives where I worked, with role, period and context presented directly."
+        )}
+        periodLabel={getText(language, "2020 - presente", "2020 - present")}
+        duration={1.2}
+      />
 
       <section id="certificacoes" className="relative scroll-mt-28 overflow-hidden py-14 lg:py-20">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
