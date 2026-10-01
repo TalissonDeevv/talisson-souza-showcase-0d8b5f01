@@ -10,12 +10,11 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
 
 import { cn } from "@/lib/utils";
 
 if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, SplitText);
+  gsap.registerPlugin(ScrollTrigger);
 }
 
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
@@ -40,8 +39,6 @@ function usePrefersReducedMotion() {
     () => false,
   );
 }
-
-type SplitTextInstance = InstanceType<typeof SplitText>;
 
 export type CareerJourneyItem = {
   id: string;
@@ -93,7 +90,7 @@ function TimelineIntro({
           {eyebrow}
         </span>
       ) : null}
-      <h2 className="mt-5 max-w-[10ch] font-serif text-5xl font-semibold leading-[0.98] text-current md:text-7xl">
+      <h2 className="mt-5 max-w-[12ch] font-serif text-5xl font-semibold leading-[0.98] text-current md:text-6xl">
         {title}
       </h2>
       {description ? (
@@ -137,7 +134,7 @@ function JourneyCard({
   return (
     <article
       data-journey-card
-      className="relative h-full w-[84vw] max-w-[430px] shrink-0 px-4 sm:w-[64vw] md:w-[440px] md:px-6"
+      className="relative h-full w-[84vw] max-w-[360px] shrink-0 px-4 sm:w-[64vw] md:w-[360px] md:px-5"
       aria-label={`${item.company}: ${item.role}`}
     >
       <span
@@ -149,7 +146,7 @@ function JourneyCard({
         aria-hidden="true"
         className={cn(
           "absolute left-1/2 z-10 w-px -translate-x-1/2",
-          isTop ? "bottom-1/2 h-6" : "top-1/2 h-6",
+          isTop ? "bottom-1/2 h-4" : "top-1/2 h-4",
         )}
         style={activeStyle}
       />
@@ -157,11 +154,11 @@ function JourneyCard({
       <div
         className={cn(
           "flex h-1/2",
-          isTop ? "items-end pb-6" : "translate-y-full items-start pt-6",
+          isTop ? "items-end pb-4" : "translate-y-full items-start pt-4",
         )}
       >
-        <div className="journey-card-copy w-full rounded-md border border-border/30 bg-background/92 p-4 shadow-[0_20px_60px_-36px_rgba(0,0,0,0.55)] backdrop-blur-md md:p-5">
-          <div className="flex min-h-9 items-center justify-between gap-4">
+        <div className="journey-card-copy w-full rounded-md border border-border/30 bg-background/92 p-3 shadow-[0_20px_60px_-36px_rgba(0,0,0,0.55)] backdrop-blur-md">
+          <div className="flex min-h-7 items-center justify-between gap-4">
             <img
               src={item.logo}
               alt={`Logo da ${item.company}`}
@@ -169,24 +166,24 @@ function JourneyCard({
               decoding="async"
               draggable={false}
               className={cn(
-                "company-logo-monochrome max-h-9 w-auto max-w-[158px] select-none object-contain object-left",
+                "company-logo-monochrome max-h-7 w-auto max-w-[140px] select-none object-contain object-left",
                 item.logoClassName,
               )}
             />
-            <span className="shrink-0 font-serif text-2xl text-current/30">{item.year}</span>
+            <span className="shrink-0 font-serif text-xl text-current/30">{item.year}</span>
           </div>
 
-          <div className="mt-3 border-t border-border/25 pt-3">
-            <p className="text-[11px] font-medium uppercase" style={mutedTextStyle}>
+          <div className="mt-2 border-t border-border/25 pt-2">
+            <p className="text-[10px] font-medium uppercase" style={mutedTextStyle}>
               {item.date}
             </p>
-            <h3 className="journey-copy mt-1.5 font-serif text-xl font-medium leading-tight text-current md:text-2xl">
+            <h3 className="journey-copy mt-1 font-serif text-lg font-medium leading-tight text-current md:text-xl">
               {item.role}
             </h3>
-            <p className="journey-copy mt-2 line-clamp-2 text-sm leading-relaxed" style={mutedTextStyle}>
+            <p className="journey-copy mt-1.5 line-clamp-2 text-xs leading-5" style={mutedTextStyle}>
               {item.description}
             </p>
-            <p className="mt-3 text-xs font-medium text-current/70">{item.status}</p>
+            <p className="mt-2 text-[11px] font-medium text-current/70">{item.status}</p>
           </div>
         </div>
       </div>
@@ -228,7 +225,6 @@ export default function Timeline({
 
     if (!section || !track || !lineProgress) return;
 
-    const splitInstances: SplitTextInstance[] = [];
     const refresh = () => ScrollTrigger.refresh();
     const context = gsap.context(() => {
       const getDistance = () => Math.max(0, track.scrollWidth - window.innerWidth + 32);
@@ -260,10 +256,6 @@ export default function Timeline({
       );
 
       section.querySelectorAll<HTMLElement>("[data-journey-card]").forEach((card) => {
-        const copy = card.querySelectorAll<HTMLElement>(".journey-copy");
-        const split = new SplitText(copy, { type: "lines", mask: "lines" });
-        splitInstances.push(split);
-
         gsap.fromTo(
           card.querySelector(".journey-card-copy"),
           { opacity: 0.34, y: 18 },
@@ -282,24 +274,6 @@ export default function Timeline({
           },
         );
 
-        gsap.fromTo(
-          split.lines,
-          { yPercent: 105, opacity: 0 },
-          {
-            yPercent: 0,
-            opacity: 1,
-            duration,
-            stagger: 0.06,
-            ease: "power2.out",
-            immediateRender: false,
-            scrollTrigger: {
-              trigger: card,
-              containerAnimation: horizontalTween,
-              start: "left 92%",
-              toggleActions: "play none none reverse",
-            },
-          },
-        );
       });
 
       window.addEventListener("resize", refresh);
@@ -308,7 +282,6 @@ export default function Timeline({
 
     return () => {
       window.removeEventListener("resize", refresh);
-      splitInstances.forEach((split) => split.revert());
       context.revert();
     };
   }, [duration, items, reducedMotion]);
@@ -356,7 +329,7 @@ export default function Timeline({
       className={cn("relative h-[420vh] w-full", className)}
       style={sectionStyle}
     >
-      <div className="sticky top-24 h-[calc(100svh-6rem)] w-full overflow-hidden lg:top-28 lg:h-[calc(100svh-7rem)]">
+      <div className="sticky top-20 h-[calc(100svh-5rem)] w-full overflow-hidden">
         <div
           ref={trackRef}
           className="flex h-full w-max items-center gap-8 px-6 will-change-transform md:gap-12 md:px-[8vw]"

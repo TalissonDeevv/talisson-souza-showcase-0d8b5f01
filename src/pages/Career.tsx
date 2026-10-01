@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import DiscordCommunityCard from "@/components/ui/DiscordCommunityCard";
 import { IdentityPanel, MotionRail, PageHero } from "@/components/ui/PageIdentity";
 import Timeline from "@/components/ui/timeline";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -18,23 +17,6 @@ import splendoriLogo from "@/assets/logos/splendori.png";
 import hostingerLogo from "@/assets/logos/hostinger.png";
 import shopeeLogo from "@/assets/logos/shopee.png";
 import mynexisLogo from "@/assets/logos/mynexis.png";
-
-const elixirLogo = "/images/discord/elixir-lab-logo.png";
-const elixirBanner = "/images/discord/elixir-lab-banner.png";
-const agonLogo = "/images/discord/agon-logo.png";
-const agonBanner = "/images/discord/agon-banner.png";
-const dunecoLogo = "/images/discord/duneco-logo.png";
-const dunecoBanner = "/images/discord/duneco-banner.png";
-const hytaleLogo = "/images/discord/hytale-logo.gif";
-const hytaleBanner = "/images/discord/hytale-banner.png";
-const modsclubLogo = "/images/discord/modsclub-logo.png";
-const modsclubBanner = "/images/discord/modsclub-banner.png";
-const bpsLogo = "/images/discord/bps-logo.gif";
-const bpsBanner = "/images/discord/bps-banner.png";
-const epfLogo = "/images/discord/epf-logo.png";
-const epfBanner = "/images/discord/epf-banner.png";
-const escritorioLogo = "/images/discord/escritorio-logo.png";
-const escritorioBannerFull = "/images/discord/escritorio-banner-full.png";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -249,73 +231,6 @@ const Career = () => {
     },
   ];
 
-  const communities = [
-    {
-      name: "Escritório do Talisson",
-      description: getText(language, "Espaço oficial onde concentro comunidade, projetos e conteúdo sobre tecnologia e negócios.", "Official space for my community, projects and content about technology and business."),
-      logo: escritorioLogo,
-      banner: escritorioBannerFull,
-      link: "https://discord.talissonsouza.com.br/",
-      role: getText(language, "Proprietário", "Owner"),
-    },
-    {
-      name: "AGON by AOC",
-      description: getText(language, "Comunidade AGON by AOC no Discord Brasil, onde tive atuação encerrada com suporte de conteúdo e auxílio operacional via Mynexis.", "AGON by AOC community on Discord Brazil, where I had a completed role with content support and operational assistance through Mynexis."),
-      logo: agonLogo,
-      banner: agonBanner,
-      link: "https://discord.gg/yBy8Vu79J3",
-      role: getText(language, "Ex Supervisor de Conteúdo", "Former Content Supervisor"),
-    },
-    {
-      name: "DuneCo Dungeons",
-      description: getText(language, "Ecossistema para marcas, criadores e projetos que querem explorar comunidades no Discord.", "Ecosystem for brands, creators and projects exploring Discord communities."),
-      logo: dunecoLogo,
-      banner: dunecoBanner,
-      link: "https://discord.gg/SyEnrAknqA",
-      role: getText(language, "Criador Independente Verificado", "Verified Independent Creator"),
-    },
-    {
-      name: "Hytale Brasil",
-      description: getText(language, "Comunidade brasileira dedicada a Hytale, reunindo jogadores, notícias e estrutura interna.", "Brazilian Hytale community bringing players, news and internal structure together."),
-      logo: hytaleLogo,
-      banner: hytaleBanner,
-      link: "https://discord.gg/x2SvJd2NsZ",
-      role: getText(language, "Desenvolvedor Interno", "Internal Developer"),
-    },
-    {
-      name: "ModsClub",
-      description: getText(language, "Comunidade para moderadores, administradores e proprietários de comunidades brasileiras.", "Community for moderators, administrators and owners of Brazilian communities."),
-      logo: modsclubLogo,
-      banner: modsclubBanner,
-      link: "https://discord.gg/uuHdJUNYQs",
-      role: getText(language, "Especialista em Comunidades", "Community Specialist"),
-    },
-    {
-      name: "Elixir Lab",
-      description: getText(language, "Comunidade de entrada para Discord, bots, jogos e suporte no ecossistema brasileiro.", "Gateway community for Discord, bots, games and support in the Brazilian ecosystem."),
-      logo: elixirLogo,
-      banner: elixirBanner,
-      link: "https://discord.gg/elixirlab",
-      role: getText(language, "Ex Moderador", "Former Moderator"),
-    },
-    {
-      name: "Brasil Play Shox",
-      description: getText(language, "Comunidade ligada ao projeto brasileiro de GTA San Andreas Multiplayer, onde atuei anteriormente na moderação do Discord.", "Community connected to the Brazilian GTA San Andreas Multiplayer project, where I previously worked as a Discord moderator."),
-      logo: bpsLogo,
-      banner: bpsBanner,
-      link: "https://discord.gg/bps",
-      role: getText(language, "Ex Moderador", "Former Moderator"),
-    },
-    {
-      name: "Elite Penguin Force",
-      description: getText(language, "Ecossistema no qual participo como proprietário de uma comunidade registrada. Não sou proprietário, administrador ou representante da Elite Penguin Force.", "An ecosystem in which I participate as the owner of a registered community. I am not an owner, administrator or representative of Elite Penguin Force."),
-      logo: epfLogo,
-      banner: epfBanner,
-      link: "https://discord.gg/hT868BCY32",
-      role: getText(language, "Proprietário de comunidade registrada", "Owner of a registered community"),
-    },
-  ];
-
   return (
     <Layout withPadding={false}>
       <SEO
@@ -444,36 +359,6 @@ const Career = () => {
                 </ScrollReveal>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="comunidades" className="scroll-mt-28 py-14 lg:py-20">
-        <div className="container mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="mb-10 max-w-2xl">
-              <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                Discord
-              </span>
-              <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
-                {getText(language, "Comunidades como campo de operação.", "Communities as an operations field.")}
-              </h2>
-              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-                {getText(
-                  language,
-                  "Comunidade ensina produto, suporte, moderação, comportamento, retenção e comunicação em escala.",
-                  "Community teaches product, support, moderation, behavior, retention and communication at scale."
-                )}
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {communities.map((community, index) => (
-              <ScrollReveal key={community.name} delay={index * 0.06}>
-                <DiscordCommunityCard {...community} />
-              </ScrollReveal>
-            ))}
           </div>
         </div>
       </section>

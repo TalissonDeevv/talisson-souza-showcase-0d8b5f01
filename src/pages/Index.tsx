@@ -16,23 +16,13 @@ import { motion } from "framer-motion";
 import AnimatedSignature from "@/components/ui/AnimatedSignature";
 import { SiJavascript, SiTypescript, SiPython, SiReact, SiNodedotjs, SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFirebase } from "react-icons/si";
 import CompanyLogos from "@/components/ui/CompanyLogos";
-import DiscordCommunityCard from "@/components/ui/DiscordCommunityCard";
 import StoryHighlight from "@/components/ui/StoryHighlight";
 import SectionSignatureHeader from "@/components/ui/SectionSignatureHeader";
 import TestimonialsEditorial from "@/components/ui/editorial-testimonial";
 import { feedbacks } from "@/data/feedbacks";
 import signatureProjetos from "@/assets/signature-projetos.png";
 import signatureServicos from "@/assets/signature-servicos.png";
-import signatureDiscord from "@/assets/signature-discord.png";
 import signatureFeedbacks from "@/assets/signature-feedbacks.png";
-const agonLogo = "/images/discord/agon-logo.png";
-const agonBanner = "/images/discord/agon-banner.png";
-const hytaleLogo = "/images/discord/hytale-logo.gif";
-const hytaleBanner = "/images/discord/hytale-banner.png";
-const modsclubLogo = "/images/discord/modsclub-logo.png";
-const modsclubBanner = "/images/discord/modsclub-banner.png";
-const escritorioLogo = "/images/discord/escritorio-logo.png";
-const escritorioBannerFull = "/images/discord/escritorio-banner-full.png";
 import bookMockupImg from "@/assets/book-mockup-v3.png";
 
 const Index = () => {
@@ -1097,108 +1087,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      {/* Discord Communities Section */}
-      <ParallaxSection
-        className="py-16 lg:py-20"
-        speed={0.08}
-        backgroundElement={
-          <>
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
-          </>
-        }
-      >
-        <div className="container mx-auto px-6 lg:px-8">
-          <SectionSignatureHeader
-            eyebrow={getText(language, 'Comunidades', 'Communities')}
-            title={getText(language, 'Discord', 'Discord')}
-            subtitle={getText(language, 'Comunidades onde possuo ou possu\u00ed cargo, contribuindo com modera\u00e7\u00e3o, desenvolvimento e gest\u00e3o comunit\u00e1ria.', 'Communities where I hold or held a role, contributing with moderation, development and community management.')}
-            signature={signatureDiscord}
-            className="mb-12"
-          />
-
-          <div className="hidden">
-            <motion.span
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium"
-            >
-              Discord
-            </motion.span>
-            <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-4 leading-[1.05]">
-              {getText(language, 'Comunidades no Discord', 'Discord Communities')}
-            </h2>
-            <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mb-12">
-              {getText(
-                language,
-                'Comunidades onde possuo ou possuí cargo, contribuindo com moderação, desenvolvimento e gestão comunitária.',
-                'Communities where I hold or held a role, contributing with moderation, development and community management.'
-              )}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <ScrollReveal delay={0.05}>
-              <DiscordCommunityCard
-                name="Escritório do Talisson"
-                description={getText(language, "Espaço oficial onde concentro minha comunidade, projetos e conteúdos de tecnologia e estratégia de negócios.", "Official space where I concentrate my community, projects and content on technology and business strategy.")}
-                logo={escritorioLogo}
-                banner={escritorioBannerFull}
-                link="https://discord.talissonsouza.com.br/"
-                role={getText(language, "Proprietário", "Owner")}
-              />
-            </ScrollReveal>
-            <ScrollReveal delay={0.1}>
-              <DiscordCommunityCard
-                name="AGON by AOC"
-                description={getText(language, "Comunidade AGON by AOC no Discord Brasil, onde tive atuação encerrada com suporte de conteúdo e auxílio operacional via Mynexis.", "AGON by AOC community on Discord Brazil, where I had a completed role with content support and operational assistance through Mynexis.")}
-                logo={agonLogo}
-                banner={agonBanner}
-                link="https://discord.gg/yBy8Vu79J3"
-                role={getText(language, "Ex Supervisor de Conteúdo", "Former Content Supervisor")}
-              />
-            </ScrollReveal>
-            <ScrollReveal delay={0.15}>
-              <DiscordCommunityCard
-                name="Hytale Brasil"
-                description={getText(language, "O servidor definitivo de Hytale no Discord! O lar dos jogadores brasileiros.", "The ultimate Hytale server on Discord! The home of Brazilian players.")}
-                logo={hytaleLogo}
-                banner={hytaleBanner}
-                link="https://discord.gg/x2SvJd2NsZ"
-                role={getText(language, "Desenvolvedor Interno", "Internal Developer")}
-              />
-            </ScrollReveal>
-            <ScrollReveal delay={0.2}>
-              <DiscordCommunityCard
-                name="ModsClub"
-                description={getText(language, "Comunidade que reúne moderadores e administradores de comunidades brasileiras.", "Community that brings together moderators and administrators of Brazilian communities.")}
-                logo={modsclubLogo}
-                banner={modsclubBanner}
-                link="https://discord.gg/uuHdJUNYQs"
-                role={getText(language, "Especialista em Comunidades", "Community Specialist")}
-              />
-            </ScrollReveal>
-          </div>
-
-          <ScrollReveal delay={0.3}>
-            <div className="mt-10 text-center">
-              <Link
-                to={language === 'en' ? '/en-us/career' : '/carreira'}
-                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground"
-              >
-                <span className="relative">
-                  {getText(language, 'Ver todas as comunidades', 'View all communities')}
-                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
-                  <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
-                </span>
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-      </ParallaxSection>
 
       <section className="relative overflow-hidden py-20 lg:py-24">
         <div className="pointer-events-none absolute inset-0">
