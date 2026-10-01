@@ -356,12 +356,12 @@ export default function Timeline({
       className={cn("relative h-[420vh] w-full", className)}
       style={sectionStyle}
     >
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
+      <div className="sticky top-24 h-[calc(100svh-6rem)] w-full overflow-hidden lg:top-28 lg:h-[calc(100svh-7rem)]">
         <div
           ref={trackRef}
           className="flex h-full w-max items-center gap-8 px-6 will-change-transform md:gap-12 md:px-[8vw]"
         >
-          <div className="h-[88vh] w-[86vw] max-w-[560px] shrink-0 pr-5 md:w-[44vw] md:pr-12">
+          <div className="h-full w-[86vw] max-w-[560px] shrink-0 pr-5 md:w-[44vw] md:pr-12">
             <TimelineIntro
               title={title}
               eyebrow={eyebrow}
@@ -373,7 +373,7 @@ export default function Timeline({
             />
           </div>
 
-          <div className="relative flex h-[88vh] items-stretch">
+          <div className="relative flex h-full items-stretch">
             <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-border/35" aria-hidden="true" />
             <div
               ref={lineProgressRef}

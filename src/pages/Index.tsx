@@ -8,7 +8,6 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import GlassCard from "@/components/ui/GlassCard";
 import ParticlesBackground from "@/components/ui/ParticlesBackground";
 import ParallaxSection from "@/components/ui/ParallaxSection";
-import Timeline from "@/components/ui/timeline";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, BookOpen, Quote } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -22,7 +21,6 @@ import StoryHighlight from "@/components/ui/StoryHighlight";
 import SectionSignatureHeader from "@/components/ui/SectionSignatureHeader";
 import TestimonialsEditorial from "@/components/ui/editorial-testimonial";
 import { feedbacks } from "@/data/feedbacks";
-import { getCareerJourneyItems } from "@/data/career-journey";
 import signatureProjetos from "@/assets/signature-projetos.png";
 import signatureServicos from "@/assets/signature-servicos.png";
 import signatureDiscord from "@/assets/signature-discord.png";
@@ -42,7 +40,6 @@ const Index = () => {
     language
   } = useTheme();
   const t = useTranslation(language);
-  const careerJourneyItems = getCareerJourneyItems(language);
   const showLegacyStoryPreview = import.meta.env.DEV && import.meta.env.VITE_SHOW_LEGACY_STORY === "true";
   const featuredProjects = [{
     title: "Saúde+",
@@ -208,6 +205,207 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Services Preview - Premium */}
+      <ParallaxSection
+        className="py-20 lg:py-24"
+        speed={0.12}
+        backgroundElement={
+        <>
+            <div className="absolute inset-0 bg-gradient-to-br from-card/30 via-background to-card/20" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
+            <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl hidden md:block" />
+          </>
+        }>
+
+
+        <div className="container mx-auto px-6 lg:px-8 relative">
+          <SectionSignatureHeader
+            eyebrow={getText(language, 'Servi\u00e7os', 'Services')}
+            title={t.services.title}
+            subtitle={t.services.subtitle}
+            signature={signatureServicos}
+            className="mb-14"
+            action={
+              <Link
+                to={language === 'en' ? '/en-us/services' : '/servicos'}
+                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground">
+                <span className="relative">
+                  {language === 'pt' ? 'Ver todos' : 'View all'}
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
+                  <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
+                </span>
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+              </Link>
+            }
+          />
+
+          <div className="hidden">
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+              <div className="max-w-xl">
+                <motion.span
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium">
+
+                  {getText(language, 'Serviços', 'Services')}
+                </motion.span>
+                <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
+                  {t.services.title}
+                </h2>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  {t.services.subtitle}
+                </p>
+              </div>
+              <Link
+                to={language === 'en' ? '/en-us/services' : '/servicos'}
+                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground self-start lg:self-auto">
+
+                <span className="relative">
+                  {language === 'pt' ? 'Ver todos' : 'View all'}
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
+                  <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
+                </span>
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+              </Link>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+            <ScrollReveal delay={0.05} className="lg:col-span-4">
+              <div className="relative h-full overflow-hidden rounded-lg border border-border/20 bg-card/25 p-7 backdrop-blur-sm">
+                <div className="pointer-events-none absolute inset-x-7 top-0 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
+                <span className="mb-8 block text-[11px] font-medium uppercase tracking-[0.28em] text-muted-foreground/70">
+                  {getText(language, 'Modo de atuação', 'Operating mode')}
+                </span>
+                <h3 className="max-w-xs font-serif text-2xl leading-tight text-foreground lg:text-3xl">
+                  {getText(language, 'Clareza antes do código.', 'Clarity before code.')}
+                </h3>
+                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                  {getText(
+                    language,
+                    'Cada entrega começa com recorte de problema, prioridade técnica e uma rota simples para transformar intenção em produto confiável.',
+                    'Every delivery starts with problem framing, technical priority and a simple path from intent to a reliable product.'
+                  )}
+                </p>
+
+                <div className="mt-8 space-y-3">
+                  {[
+                    getText(language, 'Escopo legível', 'Readable scope'),
+                    getText(language, 'Execução rastreável', 'Traceable execution'),
+                    getText(language, 'Base preparada para evoluir', 'A base ready to evolve'),
+                  ].map((item) => (
+                    <div key={item} className="flex items-center gap-3 text-xs text-muted-foreground/80">
+                      <span className="h-px w-8 bg-foreground/20" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <div className="lg:col-span-8">
+              <div className="overflow-hidden rounded-lg border border-border/20 bg-card/20 backdrop-blur-sm">
+                {[{
+                  number: '01',
+                  title: getText(language, 'Presença digital sob medida', 'Tailored digital presence'),
+                  description: getText(language, 'Sites e aplicações web com acabamento premium, performance e uma estrutura pronta para crescer.', 'Websites and web applications with premium polish, performance and a structure ready to grow.'),
+                  detail: getText(language, 'Interface, front-end e deploy', 'Interface, frontend and deploy')
+                }, {
+                  number: '02',
+                  title: getText(language, 'Operações internas', 'Internal operations'),
+                  description: getText(language, 'Sistemas para organizar fluxos, reduzir retrabalho e dar mais previsibilidade ao dia a dia da equipe.', 'Systems that organize workflows, reduce rework and make day-to-day operations more predictable.'),
+                  detail: getText(language, 'Painéis, automações e integrações', 'Dashboards, automations and integrations')
+                }, {
+                  number: '03',
+                  title: getText(language, 'Direção técnica', 'Technical direction'),
+                  description: getText(language, 'Apoio estratégico para decidir arquitetura, prioridades e próximos passos sem desperdiçar energia.', 'Strategic support for architecture, priorities and next steps without wasting energy.'),
+                  detail: getText(language, 'Diagnóstico, roadmap e revisão', 'Diagnosis, roadmap and review')
+                }].map((service, index) =>
+                <ScrollReveal key={service.number} delay={index * 0.1}>
+                    <motion.div
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.3 }}
+                    className="group grid gap-4 border-t border-border/20 px-5 py-6 first:border-t-0 sm:grid-cols-[84px_1fr] lg:grid-cols-[90px_1.1fr_1fr] lg:items-center lg:px-7">
+
+                      <div className="flex items-center gap-4 sm:block">
+                        <span className="font-serif text-4xl leading-none text-foreground/[0.12] transition-colors duration-500 group-hover:text-foreground/25">
+                          {service.number}
+                        </span>
+                        <div className="h-px flex-1 bg-gradient-to-r from-foreground/15 to-transparent sm:mt-5 sm:w-12" />
+                      </div>
+
+                      <div>
+                        <h3 className="font-serif text-xl leading-tight text-foreground transition-colors duration-500 group-hover:text-foreground/90">
+                          {service.title}
+                        </h3>
+                        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                          {service.description}
+                        </p>
+                      </div>
+
+                      <div className="flex items-center justify-between gap-4 border-t border-border/20 pt-4 sm:col-start-2 lg:col-start-auto lg:border-t-0 lg:pt-0">
+                        <span className="max-w-[220px] text-xs uppercase tracking-[0.18em] text-muted-foreground/65">
+                          {service.detail}
+                        </span>
+                        <ArrowRight className="h-4 w-4 shrink-0 text-foreground/35 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-foreground/70" />
+                      </div>
+                    </motion.div>
+                  </ScrollReveal>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div className="hidden">
+            {[{
+              number: '01',
+              title: getText(language, 'Desenvolvimento Web', 'Web Development'),
+              description: getText(language, 'Sites e aplicações web modernas com as melhores tecnologias.', 'Modern websites and web applications with cutting-edge technologies.')
+            }, {
+              number: '02',
+              title: getText(language, 'Sistemas Corporativos', 'Corporate Systems'),
+              description: getText(language, 'Soluções empresariais sob medida para otimizar e escalar.', 'Custom enterprise solutions to optimize and scale.')
+            }, {
+              number: '03',
+              title: getText(language, 'Consultoria Tech', 'Tech Consulting'),
+              description: getText(language, 'Orientação estratégica para projetos de tecnologia.', 'Strategic guidance for technology projects.')
+            }].map((service, index) =>
+            <ScrollReveal key={service.number} delay={index * 0.1}>
+                <motion.div
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3 }}
+                className="h-full">
+
+                  <div
+                  className="relative h-full p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm group overflow-hidden"
+                  style={{
+                    boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
+                  }}>
+
+                    {/* Hover gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    {/* Number with line */}
+                    <div className="mb-6 flex items-center gap-4">
+                      <span className="text-3xl font-serif text-foreground/[0.1] group-hover:text-foreground/20 transition-colors duration-500">{service.number}</span>
+                      <div className="flex-1 h-px bg-gradient-to-r from-foreground/10 to-transparent" />
+                    </div>
+
+                    <h3 className="font-serif text-xl text-foreground mb-3 group-hover:text-gradient transition-all duration-500 leading-tight">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+                </motion.div>
+              </ScrollReveal>
+            )}
+          </div>
+        </div>
+      </ParallaxSection>
+
       {/* Tech Stack - Technical Hub */}
       <ParallaxSection
         className="py-16 lg:py-20"
@@ -354,22 +552,6 @@ const Index = () => {
           </ScrollReveal>
         </div>
       </ParallaxSection>
-
-      <Timeline
-        sectionId="trajetoria"
-        items={careerJourneyItems}
-        eyebrow={getText(language, "Experiência", "Experience")}
-        title={getText(language, "Trajetória", "Journey")}
-        description={getText(
-          language,
-          "Empresas, parcerias e atuações que ajudaram a formar minha experiência em tecnologia, conteúdo e comunidades.",
-          "Companies, partnerships and roles that shaped my experience in technology, content and communities."
-        )}
-        periodLabel={getText(language, "2020 - presente", "2020 - present")}
-        actionHref={language === "en" ? "/en-us/career" : "/carreira"}
-        actionLabel={getText(language, "Ver trajetória completa", "View full career")}
-        duration={1.2}
-      />
 
       {/* Company Logos - Social Proof */}
       <ParallaxSection
@@ -775,208 +957,6 @@ const Index = () => {
           </div>
         </div>
       </ParallaxSection>
-
-      {/* Services Preview - Premium */}
-      <ParallaxSection
-        className="py-20 lg:py-24"
-        speed={0.12}
-        backgroundElement={
-        <>
-            <div className="absolute inset-0 bg-gradient-to-br from-card/30 via-background to-card/20" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
-            <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-foreground/[0.015] to-transparent blur-3xl hidden md:block" />
-          </>
-        }>
-
-        
-        <div className="container mx-auto px-6 lg:px-8 relative">
-          <SectionSignatureHeader
-            eyebrow={getText(language, 'Servi\u00e7os', 'Services')}
-            title={t.services.title}
-            subtitle={t.services.subtitle}
-            signature={signatureServicos}
-            className="mb-14"
-            action={
-              <Link
-                to={language === 'en' ? '/en-us/services' : '/servicos'}
-                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground">
-                <span className="relative">
-                  {language === 'pt' ? 'Ver todos' : 'View all'}
-                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
-                  <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
-                </span>
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
-              </Link>
-            }
-          />
-
-          <div className="hidden">
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
-              <div className="max-w-xl">
-                <motion.span
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className="inline-block text-[11px] tracking-[0.3em] uppercase text-muted-foreground/70 mb-6 font-medium">
-
-                  {getText(language, 'Serviços', 'Services')}
-                </motion.span>
-                <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6 leading-[1.05]">
-                  {t.services.title}
-                </h2>
-                <p className="text-base text-muted-foreground leading-relaxed">
-                  {t.services.subtitle}
-                </p>
-              </div>
-              <Link
-                to={language === 'en' ? '/en-us/services' : '/servicos'}
-                className="group inline-flex items-center gap-3 text-sm font-medium text-foreground self-start lg:self-auto">
-
-                <span className="relative">
-                  {language === 'pt' ? 'Ver todos' : 'View all'}
-                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/20" />
-                  <span className="absolute bottom-0 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-500" />
-                </span>
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
-              </Link>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-            <ScrollReveal delay={0.05} className="lg:col-span-4">
-              <div className="relative h-full overflow-hidden rounded-lg border border-border/20 bg-card/25 p-7 backdrop-blur-sm">
-                <div className="pointer-events-none absolute inset-x-7 top-0 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
-                <span className="mb-8 block text-[11px] font-medium uppercase tracking-[0.28em] text-muted-foreground/70">
-                  {getText(language, 'Modo de atuação', 'Operating mode')}
-                </span>
-                <h3 className="max-w-xs font-serif text-2xl leading-tight text-foreground lg:text-3xl">
-                  {getText(language, 'Clareza antes do código.', 'Clarity before code.')}
-                </h3>
-                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-                  {getText(
-                    language,
-                    'Cada entrega começa com recorte de problema, prioridade técnica e uma rota simples para transformar intenção em produto confiável.',
-                    'Every delivery starts with problem framing, technical priority and a simple path from intent to a reliable product.'
-                  )}
-                </p>
-
-                <div className="mt-8 space-y-3">
-                  {[
-                    getText(language, 'Escopo legível', 'Readable scope'),
-                    getText(language, 'Execução rastreável', 'Traceable execution'),
-                    getText(language, 'Base preparada para evoluir', 'A base ready to evolve'),
-                  ].map((item) => (
-                    <div key={item} className="flex items-center gap-3 text-xs text-muted-foreground/80">
-                      <span className="h-px w-8 bg-foreground/20" />
-                      <span>{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <div className="lg:col-span-8">
-              <div className="overflow-hidden rounded-lg border border-border/20 bg-card/20 backdrop-blur-sm">
-                {[{
-                  number: '01',
-                  title: getText(language, 'Presença digital sob medida', 'Tailored digital presence'),
-                  description: getText(language, 'Sites e aplicações web com acabamento premium, performance e uma estrutura pronta para crescer.', 'Websites and web applications with premium polish, performance and a structure ready to grow.'),
-                  detail: getText(language, 'Interface, front-end e deploy', 'Interface, frontend and deploy')
-                }, {
-                  number: '02',
-                  title: getText(language, 'Operações internas', 'Internal operations'),
-                  description: getText(language, 'Sistemas para organizar fluxos, reduzir retrabalho e dar mais previsibilidade ao dia a dia da equipe.', 'Systems that organize workflows, reduce rework and make day-to-day operations more predictable.'),
-                  detail: getText(language, 'Painéis, automações e integrações', 'Dashboards, automations and integrations')
-                }, {
-                  number: '03',
-                  title: getText(language, 'Direção técnica', 'Technical direction'),
-                  description: getText(language, 'Apoio estratégico para decidir arquitetura, prioridades e próximos passos sem desperdiçar energia.', 'Strategic support for architecture, priorities and next steps without wasting energy.'),
-                  detail: getText(language, 'Diagnóstico, roadmap e revisão', 'Diagnosis, roadmap and review')
-                }].map((service, index) =>
-                <ScrollReveal key={service.number} delay={index * 0.1}>
-                    <motion.div
-                    whileHover={{ x: 4 }}
-                    transition={{ duration: 0.3 }}
-                    className="group grid gap-4 border-t border-border/20 px-5 py-6 first:border-t-0 sm:grid-cols-[84px_1fr] lg:grid-cols-[90px_1.1fr_1fr] lg:items-center lg:px-7">
-
-                      <div className="flex items-center gap-4 sm:block">
-                        <span className="font-serif text-4xl leading-none text-foreground/[0.12] transition-colors duration-500 group-hover:text-foreground/25">
-                          {service.number}
-                        </span>
-                        <div className="h-px flex-1 bg-gradient-to-r from-foreground/15 to-transparent sm:mt-5 sm:w-12" />
-                      </div>
-
-                      <div>
-                        <h3 className="font-serif text-xl leading-tight text-foreground transition-colors duration-500 group-hover:text-foreground/90">
-                          {service.title}
-                        </h3>
-                        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                          {service.description}
-                        </p>
-                      </div>
-
-                      <div className="flex items-center justify-between gap-4 border-t border-border/20 pt-4 sm:col-start-2 lg:col-start-auto lg:border-t-0 lg:pt-0">
-                        <span className="max-w-[220px] text-xs uppercase tracking-[0.18em] text-muted-foreground/65">
-                          {service.detail}
-                        </span>
-                        <ArrowRight className="h-4 w-4 shrink-0 text-foreground/35 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-foreground/70" />
-                      </div>
-                    </motion.div>
-                  </ScrollReveal>
-                )}
-              </div>
-            </div>
-          </div>
-
-          <div className="hidden">
-            {[{
-              number: '01',
-              title: getText(language, 'Desenvolvimento Web', 'Web Development'),
-              description: getText(language, 'Sites e aplicações web modernas com as melhores tecnologias.', 'Modern websites and web applications with cutting-edge technologies.')
-            }, {
-              number: '02',
-              title: getText(language, 'Sistemas Corporativos', 'Corporate Systems'),
-              description: getText(language, 'Soluções empresariais sob medida para otimizar e escalar.', 'Custom enterprise solutions to optimize and scale.')
-            }, {
-              number: '03',
-              title: getText(language, 'Consultoria Tech', 'Tech Consulting'),
-              description: getText(language, 'Orientação estratégica para projetos de tecnologia.', 'Strategic guidance for technology projects.')
-            }].map((service, index) =>
-            <ScrollReveal key={service.number} delay={index * 0.1}>
-                <motion.div
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.3 }}
-                className="h-full">
-
-                  <div
-                  className="relative h-full p-8 rounded-2xl border border-border/20 bg-card/30 backdrop-blur-sm group overflow-hidden"
-                  style={{
-                    boxShadow: '0 4px 20px hsl(var(--foreground) / 0.02)'
-                  }}>
-
-                    {/* Hover gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    
-                    {/* Number with line */}
-                    <div className="mb-6 flex items-center gap-4">
-                      <span className="text-3xl font-serif text-foreground/[0.1] group-hover:text-foreground/20 transition-colors duration-500">{service.number}</span>
-                      <div className="flex-1 h-px bg-gradient-to-r from-foreground/10 to-transparent" />
-                    </div>
-                    
-                    <h3 className="font-serif text-xl text-foreground mb-3 group-hover:text-gradient transition-all duration-500 leading-tight">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {service.description}
-                    </p>
-                  </div>
-                </motion.div>
-              </ScrollReveal>
-            )}
-          </div>
-        </div>
-      </ParallaxSection>
-
 
       <section className="relative overflow-hidden py-20 lg:py-24">
         <div className="pointer-events-none absolute inset-0">
