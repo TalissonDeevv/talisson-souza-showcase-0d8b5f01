@@ -294,8 +294,8 @@ const basePolicySections: PolicySection[] = [
         en: 'To authenticate article comments with Discord, the site requests only the identify and guilds.join scopes. The Supabase UID, Discord ID, username, display name, and avatar are processed. The user’s email address is neither requested from Discord nor stored in the reader profile.'
       },
       {
-        pt: 'O site pode utilizar cookies técnicos necessários para o funcionamento correto da navegação, como preferências de tema (claro/escuro) e idioma selecionado. Esses cookies não coletam informações pessoais identificáveis e são armazenados localmente no seu navegador. Você pode desativá-los nas configurações do navegador, mas isso pode afetar funcionalidades do site.',
-        en: 'The site may use technical cookies necessary for proper navigation, such as theme preferences (light/dark) and selected language. These cookies do not collect personally identifiable information and are stored locally in your browser. You can disable them in your browser settings, but this may affect site functionality.'
+        pt: 'O site pode utilizar cookies técnicos necessários para o funcionamento correto da navegação, como a preferência de idioma selecionada. Esses cookies não coletam informações pessoais identificáveis e são armazenados localmente no seu navegador. Você pode desativá-los nas configurações do navegador, mas isso pode afetar funcionalidades do site.',
+        en: 'The site may use technical cookies necessary for proper navigation, such as the selected language preference. These cookies do not collect personally identifiable information and are stored locally in your browser. You can disable them in your browser settings, but this may affect site functionality.'
       },
       {
         pt: 'Ferramentas de análise de tráfego podem ser utilizadas para entender o comportamento agregado dos visitantes, como páginas mais acessadas, tempo de permanência e origem do tráfego. Esses dados são completamente anonimizados e não permitem identificação individual de nenhum visitante.',

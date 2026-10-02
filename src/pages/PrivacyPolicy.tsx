@@ -219,8 +219,8 @@ const PrivacyPolicy = () => {
                   </h2>
                   <p className="text-sm text-muted-foreground/70 leading-relaxed">
                     {getText(language,
-                      "Este site pode utilizar cookies para melhorar a experiência de navegação, armazenar preferências (como idioma e tema) e coletar dados analíticos. Cookies essenciais são necessários para o funcionamento do site. Cookies analíticos podem ser desativados nas configurações do navegador.",
-                      "This site may use cookies to improve the browsing experience, store preferences (such as language and theme), and collect analytical data. Essential cookies are necessary for site operation. Analytical cookies can be disabled in browser settings."
+                      "Este site pode utilizar cookies para melhorar a experiência de navegação, armazenar preferências como o idioma e coletar dados analíticos. Cookies essenciais são necessários para o funcionamento do site. Cookies analíticos podem ser desativados nas configurações do navegador.",
+                      "This site may use cookies to improve the browsing experience, store preferences such as language and collect analytical data. Essential cookies are necessary for site operation. Analytical cookies can be disabled in browser settings."
                     )}
                   </p>
                 </section>

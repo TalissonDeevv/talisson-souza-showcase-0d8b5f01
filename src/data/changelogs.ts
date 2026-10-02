@@ -667,36 +667,6 @@ export const changelogEntries: ChangelogEntry[] = [
     ],
   },
   {
-    id: "site-tema-claro-2026-08-29",
-    slug: "tema-claro-com-ajustes-de-contraste",
-    categorySlug: "site",
-    date: "2026-08-29",
-    time: "18:59",
-    title: {
-      pt: "Tema claro com ajustes de contraste",
-      en: "Light theme with contrast adjustments",
-    },
-    type: "melhoria",
-    description: [
-      {
-        pt: "O site recebeu suporte a tema claro com ajustes para textos, assinatura, logos e elementos visuais que precisavam manter contraste.",
-        en: "The site received light theme support with adjustments for text, signature, logos and visual elements that needed to keep contrast.",
-      },
-      {
-        pt: "A mudança foi feita com cuidado para preservar a identidade visual no tema escuro e evitar elementos transparentes ou apagados no tema claro.",
-        en: "The change was made carefully to preserve the visual identity in dark mode and avoid transparent or faded elements in light mode.",
-      },
-    ],
-    impact: {
-      pt: "Quem prefere navegar em tema claro passa a ter uma experiência mais legível sem perder a identidade do site.",
-      en: "People who prefer browsing in light mode now have a more readable experience without losing the site's identity.",
-    },
-    status: {
-      pt: "Ativo",
-      en: "Active",
-    },
-  },
-  {
     id: "site-assinatura-visual-2026-08-26",
     slug: "assinatura-visual-atualizada",
     categorySlug: "site",

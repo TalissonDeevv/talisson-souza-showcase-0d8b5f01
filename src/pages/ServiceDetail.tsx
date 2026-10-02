@@ -2133,7 +2133,7 @@ const ServiceDetail = () => {
           title: "Inscrições e operação em um painel único",
           description: "O módulo reúne publicação, inscrições, bloqueios, permissões e leitura de métricas. A equipe administra o programa por componentes visuais, sem depender de uma sequência de comandos para tarefas recorrentes.",
           image: "/images/services/bot-development/bella-parceiros.png",
-          imageAlt: "Painel administrativo sanitizado do programa de parceiros da Bella no Discord",
+          imageAlt: "Painel administrativo do programa de parceiros da Bella no Discord",
           features: ["Gestão de inscrições", "Publicação e atualização controladas", "Permissões, bloqueios e métricas"],
         },
         {
@@ -2141,7 +2141,7 @@ const ServiceDetail = () => {
           title: "Central de tickets com regras de operação",
           description: "A central permite configurar o atendimento, horários, equipe responsável, mensagens públicas e modos de abertura. Métricas e estados operacionais permanecem próximos de quem acompanha a rotina.",
           image: "/images/services/bot-development/bella-tickets.png",
-          imageAlt: "Painel administrativo sanitizado da central de tickets da Bella no Discord",
+          imageAlt: "Painel administrativo da central de tickets da Bella no Discord",
           features: ["Horários e estados do atendimento", "Equipe e canais configuráveis", "Acompanhamento de tickets e métricas"],
         },
         {
@@ -2149,7 +2149,7 @@ const ServiceDetail = () => {
           title: "Experiência de estudo dentro da comunidade",
           description: "O módulo de aprendizagem organiza acesso, publicação e acompanhamento de atividades. A experiência pode reunir perfil, teste de nível, quiz, ranking e conteúdo recorrente em um fluxo próprio para os alunos.",
           image: "/images/services/bot-development/bella-aprenda-ingles.png",
-          imageAlt: "Painel administrativo sanitizado do módulo de aprendizagem da Bella no Discord",
+          imageAlt: "Painel administrativo do módulo de aprendizagem da Bella no Discord",
           features: ["Painel dedicado aos alunos", "Teste de nível, quiz e ranking", "Conteúdo e métricas de uso"],
         },
         {
@@ -2157,7 +2157,7 @@ const ServiceDetail = () => {
           title: "Produtos organizados sem sair do Discord",
           description: "Uma operação de curadoria pode cadastrar, editar, remover e publicar itens a partir do próprio painel. O módulo também separa a gestão interna da vitrine pública e concentra avisos de novos conteúdos.",
           image: "/images/services/bot-development/bella-curadoria.png",
-          imageAlt: "Painel administrativo sanitizado do módulo de curadoria de produtos da Bella no Discord",
+          imageAlt: "Painel administrativo do módulo de curadoria de produtos da Bella no Discord",
           features: ["Cadastro e edição de produtos", "Vitrine pública configurável", "Avisos e controle de acesso"],
         },
         {
@@ -2165,7 +2165,7 @@ const ServiceDetail = () => {
           title: "Mensagens individuais com registro operacional",
           description: "A central de comunicação apoia contatos pontuais e acompanhamentos autorizados. O fluxo registra o envio, prevê alternativa quando a mensagem direta está indisponível e mantém indicadores essenciais para a equipe.",
           image: "/images/services/bot-development/bella-cartas.png",
-          imageAlt: "Painel administrativo sanitizado da central de mensagens da Bella no Discord",
+          imageAlt: "Painel administrativo da central de mensagens da Bella no Discord",
           features: ["Envios individuais autorizados", "Fallback e registro de falhas", "Histórico e indicadores de operação"],
         },
         {
@@ -2173,7 +2173,7 @@ const ServiceDetail = () => {
           title: "Hospedagem acompanhada pelo painel",
           description: "O painel aproxima a operação do bot dos sinais da infraestrutura. Status, métricas, disponibilidade, logs e deploys podem ser consultados sem expor credenciais ou exigir acesso direto ao provedor para cada verificação.",
           image: "/images/services/bot-development/bella-hospedagem.png",
-          imageAlt: "Painel administrativo sanitizado de observabilidade de hospedagem da Bella no Discord",
+          imageAlt: "Painel administrativo de observabilidade de hospedagem da Bella no Discord",
           features: ["Status, latência e uso de recursos", "Health checks, logs e deploys", "Ações operacionais com acesso controlado"],
         },
       ]
@@ -2183,7 +2183,7 @@ const ServiceDetail = () => {
           title: "Applications and operations in one panel",
           description: "The module brings publishing, applications, blocks, permissions and metrics together. The team runs the program through visual components instead of relying on command sequences for recurring tasks.",
           image: "/images/services/bot-development/bella-parceiros.png",
-          imageAlt: "Sanitized Bella partner program administration panel on Discord",
+          imageAlt: "Bella partner program administration panel on Discord",
           features: ["Application management", "Controlled publishing and updates", "Permissions, blocks and metrics"],
         },
         {
@@ -2191,7 +2191,7 @@ const ServiceDetail = () => {
           title: "A ticket center with operational rules",
           description: "The center configures support modes, schedules, responsible teams and public messages. Metrics and operational states stay close to the people managing the daily routine.",
           image: "/images/services/bot-development/bella-tickets.png",
-          imageAlt: "Sanitized Bella ticket center administration panel on Discord",
+          imageAlt: "Bella ticket center administration panel on Discord",
           features: ["Support hours and states", "Configurable teams and channels", "Ticket and metrics tracking"],
         },
         {
@@ -2199,7 +2199,7 @@ const ServiceDetail = () => {
           title: "A learning experience inside the community",
           description: "The learning module organizes access, publishing and activity tracking. It can combine profiles, placement tests, quizzes, rankings and recurring content in a flow designed for students.",
           image: "/images/services/bot-development/bella-aprenda-ingles.png",
-          imageAlt: "Sanitized Bella learning module administration panel on Discord",
+          imageAlt: "Bella learning module administration panel on Discord",
           features: ["Dedicated student panel", "Placement test, quiz and ranking", "Content and usage metrics"],
         },
         {
@@ -2207,7 +2207,7 @@ const ServiceDetail = () => {
           title: "Organized products without leaving Discord",
           description: "A curation operation can add, edit, remove and publish items from the same panel. The module also separates internal management from the public showcase and centralizes new-content announcements.",
           image: "/images/services/bot-development/bella-curadoria.png",
-          imageAlt: "Sanitized Bella product curation administration panel on Discord",
+          imageAlt: "Bella product curation administration panel on Discord",
           features: ["Product management", "Configurable public showcase", "Announcements and access control"],
         },
         {
@@ -2215,7 +2215,7 @@ const ServiceDetail = () => {
           title: "Individual messages with operational records",
           description: "The communication center supports authorized one-to-one messages and follow-ups. It records deliveries, provides a fallback when direct messages are unavailable and keeps essential indicators available to the team.",
           image: "/images/services/bot-development/bella-cartas.png",
-          imageAlt: "Sanitized Bella messaging center administration panel on Discord",
+          imageAlt: "Bella messaging center administration panel on Discord",
           features: ["Authorized individual messages", "Fallback and failure records", "History and operational indicators"],
         },
         {
@@ -2223,7 +2223,7 @@ const ServiceDetail = () => {
           title: "Hosting signals available from the panel",
           description: "The panel brings bot operations closer to infrastructure signals. Status, metrics, availability, logs and deployments can be reviewed without exposing credentials or requiring direct provider access for every check.",
           image: "/images/services/bot-development/bella-hospedagem.png",
-          imageAlt: "Sanitized Bella hosting observability administration panel on Discord",
+          imageAlt: "Bella hosting observability administration panel on Discord",
           features: ["Status, latency and resource usage", "Health checks, logs and deployments", "Controlled operational actions"],
         },
       ];
@@ -2564,8 +2564,8 @@ const ServiceDetail = () => {
                   <p className="mt-3 max-w-2xl text-xs leading-relaxed text-muted-foreground/60">
                     {getText(
                       language,
-                      "Capturas de ambiente administrativo. Identificadores, canais, cargos e usuários foram omitidos por privacidade e segurança.",
-                      "Administrative environment screenshots. Identifiers, channels, roles and users were omitted for privacy and security."
+                      "Capturas reais do ambiente administrativo do sistema, apresentadas para demonstrar a organização e o alcance dos módulos.",
+                      "Real screenshots from the system administration environment, presented to demonstrate the organization and scope of its modules."
                     )}
                   </p>
                 </div>
@@ -2647,123 +2647,127 @@ const ServiceDetail = () => {
         </div>
 
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[1.04fr_0.96fr] lg:items-start">
-            <ScrollReveal>
-              <div className="border-y border-border/20 py-8">
-                <div className="mb-8 flex items-center justify-between gap-5">
-                  <div>
-                    <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                      {getText(language, "Handoff", "Handoff")}
-                    </span>
-                    <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
-                      {getText(language, "O que sai organizado", "What leaves organized")}
-                    </h2>
-                  </div>
-                  <Briefcase className="h-7 w-7 text-foreground/25" />
-                </div>
+          <ScrollReveal>
+            <div className="flex flex-col gap-5 border-y border-border/20 py-8 sm:flex-row sm:items-end sm:justify-between lg:py-10">
+              <div>
+                <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                  {getText(language, "Handoff", "Handoff")}
+                </span>
+                <h2 className="max-w-2xl font-serif text-3xl leading-tight text-foreground sm:text-4xl lg:text-5xl">
+                  {getText(language, "O que sai organizado", "What leaves organized")}
+                </h2>
+              </div>
+              <div className="flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-muted-foreground/55">
+                <Briefcase className="h-5 w-5" aria-hidden="true" />
+                <span>{String(blueprint.handoff.length).padStart(2, "0")} {getText(language, "entregáveis", "deliverables")}</span>
+              </div>
+            </div>
+          </ScrollReveal>
 
-                <div className="grid gap-px overflow-hidden border border-border/20 bg-border/20 sm:grid-cols-2">
-                  {blueprint.handoff.map((item, index) => (
+          <div className="grid gap-px overflow-hidden border-x border-b border-border/20 bg-border/20 sm:grid-cols-2 lg:grid-cols-4">
+            {blueprint.handoff.map((item, index) => (
+              <motion.div
+                key={item}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-70px" }}
+                transition={{ duration: 0.55, delay: index * 0.04, ease: [0.22, 1, 0.36, 1] }}
+                className="group flex min-h-[150px] flex-col justify-between bg-background/95 p-5 transition-colors duration-300 hover:bg-foreground/[0.035] sm:p-6"
+              >
+                <span className="font-serif text-3xl leading-none text-foreground/15 transition-colors group-hover:text-foreground/35">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div className="mt-8 flex items-start gap-3">
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-foreground/45" aria-hidden="true" />
+                  <span className="text-sm font-medium leading-relaxed text-foreground">{item}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-10 grid gap-px overflow-hidden border border-border/20 bg-border/20 lg:grid-cols-12">
+            <ScrollReveal className="h-full lg:col-span-4">
+              <div className="h-full bg-background/95 p-6 sm:p-8">
+                <span className="mb-7 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                  {getText(language, "Critérios da entrega", "Delivery criteria")}
+                </span>
+                <div className="space-y-5">
+                  {blueprint.qualities.map((quality, index) => (
                     <motion.div
-                      key={item}
-                      initial={{ opacity: 0, y: 14 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-70px" }}
-                      transition={{ duration: 0.55, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
-                      className="bg-background/95 p-5"
+                      key={quality}
+                      initial={{ opacity: 0, x: 12 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.45, delay: index * 0.05 }}
+                      className="grid grid-cols-[auto_1fr] items-center gap-4"
                     >
-                      <span className="mb-6 block font-serif text-3xl text-foreground/14">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <div className="flex items-start gap-3">
-                        <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-foreground/45" />
-                        <span className="text-sm font-medium leading-relaxed text-foreground">{item}</span>
-                      </div>
+                      <span className="font-serif text-2xl leading-none text-foreground/20">{String(index + 1).padStart(2, "0")}</span>
+                      <span className="border-b border-border/20 pb-3 text-sm font-medium leading-relaxed text-foreground">{quality}</span>
                     </motion.div>
                   ))}
                 </div>
               </div>
             </ScrollReveal>
 
-            <div className="space-y-7">
-              <ScrollReveal>
-                <div className="border-y border-border/20 py-8">
-                  <span className="mb-5 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                    {getText(language, "Critério", "Criteria")}
-                  </span>
-                  <div className="space-y-4">
-                    {blueprint.qualities.map((quality, index) => (
-                      <motion.div
-                        key={quality}
-                        initial={{ opacity: 0, x: 14 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.45, delay: index * 0.05 }}
-                        className="flex items-center gap-4"
-                      >
-                        <span className="font-serif text-2xl leading-none text-foreground/16">{String(index + 1).padStart(2, "0")}</span>
-                        <span className="h-px flex-1 bg-border/25" />
-                        <span className="min-w-[42%] text-sm font-medium text-foreground">{quality}</span>
-                      </motion.div>
-                    ))}
-                  </div>
+            <ScrollReveal className="h-full lg:col-span-4" delay={0.05}>
+              <div className="h-full bg-background/95 p-6 sm:p-8">
+                <span className="mb-7 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                  {language === "pt" ? "Stack possível" : "Possible stack"}
+                </span>
+                <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
+                  {getText(language, "A composição técnica varia conforme integrações, volume e rotina operacional.", "The technical setup varies according to integrations, volume and operational routine.")}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {service.technologies.map((tech: string, index: number) => (
+                    <motion.span
+                      key={tech}
+                      initial={{ opacity: 0, y: 8 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.035 }}
+                      className="border border-border/25 bg-background/35 px-3 py-2 text-[10px] uppercase tracking-[0.14em] text-muted-foreground/70"
+                    >
+                      {tech}
+                    </motion.span>
+                  ))}
                 </div>
-              </ScrollReveal>
+              </div>
+            </ScrollReveal>
 
-              <ScrollReveal>
-                <div className="border-y border-border/20 py-8">
-                  <span className="mb-5 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                    {language === "pt" ? "Stack possível" : "Possible stack"}
+            <ScrollReveal className="h-full lg:col-span-4" delay={0.1}>
+              <div className="flex h-full flex-col justify-between bg-background/95 p-6 sm:p-8">
+                <div>
+                  <span className="mb-7 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                    {getText(language, "Próximo passo", "Next step")}
                   </span>
-                  <div className="flex flex-wrap gap-2">
-                    {service.technologies.map((tech: string, index: number) => (
-                      <motion.span
-                        key={tech}
-                        initial={{ opacity: 0, y: 8 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: index * 0.035 }}
-                        className="rounded-full border border-border/25 bg-background/35 px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-muted-foreground/65"
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </div>
+                  <h3 className="font-serif text-2xl leading-tight text-foreground sm:text-3xl">
+                    {serviceId === "bot-development"
+                      ? getText(language, "A conversa começa pelo Diagnóstico Operacional.", "The conversation starts with an Operational Diagnosis.")
+                      : getText(language, "A conversa começa por contexto.", "The conversation starts with context.")}
+                  </h3>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                    {serviceId === "bot-development"
+                      ? getText(
+                          language,
+                          "Antes do desenvolvimento, eu mapeio estrutura, rotina, gargalos, segurança, experiência, dados e oportunidades de automação.",
+                          "Before development, I map structure, routine, bottlenecks, security, experience, data and automation opportunities."
+                        )
+                      : getText(
+                          language,
+                          "Objetivo, risco, operação atual e critério de sucesso vêm antes de qualquer promessa.",
+                          "Goal, risk, current operation and success criteria come before any promise."
+                        )}
+                  </p>
                 </div>
-              </ScrollReveal>
-
-              <ScrollReveal>
-                <div className="flex flex-col gap-4 border-y border-border/20 py-8 sm:flex-row sm:items-center sm:justify-between">
-                  <div>
-                    <h3 className="font-serif text-2xl leading-tight text-foreground">
-                      {serviceId === "bot-development"
-                        ? getText(language, "A conversa começa pelo Diagnóstico Operacional.", "The conversation starts with an Operational Diagnosis.")
-                        : getText(language, "A conversa começa por contexto.", "The conversation starts with context.")}
-                    </h3>
-                    <p className="mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
-                      {serviceId === "bot-development"
-                        ? getText(
-                            language,
-                            "Antes do desenvolvimento, eu mapeio estrutura, rotina, gargalos, segurança, experiência, dados e oportunidades de automação.",
-                            "Before development, I map structure, routine, bottlenecks, security, experience, data and automation opportunities."
-                          )
-                        : getText(
-                            language,
-                            "Objetivo, risco, operação atual e critério de sucesso vêm antes de qualquer promessa.",
-                            "Goal, risk, current operation and success criteria come before any promise."
-                          )}
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => window.open("https://wa.me/5581993964261", "_blank", "noopener,noreferrer")}
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-border/35 bg-background/30 px-6 py-3 text-sm font-medium text-foreground transition-colors duration-300 hover:bg-foreground/10"
-                  >
-                    <MessageSquare className="h-4 w-4" />
-                    {language === "pt" ? "Solicitar diagnóstico" : "Request diagnosis"}
-                  </button>
-                </div>
-              </ScrollReveal>
-            </div>
+                <button
+                  onClick={() => window.open("https://wa.me/5581993964261", "_blank", "noopener,noreferrer")}
+                  className="mt-8 inline-flex w-full items-center justify-center gap-2 border border-border/35 bg-foreground px-6 py-3 text-sm font-medium text-background transition-opacity duration-300 hover:opacity-85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                >
+                  <MessageSquare className="h-4 w-4" aria-hidden="true" />
+                  {language === "pt" ? "Solicitar diagnóstico" : "Request diagnosis"}
+                </button>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>

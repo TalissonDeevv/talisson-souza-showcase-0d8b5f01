@@ -14,37 +14,6 @@
 
 @layer base {
   :root {
-    --background: 0 0% 96%;
-    --foreground: 0 0% 7%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 7%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 7%;
-    --primary: 0 0% 7%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 90%;
-    --secondary-foreground: 0 0% 10%;
-    --muted: 0 0% 91%;
-    --muted-foreground: 0 0% 34%;
-    --accent: 0 0% 90%;
-    --accent-foreground: 0 0% 10%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 82%;
-    --input: 0 0% 82%;
-    --ring: 0 0% 12%;
-    --radius: 0.25rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 10%;
-    --sidebar-primary: 0 0% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 0 0% 92%;
-    --sidebar-accent-foreground: 0 0% 10%;
-    --sidebar-border: 0 0% 82%;
-    --sidebar-ring: 0 0% 12%;
-  }
-
-  .dark {
     --background: 0 0% 4%;
     --foreground: 40 10% 92%;
     --card: 0 0% 6%;
@@ -81,13 +50,6 @@
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-
-  html.light {
-    color-scheme: light;
-  }
-
-  html.dark {
     color-scheme: dark;
   }
 
@@ -439,75 +401,4 @@ html.lenis body {
 .company-logo-monochrome {
   filter: grayscale(1) brightness(0) invert(1) contrast(1.12);
   opacity: 0.86;
-}
-
-html.light .site-brand-signature,
-html.light .theme-aware-signature,
-html.light .animated-signature-image {
-  filter: brightness(0) saturate(0) contrast(1.08) !important;
-  mix-blend-mode: normal !important;
-  opacity: 1 !important;
-}
-
-html.light .company-logo-monochrome {
-  filter: grayscale(1) brightness(0) contrast(1.18);
-  opacity: 1 !important;
-}
-
-html.light .animated-signature-wrapper {
-  filter:
-    drop-shadow(0 0 14px hsl(0 0% 0% / 0.08))
-    drop-shadow(0 0 30px hsl(0 0% 0% / 0.05));
-}
-
-html.light .text-gradient,
-html.light .text-transparent.bg-clip-text {
-  background-image: none !important;
-  color: hsl(var(--foreground)) !important;
-  -webkit-text-fill-color: currentColor;
-}
-
-html.light .text-white,
-html.light .text-white\/90,
-html.light .text-white\/80,
-html.light .text-white\/75,
-html.light .text-white\/65,
-html.light .text-white\/55,
-html.light .text-white\/50,
-html.light .text-white\/48 {
-  color: hsl(var(--foreground)) !important;
-}
-
-html.light [class*="text-muted-foreground"],
-html.light [class*="text-foreground/"],
-html.light [class*="text-gray-"],
-html.light [class*="dark:text-gray-"] {
-  color: hsl(var(--foreground)) !important;
-}
-
-html.light .bg-\[\#101010\],
-html.light .bg-\[\#130909\]\/92 {
-  background-color: hsl(var(--card)) !important;
-}
-
-html.light .project-card-surface {
-  border-color: hsl(var(--foreground) / 0.14) !important;
-  background-color: hsl(var(--card) / 0.94) !important;
-  box-shadow:
-    0 1px 0 hsl(var(--foreground) / 0.08),
-    0 20px 52px hsl(var(--foreground) / 0.08) !important;
-}
-
-html.light .project-card-number {
-  color: hsl(var(--foreground)) !important;
-  opacity: 1 !important;
-}
-
-html.light .project-card-rule {
-  background: linear-gradient(
-    90deg,
-    hsl(var(--foreground) / 0.34),
-    hsl(var(--foreground) / 0.08),
-    transparent
-  ) !important;
 }

@@ -59,10 +59,10 @@ const Accessibility = () => {
     },
     {
       icon: <Palette className="w-5 h-5" />,
-      title: getText(language, "Tema claro e escuro", "Light and dark theme"),
+      title: getText(language, "Contraste e legibilidade", "Contrast and readability"),
       description: getText(language,
-        "Opções de tema para reduzir fadiga visual e respeitar preferências do sistema.",
-        "Theme options to reduce eye strain and respect system preferences."
+        "Paleta escura consistente, contraste revisado e hierarquia visual para leitura confortável.",
+        "A consistent dark palette, reviewed contrast and visual hierarchy for comfortable reading."
       )
     },
     {

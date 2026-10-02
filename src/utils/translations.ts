@@ -332,8 +332,6 @@ const translations: Translations = {
       subtitle: "Livros que li e super recomendo para outros desenvolvedores"
     },
     theme: {
-      light: "Claro",
-      dark: "Escuro",
       language: "Idioma"
     },
   },
@@ -566,8 +564,6 @@ const translations: Translations = {
       subtitle: "Books I've read and highly recommend to other developers"
     },
     theme: {
-      light: "Light",
-      dark: "Dark",
       language: "Language"
     },
   },
