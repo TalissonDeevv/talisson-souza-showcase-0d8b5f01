@@ -2333,6 +2333,114 @@ const ServiceDetail = () => {
         </div>
       </section>
 
+      {serviceId === "mobile-development" && (
+        <section id="projeto-saude-mais" className="relative scroll-mt-28 overflow-hidden py-14 lg:py-20">
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute left-1/2 top-0 h-px w-[85%] -translate-x-1/2 bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+          </div>
+
+          <div className="container relative mx-auto px-6 lg:px-8">
+            <div className="mx-auto max-w-6xl">
+              <ScrollReveal>
+                <div className="grid gap-7 border-b border-border/20 pb-9 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
+                  <div>
+                    <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                      {getText(language, "Projeto próprio em desenvolvimento", "Independent project in development")}
+                    </span>
+                    <h2 className="font-serif text-4xl leading-[0.98] text-foreground sm:text-5xl lg:text-6xl">
+                      Saúde+
+                    </h2>
+                  </div>
+
+                  <div className="lg:pb-1">
+                    <p className="max-w-2xl text-base leading-8 text-muted-foreground">
+                      {getText(
+                        language,
+                        "Um aplicativo pessoal e privado pensado para organizar a trajetória de saúde do usuário em um só contexto, sem assumir o lugar de médicos, prontuários ou serviços públicos.",
+                        "A private personal application designed to organize a user's health history in one context, without taking the place of doctors, medical records or public services."
+                      )}
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              <div className="grid items-center gap-10 py-10 lg:grid-cols-[minmax(0,1.12fr)_minmax(320px,0.88fr)] lg:gap-16 lg:py-14">
+                <motion.figure
+                  initial={{ opacity: 0, y: 22 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                  className="m-0 flex w-full flex-col items-center"
+                >
+                  <img
+                    src="/images/projects/saudemais-concept.png"
+                    alt={getText(language, "Demonstração conceitual do aplicativo Saúde+", "Concept demonstration of the Saúde+ application")}
+                    width={1254}
+                    height={1254}
+                    loading="lazy"
+                    decoding="async"
+                    className="max-h-[680px] w-full max-w-[680px] object-contain"
+                  />
+                  <figcaption className="mt-4 max-w-xl text-center text-xs leading-relaxed text-muted-foreground/65">
+                    {getText(
+                      language,
+                      "Demonstração de apresentação gerada com IA. Não representa a interface final, não contém dados reais de pacientes e não expõe o aplicativo em desenvolvimento.",
+                      "AI-generated presentation concept. It does not represent the final interface, contain real patient data or expose the application in development."
+                    )}
+                  </figcaption>
+                </motion.figure>
+
+                <ScrollReveal delay={0.08}>
+                  <div className="border-y border-border/25 py-8">
+                    <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground/60">
+                      {getText(language, "Saúde digital com limites claros", "Digital health with clear boundaries")}
+                    </span>
+                    <h3 className="mt-5 max-w-lg font-serif text-3xl leading-tight text-foreground lg:text-4xl">
+                      {getText(
+                        language,
+                        "Um projeto aberto a conversas com empresas e organizações.",
+                        "A project open to conversations with companies and organizations."
+                      )}
+                    </h3>
+                    <div className="mt-6 space-y-4 text-sm leading-7 text-muted-foreground">
+                      <p>
+                        {getText(
+                          language,
+                          "O Saúde+ continua em desenvolvimento. Sua divulgação apresenta a visão institucional do produto e busca aproximação com organizações e profissionais capazes de contribuir para uma evolução responsável.",
+                          "Saúde+ remains in development. Its public presentation introduces the product's institutional vision and seeks dialogue with organizations and professionals who can contribute to responsible development."
+                        )}
+                      </p>
+                      <p>
+                        {getText(
+                          language,
+                          "A iniciativa é privada e independente: não pertence ao SUS, ao Ministério da Saúde ou a qualquer órgão público. Não oferece diagnóstico, prescrição, atendimento médico ou resposta a emergências.",
+                          "The initiative is private and independent: it is not part of Brazil's public health system, the Ministry of Health or any government body. It does not provide diagnoses, prescriptions, medical care or emergency response."
+                        )}
+                      </p>
+                      <p>
+                        {getText(
+                          language,
+                          "Antes de uma disponibilização definitiva, limites clínicos, linguagem e riscos de interpretação deverão passar por revisão e autorização formal de profissionais médicos. Questões jurídicas, regulatórias e de proteção de dados exigem validação própria.",
+                          "Before any definitive release, clinical boundaries, language and interpretation risks must undergo formal medical review and authorization. Legal, regulatory and data-protection matters require their own validation."
+                        )}
+                      </p>
+                    </div>
+
+                    <Link
+                      to={language === "pt" ? "/projeto/saudemais" : "/en-us/project/saudemais"}
+                      className="group mt-8 inline-flex min-h-11 items-center gap-3 border-b border-foreground/35 pb-2 text-sm font-medium text-foreground transition-colors hover:border-foreground"
+                    >
+                      {getText(language, "Conhecer o projeto Saúde+", "Explore the Saúde+ project")}
+                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                    </Link>
+                  </div>
+                </ScrollReveal>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {serviceId === "cloud-solutions" && (
         <section id="radar-cloud" className="relative scroll-mt-28 overflow-hidden py-6 lg:py-8">
           <div className="absolute inset-0 pointer-events-none">
