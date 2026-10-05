@@ -7,6 +7,7 @@ import ParallaxSection from "@/components/ui/ParallaxSection";
 import GlassCard from "@/components/ui/GlassCard";
 import MobileBentoGrid from "@/components/services/MobileBentoGrid";
 import ProjectShowcase, { type ProjectShowcaseItem } from "@/components/ui/project-showcase";
+import BlockFeature from "@/components/ui/block-feature";
 import { 
   ArrowLeft, Code, Smartphone, Bot, Palette, Cloud, Users,
   CheckCircle, Star, MessageSquare, ArrowUpRight,
@@ -2440,6 +2441,8 @@ const ServiceDetail = () => {
           </div>
         </section>
       )}
+
+      {serviceId === "uiux-design" && <BlockFeature language={language} />}
 
       {serviceId === "cloud-solutions" && (
         <section id="radar-cloud" className="relative scroll-mt-28 overflow-hidden py-6 lg:py-8">
