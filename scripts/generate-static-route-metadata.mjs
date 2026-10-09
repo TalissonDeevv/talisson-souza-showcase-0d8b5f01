@@ -150,11 +150,13 @@ const addArticleMeta = ({ pathPt, pathEn, titlePt, titleEn, excerptPt, excerptEn
 
 const quoted = String.raw`((?:\\.|[^'])*)`;
 const articlesSource = fs.readFileSync(path.join(rootDir, 'src', 'data', 'articles.ts'), 'utf8');
+const articlesListStart = articlesSource.indexOf('export const articles');
+const articlesListSource = articlesListStart >= 0 ? articlesSource.slice(articlesListStart) : articlesSource;
 const articlePattern = new RegExp(
   String.raw`title:\s*\{\s*pt:\s*'${quoted}',\s*en:\s*'${quoted}'[\s\S]*?excerpt:\s*\{\s*pt:\s*'${quoted}',\s*en:\s*'${quoted}'[\s\S]*?path:\s*\{\s*pt:\s*'([^']+)',\s*en:\s*'([^']+)'`,
   'g',
 );
-for (const match of articlesSource.matchAll(articlePattern)) {
+for (const match of articlesListSource.matchAll(articlePattern)) {
   addArticleMeta({
     titlePt: match[1],
     titleEn: match[2],

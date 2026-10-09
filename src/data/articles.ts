@@ -65,7 +65,7 @@ export const trails: TrailData[] = [
     },
     icon: '💼',
     path: { pt: '/trilhas/estrategia-mentalidade', en: '/en-us/trails/strategy-mindset' },
-    articleIds: ['junior-to-strategic', 'what-companies-seek', 'building-portfolio', 'politics-entrepreneurship', 'clt-to-freelancer', 'vision-and-persistence', 'inpi', 'linkedin-profile-tech', 'eca-digital-anpd', 'dev-financial-growth', 'ai-replacing-devs', 'dev-job-positioning'],
+    articleIds: ['client-prospecting', 'junior-to-strategic', 'what-companies-seek', 'building-portfolio', 'politics-entrepreneurship', 'clt-to-freelancer', 'vision-and-persistence', 'inpi', 'linkedin-profile-tech', 'eca-digital-anpd', 'dev-financial-growth', 'ai-replacing-devs', 'dev-job-positioning'],
   },
   {
     id: 'market-programming',
@@ -99,6 +99,22 @@ export function getTrailArticles(trailId: string): ArticleData[] {
 }
 
 export const articles: ArticleData[] = [
+  {
+    id: 'client-prospecting',
+    title: {
+      pt: 'Como Prospectar Clientes e Transformar Contatos em Oportunidades Reais',
+      en: 'How to Prospect Clients and Turn Contacts into Real Opportunities',
+    },
+    excerpt: {
+      pt: 'Um guia aprofundado para encontrar, pesquisar, abordar e acompanhar clientes com método, respeito e critérios comerciais aplicáveis a serviços profissionais.',
+      en: 'An in-depth guide to finding, researching, approaching, and following up with clients through a respectful, measurable process for professional services.',
+    },
+    date: { pt: '8 de Outubro, 2026', en: 'October 8, 2026' },
+    readTime: '86 min',
+    path: { pt: '/artigos/como-prospectar-clientes', en: '/en-us/articles/how-to-prospect-clients' },
+    tags: { pt: ['Prospecção', 'Vendas', 'Freelancer', 'Empreendedorismo', 'Estratégia'], en: ['Prospecting', 'Sales', 'Freelancing', 'Entrepreneurship', 'Strategy'] },
+    publishedDate: '2026-10-08',
+  },
   {
     id: 'discord-community-engagement',
     title: {

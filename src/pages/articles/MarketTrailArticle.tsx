@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, MessageSquare, Share2 } from "lucide-react";
@@ -10,6 +10,7 @@ import ArticleSEOFooter from "@/components/ui/ArticleSEOFooter";
 import TrailNavigation from "@/components/ui/TrailNavigation";
 import DisclaimerBanner from "@/components/ui/DisclaimerBanner";
 import ArticleAuthorHeader from "@/components/ui/ArticleAuthorHeader";
+import RelatedArticles from "@/components/ui/RelatedArticles";
 import { PageBackdrop } from "@/components/ui/PageIdentity";
 import { articles, tagToSlug, type ArticleData } from "@/data/articles";
 import type { MarketTrailArticle as FullArticle } from "@/data/market-trail/types";
@@ -27,6 +28,175 @@ const getReadingMinutes = (readTime: string) => {
 };
 
 const displayArticleTitle = (title: string) => title.replace(/\s*:\s*/g, ". ");
+
+type ArticleContentBlock =
+  | { kind: "paragraph"; body: string }
+  | { kind: "callout"; label: string; body: string[] }
+  | { kind: "table"; rows: string[][] };
+
+const parseArticleContent = (content: string, language: "pt" | "en"): ArticleContentBlock[] => {
+  const blocks: ArticleContentBlock[] = [];
+  const rawBlocks = content.split("\n\n");
+
+  for (let index = 0; index < rawBlocks.length; index += 1) {
+    const block = rawBlocks[index].trim();
+    if (!block) continue;
+
+    if (block === "[practice]" || block === "[tutorial]" || block === "[material]") {
+      const label =
+        block === "[practice]"
+          ? language === "en" ? "Put it into practice" : "Coloque em prática"
+          : block === "[tutorial]"
+            ? language === "en" ? "Practical tutorial" : "Tutorial prático"
+            : language === "en" ? "Reusable material" : "Material reutilizável";
+      const body: string[] = [];
+
+      index += 1;
+      while (index < rawBlocks.length && rawBlocks[index].trim() !== "[/block]") {
+        const innerBlock = rawBlocks[index].trim();
+        if (innerBlock) body.push(innerBlock);
+        index += 1;
+      }
+
+      blocks.push({ kind: "callout", label, body });
+      continue;
+    }
+
+    if (block === "[table]") {
+      const rows: string[][] = [];
+
+      index += 1;
+      while (index < rawBlocks.length && rawBlocks[index].trim() !== "[/table]") {
+        const row = rawBlocks[index]
+          .trim()
+          .split("|")
+          .map((cell) => cell.trim())
+          .filter(Boolean);
+        if (row.length) rows.push(row);
+        index += 1;
+      }
+
+      if (rows.length) blocks.push({ kind: "table", rows });
+      continue;
+    }
+
+    blocks.push({ kind: "paragraph", body: block });
+  }
+
+  return blocks;
+};
+
+const ArticleChecklistItem = ({ children }: { children: string }) => {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <label className="flex cursor-pointer gap-3 rounded-2xl border border-border/20 bg-background/25 px-4 py-3 text-sm leading-relaxed text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground sm:text-base">
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={(event) => setChecked(event.target.checked)}
+        className="mt-1 h-4 w-4 shrink-0 accent-foreground"
+      />
+      <span className={checked ? "text-muted-foreground/60 line-through" : undefined}>{children}</span>
+    </label>
+  );
+};
+
+const renderInlineContent = (text: string) => {
+  const strongParts = text.split(/(\*\*[^*]+\*\*)/g);
+
+  return strongParts.map((part, index) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return <strong key={`${part}-${index}`} className="font-semibold text-foreground/90">{part.slice(2, -2)}</strong>;
+    }
+
+    return <Fragment key={`${part}-${index}`}>{part}</Fragment>;
+  });
+};
+
+const ArticleContent = ({ content, language }: { content: string; language: "pt" | "en" }) => {
+  const blocks = parseArticleContent(content, language);
+
+  return (
+    <div className="space-y-5">
+      {blocks.map((block, blockIndex) => {
+        if (block.kind === "paragraph") {
+          return (
+            <p key={blockIndex} className="text-base leading-[1.95] text-muted-foreground sm:text-lg">
+              {renderInlineContent(block.body)}
+            </p>
+          );
+        }
+
+        if (block.kind === "table") {
+          const [head, ...body] = block.rows;
+
+          return (
+            <div key={blockIndex} className="overflow-x-auto rounded-3xl border border-border/25 bg-background/25">
+              <table className="min-w-full divide-y divide-border/20 text-left text-sm">
+                <thead className="bg-foreground/[0.03] text-[11px] uppercase tracking-[0.16em] text-muted-foreground/70">
+                  <tr>
+                    {head.map((cell, cellIndex) => (
+                      <th key={`${cell}-${cellIndex}`} className="px-5 py-4 font-medium">
+                        {cell}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border/20 text-muted-foreground">
+                  {body.map((row, rowIndex) => (
+                    <tr key={rowIndex}>
+                      {row.map((cell, cellIndex) => (
+                        <td key={`${cell}-${cellIndex}`} className="px-5 py-4 leading-relaxed align-top">
+                          {renderInlineContent(cell)}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          );
+        }
+
+        return (
+          <div
+            key={blockIndex}
+            className="rounded-3xl border border-border/25 bg-foreground/[0.025] p-5 shadow-[0_18px_60px_rgba(0,0,0,0.16)] sm:p-6"
+          >
+            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.26em] text-muted-foreground/60">
+              {block.label}
+            </p>
+            <div className="space-y-4">
+              {block.body.map((item, itemIndex) => {
+                if (item.startsWith("[ ] ")) {
+                  return <ArticleChecklistItem key={itemIndex}>{item.slice(4)}</ArticleChecklistItem>;
+                }
+
+                return (
+                  <p key={itemIndex} className="text-sm leading-[1.9] text-muted-foreground sm:text-base">
+                    {renderInlineContent(item)}
+                  </p>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+const sectionId = (title: string, index: number) => {
+  const normalized = title
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+  return normalized || `secao-${index + 1}`;
+};
 
 const legacyArticleSlugAliases: Record<string, { pt: string; en: string }> = {
   "o-que-o-monitoramento-da-discord-pelo-stf-significa-para-quem-cria-comunidades": {
@@ -236,6 +406,34 @@ const MarketTrailArticle = () => {
               </ScrollReveal>
             )}
 
+            {sections.length >= 8 && (
+              <ScrollReveal>
+                <nav
+                  aria-label={getText(language, "Sumário do artigo", "Article contents")}
+                  className="mb-14 border-y border-border/25 py-7"
+                >
+                  <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.26em] text-muted-foreground/60">
+                    {getText(language, "Nesta leitura", "In this article")}
+                  </p>
+                  <ol className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
+                    {sections.map((section, index) => (
+                      <li key={`${section.title[language]}-toc`}>
+                        <a
+                          href={`#${sectionId(section.title[language], index)}`}
+                          className="group flex items-start gap-3 text-sm leading-relaxed text-muted-foreground transition-colors hover:text-foreground"
+                        >
+                          <span className="mt-0.5 font-mono text-[10px] text-muted-foreground/45">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
+                          <span>{section.title[language]}</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ol>
+                </nav>
+              </ScrollReveal>
+            )}
+
             <div className="space-y-14">
               {!fullArticle && (
                 <ScrollReveal>
@@ -248,24 +446,19 @@ const MarketTrailArticle = () => {
               {sections.map((section, index) => (
                 <ScrollReveal key={`${section.title[language]}-${index}`} delay={Math.min(index * 0.04, 0.2)}>
                   <motion.section
+                    id={sectionId(section.title[language], index)}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-60px" }}
                     transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                    className="group"
+                    className="group scroll-mt-28"
                   >
                     <div className="mb-6">
                       <h2 className="break-words font-serif text-2xl leading-tight text-foreground [overflow-wrap:anywhere] sm:text-3xl">
                         {section.title[language]}
                       </h2>
                     </div>
-                    <div className="space-y-5">
-                      {section.content[language].split("\n\n").map((paragraph, paragraphIndex) => (
-                        <p key={paragraphIndex} className="text-base leading-[1.95] text-muted-foreground sm:text-lg">
-                          {paragraph}
-                        </p>
-                      ))}
-                    </div>
+                    <ArticleContent content={section.content[language]} language={language} />
                   </motion.section>
                 </ScrollReveal>
               ))}
@@ -300,6 +493,8 @@ const MarketTrailArticle = () => {
             {fullArticle && (
               <TrailNavigation currentSlugPt={fullArticle.slugPt} currentSlugEn={fullArticle.slugEn} />
             )}
+
+            <RelatedArticles currentArticleId={article.id} />
 
             <ArticleSEOFooter />
           </article>

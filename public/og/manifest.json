@@ -994,5 +994,13 @@
   {
     "route": "/en-us/services/community-discord",
     "image": "/og/en-us-services-community-discord.png"
+  },
+  {
+    "route": "/artigos/como-prospectar-clientes",
+    "image": "/og/artigos-como-prospectar-clientes.png"
+  },
+  {
+    "route": "/en-us/articles/how-to-prospect-clients",
+    "image": "/og/en-us-articles-how-to-prospect-clients.png"
   }
 ]
