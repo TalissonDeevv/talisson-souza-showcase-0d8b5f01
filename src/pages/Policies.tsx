@@ -135,51 +135,67 @@ const Policies = () => {
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
           <div className="container mx-auto px-6 lg:px-8">
             <ScrollReveal>
-              <div className="overflow-hidden border border-border/20 bg-foreground/[0.018]">
-                <div className="relative h-[170px] overflow-hidden bg-black sm:h-[240px] lg:h-[320px]">
-                  <img
-                    src={discordPolicyAssets.banner}
-                    alt={getText(language, "Banner do servidor Escritório do Talisson", "Escritório do Talisson server banner")}
-                    className="h-full w-full object-cover object-center"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-background/50" />
+              <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-center">
+                <div>
+                  <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                    {getText(language, "Servidor Discord", "Discord server")}
+                  </span>
+                  <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
+                    {getText(language, "Regras em um espaço próprio.", "Rules in their own space.")}
+                  </h2>
+                  <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
+                    {getText(
+                      language,
+                      "A política do Escritório do Talisson fica separada porque regula um ambiente vivo, com canais, automações, convivência, segurança e moderação.",
+                      "The Escritório do Talisson policy is separated because it governs a living environment with channels, automations, conduct, safety and moderation."
+                    )}
+                  </p>
                 </div>
 
-                <div className="grid gap-8 px-5 pb-8 sm:px-7 lg:grid-cols-[160px_1fr_auto] lg:items-end lg:px-9 lg:pb-9">
-                  <img
-                    src={discordPolicyAssets.icon}
-                    alt={getText(language, "Ícone do servidor Escritório do Talisson", "Escritório do Talisson server icon")}
-                    className="-mt-12 h-24 w-24 rounded-[8px] border-4 border-background bg-background object-cover shadow-[0_18px_55px_rgba(0,0,0,0.35)] sm:-mt-16 sm:h-32 sm:w-32"
-                    loading="lazy"
-                    decoding="async"
-                  />
-
-                  <div>
-                    <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                      {getText(language, "Servidor Discord", "Discord server")}
-                    </span>
-                    <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
-                      {getText(language, "Escritório do Talisson", "Escritório do Talisson")}
-                    </h2>
-                    <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                      {getText(
-                        language,
-                        "Esta política fica em uma área própria porque regula um ambiente separado do site: convivência, canais, automações, segurança, divulgação, moderação e uso da Bella no servidor.",
-                        "This policy has its own area because it governs an environment separate from the website: conduct, channels, automations, safety, promotion, moderation and Bella usage on the server."
-                      )}
-                    </p>
+                <Link
+                  to={`${basePath}/${discordSection.id}`}
+                  className="group block overflow-hidden rounded-md border border-border/30 bg-background/92 shadow-[0_20px_60px_-36px_rgba(0,0,0,0.55)] backdrop-blur-md transition-colors hover:border-foreground/25"
+                >
+                  <div className="relative aspect-[16/5] min-h-[150px] overflow-hidden bg-black">
+                    <img
+                      src={discordPolicyAssets.banner}
+                      alt={getText(language, "Banner do servidor Escritório do Talisson", "Escritório do Talisson server banner")}
+                      className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-background/45" />
                   </div>
 
-                  <Link
-                    to={`${basePath}/${discordSection.id}`}
-                    className="inline-flex w-fit items-center gap-2 rounded-full border border-border/30 bg-background/30 px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-foreground/10"
-                  >
-                    {getText(language, "Ler política", "Read policy")}
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
+                  <div className="grid gap-5 p-5 sm:grid-cols-[112px_1fr_auto] sm:items-center sm:p-6">
+                    <img
+                      src={discordPolicyAssets.icon}
+                      alt={getText(language, "Ícone do servidor Escritório do Talisson", "Escritório do Talisson server icon")}
+                      className="h-24 w-24 rounded-[8px] border border-border/25 bg-background object-cover shadow-[0_16px_42px_rgba(0,0,0,0.28)]"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div>
+                      <span className="mb-3 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                        {getText(language, "Política oficial", "Official policy")}
+                      </span>
+                      <h3 className="font-serif text-2xl leading-tight text-foreground lg:text-3xl">
+                        {getText(language, "Escritório do Talisson", "Escritório do Talisson")}
+                      </h3>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                        {getText(
+                          language,
+                          "Convivência, canais, automações, segurança, divulgação, moderação e uso da Bella no servidor.",
+                          "Conduct, channels, automations, safety, promotion, moderation and Bella usage on the server."
+                        )}
+                      </p>
+                    </div>
+                    <span className="inline-flex w-fit items-center gap-2 rounded-full border border-border/30 bg-background/30 px-5 py-3 text-sm font-medium text-foreground transition-colors group-hover:bg-foreground/10">
+                      {getText(language, "Ler política", "Read policy")}
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </Link>
               </div>
             </ScrollReveal>
           </div>

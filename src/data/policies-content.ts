@@ -1,5 +1,6 @@
 import { bookOfficial } from './book-official';
 import { contactEmails } from './contact-channels';
+import { discordPolicyEnglishParagraphs } from './discord-policy-en';
 import { howIWorkPolicy, whatIDoPolicy, whatIDontDoPolicy } from './professional-policies';
 
 type Lang = 'pt' | 'en';
@@ -1241,8 +1242,28 @@ const professionalPoliciesById = new Map<string, PolicySection>([
   [whatIDontDoPolicy.id, whatIDontDoPolicy],
 ]);
 
+const withDiscordPolicyEnglish = (section: PolicySection): PolicySection => {
+  if (section.id !== 'servidor-discord') return section;
+
+  return {
+    ...section,
+    paragraphs: section.paragraphs.map((paragraph, index) => {
+      const english = discordPolicyEnglishParagraphs[index];
+      if (!english) return paragraph;
+
+      return {
+        ...paragraph,
+        en: english.text,
+        ...(paragraph.heading
+          ? { heading: { ...paragraph.heading, en: english.heading ?? paragraph.heading.en } }
+          : {}),
+      };
+    }),
+  };
+};
+
 export const policySections: PolicySection[] = basePolicySections.map(
-  (section) => professionalPoliciesById.get(section.id) ?? section
+  (section) => professionalPoliciesById.get(section.id) ?? withDiscordPolicyEnglish(section)
 );
 
 export const policiesPageMeta = {
