@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen, FileText, Scale, ShieldCheck } from "lucide-react";
+import { ArrowRight, BookOpen, Bot, FileText, Scale, ShieldCheck } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -13,7 +13,8 @@ import { professionalPolicySummaries } from "@/data/professional-policies";
 import { cn } from "@/lib/utils";
 
 const groupIds = {
-  base: ["visao-geral", "termos-de-uso", "inspiracao-visual", "politica-de-privacidade", "disclaimer", "canais-oficiais-comunicacao-institucional", "servidor-discord"],
+  base: ["visao-geral", "termos-de-uso", "inspiracao-visual", "politica-de-privacidade", "disclaimer", "canais-oficiais-comunicacao-institucional"],
+  discord: ["servidor-discord"],
   work: ["como-trabalho", "o-que-faco", "o-que-nao-faco"],
   book: [
     "disclaimer-livro",
@@ -26,6 +27,11 @@ const groupIds = {
     "livro-canais-oficiais",
     "livro-jurisdicao",
   ],
+};
+
+const discordPolicyAssets = {
+  banner: "/images/discord/escritorio-talisson-banner.png",
+  icon: "/images/discord/escritorio-talisson-icon.png",
 };
 
 const Policies = () => {
@@ -41,6 +47,17 @@ const Policies = () => {
       title: getText(language, "Base do site", "Site basis"),
       description: getText(language, "Uso, privacidade, comunidade e responsabilidades gerais.", "Usage, privacy, community and general responsibilities."),
       sections: policySections.filter((section) => groupIds.base.includes(section.id)),
+    },
+    {
+      id: "discord",
+      icon: Bot,
+      title: getText(language, "Escritório do Talisson", "Escritório do Talisson"),
+      description: getText(
+        language,
+        "Regras oficiais do servidor Discord, com diretrizes de convivência, segurança, divulgação, moderação e uso da minha Bot Bella.",
+        "Official Discord server rules covering conduct, safety, promotion, moderation and use of my Bella bot."
+      ),
+      sections: policySections.filter((section) => groupIds.discord.includes(section.id)),
     },
     {
       id: "work",
@@ -116,7 +133,7 @@ const Policies = () => {
           <MotionRail
             items={[
               { value: policySections.length, label: getText(language, "documentos", "documents") },
-              { value: "03", label: getText(language, "grupos", "groups") },
+              { value: "04", label: getText(language, "grupos", "groups") },
               { value: "LGPD", label: getText(language, "privacidade", "privacy") },
             ]}
             className="max-w-2xl"
@@ -140,8 +157,8 @@ const Policies = () => {
                 <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
                   {getText(
                     language,
-              "A organização é intencional e começa pelo uso do site, passa pela relação profissional e termina nas regras específicas do livro.",
-                    "The organization is intentional and starts with first site usage, then professional relationship, and finally the book-specific rules."
+                    "A organização é intencional e começa pelo uso do site, separa o servidor Discord, passa pela relação profissional e termina nas regras específicas do livro.",
+                    "The organization is intentional and starts with first site usage, separates the Discord server, then covers the professional relationship, and finally the book-specific rules."
                   )}
                 </p>
               </ScrollReveal>
@@ -182,6 +199,38 @@ const Policies = () => {
               {groups.map((group, groupIndex) => (
                 <ScrollReveal key={group.id} delay={groupIndex * 0.06}>
                   <section id={group.id} className="scroll-mt-28">
+                    {group.id === "discord" && (
+                      <div className="mb-7 overflow-hidden border border-border/20 bg-foreground/[0.018]">
+                        <div className="relative h-[160px] overflow-hidden bg-black sm:h-[220px] lg:h-[260px]">
+                          <img
+                            src={discordPolicyAssets.banner}
+                            alt={getText(language, "Banner do servidor Escritório do Talisson", "Escritório do Talisson server banner")}
+                            className="h-full w-full object-cover object-center"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-background/45" />
+                        </div>
+
+                        <div className="px-5 pb-6 sm:px-7">
+                          <img
+                            src={discordPolicyAssets.icon}
+                            alt={getText(language, "Ícone do servidor Escritório do Talisson", "Escritório do Talisson server icon")}
+                            className="-mt-12 h-24 w-24 rounded-[8px] border-4 border-background bg-background object-cover shadow-[0_18px_55px_rgba(0,0,0,0.35)] sm:-mt-14 sm:h-28 sm:w-28"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                          <p className="mt-5 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+                            {getText(
+                              language,
+                              "Esta seção fica separada das políticas gerais porque regula um ambiente próprio, com convivência, automações, canais, segurança, divulgação e moderação do servidor.",
+                              "This section is separated from the general policies because it governs its own environment, including conduct, automations, channels, safety, promotion and server moderation."
+                            )}
+                          </p>
+                        </div>
+                      </div>
+                    )}
+
                     <div className="mb-5 flex items-start gap-5 border-b border-border/20 pb-5">
                       <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-border/30 bg-background/35">
                         <group.icon className="h-5 w-5 text-foreground/65" />

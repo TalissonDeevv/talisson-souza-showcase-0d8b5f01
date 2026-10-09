@@ -22,10 +22,6 @@ const getChapterNumber = (heading: string) => {
 const cleanChapterTitle = (heading: string) => heading.replace(/^\d+\.\s*/, "");
 
 const professionalPolicyIds = new Set(["o-que-faco", "o-que-nao-faco", "como-trabalho"]);
-const discordPolicyAssets = {
-  banner: "/images/discord/escritorio-talisson-banner.png",
-  icon: "/images/discord/escritorio-talisson-icon.png",
-};
 
 const splitLongPolicyText = (text: string) => {
   const sentences = text
@@ -326,7 +322,6 @@ const PolicyDetail = () => {
         title={`${section.title[lang]} | ${getText(language, "Políticas", "Policies")}`}
         description={sectionSummary.slice(0, 155)}
         canonical={`${detailBasePath}/${section.id}`}
-        image={isDiscordServerPolicy ? discordPolicyAssets.banner : undefined}
         keywords={lang === "pt" ? ["políticas", "termos de uso", section.title.pt.toLowerCase()] : ["policies", "terms of use", section.title.en.toLowerCase()]}
       />
 
@@ -352,79 +347,32 @@ const PolicyDetail = () => {
         </span>
       </button>
 
-      {isDiscordServerPolicy ? (
-        <section className="relative overflow-hidden pt-24 lg:pt-28">
-          <div className="relative h-[190px] w-full overflow-hidden bg-black sm:h-[240px] lg:h-[300px]">
-            <img
-              src={discordPolicyAssets.banner}
-              alt={getText(language, "Banner do servidor Escritório do Talisson", "Escritório do Talisson server banner")}
-              className="h-full w-full object-cover object-center"
-              loading="eager"
-              decoding="async"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-background/30" />
-          </div>
-
-          <div className="container mx-auto px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl">
-              <img
-                src={discordPolicyAssets.icon}
-                alt={getText(language, "Ícone do servidor Escritório do Talisson", "Escritório do Talisson server icon")}
-                className="-mt-16 h-28 w-28 rounded-[8px] border-4 border-background bg-background object-cover shadow-[0_18px_55px_rgba(0,0,0,0.38)] sm:-mt-20 sm:h-32 sm:w-32"
-                loading="eager"
-                decoding="async"
-              />
-
-              <div className="mt-7">
-                <Link
-                  to={hubPath}
-                  className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  <ArrowLeft className="h-4 w-4" />
-                  {getText(language, "Voltar à central", "Back to hub")}
-                </Link>
-
-                <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                  {getText(language, "Política oficial", "Official policy")}
-                </span>
-                <h1 className="break-words font-serif text-[clamp(2.5rem,8vw,4.75rem)] leading-[1.02] text-foreground [overflow-wrap:anywhere]">
-                  {section.title[lang]}
-                </h1>
-                <p className="mt-6 text-base leading-[1.8] text-muted-foreground sm:text-lg">
-                  {sectionSummary}
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-      ) : (
-        <PageHero
-          compact
-          eyebrow={getText(language, "Políticas", "Policies")}
-          title={section.title[lang]}
-          titleClassName="text-[clamp(2.15rem,12vw,5.2rem)]"
-          subtitle={sectionSummary}
-          meta={
-            <MotionRail
-              className="max-w-2xl"
-              items={[
-                { value: String(sectionIndex + 1).padStart(2, "0"), label: getText(language, "documento", "document") },
-                { value: policySections.length, label: getText(language, "total", "total") },
-                { value: "2026", label: getText(language, "revisão", "review") },
-              ]}
-            />
-          }
-          actions={
-            <Link
-              to={hubPath}
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              {getText(language, "Voltar à central", "Back to hub")}
-            </Link>
-          }
-        />
-      )}
+      <PageHero
+        compact
+        eyebrow={getText(language, "Políticas", "Policies")}
+        title={section.title[lang]}
+        titleClassName="text-[clamp(2.15rem,12vw,5.2rem)]"
+        subtitle={sectionSummary}
+        meta={
+          <MotionRail
+            className="max-w-2xl"
+            items={[
+              { value: String(sectionIndex + 1).padStart(2, "0"), label: getText(language, "documento", "document") },
+              { value: policySections.length, label: getText(language, "total", "total") },
+              { value: "2026", label: getText(language, "revisão", "review") },
+            ]}
+          />
+        }
+        actions={
+          <Link
+            to={hubPath}
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            {getText(language, "Voltar à central", "Back to hub")}
+          </Link>
+        }
+      />
 
 
       <section id="documento" className="relative scroll-mt-28 overflow-visible py-12 lg:py-16">
