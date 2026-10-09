@@ -261,7 +261,6 @@ const PolicyDetail = () => {
   const safeSection = section ?? policySections[0];
   const isProfessionalPolicy = professionalPolicyIds.has(safeSection.id);
   const sectionSummary = professionalPolicySummaries[safeSection.id]?.[lang] ?? safeSection.paragraphs[0][lang];
-  const isDiscordServerPolicy = safeSection.id === "servidor-discord";
 
   const prev = sectionIndex > 0 ? policySections[sectionIndex - 1] : null;
   const next = sectionIndex < policySections.length - 1 ? policySections[sectionIndex + 1] : null;
@@ -377,8 +376,8 @@ const PolicyDetail = () => {
 
       <section id="documento" className="relative scroll-mt-28 overflow-visible py-12 lg:py-16">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
-        <div className={cn(isDiscordServerPolicy ? "w-full px-6 lg:px-12" : "container mx-auto px-6 lg:px-8")}>
-          <div className={cn("mx-auto", isDiscordServerPolicy ? "max-w-none" : showReadingPanel ? "max-w-5xl" : "max-w-6xl")}>
+        <div className="w-full px-6 lg:px-12">
+          <div className="mx-auto max-w-none">
             <div className="mb-8 flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.16em] text-muted-foreground/60">
               <Link to={hubPath} className="transition-colors hover:text-foreground">
                 {getText(language, "Políticas", "Policies")}
@@ -452,8 +451,7 @@ const PolicyDetail = () => {
               <article
                 className={cn(
                   "relative order-last w-full lg:order-1",
-                  !showReadingPanel && !isDiscordServerPolicy && "mx-auto max-w-3xl",
-                  isDiscordServerPolicy && "max-w-none"
+                  "max-w-none"
                 )}
               >
                 <div className="space-y-14 lg:space-y-16">
