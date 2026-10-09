@@ -22,6 +22,10 @@ const getChapterNumber = (heading: string) => {
 const cleanChapterTitle = (heading: string) => heading.replace(/^\d+\.\s*/, "");
 
 const professionalPolicyIds = new Set(["o-que-faco", "o-que-nao-faco", "como-trabalho"]);
+const discordPolicyAssets = {
+  banner: "/images/discord/escritorio-talisson-banner.png",
+  icon: "/images/discord/escritorio-talisson-icon.png",
+};
 
 const splitLongPolicyText = (text: string) => {
   const sentences = text
@@ -261,6 +265,7 @@ const PolicyDetail = () => {
   const safeSection = section ?? policySections[0];
   const isProfessionalPolicy = professionalPolicyIds.has(safeSection.id);
   const sectionSummary = professionalPolicySummaries[safeSection.id]?.[lang] ?? safeSection.paragraphs[0][lang];
+  const isDiscordServerPolicy = safeSection.id === "servidor-discord";
 
   const prev = sectionIndex > 0 ? policySections[sectionIndex - 1] : null;
   const next = sectionIndex < policySections.length - 1 ? policySections[sectionIndex + 1] : null;
@@ -321,6 +326,7 @@ const PolicyDetail = () => {
         title={`${section.title[lang]} | ${getText(language, "Políticas", "Policies")}`}
         description={sectionSummary.slice(0, 155)}
         canonical={`${detailBasePath}/${section.id}`}
+        image={isDiscordServerPolicy ? discordPolicyAssets.banner : undefined}
         keywords={lang === "pt" ? ["políticas", "termos de uso", section.title.pt.toLowerCase()] : ["policies", "terms of use", section.title.en.toLowerCase()]}
       />
 
@@ -346,32 +352,93 @@ const PolicyDetail = () => {
         </span>
       </button>
 
-      <PageHero
-        compact
-        eyebrow={getText(language, "Políticas", "Policies")}
-        title={section.title[lang]}
-        titleClassName="text-[clamp(2.15rem,12vw,5.2rem)]"
-        subtitle={sectionSummary}
-        meta={
-          <MotionRail
-            className="max-w-2xl"
-            items={[
-              { value: String(sectionIndex + 1).padStart(2, "0"), label: getText(language, "documento", "document") },
-              { value: policySections.length, label: getText(language, "total", "total") },
-              { value: "2026", label: getText(language, "revisão", "review") },
-            ]}
-          />
-        }
-        actions={
-          <Link
-            to={hubPath}
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            {getText(language, "Voltar à central", "Back to hub")}
-          </Link>
-        }
-      />
+      {isDiscordServerPolicy ? (
+        <section className="relative overflow-hidden pt-28 lg:pt-32">
+          <div className="container mx-auto px-6 lg:px-8">
+            <div className="mx-auto max-w-6xl">
+              <Link
+                to={hubPath}
+                className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                {getText(language, "Voltar à central", "Back to hub")}
+              </Link>
+
+              <div className="relative overflow-hidden rounded-[8px] border border-border/25 bg-foreground/[0.025]">
+                <div className="relative aspect-[16/6] min-h-[180px] overflow-hidden bg-black sm:aspect-[16/5] lg:min-h-[260px]">
+                  <img
+                    src={discordPolicyAssets.banner}
+                    alt={getText(language, "Banner do servidor Escritório do Talisson", "Escritório do Talisson server banner")}
+                    className="h-full w-full object-cover object-center"
+                    loading="eager"
+                    decoding="async"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/5 to-background/80" />
+                </div>
+
+                <div className="relative px-5 pb-8 pt-0 sm:px-8 lg:px-10 lg:pb-10">
+                  <div className="-mt-14 flex flex-col gap-6 sm:-mt-16 sm:flex-row sm:items-end sm:justify-between">
+                    <img
+                      src={discordPolicyAssets.icon}
+                      alt={getText(language, "Ícone do servidor Escritório do Talisson", "Escritório do Talisson server icon")}
+                      className="h-28 w-28 rounded-[8px] border border-background/80 bg-background object-cover shadow-[0_24px_70px_rgba(0,0,0,0.42)] sm:h-32 sm:w-32"
+                      loading="eager"
+                      decoding="async"
+                    />
+                    <MotionRail
+                      className="max-w-xl sm:pb-2"
+                      items={[
+                        { value: String(sectionIndex + 1).padStart(2, "0"), label: getText(language, "documento", "document") },
+                        { value: chapterItems.length, label: getText(language, "seções", "sections") },
+                        { value: "2026", label: getText(language, "revisão", "review") },
+                      ]}
+                    />
+                  </div>
+
+                  <div className="mt-8 max-w-4xl">
+                    <span className="mb-5 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                      {getText(language, "Política oficial", "Official policy")}
+                    </span>
+                    <h1 className="break-words font-serif text-[clamp(2.35rem,8vw,5.25rem)] leading-[0.98] text-foreground [overflow-wrap:anywhere]">
+                      {section.title[lang]}
+                    </h1>
+                    <p className="mt-6 max-w-3xl text-base leading-[1.8] text-muted-foreground sm:text-lg">
+                      {sectionSummary}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : (
+        <PageHero
+          compact
+          eyebrow={getText(language, "Políticas", "Policies")}
+          title={section.title[lang]}
+          titleClassName="text-[clamp(2.15rem,12vw,5.2rem)]"
+          subtitle={sectionSummary}
+          meta={
+            <MotionRail
+              className="max-w-2xl"
+              items={[
+                { value: String(sectionIndex + 1).padStart(2, "0"), label: getText(language, "documento", "document") },
+                { value: policySections.length, label: getText(language, "total", "total") },
+                { value: "2026", label: getText(language, "revisão", "review") },
+              ]}
+            />
+          }
+          actions={
+            <Link
+              to={hubPath}
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              {getText(language, "Voltar à central", "Back to hub")}
+            </Link>
+          }
+        />
+      )}
 
 
       <section id="documento" className="relative scroll-mt-28 overflow-visible py-12 lg:py-16">

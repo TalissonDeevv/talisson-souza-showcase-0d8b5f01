@@ -422,7 +422,7 @@ for (const route of ['/politicas/inspiracao-visual', '/politica/inspiracao-visua
 
 for (const route of ['/politicas/servidor-discord', '/en-us/policies/servidor-discord']) {
   if (!routeImages.has(route)) {
-    routeImages.set(route, '/og/home.png');
+    routeImages.set(route, '/images/discord/escritorio-talisson-banner.png');
   }
 }
 
