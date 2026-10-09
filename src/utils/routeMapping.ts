@@ -108,6 +108,7 @@ export const ptToEnRoutes: Record<string, string> = {
   '/politica/inspiracao-visual': '/en-us/policies/inspiracao-visual',
   '/politicas/inspiracao-visual': '/en-us/policies/inspiracao-visual',
   '/politicas/canais-oficiais-comunicacao-institucional': '/en-us/policies/canais-oficiais-comunicacao-institucional',
+  '/politicas/servidor-discord': '/en-us/policies/servidor-discord',
   '/politicas/disclaimer-livro': '/en-us/policies/disclaimer-livro',
   '/politicas/livro-direitos-autorais': '/en-us/policies/livro-direitos-autorais',
   '/politicas/livro-licenca-de-uso': '/en-us/policies/livro-licenca-de-uso',
