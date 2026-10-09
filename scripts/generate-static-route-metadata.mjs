@@ -116,6 +116,7 @@ for (const match of policiesSource.matchAll(/id:\s*'([^']+)'[\s\S]*?title:\s*\{\
 const policyDescriptionById = new Map([
   ['canais-oficiais-comunicacao-institucional', 'Regras para reconhecer canais oficiais, evitar golpes e confirmar comunicações ligadas ao trabalho de Talisson Souza.'],
   ['inspiracao-visual', 'Política de crédito, limites de uso e condições jurídicas para projetos que copiam, adaptam ou se inspiram no site, logo, assinatura ou identidade visual de Talisson Souza.'],
+  ['servidor-discord', 'Consulte as regras oficiais de participação, segurança, convivência e moderação do servidor Escritório do Talisson no Discord.'],
 ]);
 
 const checklistTitleBySlug = new Map();
@@ -416,6 +417,12 @@ for (const route of ['/changelogs', '/en-us/changelogs', ...changelogMetaByPath.
 for (const route of ['/politicas/inspiracao-visual', '/politica/inspiracao-visual', '/en-us/policies/inspiracao-visual']) {
   if (!routeImages.has(route)) {
     routeImages.set(route, '/og/politicas.png');
+  }
+}
+
+for (const route of ['/politicas/servidor-discord', '/en-us/policies/servidor-discord']) {
+  if (!routeImages.has(route)) {
+    routeImages.set(route, '/og/home.png');
   }
 }
 

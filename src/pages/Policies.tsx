@@ -13,7 +13,7 @@ import { professionalPolicySummaries } from "@/data/professional-policies";
 import { cn } from "@/lib/utils";
 
 const groupIds = {
-  base: ["visao-geral", "termos-de-uso", "inspiracao-visual", "politica-de-privacidade", "disclaimer", "diretrizes-comunidade", "canais-oficiais-comunicacao-institucional"],
+  base: ["visao-geral", "termos-de-uso", "inspiracao-visual", "politica-de-privacidade", "disclaimer", "canais-oficiais-comunicacao-institucional", "servidor-discord"],
   work: ["como-trabalho", "o-que-faco", "o-que-nao-faco"],
   book: [
     "disclaimer-livro",

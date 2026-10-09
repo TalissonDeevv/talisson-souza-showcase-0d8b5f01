@@ -28,6 +28,10 @@ export const professionalPolicySummaries: Record<string, TextPair> = {
     pt: "Projetos, práticas e condições que não aceito por razões jurídicas, éticas, técnicas ou comerciais.",
     en: "Projects, practices, and conditions I do not accept for legal, ethical, technical, or commercial reasons.",
   },
+  "servidor-discord": {
+    pt: "Regras de participação, convivência, segurança e moderação aplicáveis ao Escritório do Talisson no Discord.",
+    en: "Participation, conduct, safety and moderation rules for the Escritório do Talisson Discord server.",
+  },
 };
 
 const introduction = (pt: string, en: string): PolicyBlock => ({ pt, en });
