@@ -353,60 +353,46 @@ const PolicyDetail = () => {
       </button>
 
       {isDiscordServerPolicy ? (
-        <section className="relative overflow-hidden pt-28 lg:pt-32">
+        <section className="relative overflow-hidden pt-24 lg:pt-28">
+          <div className="relative h-[190px] w-full overflow-hidden bg-black sm:h-[240px] lg:h-[300px]">
+            <img
+              src={discordPolicyAssets.banner}
+              alt={getText(language, "Banner do servidor Escritório do Talisson", "Escritório do Talisson server banner")}
+              className="h-full w-full object-cover object-center"
+              loading="eager"
+              decoding="async"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-background/30" />
+          </div>
+
           <div className="container mx-auto px-6 lg:px-8">
-            <div className="mx-auto max-w-6xl">
-              <Link
-                to={hubPath}
-                className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <ArrowLeft className="h-4 w-4" />
-                {getText(language, "Voltar à central", "Back to hub")}
-              </Link>
+            <div className="mx-auto max-w-3xl">
+              <img
+                src={discordPolicyAssets.icon}
+                alt={getText(language, "Ícone do servidor Escritório do Talisson", "Escritório do Talisson server icon")}
+                className="-mt-16 h-28 w-28 rounded-[8px] border-4 border-background bg-background object-cover shadow-[0_18px_55px_rgba(0,0,0,0.38)] sm:-mt-20 sm:h-32 sm:w-32"
+                loading="eager"
+                decoding="async"
+              />
 
-              <div className="relative overflow-hidden rounded-[8px] border border-border/25 bg-foreground/[0.025]">
-                <div className="relative aspect-[16/6] min-h-[180px] overflow-hidden bg-black sm:aspect-[16/5] lg:min-h-[260px]">
-                  <img
-                    src={discordPolicyAssets.banner}
-                    alt={getText(language, "Banner do servidor Escritório do Talisson", "Escritório do Talisson server banner")}
-                    className="h-full w-full object-cover object-center"
-                    loading="eager"
-                    decoding="async"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/5 to-background/80" />
-                </div>
+              <div className="mt-7">
+                <Link
+                  to={hubPath}
+                  className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                  {getText(language, "Voltar à central", "Back to hub")}
+                </Link>
 
-                <div className="relative px-5 pb-8 pt-0 sm:px-8 lg:px-10 lg:pb-10">
-                  <div className="-mt-14 flex flex-col gap-6 sm:-mt-16 sm:flex-row sm:items-end sm:justify-between">
-                    <img
-                      src={discordPolicyAssets.icon}
-                      alt={getText(language, "Ícone do servidor Escritório do Talisson", "Escritório do Talisson server icon")}
-                      className="h-28 w-28 rounded-[8px] border border-background/80 bg-background object-cover shadow-[0_24px_70px_rgba(0,0,0,0.42)] sm:h-32 sm:w-32"
-                      loading="eager"
-                      decoding="async"
-                    />
-                    <MotionRail
-                      className="max-w-xl sm:pb-2"
-                      items={[
-                        { value: String(sectionIndex + 1).padStart(2, "0"), label: getText(language, "documento", "document") },
-                        { value: chapterItems.length, label: getText(language, "seções", "sections") },
-                        { value: "2026", label: getText(language, "revisão", "review") },
-                      ]}
-                    />
-                  </div>
-
-                  <div className="mt-8 max-w-4xl">
-                    <span className="mb-5 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
-                      {getText(language, "Política oficial", "Official policy")}
-                    </span>
-                    <h1 className="break-words font-serif text-[clamp(2.35rem,8vw,5.25rem)] leading-[0.98] text-foreground [overflow-wrap:anywhere]">
-                      {section.title[lang]}
-                    </h1>
-                    <p className="mt-6 max-w-3xl text-base leading-[1.8] text-muted-foreground sm:text-lg">
-                      {sectionSummary}
-                    </p>
-                  </div>
-                </div>
+                <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                  {getText(language, "Política oficial", "Official policy")}
+                </span>
+                <h1 className="break-words font-serif text-[clamp(2.5rem,8vw,4.75rem)] leading-[1.02] text-foreground [overflow-wrap:anywhere]">
+                  {section.title[lang]}
+                </h1>
+                <p className="mt-6 text-base leading-[1.8] text-muted-foreground sm:text-lg">
+                  {sectionSummary}
+                </p>
               </div>
             </div>
           </div>
@@ -443,8 +429,8 @@ const PolicyDetail = () => {
 
       <section id="documento" className="relative scroll-mt-28 overflow-visible py-12 lg:py-16">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
-        <div className="container mx-auto px-6 lg:px-8">
-          <div className={cn("mx-auto", showReadingPanel ? "max-w-5xl" : "max-w-6xl")}>
+        <div className={cn(isDiscordServerPolicy ? "w-full px-6 lg:px-12" : "container mx-auto px-6 lg:px-8")}>
+          <div className={cn("mx-auto", isDiscordServerPolicy ? "max-w-none" : showReadingPanel ? "max-w-5xl" : "max-w-6xl")}>
             <div className="mb-8 flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.16em] text-muted-foreground/60">
               <Link to={hubPath} className="transition-colors hover:text-foreground">
                 {getText(language, "Políticas", "Policies")}
@@ -518,7 +504,8 @@ const PolicyDetail = () => {
               <article
                 className={cn(
                   "relative order-last w-full lg:order-1",
-                  !showReadingPanel && "mx-auto max-w-3xl"
+                  !showReadingPanel && !isDiscordServerPolicy && "mx-auto max-w-3xl",
+                  isDiscordServerPolicy && "max-w-none"
                 )}
               >
                 <div className="space-y-14 lg:space-y-16">
