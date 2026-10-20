@@ -12,7 +12,7 @@ const ContactDialog = ({ children }: ContactDialogProps) => {
   const socialLinks = [
     { name: "GitHub", href: "https://github.com/TalinhoDev" },
     { name: "LinkedIn", href: "https://www.linkedin.com/in/talinho" },
-    { name: "Instagram", href: "https://instagram.com/talissondev" },
+    { name: "Instagram", href: "https://instagram.com/talisson.dev" },
     { name: "Twitter/X", href: "https://x.com/talinhozx" },
   ];
 

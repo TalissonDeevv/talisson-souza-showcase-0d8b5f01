@@ -26,7 +26,7 @@ const SocialIcons = ({ className = "" }: SocialIconsProps) => {
     },
     {
       name: "Instagram",
-      href: "https://instagram.com/talissondev",
+      href: "https://instagram.com/talisson.dev",
       Icon: FaInstagram,
     },
     {
