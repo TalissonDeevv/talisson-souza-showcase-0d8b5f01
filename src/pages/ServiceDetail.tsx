@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useTranslation, getText } from "@/utils/translations";
+import botLinkEmbedShowcase from "@/assets/bot-link-embed-showcase.png";
 
 type SolutionVisual =
   | "web-conversion"
@@ -1681,6 +1682,7 @@ const ServiceDetail = () => {
         title={`${service.title} | Serviços - Talisson Souza`}
         description={service.description}
         canonical={`/servicos/${serviceId}`}
+        image={serviceId === "bot-development" ? botLinkEmbedShowcase : undefined}
         keywords={[service.title, 'serviço', 'desenvolvimento', ...service.technologies]}
       />
 
