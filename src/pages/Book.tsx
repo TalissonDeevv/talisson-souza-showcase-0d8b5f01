@@ -148,12 +148,12 @@ const Book = () => {
               </div>
               <div className="max-w-4xl">
                 <h2 className="font-serif text-3xl leading-tight text-foreground lg:text-5xl">
-                  {getText(language, "Pedido protocolado na Fundação Biblioteca Nacional.", "Request filed with Fundação Biblioteca Nacional.")}
+                  {getText(language, "Obra registrada na Fundação Biblioteca Nacional.", "Work registered with the Fundação Biblioteca Nacional.")}
                 </h2>
                 <p className="mt-6 text-base leading-relaxed text-muted-foreground">
                   {registrationStatus}
                 </p>
-                <div className="mt-7 grid gap-4 sm:grid-cols-[220px_1fr]">
+                <div className="mt-8 grid min-w-0 gap-x-8 gap-y-6 border-t border-border/20 pt-7 sm:grid-cols-2 lg:grid-cols-4"><div className="sm:col-span-2 lg:col-span-1"><span className="block text-[10px] uppercase tracking-[0.24em] text-muted-foreground/60">{getText(language, "Número do registro", "Registration number")}</span><strong className="mt-2 block text-2xl font-medium tracking-tight text-foreground lg:text-3xl">{bookOfficial.registration.registrationNumber}</strong></div><div className="min-w-0"><span className="block text-[10px] uppercase tracking-[0.24em] text-muted-foreground/60">{getText(language, "Protocolo do requerimento", "Application protocol")}</span><span className="mt-2 block break-all font-mono text-sm text-foreground">{bookOfficial.registration.protocol}</span></div><div><span className="block text-[10px] uppercase tracking-[0.24em] text-muted-foreground/60">{getText(language, "Livro", "Book")}</span><span className="mt-2 block text-sm text-foreground">{bookOfficial.registration.book}</span></div><div><span className="block text-[10px] uppercase tracking-[0.24em] text-muted-foreground/60">{getText(language, "Folha", "Page")}</span><span className="mt-2 block text-sm text-foreground">{bookOfficial.registration.page}</span></div></div><div className="mt-7 grid gap-5 border-t border-border/20 pt-6 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-start sm:gap-10"><div><span className="block text-[10px] uppercase tracking-[0.24em] text-muted-foreground/60">{getText(language, "Data da certidão", "Certificate date")}</span><span className="mt-2 block text-sm text-foreground">{getText(language, bookOfficial.registration.certificateDate.pt, bookOfficial.registration.certificateDate.en)}</span></div><p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">{registrationClarification}</p></div><div className="hidden">
                   <div className="border-l border-foreground/25 pl-5">
                     <span className="block text-[10px] uppercase tracking-[0.24em] text-muted-foreground/60">
                       {getText(language, "Protocolo", "Protocol")}
