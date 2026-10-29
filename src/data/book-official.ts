@@ -10,17 +10,24 @@ export const bookOfficial = {
   },
   registration: {
     protocol: "000984.0456921/2026",
+    registrationNumber: "972.678",
+    book: "1.900",
+    page: "433",
+    certificateDate: {
+      pt: "13 de outubro de 2026",
+      en: "October 13, 2026",
+    },
     shortStatus: {
-      pt: "A obra encontra-se em processo de registro perante a Fundação Biblioteca Nacional.",
-      en: "The work is currently in the registration process before Fundação Biblioteca Nacional.",
+      pt: "A obra possui registro de direitos autorais formalizado junto à Fundação Biblioteca Nacional, por meio do Escritório de Direitos Autorais (EDA).",
+      en: "The work has formal copyright registration with the Fundação Biblioteca Nacional through the Copyright Office (EDA).",
     },
     protocolStatus: {
-      pt: "A obra possui pedido de registro protocolado perante a Fundação Biblioteca Nacional sob o protocolo nº 000984.0456921/2026.",
-      en: "The work has a registration request filed before Fundação Biblioteca Nacional under protocol No. 000984.0456921/2026.",
+      pt: "O livro Superando Limites da Rejeição ao Sucesso possui registro de direitos autorais formalizado junto à Fundação Biblioteca Nacional, por meio do Escritório de Direitos Autorais (EDA).",
+      en: "The book Superando Limites da Rejeição ao Sucesso has formal copyright registration with the Fundação Biblioteca Nacional through the Copyright Office (EDA).",
     },
     clarification: {
-      pt: "O número informado corresponde exclusivamente ao protocolo administrativo do pedido de registro e não representa o número definitivo de registro da obra.",
-      en: "The number provided corresponds exclusively to the administrative protocol of the registration request and does not represent the definitive registration number of the work.",
+      pt: "Certidão de Registro ou Averbação emitida pela Fundação Biblioteca Nacional em 13 de outubro de 2026.",
+      en: "Certificate of Registration or Annotation issued by the Fundação Biblioteca Nacional on October 13, 2026.",
     },
   },
 } as const;
