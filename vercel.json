@@ -54,6 +54,14 @@
       "destination": "/en-us/services/community-discord/index.html"
     },
     {
+      "source": "/servicos/:service(web-development|mobile-development|bot-development|uiux-design|cloud-solutions)/planos",
+      "destination": "/servicos/:service/planos/index.html"
+    },
+    {
+      "source": "/en-us/services/:service(web-development|mobile-development|bot-development|uiux-design|cloud-solutions)/plans",
+      "destination": "/en-us/services/:service/plans/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

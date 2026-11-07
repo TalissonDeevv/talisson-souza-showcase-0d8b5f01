@@ -631,7 +631,13 @@
     <loc>https://www.talissonsouza.com.br/en-us/services/bot-development</loc>
   </url>
   <url>
+    <loc>https://www.talissonsouza.com.br/en-us/services/bot-development/plans</loc>
+  </url>
+  <url>
     <loc>https://www.talissonsouza.com.br/en-us/services/cloud-solutions</loc>
+  </url>
+  <url>
+    <loc>https://www.talissonsouza.com.br/en-us/services/cloud-solutions/plans</loc>
   </url>
   <url>
     <loc>https://www.talissonsouza.com.br/en-us/services/community-discord</loc>
@@ -643,10 +649,19 @@
     <loc>https://www.talissonsouza.com.br/en-us/services/mobile-development</loc>
   </url>
   <url>
+    <loc>https://www.talissonsouza.com.br/en-us/services/mobile-development/plans</loc>
+  </url>
+  <url>
     <loc>https://www.talissonsouza.com.br/en-us/services/uiux-design</loc>
   </url>
   <url>
+    <loc>https://www.talissonsouza.com.br/en-us/services/uiux-design/plans</loc>
+  </url>
+  <url>
     <loc>https://www.talissonsouza.com.br/en-us/services/web-development</loc>
+  </url>
+  <url>
+    <loc>https://www.talissonsouza.com.br/en-us/services/web-development/plans</loc>
   </url>
   <url>
     <loc>https://www.talissonsouza.com.br/en-us/tech-decisions</loc>
@@ -754,7 +769,13 @@
     <loc>https://www.talissonsouza.com.br/servicos/bot-development</loc>
   </url>
   <url>
+    <loc>https://www.talissonsouza.com.br/servicos/bot-development/planos</loc>
+  </url>
+  <url>
     <loc>https://www.talissonsouza.com.br/servicos/cloud-solutions</loc>
+  </url>
+  <url>
+    <loc>https://www.talissonsouza.com.br/servicos/cloud-solutions/planos</loc>
   </url>
   <url>
     <loc>https://www.talissonsouza.com.br/servicos/comunidade-discord</loc>
@@ -766,10 +787,19 @@
     <loc>https://www.talissonsouza.com.br/servicos/mobile-development</loc>
   </url>
   <url>
+    <loc>https://www.talissonsouza.com.br/servicos/mobile-development/planos</loc>
+  </url>
+  <url>
     <loc>https://www.talissonsouza.com.br/servicos/uiux-design</loc>
   </url>
   <url>
+    <loc>https://www.talissonsouza.com.br/servicos/uiux-design/planos</loc>
+  </url>
+  <url>
     <loc>https://www.talissonsouza.com.br/servicos/web-development</loc>
+  </url>
+  <url>
+    <loc>https://www.talissonsouza.com.br/servicos/web-development/planos</loc>
   </url>
   <url>
     <loc>https://www.talissonsouza.com.br/sobre</loc>

@@ -20,6 +20,7 @@ const Projects = lazy(() => import("./pages/Projects"));
 const SaudeMais = lazy(() => import("./pages/SaudeMais"));
 const Services = lazy(() => import("./pages/Services"));
 const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
+const ServicePlans = lazy(() => import("./pages/ServicePlans"));
 const CommunityDiscord = lazy(() => import("./pages/CommunityDiscord"));
 const Career = lazy(() => import("./pages/Career"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -69,6 +70,7 @@ const AppRoutes = () => (
             <Route path="/servicos" element={<Services />} />
             <Route path="/servicos/comunidade-discord" element={<CommunityDiscord />} />
             <Route path="/servicos/:serviceId" element={<ServiceDetail />} />
+            <Route path="/servicos/:serviceId/planos" element={<ServicePlans />} />
             <Route path="/carreira" element={<Career />} />
             <Route path="/contato" element={<Contact />} />
             <Route path="/como-trabalho" element={<HowIWork />} />
@@ -104,6 +106,7 @@ const AppRoutes = () => (
             <Route path="/en-us/services" element={<Services />} />
             <Route path="/en-us/services/community-discord" element={<CommunityDiscord />} />
             <Route path="/en-us/services/:serviceId" element={<ServiceDetail />} />
+            <Route path="/en-us/services/:serviceId/plans" element={<ServicePlans />} />
             <Route path="/en-us/career" element={<Career />} />
             <Route path="/en-us/contact" element={<Contact />} />
             <Route path="/en-us/how-i-work" element={<HowIWork />} />

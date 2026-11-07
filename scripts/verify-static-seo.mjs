@@ -30,6 +30,18 @@ const routes = [
     image: '/og/en-us-services-community-discord.png',
     schemas: ['BreadcrumbList', 'Service'],
   },
+  {
+    path: '/servicos/bot-development/planos',
+    title: 'Planos de Acompanhamento para Bots | Talisson Souza',
+    image: '/og/servicos-bot-development.png',
+    schemas: ['BreadcrumbList', 'Service', 'Offer'],
+  },
+  {
+    path: '/en-us/services/bot-development/plans',
+    title: 'Bot Follow-up Plans | Talisson Souza',
+    image: '/og/en-us-services-bot-development.png',
+    schemas: ['BreadcrumbList', 'Service', 'Offer'],
+  },
 ];
 
 const extract = (html, pattern) => html.match(pattern)?.[1] ?? '';

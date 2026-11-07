@@ -107,6 +107,14 @@ const serviceTitles = new Map([
   ['consulting', ['Consultoria Tech | Talisson Souza', 'Direção técnica para decisões, arquitetura, processos e evolução de produtos digitais.']],
 ]);
 
+const servicePlanByRoute = new Map();
+const { servicePlans, planTiers, getServicePlanOgImage } = loadTsModule('src/data/service-plans.ts');
+for (const service of servicePlans) {
+  for (const language of ['pt', 'en']) {
+    servicePlanByRoute.set(service.plansPath[language], { service, language });
+  }
+}
+
 const policyTitleById = new Map();
 const policiesSource = fs.readFileSync(path.join(rootDir, 'src', 'data', 'policies-content.ts'), 'utf8');
 for (const match of policiesSource.matchAll(/id:\s*'([^']+)'[\s\S]*?title:\s*\{\s*pt:\s*'([^']+)'/g)) {
@@ -224,6 +232,10 @@ const fallbackMeta = (route) => {
 const getMeta = (route) => {
   if (pageMeta.has(route)) return pageMeta.get(route);
   if (articleMetaByPath.has(route)) return articleMetaByPath.get(route);
+  if (servicePlanByRoute.has(route)) {
+    const { service, language } = servicePlanByRoute.get(route);
+    return [service.seoTitle[language], service.seoDescription[language]];
+  }
   if (changelogMetaByPath.has(route)) return changelogMetaByPath.get(route);
 
   const serviceMatch = route.match(/^\/(?:en-us\/)?services?\/([^/]+)$/);
@@ -250,6 +262,41 @@ const discordCommunityRoutes = new Set(['/servicos/comunidade-discord', '/en-us/
 
 const getStaticJsonLd = (route, title, description, url, image) => {
   const isEnglish = route.startsWith('/en-us');
+
+  if (servicePlanByRoute.has(route)) {
+    const { service, language } = servicePlanByRoute.get(route);
+    return [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: isEnglish ? 'Home' : 'Início', item: `${baseUrl}${isEnglish ? '/en-us' : ''}` },
+          { '@type': 'ListItem', position: 2, name: isEnglish ? 'Services' : 'Serviços', item: `${baseUrl}${isEnglish ? '/en-us/services' : '/servicos'}` },
+          { '@type': 'ListItem', position: 3, name: service.serviceName[language], item: `${baseUrl}${service.servicePath[language]}` },
+          { '@type': 'ListItem', position: 4, name: isEnglish ? 'Plans' : 'Planos', item: url },
+        ],
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: service.title[language].replace(/\.$/, ''),
+        serviceType: isEnglish ? 'Technical follow-up' : 'Acompanhamento técnico',
+        description,
+        url,
+        image,
+        provider: { '@type': 'Person', name: 'Talisson Souza', url: baseUrl },
+        offers: planTiers
+          .filter((tier) => tier.monthlyPrice !== null)
+          .map((tier) => ({
+            '@type': 'Offer',
+            name: isEnglish ? `${tier.name.en} plan` : `Plano ${tier.name.pt}`,
+            price: tier.monthlyPrice.toFixed(2),
+            priceCurrency: 'BRL',
+            url: `${url}#plano-${tier.id}`,
+          })),
+      },
+    ];
+  }
 
   if (discordCommunityRoutes.has(route)) {
     const servicesUrl = `${baseUrl}${isEnglish ? '/en-us/services' : '/servicos'}`;
@@ -429,6 +476,12 @@ for (const route of ['/politicas/servidor-discord', '/en-us/policies/servidor-di
 for (const route of ['/servicos/comunidade-discord', '/en-us/services/community-discord']) {
   if (!routeImages.has(route)) {
     routeImages.set(route, route.startsWith('/en-us') ? '/og/en-us-services-community-discord.png' : '/og/servicos-comunidade-discord.png');
+  }
+}
+
+for (const [route, { service, language }] of servicePlanByRoute) {
+  if (!routeImages.has(route)) {
+    routeImages.set(route, getServicePlanOgImage(service, language));
   }
 }
 

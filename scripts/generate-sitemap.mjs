@@ -72,6 +72,12 @@ function extractLocalizedPaths(filePath) {
   return [...source.matchAll(pathRegex)].flatMap((match) => [match[1], match[2]]);
 }
 
+function extractServicePlanPaths() {
+  const source = readSource('src/data/service-plans.ts');
+  const pathRegex = /plansPath:\s*\{\s*pt:\s*['"]([^'"]+)['"],\s*en:\s*['"]([^'"]+)['"],?\s*\}/g;
+  return [...source.matchAll(pathRegex)].flatMap((match) => [match[1], match[2]]);
+}
+
 function extractPolicyPaths() {
   const source = readSource('src/data/policies-content.ts');
   const ids = [...source.matchAll(/id:\s*['"]([^'"]+)['"]/g)].map((match) => match[1]);
@@ -109,6 +115,7 @@ const urls = new Set([
   ...extractLocalizedPaths('src/data/articles.ts').map(toAbsoluteUrl),
   ...extractLocalizedPaths('src/data/checklists.ts').map(toAbsoluteUrl),
   ...extractLocalizedPaths('src/data/changelogs.ts').map(toAbsoluteUrl),
+  ...extractServicePlanPaths().map(toAbsoluteUrl),
   ...extractPolicyPaths().map(toAbsoluteUrl),
 ]);
 

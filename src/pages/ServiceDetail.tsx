@@ -8,6 +8,7 @@ import GlassCard from "@/components/ui/GlassCard";
 import MobileBentoGrid from "@/components/services/MobileBentoGrid";
 import ProjectShowcase, { type ProjectShowcaseItem } from "@/components/ui/project-showcase";
 import BlockFeature from "@/components/ui/block-feature";
+import ServicePlansCallout from "@/components/services/ServicePlansCallout";
 import { 
   ArrowLeft, Code, Smartphone, Bot, Palette, Cloud, Users,
   CheckCircle, Star, MessageSquare, ArrowUpRight,
@@ -2882,6 +2883,8 @@ const ServiceDetail = () => {
           </div>
         </div>
       </section>
+
+      <ServicePlansCallout serviceId={serviceId} language={language} />
 
       {/* Target Audience Section */}
       <section className="hidden" aria-hidden="true">

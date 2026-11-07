@@ -1,6 +1,8 @@
 // Maps Portuguese routes to English routes and vice versa
 // Used for language switching to navigate to the equivalent page
 
+import { servicePlans } from '@/data/service-plans';
+
 export const ptToEnRoutes: Record<string, string> = {
   '/': '/en-us',
   '/bio': '/en-us/bio',
@@ -131,7 +133,12 @@ export const enToPtRoutes: Record<string, string> = Object.fromEntries(
 export function getEquivalentRoute(currentPath: string, targetLang: 'pt' | 'en'): string {
   // Remove trailing slash
   const path = currentPath === '/' ? '/' : currentPath.replace(/\/$/, '');
-  
+
+  // Service plans pages (/servicos/:id/planos <-> /en-us/services/:id/plans)
+  const sourceLang = targetLang === 'en' ? 'pt' : 'en';
+  const servicePlan = servicePlans.find((service) => service.plansPath[sourceLang] === path);
+  if (servicePlan) return servicePlan.plansPath[targetLang];
+
   if (targetLang === 'en') {
     const mapped = ptToEnRoutes[path];
     if (mapped) return mapped;
