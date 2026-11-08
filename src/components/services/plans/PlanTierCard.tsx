@@ -96,7 +96,7 @@ const PlanTierCard = ({ tier, service, language, index }: PlanTierCardProps) => 
 
       {tier.paymentUrl && (
         <p className="relative mt-3 text-center text-[11px] leading-relaxed text-muted-foreground/75">
-          {pt ? "Exclusivo para projetos com contrato formal. " : "Exclusive to projects under a formal contract. "}
+          {pt ? "Exige contrato formal assinado. " : "Requires a signed formal agreement. "}
           <a
             href="#condicoes-contratuais"
             className="underline decoration-border underline-offset-4 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40"

@@ -775,8 +775,8 @@ export const planContractNotice = {
   eyebrow: { pt: "Condição de elegibilidade", en: "Eligibility requirement" },
   title: { pt: "Planos exclusivos para projetos com contrato formal.", en: "Plans exclusive to projects under a formal contract." },
   short: {
-    pt: "Disponível exclusivamente para projetos desenvolvidos mediante contrato formal de prestação de serviços.",
-    en: "Available exclusively for projects developed under a formal service agreement.",
+    pt: "Disponível exclusivamente para projetos desenvolvidos mediante contrato formal de prestação de serviços. Caso deseje contratar um plano, é necessário assinar o contrato antes.",
+    en: "Available exclusively for projects developed under a formal service agreement. If you want a plan, you must sign the agreement first.",
   },
   clauses: [
     {
@@ -788,8 +788,12 @@ export const planContractNotice = {
       en: "Projects developed without a formal agreement, including those carried out under verbal or informal arrangements or without a written instrument, do not entitle the client to any of the benefits, priority levels, timeframes or conditions described on this page, even if the subscription payment has been made.",
     },
     {
-      pt: "Nesses casos, o acompanhamento técnico somente poderá ser contratado após a formalização de contrato específico, cujas condições serão analisadas caso a caso. As informações desta página têm caráter informativo e não substituem o contrato; havendo divergência, prevalecem as cláusulas contratuais e a legislação aplicável.",
-      en: "In such cases, technical follow-up may only be engaged after a specific agreement is formalized, with conditions assessed case by case. The information on this page is for reference only and does not replace the agreement; in case of any discrepancy, the contractual clauses and applicable law prevail.",
+      pt: "Caso o cliente deseje contratar qualquer um dos planos, deverá, obrigatória e previamente, assinar contrato formal de prestação de serviços com o prestador. A assinatura do contrato é condição indispensável para a contratação do plano e para o exercício de qualquer benefício nele previsto, sendo suas condições analisadas caso a caso.",
+      en: "Should the client wish to engage any of the plans, they must, mandatorily and in advance, sign a formal service agreement with the provider. Signing the agreement is an essential condition for engaging the plan and for exercising any benefit it provides, with its conditions assessed case by case.",
+    },
+    {
+      pt: "As informações desta página têm caráter informativo e não substituem o contrato. Havendo divergência, prevalecem as cláusulas contratuais e a legislação aplicável.",
+      en: "The information on this page is for reference only and does not replace the agreement. In case of any discrepancy, the contractual clauses and applicable law prevail.",
     },
   ] as Localized[],
 };
@@ -806,8 +810,8 @@ export const sharedPlanFaq: Array<{ question: Localized; answer: Localized }> = 
   {
     question: { pt: "Meu projeto foi feito sem contrato. Posso assinar um plano?", en: "My project was built without a contract. Can I subscribe to a plan?" },
     answer: {
-      pt: "Não diretamente. Os planos se aplicam exclusivamente a projetos desenvolvidos mediante contrato formal de prestação de serviços. Projetos feitos sem contrato não têm direito aos benefícios apresentados nos planos, ainda que a assinatura seja paga. Para esses casos, entre em contato antes: o acompanhamento só poderá ser contratado após a formalização de um contrato específico.",
-      en: "Not directly. The plans apply exclusively to projects developed under a formal service agreement. Projects built without a contract are not entitled to the benefits presented in the plans, even if the subscription is paid. In these cases, get in touch first: follow-up can only be engaged after a specific agreement is formalized.",
+      pt: "Não diretamente. Os planos se aplicam exclusivamente a projetos desenvolvidos mediante contrato formal de prestação de serviços. Projetos feitos sem contrato não têm direito aos benefícios apresentados nos planos, ainda que a assinatura seja paga. Caso queira um plano, é necessário assinar um contrato formal antes. Entre em contato pelo WhatsApp ou e-mail para formalizar o contrato e, depois disso, contratar o plano.",
+      en: "Not directly. The plans apply exclusively to projects developed under a formal service agreement. Projects built without a contract are not entitled to the benefits presented in the plans, even if the subscription is paid. If you want a plan, you must sign a formal agreement first. Get in touch on WhatsApp or by email to formalize the agreement and then engage the plan.",
     },
   },
   {
