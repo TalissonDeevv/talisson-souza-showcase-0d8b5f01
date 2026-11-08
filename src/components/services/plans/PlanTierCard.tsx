@@ -95,6 +95,18 @@ const PlanTierCard = ({ tier, service, language, index }: PlanTierCardProps) => 
       </a>
 
       {tier.paymentUrl && (
+        <p className="relative mt-3 text-center text-[11px] leading-relaxed text-muted-foreground/75">
+          {pt ? "Exclusivo para projetos com contrato formal. " : "Exclusive to projects under a formal contract. "}
+          <a
+            href="#condicoes-contratuais"
+            className="underline decoration-border underline-offset-4 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40"
+          >
+            {pt ? "Ver condições" : "See conditions"}
+          </a>
+        </p>
+      )}
+
+      {tier.paymentUrl && (
         <a
           href={whatsappHref}
           target="_blank"

@@ -82,7 +82,7 @@ export const planTiers: PlanTier[] = [
       pt: "Mantenha seu projeto atualizado e funcionando adequadamente com acompanhamento técnico contínuo. Tenha acesso a atualizações de tecnologias e dependências, manutenções corretivas, correção de bugs, suporte técnico, monitoramento básico e cuidados de segurança. Ideal para quem deseja preservar a estabilidade, compatibilidade e confiabilidade do seu bot, site ou sistema.",
       en: "Keep your project up to date and working properly with continuous technical follow-up. Get technology and dependency updates, corrective maintenance, bug fixes, technical support, basic monitoring and security care. Ideal for anyone who wants to preserve the stability, compatibility and reliability of their bot, website or system.",
     },
-    paymentUrl: "https://buy.stripe.com/test_cNieVefmR9SYfn3gefcEw01",
+    paymentUrl: "https://buy.stripe.com/dRm28rfAX62heit74a2Ji03",
     benefits: ["updates", "corrective", "bugfixes", "support", "basicMonitoring", "basicSecurity", "compatibility"],
     cta: { pt: "Assinar Essencial", en: "Subscribe to Essential" },
   },
@@ -96,7 +96,7 @@ export const planTiers: PlanTier[] = [
       pt: "Tenha um acompanhamento técnico mais completo, com todos os benefícios do plano Essencial, atendimento prioritário, manutenções preventivas, otimizações de desempenho, revisões de segurança e relatório mensal. Inclui também o desenvolvimento de 1 nova funcionalidade simples por mês, permitindo que seu projeto continue evoluindo conforme suas necessidades.",
       en: "Get more complete technical follow-up, with every Essential benefit, priority support, preventive maintenance, performance optimizations, security reviews and a monthly report. It also includes 1 new simple feature per month, so your project keeps evolving with your needs.",
     },
-    paymentUrl: "https://buy.stripe.com/test_bJe3cw1w1aX28YF2npcEw02",
+    paymentUrl: "https://buy.stripe.com/dRm4gz9cz9etcalewC2Ji04",
     inherits: "essential",
     benefits: ["priority", "preventive", "performance", "securityReviews", "monthlyReport", "evolutionTracking", "monthlyFeature"],
     cta: { pt: "Assinar Profissional", en: "Subscribe to Professional" },
@@ -111,7 +111,7 @@ export const planTiers: PlanTier[] = [
       pt: "Uma experiência avançada de acompanhamento técnico, com todos os benefícios do plano Profissional, monitoramento contínuo, acompanhamento dedicado, consultoria técnica, otimizações recorrentes e backup periódico. Inclui o desenvolvimento de até 2 funcionalidades simples ou 1 intermediária por mês, proporcionando mais possibilidades de evolução para seu projeto.",
       en: "An advanced technical follow-up experience, with every Professional benefit, continuous monitoring, dedicated follow-up, technical consulting, recurring optimizations and periodic backup. It includes up to 2 simple features or 1 intermediate feature per month, opening more room for your project to evolve.",
     },
-    paymentUrl: "https://buy.stripe.com/test_00w8wQ0rXfdigr7e67cEw03",
+    paymentUrl: "https://buy.stripe.com/dRmdR9gF1bmBeit0FM2Ji02",
     inherits: "professional",
     benefits: [
       "advancedPriority",
@@ -767,13 +767,47 @@ export const servicePlans: ServicePlanConfig[] = [
   },
 ];
 
+/**
+ * Condição de elegibilidade exibida na página de planos, no bloco das páginas de serviço e no FAQ.
+ * Os planos valem somente para projetos com contrato formal de prestação de serviços.
+ */
+export const planContractNotice = {
+  eyebrow: { pt: "Condição de elegibilidade", en: "Eligibility requirement" },
+  title: { pt: "Planos exclusivos para projetos com contrato formal.", en: "Plans exclusive to projects under a formal contract." },
+  short: {
+    pt: "Disponível exclusivamente para projetos desenvolvidos mediante contrato formal de prestação de serviços.",
+    en: "Available exclusively for projects developed under a formal service agreement.",
+  },
+  clauses: [
+    {
+      pt: "Os planos de acompanhamento técnico, em todas as modalidades (Essencial, Profissional, Excelência e Empresarial), aplicam-se exclusivamente a projetos desenvolvidos mediante contrato formal de prestação de serviços, celebrado por escrito entre as partes. A assinatura de qualquer modalidade pressupõe a existência desse contrato e fica condicionada à sua verificação.",
+      en: "The technical follow-up plans, in every tier (Essential, Professional, Excellence and Enterprise), apply exclusively to projects developed under a formal service agreement executed in writing between the parties. Subscribing to any tier presupposes the existence of such an agreement and is subject to its verification.",
+    },
+    {
+      pt: "Projetos desenvolvidos sem contrato formal, inclusive os realizados mediante acordo verbal, informal ou sem instrumento escrito, não conferem ao cliente direito a nenhum dos benefícios, níveis de prioridade, prazos ou condições descritos nesta página, ainda que o pagamento da assinatura tenha sido efetuado.",
+      en: "Projects developed without a formal agreement, including those carried out under verbal or informal arrangements or without a written instrument, do not entitle the client to any of the benefits, priority levels, timeframes or conditions described on this page, even if the subscription payment has been made.",
+    },
+    {
+      pt: "Nesses casos, o acompanhamento técnico somente poderá ser contratado após a formalização de contrato específico, cujas condições serão analisadas caso a caso. As informações desta página têm caráter informativo e não substituem o contrato; havendo divergência, prevalecem as cláusulas contratuais e a legislação aplicável.",
+      en: "In such cases, technical follow-up may only be engaged after a specific agreement is formalized, with conditions assessed case by case. The information on this page is for reference only and does not replace the agreement; in case of any discrepancy, the contractual clauses and applicable law prevail.",
+    },
+  ] as Localized[],
+};
+
 /** Perguntas comuns a todos os serviços. */
 export const sharedPlanFaq: Array<{ question: Localized; answer: Localized }> = [
   {
     question: { pt: "Como funciona a contratação?", en: "How does hiring work?" },
     answer: {
-      pt: "Nas modalidades Essencial, Profissional e Excelência, a assinatura mensal é feita pelo link de pagamento seguro do Stripe. Se preferir, converse antes pelo WhatsApp. Depois da assinatura, o projeto é analisado e o escopo do acompanhamento é alinhado com você. O Empresarial começa com uma solicitação de proposta.",
-      en: "For the Essential, Professional and Excellence plans, the monthly subscription is made through Stripe's secure payment link. If you prefer, talk first on WhatsApp. After subscribing, the project is reviewed and the follow-up scope is aligned with you. Enterprise starts with a proposal request.",
+      pt: "Nas modalidades Essencial, Profissional e Excelência, a assinatura mensal é feita pelo link de pagamento seguro do Stripe. Se preferir, converse antes pelo WhatsApp. Depois da assinatura, a existência do contrato formal do projeto é verificada e o escopo do acompanhamento é alinhado com você. O Empresarial começa com uma solicitação de proposta.",
+      en: "For the Essential, Professional and Excellence plans, the monthly subscription is made through Stripe's secure payment link. If you prefer, talk first on WhatsApp. After subscribing, the project's formal agreement is verified and the follow-up scope is aligned with you. Enterprise starts with a proposal request.",
+    },
+  },
+  {
+    question: { pt: "Meu projeto foi feito sem contrato. Posso assinar um plano?", en: "My project was built without a contract. Can I subscribe to a plan?" },
+    answer: {
+      pt: "Não diretamente. Os planos se aplicam exclusivamente a projetos desenvolvidos mediante contrato formal de prestação de serviços. Projetos feitos sem contrato não têm direito aos benefícios apresentados nos planos, ainda que a assinatura seja paga. Para esses casos, entre em contato antes: o acompanhamento só poderá ser contratado após a formalização de um contrato específico.",
+      en: "Not directly. The plans apply exclusively to projects developed under a formal service agreement. Projects built without a contract are not entitled to the benefits presented in the plans, even if the subscription is paid. In these cases, get in touch first: follow-up can only be engaged after a specific agreement is formalized.",
     },
   },
   {

@@ -27,6 +27,7 @@ import {
   getServicePlanOgImage,
   getStartingPrice,
   planTiers,
+  planContractNotice,
   servicePlans,
   sharedPlanFaq,
 } from "@/data/service-plans";
@@ -226,8 +227,8 @@ const ServicePlans = () => {
               </div>
               <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
                 {pt
-                  ? "Assinaturas mensais. Cada modalidade amplia a anterior. Depois da assinatura, o projeto é analisado e o escopo do acompanhamento é alinhado com você."
-                  : "Monthly subscriptions. Each plan builds on the previous one. After subscribing, the project is reviewed and the follow-up scope is aligned with you."}
+                  ? "Assinaturas mensais, exclusivas para projetos com contrato formal. Cada modalidade amplia a anterior. Depois da assinatura, o contrato do projeto é verificado e o escopo do acompanhamento é alinhado com você."
+                  : "Monthly subscriptions, exclusive to projects under a formal contract. Each plan builds on the previous one. After subscribing, the project's agreement is verified and the follow-up scope is aligned with you."}
               </p>
             </div>
           </ScrollReveal>
@@ -245,6 +246,35 @@ const ServicePlans = () => {
               <EnterprisePlanPanel tier={enterpriseTier} service={service} language={language} />
             </div>
           )}
+
+          <ScrollReveal delay={0.05}>
+            <aside
+              id="condicoes-contratuais"
+              aria-labelledby="condicoes-contratuais-titulo"
+              className="mt-4 scroll-mt-28 rounded-2xl border border-border/30 bg-card/25 p-6 backdrop-blur-sm sm:p-8 lg:p-10"
+            >
+              <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12">
+                <div>
+                  <span className="mb-4 block text-[11px] uppercase tracking-[0.32em] text-muted-foreground/65">
+                    {planContractNotice.eyebrow[language]}
+                  </span>
+                  <h3 id="condicoes-contratuais-titulo" className="font-serif text-2xl leading-tight text-foreground lg:text-3xl">
+                    {planContractNotice.title[language]}
+                  </h3>
+                </div>
+                <ol className="space-y-4 text-sm leading-relaxed text-muted-foreground">
+                  {planContractNotice.clauses.map((clause, index) => (
+                    <li key={index} className="grid grid-cols-[auto_1fr] gap-4">
+                      <span className="font-serif text-base leading-relaxed text-foreground/40" aria-hidden="true">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <p>{clause[language]}</p>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </aside>
+          </ScrollReveal>
         </div>
       </section>
 

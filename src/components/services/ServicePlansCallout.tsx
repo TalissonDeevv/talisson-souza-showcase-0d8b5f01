@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { IdentityPanel } from "@/components/ui/PageIdentity";
 import { cn } from "@/lib/utils";
-import { formatPlanPrice, getServicePlanById, planTiers, type PlanLanguage } from "@/data/service-plans";
+import { formatPlanPrice, getServicePlanById, planContractNotice, planTiers, type PlanLanguage } from "@/data/service-plans";
 
 type ServicePlansCalloutProps = {
   serviceId: string | undefined;
@@ -40,6 +40,9 @@ const ServicePlansCallout = ({ serviceId, language, className }: ServicePlansCal
                   {pt
                     ? "Seu projeto não precisa parar na entrega. Conheça as opções de acompanhamento técnico e tenha suporte para manter, atualizar e evoluir sua solução."
                     : "Your project doesn't have to stop at delivery. Explore the technical follow-up options and get support to maintain, update and evolve your solution."}
+                </p>
+                <p className="mt-4 max-w-xl border-l border-border/40 pl-4 text-xs leading-relaxed text-muted-foreground/80">
+                  {planContractNotice.short[language]}
                 </p>
                 <Link
                   to={service.plansPath[language]}
